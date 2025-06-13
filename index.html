@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta PC GamerZ - Gama Media</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .brand-title {
+            font-weight: 900;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-game {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card-game:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .card-game input:checked + label {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="brand-title text-5xl md:text-7xl">GamerZ</h1>
+            <p class="text-gray-400 text-lg mt-2">Tu PC Gamer de gama media, lista para la acción.</p>
+        </header>
+
+        <!-- Product Section -->
+        <section class="bg-gray-800 rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-8">
+            <div class="w-full md:w-1/2">
+                <img src="https://placehold.co/600x600/111827/ffffff?text=PC+GamerZ" alt="Imagen de una computadora gamer" class="rounded-xl shadow-lg w-full">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-3xl font-bold mb-4">Componentes</h2>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center gap-3"><i class="fas fa-microchip text-indigo-400"></i><span><strong>Procesador:</strong> Intel i5 3.0 GHz</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-memory text-indigo-400"></i><span><strong>RAM:</strong> 12GB DDR3 Dual Channel</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-gamepad text-indigo-400"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB GDDR5</span></li>
+                    <li class="flex items-center gap-3"><i class="fas fa-hdd text-indigo-400"></i><span><strong>Almacenamiento:</strong> 500GB NVMe SSD</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <form id="orderForm">
+            <!-- Games Section -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-center mb-8">Juegos que puedes disfrutar</h2>
+                <p class="text-center text-gray-400 -mt-4 mb-8">Puedes elegir hasta 2 juegos incluidos en el precio base.</p>
+                <div id="game-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Game items will be populated by JS -->
+                </div>
+                <p id="game-selection-error" class="text-center text-red-500 mt-4 hidden">Puedes elegir un máximo de 2 juegos.</p>
+            </section>
+
+            <!-- Software Section -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-center mb-8">Software Base Incluido</h2>
+                <p class="text-center text-gray-400 mb-6">La PC incluye Windows 11 Pro personalizado. Puedes seleccionar el software adicional que desees.</p>
+                <div id="software-list" class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                    <!-- Software items will be populated by JS -->
+                </div>
+            </section>
+
+            <!-- Extra Notes Section -->
+            <section class="mb-12">
+                 <h2 class="text-3xl font-bold text-center mb-8">Notas Adicionales</h2>
+                 <textarea id="extra-notes" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" rows="4" placeholder="¿Necesitas algo más? ¿Alguna configuración especial? Escríbelo aquí..."></textarea>
+            </section>
+
+            <!-- CTA Button -->
+            <div class="text-center">
+                <button type="submit" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold py-4 px-10 rounded-full text-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <i class="fab fa-whatsapp"></i> ¡Pedir por WhatsApp!
+                </button>
+            </div>
+        </form>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 pt-8 border-t border-gray-700">
+            <p class="text-gray-400 mb-4">Contáctame en mis redes sociales</p>
+            <div class="flex justify-center gap-6 text-2xl">
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const games = [
+                { name: 'League of Legends', slug: 'lol' },
+                { name: 'CS: GO', slug: 'csgo' },
+                { name: 'World of Warcraft', slug: 'wow' },
+                { name: 'Valorant', slug: 'valorant' },
+                { name: 'Minecraft', slug: 'minecraft' },
+                { name: 'GTA V', slug: 'gtav' },
+                { name: 'Fall Guys', slug: 'fallguys' }
+            ];
+
+            const software = [
+                { name: 'Google Chrome', slug: 'chrome', checked: true },
+                { name: 'Discord', slug: 'discord', checked: true },
+                { name: 'Steam', slug: 'steam', checked: true },
+                { name: 'OBS Studio', slug: 'obs', checked: false },
+                { name: 'VLC Player', slug: 'vlc', checked: false },
+                { name: '7-Zip', slug: '7zip', checked: true },
+            ];
+            
+            const gameListContainer = document.getElementById('game-list');
+            games.forEach(game => {
+                const gameCard = `
+                    <div class="card-game">
+                        <input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" class="hidden">
+                        <label for="game-${game.slug}" class="block bg-gray-800 p-4 rounded-xl border-2 border-transparent cursor-pointer transition">
+                            <img src="https://placehold.co/200x150/1f2937/ffffff?text=${game.name.replace(' ','+')}" alt="Logo de ${game.name}" class="rounded-md mb-3 w-full h-auto aspect-[4/3] object-cover">
+                            <span class="font-bold text-center block">${game.name}</span>
+                        </label>
+                    </div>
+                `;
+                gameListContainer.innerHTML += gameCard;
+            });
+
+            const softwareListContainer = document.getElementById('software-list');
+            software.forEach(item => {
+                const softwareItem = `
+                    <div class="bg-gray-800 p-3 rounded-lg flex items-center">
+                        <input id="sw-${item.slug}" name="software" value="${item.name}" type="checkbox" ${item.checked ? 'checked' : ''} class="w-5 h-5 text-indigo-500 bg-gray-700 border-gray-600 rounded focus:ring-indigo-600 ring-offset-gray-800 focus:ring-2">
+                        <label for="sw-${item.slug}" class="ml-3 text-sm font-medium text-gray-300">${item.name}</label>
+                    </div>
+                `;
+                softwareListContainer.innerHTML += softwareItem;
+            });
+
+
+            const gameCheckboxes = document.querySelectorAll('input[name="game"]');
+            const errorElement = document.getElementById('game-selection-error');
+            const maxGames = 2;
+
+            gameCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    const selectedGames = document.querySelectorAll('input[name="game"]:checked');
+                    if (selectedGames.length > maxGames) {
+                        checkbox.checked = false;
+                        errorElement.classList.remove('hidden');
+                        setTimeout(() => errorElement.classList.add('hidden'), 3000);
+                    }
+                });
+            });
+
+            const orderForm = document.getElementById('orderForm');
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // IMPORTANT: Replace with your actual WhatsApp number
+                const phoneNumber = '5491122334455'; // Example: 5491122334455 (Country code + Area code + Number)
+
+                const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
+                const selectedSoftware = Array.from(document.querySelectorAll('input[name="software"]:checked')).map(cb => cb.value);
+                const extraNotes = document.getElementById('extra-notes').value;
+                
+                let message = `Hola, estoy interesado/a en la PC GamerZ.\n\n*Mi configuración elegida es:*\n`;
+
+                if (selectedGames.length > 0) {
+                    message += `*Juegos Preinstalados:* ${selectedGames.join(', ')}\n`;
+                } else {
+                    message += `*Juegos Preinstalados:* Ninguno\n`;
+                }
+
+                if (selectedSoftware.length > 0) {
+                    message += `*Software Adicional:* ${selectedSoftware.join(', ')}\n`;
+                }
+                
+                if (extraNotes.trim() !== '') {
+                    message += `*Notas Adicionales:* ${extraNotes}\n`;
+                }
+
+                message += `\n¡Quedo a la espera de tu respuesta!`;
+
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+    </script>
+
+</body>
+</html>
