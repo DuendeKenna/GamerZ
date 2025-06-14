@@ -7,11 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
+        }
+        .font-gamer {
+            font-family: 'Press Start 2P', cursive;
         }
         .brand-title {
             font-weight: 900;
@@ -28,21 +34,72 @@
         .card-game, .card-peripheral {
             position: relative;
         }
-        .card-game label img, .card-peripheral .image-wrapper img {
+        .card-game label {
+            position: relative; /* Container for the sticker & gloss */
+            overflow: hidden; 
+            display: block;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .card-game label::after { /* Glossy effect */
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 255, 255, 0.25) 0%,
+                rgba(255, 255, 255, 0.1) 40%,
+                transparent 50%
+            );
+            transform: rotate(35deg);
+            pointer-events: none;
+        }
+        .card-game label img {
             transition: transform 0.3s ease, filter 0.3s ease;
             filter: grayscale(80%); 
         }
         .card-game label:hover img,
-        .card-game input:checked + label img,
-        .card-peripheral.active .image-wrapper img,
-        .card-peripheral:hover .image-wrapper img {
+        .card-game input:checked + label img {
             transform: scale(1.07);
-            filter: grayscale(0%);
+            filter: grayscale(0%) brightness(1.1);
         }
-        .card-game input:checked + label,
-        .card-peripheral.active {
-            border-color: #8b5cf6;
+        .card-game input:checked + label {
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
+        }
+
+        /* --- Peripheral Card Styles --- */
+        .card-peripheral {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            opacity: 0.5; /* Deselected state */
+        }
+        .card-peripheral:hover,
+        .card-peripheral.active {
+            opacity: 1; /* Selected or hovered state */
+            transform: scale(1.05);
+        }
+        .card-peripheral .image-wrapper img {
+            transition: transform 0.3s ease;
+        }
+        .card-peripheral.active {
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
+        }
+
+        /* --- Game Title Sticker --- */
+        .game-title-sticker {
+            position: absolute;
+            background: linear-gradient(to right, #ef4444, #f97316);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.75rem; /* text-xs */
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            text-align: center;
+            max-width: 80%;
+            transition: opacity 0.2s ease-in-out;
+            z-index: 10;
         }
         /* --- Error Toast Animation --- */
         #error-toast {
@@ -84,6 +141,33 @@
             box-shadow: 0 0 15px #37ff1494, inset 0 0 10px rgba(57, 255, 20, 0.3);
             color: #f0fdf4;
         }
+        /* --- CTA Button Glow Animation --- */
+        .cta-button {
+            animation: glow 4s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 15px #16a34a;
+            }
+            50% {
+                box-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14, 0 0 45px #16a34a;
+            }
+        }
+        /* --- Essential Software Highlight --- */
+        .essential-software {
+            background-color: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid #22c55e; /* Tailwind green-500 */
+        }
+        /* --- Tooltip Styles --- */
+        .has-tooltip .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s, visibility 0.2s;
+        }
+        .has-tooltip:hover .tooltip, .has-tooltip.tooltip-active .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -97,8 +181,8 @@
 
         <!-- Header -->
         <header class="text-center mb-12">
-            <h1 class="brand-title text-4xl md:text-7xl">La Compu del Medio</h1>
-            <p class="special-subtitle text-lg mt-2">Tu PC Gamer Optimizada & Suficiente</p>
+            <h1 class="brand-title text-4xl md:text-7xl">Tu Compu del Medio</h1>
+            <p class="special-subtitle text-lg mt-2">PC Gamer Optimizada & Suficiente</p>
             <div class="price-container mt-8">
                 <div class="launch-badge">...y a 1 Precio de LOCXS!</div>
                 <p class="text-5xl font-bold text-cyan-400 mt-4 price-highlight">$555.000 ARS</p>
@@ -108,24 +192,47 @@
                 <span>/</span>
                 <span class="flex items-center gap-2"><i class="fas fa-truck"></i>Entrega a toda <strong>La Costa</strong></span>
             </div>
-                        <p class="special-subtitle text-lg mt-5">🎁 Elegíte tus <u>3 Juegos Incluidos</u> 🔽</p>
+             <a href="#games-section" class="special-subtitle inline-block text-lg mt-5 bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">🎁 Va con <u>3 Juegos a Elección</u> 🔽</a>
         </header>
+
+        <!-- Hero Section -->
+        <section class="mb-12 bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8">
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-tasks text-4xl text-indigo-400 mb-3"></i>
+                    <h3 class="text-xl font-bold text-gray-200">Elegí lo que te Resuene</h3>
+                </div>
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center">
+                     <i class="fab fa-whatsapp text-4xl text-green-400 mb-3"></i>
+                    <h3 class="text-xl font-bold text-gray-200">Mandámelo vía WhatsApp</h3>
+                </div>
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-hat-wizard text-4xl text-amber-400 mb-3"></i>
+                    <h3 class="text-xl font-bold text-gray-200">¡Disfrutá tu Sistema!</h3>
+                </div>
+             </div>
+        </section>
+
 
         <!-- Product Section -->
         <section class="bg-gray-800 rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-8">
             <div class="w-full md:w-1/3">
-                <img src="https://placehold.co/600x600/111827/ffffff?text=Tu+Compu+del+Medio" alt="Imagen de una computadora gamer" class="rounded-xl shadow-lg w-full">
+                <video src="video-loop.mp4" autoplay loop muted playsinline class="rounded-xl shadow-lg w-full"></video>
             </div>
             <div class="w-full md:w-2/3">
                 <h2 class="text-3xl font-bold mb-4">Componentes</h2>
                 <ul class="space-y-3 text-gray-300">
                     <li class="flex items-start gap-3"><i class="fas fa-microchip text-indigo-400 mt-1"></i><span><strong>Procesador:</strong> Intel i5 2400 3.1Ghz (4 Núcleos)</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-400 mt-1"></i><span><strong>Motherboard:</strong> H61-M2 OEM</li>
+                    <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-400 mt-1"></i><span><strong>Motherboard:</strong> H61-M2 OEM</span></li>
                     <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-400 mt-1"></i><span><strong>RAM:</strong> 12GB DDR3 Dual Channel</span></li>
                     <li class="flex items-start gap-3"><i class="fas fa-gamepad text-indigo-400 mt-1"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB GDDR5</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-400 mt-1"></i><span><strong>Almacenamiento:</strong> 500GB NVMe SSD</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-400 mt-1"></i><span><strong>Almacenamiento:</strong> 500GB SSD</span></li>
                     <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-400 mt-1"></i><span><strong>Fuente:</strong> ATX 500w Sentey</span></li>
-                    <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-400 mt-1"></i><span><strong>Sistema Operativo:</strong> Windows 11 Pro 23H2 | Optimizado</span></li>
+                    <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-400 mt-1"></i><span><strong>Sistema Operativo:</strong> Windows 11 Pro 23H2 | Optimizado ✨</span></li>
+                    <small>*monitor/teclado/mouse aparte*</small>
                 </ul>
             </div>
         </section>
@@ -135,23 +242,27 @@
             <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
             <div class="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-6 md:p-8 space-y-6">
                 <ul class="space-y-4 text-gray-300">
-                    <li class="flex items-start gap-3"><i class="fas fa-microscope text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong> CPU y RAM - Testeados y 100% Funcionales. Y el Gabinete.</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-box-open text-green-400 mt-1"></i><span><strong>Componentes Nuevos:</strong> Todos los demás.</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 6 meses de garantía en todos los componentes.</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-star text-yellow-400 mt-1"></i><span><strong>Garantía Extendida en Video:</strong> La placa de video cuenta con 12 meses de garantía.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-microscope text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong> Gabinete, CPU (procesador) y RAM.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-box-open text-green-400 mt-1"></i><span><strong>Componentes Nuevos:</strong> Placa de Video, Motherboard, Disco y Fuente.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 10 meses de garantía en todos los componentes.</span></li>
                 </ul>
                 <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
+                    <!-- Icono actual -->
                     <i class="fas fa-headset text-2xl"></i>
-                    <span class="font-bold text-lg">Servicio Postventa | ¿Problema?...¡Se Arregla! </span>
+                    <!-- Alternativas (descomenta la que quieras usar y comenta las otras) -->
+                    <!-- <i class="fas fa-wrench text-2xl"></i> -->
+                    <!-- <i class="fas fa-life-ring text-2xl"></i> -->
+                    <!-- <i class="fas fa-user-shield text-2xl"></i> -->
+                    <span class="font-gamer text-xs">¿Algún Problema?...<br>¡Se Arregla!</span>
                 </div>
             </div>
         </section>
 
         <form id="orderForm">
             <!-- Games Section -->
-            <section class="mb-12">
+            <section id="games-section" class="mb-12">
                 <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Tira 👌</h2>
-                <p class="text-center text-gray-400 -mt-4 mb-8">Seleccioná hasta 3 - van instalados 👾</p>
+                <p class="text-center text-gray-400 -mt-4 mb-8">Seleccioná hasta 3 - van Instalados 💾 👾</p>
                 <div id="game-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                     <!-- Game items will be populated by JS -->
                 </div>
@@ -159,8 +270,9 @@
 
             <!-- Software Section -->
             <section class="mb-12">
-                <h2 class="text-3xl font-bold text-center mb-8">Software Base Incluido</h2>
-                <p class="text-center text-gray-400 mb-6">El software esencial viene preinstalado. Podés añadir más si lo deseás, avisame en Notas.</p>
+                <h2 class="text-3xl font-bold text-center mb-8">Baseware Instalado</h2>
+                <p class="text-center text-gray-400 mb-2">El software esencial viene preinstalado.</p>
+                <p class="text-center text-gray-400 mb-6">¡Elegí lo que querés usar!</p>
                 <div id="software-list" class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
                     <!-- Software items will be populated by JS -->
                 </div>
@@ -171,16 +283,16 @@
                 <h2 class="text-3xl font-bold text-center mb-8">Periféricos Extra</h2>
                 <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
                     <!-- Joystick Card -->
-                    <div id="joystick-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer transition">
+                    <div id="joystick-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
                         <div class="image-wrapper relative aspect-[4/3]">
-                            <img src="https://placehold.co/400x300/1f2937/4f46e5?text=Joystick" alt="Joystick Xbox 360 Genérico" class="rounded-md w-full h-full object-cover">
+                            <img src="comps/xboxc1.jpg" alt="Joystick Xbox 360 Genérico" class="rounded-md w-full h-full object-cover">
                             <span id="joystick-badge" class="absolute top-2 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center hidden">x2</span>
                         </div>
                     </div>
                     <!-- Mouse & Keyboard Card -->
-                    <div id="mouse-keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer transition">
+                    <div id="mouse-keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
                         <div class="image-wrapper aspect-[4/3]">
-                           <img src="https://placehold.co/400x300/1f2937/4f46e5?text=Teclado+y+Mouse" alt="Combo Teclado y Mouse Inalámbrico" class="rounded-md w-full h-full object-cover">
+                           <img src="comps/tecmou.jpg" alt="Combo Teclado y Mouse Inalámbrico" class="rounded-md w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -190,10 +302,16 @@
                     <p>Mouse y Teclado (+36k)<br>Inalámbrico</p>
                 </div>
 
-                <!-- Total Price -->
-                <div class="text-center mt-10">
+                <!-- Final Order Summary -->
+                <div class="text-center mt-10 max-w-2xl mx-auto">
+                    <div id="selected-games-section" class="mb-6 hidden">
+                      <p class="text-gray-400 text-lg">Juegos Incluidos:</p>
+                      <div id="selected-games-list" class="flex justify-center flex-wrap gap-2 mt-2">
+                        <!-- Selected game images will be populated here -->
+                      </div>
+                    </div>
                     <p class="text-gray-400 text-lg">Precio Total:</p>
-                    <p class="text-5xl font-bold text-cyan-400 price-highlight">$<span id="total-price" >555.000 ARS</span></p>
+                    <p class="text-5xl font-bold text-cyan-400 price-highlight">$<span id="total-price" >555.000</span> ARS</p>
                 </div>
             </section>
 
@@ -206,7 +324,7 @@
 
             <!-- CTA Button -->
             <div class="text-center">
-                <button type="submit" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold py-4 px-10 rounded-full text-xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                <button type="submit" class="cta-button bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-500 hover:to-emerald-600 text-white font-bold py-4 px-10 rounded-full text-xl transform hover:scale-105 transition-transform duration-300">
                     <i class="fab fa-whatsapp"></i> ¡Pedir por WhatsApp!
                 </button>
             </div>
@@ -231,8 +349,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- DATA ---
-            const gameNames = ['FallGuys', 'GTA V', 'Minecraft', 'LoL', 'Rocket League', 'WoW', 'Half Life 2', 'Prince of Persia 2008', 'NFS Most Wanted', 'Blur', 'Dota2', 'Roblox', 'Need for Speed: Hot Pursuit (2010)', 'GRID 2', 'Dishonored', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock 1 y 2 (Remastered)', 'BioShock Infinite', 'Fallout 3 y Fallout: New Vegas', 'The Elder Scrolls V: Skyrim', 'Batman: Arkham Asylum y Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Remaster', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'Call of Duty: Black Ops 1 y 2', 'Metro 2033', 'Crysis 2', 'La Saga S.T.A.L.K.E.R', 'Bulletstorm', 'Max Payne 3', 'Singularity', 'F.E.A.R.'];
-            const softwareData = [{ name: 'Steam', slug: 'steam', checked: true, disabled: true }, { name: 'Discord', slug: 'discord', checked: true, disabled: true }, { name: 'Google Chrome', slug: 'chrome', checked: true, disabled: false }, { name: 'OBS Studio', slug: 'obs', checked: false, disabled: false }, { name: 'VLC Player', slug: 'vlc', checked: false, disabled: false }, { name: '7-Zip', slug: '7zip', checked: true, disabled: false }];
+            const gameNames = ['FallGuys', 'GTA V', 'Minecraft', 'LoL', 'Counter Strike 2', 'Overwatch 2', 'Rocket League', 'Half Life 2', 'Half Life Black Mesa', 'NFS Most Wanted', 'Blur', 'Dota2', 'Roblox', 'Oddworld Remake','Sims 4','NFS Hot Pursuit', 'GRID 2', 'Dishonored', 'Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock 1 y 2 (Remastered)', 'BioShock Infinite', 'Fallout 3 y Fallout: New Vegas', 'The Elder Scrolls V: Skyrim', 'Batman: Arkham Asylum y Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Remaster', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'Call of Duty: Black Ops 1 y 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Max Payne 3', 'Singularity', 'F.E.A.R.','Mortal Kombat','Ultimate Marvel vs. Capcom 3','The King of Fighters XIII','Injustice Gods Among Us','Age of Empires II Definitive Edition','Heroes V','WoW Classic en TurtleWow'];
+            const softwareData = [
+                { name: 'Steam', slug: 'steam', checked: true, disabled: true, description: 'Tu biblioteca de juegos y tienda principal.' }, 
+                { name: 'Discord', slug: 'discord', checked: true, disabled: true, description: 'Chat de voz y texto para comunicarte con tus amigos.' }, 
+                { name: 'Google Chrome', slug: 'chrome', checked: true, disabled: false, description: 'Navegador web rápido y seguro para todo lo demás.' }, 
+                { name: 'OBS Studio', slug: 'obs', checked: false, disabled: false, description: 'Graba y transmite tus partidas en vivo a todo el mundo.' }, 
+                { name: 'VLC Player', slug: 'vlc', checked: false, disabled: false, description: 'Reproductor multimedia que abre casi cualquier formato de video.' }, 
+                { name: '7-Zip', slug: '7zip', checked: true, disabled: false, description: 'Herramienta para comprimir y descomprimir archivos (ZIP, RAR, etc.).' }
+            ];
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
 
@@ -247,27 +372,67 @@
             function updateTotalPrice() {
                 let total = BASE_PRICE;
                 if (joystickCount > 0) {
-                   //Note: the price for 2 joysticks is 60k, not 66k
                    total += joystickCount === 1 ? JOYSTICK_PRICE : 60000;
                 }
                 if (hasMouseKeyboard) {
                     total += MOUSE_KEYBOARD_PRICE;
                 }
-                totalPriceEl.textContent = `${total.toLocaleString('es-AR')} ARS`;
+                totalPriceEl.textContent = `${total.toLocaleString('es-AR')}`;
             }
-
+            
             // --- UI POPULATION ---
             const gameListContainer = document.getElementById('game-list');
             games.forEach(game => {
-                gameListContainer.innerHTML += `<div class="card-game"><input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" class="hidden"><label for="game-${game.slug}" class="block bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer transition aspect-[3/4]"><img src="https://placehold.co/300x400/1f2937/4f46e5?text=${encodeURIComponent(game.name)}" alt="Carátula de ${game.name}" class="rounded-md w-full h-full object-cover"></label></div>`;
+                const imageSrc = `cover/${game.slug}.webp`;
+                const gameCardHTML = `
+                <div class="card-game">
+                    <input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" data-img-src="${imageSrc}" class="hidden">
+                    <label for="game-${game.slug}" class="rounded-xl cursor-pointer transition">
+                        <img src="${imageSrc}" alt="Carátula de ${game.name}" class="rounded-xl w-full h-full object-cover">
+                        <div class="game-title-sticker hidden">${game.name}</div>
+                    </label>
+                </div>`;
+                gameListContainer.innerHTML += gameCardHTML;
             });
 
             const softwareListContainer = document.getElementById('software-list');
             softwareData.forEach(item => {
                 const disabledAttr = item.disabled ? 'disabled' : '';
+                const essentialClass = item.disabled ? 'essential-software' : '';
                 const disabledClass = item.disabled ? 'opacity-70 cursor-not-allowed' : '';
-                softwareListContainer.innerHTML += `<div class="bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass}"><input id="sw-${item.slug}" name="software" value="${item.name}" type="checkbox" ${item.checked ? 'checked' : ''} ${disabledAttr} class="w-5 h-5 text-indigo-500 bg-gray-700 border-gray-600 rounded focus:ring-indigo-600 ring-offset-gray-800 focus:ring-2"><label for="sw-${item.slug}" class="ml-3 text-sm font-medium text-gray-300">${item.name}</label></div>`;
+                const softwareItemHTML = `
+                <div class="relative has-tooltip bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}">
+                    <input id="sw-${item.slug}" name="software" value="${item.name}" type="checkbox" ${item.checked ? 'checked' : ''} ${disabledAttr} class="w-5 h-5 text-indigo-500 bg-gray-700 border-gray-600 rounded focus:ring-indigo-600 ring-offset-gray-800 focus:ring-2">
+                    <label for="sw-${item.slug}" class="ml-3 text-sm font-medium text-gray-300">${item.name}</label>
+                    <div class="tooltip absolute bottom-full mb-2 w-max max-w-xs p-2 text-xs text-white bg-gray-700 rounded-md shadow-lg z-10">
+                        ${item.description}
+                    </div>
+                </div>`;
+                softwareListContainer.innerHTML += softwareItemHTML;
             });
+            
+            // --- SELECTED GAMES DISPLAY ---
+            const selectedGamesSection = document.getElementById('selected-games-section');
+            const selectedGamesList = document.getElementById('selected-games-list');
+
+            function updateSelectedGamesList() {
+                const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
+                selectedGamesList.innerHTML = '';
+                if (selectedCheckboxes.length > 0) {
+                    selectedGamesSection.classList.remove('hidden');
+                    selectedCheckboxes.forEach(checkbox => {
+                        const gameName = checkbox.value;
+                        const gameImageSrc = checkbox.dataset.imgSrc;
+                        const gameEl = document.createElement('div');
+                        gameEl.className = 'w-1/4 md:w-1/5 p-1';
+                        gameEl.innerHTML = `<img src="${gameImageSrc}" alt="${gameName}" class="rounded-md shadow-lg w-full h-auto object-cover">`;
+                        selectedGamesList.appendChild(gameEl);
+                    });
+                } else {
+                    selectedGamesSection.classList.add('hidden');
+                }
+            }
+
 
             // --- ERROR TOAST ---
             const errorToast = document.getElementById('error-toast');
@@ -287,19 +452,43 @@
             // --- EVENT LISTENERS ---
             document.querySelectorAll('input[name="game"]').forEach(checkbox => {
                 checkbox.addEventListener('change', (e) => {
-                    if (document.querySelectorAll('input[name="game"]:checked').length > 3) {
-                        e.target.checked = false;
-                        showErrorToast('Puedes elegir un máximo de 3 juegos');
+                    const label = e.target.nextElementSibling;
+                    const sticker = label.querySelector('.game-title-sticker');
+                    
+                    if (e.target.checked) {
+                        if (document.querySelectorAll('input[name="game"]:checked').length > 3) {
+                            e.target.checked = false;
+                            showErrorToast('Puedes elegir un máximo de 3 juegos');
+                            return;
+                        }
+                        const randomTop = Math.floor(Math.random() * 50) + 15; // 15% to 65%
+                        const randomLeft = Math.floor(Math.random() * 40) + 10; // 10% to 50%
+                        const randomRotate = Math.floor(Math.random() * 20) - 10; // -10deg to 10deg
+                        sticker.style.top = `${randomTop}%`;
+                        sticker.style.left = `${randomLeft}%`;
+                        sticker.style.transform = `rotate(${randomRotate}deg)`;
+                        sticker.classList.remove('hidden');
+                    } else {
+                        sticker.classList.add('hidden');
                     }
+                    updateSelectedGamesList();
                 });
             });
             
             const joystickCard = document.getElementById('joystick-card');
+            const joystickImg = joystickCard.querySelector('img');
             const joystickBadge = document.getElementById('joystick-badge');
             joystickCard.addEventListener('click', () => {
                 joystickCount = (joystickCount + 1) % 3; // Cycle 0, 1, 2
                 joystickCard.classList.toggle('active', joystickCount > 0);
                 joystickBadge.classList.toggle('hidden', joystickCount !== 2);
+
+                if (joystickCount === 2) {
+                    joystickImg.src = 'comps/xboxc2.jpg';
+                } else {
+                    joystickImg.src = 'comps/xboxc1.jpg';
+                }
+
                 updateTotalPrice();
             });
 
@@ -310,6 +499,22 @@
                 updateTotalPrice();
             });
 
+            document.querySelectorAll('.has-tooltip').forEach(item => {
+                let pressTimer;
+                item.addEventListener('touchstart', (e) => {
+                    pressTimer = window.setTimeout(() => {
+                        item.classList.add('tooltip-active');
+                    }, 500);
+                });
+                item.addEventListener('touchend', () => {
+                    clearTimeout(pressTimer);
+                     setTimeout(() => { // Small delay to allow clicking
+                        item.classList.remove('tooltip-active');
+                    }, 200);
+                });
+            });
+
+
             document.getElementById('orderForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const phoneNumber = '5492252513233';
@@ -318,7 +523,7 @@
                 const selectedSoftware = Array.from(document.querySelectorAll('input[name="software"]:checked')).map(cb => cb.value);
                 const extraNotes = document.getElementById('extra-notes').value;
                 
-                let message = `Hola, estoy interesado/a en la PC de Tu Compu del Medio.\n\n*MI PEDIDO (Total: ${totalPriceEl.textContent}):*\n`;
+                let message = `Hola, estoy interesado/a en la PC de Tu Compu del Medio.\n\n*MI PEDIDO (Total: ${totalPriceEl.textContent} ARS):*\n`;
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
                 message += `*Software:* ${selectedSoftware.join(', ')}\n`;
                 
@@ -336,6 +541,9 @@
                 message += `\n¡Quedo a la espera de tu respuesta!`;
                 window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
+
+            // Initial calls
+            updateSelectedGamesList();
         });
     </script>
 </body>
