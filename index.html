@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venta PC GamerZ - Gama Media</title>
+    <title>Venta Tu Compu del Medio - Gama Media</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,42 +19,130 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .card-game {
-            transition: transform 0.2s, box-shadow 0.2s;
+        .special-subtitle {
+            font-weight: 700;
+            color: #cbd5e1;
+            letter-spacing: 0.02em;
         }
-        .card-game:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        /* --- Card Effects (Games & Peripherals) --- */
+        .card-game, .card-peripheral {
+            position: relative;
         }
-        .card-game input:checked + label {
+        .card-game label img, .card-peripheral .image-wrapper img {
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: grayscale(80%); 
+        }
+        .card-game label:hover img,
+        .card-game input:checked + label img,
+        .card-peripheral.active .image-wrapper img,
+        .card-peripheral:hover .image-wrapper img {
+            transform: scale(1.07);
+            filter: grayscale(0%);
+        }
+        .card-game input:checked + label,
+        .card-peripheral.active {
             border-color: #8b5cf6;
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
+        }
+        /* --- Error Toast Animation --- */
+        #error-toast {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: top 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
+            z-index: 50;
+        }
+        #error-toast.show {
+            top: 20px;
+            opacity: 1;
+        }
+        /* --- New Styles for Offer & Details --- */
+        .price-highlight {
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+        .price-container {
+            position: relative;
+            display: inline-block;
+        }
+        .launch-badge {
+            position: absolute;
+            top: -10px;
+            right: -20px;
+            background: linear-gradient(to right, #ef4444, #f97316);
+            padding: 0.3rem 1rem;
+            border-radius: 6px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            transform: rotate(10deg);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+        .neon-green-highlight {
+            border: 2px solid #39ff14;
+            box-shadow: 0 0 15px #39ff14, inset 0 0 10px rgba(57, 255, 20, 0.3);
+            color: #f0fdf4;
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
-    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+    <!-- Error Toast Container -->
+    <div id="error-toast" class="bg-red-600 text-white text-base rounded-lg py-3 px-6 shadow-2xl">
+        <span id="error-toast-message"></span>
+    </div>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
 
         <!-- Header -->
         <header class="text-center mb-12">
-            <h1 class="brand-title text-5xl md:text-7xl">GamerZ</h1>
-            <p class="text-gray-400 text-lg mt-2">Tu PC Gamer de gama media, lista para la acción.</p>
+            <h1 class="brand-title text-5xl md:text-7xl">Tu Compu del Medio</h1>
+            <p class="special-subtitle text-lg mt-2">Tu Experiencia Gamer | Exprimiendo Recursos</p>
+            <div class="price-container mt-8">
+                <div class="launch-badge">OFERTA LANZAMIENTO</div>
+                <p class="text-5xl font-bold text-cyan-400 mt-4 price-highlight">555.000 ARS</p>
+            </div>
+            <div class="mt-4 text-base text-gray-400 flex items-center justify-center gap-4">
+                <span class="flex items-center gap-2"><i class="fas fa-store"></i>Retira en <strong>San Clemente</strong></span>
+                <span>/</span>
+                <span class="flex items-center gap-2"><i class="fas fa-truck"></i>Entrega a Toda <strong>La Costa</strong></span>
+            </div>
         </header>
 
         <!-- Product Section -->
         <section class="bg-gray-800 rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-8">
-            <div class="w-full md:w-1/2">
-                <img src="https://placehold.co/600x600/111827/ffffff?text=PC+GamerZ" alt="Imagen de una computadora gamer" class="rounded-xl shadow-lg w-full">
+            <div class="w-full md:w-1/3">
+                <img src="https://placehold.co/600x600/111827/ffffff?text=Tu+Compu+del+Medio" alt="Imagen de una computadora gamer" class="rounded-xl shadow-lg w-full">
             </div>
-            <div class="w-full md:w-1/2">
+            <div class="w-full md:w-2/3">
                 <h2 class="text-3xl font-bold mb-4">Componentes</h2>
                 <ul class="space-y-3 text-gray-300">
-                    <li class="flex items-center gap-3"><i class="fas fa-microchip text-indigo-400"></i><span><strong>Procesador:</strong> Intel i5 3.0 GHz</span></li>
-                    <li class="flex items-center gap-3"><i class="fas fa-memory text-indigo-400"></i><span><strong>RAM:</strong> 12GB DDR3 Dual Channel</span></li>
-                    <li class="flex items-center gap-3"><i class="fas fa-gamepad text-indigo-400"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB GDDR5</span></li>
-                    <li class="flex items-center gap-3"><i class="fas fa-hdd text-indigo-400"></i><span><strong>Almacenamiento:</strong> 500GB NVMe SSD</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-microchip text-indigo-400 mt-1"></i><span><strong>Procesador:</strong> Intel i5 2400 3.1Ghz (4 Núcleos)</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-400 mt-1"></i><span><strong>Motherboard:</strong> H61-m2</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-400 mt-1"></i><span><strong>RAM:</strong> 12GB DDR3 Dual Channel</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-gamepad text-indigo-400 mt-1"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB GDDR5</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-400 mt-1"></i><span><strong>Almacenamiento:</strong> 500GB NVMe SSD</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-400 mt-1"></i><span><strong>Fuente:</strong> ATX 500w Sentey</span></li>
+                    <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-400 mt-1"></i><span><strong>Sistema Operativo:</strong> Windows 11 [Optimizado]</span></li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- Conditions and Warranty Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
+            <div class="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-6 md:p-8 space-y-6">
+                <ul class="space-y-4 text-gray-300">
+                    <li class="flex items-start gap-3"><i class="fas fa-microscope text-cyan-400 mt-1"></i><span><strong>Componentes Usados Seleccionados:</strong> El procesador y la memoria RAM son usados, testeados y 100% funcionales para garantizar el mejor rendimiento al menor costo.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-box-open text-green-400 mt-1"></i><span><strong>Componentes Nuevos:</strong> El resto de los componentes son completamente nuevos y de primeras marcas.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 6 meses de garantía en todos los componentes.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-star text-yellow-400 mt-1"></i><span><strong>Garantía Extendida en Video:</strong> La placa de video cuenta con 12 meses de garantía.</span></li>
+                </ul>
+                <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
+                    <i class="fas fa-headset text-2xl"></i>
+                    <span class="font-bold text-lg">Servicio Postventa de Calidad</span>
+                </div>
             </div>
         </section>
 
@@ -62,21 +150,52 @@
             <!-- Games Section -->
             <section class="mb-12">
                 <h2 class="text-3xl font-bold text-center mb-8">Juegos que puedes disfrutar</h2>
-                <p class="text-center text-gray-400 -mt-4 mb-8">Puedes elegir hasta 2 juegos incluidos en el precio base.</p>
-                <div id="game-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <p class="text-center text-gray-400 -mt-4 mb-8">Puedes elegir hasta 3 juegos incluidos en el precio base.</p>
+                <div id="game-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                     <!-- Game items will be populated by JS -->
                 </div>
-                <p id="game-selection-error" class="text-center text-red-500 mt-4 hidden">Puedes elegir un máximo de 2 juegos.</p>
             </section>
 
             <!-- Software Section -->
             <section class="mb-12">
                 <h2 class="text-3xl font-bold text-center mb-8">Software Base Incluido</h2>
-                <p class="text-center text-gray-400 mb-6">La PC incluye Windows 11 Pro personalizado. Puedes seleccionar el software adicional que desees.</p>
+                <p class="text-center text-gray-400 mb-6">El software esencial viene preinstalado. Puedes añadir más si lo deseas.</p>
                 <div id="software-list" class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
                     <!-- Software items will be populated by JS -->
                 </div>
             </section>
+            
+            <!-- Peripherals Section -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-center mb-8">Periféricos Adicionales</h2>
+                <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
+                    <!-- Joystick Card -->
+                    <div id="joystick-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer transition">
+                        <div class="image-wrapper relative aspect-[4/3]">
+                            <img src="https://placehold.co/400x300/1f2937/4f46e5?text=Joystick" alt="Joystick Xbox 360 Genérico" class="rounded-md w-full h-full object-cover">
+                            <span id="joystick-badge" class="absolute top-2 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center hidden">x2</span>
+                        </div>
+                    </div>
+                    <!-- Mouse & Keyboard Card -->
+                    <div id="mouse-keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer transition">
+                        <div class="image-wrapper aspect-[4/3]">
+                           <img src="https://placehold.co/400x300/1f2937/4f46e5?text=Teclado+y+Mouse" alt="Combo Teclado y Mouse Inalámbrico" class="rounded-md w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <!-- Prices for Peripherals -->
+                 <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto mt-2 text-center text-gray-400 text-sm">
+                    <p>Joystick Xbox 360 (+33.000 ARS c/u)</p>
+                    <p>Mouse y Teclado Inalámbrico (+36.000 ARS)</p>
+                </div>
+
+                <!-- Total Price -->
+                <div class="text-center mt-10">
+                    <p class="text-gray-400 text-lg">Precio Total:</p>
+                    <p id="total-price" class="text-5xl font-bold text-cyan-400 price-highlight">555.000 ARS</p>
+                </div>
+            </section>
+
 
             <!-- Extra Notes Section -->
             <section class="mb-12">
@@ -94,11 +213,15 @@
 
         <!-- Footer -->
         <footer class="text-center mt-16 pt-8 border-t border-gray-700">
+            <p class="text-sm text-gray-500 mb-4 flex items-center justify-center gap-4">
+                 <span class="flex items-center gap-2"><i class="fas fa-store"></i>Retira en <strong>San Clemente</strong></span>
+                 <span>/</span>
+                 <span class="flex items-center gap-2"><i class="fas fa-truck"></i>Entrega a Toda <strong>La Costa</strong></span>
+            </p>
             <p class="text-gray-400 mb-4">Contáctame en mis redes sociales</p>
             <div class="flex justify-center gap-6 text-2xl">
-                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/kenna.inf" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/kenna.inf" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
             </div>
         </footer>
 
@@ -106,101 +229,113 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const games = [
-                { name: 'League of Legends', slug: 'lol' },
-                { name: 'CS: GO', slug: 'csgo' },
-                { name: 'World of Warcraft', slug: 'wow' },
-                { name: 'Valorant', slug: 'valorant' },
-                { name: 'Minecraft', slug: 'minecraft' },
-                { name: 'GTA V', slug: 'gtav' },
-                { name: 'Fall Guys', slug: 'fallguys' }
-            ];
+            // --- DATA ---
+            const gameNames = ['FallGuys', 'GTA V', 'Minecraft', 'LoL', 'Rocket League', 'WoW', 'Half Life 2', 'Prince of Persia 2008', 'NFS Most Wanted', 'Blur', 'Dota2', 'Roblox', 'Need for Speed: Hot Pursuit (2010)', 'GRID 2', 'Dishonored', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock 1 y 2 (Remastered)', 'BioShock Infinite', 'Fallout 3 y Fallout: New Vegas', 'The Elder Scrolls V: Skyrim', 'Batman: Arkham Asylum y Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Remaster', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'Call of Duty: Black Ops 1 y 2', 'Metro 2033', 'Crysis 2', 'La Saga S.T.A.L.K.E.R', 'Bulletstorm', 'Max Payne 3', 'Singularity', 'F.E.A.R.'];
+            const softwareData = [{ name: 'Steam', slug: 'steam', checked: true, disabled: true }, { name: 'Discord', slug: 'discord', checked: true, disabled: true }, { name: 'Google Chrome', slug: 'chrome', checked: true, disabled: false }, { name: 'OBS Studio', slug: 'obs', checked: false, disabled: false }, { name: 'VLC Player', slug: 'vlc', checked: false, disabled: false }, { name: '7-Zip', slug: '7zip', checked: true, disabled: false }];
+            const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+            const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
 
-            const software = [
-                { name: 'Google Chrome', slug: 'chrome', checked: true },
-                { name: 'Discord', slug: 'discord', checked: true },
-                { name: 'Steam', slug: 'steam', checked: true },
-                { name: 'OBS Studio', slug: 'obs', checked: false },
-                { name: 'VLC Player', slug: 'vlc', checked: false },
-                { name: '7-Zip', slug: '7zip', checked: true },
-            ];
-            
+            // --- PRICE CALCULATION ---
+            const BASE_PRICE = 555000;
+            const JOYSTICK_PRICE = 33000;
+            const MOUSE_KEYBOARD_PRICE = 36000;
+            let joystickCount = 0;
+            let hasMouseKeyboard = false;
+            const totalPriceEl = document.getElementById('total-price');
+
+            function updateTotalPrice() {
+                let total = BASE_PRICE;
+                if (joystickCount > 0) {
+                   //Note: the price for 2 joysticks is 60k, not 66k
+                   total += joystickCount === 1 ? JOYSTICK_PRICE : 60000;
+                }
+                if (hasMouseKeyboard) {
+                    total += MOUSE_KEYBOARD_PRICE;
+                }
+                totalPriceEl.textContent = `${total.toLocaleString('es-AR')} ARS`;
+            }
+
+            // --- UI POPULATION ---
             const gameListContainer = document.getElementById('game-list');
             games.forEach(game => {
-                const gameCard = `
-                    <div class="card-game">
-                        <input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" class="hidden">
-                        <label for="game-${game.slug}" class="block bg-gray-800 p-4 rounded-xl border-2 border-transparent cursor-pointer transition">
-                            <img src="https://placehold.co/200x150/1f2937/ffffff?text=${game.name.replace(' ','+')}" alt="Logo de ${game.name}" class="rounded-md mb-3 w-full h-auto aspect-[4/3] object-cover">
-                            <span class="font-bold text-center block">${game.name}</span>
-                        </label>
-                    </div>
-                `;
-                gameListContainer.innerHTML += gameCard;
+                gameListContainer.innerHTML += `<div class="card-game"><input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" class="hidden"><label for="game-${game.slug}" class="block bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer transition aspect-[3/4]"><img src="https://placehold.co/300x400/1f2937/4f46e5?text=${encodeURIComponent(game.name)}" alt="Carátula de ${game.name}" class="rounded-md w-full h-full object-cover"></label></div>`;
             });
 
             const softwareListContainer = document.getElementById('software-list');
-            software.forEach(item => {
-                const softwareItem = `
-                    <div class="bg-gray-800 p-3 rounded-lg flex items-center">
-                        <input id="sw-${item.slug}" name="software" value="${item.name}" type="checkbox" ${item.checked ? 'checked' : ''} class="w-5 h-5 text-indigo-500 bg-gray-700 border-gray-600 rounded focus:ring-indigo-600 ring-offset-gray-800 focus:ring-2">
-                        <label for="sw-${item.slug}" class="ml-3 text-sm font-medium text-gray-300">${item.name}</label>
-                    </div>
-                `;
-                softwareListContainer.innerHTML += softwareItem;
+            softwareData.forEach(item => {
+                const disabledAttr = item.disabled ? 'disabled' : '';
+                const disabledClass = item.disabled ? 'opacity-70 cursor-not-allowed' : '';
+                softwareListContainer.innerHTML += `<div class="bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass}"><input id="sw-${item.slug}" name="software" value="${item.name}" type="checkbox" ${item.checked ? 'checked' : ''} ${disabledAttr} class="w-5 h-5 text-indigo-500 bg-gray-700 border-gray-600 rounded focus:ring-indigo-600 ring-offset-gray-800 focus:ring-2"><label for="sw-${item.slug}" class="ml-3 text-sm font-medium text-gray-300">${item.name}</label></div>`;
             });
 
+            // --- ERROR TOAST ---
+            const errorToast = document.getElementById('error-toast');
+            const errorToastMessage = document.getElementById('error-toast-message');
+            let errorToastTimeout;
+            
+            function showErrorToast(message) {
+                clearTimeout(errorToastTimeout);
+                errorToast.classList.remove('show');
+                setTimeout(() => {
+                    errorToastMessage.textContent = message;
+                    errorToast.classList.add('show');
+                    errorToastTimeout = setTimeout(() => errorToast.classList.remove('show'), 2500);
+                }, 150);
+            }
 
-            const gameCheckboxes = document.querySelectorAll('input[name="game"]');
-            const errorElement = document.getElementById('game-selection-error');
-            const maxGames = 2;
-
-            gameCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', () => {
-                    const selectedGames = document.querySelectorAll('input[name="game"]:checked');
-                    if (selectedGames.length > maxGames) {
-                        checkbox.checked = false;
-                        errorElement.classList.remove('hidden');
-                        setTimeout(() => errorElement.classList.add('hidden'), 3000);
+            // --- EVENT LISTENERS ---
+            document.querySelectorAll('input[name="game"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    if (document.querySelectorAll('input[name="game"]:checked').length > 3) {
+                        e.target.checked = false;
+                        showErrorToast('Puedes elegir un máximo de 3 juegos');
                     }
                 });
             });
+            
+            const joystickCard = document.getElementById('joystick-card');
+            const joystickBadge = document.getElementById('joystick-badge');
+            joystickCard.addEventListener('click', () => {
+                joystickCount = (joystickCount + 1) % 3; // Cycle 0, 1, 2
+                joystickCard.classList.toggle('active', joystickCount > 0);
+                joystickBadge.classList.toggle('hidden', joystickCount !== 2);
+                updateTotalPrice();
+            });
 
-            const orderForm = document.getElementById('orderForm');
-            orderForm.addEventListener('submit', function(e) {
+            const mouseKeyboardCard = document.getElementById('mouse-keyboard-card');
+            mouseKeyboardCard.addEventListener('click', () => {
+                hasMouseKeyboard = !hasMouseKeyboard;
+                mouseKeyboardCard.classList.toggle('active', hasMouseKeyboard);
+                updateTotalPrice();
+            });
+
+            document.getElementById('orderForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                // IMPORTANT: Replace with your actual WhatsApp number
-                const phoneNumber = '5491122334455'; // Example: 5491122334455 (Country code + Area code + Number)
+                const phoneNumber = '5492252513233';
 
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
                 const selectedSoftware = Array.from(document.querySelectorAll('input[name="software"]:checked')).map(cb => cb.value);
                 const extraNotes = document.getElementById('extra-notes').value;
                 
-                let message = `Hola, estoy interesado/a en la PC GamerZ.\n\n*Mi configuración elegida es:*\n`;
-
-                if (selectedGames.length > 0) {
-                    message += `*Juegos Preinstalados:* ${selectedGames.join(', ')}\n`;
-                } else {
-                    message += `*Juegos Preinstalados:* Ninguno\n`;
-                }
-
-                if (selectedSoftware.length > 0) {
-                    message += `*Software Adicional:* ${selectedSoftware.join(', ')}\n`;
-                }
+                let message = `Hola, estoy interesado/a en la PC de Tu Compu del Medio.\n\n*MI PEDIDO (Total: ${totalPriceEl.textContent}):*\n`;
+                if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
+                message += `*Software:* ${selectedSoftware.join(', ')}\n`;
                 
-                if (extraNotes.trim() !== '') {
-                    message += `*Notas Adicionales:* ${extraNotes}\n`;
+                let peripheralsMessage = '';
+                if (joystickCount > 0) {
+                     peripheralsMessage += `${joystickCount} Joystick(s)`;
                 }
+                if (hasMouseKeyboard) {
+                    if (peripheralsMessage) peripheralsMessage += ' y ';
+                    peripheralsMessage += 'Mouse y Teclado Inalámbrico';
+                }
+                if(peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
+                if (extraNotes.trim() !== '') message += `*Notas Adicionales:* ${extraNotes}\n`;
 
                 message += `\n¡Quedo a la espera de tu respuesta!`;
-
-                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-                
-                window.open(whatsappUrl, '_blank');
+                window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
         });
     </script>
-
 </body>
 </html>
