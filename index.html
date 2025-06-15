@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venta La Nave del Medio - Gama Media</title>
+    <title>Tu Nave del Medio - PC Gamer Gama Media</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,8 +41,15 @@
         }
         .special-subtitle {
             font-weight: 700;
-            color: #cbd5e1;
+            font-family:'Saira';
             letter-spacing: 0.02em;
+            background: linear-gradient(to top, #f97416c7, #facc15ef);
+            color: #1f2937;
+            border-radius: 11px;
+            text-shadow: 1px 1px 2px rgba(93, 21, 187, 0.2);
+        }
+         .special-subtitle:hover {
+            background: linear-gradient(to right, #fb923c, #fde047);
         }
         /* --- Card Effects (Games & Peripherals) --- */
         .card-game {
@@ -143,7 +150,7 @@
         }
         /* --- New Styles for Offer & Details --- */
         .price-highlight {
-            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(0, 255, 255, 0.3);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5), 0 0 8px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(0, 255, 255, 0.3);
         }
         .price-container {
             position: relative;
@@ -210,32 +217,6 @@
             background-color: rgba(34, 197, 94, 0.1);
             border-left: 3px solid #22c55e; /* Tailwind green-500 */
         }
-        /* --- Tooltip Styles --- */
-        .has-tooltip .tooltip {
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.2s, visibility 0.2s;
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-bottom: 0.5rem;
-            width: max-content;
-            max-width: 250px;
-            padding: 0.75rem;
-            font-size: 0.875rem;
-            font-weight: bold;
-            color: white;
-            background-color: #4f46e5; /* indigo-600 */
-            border-radius: 0.5rem; /* rounded-lg */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 20;
-            text-align: center;
-        }
-        .has-tooltip:hover .tooltip, .has-tooltip.tooltip-active .tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
         
         .usd-price-container {
             position: relative;
@@ -284,10 +265,19 @@
             font-size: 4rem;
             line-height: 1;
             font-weight: bold;
-            color: #22d3ee; /* Tailwind cyan-400 */
-
+            color: #22d3ee;
+            animation: price-glow 4s ease-in-out infinite;
         }
         
+        @keyframes price-glow {
+            0%, 100% {
+                text-shadow: 2px 2px 5px rgba(0,0,0,0.5), 0 0 8px rgba(34, 211, 238, 0.25), 0 0 15px rgba(34, 211, 238, 0.2), 0 0 25px rgba(34, 211, 238, 0.2);
+            }
+            50% {
+                text-shadow: 2px 2px 5px rgba(0,0,0,0.5), 0 0 12px rgba(34, 211, 238, 0.35), 0 0 25px rgba(34, 211, 238, 0.25);
+            }
+        }
+
         .offer-banner-main, .offer-banner-contado {
             position: absolute;
             left: 50%;
@@ -345,7 +335,7 @@
 
             <div class="flex items-center justify-center mt-8">
                 <div class="price-container">
-                    <div class="launch-badge">...y a 1 Precio de LOCXS!</div>
+                    <div class="launch-badge">...y a 1 Precio de LOCXS!!</div>
                     <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$583.000 ARS</p>
                      <div class="mt-1">
                          <a href="https://www.google.com/search?q=583000+ars+to+usd" target="_blank" class="text-gray-400 text-sm hover:underline">
@@ -365,19 +355,19 @@
              <div class="text-gray-300 text-lg mt-6 max-w-xl mx-auto space-y-3 font-saira hook-section">
                  <div>
                      <p class="text-xl font-bold"><strong>¿No llegás a la Alta Gamma?</strong></p>
-                     <p class="text-gray-400 font-normal font-roboto">Ni 1 problema 😊</p>
+                     <p class="text-gray-400 font-normal font-roboto">Ni un problema 😊</p>
                  </div>
                  <div>
-                     <p class="text-xl font-bold"><strong>¡No hace falta!!</strong></p>
-                     <p class="text-gray-400 font-normal font-roboto">La Nave del Medio corre unos <em class="text-amber-400 not-italic font-bold">Juegazos</em>👌
-                     <br>¿Cómo? Optimizando y Ahorrando Recurso$</p>
+                     <p class="text-xl font-bold"><strong>¡No hace falta!</strong></p>
+                     <p class="text-gray-400 font-normal font-roboto">La Nave del Medio corre unos <em class="text-amber-400 not-italic font-bold">JUEGAZOS</em>👌
+                     <br>¿Cómo? Optimizando y Ahorrando RECURSO$</p>
                  </div>
                   <div>
                      <p class="text-xl font-bold"><strong>Aprovechá esta OFERTA ÚNICA 🤑</strong></p>
                      <p class="text-gray-400 font-normal font-roboto">Las próximas salen un tanto más...</p>
                   </div>
              </div>
-             <a href="#games-section" class="special-subtitle inline-block text-lg mt-5 bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">🎁 Va con <u>3 Juegos a Elección</u> 🔽</a>
+             <a href="#games-section" class="special-subtitle inline-block text-lg mt-5 px-6 py-3 transition duration-300  transform hover:scale-105 text-orange-900">🎁 Va con 3 Juegos a Elección 🔽</a>
         </header>
 
         <section class="mb-12 bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8">
@@ -409,8 +399,8 @@
                     <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-400 mt-1"></i><span><strong>Motherboard:</strong> H61-M2 OEM</span></li>
                     <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-400 mt-1"></i><span><strong>RAM:</strong> 12GB DDR3 Dual Channel</span></li>
                     <li class="flex items-start gap-3"><i class="fas fa-gamepad text-indigo-400 mt-1"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB GDDR5</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-400 mt-1"></i><span><strong>Almacenamiento:</strong> 500GB SSD</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-400 mt-1"></i><span><strong>Fuente:</strong> ATX 500w Noga</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-400 mt-1"></i><span><strong>Almacenamiento:</strong> 500GB SSD NVMe</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-400 mt-1"></i><span><strong>Fuente:</strong> ATX 550w LNZ</span></li>
                     <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-400 mt-1"></i><span><strong>Sistema Operativo:</strong> Windows 11 Pro 23H2 | Optimizado ✨</span></li>
                     <small>*monitor/teclado/mouse aparte*</small>
                 </ul>
@@ -423,7 +413,7 @@
                 <ul class="space-y-4 text-gray-300">
                     <li class="flex items-start gap-3"><i class="fas fa-microscope text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong> Gabinete, CPU (procesador) y RAM.</span></li>
                     <li class="flex items-start gap-3"><i class="fas fa-box-open text-green-400 mt-1"></i><span><strong>Componentes Nuevos:</strong> Placa de Video, Motherboard, Disco y Fuente.</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 10 meses de garantía en todos los componentes.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 10 meses de garantía en todos los componentes. ¿Falla? Te lo cambio.</span></li>
                 </ul>
                 <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
                     <i class="fas fa-headset text-2xl"></i>
@@ -435,8 +425,9 @@
 
         <form id="orderForm">
             <section id="games-section" class="mb-12 px-4">
-                <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Corren 👌</h2>
-                <p class="text-center text-gray-400 -mt-4 mb-8">Seleccioná hasta 3 - van Instalados 💾 👾</p>
+                <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Corre 👌</h2>
+                <p class="text-center text-lime-500 -mt-4 mb-4 font-gamer">👇Seleccioná hasta 3</p>
+                <p class="text-center text-violet-600 -mt-4 mb-8 font-gamer">Van Instalados!💾</p>
                 <div id="game-grid-wrapper">
                     <div id="game-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                         </div>
@@ -447,7 +438,7 @@
                 </div>
             </section>
 
-            <section class="mb-12">
+            <section class="mb-12 hidden">
                 <h2 class="text-3xl font-bold text-center mb-8">Programas Instalados</h2>
                 <p class="text-center text-gray-400 mb-1">Te marco lo que Recomiendo👍</p>
                 <p class="text-center text-gray-100 mb-6">¡Hacé TU Selección!✅</p>
@@ -506,7 +497,7 @@
                             <!-- Cell 2-1: Delivery -->
                             <div class="row-start-2 col-start-1 flex items-center justify-center text-right pr-2">
                                 <div>
-                                    <p class="text-sm text-green-300 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega GRATI</p>
+                                    <p class="text-sm text-green-300 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega GRATIS</p>
                                     <p class="text-base text-white font-bold">🌊 En Toda <strong class="text-white">La Costa</strong></p>
                                 </div>
                             </div>
@@ -531,10 +522,15 @@
             </section>
 
             <div class="text-center">
-                 <p class="text-gray-400 mb-7">Hacé tu Pedido/Consulta <em class="font-semibold text-gray-300 not-italic">sin compromiso</em></p>
-                <button type="submit" class="cta-button bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-500 hover:to-emerald-600 text-white font-bold py-4 px-10 rounded-full text-xl transform hover:scale-105 transition-transform duration-300">
+                 <p id="pre-submit-text" class="text-gray-400 mb-7">Hacé tu Pedido/Consulta <em class="font-semibold text-gray-300 not-italic">sin compromiso</em></p>
+                <button id="submit-button" type="submit" class="cta-button bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-500 hover:to-emerald-600 text-white font-bold py-4 px-10 rounded-full text-xl transform hover:scale-105 transition-transform duration-300">
                     <i class="fab fa-whatsapp"></i> ¡Vamos a WhatsApp!
                 </button>
+                 <div id="confirmation-message" class="hidden text-center p-6 bg-green-900/50 border-2 border-green-500 rounded-2xl max-w-md mx-auto">
+                    <i class="fas fa-check-circle text-5xl text-green-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-white mb-2">¡Pedido enviado!</h3>
+                    <p class="text-gray-300 font-roboto">Gracias por tu consulta. Te responderemos a la brevedad por WhatsApp.</p>
+                </div>
             </div>
         </form>
 
@@ -561,14 +557,14 @@
             // --- DATA ---
             const gameNames = ['GTA V','LoL', 'Dota 2', 'Counter Strike 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered','Need for Speed: Underground HD','Half Life: Black Mesa','Half Life 2 HD','Abe´s Oddysey Remake','WoW Classic: en TurtleWoW','Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster','BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3','Fallout: New Vegas', 'Batman: Arkham Asylum','Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD','Need for Speed: Most Wanted HD', 'Blur', 'GRID 2','GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones','Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops','Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.','Mortal Kombat 11 Komplete Edition','Ultra Street Fighter IV','Ultimate Marvel vs. Capcom 3','The King of Fighters XIII','Injustice Gods Among Us','Heroes of Might & Magic HD V','Reckoning: Kingdoms of Amalur','Divinity Original Sin','Age of Empires II Definitive Edition','The Elder Scrolls V: Skyrim','The Elder Scrolls IV: Oblivion & AddOns HD'];
             const softwareData = [
-                { name: 'Steam', slug: 'steam', checked: true, disabled: true, description: 'Tu biblioteca de juegos y tienda principal.', category: 'Baseware' },
-                { name: 'Discord', slug: 'discord', checked: true, disabled: true, description: 'Chat de voz y texto para comunicarte con tus amigos.', category: 'Baseware' },
-                { name: 'Google Chrome', slug: 'chrome', checked: true, disabled: false, description: 'Navegador web rápido y seguro para todo lo demás.', category: 'Web' },
-                { name: 'OBS Studio', slug: 'obs', checked: false, disabled: false, description: 'Graba y transmite tus partidas en vivo a todo el mundo.', category: 'Multimedia' },
-                { name: 'VLC Player', slug: 'vlc', checked: false, disabled: false, description: 'Reproductor multimedia que abre casi cualquier formato de video.', category: 'Multimedia' },
-                { name: '7-Zip', slug: '7zip', checked: true, disabled: false, description: 'Herramienta para comprimir y descomprimir archivos (ZIP, RAR, etc.).', category: 'Herramientas' },
-                { name: 'Wallpaper Engine', slug: 'wallpaper-engine', checked: false, disabled: false, description: 'Fondos de pantalla animados e interactivos para tu escritorio.', category: 'Personalización' },
-                { name: 'Rainmeter', slug: 'rainmeter', checked: false, disabled: false, description: 'Widgets y medidores de sistema personalizables para el escritorio.', category: 'Personalización' }
+                { name: 'Steam', slug: 'steam', checked: true, disabled: true, category: 'Baseware' },
+                { name: 'Discord', slug: 'discord', checked: true, disabled: true, category: 'Baseware' },
+                { name: 'Google Chrome', slug: 'chrome', checked: true, disabled: false, category: 'Web' },
+                { name: 'OBS Studio', slug: 'obs', checked: false, disabled: false, category: 'Multimedia' },
+                { name: 'VLC Player', slug: 'vlc', checked: false, disabled: false, category: 'Multimedia' },
+                { name: '7-Zip', slug: '7zip', checked: true, disabled: false, category: 'Herramientas' },
+                { name: 'Wallpaper Engine', slug: 'wallpaper-engine', checked: false, disabled: false, category: 'Personalización' },
+                { name: 'Rainmeter', slug: 'rainmeter', checked: false, disabled: false, category: 'Personalización' }
             ];
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
@@ -679,12 +675,11 @@
                     const labelColorClass = item.disabled ? 'text-green-300' : 'text-white';
 
                     const softwareItemHTML = `
-                    <div class="relative has-tooltip bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}">
-                        <input id="sw-${item.slug}" name="software" value="${item.name}" type="checkbox" ${item.checked ? 'checked' : ''} ${disabledAttr} class="w-5 h-5 ${checkboxColorClass} bg-gray-700 border-gray-600 rounded ring-offset-gray-800 focus:ring-2">
-                        <label for="sw-${item.slug}" class="ml-3 text-sm font-medium ${labelColorClass}">${item.name}</label>
-                        <div class="tooltip">
-                            ${item.description}
-                        </div>
+                    <div class="relative bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}">
+                        <label for="sw-${item.slug}" class="flex items-center cursor-pointer w-full">
+                            <input id="sw-${item.slug}" name="software" value="${item.name}" type="checkbox" ${item.checked ? 'checked' : ''} ${disabledAttr} class="w-5 h-5 ${checkboxColorClass} bg-gray-700 border-gray-600 rounded ring-offset-gray-800 focus:ring-2">
+                            <span class="ml-3 text-sm font-medium ${labelColorClass}">${item.name}</span>
+                        </label>
                     </div>`;
                     itemsWrapper.innerHTML += softwareItemHTML;
                 });
@@ -800,7 +795,6 @@
 
 
             // --- EVENT LISTENERS ---
-            // Note: We query the cards after they are created
             document.querySelectorAll('input[name="game"]').forEach(checkbox => {
                 checkbox.addEventListener('change', (e) => {
                     if (e.target.checked && document.querySelectorAll('input[name="game"]:checked').length > 3) {
@@ -853,47 +847,7 @@
                 mouseKeyboardCard.classList.toggle('active', hasMouseKeyboard);
                 updatePrices();
             });
-
-            // --- Tooltip and Checkbox logic for Mobile ---
-            let tooltipTimeout;
-
-            function hideAllTooltips() {
-                document.querySelectorAll('.has-tooltip.tooltip-active').forEach(activeTooltip => {
-                    activeTooltip.classList.remove('tooltip-active');
-                });
-                clearTimeout(tooltipTimeout);
-            }
-
-            document.querySelectorAll('.has-tooltip').forEach(item => {
-                const label = item.querySelector('label');
-                
-                if (label) {
-                    label.addEventListener('click', function(e) {
-                        // On mobile, clicking the label shows the tooltip.
-                        if (window.innerWidth < 1024) { 
-                            e.preventDefault(); // Prevent toggling checkbox
-                            
-                            const wasActive = item.classList.contains('tooltip-active');
-                            hideAllTooltips(); // Hide any other open tooltips
-
-                            if (!wasActive) {
-                                item.classList.add('tooltip-active');
-                                tooltipTimeout = setTimeout(() => {
-                                    item.classList.remove('tooltip-active');
-                                }, 3000);
-                            }
-                        }
-                    });
-                }
-            });
-
-            // Hide tooltips if clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.has-tooltip')) {
-                    hideAllTooltips();
-                }
-            });
-
+            
             document.getElementById('orderForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const phoneNumber = '5492252513233';
@@ -903,9 +857,9 @@
                 const extraNotes = document.getElementById('extra-notes').value;
                 const finalPrice = document.getElementById('total-price').parentElement.textContent;
                 
-                let message = `Hola, estoy interesado/a en la PC de Tu Compu del Medio.\n\n*MI PEDIDO (${finalPrice}):*\n`;
+                let message = `Hola, me interesa esta Nave.\n\n*MI ELECCIÓN:*\n`;
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
-                message += `*Software:* ${selectedSoftware.join(', ')}\n`;
+//                message += `*Software:* ${selectedSoftware.join(', ')}\n`;
                 
                 let peripheralsMessage = '';
                 if (joystickCount > 0) {
@@ -918,6 +872,7 @@
                 if(peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
                 if (extraNotes.trim() !== '') message += `*Notas📝:* ${extraNotes}\n`;
 
+                message += `\nPrecio Total: ${finalPrice}`;
                 message += `\n¡Quedo a la espera de tu respuesta!`;
                 window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
