@@ -390,7 +390,7 @@
 
         <section class="bg-gray-800 rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-8">
             <div class="w-full md:w-1/3">
-                <video src="video-loop.mp4" autoplay loop muted playsinline class="rounded-xl shadow-lg w-full"></video>
+                <!-- <video src="video-loop.mp4" autoplay loop muted playsinline class="rounded-xl shadow-lg w-full"></video> -->
             </div>
             <div class="w-full md:w-2/3">
                 <h2 class="text-3xl font-bold mb-4">Componentes</h2>
@@ -857,7 +857,7 @@
                 const extraNotes = document.getElementById('extra-notes').value;
                 const finalPrice = document.getElementById('total-price').parentElement.textContent;
                 
-                let message = `Hola, me interesa esta Nave.\n\n*MI ELECCIÓN:*\n`;
+                let message = `Hola, me interesa esta Nave del Medio.\n\n*MI SELECCIÓN ☑︎*\n`;
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
 //                message += `*Software:* ${selectedSoftware.join(', ')}\n`;
                 
@@ -870,9 +870,9 @@
                     peripheralsMessage += 'Mouse y Teclado Inalámbrico';
                 }
                 if(peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
-                if (extraNotes.trim() !== '') message += `*Notas📝:* ${extraNotes}\n`;
+                if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
-                message += `\nPrecio Total: ${finalPrice}`;
+                message += `\nPrecio Total: ${finalPrice}.000 Pesos Argentinos`;
                 message += `\n¡Quedo a la espera de tu respuesta!`;
                 window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
