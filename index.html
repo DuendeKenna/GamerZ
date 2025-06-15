@@ -44,9 +44,6 @@
             color: #cbd5e1;
             letter-spacing: 0.02em;
         }
-        .al-contado{
-            color:rgb(77, 9, 9)
-        }
         /* --- Card Effects (Games & Peripherals) --- */
         .card-game {
             position: relative;
@@ -155,14 +152,14 @@
         .launch-badge {
             position: absolute;
             top: -10px;
-            right: -20px;
+            right: -93px; /* Moved further right */
             background: linear-gradient(to right, #ef4444, #f97316);
-            padding: 0.3rem 1rem;
+            padding: 0.2rem 0.5rem;
             border-radius: 6px;
             font-weight: 700;
             letter-spacing: 0.05em;
             font-size: 0.9rem;
-            transform: rotate(10deg);
+            transform: rotate(6deg);
             box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
         .neon-green-highlight {
@@ -210,8 +207,6 @@
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.2s, visibility 0.2s;
-            
-            /* Repositioning and styling */
             position: absolute;
             bottom: 100%;
             left: 50%;
@@ -277,42 +272,52 @@
             }
         }
         /* --- Price Styling with Glow and Offer Banner --- */
-        .final-price-container {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 2.5rem; /* Make space for banner */
-        }
-        .final-price {
-            font-size: 4rem; /* Larger price text */
+        .lucas-price {
+            font-size: 4rem;
+            line-height: 1;
             font-weight: bold;
             color: #22d3ee; /* Tailwind cyan-400 */
             text-shadow: 0 0 10px rgba(34, 211, 238, 0.6), 0 0 25px rgba(34, 211, 238, 0.4), 0 0 50px rgba(34, 211, 238, 0.2), 0 0 2px rgba(0,0,0,0.7);
         }
-        .offer-unique-banner {
+        
+        .offer-banner-main, .offer-banner-contado {
             position: absolute;
-            bottom: -19px; 
             left: 50%;
-            transform: translateX(-50%) rotate(-7deg);
-            background: linear-gradient(to right, #f97316, #fb923c);
             color: #ffffff;
-            padding: 0.1rem 0.9rem;
+            padding: 0.2rem 1rem;
             border-radius: 0.375rem;
-            font-size: 1.3rem;
             text-shadow: 1px 1px 2px rgb(0 0 0 / 50%);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-            animation: banner-swing 2.5s ease-in-out infinite alternate;
+            white-space: nowrap;
         }
-        @keyframes banner-swing {
+        .offer-banner-main {
+            background: linear-gradient(to right, #f97316, #fb923c);
+            font-size: 1.3rem;
+            animation: banner-swing-main 2.5s ease-in-out infinite alternate;
+            transform: translateX(-50%) rotate(-7deg);
+             bottom: 0;
+        }
+        .offer-banner-contado {
+            background: #c2410c; /* Tailwind orange-700 */
+            font-size: 1.1rem;
+            z-index: 10;
+            animation: banner-swing-contado 2.5s ease-in-out infinite alternate;
+            transform: translateX(-60%) rotate(-12deg);
+            bottom: 2.2rem;
+        }
+
+        @keyframes banner-swing-main {
             from { transform: translateX(-50%) rotate(-5deg); }
             to { transform: translateX(-50%) rotate(5deg); }
+        }
+        @keyframes banner-swing-contado {
+            from { transform: translateX(-60%) rotate(-10deg); }
+            to { transform: translateX(-60%) rotate(0deg); }
         }
         .hook-section strong {
             color: #39FF14;
             text-shadow: 1px 1px 0 black;
         }
-#total-price-usd{
-    font-family: 'Saira';
-}
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -330,9 +335,9 @@
             <div class="flex items-center justify-center mt-8">
                 <div class="price-container">
                     <div class="launch-badge">...y a 1 Precio de LOCXS!</div>
-                    <p class="text-5xl font-bold text-cyan-400 price-highlight">$555.000 ARS</p>
+                    <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$583.000 ARS</p>
                      <div class="mt-1">
-                         <a href="https://www.google.com/search?q=555000+ars+to+usd" target="_blank" class="text-gray-400 text-sm hover:underline">
+                         <a href="https://www.google.com/search?q=583000+ars+to+usd" target="_blank" class="text-gray-400 text-sm hover:underline">
                              <div class="usd-price-container">
                                  <span id="usd-price-display-top" class="hidden font-saira"></span>
                                  <span class="usd-price-tooltip">Ver conversión en tiempo real</span>
@@ -350,16 +355,16 @@
              <div class="text-gray-300 text-lg mt-6 max-w-xl mx-auto space-y-3 font-saira hook-section">
                  <div>
                      <p class="text-xl font-bold"><strong>¿No llegás a la Alta Gamma?</strong></p>
-                     <p class="text-gray-400 font-normal">Ni 1 problema 😊</p>
+                     <p class="text-gray-400 font-normal font-roboto">Ni 1 problema 😊</p>
                  </div>
                  <div>
                      <p class="text-xl font-bold"><strong>¡No hace falta!!</strong></p>
-                     <p class="text-gray-400 font-normal">La Nave del Medio corre unos <em class="text-amber-400 not-italic font-bold">Juegazos</em>👌
+                     <p class="text-gray-400 font-normal font-roboto">La Nave del Medio corre unos <em class="text-amber-400 not-italic font-bold">Juegazos</em>👌
                      <br>¿Cómo? Optimizando y Ahorrando Recurso$</p>
                  </div>
                   <div>
                      <p class="text-xl font-bold"><strong>Aprovechá esta OFERTA ÚNICA 🤑</strong></p>
-                     <p class="text-gray-400 font-normal">Las próximas salen un tanto más...</p>
+                     <p class="text-gray-400 font-normal font-roboto">Las próximas salen un tanto más...</p>
                   </div>
              </div>
              <a href="#games-section" class="special-subtitle inline-block text-lg mt-5 bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">🎁 Va con <u>3 Juegos a Elección</u> 🔽</a>
@@ -437,8 +442,7 @@
                 <p class="text-center text-gray-400 mb-1">Te marco lo que Recomiendo👍</p>
                 <p class="text-center text-gray-100 mb-6">¡Hacé TU Selección!✅</p>
                 <div id="software-list" class="max-w-2xl mx-auto space-y-4">
-                     <!-- Categories will be injected by JS -->
-                </div>
+                     </div>
                 <p class="text-center text-gray-400 mt-6">¿Falta el tuyo? Pedimelo en Notas📝</p>
             </section>
 
@@ -463,32 +467,57 @@
                     <p>Mouse y Teclado (+36k)<br>Inalámbrico</p>
                 </div>
 
-                <div class="text-center mt-10 max-w-2xl mx-auto">
+                <div class="text-center mt-10 max-w-4xl mx-auto">
                     <div id="selected-games-section" class="mb-6 hidden">
                       <p class="text-gray-400 text-lg">Juegos Incluidos</p>
                       <div id="selected-games-list" class="flex justify-center flex-wrap gap-2 mt-2">
                         </div>
                     </div>
-                    <div class="final-price-container">
-                        <p class="text-gray-400 text-lg mb-2">Precio Total</p>
-                        <p class="final-price">$<span id="total-price" >555.000</span><span style="font-size: 3rem; vertical-align: baseline;"> LUCAS</span></p>
-                        <span class="offer-unique-banner font-saira "><p class="text-white">¡OFERTA ÚNICA!</p><span class="al-contado">al contado</span></span>
-                    </div>
-                     <div class="mt-8">
-                         <p id="total-price-usd" class="font-roboto text-2xl text-violet-500 mt-1 hidden"></p>
-                         <a id="usd-link-bottom" href="https://www.google.com/search?q=555000+ars+to+usd" target="_blank" class="text-xs text-gray-500 hover:underline hidden">Ver conversión</a>
-                     </div>
-                </div>
-                          <p class="text-sm text-gray-300 mt-4  mb-4 flex items-center justify-center gap-4">
+                    
+                    <div class="flex flex-col items-center">
+                        <h2 class="text-3xl font-bold mb-4">Precio Total</h2>
+                        <div class="grid grid-cols-2 gap-y-2 md:gap-x-4 w-full max-w-lg mt-4">
+                            <!-- Cell 1-1: Banners -->
+                            <div class="row-start-1 col-start-1 flex justify-center items-center">
+                                <div class="relative h-24 w-40">
+                                    <span class="offer-banner-contado font-saira">al contado</span>
+                                    <span class="offer-banner-main font-saira">¡OFERTA ÚNICA!</span>
+                                </div>
+                            </div>
 
-                <span class="flex items-center gap-2 text-green-300"><i class="fas fa-truck"></i>Entrega GRATIS en <strong class="text-white">🌊La Costa</strong></span>
-            </p>
+                            <!-- Cell 1-2: ARS Price -->
+                            <div class="row-start-1 col-start-2 flex items-center justify-start">
+                                <div>
+                                    <p class="text-5xl md:text-6xl text-cyan-400/90 font-saira text-left ml-4">$<span id="total-price">583</span></p>
+                                    <p class="text-2xl md:text-3xl text-cyan-400/90 font-saira text-left ml-4 -mt-2 lucas-price">LUCAS</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Cell 2-1: Delivery -->
+                            <div class="row-start-2 col-start-1 flex items-center justify-center text-right pr-2">
+                                <div>
+                                    <p class="text-sm text-green-300 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega GRATIS en</p>
+                                    <p class="text-base text-white font-bold">🌊 En Toda <strong class="text-white">La Costa</strong></p>
+                                </div>
+                            </div>
+
+                            <!-- Cell 2-2: USD Price -->
+                            <div class="row-start-2 col-start-2 flex items-center justify-start pl-4">
+                                <div>
+                                    <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden"></p>
+                                    <a id="usd-link-bottom" href="https://www.google.com/search?q=583000+ars+to+usd" target="_blank" class="text-xs text-gray-500 hover:underline hidden -mt-1">Ver conversión</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </section>
 <br><br>
 
             <section class="mb-12">
                  <h2 class="text-3xl font-bold text-center mb-8">Notas📝</h2>
-                 <textarea id="extra-notes" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" rows="4" placeholder="🤔¿Dudas?&nbsp💾¿Más Soft?&nbsp⚙️¿Otro Hard?&nbsp¿Alguna otra cuestión? . . ."></textarea>
+                 <textarea id="extra-notes" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" rows="4" placeholder="🤔¿Dudas?&#10;💾¿Más Soft?&#10;⚙️¿Otro Hard?&#10;¿Alguna otra cuestión? . . ."></textarea>
             </section>
 
             <div class="text-center">
@@ -527,13 +556,15 @@
                 { name: 'Google Chrome', slug: 'chrome', checked: true, disabled: false, description: 'Navegador web rápido y seguro para todo lo demás.', category: 'Web' },
                 { name: 'OBS Studio', slug: 'obs', checked: false, disabled: false, description: 'Graba y transmite tus partidas en vivo a todo el mundo.', category: 'Multimedia' },
                 { name: 'VLC Player', slug: 'vlc', checked: false, disabled: false, description: 'Reproductor multimedia que abre casi cualquier formato de video.', category: 'Multimedia' },
-                { name: '7-Zip', slug: '7zip', checked: true, disabled: false, description: 'Herramienta para comprimir y descomprimir archivos (ZIP, RAR, etc.).', category: 'Herramientas' }
+                { name: '7-Zip', slug: '7zip', checked: true, disabled: false, description: 'Herramienta para comprimir y descomprimir archivos (ZIP, RAR, etc.).', category: 'Herramientas' },
+                { name: 'Wallpaper Engine', slug: 'wallpaper-engine', checked: false, disabled: false, description: 'Fondos de pantalla animados e interactivos para tu escritorio.', category: 'Personalización' },
+                { name: 'Rainmeter', slug: 'rainmeter', checked: false, disabled: false, description: 'Widgets y medidores de sistema personalizables para el escritorio.', category: 'Personalización' }
             ];
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
             
             // --- PRICE CALCULATION & USD ---
-            const BASE_PRICE = 555000;
+            const BASE_PRICE = 583000;
             const JOYSTICK_PRICE = 22000;
             const MOUSE_KEYBOARD_PRICE = 36000;
             let joystickCount = 0;
@@ -552,7 +583,7 @@
                 if (hasMouseKeyboard) {
                     total += MOUSE_KEYBOARD_PRICE;
                 }
-                totalPriceEl.textContent = `${(total/1000).toFixed(0)}`;
+                totalPriceEl.textContent = Math.floor(total / 1000);
                 
                 if (dolarBlueRate) {
                     const totalUSD = total / dolarBlueRate;
