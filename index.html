@@ -366,9 +366,14 @@
 			filter: invert(100%) sepia(1) saturate(1000%) hue-rotate(52deg);
 			background-size: contain;
 			background-position: center;
-			opacity: 0.023;
+			opacity: 0.033;
 			z-index: 1;
             animation: spin 60s linear infinite;
+        }
+        @media (max-width: 767px) {
+            #wall_splash {
+                display: none;
+            }
         }
         @keyframes float-up-down {
             0%, 100% {
@@ -407,7 +412,7 @@
                 <h1 class="text-4xl md:text-7xl brand-title">La Nave del Medio</h1>
                 <p class="font-vt323 text-2xl md:text-4xl text-green-400 mt-2 tracking-wider" style="text-shadow: 0 0 5px #39ff14;">PC Gamer Optimizada &amp; Suficiente</p>
                 
-                <img src="smile-messi.gif" alt="Smiley Messi" class="absolute top-28 right-4 w-24 h-auto md:hidden" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Meme'">
+                <img src="smile-messi.gif" alt="Smiley Messi" class="hidden absolute top-28 right-4 w-24 h-auto md:hidden" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Meme'">
 
                 <div class="flex items-center justify-center mt-8">
                     <div class="price-container">
@@ -415,7 +420,7 @@
                         <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$639.000 ARS</p>
                         <div class="mt-1 flex items-baseline justify-center gap-2">
                             <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl"></span>
-                            <a id="usd-link-top" href="https://www.google.com/search?q=639000+ars+to+usd" target="_blank" class="text-gray-500 text-xs hover:underline hidden">Ver conversión</a>
+                            <a id="usd-link-top" href="https://www.google.com/search?q=639000+ars+to+usd" target="_blank" class="text-gray-500 text-xs hover:underline hidden">aprox.</a>
                         </div>
                     </div>
                     <img src="smile-messi.gif" alt="Smiley Messi" class="w-32 h-auto ml-4 hidden md:block" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
@@ -427,7 +432,7 @@
             </header>
             <div class="text-gray-300 text-lg mt-6 max-w-3xl mx-auto space-y-3 font-saira hook-section text-center">
                 <div>
-                    <p class="text-2xl font-bold"><strong>¿No llegás a esa PC de Gama Alta?</strong></p>
+                    <p class="text-2xl font-bold"><strong>¿No llegás a esa de Gama Alta?</strong></p>
                     <p class="text-gray-200 font-normal font-roboto">No haay problema 👽</p>
                 </div>
                 <div>
