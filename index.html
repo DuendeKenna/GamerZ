@@ -326,9 +326,7 @@
         
         #hero-wrapper {
             position: relative;
-            overflow: hidden;
             padding-bottom: 2rem;
-            border-radius: 1rem; /* rounded-xl */
         }
 
         #hero-background {
@@ -338,7 +336,7 @@
             width: 100%;
             height: 100%;
             background-image: url('wall_covers.webp'); /* The background image */
-            background-size: contain;
+            background-size: cover;
             background-position: center;
             filter: blur(3px);
             opacity: 0.33;
@@ -354,6 +352,10 @@
             background: linear-gradient(to bottom, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0.4) 70%, rgba(17, 24, 39, 1) 100%);
             z-index: -1;
         }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
         #wall_splash {
 			position: absolute;
 			top: 0;
@@ -364,8 +366,17 @@
 			filter: invert(100%) sepia(1) saturate(1000%) hue-rotate(52deg);
 			background-size: contain;
 			background-position: center;
-			opacity: 0.1;
-			z-index: -1;
+			opacity: 0.023;
+			z-index: 1;
+            animation: spin 60s linear infinite;
+        }
+        @keyframes float-up-down {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
         #ovniUp {
             position: absolute;
@@ -373,12 +384,10 @@
             top:-15px;
             opacity: 0.2;
             filter: hue-rotate(50deg);
+            animation: float-up-down 4s ease-in-out infinite;
         }
         .main-container {
-            background-color: rgba(17, 24, 39); /* bg-gray-900 with 80% opacity */
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: 1rem; /* rounded-xl */
+            background-color: rgb(17, 24, 39);
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
         }
     </style>
@@ -394,25 +403,22 @@
         <div id="hero-wrapper" class="mb-12" style="top: -1px; left: -1px;">
             <div id="hero-background"></div>
             <header class="text-center pt-8 mb-12 relative">
-                <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="OVNI">
+                <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="OVNI" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
                 <h1 class="text-4xl md:text-7xl brand-title">La Nave del Medio</h1>
                 <p class="font-vt323 text-2xl md:text-4xl text-green-400 mt-2 tracking-wider" style="text-shadow: 0 0 5px #39ff14;">PC Gamer Optimizada &amp; Suficiente</p>
                 
-                <img src="smile-messi.gif" alt="Smiley Messi" class="absolute top-28 right-4 w-24 h-auto md:hidden">
+                <img src="smile-messi.gif" alt="Smiley Messi" class="absolute top-28 right-4 w-24 h-auto md:hidden" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Meme'">
 
                 <div class="flex items-center justify-center mt-8">
                     <div class="price-container">
                         <div class="launch-badge">...y a 1 Precio de LOCXS!!</div>
                         <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$639.000 ARS</p>
-                        <div class="mt-1">
-                            <a href="https://www.google.com/search?q=639000+ars+to+usd" target="_blank" class="text-gray-400 text-sm hover:underline">
-                                <div class="usd-price-container">
-                                    <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl"></span>
-                                </div>
-                            </a>
+                        <div class="mt-1 flex items-baseline justify-center gap-2">
+                            <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl"></span>
+                            <a id="usd-link-top" href="https://www.google.com/search?q=639000+ars+to+usd" target="_blank" class="text-gray-500 text-xs hover:underline hidden">Ver conversión</a>
                         </div>
                     </div>
-                    <img src="smile-messi.gif" alt="Smiley Messi" class="w-32 h-auto ml-4 hidden md:block">
+                    <img src="smile-messi.gif" alt="Smiley Messi" class="w-32 h-auto ml-4 hidden md:block" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                 </div>
 
                 <div class="mt-4 text-base text-gray-400 flex items-center justify-center gap-4">
@@ -421,7 +427,7 @@
             </header>
             <div class="text-gray-300 text-lg mt-6 max-w-3xl mx-auto space-y-3 font-saira hook-section text-center">
                 <div>
-                    <p class="text-2xl font-bold"><strong>¿No llegás a la Alta Gama?</strong></p>
+                    <p class="text-2xl font-bold"><strong>¿No llegás a esa PC de Gama Alta?</strong></p>
                     <p class="text-gray-200 font-normal font-roboto">No haay problema 👽</p>
                 </div>
                 <div>
@@ -448,7 +454,7 @@
                         <h3 class="text-xl font-bold text-gray-200">Mandámelo vía WhatsApp</h3>
                     </div>
                     <div class="flex flex-col items-center">
-                        <img src="ovni.png" alt="OVNI" class="h-12 w-12 mb-1 animate-float">
+                        <img src="ovni.png" alt="OVNI" class="h-12 w-12 mb-1 animate-float" onerror="this.onerror=null;this.src='https://placehold.co/48x48/00000000/ffffff?text=OVNI'">
                         <h3 class="text-xl font-bold text-gray-200">¡Disfrutá Tu Nave!</h3>
                     </div>
                 </div>
@@ -461,8 +467,7 @@
             <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6">
                 <div class="w-full md:w-1/3 flex-shrink-0">
                     <div id="slideshow-container" class="relative w-full rounded-xl shadow-lg overflow-hidden cursor-pointer">
-                        <!-- Images are injected by JS -->
-                    </div>
+                        </div>
                 </div>
                 <div class="w-full md:w-2/3">
                     <ul id="component-list" class="space-y-3 text-gray-300">
@@ -525,13 +530,13 @@
                 <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
                     <div id="joystick-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
                         <div class="image-wrapper relative aspect-[4/3]">
-                            <img src="comps/xboxc1.jpg" alt="Joystick Xbox 360 Genérico" class="rounded-md w-full h-full object-cover">
+                            <img src="comps/xboxc1.jpg" alt="Joystick Xbox 360 Genérico" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Joystick'">
                             <span id="joystick-badge" class="absolute top-2 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center hidden">x2</span>
                         </div>
                     </div>
                     <div id="mouse-keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
                         <div class="image-wrapper aspect-[4/3]">
-                           <img src="comps/tecmou.jpg" alt="Combo Teclado y Mouse Inalámbrico" class="rounded-md w-full h-full object-cover">
+                           <img src="comps/tecmou.jpg" alt="Combo Teclado y Mouse Inalámbrico" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado+y+Mouse'">
                         </div>
                     </div>
                 </div>
@@ -550,7 +555,6 @@
                     <div class="flex flex-col items-center">
                         <h2 class="text-3xl font-bold mb-4">Precio Total</h2>
                         <div class="grid grid-cols-2 gap-y-2 md:gap-x-4 w-full max-w-lg mt-4">
-                            <!-- Cell 1-1: Banners -->
                             <div class="row-start-1 col-start-1 flex justify-center items-center">
                                 <div class="relative h-24 w-40">
                                     <span class="offer-banner-contado font-saira">al contado</span>
@@ -558,15 +562,13 @@
                                 </div>
                             </div>
 
-                            <!-- Cell 1-2: ARS Price -->
                             <div class="row-start-1 col-start-2 flex items-center justify-start">
                                 <div>
                                     <p class="lucas-price text-left ml-4 font-saira">$<span id="total-price">639</span></p>
-                                    <p class="text-2xl md:text-3xl text-cyan-400/90 font-saira text-left ml-4 -mt-2">LUCAS</p>
+                                    <p class="text-2xl md:text-3xl text-cyan-400/70 font-saira text-left ml-4 -mt-2">LUCAS</p>
                                 </div>
                             </div>
                             
-                            <!-- Cell 2-1: Delivery -->
                             <div class="row-start-2 col-start-1 flex items-center justify-center text-right pr-2">
                                 <div>
                                     <p class="text-sm text-green-300 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega GRATIS</p>
@@ -574,7 +576,6 @@
                                 </div>
                             </div>
 
-                            <!-- Cell 2-2: USD Price -->
                             <div class="row-start-2 col-start-2 flex items-center justify-start pl-4">
                                 <div>
                                     <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden"></p>
@@ -588,11 +589,9 @@
             </section>
 <br><br>
 
-            <section class="mb-12">
-                <div class="max-w-3xl mx-auto">
-                    <h2 class="text-3xl font-bold text-center mb-8">Notas📝</h2>
-                    <textarea id="extra-notes" class="w-full bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" rows="4" placeholder="🤔¿Dudas?&#10;💾¿Más Soft?&#10;⚙️¿Otro Hard?&#10;¿Alguna otra cuestión? . . ."></textarea>
-                </div>
+            <section class="mb-12 text-center">
+                <h2 class="text-3xl font-bold text-center mb-8">Notas📝</h2>
+                <textarea id="extra-notes" class="w-full max-w-xl mx-auto block bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" rows="4" placeholder="🤔¿Dudas?&#10;💾¿Más Soft?&#10;⚙️¿Otro Hard?&#10;¿Alguna otra cuestión? . . ."></textarea>
             </section>
 
             <div class="text-center">
@@ -612,7 +611,7 @@
 
         <footer class="text-center mt-16 pt-8 border-t border-gray-700">
             <div class="mb-6">
-                <img src="logo.png" alt="kenna.inf" class="w-80 mx-auto mb-4">
+                <img src="logo.png" alt="kenna.inf" class="w-80 mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/320x80/00000000/ffffff?text=Logo'">
                 <a href="https://www.facebook.com/kenna.inf/reviews" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">
                     <i class="fas fa-star"></i> Clientes Satisfechos con Mi Servicio
                 </a>
@@ -653,6 +652,7 @@
             const usdPriceTopEl = document.getElementById('usd-price-display-top');
             const usdPriceBottomEl = document.getElementById('total-price-usd');
             const usdLinkBottom = document.getElementById('usd-link-bottom');
+            const usdLinkTop = document.getElementById('usd-link-top');
             let dolarBlueRate = null;
 
             function updatePrices() {
@@ -693,13 +693,16 @@
                             usdPriceTopEl.textContent = `$${baseUsd.toFixed(0)} USD`;
                             usdPriceTopEl.classList.remove('hidden');
                         }
+                        if(usdLinkTop){
+                            usdLinkTop.classList.remove('hidden');
+                        }
                         updatePrices(); 
                     } else {
-                         if(usdPriceTopEl) usdPriceTopEl.parentElement.parentElement.style.display = 'none';
+                         if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                     }
                 } catch (error) {
                     console.error("Could not fetch exchange rate:", error);
-                     if(usdPriceTopEl) usdPriceTopEl.parentElement.parentElement.style.display = 'none';
+                     if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                      if(usdPriceBottomEl) usdPriceBottomEl.style.display = 'none';
                      if(usdLinkBottom) usdLinkBottom.style.display = 'none';
                 }
@@ -976,6 +979,7 @@
                         const img = document.createElement('img');
                         img.src = src;
                         img.alt = `PC Gamer Build Image ${index + 1}`;
+                        img.onerror=function() { this.src='https://placehold.co/400x300/1f2937/ffffff?text=Componente' };
                         if (index === 0) {
                             img.classList.add('opacity-100');
                         } else {
