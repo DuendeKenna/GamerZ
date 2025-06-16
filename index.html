@@ -953,7 +953,7 @@
                 if(peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
                 if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
-                message += `\nPrecio Total: $${totalPriceEl.textContent}.000 Pesos Argentinos`;
+                message += `\nPrecio Total: $${totalPriceEl.textContent}.000`;
                 message += `\n¡Quedo a la espera de tu respuesta!`;
                 window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
