@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Nave del Medio - PC Gamer Gama Media</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -223,25 +224,6 @@
             display: inline-block;
             cursor: pointer;
         }
-        .usd-price-tooltip {
-            visibility: hidden;
-            opacity: 0;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .usd-price-container:hover .usd-price-tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
         /* --- OVNI Animation --- */
         .animate-float {
             animation: float 6s ease-in-out infinite;
@@ -316,6 +298,15 @@
             color: #39FF14;
             text-shadow: 1px 1px 0 black;
         }
+        #slideshow-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.8s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -328,7 +319,7 @@
     <div class="container mx-auto p-4 md:p-8 max-w-5xl">
 
         <header class="text-center mb-12 relative">
-            <h1 class="text-4xl md:text-7xl brand-title">La Nave del Medio</h1>
+            <h1 class="text-4xl md:text-7xl brand-title">Tu Nave del Medio</h1>
             <p class="font-vt323 text-3xl text-green-400 mt-2 tracking-wider" style="text-shadow: 0 0 5px #39ff14;">PC Gamer Optimizada & Suficiente</p>
             
             <img src="smile-messi.gif" alt="Smiley Messi" class="absolute top-28 right-4 w-24 h-auto md:hidden">
@@ -367,7 +358,7 @@
                      <p class="text-gray-400 font-normal font-roboto">Las próximas salen un tanto más...</p>
                   </div>
              </div>
-             <a href="#games-section" class="special-subtitle inline-block text-lg mt-5 px-6 py-3 transition duration-300  transform hover:scale-105 text-orange-900">🎁 Va con 3 Juegos a Elección 🔽</a>
+             <a href="#games-section" class="special-subtitle inline-block text-lg mt-5 px-6 py-3 transition duration-300 transform hover:scale-105">🎁 Va con <u>3 Juegos a Elección</u> 🔽</a>
         </header>
 
         <section class="mb-12 bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8">
@@ -388,19 +379,20 @@
         </section>
 
         <h2 class="text-3xl font-bold mb-4 text-center">Componentes</h2>
-        <section class="bg-gray-800 rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-8">
-            
+        <section id="component-section" class="bg-gray-800 rounded-2xl p-6 md:p-8 mb-12 flex flex-col md:flex-row items-center gap-8">
             <div class="w-full md:w-1/3">
-                <!-- <video src="video-loop.mp4" autoplay loop muted playsinline class="rounded-xl shadow-lg w-full"></video> -->
+                <div id="slideshow-container" class="relative w-full rounded-xl shadow-lg overflow-hidden cursor-pointer">
+                    <!-- Images are injected by JS -->
+                </div>
             </div>
             <div class="w-full md:w-2/3">
-                <ul class="space-y-3 text-gray-300">
+                <ul id="component-list" class="space-y-3 text-gray-300">
                     <li class="flex items-start gap-3"><i class="fas fa-microchip text-indigo-400 mt-1"></i><span><strong>Procesador:</strong> Intel i5 2400 3.1Ghz (4 Núcleos)</span></li>
                     <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-400 mt-1"></i><span><strong>Motherboard:</strong> H61-M2 OEM</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-400 mt-1"></i><span><strong>RAM:</strong> 12GB DDR3 Dual Channel</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-400 mt-1"></i><span><strong>RAM:</strong> 12GB DDR3 - Dual Channel</span></li>
                     <li class="flex items-start gap-3"><i class="fas fa-gamepad text-indigo-400 mt-1"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB GDDR5</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-400 mt-1"></i><span><strong>Almacenamiento:</strong> 500GB SSD NVMe</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-400 mt-1"></i><span><strong>Fuente:</strong> ATX 550w LNZ</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-400 mt-1"></i><span><strong>Almacenamiento:</strong> 480GB SSD SATA 3.0</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-400 mt-1"></i><span><strong>Fuente:</strong> ATX 550w</span></li>
                     <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-400 mt-1"></i><span><strong>Sistema Operativo:</strong> Windows 11 Pro 23H2 | Optimizado ✨</span></li>
                     <small>*monitor/teclado/mouse aparte*</small>
                 </ul>
@@ -876,6 +868,74 @@
                 message += `\n¡Quedo a la espera de tu respuesta!`;
                 window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
+
+            // --- SLIDESHOW LOGIC ---
+            const slideshowContainer = document.getElementById('slideshow-container');
+            const componentList = document.getElementById('component-list');
+
+            if (slideshowContainer && componentList) {
+                // For a truly dynamic solution, this list should be fetched from the server.
+                const slideImages = [
+                    'comps/slideshow/c_fuente.webp',
+                    'comps/slideshow/c_gabo1.webp',
+                    'comps/slideshow/c_gabo2.webp',
+                    'comps/slideshow/c_gt740.webp',
+                    'comps/slideshow/c_mandos.webp'
+                ];
+                let currentSlideIndex = 0;
+                let slideInterval;
+                let autoplay = true;
+
+                function adjustSlideshowHeight() {
+                    const listHeight = componentList.offsetHeight;
+                    slideshowContainer.style.height = `${listHeight}px`;
+                }
+
+                function createSlides() {
+                    slideImages.forEach((src, index) => {
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.alt = `PC Gamer Build Image ${index + 1}`;
+                        if (index === 0) {
+                            img.classList.add('opacity-100');
+                        } else {
+                            img.classList.add('opacity-0');
+                        }
+                        slideshowContainer.appendChild(img);
+                    });
+                }
+
+                function showSlide(index) {
+                    const images = slideshowContainer.querySelectorAll('img');
+                    images.forEach((img, i) => {
+                        img.classList.toggle('opacity-100', i === index);
+                        img.classList.toggle('opacity-0', i !== index);
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlideIndex = (currentSlideIndex + 1) % slideImages.length;
+                    showSlide(currentSlideIndex);
+                }
+
+                function startSlideshow() {
+                    clearInterval(slideInterval);
+                    if (autoplay) {
+                       slideInterval = setInterval(nextSlide, 4300);
+                    }
+                }
+
+                slideshowContainer.addEventListener('click', () => {
+                    autoplay = false; // Stop autoplay on first click
+                    clearInterval(slideInterval);
+                    nextSlide();
+                });
+
+                createSlides();
+                adjustSlideshowHeight();
+                startSlideshow();
+                window.addEventListener('resize', adjustSlideshowHeight);
+            }
 
             // Initial calls
             fetchDolarRate();
