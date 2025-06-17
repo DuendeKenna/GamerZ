@@ -675,6 +675,7 @@
             const MOUSE_KEYBOARD_PRICE = 36000;
             let joystickCount = 0;
             let hasMouseKeyboard = false;
+            let isGridExpanded = false;
             const totalPriceEl = document.getElementById('total-price');
             const usdPriceTopEl = document.getElementById('usd-price-display-top');
             const usdPriceBottomEl = document.getElementById('total-price-usd');
@@ -899,6 +900,8 @@
                 loadMoreGamesBtn.classList.add('hidden');
                 noMoreGamesMsg.classList.remove('hidden');
                 loadMoreOverlay.style.opacity = '0';
+                isGridExpanded = true; 
+                loadMoreOverlay.style.pointerEvents = 'none'; // ¡Aquí está la clave
             });
 
             window.addEventListener('resize', setInitialGridHeight);
@@ -1053,6 +1056,11 @@
                 startSlideshow();
                 window.addEventListener('resize', adjustSlideshowHeight);
             }
+            window.addEventListener('resize', () => {
+                if (!isGridExpanded) { // Solo se reajusta si el usuario no ha hecho clic
+                    setInitialGridHeight();
+                }
+            });
 
             // Initial calls
             fetchDolarRate();
