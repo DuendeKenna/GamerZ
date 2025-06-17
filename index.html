@@ -1056,16 +1056,13 @@
                 startSlideshow();
                 window.addEventListener('resize', adjustSlideshowHeight);
             }
-            window.addEventListener('resize', () => {
-                if (!isGridExpanded) { // Solo se reajusta si el usuario no ha hecho clic
-                    setInitialGridHeight();
-                }
-            });
 
             // Initial calls
             fetchDolarRate();
             updateSelectedGamesList();
-            setInitialGridHeight();
+            if (!isGridExpanded) {
+                setInitialGridHeight();
+            }
         });
     </script>
 </body>
