@@ -864,6 +864,9 @@
             const ROWS_TO_SHOW_INITIALLY = 6;
 
             function setInitialGridHeight() {
+                if (isGridExpanded)
+                    return;
+
                 const firstCard = allGameCards[0];
                 if (!firstCard) return;
 
@@ -1060,9 +1063,7 @@
             // Initial calls
             fetchDolarRate();
             updateSelectedGamesList();
-            if (!isGridExpanded) {
-                setInitialGridHeight();
-            }
+            setInitialGridHeight();
         });
     </script>
 </body>
