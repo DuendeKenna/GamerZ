@@ -51,7 +51,6 @@
             letter-spacing: 0.03em;
             background: linear-gradient(to top, #bd570e, #e9bb06);
             border-radius: 25px;
-           
             color: rgb(41, 1, 1)!important;
             box-shadow: rgba(0, 0, 0, 0.849) 0px 0px 50px;
         }
@@ -338,9 +337,9 @@
             background-image: url('wall_covers.webp'); /* The background image */
             background-size: cover;
             background-position: center;
-            filter: blur(3px);
             opacity: 0.33;
             z-index: -2;
+            animation: cosmic-pulse 45s ease-in-out infinite;
         }
         #hero-wrapper::after {
             content: '';
@@ -349,27 +348,16 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(17, 24, 39, 1) 0%, rgba(17, 24, 39, 0.4) 70%, rgba(17, 24, 39, 1) 100%);
+            background: linear-gradient(to bottom, rgb(17, 24, 39) 0%, rgba(17, 24, 39, 0.4) 70%, rgba(17, 24, 39, 1) 100%);
             z-index: -1;
         }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        
+        @keyframes cosmic-pulse {
+            0% { transform: scale(1) rotate(0deg); filter: blur(2px); }
+            50% { transform: scale(1.05) rotate(2deg); filter: blur(4px); }
+            100% { transform: scale(1) rotate(0deg); filter: blur(2px); }
         }
-        #wall_splash {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background-image: url(wall_splash2.webp);
-			filter: invert(100%) sepia(1) saturate(1000%) hue-rotate(52deg);
-			background-size: contain;
-			background-position: center;
-			opacity: 0.033;
-			z-index: 1;
-            animation: spin 60s linear infinite;
-        }
+        
         @media (max-width: 767px) {
             #wall_splash {
                 display: none;
@@ -395,6 +383,24 @@
             background-color: rgb(17, 24, 39);
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
         }
+        #game-grid-container {
+            position: relative;
+        }
+        #game-grid-wrapper {
+            overflow: hidden;
+            transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 0 1rem;
+        }
+        #load-more-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 12rem;
+            background: linear-gradient(to top, rgb(17, 24, 39) 25%, transparent);
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -412,16 +418,16 @@
                 <h1 class="text-4xl md:text-7xl brand-title">La Nave del Medio</h1>
                 <p class="font-vt323 text-2xl md:text-4xl text-green-400 mt-2 tracking-wider" style="text-shadow: 0 0 5px #39ff14;">PC Gamer Optimizada &amp; Suficiente</p>
                 
-                <img src="smile-messi.gif" alt="Smiley Messi" class="hidden absolute top-28 right-4 w-24 h-auto md:hidden" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Meme'">
+                <img src="smile-messi.gif" alt="Smiley Messi" class="absolute top-28 right-4 w-24 h-auto md:hidden" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Meme'">
 
                 <div class="flex items-center justify-center mt-8">
                     <div class="price-container">
                         <div class="launch-badge">...y a 1 Precio de LOCXS!!</div>
                         <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$639.000 ARS</p>
                         <div class="mt-1 flex items-baseline justify-center gap-2">
-                            <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl"></span>
-                            <a id="usd-link-top" href="https://www.google.com/search?q=639000+ars+to+usd" target="_blank" class="text-gray-500 text-xs hover:underline hidden">aprox.</a>
-                        </div>
+                             <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl"></span>
+                             <a id="usd-link-top" href="https://www.google.com/search?q=639000+ars+to+usd" target="_blank" class="text-gray-500 text-xs hover:underline hidden">aprox.</a>
+                         </div>
                     </div>
                     <img src="smile-messi.gif" alt="Smiley Messi" class="w-32 h-auto ml-4 hidden md:block" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                 </div>
@@ -430,24 +436,24 @@
                     <span class="flex items-center gap-2 "><i class="fas fa-truck"></i>Entrega Personal en Toda <strong class="text-white">🌊La Costa</strong></span>
                 </div>
             </header>
-            <div class="text-gray-300 text-lg mt-6 max-w-3xl mx-auto space-y-3 font-saira hook-section text-center">
-                <div>
-                    <p class="text-2xl font-bold"><strong>¿No llegás a esa de Gama Alta?</strong></p>
-                    <p class="text-gray-200 font-normal font-roboto">No haay problema 👽</p>
-                </div>
-                <div>
-                    <p class="text-2xl font-bold"><strong>¡Ni hace falta!</strong></p>
-                    <p class="text-gray-200 font-normal font-roboto">Esta Nave (bien configurada) corre unos <em class="text-amber-400 not-italic font-bold"><a href="#games-section">JUEGAZOS</a></em>👌</p>
-                </div>
-                <div>
-                    <p class="text-2xl font-bold"><strong>Aprovechá esta OFERTA ÚNICA 🤑</strong></p>
-                    <p class="text-gray-200 font-normal font-roboto">Es un precio de lanzamiento.</p>
-                </div>
-            </div>
-            <div id="wall_splash"></div>
-            <div class="text-center mt-8">
-                <a href="#games-section" class="special-subtitle inline-block text-lg mt-5 px-6 py-3 transition duration-300 transform hover:scale-105">🎁 Va con 3 Juegos a Elección </a>
-            </div>
+             <div class="text-gray-300 text-lg mt-6 max-w-3xl mx-auto space-y-3 font-saira hook-section text-center">
+                 <div>
+                     <p class="text-2xl font-bold"><strong>¿No llegás a la Alta Gamma?</strong></p>
+                     <p class="text-gray-400 font-normal">Ni un problema 😊</p>
+                 </div>
+                 <div>
+                     <p class="text-2xl font-bold"><strong>¡Ni hace Falta!</strong></p>
+                     <p class="text-gray-400 font-normal">La Nave del Medio corre unos <em class="text-amber-400 not-italic font-bold"><a href="#games-section">JUEGAZOS</a></em>👌
+                     <br>¿Cómo? Optimizando y Ahorrando RECURSO$</p>
+                 </div>
+                  <div>
+                     <p class="text-2xl font-bold"><strong>Aprovechá esta OFERTA ÚNICA 🤑</strong></p>
+                     <p class="text-gray-400 font-normal">Las próximas salen un tanto más...</p>
+                  </div>
+             </div>
+             <div class="text-center">
+                <a href="#games-section" class="special-subtitle inline-block text-lg mt-5 px-6 py-3 transition duration-300 transform hover:scale-105">🎁 Va con 3 Juegos a Elección 🔽</a>
+             </div>
             <section class="mt-12 bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div class="flex flex-col items-center">
@@ -455,7 +461,7 @@
                         <h3 class="text-xl font-bold text-gray-200">Elegí lo que te Resuene</h3>
                     </div>
                     <div class="flex flex-col items-center">
-                        <i class="fab fa-whatsapp text-4xl text-green-400 mb-3"></i>
+                         <i class="fab fa-whatsapp text-4xl text-green-400 mb-3"></i>
                         <h3 class="text-xl font-bold text-gray-200">Mandámelo vía WhatsApp</h3>
                     </div>
                     <div class="flex flex-col items-center">
@@ -493,9 +499,9 @@
             <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
             <div class="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-6 md:p-8 space-y-6">
                 <ul class="space-y-4 text-gray-300">
-                    <li class="flex items-start gap-3"><i class="fas fa-microscope text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong> Procesador (en parte por eso el precio). Testeado 100%.</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-box-open text-green-400 mt-1"></i><span><strong>Componentes Nuevos:</strong> Placa de Video, Mother, RAM, Disco, Fuente y Gabinete.</span></li>
-                    <li class="flex items-start gap-3"><i class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 12 meses de garantía en todos los componentes. ¿Falla? Cambio.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-star text-green-400 mt-1"></i><span><strong>Componentes Nuevos:</strong> Con garantía de proveedores de confianza.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-recycle text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong> Podemos <i>reciclar</i> los tuyos para abaratar el precio.</span></li>
+                    <li class="flex items-start gap-3"><i class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 12 meses de garantía en todos los componentes.</span></li>
                 </ul>
                 <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
                     <i class="fas fa-headset text-2xl"></i>
@@ -506,13 +512,16 @@
         </section>
 
         <form id="orderForm">
-            <section id="games-section" class="mb-12 px-4">
+            <section id="games-section" class="mb-12">
                 <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Corre 👌</h2>
                 <p class="text-center text-lime-500 -mt-4 mb-4 font-gamer">👇Seleccioná hasta 3</p>
                 <p class="text-center text-violet-600 -mt-4 mb-8 font-gamer">Van Instalados!💾</p>
-                <div id="game-grid-wrapper">
-                    <div id="game-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <div id="game-grid-container" class="px-4">
+                    <div id="game-grid-wrapper">
+                        <div id="game-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                         </div>
+                    </div>
+                    <div id="load-more-overlay"></div>
                 </div>
                 <div class="text-center mt-6">
                     <button type="button" id="load-more-games" class="load-more-button font-gamer text-lg">Ver Más</button>
@@ -720,7 +729,7 @@
             games.forEach(game => {
                 const imageSrc = `cover/${game.slug}.webp`;
                 const cardEl = document.createElement('div');
-                cardEl.className = 'card-game hidden'; // Initially hidden
+                cardEl.className = 'card-game'; 
                 cardEl.id = `card-game-${game.slug}`;
                 cardEl.innerHTML = `
                     <input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" data-img-src="${imageSrc}" class="hidden">
@@ -834,46 +843,52 @@
 
 
             // --- GAME GRID AND "LOAD MORE" LOGIC ---
+            const gameGridWrapper = document.getElementById('game-grid-wrapper');
             const loadMoreGamesBtn = document.getElementById('load-more-games');
             const noMoreGamesMsg = document.getElementById('no-more-games');
-            const ROWS_TO_LOAD = 5;
-            let visibleGameCount = 0;
+            const loadMoreOverlay = document.getElementById('load-more-overlay');
+            const ROWS_TO_SHOW_INITIALLY = 6;
 
+            function setInitialGridHeight() {
+                const firstCard = allGameCards[0];
+                if (!firstCard) return;
+
+                const gridGap = parseInt(window.getComputedStyle(gameListContainer).getPropertyValue('grid-row-gap')) || 24;
+                const cardHeight = firstCard.offsetHeight;
+                
+                if (cardHeight === 0) { // If cards are not rendered yet, wait a bit.
+                    setTimeout(setInitialGridHeight, 100);
+                    return;
+                }
+
+                const rowHeight = cardHeight + gridGap;
+                const teaserHeight = rowHeight / 2;
+                const targetHeight = (ROWS_TO_SHOW_INITIALLY * rowHeight) - gridGap + teaserHeight;
+                
+                gameGridWrapper.style.maxHeight = `${targetHeight}px`;
+
+                const totalRows = Math.ceil(allGameCards.length / getColumnCount());
+                if(ROWS_TO_SHOW_INITIALLY >= totalRows) {
+                    loadMoreGamesBtn.click();
+                }
+            }
+            
             function getColumnCount() {
                 const screenWidth = window.innerWidth;
-                if (screenWidth >= 1024) return 5; // lg
-                if (screenWidth >= 768) return 4;  // md
-                if (screenWidth >= 640) return 3;  // sm
-                return 2; // default
+                if (screenWidth >= 1024) return 5;
+                if (screenWidth >= 768) return 4;
+                if (screenWidth >= 640) return 3;
+                return 2;
             }
 
-            function showGames(initialLoad = false) {
-                const columnCount = getColumnCount();
-                const totalGames = allGameCards.length;
-                let gamesToLoad = ROWS_TO_LOAD * columnCount;
+            loadMoreGamesBtn.addEventListener('click', () => {
+                gameGridWrapper.style.maxHeight = `${gameListContainer.scrollHeight}px`;
+                loadMoreGamesBtn.classList.add('hidden');
+                noMoreGamesMsg.classList.remove('hidden');
+                loadMoreOverlay.style.opacity = '0';
+            });
 
-                let targetVisibleCount;
-                if (initialLoad) {
-                    targetVisibleCount = gamesToLoad;
-                } else {
-                    targetVisibleCount = visibleGameCount + gamesToLoad;
-                }
-                
-                visibleGameCount = Math.min(targetVisibleCount, totalGames);
-
-                allGameCards.forEach((card, index) => {
-                    if (index < visibleGameCount) {
-                        card.classList.remove('hidden');
-                    }
-                });
-
-                if (visibleGameCount >= totalGames) {
-                    loadMoreGamesBtn.classList.add('hidden');
-                    noMoreGamesMsg.classList.remove('hidden');
-                }
-            }
-
-            loadMoreGamesBtn.addEventListener('click', () => showGames(false));
+            window.addEventListener('resize', setInitialGridHeight);
 
 
             // --- EVENT LISTENERS ---
@@ -1029,7 +1044,7 @@
             // Initial calls
             fetchDolarRate();
             updateSelectedGamesList();
-            showGames(true); // Initial game load
+            setInitialGridHeight();
         });
     </script>
 </body>
