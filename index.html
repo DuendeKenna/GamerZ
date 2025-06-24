@@ -19,7 +19,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            scroll-behavior: smooth;
+            /* REMOVED scroll-behavior: smooth; to prevent conflict with JS scroll */
         }
         h1, h2 {
             font-family: 'Saira', sans-serif;
@@ -624,12 +624,12 @@
             // --- SMOOTH SCROLL FOR SPECIFIC LINK ---
             document.querySelector('a.special-subtitle[href="#games-section"]').addEventListener('click', function(e) {
                 e.preventDefault();
-
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    // UPDATED: Using a more stable calculation for scroll position
+                    const targetPosition = targetElement.offsetTop;
                     const startPosition = window.pageYOffset;
                     const distance = targetPosition - startPosition;
                     const duration = 1500; // 1.5 seconds for a slow, smooth scroll
@@ -650,7 +650,6 @@
                         t--;
                         return -c / 2 * (t * (t - 2) - 1) + b;
                     }
-
                     requestAnimationFrame(animation);
                 }
             });
