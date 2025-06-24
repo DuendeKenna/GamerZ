@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&family=Saira:wght@900&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&family=Saira:wght@400;900&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         html { scroll-behavior: smooth; }
@@ -16,7 +16,8 @@
             background-color: #111827;
             color: #e5e7eb;
         }
-        .font-saira { font-family: 'Saira', sans-serif; font-weight: 900; }
+        .font-saira { font-family: 'Saira', sans-serif; }
+        .font-saira-black { font-family: 'Saira', sans-serif; font-weight: 900; }
         .font-press-start { font-family: 'Press Start 2P', cursive; }
         .font-vt323 { font-family: 'VT323', monospace; }
 
@@ -64,17 +65,33 @@
         #copy-toast.show {
             bottom: 30px;
         }
+        .copy-btn {
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .copy-btn:hover {
+            color: #ffffff;
+        }
+        .green-333 {
+            color: #42d232;
+        }
+        .green-777 {
+            color: #107c10;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <div id="copy-toast" class="bg-green-500 text-white py-2 px-5 rounded-lg shadow-lg font-bold">
-        <i class="fas fa-check-circle mr-2"></i> ¡Copiado!
+    <div id="copy-toast" class="bg-green-500 text-white py-2 px-5 rounded-lg shadow-lg font-bold flex items-center">
+        <span id="toast-message"></span>
     </div>
 
     <header class="text-center py-16 px-4 bg-gray-900/50">
-        <h1 class="font-saira text-6xl md:text-8xl brand-gradient-text">La Nave del Medio</h1>
-        <p class="font-vt323 text-3xl md:text-4xl text-green-400 mt-2" style="text-shadow: 0 0 8px #4ade80;">Guía de Estilo y Marca</p>
+        <h1 class="font-saira-black text-6xl md:text-8xl brand-gradient-text">La Nave del Medio</h1>
+        <p class="font-vt323 text-3xl md:text-4xl green-333 mt-2" style="text-shadow: 0 0 8px #42d232;">Guía de Estilo y Marca</p>
     </header>
 
     <nav class="sticky top-0 bg-gray-800/80 backdrop-blur-sm shadow-lg z-50">
@@ -92,20 +109,13 @@
     <main class="container mx-auto p-4 md:p-8">
 
         <section id="filosofia" class="my-16">
-            <h2 class="font-saira text-5xl mb-8 section-title">1. Filosofía de Marca</h2>
+            <h2 class="font-saira-black text-5xl mb-8 section-title">1. Filosofía de Marca</h2>
             <div class="grid md:grid-cols-2 gap-8 text-lg">
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                     <p class="mb-4"><strong>"La Nave del Medio"</strong> es una solución <strong class="text-orange-400">creativa y accesible</strong> para el cibernauta moderno que personaliza su experiencia. No es la nave más grande ni la más costosa, pero sí la más astuta: trae un Sistema Optimizado, configurado para un flujo de trabaj... <i>flujo de juego?</i>🤔 cuidadosamente tuneado, personalizable y eficaz, con el fin de no solo verse facherísimo sin reventar recursos, más también ofrecer una experiencia de juego completa, asumiendo que el medioambiente digital en nuestro Viaje es un pilar fundamental.</p>
                     <div>
                         <h3 class="font-bold text-xl">Valores</h3>
-                        <p>• Honestidad</p>
-                        <p>• Eficiencia</p>
-                        <p>• Versatilidad</p>
-                        <p>• Humor</p>
-                        <p>• Autenticidad</p>
-                        <p>• Libertad</p>
-                        <p>• Personalidad</p>
-                        <p>• Expansión</p>
+                        <p>• Honestidad • Eficiencia • Versatilidad • Humor • Autenticidad • Libertad • Personalidad • Expansión</p>
                     </div>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 space-y-4">
@@ -126,9 +136,9 @@
         </section>
 
         <section id="identidad" class="my-16">
-            <h2 class="font-saira text-5xl mb-8 section-title">2. Identidad Visual</h2>
+            <h2 class="font-saira-black text-5xl mb-8 section-title">2. Identidad Visual</h2>
             
-            <h3 class="font-saira text-3xl mb-4 text-gray-300">Paleta de Colores</h3>
+            <h3 class="font-saira-black text-3xl mb-4 text-gray-300">Paleta de Colores</h3>
             <p class="mb-6 text-gray-400">La paleta se construye sobre fondos oscuros para que los acentos neón resalten. Haz clic en un color para copiar su código HEX.</p>
 
             <div class="mb-10">
@@ -155,10 +165,10 @@
                         <p class="mt-2 font-bold text-lg">Gradiente Principal</p>
                         <p class="text-gray-400">#6366f1 &rarr; #a855f7</p>
                     </div>
-                    <div class="color-swatch cursor-pointer" data-color="#4ade80">
-                        <div class="w-full h-24 md:h-32 rounded-lg" style="background-color: #4ade80;"></div>
+                    <div class="color-swatch cursor-pointer" data-color="#42d232">
+                        <div class="w-full h-24 md:h-32 rounded-lg" style="background: linear-gradient(to right, #42d232, #107c10);"></div>
                         <p class="mt-2 font-bold text-lg">Neón Gamer</p>
-                        <p class="text-gray-400">#4ade80</p>
+                        <p class="text-gray-400">#42d232 &rarr; #107c10</p>
                     </div>
                     <div class="color-swatch cursor-pointer" data-color="#22d3ee">
                         <div class="w-full h-24 md:h-32 rounded-lg" style="background-color: #22d3ee;"></div>
@@ -172,26 +182,107 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="mb-10">
-                <h4 class="font-bold text-xl mb-3">Paleta Extendida (Tonos y Sombreados)</h4>
-                <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 text-center">
-                    <div class="color-swatch cursor-pointer" data-color="#a5b4fc"><div class="w-full h-16 rounded" style="background-color: #a5b4fc;"></div><p class="text-xs mt-1 text-gray-400">#a5b4fc</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#818cf8"><div class="w-full h-16 rounded" style="background-color: #818cf8;"></div><p class="text-xs mt-1 text-gray-400">#818cf8</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#4f46e5"><div class="w-full h-16 rounded" style="background-color: #4f46e5;"></div><p class="text-xs mt-1 text-gray-400">#4f46e5</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#c084fc"><div class="w-full h-16 rounded" style="background-color: #c084fc;"></div><p class="text-xs mt-1 text-gray-400">#c084fc</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#86efac"><div class="w-full h-16 rounded" style="background-color: #86efac;"></div><p class="text-xs mt-1 text-gray-400">#86efac</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#22c55e"><div class="w-full h-16 rounded" style="background-color: #22c55e;"></div><p class="text-xs mt-1 text-gray-400">#22c55e</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#67e8f9"><div class="w-full h-16 rounded" style="background-color: #67e8f9;"></div><p class="text-xs mt-1 text-gray-400">#67e8f9</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#0891b2"><div class="w-full h-16 rounded" style="background-color: #0891b2;"></div><p class="text-xs mt-1 text-gray-400">#0891b2</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#fbbf24"><div class="w-full h-16 rounded" style="background-color: #fbbf24;"></div><p class="text-xs mt-1 text-gray-400">#fbbf24</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#f97316"><div class="w-full h-16 rounded" style="background-color: #f97316;"></div><p class="text-xs mt-1 text-gray-400">#f97316</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#4b5563"><div class="w-full h-16 rounded" style="background-color: #4b5563;"></div><p class="text-xs mt-1 text-gray-400">#4b5563</p></div>
-                    <div class="color-swatch cursor-pointer" data-color="#9ca3af"><div class="w-full h-16 rounded" style="background-color: #9ca3af;"></div><p class="text-xs mt-1 text-gray-400">#9ca3af</p></div>
+                <h3 class="font-saira-black text-3xl mt-12 mb-4 text-gray-300">Manejo de Colores en Tailwind</h3>
+                <p class="mb-6 text-gray-400 max-w-3xl">Usa estas clases de Tailwind para mantener la consistencia. Haz clic en el icono correspondiente para copiar el código HEX (<i class="fas fa-palette text-xs"></i>) o la clase CSS (<i class="fab fa-css3-alt text-xs"></i>).</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <!-- Gama Grises -->
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-lg">Gama de Grises</h4>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                            <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-gray-800 border-2 border-gray-700"></div><span class="font-mono text-sm text-gray-400">gray-800</span></div>
+                            <div class="flex items-center gap-2"><button data-copy-value="#1f2937" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-gray-800" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                            <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-gray-700"></div><span class="font-mono text-sm text-gray-400">gray-700</span></div>
+                            <div class="flex items-center gap-2"><button data-copy-value="#374151" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-gray-700" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                            <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-gray-500"></div><span class="font-mono text-sm text-gray-400">gray-500</span></div>
+                            <div class="flex items-center gap-2"><button data-copy-value="#6b7280" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-gray-500" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                            <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-gray-400"></div><span class="font-mono text-sm text-gray-400">gray-400</span></div>
+                            <div class="flex items-center gap-2"><button data-copy-value="#9ca3af" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-gray-400" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                    </div>
+                    <!-- Gama Indigo/Violeta -->
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-lg">Gama Índigo/Violeta</h4>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-indigo-400"></div><span class="font-mono text-sm text-gray-400">indigo-400</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#818cf8" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-indigo-400" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-indigo-500"></div><span class="font-mono text-sm text-gray-400">indigo-500</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#6366f1" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-indigo-500" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                         <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-violet-500"></div><span class="font-mono text-sm text-gray-400">violet-500</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#8b5cf6" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-violet-500" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                         <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-purple-500"></div><span class="font-mono text-sm text-gray-400">purple-500</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#a855f7" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-purple-500" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                    </div>
+                    <!-- Gama Verde -->
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-lg">Gama Verde</h4>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded" style="background-color: #42d232;"></div><span class="font-mono text-sm">green-333</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#42d232" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value=".green-333" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded" style="background-color: #107c10;"></div><span class="font-mono text-sm">green-777</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#107c10" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value=".green-777" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-green-500"></div><span class="font-mono text-sm text-gray-400">green-500</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#22c55e" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-green-500" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                         <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-green-300"></div><span class="font-mono text-sm text-gray-400">green-300</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#86efac" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-green-300" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                    </div>
+                    <!-- Gama Cian -->
+                     <div class="space-y-2">
+                        <h4 class="font-bold text-lg">Gama Cian</h4>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-cyan-300"></div><span class="font-mono text-sm text-gray-400">cyan-300</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#67e8f9" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-cyan-300" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-cyan-400"></div><span class="font-mono text-sm text-gray-400">cyan-400</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#22d3ee" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-cyan-400" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-cyan-500"></div><span class="font-mono text-sm text-gray-400">cyan-500</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#06b6d4" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-cyan-500" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                    </div>
+                     <!-- Gama Naranja/Amarillo -->
+                     <div class="space-y-2">
+                        <h4 class="font-bold text-lg">Gama Naranja/Oro</h4>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-amber-400"></div><span class="font-mono text-sm text-gray-400">amber-400</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#fbbf24" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-amber-400" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded bg-orange-500"></div><span class="font-mono text-sm text-gray-400">orange-500</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#f97316" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-orange-500" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                        <div class="tailwind-swatch flex items-center justify-between p-2 rounded-lg bg-gray-900/50">
+                           <div class="flex items-center gap-3"><div class="w-8 h-8 rounded" style="background: linear-gradient(to top, #bd570e, #e9bb06);"></div><span class="font-mono text-sm text-gray-400">Grad. Oferta</span></div>
+                           <div class="flex items-center gap-2"><button data-copy-value="#e9bb06" class="copy-btn"><i class="fas fa-palette"></i></button><button data-copy-value="bg-gradient-to-t from-orange-600 to-yellow-500" class="copy-btn"><i class="fab fa-css3-alt"></i></button></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <h3 class="font-saira text-3xl mt-12 mb-4 text-gray-300">Gráficos e Iconografía</h3>
+            <h3 class="font-saira-black text-3xl mt-12 mb-4 text-gray-300">Gráficos e Iconografía</h3>
             <div class="grid md:grid-cols-3 gap-8 text-center">
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
                     <img src="https://placehold.co/128x128/1f2937/818cf8?text=OVNI" alt="[Imagen de OVNI]" class="w-24 h-24 mx-auto mb-4 rounded-full">
@@ -212,24 +303,38 @@
         </section>
 
         <section id="tipografia" class="my-16">
-            <h2 class="font-saira text-5xl mb-8 section-title">3. Tipografía</h2>
+            <h2 class="font-saira-black text-5xl mb-8 section-title">3. Tipografía</h2>
             <p class="mb-8 text-gray-400">La combinación de fuentes define la personalidad de la marca: tecnológica con un alma retro. <a href="https://fonts.google.com/?query=Saira&query=Press+Start+2P&query=VT323&query=Inter" target="_blank" class="text-cyan-400 underline hover:text-cyan-300">Descargar familias desde Google Fonts</a></p>
 
             <div class="space-y-12">
                 <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
-                    <p class="font-saira text-5xl mb-2">Saira (900)</p>
-                    <p class="text-lg text-gray-400 mb-4 font-saira">Moderna, tecnológica, clara y contundente.</p>
-                    <div class="font-saira text-4xl p-4 bg-gray-900 rounded-md">Uso: Títulos principales y precios</div>
+                    <p class="font-saira-black text-5xl mb-2">Saira</p>
+                    <p class="font-saira text-lg text-gray-400 mb-4">Moderna, tecnológica, clara y contundente. Posee una excelente legibilidad que la hace versátil tanto para títulos de alto impacto como para párrafos descriptivos que requieran un toque de carácter.</p>
+                    <div class="space-y-4 p-4 bg-gray-900 rounded-md">
+                        <p class="font-saira-black text-4xl">Títulos de Alto Impacto (900)</p>
+                        <p class="font-saira text-xl">Saira en su peso regular (400) funciona muy bien para bloques de texto. Aporta una sensación de modernidad y es fácil de leer, manteniendo la coherencia con los encabezados. Es ideal para descripciones de productos o secciones informativas donde la claridad es tan importante como el estilo.</p>
+                        <p class="font-saira text-lg text-gray-400">Este es otro ejemplo en un tamaño ligeramente menor, demostrando su escalabilidad. La Nave del Medio no es solo un producto, es una declaración de principios sobre cómo interactuamos con la tecnología.</p>
+                    </div>
                 </div>
                 <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
                     <p class="font-press-start text-3xl mb-4">Press Start 2P</p>
                     <p class="text-lg text-gray-400 mb-4 font-press-start">Retro, 8-bit, evoca nostalgia y cultura gamer.</p>
-                    <div class="font-press-start text-xl p-4 bg-gray-900 rounded-md">Uso: Títulos gamer</div>
+                    <div class="space-y-4 p-4 bg-gray-900 rounded-md font-press-start">
+                        <p class="text-2xl">GAME OVER</p>
+                        <p class="text-lg">Selecciona tu Nave</p>
+                        <p class="text-base green-333">Player 1: READY</p>
+                        <p class="text-xs text-gray-500">High Score: 999999</p>
+                    </div>
                 </div>
                 <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
                     <p class="font-vt323 text-6xl mb-2">VT323</p>
                     <p class="text-lg text-gray-400 mb-4 font-vt323">Estilo monitor antiguo, "matrix", tecnológico.</p>
-                    <div class="font-vt323 text-4xl p-4 bg-gray-900 rounded-md">Uso: Lemas y subtítulos retro</div>
+                    <div class="space-y-2 p-4 bg-gray-900 rounded-md font-vt323">
+                        <p class="text-5xl green-333">&gt; La Nave del Medio</p>
+                        <p class="text-3xl">&gt; Cargando sistema...</p>
+                        <p class="text-2xl text-cyan-400">&gt; Status: 100% OPTIMIZADO</p>
+                        <p class="text-xl text-gray-500">&gt; Bienvenido, Piloto.</p>
+                    </div>
                 </div>
                 <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
                     <p class="text-5xl font-bold mb-2">Inter</p>
@@ -237,30 +342,34 @@
                     <div class="space-y-4 p-4 bg-gray-900 rounded-md">
                         <p class="text-xl">Regular: Párrafos, descripciones y textos largos.</p>
                         <p class="text-xl italic">Itálica: Para enfatizar conceptos o citas.</p>
-                        <p class="text-xl font-bold">Bold: Para destacar palabras clave <strong class="text-green-400">muy importantes</strong> dentro de un párrafo.</p>
+                        <p class="text-xl font-bold">Bold: Para destacar palabras clave <strong class="green-333">muy importantes</strong> dentro de un párrafo.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="tono-de-voz" class="my-16">
-            <h2 class="font-saira text-5xl mb-8 section-title">4. Tono de Voz</h2>
+            <h2 class="font-saira-black text-5xl mb-8 section-title">4. Tono de Voz</h2>
             <p class="text-lg text-gray-400 max-w-3xl mb-8">El tono es cercano, cómplice y entusiasta. Hablamos de "vos" y usamos jerga gamer y argentina ("juegazos", "pa'", "lucas", "de locxs").</p>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="border-2 border-red-500 bg-red-900/20 p-6 rounded-lg">
-                    <h3 class="font-saira text-3xl text-red-400 mb-4 flex items-center"><i class="fas fa-times-circle mr-3"></i>Incorrecto</h3>
-                    <p class="text-gray-300 text-lg">"Adquiera nuestro sistema informático de gama media, el cual ha sido optimizado para ejecutar una variedad de aplicaciones de software de entretenimiento."</p>
+                <div class="border-2 border-red-500 bg-red-900/20 p-6 rounded-lg flex flex-col">
+                    <h3 class="font-saira-black text-3xl text-red-400 mb-4 flex items-center"><i class="fas fa-times-circle mr-3"></i>Incorrecto</h3>
+                    <p class="text-gray-300 text-lg mb-6">"Adquiera nuestro sistema informático de gama media, el cual ha sido optimizado para ejecutar una variedad de aplicaciones de software de entretenimiento."</p>
+                    <p class="text-gray-300 text-lg mb-6">"El sistema incluye una unidad de estado sólido de 480 GB para un almacenamiento rápido."</p>
+                    <p class="text-gray-300 text-lg">"Ofrecemos un servicio de postventa integral para resolver cualquier incidencia técnica."</p>
                 </div>
-                <div class="border-2 border-green-500 bg-green-900/20 p-6 rounded-lg">
-                    <h3 class="font-saira text-3xl text-green-400 mb-4 flex items-center"><i class="fas fa-check-circle mr-3"></i>Correcto</h3>
-                    <p class="text-gray-300 text-lg">"**¿No alcanza pa Gama Alta? ¡Ni hace Falta!** Esta Nave corre unos **juegazos** 👌."</p>
+                <div class="border-2 border-green-500 bg-green-900/20 p-6 rounded-lg flex flex-col">
+                    <h3 class="font-saira-black text-3xl green-333 mb-4 flex items-center"><i class="fas fa-check-circle mr-3"></i>Correcto</h3>
+                    <p class="text-gray-300 text-lg mb-6">"¿No alcanza pa Gama Alta? ¡Ni hace Falta! Esta Nave corre unos juegazos 👌."</p>
+                    <p class="text-gray-300 text-lg mb-6">"¿Almacenamiento? Un SSD de 480 GB para que el Windows vuele y los tiempos de carga no te hagan bostezar. ¡Entrás a la partida en tres toques!"</p>
+                     <p class="text-gray-300 text-lg">"¿Te surgió un problema? No te hagas drama, me escribís y lo resolvemos. La idea es que vos disfrutes, no que te pelees con la máquina."</p>
                 </div>
             </div>
         </section>
 
         <section id="recursos-web" class="my-16">
-            <h2 class="font-saira text-5xl mb-8 section-title">5. Recursos Web</h2>
-            <p class="text-lg text-gray-400 max-w-3xl mb-8">Enlaces directos para encontrar recursos gráficos que se alinean con la estética de la marca. Términos clave: <span class="font-vt323 text-xl text-green-400">retro gaming, 8-bit, neon, cosmic, cyberpunk, vaporwave</span>.</p>
+            <h2 class="font-saira-black text-5xl mb-8 section-title">5. Recursos Web</h2>
+            <p class="text-lg text-gray-400 max-w-3xl mb-8">Enlaces directos para encontrar recursos gráficos que se alinean con la estética de la marca. Términos clave: <span class="font-vt323 text-xl green-333">retro gaming, 8-bit, neon, cosmic, cyberpunk, vaporwave</span>.</p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <a href="https://pngtree.com/so/neon-game?vip=free" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
                     <i class="fas fa-icons text-5xl mb-4 text-cyan-400"></i>
@@ -272,7 +381,7 @@
                     <h4 class="font-bold text-xl">Iconos Planos</h4>
                     <p class="text-sm text-gray-400">Estilo Flat y Sólido</p>
                 </a>
-                 <a href="https://wallhaven.cc/search?q=games&categories=110&purity=100&sorting=relevance&order=desc" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
+                <a href="https://wallhaven.cc/search?q=cosmic%20abstract&categories=110&purity=100&sorting=relevance&order=desc" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
                     <i class="fas fa-star-of-david text-5xl mb-4 text-cyan-400"></i>
                     <h4 class="font-bold text-xl">Backgrounds</h4>
                     <p class="text-sm text-gray-400">Cósmicos y Abstractos</p>
@@ -309,18 +418,41 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const colorSwatches = document.querySelectorAll('.color-swatch');
+            const copyButtons = document.querySelectorAll('.copy-btn');
             const toast = document.getElementById('copy-toast');
+            const toastMessage = document.getElementById('toast-message');
+
+            function showToast(message) {
+                toastMessage.innerHTML = `<i class="fas fa-check-circle mr-2"></i> ${message}`;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }
 
             colorSwatches.forEach(swatch => {
-                swatch.addEventListener('click', () => {
+                swatch.addEventListener('click', (e) => {
+                    if (e.target.closest('.copy-btn')) return;
                     const color = swatch.dataset.color;
                     navigator.clipboard.writeText(color).then(() => {
-                        toast.classList.add('show');
-                        setTimeout(() => {
-                            toast.classList.remove('show');
-                        }, 2000);
+                        showToast('¡HEX Copiado!');
                     }).catch(err => {
-                        console.error('Error al copiar el color: ', err);
+                        console.error('Error al copiar el HEX: ', err);
+                    });
+                });
+            });
+
+            copyButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const valueToCopy = button.dataset.copyValue;
+                    const isClass = valueToCopy.includes('bg-') || valueToCopy.startsWith('.');
+                    const message = isClass ? '¡Clase CSS Copiada!' : '¡HEX Copiado!';
+                    
+                    navigator.clipboard.writeText(valueToCopy).then(() => {
+                        showToast(message);
+                    }).catch(err => {
+                        console.error('Error al copiar el valor: ', err);
                     });
                 });
             });
