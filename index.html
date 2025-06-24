@@ -19,12 +19,12 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            /* REMOVED scroll-behavior: smooth; to prevent conflict with JS scroll */
         }
         h1, h2 {
             font-family: 'Saira', sans-serif;
         }
         /* --- Custom Brand Colors --- */
+        .green-222 { color: #95ef81; }
         .green-333 { color: #42d232; }
         .green-777 { color: #107c10; }
 
@@ -140,7 +140,7 @@
             opacity: 1;
         }
         
-        /* --- Price Badge (Reverted) --- */
+        /* --- Price Badge --- */
         .launch-badge {
             position: absolute;
             top: -24px; left: 50%;
@@ -165,22 +165,21 @@
         /* --- Neon Highlight (Using brand color) --- */
         .neon-green-highlight {
             border: 2px solid #42d23291;
-            box-shadow: 0 0 15px #42d23294, inset 0 0 10px rgba(66, 210, 50, 0.3); /* #42d232 -> rgb(66, 210, 50) */
+            box-shadow: 0 0 15px #42d23294, inset 0 0 10px rgba(66, 210, 50, 0.3);
             color: #f0fdf4;
         }
 
         /* --- CTA Button (WhatsApp Brand Aligned) --- */
         .cta-button {
             animation: glow-whatsapp 4s ease-in-out infinite;
-            background: linear-gradient(to right, #25D366, #128C7E); /* WhatsApp Brand Colors */
-            border: 2px solid #075e54; /* Dark border to define the edge */
+            background: linear-gradient(to right, #25D366, #128C7E);
+            border: 2px solid #075e54;
             transition: all 0.3s ease;
         }
         .cta-button:hover {
-             background: linear-gradient(to right, #29e66d, #15a589); /* Lighter WhatsApp colors on hover */
+             background: linear-gradient(to right, #29e66d, #15a589);
              transform: scale(1.05);
         }
-        /* Renamed keyframe to avoid conflicts, and toned down the glow */
         @keyframes glow-whatsapp {
             0%, 100% {
                 box-shadow: 0 0 4px #25D366, 0 0 8px #128C7E, 0 0 12px #075e54;
@@ -190,11 +189,11 @@
             }
         }
         
-        /* --- "Ver más" Neon Button (Using brand color) --- */
+        /* --- "Ver más" Neon Button --- */
         .load-more-button {
             color: #42d232;
             opacity: 0.6;
-            border: 6px solid #107c1054; /* Using green-777 with transparency */
+            border: 6px solid #107c1054;
             border-radius: 15px; padding: 20px 35px;
             letter-spacing: 5px; cursor: pointer; font-weight: bold;
             filter: drop-shadow(0 0 15px #42d232) drop-shadow(0 0 50px #42d232) contrast(2) brightness(2);
@@ -206,9 +205,9 @@
             filter: drop-shadow(0 0 20px #42d232) contrast(2) brightness(2);
         }
 
-        /* --- Essential Software Highlight (Using brand color) --- */
+        /* --- Essential Software Highlight --- */
         .essential-software {
-            background-color: rgba(66, 210, 50, 0.1); /* #42d232 -> rgb(66, 210, 50) */
+            background-color: rgba(66, 210, 50, 0.1);
             border-left: 3px solid #42d232;
         }
         
@@ -256,7 +255,7 @@
             from { transform: translateX(-60%) rotate(-10deg); } to { transform: translateX(-60%) rotate(0deg); }
         }
         
-        /* Hook section highlight (using brand color) */
+        /* Hook section highlight */
         .hook-section strong {
             color: #42d232; 
             text-shadow: 1px 1px 0 black;
@@ -264,11 +263,11 @@
         .hook-section p { text-shadow: 2px 2px 3px black; }
         .hook-section .font-normal { font-family: 'Inter', sans-serif; }
 
-        /* --- NEW Feature Cards --- */
+        /* --- Feature Cards --- */
         .feature-card {
-            background-color: rgba(31, 41, 55, 0.4); /* bg-gray-700/40 */
-            border: 1px solid rgba(75, 85, 99, 0.5); /* border-gray-600/50 */
-            border-radius: 0.75rem; /* rounded-xl */
+            background-color: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(75, 85, 99, 0.5);
+            border-radius: 0.75rem;
             padding: 1.25rem 1rem;
             min-height: 160px;
             display: flex;
@@ -278,13 +277,49 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden; /* Changed to hidden for ribbon */
         }
         .feature-card:hover {
             transform: translateY(-5px) scale(1.03);
-            background-color: rgba(55, 65, 81, 0.7); /* bg-gray-600/70 */
-            border-color: rgba(34, 211, 238, 0.5); /* cyan-400/50 */
+            background-color: rgba(55, 65, 81, 0.7);
+            border-color: rgba(34, 211, 238, 0.5);
             box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
         }
+
+        /* --- Corner Ribbon Badge --- */
+        .corner-ribbon-wrapper {
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            z-index: 1;
+        }
+        .corner-ribbon {
+            position: absolute;
+            top: 35px;
+            right: -35px;
+            transform: rotate(45deg);
+            width: 200px;
+            background: linear-gradient(to right, #f97316, #facc15);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6rem;
+            padding: 5px 0;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        .corner-ribbon-text {
+            color: #422006;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.2);
+        }
+        .despegue-text {
+            text-shadow: 1px 1px 1px rgba(84, 0, 117, 0.2);
+            letter-spacing: 1pt;
+        }
+
 
         #slideshow-container { background-color: #353f4d; }
         #slideshow-container img {
@@ -343,6 +378,19 @@
 </head>
 <body class="bg-gray-900 text-white">
 
+    <!-- UPDATED: Dolar Popup Modal -->
+    <div id="dolar-popup" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div id="popup-content" class="bg-gray-800/80 backdrop-blur-lg border border-gray-600/50 rounded-xl p-6 w-full max-w-sm text-white">
+            <h3 class="text-xl font-saira font-bold text-center mb-4 text-cyan-300">Cotizaciones Dólar</h3>
+            <div id="dolar-rates-list" class="space-y-3">
+                <!-- Rates will be injected here by JS -->
+            </div>
+            <hr class="border-gray-600 my-4">
+            <a id="google-link" href="#" target="_blank" class="block text-center text-sm text-indigo-400 hover:underline">Ver en Google &rarr;</a>
+        </div>
+    </div>
+
+
     <div id="error-toast" class="bg-red-600 text-white text-base rounded-lg p-4 shadow-2xl flex flex-col items-center gap-2">
         <span id="error-toast-message"></span>
         <button id="reset-selection-btn" class="hidden bg-white text-red-600 font-bold py-1 px-3 rounded-md text-sm">Reiniciar Selección</button>
@@ -361,75 +409,80 @@
                         <div class="launch-badge">MODO CENTRO <small>*ON*</small></div>
                         <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$500.000 ARS</p>
                          <div class="mt-1 flex items-baseline justify-center gap-2">
-                             <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl"></span>
-                             <a id="usd-link-top" href="https://www.google.com/search?q=500000+ars+to+usd" target="_blank" class="text-gray-500 text-xs hover:underline hidden">aprox.</a>
+                             <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl cursor-pointer"></span>
+                             <a id="usd-link-top" href="#" class="text-gray-500 text-xs hover:underline hidden">ver cotizaciones</a>
                          </div>
                     </div>
                     <img src="smile-messi.gif" alt="Meme de Messi sonriendo" class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                 </div>
 
                 <div class="mt-2 text-base text-gray-400 flex items-center justify-center gap-4">
-                    <span class="flex items-center gap-2 "><i class="fas fa-truck"></i>Entrega Personal en Toda <strong class="text-white">🌊La Costa</strong></span>
+                    <span class="flex items-center gap-2 "><i class="fas fa-house-circle-check"></i>Entrega y Service en <strong class="text-white"><i>🌊La Costa</i></strong></span>
                 </div>
             </header>
             
              <div class="hook-section text-center max-w-4xl mx-auto mt-6 space-y-6">
                  <div>
                     <p class="text-3xl font-bold"><strong><i>¿Gama Alta?</i> ¡Ni Hace Falta!</strong></p>
-                    <p class="text-gray-200 font-saira text-xl mt-2">no es <i>La PC</i>... es <b>La Experiencia Completa ♾️</b></p>
+                    <p class="text-gray-200 font-saira text-xl mt-2">con MENO$ de la 1/2 <i class="text-violet-500 text-2xl">VOLÁS⚡</i></p>
+                    <p class="text-gray-200 font-saira text-xl mt-1">pq no es <i>La Máquina</i>... es <i><b>La Experiencia ♾️</b></i></p>
                  </div>
                  
+                
                  <div id="section-front-features" class="flex flex-wrap justify-center gap-4 px-4 md:px-0">
                     <div class="feature-card w-[45%] lg:w-[30%]">
                         <div class="text-cyan-400 text-4xl mb-3"><i class="fab fa-windows"></i></div>
-                        <h4 class="font-saira font-bold text-white text-base leading-tight">WindOS Personalizado</h4>
-                        <p class="text-xs text-gray-400 mt-1">Sin Basura | Directo a la Utilidad</p>
+                        <h4 class="font-saira font-bold text-white text-base leading-tight">Win2 Optimizado</h4>
+                        <p class="text-s text-gray-400 mt-1">Sin Basura | Eficaz</p>
                     </div>
             
                     <div class="feature-card w-[45%] lg:w-[30%]">
                         <div class="text-cyan-400 text-4xl mb-3"><i class="fas fa-compact-disc"></i></div>
-                        <h4 class="font-saira font-bold text-white text-base leading-tight">Software Clave Instalado</h4>
-                        <p class="text-xs text-gray-400 mt-1">a tu elección ✔</p>
+                        <h4 class="font-saira font-bold text-white text-base leading-tight">Programas Clave Integrados</h4>
+                        <p class="text-s text-gray-400 mt-1">A Tu Elección ✔</p>
                     </div>
             
                     <div class="feature-card w-[45%] lg:w-[30%]">
                         <div class="text-cyan-400 text-4xl mb-3"><i class="fas fa-microchip"></i></div>
                         <h4 class="font-saira font-bold text-white text-base leading-tight">Hardware Seleccionado</h4>
-                        <p class="text-xs text-gray-400 mt-1">apuntando al mejor Precio/Calidad</p>
+                        <p class="text-s text-gray-400 mt-1">Midiendo Precio/Calidad </p><i>sin pijotear</i>
                     </div>
             
                     <div class="feature-card w-[45%] lg:w-[30%]">
+                        <div class="corner-ribbon-wrapper"><div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span class="despegue-text text-violet-700">DESPEGUE</span></div></div>
                         <div class="text-cyan-400 text-4xl mb-3"><i class="fas fa-gamepad"></i></div>
-                        <h4 class="font-saira font-bold text-white text-base leading-tight">3 Juegos Incluidos</h4>
-                        <p class="text-xs text-gray-400 mt-1">elegilos abajo ✔</p>
+                        <h4 class="font-saira font-bold text-white text-base leading-tight">Hasta 3 Juegos Incluidos</h4>
+                        <p class="text-s text-gray-400 mt-1">Elegilos ✔</p>
                     </div>
 
                     <div class="feature-card w-[45%] lg:w-[30%]">
-                        <div class="text-cyan-400 text-4xl mb-3"><i class="fas fa-wrench"></i></div>
-                        <h4 class="font-saira font-bold text-white text-base leading-tight">Soporte Post-Venta</h4>
-                        <p class="text-xs text-gray-400 mt-1">Contacto Directo | ¿Dudas? ¡Lo vemos!</p>
+                        <div class="text-cyan-400 text-4xl mb-3"><i class=""></i></div>
+                        <h4 class="font-saira font-bold text-white text-base leading-tight">Soporte Cercano</h4>
+                        <p class="text-s text-gray-300 mt-1">  <i class="fas fa-comments"></i> Contacto Directo</p>
+                        <p class="text-s text-gray-300 mt-1">   Asistencia Remota 🌐<i class=""></i></p>
+                        <p class="text-s text-gray-300 mt-1">  <i class="fas fa-wrench"></i> Servicio a Domicilio</p>
+                        <p class="text-s text-gray-400 -mt-1">  </i> en toda la región</p>
                     </div>
                 </div>
              </div>
 
              <div class="text-center mt-8">
                 <a href="#games-section" class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
-                    <div class="flex items-center justify-center gap-3">
-                        <i class="fas fa-box-open text-2xl"></i>
+                    <div class="flex items-center justify-center gap-5">
+                        <i class="fas fab fa-dropbox text-2xl"></i>
                         <div class="text-left">
-                            <span class="block leading-tight">Usá esta web interactiva</span>
-                            <span class="block text-sm font-normal -mt-1">para personalizar tu pedido</span>
+                            <span class="block leading-tight">Usá esta Web Interactiva</span>
+                            <span class="block text-sm font-sans -mt-1">para simular tu pedido</span>
                         </div>
                     </div>
                 </a>
-                <p class="text-gray-400 mt-3">¡sin ningún compromiso de compra!</p>
+                <p class="text-gray-400 mt-1 font-mono">sin compromiso</p>
              </div>
              
-             <!-- UPDATED "HOW TO ORDER" SECTION -->
-            <section class="mt-16 bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
+             <section class="mt-12 bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div class="flex flex-col items-center">
-                        <i class="fas fa-tasks text-4xl text-indigo-400 mb-3"></i>
+                        <i class="fas fa-tasks text-4xl text-orange-400 mb-3"></i>
                         <h3 class="text-xl font-bold text-gray-200">1. Personalizá tu Pedido</h3>
                     </div>
                     <div class="flex flex-col items-center">
@@ -444,16 +497,19 @@
             </section>
         </div>
 
-        <!-- NEW HARDWARE INTRO SECTION -->
         <section class="my-16 text-center max-w-3xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-4 text-white">La Base de La Nave</h2>
+            <h2 class="text-5xl font-bold mb-4 text-white">La Base de La Nave</h2>
             <p class="text-lg text-gray-300 font-saira">
-               El hardware impacta directamente en los limites de la experiencia. Sin marearte, te propongo algo intermedio; una configuración <b class="text-amber-400">única y balanceada</b>.
+               El <span class="text-indigo-400 text-2">hardware</span> impacta directamente en los limites de la experiencia. Luego de investigarlo en profundidad y testear diversas opciones, elegí promediar una única <b class="text-amber-400">configuración balanceada</b>.
+               <div class="font-vt323 text-3xl mt-3 green-333">
+                <p>Recomiendo este setup</p>
+               <p>Suficientemente Potente</p>
+               </div>
             </p>
         </section>
 
 
-        <h2 class="text-3xl font-bold mb-4 text-center">Componentes</h2>
+        <h2 class="-mt-10 text-4xl font-bold mb-4 text-center">Componentes</h2>
         <div class="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-6 md:p-8 mb-12">
             <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6">
                 <div class="w-full md:w-1/3 flex-shrink-0">
@@ -462,13 +518,13 @@
                 </div>
                 <div class="w-full md:w-2/3">
                     <ul id="component-list" class="space-y-3 text-gray-300">
-                        <li class="flex items-start gap-3"><i class="fas fa-microchip text-indigo-400 mt-1"></i><span><strong>Procesador:</strong> Intel i5 3.1Ghz <small class="font-black">4 Núcleos</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-400 mt-1"></i><span><strong>Motherboard:</strong> H61-M2 <small>OEM</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-400 mt-1"></i><span><strong>RAM:</strong> 16GB DDR3 <small class="font-black">Dual Channel</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-gamepad text-indigo-400 mt-1"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB<small class="font-black"> GDDR5</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-400 mt-1"></i><span><strong>Almacenamiento:</strong> 480GB SSD <small class="font-black">SATA</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-400 mt-1"></i><span><strong>Fuente:</strong> ATX 550w</span></li>
-                        <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-400 mt-1"></i><span><strong>Sistema Operativo:</strong> MiniOS 11 Pro<small> 23H2</small></span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-microchip text-indigo-500 mt-1"></i><span><strong>Procesador:</strong> Intel i5 3.1Ghz <small class="font-black">4 Núcleos</small></span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-500 mt-1"></i><span><strong>Motherboard:</strong> H61-M2 <small>OEM</small></span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-500 mt-1"></i><span><strong>RAM:</strong> 16GB DDR3 <small class="font-black">Dual Channel</small></span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-gamepad text-indigo-500 mt-1"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB<small class="font-black"> GDDR5</small></span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-500 mt-1"></i><span><strong>Almacenamiento:</strong> 480GB SSD <small class="font-black">SATA</small></span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-500 mt-1"></i><span><strong>Fuente:</strong> ATX 550w</span></li>
+                        <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-500 mt-1"></i><span><strong>Sistema Operativo:</strong> MiniOS 11 Pro<small> 23H2</small></span></li>
                         <small>*monitor/teclado/mouse aparte*</small>
                     </ul>
                 </div>
@@ -572,8 +628,8 @@
 
                             <div class="row-start-2 col-start-2 flex items-center justify-start pl-4">
                                 <div>
-                                    <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden"></p>
-                                    <a id="usd-link-bottom" href="https://www.google.com/search?q=500000+ars+to+usd" target="_blank" class="text-xs text-gray-500 hover:underline hidden -mt-1"><p>aprox.</p></a>
+                                    <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden cursor-pointer"></p>
+                                    <a id="usd-link-bottom" href="#" class="text-xs text-gray-500 hover:underline hidden -mt-1"><p>ver cotizaciones</p></a>
                                 </div>
                             </div>
                         </div>
@@ -628,7 +684,6 @@
                 const targetElement = document.querySelector(targetId);
 
                 if (targetElement) {
-                    // UPDATED: Using a more stable calculation for scroll position
                     const targetPosition = targetElement.offsetTop;
                     const startPosition = window.pageYOffset;
                     const distance = targetPosition - startPosition;
@@ -680,55 +735,54 @@
             const usdPriceBottomEl = document.getElementById('total-price-usd');
             const usdLinkBottom = document.getElementById('usd-link-bottom');
             const usdLinkTop = document.getElementById('usd-link-top');
-            let dolarBlueRate = null;
+            let allDolarRates = []; // To store all rates for the popup
 
-            function updatePrices() {
+            function updatePrices(rate) {
                 let total = BASE_PRICE;
                 if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
                 if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
                 
                 totalPriceEl.textContent = Math.floor(total / 1000);
                 
-                if (dolarBlueRate) {
-                    const totalUSD = total / dolarBlueRate;
+                if (rate) {
+                    const totalUSD = total / rate;
                     const usdText = `$${totalUSD.toFixed(0)} USD`;
                     
-                    if(usdPriceBottomEl) {
+                    if(usdPriceTopEl) {
+                        usdPriceTopEl.textContent = usdText;
+                        usdPriceTopEl.classList.remove('hidden');
+                    }
+                     if(usdPriceBottomEl) {
                         usdPriceBottomEl.textContent = usdText;
                         usdPriceBottomEl.classList.remove('hidden');
                     }
-                    if(usdLinkBottom) {
-                        usdLinkBottom.href = `https://www.google.com/search?q=${total}+ars+to+usd`;
-                        usdLinkBottom.classList.remove('hidden');
-                    }
+                    if(usdLinkTop) usdLinkTop.classList.remove('hidden');
+                    if(usdLinkBottom) usdLinkBottom.classList.remove('hidden');
                 }
             }
 
+            // UPDATED to use dolarapi.com
             async function fetchDolarRate() {
                 try {
-                    const response = await fetch('https://api.bluelytics.com.ar/v2/latest');
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    const data = await response.json();
-                    if (data.blue && data.blue.value_sell) {
-                        dolarBlueRate = data.blue.value_sell;
-                        const baseUsd = BASE_PRICE / dolarBlueRate;
-                        
-                        if(usdPriceTopEl) {
-                            usdPriceTopEl.textContent = `$${baseUsd.toFixed(0)} USD`;
-                            usdPriceTopEl.classList.remove('hidden');
-                        }
-                        if(usdLinkTop){
-                            usdLinkTop.classList.remove('hidden');
-                        }
-                        updatePrices(); 
-                    } else {
-                         if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
+                    // Fetch for default display rate (Oficial)
+                    const responseOficial = await fetch('https://dolarapi.com/v1/dolares/oficial');
+                    if (!responseOficial.ok) throw new Error('Network response was not ok for Oficial rate');
+                    const dataOficial = await responseOficial.json();
+                    
+                    if (dataOficial && dataOficial.venta) {
+                        updatePrices(dataOficial.venta);
                     }
+
+                    // Fetch all rates for the popup
+                    const responseAll = await fetch('https://dolarapi.com/v1/dolares');
+                    if (!responseAll.ok) throw new Error('Network response was not ok for All rates');
+                    allDolarRates = await responseAll.json();
+
                 } catch (error) {
                     console.error("Could not fetch exchange rate:", error);
+                    // Hide USD display if API fails
                     if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
-                    if(usdPriceBottomEl) usdPriceBottomEl.style.display = 'none';
-                    if(usdLinkBottom) usdLinkBottom.style.display = 'none';
+                    if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
                 }
             }
 
@@ -943,14 +997,14 @@
                     joystickImg.src = 'comps/xboxc1.jpg';
                 }
 
-                updatePrices();
+                updatePrices(allDolarRates.find(rate => rate.casa === 'oficial')?.venta);
             });
 
             const mouseKeyboardCard = document.getElementById('mouse-keyboard-card');
             mouseKeyboardCard.addEventListener('click', () => {
                 hasMouseKeyboard = !hasMouseKeyboard;
                 mouseKeyboardCard.classList.toggle('active', hasMouseKeyboard);
-                updatePrices();
+                updatePrices(allDolarRates.find(rate => rate.casa === 'oficial')?.venta);
             });
             
             document.getElementById('orderForm').addEventListener('submit', function(e) {
@@ -976,6 +1030,49 @@
                 message += `\n¡Quedo a la espera de tu respuesta!`;
                 window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
+
+            // --- DOLAR POPUP LOGIC ---
+            const dolarPopup = document.getElementById('dolar-popup');
+            const dolarRatesList = document.getElementById('dolar-rates-list');
+            const googleLink = document.getElementById('google-link');
+
+            function showDolarPopup() {
+                if (allDolarRates.length === 0) return;
+
+                dolarRatesList.innerHTML = ''; // Clear previous rates
+                allDolarRates.forEach(rate => {
+                    const rateEl = document.createElement('div');
+                    rateEl.className = 'flex justify-between items-center text-sm border-b border-gray-700/50 pb-2';
+                    const name = rate.nombre.replace('Dólar', '').trim();
+                    rateEl.innerHTML = `
+                        <span class="font-bold text-gray-300">${name}</span>
+                        <div class="text-right">
+                            <span class="text-gray-400">Compra: </span><span class="font-mono text-green-400">$${rate.compra}</span><br>
+                            <span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span>
+                        </div>
+                    `;
+                    dolarRatesList.appendChild(rateEl);
+                });
+
+                let total = BASE_PRICE;
+                if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
+                if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
+                googleLink.href = `https://www.google.com/search?q=${total}+ars+to+usd`;
+
+                dolarPopup.classList.remove('hidden');
+            }
+
+            dolarPopup.addEventListener('click', (e) => {
+                if (e.target.id === 'dolar-popup') {
+                    dolarPopup.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('usd-link-top').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
+            document.getElementById('usd-price-display-top').addEventListener('click', showDolarPopup);
+            document.getElementById('usd-link-bottom').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
+            document.getElementById('total-price-usd').addEventListener('click', showDolarPopup);
+
 
             // --- SLIDESHOW LOGIC ---
             const slideshowContainer = document.getElementById('slideshow-container');
@@ -1026,7 +1123,6 @@
 
             // --- Initial calls ---
             fetchDolarRate();
-            updatePrices();
             updateSelectedGamesList();
             setInitialGridHeight();
         });
