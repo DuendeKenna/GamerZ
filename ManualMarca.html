@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual de Marca - La Nave del Medio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&family=Saira:wght@900&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #e5e7eb;
+        }
+        .font-saira { font-family: 'Saira', sans-serif; font-weight: 900; }
+        .font-press-start { font-family: 'Press Start 2P', cursive; }
+        .font-vt323 { font-family: 'VT323', monospace; }
+
+        .brand-gradient-text {
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .offer-gradient-text {
+             background: linear-gradient(to top, #bd570e, #e9bb06);
+             -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            border-radius: 2px;
+        }
+        .color-swatch, .resource-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .color-swatch:hover, .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        #copy-toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: bottom 0.5s ease-in-out;
+            z-index: 100;
+        }
+        #copy-toast.show {
+            bottom: 30px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="copy-toast" class="bg-green-500 text-white py-2 px-5 rounded-lg shadow-lg font-bold">
+        <i class="fas fa-check-circle mr-2"></i> ¡Copiado!
+    </div>
+
+    <header class="text-center py-16 px-4 bg-gray-900/50">
+        <h1 class="font-saira text-6xl md:text-8xl brand-gradient-text">La Nave del Medio</h1>
+        <p class="font-vt323 text-3xl md:text-4xl text-green-400 mt-2" style="text-shadow: 0 0 8px #4ade80;">Guía de Estilo y Marca</p>
+    </header>
+
+    <nav class="sticky top-0 bg-gray-800/80 backdrop-blur-sm shadow-lg z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-center items-center h-16 flex-wrap gap-x-4 md:gap-x-6 text-sm md:text-base">
+                <a href="#filosofia" class="text-gray-300 hover:text-white transition-colors duration-300 py-1">Filosofía</a>
+                <a href="#identidad" class="text-gray-300 hover:text-white transition-colors duration-300 py-1">Identidad</a>
+                <a href="#tipografia" class="text-gray-300 hover:text-white transition-colors duration-300 py-1">Tipografía</a>
+                <a href="#tono-de-voz" class="text-gray-300 hover:text-white transition-colors duration-300 py-1">Tono de Voz</a>
+                 <a href="#recursos-web" class="text-gray-300 hover:text-white transition-colors duration-300 py-1">Recursos</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="filosofia" class="my-16">
+            <h2 class="font-saira text-5xl mb-8 section-title">1. Filosofía de Marca</h2>
+            <div class="grid md:grid-cols-2 gap-8 text-lg">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <p class="mb-4"><strong>"La Nave del Medio"</strong> es una solución <strong class="text-orange-400">creativa y accesible</strong> para el cibernauta moderno que personaliza su experiencia. No es la nave más grande ni la más costosa, pero sí la más astuta: trae un Sistema Optimizado, configurado para un flujo de trabaj... <i>flujo de juego?</i>🤔 cuidadosamente tuneado, personalizable y eficaz, con el fin de no solo verse facherísimo sin reventar recursos, más también ofrecer una experiencia de juego completa, asumiendo que el medioambiente digital en nuestro Viaje es un pilar fundamental.</p>
+                    <div>
+                        <h3 class="font-bold text-xl">Valores</h3>
+                        <p>• Honestidad</p>
+                        <p>• Eficiencia</p>
+                        <p>• Versatilidad</p>
+                        <p>• Humor</p>
+                        <p>• Autenticidad</p>
+                        <p>• Libertad</p>
+                        <p>• Personalidad</p>
+                        <p>• Expansión</p>
+                    </div>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 space-y-4">
+                    <div>
+                        <h3 class="font-bold text-xl text-cyan-400">Misión</h3>
+                        <p>Ofrecer PCs de gaming optimizadas y accesibles para la comunidad cibernauta de la región, garantizando una experiencia de juego excelente y un servicio postventa de total confianza.</p>
+                    </div>
+                     <div>
+                        <h3 class="font-bold text-xl text-cyan-400">Visión</h3>
+                        <p>Expandir nuestra galaxia desde La Costa hacia toda Argentina y el mundo. Aspiramos a ser una marca global de culto, construyendo una comunidad sólida a través de redes sociales, streaming de gameplays y tutoriales que compartan nuestra pasión y conocimiento.</p>
+                    </div>
+                     <div>
+                        <h3 class="font-bold text-xl text-cyan-400">Público Objetivo</h3>
+                        <p>Gamers de Argentina que buscan optimizar su presupuesto y valoran un nivel extra de personalización, la autenticidad, el conocimiento y una marca  que entiende su cultura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="identidad" class="my-16">
+            <h2 class="font-saira text-5xl mb-8 section-title">2. Identidad Visual</h2>
+            
+            <h3 class="font-saira text-3xl mb-4 text-gray-300">Paleta de Colores</h3>
+            <p class="mb-6 text-gray-400">La paleta se construye sobre fondos oscuros para que los acentos neón resalten. Haz clic en un color para copiar su código HEX.</p>
+
+            <div class="mb-10">
+                <h4 class="font-bold text-xl mb-3">Colores Principales</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="color-swatch cursor-pointer" data-color="#111827">
+                        <div class="w-full h-24 md:h-32 rounded-lg" style="background-color: #111827;"></div>
+                        <p class="mt-2 font-bold text-lg">Fondo Principal</p>
+                        <p class="text-gray-400">#111827</p>
+                    </div>
+                    <div class="color-swatch cursor-pointer" data-color="#1f2937">
+                        <div class="w-full h-24 md:h-32 rounded-lg" style="background-color: #1f2937;"></div>
+                        <p class="mt-2 font-bold text-lg">Contenedor</p>
+                        <p class="text-gray-400">#1f2937</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-10">
+                <h4 class="font-bold text-xl mb-3">Colores de Acento y Marca</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                     <div class="color-swatch cursor-pointer" data-color="#6366f1">
+                        <div class="w-full h-24 md:h-32 rounded-lg" style="background: linear-gradient(to right, #6366f1, #a855f7);"></div>
+                        <p class="mt-2 font-bold text-lg">Gradiente Principal</p>
+                        <p class="text-gray-400">#6366f1 &rarr; #a855f7</p>
+                    </div>
+                    <div class="color-swatch cursor-pointer" data-color="#4ade80">
+                        <div class="w-full h-24 md:h-32 rounded-lg" style="background-color: #4ade80;"></div>
+                        <p class="mt-2 font-bold text-lg">Neón Gamer</p>
+                        <p class="text-gray-400">#4ade80</p>
+                    </div>
+                    <div class="color-swatch cursor-pointer" data-color="#22d3ee">
+                        <div class="w-full h-24 md:h-32 rounded-lg" style="background-color: #22d3ee;"></div>
+                        <p class="mt-2 font-bold text-lg">Cian Destacado</p>
+                        <p class="text-gray-400">#22d3ee</p>
+                    </div>
+                    <div class="color-swatch cursor-pointer" data-color="#bd570e">
+                        <div class="w-full h-24 md:h-32 rounded-lg" style="background: linear-gradient(to top, #bd570e, #e9bb06);"></div>
+                        <p class="mt-2 font-bold text-lg">Gradiente Oferta</p>
+                        <p class="text-gray-400">#bd570e &rarr; #e9bb06</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-10">
+                <h4 class="font-bold text-xl mb-3">Paleta Extendida (Tonos y Sombreados)</h4>
+                <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3 text-center">
+                    <div class="color-swatch cursor-pointer" data-color="#a5b4fc"><div class="w-full h-16 rounded" style="background-color: #a5b4fc;"></div><p class="text-xs mt-1 text-gray-400">#a5b4fc</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#818cf8"><div class="w-full h-16 rounded" style="background-color: #818cf8;"></div><p class="text-xs mt-1 text-gray-400">#818cf8</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#4f46e5"><div class="w-full h-16 rounded" style="background-color: #4f46e5;"></div><p class="text-xs mt-1 text-gray-400">#4f46e5</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#c084fc"><div class="w-full h-16 rounded" style="background-color: #c084fc;"></div><p class="text-xs mt-1 text-gray-400">#c084fc</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#86efac"><div class="w-full h-16 rounded" style="background-color: #86efac;"></div><p class="text-xs mt-1 text-gray-400">#86efac</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#22c55e"><div class="w-full h-16 rounded" style="background-color: #22c55e;"></div><p class="text-xs mt-1 text-gray-400">#22c55e</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#67e8f9"><div class="w-full h-16 rounded" style="background-color: #67e8f9;"></div><p class="text-xs mt-1 text-gray-400">#67e8f9</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#0891b2"><div class="w-full h-16 rounded" style="background-color: #0891b2;"></div><p class="text-xs mt-1 text-gray-400">#0891b2</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#fbbf24"><div class="w-full h-16 rounded" style="background-color: #fbbf24;"></div><p class="text-xs mt-1 text-gray-400">#fbbf24</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#f97316"><div class="w-full h-16 rounded" style="background-color: #f97316;"></div><p class="text-xs mt-1 text-gray-400">#f97316</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#4b5563"><div class="w-full h-16 rounded" style="background-color: #4b5563;"></div><p class="text-xs mt-1 text-gray-400">#4b5563</p></div>
+                    <div class="color-swatch cursor-pointer" data-color="#9ca3af"><div class="w-full h-16 rounded" style="background-color: #9ca3af;"></div><p class="text-xs mt-1 text-gray-400">#9ca3af</p></div>
+                </div>
+            </div>
+
+            <h3 class="font-saira text-3xl mt-12 mb-4 text-gray-300">Gráficos e Iconografía</h3>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <img src="https://placehold.co/128x128/1f2937/818cf8?text=OVNI" alt="[Imagen de OVNI]" class="w-24 h-24 mx-auto mb-4 rounded-full">
+                    <h4 class="font-bold text-xl">OVNIs y Espacio</h4>
+                    <p class="text-gray-400">El leitmotiv de la marca. Refuerza el concepto de "Nave" y tecnología.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <img src="https://placehold.co/128x128/1f2937/e9bb06?text=MEME" alt="[Imagen de Meme]" class="w-24 h-24 mx-auto mb-4 rounded-full">
+                    <h4 class="font-bold text-xl">Memes y GIFs</h4>
+                    <p class="text-gray-400">Aportan humor, cercanía y un anclaje cultural local (Argentina).</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <i class="fas fa-gamepad text-6xl mb-4 text-indigo-400"></i>
+                    <h4 class="font-bold text-xl">Iconografía Limpia</h4>
+                    <p class="text-gray-400">Uso de Font Awesome para una estética limpia, reconocible y tecnológica.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tipografia" class="my-16">
+            <h2 class="font-saira text-5xl mb-8 section-title">3. Tipografía</h2>
+            <p class="mb-8 text-gray-400">La combinación de fuentes define la personalidad de la marca: tecnológica con un alma retro. <a href="https://fonts.google.com/?query=Saira&query=Press+Start+2P&query=VT323&query=Inter" target="_blank" class="text-cyan-400 underline hover:text-cyan-300">Descargar familias desde Google Fonts</a></p>
+
+            <div class="space-y-12">
+                <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
+                    <p class="font-saira text-5xl mb-2">Saira (900)</p>
+                    <p class="text-lg text-gray-400 mb-4 font-saira">Moderna, tecnológica, clara y contundente.</p>
+                    <div class="font-saira text-4xl p-4 bg-gray-900 rounded-md">Uso: Títulos principales y precios</div>
+                </div>
+                <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
+                    <p class="font-press-start text-3xl mb-4">Press Start 2P</p>
+                    <p class="text-lg text-gray-400 mb-4 font-press-start">Retro, 8-bit, evoca nostalgia y cultura gamer.</p>
+                    <div class="font-press-start text-xl p-4 bg-gray-900 rounded-md">Uso: Títulos gamer</div>
+                </div>
+                <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
+                    <p class="font-vt323 text-6xl mb-2">VT323</p>
+                    <p class="text-lg text-gray-400 mb-4 font-vt323">Estilo monitor antiguo, "matrix", tecnológico.</p>
+                    <div class="font-vt323 text-4xl p-4 bg-gray-900 rounded-md">Uso: Lemas y subtítulos retro</div>
+                </div>
+                <div class="p-6 rounded-lg bg-gray-800 border border-gray-700">
+                    <p class="text-5xl font-bold mb-2">Inter</p>
+                    <p class="text-lg text-gray-400 mb-4">Neutral, legible y moderna. Ideal para la comunicación clara.</p>
+                    <div class="space-y-4 p-4 bg-gray-900 rounded-md">
+                        <p class="text-xl">Regular: Párrafos, descripciones y textos largos.</p>
+                        <p class="text-xl italic">Itálica: Para enfatizar conceptos o citas.</p>
+                        <p class="text-xl font-bold">Bold: Para destacar palabras clave <strong class="text-green-400">muy importantes</strong> dentro de un párrafo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tono-de-voz" class="my-16">
+            <h2 class="font-saira text-5xl mb-8 section-title">4. Tono de Voz</h2>
+            <p class="text-lg text-gray-400 max-w-3xl mb-8">El tono es cercano, cómplice y entusiasta. Hablamos de "vos" y usamos jerga gamer y argentina ("juegazos", "pa'", "lucas", "de locxs").</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="border-2 border-red-500 bg-red-900/20 p-6 rounded-lg">
+                    <h3 class="font-saira text-3xl text-red-400 mb-4 flex items-center"><i class="fas fa-times-circle mr-3"></i>Incorrecto</h3>
+                    <p class="text-gray-300 text-lg">"Adquiera nuestro sistema informático de gama media, el cual ha sido optimizado para ejecutar una variedad de aplicaciones de software de entretenimiento."</p>
+                </div>
+                <div class="border-2 border-green-500 bg-green-900/20 p-6 rounded-lg">
+                    <h3 class="font-saira text-3xl text-green-400 mb-4 flex items-center"><i class="fas fa-check-circle mr-3"></i>Correcto</h3>
+                    <p class="text-gray-300 text-lg">"**¿No alcanza pa Gama Alta? ¡Ni hace Falta!** Esta Nave corre unos **juegazos** 👌."</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="recursos-web" class="my-16">
+            <h2 class="font-saira text-5xl mb-8 section-title">5. Recursos Web</h2>
+            <p class="text-lg text-gray-400 max-w-3xl mb-8">Enlaces directos para encontrar recursos gráficos que se alinean con la estética de la marca. Términos clave: <span class="font-vt323 text-xl text-green-400">retro gaming, 8-bit, neon, cosmic, cyberpunk, vaporwave</span>.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="https://pngtree.com/so/neon-game?vip=free" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
+                    <i class="fas fa-icons text-5xl mb-4 text-cyan-400"></i>
+                    <h4 class="font-bold text-xl">Iconos Neón</h4>
+                    <p class="text-sm text-gray-400">PNGs con estilo Neón y 8-Bit</p>
+                </a>
+                <a href="https://fontawesome.com/search?q=space%20technology&s=solid,regular,light" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
+                    <i class="fas fa-layer-group text-5xl mb-4 text-cyan-400"></i>
+                    <h4 class="font-bold text-xl">Iconos Planos</h4>
+                    <p class="text-sm text-gray-400">Estilo Flat y Sólido</p>
+                </a>
+                 <a href="https://wallhaven.cc/search?q=games&categories=110&purity=100&sorting=relevance&order=desc" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
+                    <i class="fas fa-star-of-david text-5xl mb-4 text-cyan-400"></i>
+                    <h4 class="font-bold text-xl">Backgrounds</h4>
+                    <p class="text-sm text-gray-400">Cósmicos y Abstractos</p>
+                </a>
+                <a href="https://giphy.com/search/pixel-art-space" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
+                    <i class="fas fa-film text-5xl mb-4 text-cyan-400"></i>
+                    <h4 class="font-bold text-xl">Gifs</h4>
+                    <p class="text-sm text-gray-400">Pixel Art y Sci-Fi</p>
+                </a>
+                <a href="https://www.pexels.com/search/videos/cosmic%20space/" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
+                    <i class="fas fa-video text-5xl mb-4 text-cyan-400"></i>
+                    <h4 class="font-bold text-xl">Videos</h4>
+                    <p class="text-sm text-gray-400">Fondos cósmicos</p>
+                </a>
+                <a href="https://unsplash.com/s/photos/space-wallpaper" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
+                    <i class="fas fa-image text-5xl mb-4 text-cyan-400"></i>
+                    <h4 class="font-bold text-xl">Wallpapers</h4>
+                    <p class="text-sm text-gray-400">Fondos espaciales gratis</p>
+                </a>
+                <a href="https://lexica.art/?q=cosmic+space+video+games" target="_blank" class="resource-card bg-gray-800 p-6 rounded-lg border border-gray-700 text-center hover:border-cyan-400">
+                    <i class="fas fa-robot text-5xl mb-4 text-cyan-400"></i>
+                    <h4 class="font-bold text-xl">Imágenes IA</h4>
+                    <p class="text-sm text-gray-400">Arte Espacial y Gamer</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center mt-16 py-8 border-t border-gray-700">
+        <p class="text-gray-500">&copy; 2025 La Nave del Medio. Guía de marca interactiva.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const colorSwatches = document.querySelectorAll('.color-swatch');
+            const toast = document.getElementById('copy-toast');
+
+            colorSwatches.forEach(swatch => {
+                swatch.addEventListener('click', () => {
+                    const color = swatch.dataset.color;
+                    navigator.clipboard.writeText(color).then(() => {
+                        toast.classList.add('show');
+                        setTimeout(() => {
+                            toast.classList.remove('show');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Error al copiar el color: ', err);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
