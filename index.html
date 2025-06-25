@@ -161,11 +161,50 @@
                 transform: rotate(6deg);
             }
         }
-
-        .games-back-sm {
-            background-image: url(covers_wall.webp);
-            background-size: cover;
+        
+        /* --- Animated Games Card Background --- */
+        .animated-bg-games {
+            min-height: 480px; /* Increased height for better effect visibility */
+            box-shadow: inset 0 0 12px 4px rgba(0, 0, 0, 0.55);
         }
+
+        .animated-bg-games::before {
+            content: '';
+            position: absolute;            
+            top: -10%; left: -10%;
+            width: 120%; height: 120%;
+            background-image: url('wall_covers_sm.jpeg');
+            background-size: 250%;
+            animation: 
+                ping-pong-path 45s ease-in-out infinite,
+                blur-and-fade 10s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        .animated-bg-games > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes ping-pong-path {
+            0%   { background-position: 0% 0%; }
+            25%  { background-position: 100% 0%; }
+            50%  { background-position: 100% 100%; }
+            75%  { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes blur-and-fade {
+            from {
+                filter: blur(0px);
+                opacity: 0.15;
+            }
+            to {
+                filter: blur(2px); /* Dynamic blur effect */
+                opacity: 0.3;
+            }
+        }
+
 
         /* --- Neon Highlight (Using brand color) --- */
         .neon-green-highlight {
@@ -292,6 +331,10 @@
             box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
         }
 
+        .animated-bg-games:hover {
+             box-shadow: 0 0 20px rgba(34, 211, 238, 0.15), inset 0 0 12px 4px rgba(0, 0, 0, 0.55);
+        }
+
         /* --- Corner Ribbon Badge --- */
         .corner-ribbon-wrapper {
             width: 150px;
@@ -344,13 +387,13 @@
         #hero-background { 
             position: absolute; overflow: hidden; top: 0; left: 0;
             width: 100%; height: 100%; pointer-events:none;
-            animation: cosmic-pulse 10s ease-in-out infinite;
+            animation: spin 10s ease-in-out infinite, cosmic-pulse 20s ease-in-out infinite;
         }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes cosmic-pulse {
-            0% { transform: scale(1) rotate(0deg); filter: blur(24px);opacity: 0.09; }
-            50% { transform: scale(1.3) rotate(2deg); filter: blur(12px);opacity: 0.07; }
-            100% { transform: scale(1) rotate(0deg); filter: blur(24px);opacity: 0.09; }
+            0% { transform: scale(0.8) rotate(0deg); filter: blur(20px); opacity: 0.06; }
+            50% { transform: scale(1) rotate(1deg); filter: blur(12px); opacity: 0.1; }
+            100% { transform: scale(0.8) rotate(0deg); filter: blur(20px); opacity: 0.06; }
         }
         @media (max-width: 767px) { #hero-background { display: none; } }
         
@@ -363,7 +406,7 @@
         }
 
         .main-container {
-            background-color: rgb(17, 24, 39);
+            background-color: #111827; /* Restored to bg-gray-700 */
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
         }
         #game-grid-container { position: relative; }
@@ -375,7 +418,7 @@
         #load-more-overlay {
             position: absolute; bottom: 0; left: 0;
             width: 100%; height: 12rem;
-            background: linear-gradient(to top, rgb(17, 24, 39) 25%, transparent);
+            background: linear-gradient(to top, #111827 25%, transparent);
             pointer-events: none;
             transition: opacity 1.5s;
         }
@@ -415,7 +458,7 @@
                         <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$500.000 ARS</p>
                          <div class="mt-1 flex items-baseline justify-center gap-2">
                              <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl cursor-pointer"></span>
-                             <a id="usd-link-top" href="#" class="text-gray-500 text-xs hover:underline hidden">ver cotizaciones</a>
+                             <a id="usd-link-top" href="#" class="text-gray-500 text-xs hover:underline hidden">Ver Cotizaciones</a>
                          </div>
                     </div>
                     <img src="smile-messi.gif" alt="Meme de Messi sonriendo" class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
@@ -430,42 +473,43 @@
                  <div>
                     <p class="text-3xl font-bold"><strong><i>¿Gama Alta?</i> ¡Ni Hace Falta!</strong></p>
                     <p class="text-gray-200 font-saira text-xl mt-2">con MENO$ de la 1/2 <i class="text-violet-500 text-2xl">VOLÁS⚡</i></p>
-                    <p class="text-gray-200 font-saira text-xl mt-1">pq no es <i>La Máquina</i>... es <i><b>La Experiencia ♾️</b></i></p>
+                    <p class="text-gray-200 font-saira text-xl mt-1">pq lo que cuenta</p>
+                    <p class="text-gray-200 font-saira text-xl mt-1">no es <i>La Máquina</i>... es <i><b>La Experiencia ♾️</b></i></p>
                  </div>
                  
                 
                  <div id="section-front-features" class="flex flex-wrap justify-center gap-4 px-4 md:px-0">
                      <div class="feature-card w-[45%] lg:w-[30%]" style="left: -1px;">
-                         <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3">
-                         <h4 class="font-saira font-bold text-white text-base leading-tight">Windows 11 Optimizado</h4>
-                         <p class="text-s text-gray-300 mt-1">Liviano | Expandido | Eficaz</p>
+                         <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
+                         <h4 class="font-saira font-bold text-white text-xl text-base leading-tight">Windows 11 Optimizado</h4>
+                         <p class="text-s text-gray-300 mt-1">Ligero | Tuneado | Eficaz</p>
                      </div>
              
                      <div class="feature-card w-[45%] lg:w-[30%]" style="left: -2px; ">
-                         <img src="SoftInstalled.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3">
-                         <h4 class="font-saira font-bold text-white text-base leading-tight">Software Clave Integrado</h4>
+                         <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
+                         <h4 class="font-saira font-bold text-white text-base  text-xl leading-tight">Software Clave Integrado</h4>
                          <p class="text-s text-gray-300 mt-1">A Elección ✔</p>
                      </div>
              
                      <div class="feature-card w-[45%] lg:w-[30%]">
-                         <img src="HardSelect.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3">
-                         <h4 class="font-saira font-bold text-white text-base leading-tight">Hardware Seleccionado</h4>
+                         <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
+                         <h4 class="font-saira font-bold text-white text-base leading-tight text-xl">Hardware Seleccionado</h4>
                          <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
                      </div>
              
-                     <div class="feature-card games-back-sm w-[45%] lg:w-[30%]" style="left: 2.02411px; top: 1px;">
+                     <div class="feature-card animated-bg-games w-[45%] lg:w-[30%]" style="left: 2.02411px; top: 1px;">
                          <div class="corner-ribbon-wrapper"><div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span class="despegue-text text-violet-700">DESPEGUE</span></div></div>
-                         <div class="text-cyan-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
-                         <h4 class="font-saira font-bold text-white text-base leading-tight">Hasta 3 Juegos Incluidos</h4>
+                         <div class="text-orange-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
+                         <h4 class="font-saira font-bold text-white text-base leading-tight">Hasta <p class="text-orange-400 text-xl">3 Juegos Incluidos</p></h4>
                          <p class="text-s text-gray-300 mt-1">Elegilos ✔</p>
                      </div>
 
                      <div class="feature-card w-[45%] lg:w-[30%]">
-                         <div class="text-cyan-400 text-4xl mb-3"><i class="fas fa-hands-asl-interpreting"></i></div>
-                         <h4 class="font-saira font-bold text-white text-base leading-tight">Soporte Técnico</h4>
+                         <img src="SoportePersonal.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
+                         <h4 class="font-saira font-bold text-white text-base  text-xl leading-tight">Soporte Técnico</h4>
                          <p class="text-s text-gray-300 mt-1">  <i class="fas text-cyan-400 fa-comments"></i> Contacto Directo</p>
                          <p class="text-s text-gray-300 mt-1">   Asistencia Remota <i class="fas fa-desktop"></i><i class=""></i></p>
-                         <p class="text-s text-gray-300 mt-1">  <i class="green-333 fas fa-screwdriver"></i> Servicio a Domicilio</p>
+                         <p class="text-s text-gray-300 mt-1">  <i class="text-cyan-400 fas fa-screwdriver"></i> Servicio a Domicilio</p>
                          <p class="text-s text-gray-600 text-shadow-none -mt-1">  </i> en todo el partido</p>
                      </div>
                  </div>
@@ -474,7 +518,7 @@
              <div class="text-center mt-8">
                 <a href="#games-section" class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
                     <div class="flex items-center justify-center gap-5">
-                        <i class="fas fab fa-dropbox text-2xl"></i>
+                        <i class="fas fa-tasks text-2xl"></i>
                         <div class="text-left">
                             <span class="block leading-tight">Usá esta Web Interactiva</span>
                             <span class="block text-2sm font-sans -mt-2">para simular tu pedido</span>
@@ -483,15 +527,15 @@
                 </a>
              </div>
              
-             <section class="mt-12 bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
+             <section class="hidden bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                     <div class="flex flex-col items-center">
                         <i class="fas fa-tasks text-4xl text-orange-400 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">1. Personalizá tu Pedido</h3>
+                        <h3 class="text-xl font-bold text-gray-200">1. Checá tu Pedido</h3>
                     </div>
                     <div class="flex flex-col items-center">
                          <i class="fab fa-whatsapp text-4xl green-333 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">2. Envialo por WhatsApp</h3>
+                        <h3 class="text-xl font-bold text-gray-200">2. Enviámelo</h3>
                     </div>
                     <div class="flex flex-col items-center">
                         <i class="fas fa-comments text-4xl text-cyan-400 mb-3"></i>
@@ -634,7 +678,7 @@
                             <div class="row-start-2 col-start-2 flex items-center justify-start pl-4">
                                 <div>
                                     <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden cursor-pointer"></p>
-                                    <a id="usd-link-bottom" href="#" class="text-xs text-gray-500 hover:underline hidden -mt-1"><p>ver cotizaciones</p></a>
+                                    <a id="usd-link-bottom" href="#" class="text-xs text-gray-500 hover:underline hidden -mt-1"><p>Ver Cotizaciones</p></a>
                                 </div>
                             </div>
                         </div>
@@ -650,7 +694,7 @@
             </section>
 
             <div class="text-center">
-                <p id="pre-submit-text" class="text-gray-400 mb-7">Hacé tu Pedido/Consulta</p>
+                <p id="pre-submit-text" class="text-gray-400 mb-7">Enviame tu Pedido/Consulta</p>
                 <div class="flex items-center justify-center">
                     <button id="submit-button" type="submit" class="cta-button text-white font-bold py-4 px-10 rounded-full text-xl flex items-center justify-center gap-4">
                         <i class="fab fa-whatsapp text-4xl"></i>
@@ -679,6 +723,7 @@
                 <a href="https://www.instagram.com/kenna.inf" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/kenna.inf" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
             </div>
+            <img src="" alt="">
         </footer>
 
     </div>
