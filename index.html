@@ -408,6 +408,7 @@
         .main-container {
             background-color: #111827; /* Restored to bg-gray-700 */
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+            position: relative; /* Needed for absolute positioning of child */
         }
         #game-grid-container { position: relative; }
         #game-grid-wrapper {
@@ -421,6 +422,22 @@
             background: linear-gradient(to top, #111827 25%, transparent);
             pointer-events: none;
             transition: opacity 1.5s;
+        }
+        footer {
+            position: relative;
+        }
+        #memde_pointLeft {
+            position: absolute;
+            bottom: -20px;
+            max-width: 150px;
+            width: 40%;
+            z-index: 10;
+        }
+        @media (min-width: 768px) {
+            #memde_pointLeft {
+                bottom: -30px;
+                width: auto; /* Let max-width control the size */
+            }
         }
     </style>
 </head>
@@ -714,7 +731,7 @@
         <footer class="text-center mt-16 pt-8 border-t border-gray-700">
             <div class="mb-6">
                 <img src="logo.png" alt="kenna.inf" class="w-80 mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/320x80/00000000/ffffff?text=Logo'">
-                <a href="https://www.facebook.com/kenna.inf/reviews" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">
+                <a id="service-link" href="https://www.facebook.com/kenna.inf/reviews" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">
                     <i class="fas fa-star"></i> Clientes Satisfechos con Mi Servicio
                 </a>
             </div>
@@ -723,7 +740,7 @@
                 <a href="https://www.instagram.com/kenna.inf" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/kenna.inf" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
             </div>
-            <img src="" alt="">
+            <img id="memde_pointLeft" src="memde_pointLeft.png" alt="" onerror="this.onerror=null;this.src='https://placehold.co/250x300/00000000/ffffff?text=Yo'">
         </footer>
 
     </div>
@@ -1174,10 +1191,39 @@
                 window.addEventListener('resize', adjustSlideshowHeight);
             }
 
+            // --- MEME IMAGE POSITIONING ---
+            function positionMemeImage() {
+                const serviceLink = document.getElementById('service-link');
+                const memeImage = document.getElementById('memde_pointLeft');
+                const footer = document.querySelector('footer');
+
+                if (serviceLink && memeImage && footer) {
+                    const serviceLinkRect = serviceLink.getBoundingClientRect();
+                    const footerRect = footer.getBoundingClientRect();
+                    
+                    const leftPosition = serviceLinkRect.right - footerRect.left;
+                    
+                    // To prevent the image from overflowing on the right
+                    const footerWidth = footer.offsetWidth;
+                    const memeWidth = memeImage.offsetWidth;
+                    const maxLeft = footerWidth - memeWidth;
+
+                    // Apply the calculated left position, but not more than maxLeft
+                    memeImage.style.left = `${Math.min(leftPosition, maxLeft)}px`;
+                }
+            }
+
             // --- Initial calls ---
             fetchDolarRate();
             updateSelectedGamesList();
             setInitialGridHeight();
+            positionMemeImage();
+            
+            // --- Event Listeners ---
+            window.addEventListener('resize', () => {
+                setInitialGridHeight();
+                positionMemeImage();
+            });
         });
     </script>
 </body>
