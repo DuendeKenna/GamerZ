@@ -440,6 +440,55 @@
                 width: auto; /* Let max-width control the size */
             }
         }
+
+        /* --- Nueva Estilo para la Descripción de Categoría --- */
+        .software-cat-desc {
+            background-color: #1a1332;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            transition: background 0.3s, color 0.3s;
+        }
+        .software-card {
+            background-color: #23272f;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .software-card.selected {
+            background-color: #374151;
+        }
+        .software-card.unselected {
+            opacity: 0.7;
+        }
+        .software-card:hover {
+            transform: translateY(-3px);
+            background-color: #374151;
+        }
+        .software-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 0.5rem;
+        }
+        .software-name {
+            font-weight: 500;
+            color: #e5e7eb;
+            margin-bottom: 0.25rem;
+        }
+        .software-tick {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #22c55e;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .software-card.selected .software-tick {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -468,7 +517,7 @@
             <header class="text-center pt-8 mb-12 relative">
                 <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="OVNI" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
                 <h1 class="text-4xl md:text-7xl brand-title">La Nave del Medio</h1>
-                <p class="font-vt323 text-2xl md:text-4xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p><p class="green-777 font-saira">Sistema Completo de Hard + Soft</p><p></p>
+                <p class="font-vt323 text-2xl md:text-5xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p><p class="green-777 font-saira">Sistema Completo de Hard + Soft + Service</p><p></p>
                 
                 <div class="flex items-center justify-center mt-8">
                     <div class="price-container relative">
@@ -663,10 +712,11 @@
                 </div>
             </section>
 
-            <section id="section-software" class="mb-12 hidden">
+            <section id="section-software" class="mb-12">
                 <h2 class="text-5xl font-bold text-center mb-8">Programas Clave</h2>
-                <p class="text-center text-gray-400 mb-1">Te marco lo que Recomiendo👍</p>
-                <p class="text-center text-gray-100 mb-6">¡Hacé TU Selección!✅</p>
+                <p class="text-center font-saira text-xl mb-1">Te marco lo que Recomiendo👍</p>
+                <p class="text-center text-gray-100 mb-1 text-xl">✅¡Hacé TU Selección!</p>
+                <p class="text-center text-gray-400 mb-6">Podés modificarla luego...</p>
                 <div id="software-list" class="max-w-2xl mx-auto space-y-4">
                     </div>
                 <p class="text-center text-gray-400 mt-6">¿Falta el tuyo? Pedimelo en Notas📝</p>
@@ -812,16 +862,52 @@
             });
 
             // --- DATA ---
-            const gameNames = ['GTA V','LoL', 'Dota 2', 'Counter Strike 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered','Need for Speed: Underground HD','Half Life: Black Mesa','Half Life 2 HD','Abe´s Oddysey Remake','WoW Classic: en TurtleWoW','Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster','BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3','Fallout: New Vegas', 'Batman: Arkham Asylum','Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD','Need for Speed: Most Wanted HD', 'Blur', 'GRID 2','GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones','Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops','Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.','Mortal Kombat 11 Komplete Edition','Ultra Street Fighter IV','Ultimate Marvel vs. Capcom 3','The King of Fighters XIII','Injustice Gods Among Us','Heroes of Might & Magic HD V','Reckoning: Kingdoms of Amalur','Divinity Original Sin','Age of Empires II Definitive Edition','The Elder Scrolls V: Skyrim','The Elder Scrolls IV: Oblivion & AddOns HD'];
+            const gameNames = ['GTA V','LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered','Need for Speed: Underground HD','Half Life: Black Mesa','Half Life 2 HD','Abe´s Oddysey Remake','WoW Classic: en TurtleWoW','Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster','BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3','Fallout: New Vegas', 'Batman: Arkham Asylum','Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD','Need for Speed: Most Wanted HD', 'Blur', 'GRID 2','GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones','Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops','Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.','Mortal Kombat 11 Komplete Edition','Ultra Street Fighter IV','Ultimate Marvel vs. Capcom 3','The King of Fighters XIII','Injustice Gods Among Us','Heroes of Might & Magic HD V','Reckoning: Kingdoms of Amalur','Divinity Original Sin','Age of Empires II Definitive Edition','The Elder Scrolls V: Skyrim','The Elder Scrolls IV: Oblivion & AddOns HD'];
             const softwareData = [
-                { name: 'Steam', slug: 'steam', checked: true, disabled: true, category: 'Baseware' },
-                { name: 'Discord', slug: 'discord', checked: true, disabled: true, category: 'Baseware' },
-                { name: 'Google Chrome', slug: 'chrome', checked: true, disabled: false, category: 'Web' },
-                { name: 'OBS Studio', slug: 'obs', checked: false, disabled: false, category: 'Multimedia' },
-                { name: 'VLC Player', slug: 'vlc', checked: false, disabled: false, category: 'Multimedia' },
-                { name: '7-Zip', slug: '7zip', checked: true, disabled: false, category: 'Herramientas' },
-                { name: 'Wallpaper Engine', slug: 'wallpaper-engine', checked: false, disabled: false, category: 'Personalización' },
-                { name: 'Rainmeter', slug: 'rainmeter', checked: false, disabled: false, category: 'Personalización' }
+                // SISTEMA
+                { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
+                { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
+                { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
+                { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
+                { name: 'Firewall App Blocker', slug: 'firewall_app_blocker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
+                { name: 'Fraps', slug: 'fraps', checked: true, disabled: false, category: 'Sistema', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
+                { name: 'HW Monitor', slug: 'hw_monitor', checked: true, disabled: false, category: 'Sistema', descripcion: 'Monitorea temperatura y voltajes.' },
+                { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
+                { name: 'Space Sniffer', slug: 'space_sniffer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza uso de espacio en disco. Ideal para hacer lugar.' },
+                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: true, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
+                { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
+                { name: 'Wise Registry Cleaner', slug: 'wise_registry_cleaner', checked: false, disabled: false, category: 'Sistema', descripcion: 'Limpia el registro de Windows.' },
+                // MULTIMEDIA
+                { name: 'Hear', slug: 'hear', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Mejora el audio del sistema. Alta configuración.' },
+                { name: 'PotPlayer', slug: 'potplayer', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Reproductor de video avanzado.' },
+                { name: 'VLC Player', slug: 'vlc_player', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Reproduce cualquier formato de video.' },
+                { name: 'WinAmp', slug: 'winamp', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Clásico reproductor de música, renovado por la comunidad.' },
+                { name: 'YouTube', slug: 'youtube', checked: true, disabled: false, category: 'Multimedia', descripcion: 'YouTube *sin publicidad*.' },
+                { name: 'Spotify', slug: 'spotify', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Música en streaming.' },
+                { name: 'Stremio', slug: 'stremio', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Películas y series online.' },
+                // WEB
+                { name: 'Brave', slug: 'brave', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador rápido y seguro basado en Chrome. Bloquea publicidad.' },
+                { name: 'Opera GX', slug: 'opera_gx', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador gamer personalizable. Bloquea publicidad.' },
+                { name: 'Google Chrome', slug: 'google_chrome', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador web popular.' },
+                { name: 'WhatsApp', slug: 'whatsapp', checked: true, disabled: false, category: 'Web', descripcion: 'Mensajería instantánea.' },
+                { name: 'Discord', slug: 'discord', checked: false, disabled: false, category: 'Web', descripcion: 'Chat de voz y texto para comunidades.' },
+                { name: 'Zoom', slug: 'zoom', checked: false, disabled: false, category: 'Web', descripcion: 'Videollamadas y reuniones online.' },
+                { name: 'FreeDownloadManager', slug: 'freedownloadmanager', checked: true, disabled: false, category: 'Web', descripcion: 'Gestor de descargas y torrents eficiente.' },
+                { name: 'JDownloader 2', slug: 'jdownloader_2', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
+                { name: 'qBitTorrent', slug: 'qbittorrent', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
+                // CREACIÓN
+                { name: 'Inkscape', slug: 'inkscape', checked: false, disabled: false, category: 'Creación', descripcion: 'Gráficos vectoriales.' },
+                { name: 'Krita', slug: 'krita', checked: false, disabled: false, category: 'Creación', descripcion: 'Pintura y arte digital.' },
+                { name: 'Photopea', slug: 'photopea', checked: true, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
+                { name: 'Canva', slug: 'canva', checked: true, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
+                { name: 'GIMP', slug: 'gimp', checked: false, disabled: false, category: 'Creación', descripcion: 'Editor de imágenes avanzado.' },
+                { name: 'XnConvert', slug: 'xnconvert', checked: true, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
+                { name: 'CapCut', slug: 'capcut', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video sencilla.' },
+                { name: 'DaVinci Resolve', slug: 'davinci_resolve', checked: true, disabled: false, category: 'Creación', descripcion: 'Edición de video profesional.' },
+                { name: 'OBS Studio', slug: 'obs_studio', checked: true, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
+                { name: 'GitHub Desktop', slug: 'github_desktop', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Cliente visual para Git.' },
+                { name: 'Visual Studio Code', slug: 'visual_studio_code', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Editor de código moderno.' },
+                // ...otros programas existentes...
             ];
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
@@ -905,41 +991,80 @@
              });
 
 
+            const softwareCategories = [
+                { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.' },
+                { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.' },
+                { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.' },
+                { name: 'Creación', description: 'Edición de imágenes, video, diseño y herramientas para creadores.' },
+                { name: 'Desarrollo', description: 'Herramientas para programar, editar código y gestionar proyectos.' },
+            ];
+
             const softwareListContainer = document.getElementById('software-list');
-            const softwareCategories = {};
+            softwareListContainer.innerHTML = '';
 
-            softwareData.forEach(item => {
-                if (!softwareCategories[item.category]) {
-                    softwareCategories[item.category] = [];
-                }
-                softwareCategories[item.category].push(item);
-            });
-
-            for (const category in softwareCategories) {
+            softwareCategories.forEach(category => {
                 const categoryWrapper = document.createElement('div');
-                categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2">${category}</h3>`;
+                categoryWrapper.className = 'mb-8';
+                categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2">${category.name}</h3>`;
+                // Descripción de categoría
+                const descDiv = document.createElement('div');
+                descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
+                descDiv.style.transition = 'background 0.2s, color 0.2s';
+                descDiv.textContent = category.description;
+                categoryWrapper.appendChild(descDiv);
+                // Grid de programas (checkboxes)
                 const itemsWrapper = document.createElement('div');
                 itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
-                
-                softwareCategories[category].forEach(item => {
+                const programs = softwareData.filter(item => item.category === category.name);
+                programs.forEach(item => {
                     const disabledAttr = item.disabled ? 'disabled' : '';
                     const essentialClass = item.disabled ? 'essential-software' : '';
                     const disabledClass = item.disabled ? 'cursor-not-allowed' : '';
                     const checkboxColorClass = item.disabled ? 'text-green-333 focus:ring-green-333' : 'text-indigo-500 focus:ring-indigo-600';
                     const labelColorClass = item.disabled ? 'green-333' : 'text-white';
-
-                    const softwareItemHTML = `
-                    <div class="relative bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}">
-                        <label for="sw-${item.slug}" class="flex items-center cursor-pointer w-full">
-                            <input id="sw-${item.slug}" name="software" value="${item.name}" type="checkbox" ${item.checked ? 'checked' : ''} ${disabledAttr} class="w-5 h-5 ${checkboxColorClass} bg-gray-700 border-gray-600 rounded ring-offset-gray-800 focus:ring-2">
-                            <span class="ml-3 text-sm font-medium ${labelColorClass}">${item.name}</span>
-                        </label>
-                    </div>`;
-                    itemsWrapper.innerHTML += softwareItemHTML;
+                    const softwareItemHTML = document.createElement('div');
+                    softwareItemHTML.className = `relative bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}`;
+                    const label = document.createElement('label');
+                    label.setAttribute('for', `sw-${item.slug}`);
+                    label.className = 'flex items-center cursor-pointer w-full';
+                    const input = document.createElement('input');
+                    input.id = `sw-${item.slug}`;
+                    input.name = 'software';
+                    input.value = item.name;
+                    input.type = 'checkbox';
+                    if (item.checked) input.checked = true;
+                    if (item.disabled) input.disabled = true;
+                    input.className = `w-5 h-5 ${checkboxColorClass} bg-gray-700 border-gray-600 rounded ring-offset-gray-800 focus:ring-2`;
+                    const span = document.createElement('span');
+                    span.className = `ml-3 text-sm font-medium ${labelColorClass}`;
+                    span.textContent = item.name;
+                    // --- HOVER Y TOUCH EN TODO EL DIV ---
+                    function showProgramDesc() {
+                        descDiv.textContent = `${item.name}: ${item.descripcion}`;
+                    }
+                    function showCategoryDesc() {
+                        descDiv.textContent = category.description;
+                    }
+                    softwareItemHTML.addEventListener('mouseenter', showProgramDesc);
+                    softwareItemHTML.addEventListener('mouseleave', showCategoryDesc);
+                    softwareItemHTML.addEventListener('touchstart', function(e) {
+                        showProgramDesc();
+                        // Evita que se dispare mouseleave al tocar
+                        e.stopPropagation();
+                    }, {passive: true});
+                    softwareItemHTML.addEventListener('touchend', function(e) {
+                        // Espera un poco antes de volver a la categoría para UX
+                        setTimeout(showCategoryDesc, 300);
+                        e.stopPropagation();
+                    }, {passive: true});
+                    label.appendChild(input);
+                    label.appendChild(span);
+                    softwareItemHTML.appendChild(label);
+                    itemsWrapper.appendChild(softwareItemHTML);
                 });
                 categoryWrapper.appendChild(itemsWrapper);
                 softwareListContainer.appendChild(categoryWrapper);
-            }
+            });
             
             // --- SELECTED GAMES DISPLAY ---
             const selectedGamesSection = document.getElementById('selected-games-section');
@@ -1076,6 +1201,7 @@
                         const randomRotate = Math.floor(Math.random() * 20) - 10;
                         sticker.style.top = `${randomTop}%`;
                         sticker.style.left = `${randomLeft}%`;
+
                         sticker.style.transform = `rotate(${randomRotate}deg)`;
                         sticker.classList.remove('hidden');
                     } else {
@@ -1114,11 +1240,12 @@
                 const phoneNumber = '5492252513233';
 
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
+                const selectedSoftware = Array.from(document.querySelectorAll('input[name="software"]:checked')).map(cb => cb.id.replace('sw-', ''));
                 const extraNotes = document.getElementById('extra-notes').value;
-                
+
                 let message = `¡Hola, me interesa la Nave del Medio!\n\n`;
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
-                
+
                 let peripheralsMessage = '';
                 if (joystickCount > 0) peripheralsMessage += `${joystickCount} Joystick(s)`;
                 if (hasMouseKeyboard) {
@@ -1126,6 +1253,26 @@
                     peripheralsMessage += 'Mouse y Teclado Inalámbrico';
                 }
                 if(peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
+
+                // --- Programas seleccionados, agrupados por categoría ---
+                if (selectedSoftware.length > 0) {
+                    const catOrder = ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'];
+                    let programasPorCat = {};
+                    catOrder.forEach(cat => programasPorCat[cat] = []);
+                    selectedSoftware.forEach(slug => {
+                        const prog = softwareData.find(p => p.slug === slug);
+                        if (prog && programasPorCat[prog.category]) {
+                            programasPorCat[prog.category].push(prog.name);
+                        }
+                    });
+                    message += `*Programas:*\n`;
+                    catOrder.forEach(cat => {
+                        if (programasPorCat[cat].length > 0) {
+                            message += `- ${cat}: ${programasPorCat[cat].join(', ')}\n`;
+                        }
+                    });
+                }
+
                 if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
                 message += `\nPrecio Total: $${totalPriceEl.textContent}.000`;
@@ -1194,6 +1341,7 @@
                         const img = document.createElement('img');
                         img.src = src;
                         img.alt = `PC Gamer Build Image ${index + 1}`;
+
                         img.onerror=function() { this.src='https://placehold.co/400x300/1f2937/ffffff?text=Componente' };
                         img.style.opacity = index === 0 ? '1' : '0';
                         slideshowContainer.appendChild(img);
