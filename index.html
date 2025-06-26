@@ -28,6 +28,50 @@
         .green-333 { color: #42d232; }
         .green-777 { color: #107c10; }
 
+        /* --- Green Checkbox Styles --- */
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            background-color: #23272f;
+            border: 2.5px solid #42d232;
+            border-radius: 0.5em;
+            width: 1.4em;
+            height: 1.4em;
+            cursor: pointer;
+            position: relative;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            vertical-align: middle;
+            margin-right: 0.5em;
+        }
+        .custom-checkbox:checked {
+            background-color: #42d232;
+            border-color: #42d232;
+        }
+        .custom-checkbox:checked::after {
+            content: '\2714';
+            color: #fff;
+            font-size: 1.1em;
+            position: absolute;
+            left: 0.18em;
+            top: 0.05em;
+        }
+        .custom-checkbox:focus {
+            box-shadow: 0 0 0 2px #95ef81;
+        }
+        /* For accessibility: show focus ring */
+        .custom-checkbox:focus-visible {
+            outline: 2px solid #42d232;
+        }
+        /* Hide default tick for input[type=checkbox] */
+        input[type="checkbox"].custom-checkbox {
+            accent-color: #42d232;
+        }
+        /* Hide the default tick for all browsers */
+        input[type="checkbox"].custom-checkbox::-ms-check {
+            color: transparent;
+        }
+
         /* --- Font Families --- */
         .font-gamer { font-family: 'Press Start 2P', cursive; }
         .font-vt323 { font-family: 'VT323', monospace; }
@@ -517,7 +561,7 @@
             <header class="text-center pt-8 mb-12 relative">
                 <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="OVNI" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
                 <h1 class="text-4xl md:text-7xl brand-title">La Nave del Medio</h1>
-                <p class="font-vt323 text-2xl md:text-5xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p><p class="green-777 font-saira">Sistema Completo de Hard + Soft + Service</p><p></p>
+                <p class="font-vt323 text-4xl md:text-5xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p><p class="green-777 font-saira">Sistema Completo de Hard + Soft + Service</p><p></p>
                 
                 <div class="flex items-center justify-center mt-8">
                     <div class="price-container relative">
@@ -896,7 +940,7 @@
                 { name: 'JDownloader 2', slug: 'jdownloader_2', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
                 { name: 'qBitTorrent', slug: 'qbittorrent', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
                 // CREACIÓN
-                { name: 'Inkscape', slug: 'inkscape', checked: false, disabled: false, category: 'Creación', descripcion: 'Gráficos vectoriales.' },
+                { name: 'Inkscape', slug: 'inkscape', checked: false, disabled: false, category: 'Creación', descripcion: 'Gráficos vectoriales. Ideal para diseñar logos profesionales.' },
                 { name: 'Krita', slug: 'krita', checked: false, disabled: false, category: 'Creación', descripcion: 'Pintura y arte digital.' },
                 { name: 'Photopea', slug: 'photopea', checked: true, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
                 { name: 'Canva', slug: 'canva', checked: true, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
@@ -929,23 +973,34 @@
                 let total = BASE_PRICE;
                 if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
                 if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
-                
                 totalPriceEl.textContent = Math.floor(total / 1000);
-                
-                if (rate) {
-                    const totalUSD = total / rate;
+                // Mostrar precio en USD solo con dólar oficial
+                let oficial = null;
+                if (allDolarRates && allDolarRates.length) {
+                    oficial = allDolarRates.find(r => r.nombre && r.nombre.toLowerCase().includes('oficial'));
+                }
+                // Si no está en allDolarRates, usar el parámetro rate (de fetchDolarRate)
+                if (!oficial && rate) {
+                    oficial = { venta: rate };
+                }
+                if (oficial && oficial.venta) {
+                    const totalUSD = total / oficial.venta;
                     const usdText = `$${totalUSD.toFixed(0)} USD`;
-                    
                     if(usdPriceTopEl) {
                         usdPriceTopEl.textContent = usdText;
                         usdPriceTopEl.classList.remove('hidden');
+                        usdPriceTopEl.parentElement.style.display = '';
                     }
-                     if(usdPriceBottomEl) {
+                    if(usdPriceBottomEl) {
                         usdPriceBottomEl.textContent = usdText;
                         usdPriceBottomEl.classList.remove('hidden');
+                        usdPriceBottomEl.parentElement.style.display = '';
                     }
                     if(usdLinkTop) usdLinkTop.classList.remove('hidden');
                     if(usdLinkBottom) usdLinkBottom.classList.remove('hidden');
+                } else {
+                    if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
+                    if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
                 }
             }
 
@@ -992,11 +1047,11 @@
 
 
             const softwareCategories = [
-                { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.' },
-                { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.' },
-                { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.' },
-                { name: 'Creación', description: 'Edición de imágenes, video, diseño y herramientas para creadores.' },
-                { name: 'Desarrollo', description: 'Herramientas para programar, editar código y gestionar proyectos.' },
+                { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.', icon: 'fa-shield-alt' },
+                { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.', icon: 'fa-photo-film' },
+                { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.', icon: 'fa-globe' },
+                { name: 'Creación', description: 'Edición de imágenes, video, diseño y herramientas para creadores.', icon: 'fa-paint-brush' },
+                { name: 'Desarrollo', description: 'Herramientas para programar, editar código y gestionar proyectos.', icon: 'fa-code' },
             ];
 
             const softwareListContainer = document.getElementById('software-list');
@@ -1005,7 +1060,8 @@
             softwareCategories.forEach(category => {
                 const categoryWrapper = document.createElement('div');
                 categoryWrapper.className = 'mb-8';
-                categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2">${category.name}</h3>`;
+                // Add icon to category heading
+                categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2 flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</h3>`;
                 // Descripción de categoría
                 const descDiv = document.createElement('div');
                 descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
@@ -1048,15 +1104,21 @@
                     softwareItemHTML.addEventListener('mouseenter', showProgramDesc);
                     softwareItemHTML.addEventListener('mouseleave', showCategoryDesc);
                     softwareItemHTML.addEventListener('touchstart', function(e) {
-                        showProgramDesc();
-                        // Evita que se dispare mouseleave al tocar
-                        e.stopPropagation();
-                    }, {passive: true});
+                        longPressActive = false;
+                        longPressTimer = setTimeout(function() {
+                            descDiv.textContent = item.name + ': ' + item.descripcion;
+                            longPressActive = true;
+                        }, 500); // 500ms for long-press
+                    });
                     softwareItemHTML.addEventListener('touchend', function(e) {
-                        // Espera un poco antes de volver a la categoría para UX
-                        setTimeout(showCategoryDesc, 300);
-                        e.stopPropagation();
-                    }, {passive: true});
+                        clearTimeout(longPressTimer);
+                        if (!longPressActive) {
+                            descDiv.textContent = category.description;
+                        }
+                    });
+                    softwareItemHTML.addEventListener('touchmove', function(e) {
+                        clearTimeout(longPressTimer);
+                    });
                     label.appendChild(input);
                     label.appendChild(span);
                     softwareItemHTML.appendChild(label);
@@ -1110,6 +1172,7 @@
                     if (consecutiveErrorClicks >= 2) {
                         resetSelectionBtn.classList.remove('hidden');
                     }
+                   
                     errorToast.classList.add('show');
                     errorToastTimeout = setTimeout(hideErrorToast, 4000);
                 }, 150);
@@ -1139,6 +1202,7 @@
             const allGameCards = Array.from(gameListContainer.children);
 
             function setInitialGridHeight() {
+
                 if (isGridExpanded || !allGameCards.length) return;
 
                 const gridGap = parseInt(window.getComputedStyle(gameListContainer).getPropertyValue('grid-row-gap')) || 24;
@@ -1287,27 +1351,43 @@
 
             function showDolarPopup() {
                 if (allDolarRates.length === 0) return;
-
-                dolarRatesList.innerHTML = ''; // Clear previous rates
-                allDolarRates.forEach(rate => {
-                    const rateEl = document.createElement('div');
-                    rateEl.className = 'flex justify-between items-center text-sm border-b border-gray-700/50 pb-2';
-                    const name = rate.nombre.replace('Dólar', '').trim();
-                    rateEl.innerHTML = `
-                        <span class="font-bold text-gray-300">${name}</span>
-                        <div class="text-right">
-                            <span class="text-gray-400">Compra: </span><span class="font-mono text-green-400">$${rate.compra}</span><br>
-                            <span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span>
-                        </div>
-                    `;
-                    dolarRatesList.appendChild(rateEl);
-                });
-
+                dolarRatesList.innerHTML = '';
+                // Solo mostrar Oficial, Blue y Cripto
+                const tiposPermitidos = [
+                    { key: 'oficial', label: 'Oficial' },
+                    { key: 'blue', label: 'Blue' },
+                    { key: 'cripto', label: 'Cripto' }
+                ];
+                const mapApiKey = (nombre) => {
+                    const n = nombre.toLowerCase();
+                    if (n.includes('oficial')) return 'oficial';
+                    if (n.includes('blue')) return 'blue';
+                    if (n.includes('cripto')) return 'cripto';
+                    return '';
+                };
                 let total = BASE_PRICE;
                 if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
                 if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
+                tiposPermitidos.forEach(tipo => {
+                    const rate = allDolarRates.find(r => mapApiKey(r.nombre) === tipo.key);
+                    if (!rate) return;
+                    const precioEnDolar = rate.venta ? (total / rate.venta) : null;
+                    const name = tipo.label;
+                    const rateEl = document.createElement('div');
+                    rateEl.className = 'flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2';
+                    rateEl.innerHTML = `
+                        <div class="flex justify-between items-center text-sm">
+                            <span class="font-bold text-gray-300">${name}</span>
+                            <div class="text-right">
+                                <span class="text-gray-400">Compra: </span><span class="font-mono text-green-400">$${rate.compra}</span><br>
+                                <span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span>
+                            </div>
+                        </div>
+                        <div class="text-violet-400 font-bold text-lg text-center mt-1">$${precioEnDolar ? precioEnDolar.toFixed(0) : '-'} USD</div>
+                    `;
+                    dolarRatesList.appendChild(rateEl);
+                });
                 googleLink.href = `https://www.google.com/search?q=${total}+ars+to+usd`;
-
                 dolarPopup.classList.remove('hidden');
             }
 
