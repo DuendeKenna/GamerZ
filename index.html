@@ -565,8 +565,8 @@
                 
                 <div class="flex items-center justify-center mt-8">
                     <div class="price-container relative">
-                        <div class="launch-badge">MODO CENTRO <small>*ON*</small></div>
-                        <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$500.000</p>
+                        <div class="launch-badge">a un precio de LOCOS!!</div>
+                        <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$555.000</p>
                          <div class="mt-1 flex items-baseline justify-center gap-2">
                              <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl cursor-pointer"></span>
                              <a id="usd-link-top" href="#" class="text-gray-500 text-xs hover:underline hidden">Ver Cotizaciones</a>
@@ -760,7 +760,6 @@
                 <h2 class="text-5xl font-bold text-center mb-8">Programas Clave</h2>
                 <p class="text-center font-saira text-xl mb-1">Te marco lo que Recomiendo👍</p>
                 <p class="text-center text-gray-100 mb-1 text-xl">✅¡Hacé TU Selección!</p>
-                <p class="text-center text-gray-400 mb-2 md:hidden flex items-center justify-center gap-2"><span>Mantené el dedo sobre un programa para ver de qué se trata</span> <span class="text-2xl">🖐️</span></p>
                 <p class="text-center text-gray-400 mb-6">Podés modificarla luego...</p>
                 <div id="software-list" class="max-w-2xl mx-auto space-y-4">
                     </div>
@@ -784,10 +783,10 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto mt-2 text-center text-gray-400 text-sm">
-                    <p>Joystick Xbox 360 (+22k)<br>Cable 2.5 mts</p>
+                    <p>Joystick Xbox 360 (+25k)<br>Cable 2.5 mts</p>
                     <p>Mouse y Teclado (+36k)<br>Inalámbrico</p>
                 </div>
-
+|
                 <div class="text-center mt-10 max-w-4xl mx-auto">
                     <div id="selected-games-section" class="mb-6 hidden">
                       <p class="text-gray-400 text-lg">Juegos Incluidos</p>
@@ -958,8 +957,8 @@
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
             
             // --- PRICE CALCULATION & USD ---
-            const BASE_PRICE = 500000;
-            const JOYSTICK_PRICE = 22000;
+            const BASE_PRICE = 555000;
+            const JOYSTICK_PRICE = 25000;
             const MOUSE_KEYBOARD_PRICE = 36000;
             let joystickCount = 0;
             let hasMouseKeyboard = false;
@@ -1104,22 +1103,6 @@
                     }
                     softwareItemHTML.addEventListener('mouseenter', showProgramDesc);
                     softwareItemHTML.addEventListener('mouseleave', showCategoryDesc);
-                    softwareItemHTML.addEventListener('touchstart', function(e) {
-                        longPressActive = false;
-                        longPressTimer = setTimeout(function() {
-                            descDiv.textContent = item.name + ': ' + item.descripcion;
-                            longPressActive = true;
-                        }, 500); // 500ms for long-press
-                    });
-                    softwareItemHTML.addEventListener('touchend', function(e) {
-                        clearTimeout(longPressTimer);
-                        if (!longPressActive) {
-                            descDiv.textContent = category.description;
-                        }
-                    });
-                    softwareItemHTML.addEventListener('touchmove', function(e) {
-                        clearTimeout(longPressTimer);
-                    });
                     label.appendChild(input);
                     label.appendChild(span);
                     softwareItemHTML.appendChild(label);
