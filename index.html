@@ -588,62 +588,61 @@
                     <p class="text-gray-200 font-saira text-xl mt-1">no es <i>La Máquina</i>... es <i><b>La Experiencia ♾️</b></i></p>
                  </div>
                  
-                
-                 <div id="section-front-features" class="flex flex-wrap justify-center gap-4 px-4 md:px-0">
-                     <div class="feature-card w-[45%] lg:w-[30%]">
+                 <!-- NEW GRID LAYOUT FOR FEATURE CARDS -->
+                 <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
+                     <div class="feature-card">
                          <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
                          <h4 class="font-saira font-bold text-white text-xl text-base leading-tight">Windows 11 Optimizado</h4>
                          <p class="text-s text-gray-300 mt-1">Ligero | Moderno | Eficaz</p>
                      </div>
              
-                     <div class="feature-card w-[45%] lg:w-[30%]">
+                     <div class="feature-card">
                          <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
                          <h4 class="font-saira font-bold text-white text-base  text-xl leading-tight">Software Clave Integrado</h4>
                          <p class="text-s text-gray-300 mt-1">A Elección ✔</p>
                      </div>
              
-                     <div class="feature-card w-[45%] lg:w-[30%]">
+                     <div class="feature-card">
                          <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
                          <h4 class="font-saira font-bold text-white text-base leading-tight text-xl">Hardware Seleccionado</h4>
                          <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
                      </div>
              
-                     <div class="feature-card animated-bg-games w-[45%] lg:w-[30%]">
+                     <div class="feature-card animated-bg-games">
                          <div class="corner-ribbon-wrapper"><div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span class="despegue-text text-violet-700">DESPEGUE</span></div></div>
                          <div class="text-orange-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
                          <h4 class="font-saira font-bold text-white text-base leading-tight">Hasta <p class="text-orange-400 text-xl">3 Juegos Incluidos</p></h4>
                          <p class="text-s text-gray-300 mt-1">Elegilos ✔</p>
                      </div>
 
-                    <div class="feature-card w-full md:w-[45%] lg:w-[36%]">
-                        <div class="w-full flex flex-col sm:flex-row items-center text-center sm:text-left gap-4">
-                            <div class="flex-shrink-0">
-                                <img src="SoportePersonal.png" alt="Icono de Soporte Técnico" class="w-24 h-24" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                    <!-- Card de Soporte Técnico Modificada -->
+                    <div class="feature-card relative lg:col-span-2" style="padding: 1rem; overflow: hidden; min-height: 240px;">
+                        <img src="memde_think.png" alt="Soporte técnico personalizado"
+                            class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none
+                                md:z-10 md:opacity-100 md:h-[110%] md:-right-4"
+                            onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
+                        
+                        <div class="relative z-10 w-full h-full flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                            <div class="flex items-center gap-4 mb-3">
+                                <img src="SoportePersonal.png" alt="Icono de Soporte Técnico" class="w-16 h-16 md:w-20 md:h-20 flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                                <h4 class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap">Soporte Técnico</h4>
                             </div>
-                            <div class="flex-grow w-full">
-                                <h4 class="font-saira font-bold text-white text-xl leading-tight whitespace-nowrap text-center sm:text-left">Soporte Técnico</h4>
-                                <div class="mt-2 space-y-2 text-sm text-gray-300">
-                                    <p class="flex items-center justify-center sm:justify-start">
-                                        <i class="fas fa-comments text-cyan-400 fa-fw w-6 text-center"></i>
-                                        <span class="ml-2">Contacto Directo</span>
-                                    </p>
-                                    <p class="flex items-center justify-center sm:justify-start">
-                                        <i class="fas fa-desktop text-cyan-400 fa-fw w-6 text-center"></i>
-                                        <span class="ml-2">Asistencia Remota</span>
-                                    </p>
-                                    <div class="flex items-center justify-center sm:justify-start">
-                                        <i class="fas fa-screwdriver text-cyan-400 fa-fw w-6 text-center"></i>
-                                        <div class="ml-2">
-                                            <p>Servicio a Domicilio</p>
-                                            <p class="text-xs text-gray-500 -mt-1">(en todo el partido)</p>
-                                        </div>
+                            <div class="space-y-2 text-sm text-gray-300 max-w-xs pl-0 md:pl-8">
+                                <p class="flex items-center justify-center md:justify-start"><i class="fas fa-comments text-cyan-400 fa-fw w-6"></i><span class="ml-2">Contacto Directo</span></p>
+                                <p class="flex items-center justify-center md:justify-start"><i class="fas fa-desktop text-cyan-400 fa-fw w-6"></i><span class="ml-2">Asistencia Remota</span></p>
+                                <div class="flex items-center justify-center md:justify-start">
+                                    <i class="fas fa-screwdriver text-cyan-400 fa-fw w-6"></i>
+                                    <div class="ml-2">
+                                        <p>Servicio a Domicilio</p>
+                                        <p class="text-xs text-gray-500 -mt-1">(en todo el partido)</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="hidden md:flex lg:hidden w-[45%] items-center justify-center">
+                    <!-- Yellow Button for Tablet View -->
+                    <div class="hidden md:flex lg:hidden items-center justify-center">
                         <a href="#games-section" class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
                             <div class="flex items-center justify-center gap-5">
                                 <i class="fas fa-tasks text-2xl"></i>
@@ -1127,7 +1126,7 @@
                         const gameSlug = toSlug(gameName);
                         const gameEl = document.createElement('div');
                         gameEl.className = 'w-1/4 md:w-1/5 p-1';
-                        gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${gameImageSrc}" alt="${gameName}" class="rounded-md shadow-lg w-full h-auto object-cover aspect-[3/4]" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${gameName.replace(/\s/g, '+')}';"></a>`;
+                        gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${imageSrc}" alt="${gameName}" class="rounded-md shadow-lg w-full h-auto object-cover aspect-[3/4]" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${gameName.replace(/\s/g, '+')}';"></a>`;
                         selectedGamesList.appendChild(gameEl);
                     });
                 } else {
