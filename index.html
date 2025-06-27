@@ -1328,10 +1328,10 @@
                         const marginPx = marginRem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 
                         const croxALeft = hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx;
-                        croxA.style.left = `${croxALeft}px`;
+                        croxA.style.left = `${croxALeft+33}px`;
                         
                         const croxBRight = wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx;
-                        croxB.style.right = `${croxBRight}px`;
+                        croxB.style.right = `${croxBRight+56}px`;
                         croxB.style.left = 'auto';
                     }
                 }
