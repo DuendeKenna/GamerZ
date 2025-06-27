@@ -405,7 +405,7 @@
             transition: opacity 0.8s ease-in-out;
         }
         
-        #hero-wrapper { position: relative; padding-bottom: 2rem; }
+        #hero-wrapper { position: relative; }
         #hero-background-in {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             pointer-events:none; background-image: url('hero-background.webp');
@@ -563,6 +563,44 @@
                 top: auto;
             }
         }
+
+        /* --- Hero Product Images --- */
+        .hero-crox-img {
+            position: absolute;
+            pointer-events: none;
+            z-index: 20;
+            width: auto;
+            transition: all 0.3s ease-in-out;
+            will-change: transform, top, left, right;
+        }
+
+        /* Desktop and up */
+        @media (min-width: 1024px) {
+            .hero-crox-img {
+                height: 420px;
+            }
+        }
+
+        /* Tablet */
+        @media (max-width: 1023px) {
+            .hero-crox-img {
+                height: 320px;
+            }
+        }
+        
+        /* Mobile */
+        @media (max-width: 767px) {
+             .hero-crox-img {
+                height: 250px;
+             }
+        }
+
+        /* Small mobile - hide */
+        @media (max-width: 639px) {
+            .hero-crox-img {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -587,14 +625,19 @@
     </div>
 
     <div class="container main-container mx-auto p-4 md:p-8 max-w-5xl">
-        <div id="hero-wrapper" class="mb-12" style="top: -2px; left: 0px;">
+        <div id="hero-wrapper" class="relative">
             <div id="hero-background" style="left: -1px; top: 0px;pointer-events:none;"><div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div></div>
-            <header class="text-center pt-8 mb-12 relative">
+            
+            <img src="home-crox-A.png" id="home-crox-a" class="hero-crox-img" alt="Gabinete PC Gamer Básico" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Case'">
+            <img src="home-crox-B.png" id="home-crox-b" class="hero-crox-img" alt="Gabinete PC Gamer con Periféricos" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Bundle'">
+            
+            <header class="text-center pt-8 relative">
                 <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="OVNI" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
                  <img src="LaNave_LogoLetras.png" alt="Logo de La Nave del Medio" class="w-96 h-auto mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/192x64/00000000/ffffff?text=Logo'">
-                <p class="font-vt323 text-4xl md:text-5xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p><p class="green-777 font-saira">Sistema Completo de Hard + Soft + Service</p><p></p>
+                <p class="font-vt323 text-4xl md:text-5xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p>
+                <p class="green-777 font-saira">Sistema Completo de Hard + Soft + Service</p>
                 
-                <div class="flex items-center justify-center mt-8">
+                <div class="flex items-center justify-center mt-6">
                     <div class="price-container relative">
                         <div class="launch-badge">a un precio de LOCOS!!</div>
                         <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$555.000</p>
@@ -611,17 +654,7 @@
                 </div>
             </header>
             
-            <!-- BLOQUE HERO CROQUIS NUEVO -->
-            <div class="relative flex items-center justify-center my-8 md:my-12" style="min-height: 150px; top: -272px; left: -25px;">
-                <!-- Imagen A (izquierda) -->
-                <img src="home-crox-A.png" alt="PC lateral" class="hidden md:block absolute left-0 md:-left-16 lg:-left-24 xl:-left-32 2xl:-left-40 top-1/2 -translate-y-1/2 w-40 md:w-52 lg:w-64 xl:w-72 2xl:w-80 z-20 pointer-events-none select-none" style="max-width: 30vw;">
-                <!-- Imagen B (derecha) -->
-                <img src="home-crox-B.png" alt="PC gamer y accesorios" class="hidden md:block absolute right-0 md:-right-24 lg:-right-36 xl:-right-44 2xl:-right-56 top-1/2 -translate-y-1/2 w-48 md:w-64 lg:w-80 xl:w-96 2xl:w-[30rem] z-30 pointer-events-none select-none" style="max-width: 38vw;">
-                <!-- Título central -->
-            </div>
-            <!-- FIN BLOQUE HERO CROQUIS NUEVO -->
-
-            <div class="hook-section text-center max-w-4xl mx-auto mt-6 space-y-6">
+            <div class="hook-section text-center max-w-4xl mx-auto mt-12 space-y-6 relative z-40">
                  <div>
                     <p class="text-3xl font-bold"><strong><i>¿Gama Alta?</i><br class="sm:hidden"> ¡Ni Hace Falta!</strong></p>
                     <p class="text-gray-200 font-saira text-xl mt-2">con MENO<b class="text-2xl">$</b> de la 1/2 <i class="text-violet-500 text-2xl">VOLÁS⚡</i></p>
@@ -1274,7 +1307,40 @@
                 loadMoreOverlay.style.pointerEvents = 'none';
             });
 
-            window.addEventListener('resize', setInitialGridHeight);
+            // --- HERO PRODUCT IMAGES POSITIONING ---
+            function positionCroxImages() {
+                const croxA = document.getElementById('home-crox-a');
+                const croxB = document.getElementById('home-crox-b');
+                const hookSection = document.querySelector('.hook-section');
+                const wrapper = document.getElementById('hero-wrapper');
+                
+                if (croxA && croxB && hookSection && wrapper) {
+                     if (window.innerWidth > 639) { 
+                        const wrapperRect = wrapper.getBoundingClientRect();
+                        const hookSectionRect = hookSection.getBoundingClientRect();
+                        
+                        const topPosition = hookSectionRect.top - wrapperRect.top - (croxA.offsetHeight / 2) ;
+                        
+                        croxA.style.top = `${topPosition}px`;
+                        croxB.style.top = `${topPosition}px`;
+
+                        const marginRem = -10;
+                        const marginPx = marginRem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+                        const croxALeft = hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx;
+                        croxA.style.left = `${croxALeft}px`;
+                        
+                        const croxBRight = wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx;
+                        croxB.style.right = `${croxBRight}px`;
+                        croxB.style.left = 'auto';
+                    }
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                setInitialGridHeight();
+                positionCroxImages();
+            });
 
 
             // --- EVENT LISTENERS ---
@@ -1337,7 +1403,12 @@
                 const phoneNumber = '5492252513233';
 
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
-                const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => cb.dataset.slug);
+                const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => {
+                    const slug = cb.dataset.slug;
+                    const software = softwareData.find(s => s.slug === slug);
+                    return software ? software.name : '';
+                }).filter(name => name);
+                
                 const extraNotes = document.getElementById('extra-notes').value;
 
                 let message = `¡Hola, me interesa la Nave del Medio!\n\n`;
@@ -1356,12 +1427,14 @@
                     const catOrder = ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'];
                     let programasPorCat = {};
                     catOrder.forEach(cat => programasPorCat[cat] = []);
-                    selectedSoftware.forEach(slug => {
-                        const prog = softwareData.find(p => p.slug === slug);
+                    
+                    selectedSoftware.forEach(name => {
+                        const prog = softwareData.find(p => p.name === name);
                         if (prog && programasPorCat[prog.category]) {
                             programasPorCat[prog.category].push(prog.name);
                         }
                     });
+
                     message += `*Programas:*\n`;
                     catOrder.forEach(cat => {
                         if (programasPorCat[cat].length > 0) {
@@ -1511,11 +1584,13 @@
             updateSelectedGamesList();
             setInitialGridHeight();
             positionMemeImage();
+            positionCroxImages();
             
             // --- Event Listeners ---
             window.addEventListener('resize', () => {
                 setInitialGridHeight();
                 positionMemeImage();
+                positionCroxImages();
             });
         });
     </script>
