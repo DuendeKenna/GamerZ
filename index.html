@@ -577,21 +577,21 @@
         /* Desktop and up */
         @media (min-width: 1024px) {
             .hero-crox-img {
-                height: 420px;
+                height: 336px; /* 420px * 0.8 */
             }
         }
 
         /* Tablet */
         @media (max-width: 1023px) {
             .hero-crox-img {
-                height: 320px;
+                height: 256px; /* 320px * 0.8 */
             }
         }
         
         /* Mobile */
         @media (max-width: 767px) {
              .hero-crox-img {
-                height: 250px;
+                height: 200px; /* 250px * 0.8 */
              }
         }
 
@@ -1328,7 +1328,7 @@
                         const marginPx = marginRem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 
                         const croxALeft = hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx;
-                        croxA.style.left = `${croxALeft+33}px`;
+                        croxA.style.left = `${croxALeft}px`;
                         
                         const croxBRight = wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx;
                         croxB.style.right = `${croxBRight+56}px`;
