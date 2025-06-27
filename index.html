@@ -202,7 +202,7 @@
             position: absolute;            
             top: -10%; left: -10%;
             width: 120%; height: 120%;
-            background-image: url('wall_covers_sm.jpeg');
+            background-image: url('covers_wall.webp');
             background-size: 250%;
             animation: 
                 ping-pong-path 45s ease-in-out infinite,
@@ -278,12 +278,6 @@
             filter: drop-shadow(0 0 20px #42d232) contrast(2) brightness(2);
         }
 
-        /* --- Essential Software Highlight --- */
-        .essential-software {
-            background-color: rgba(66, 210, 50, 0.1);
-            border-left: 3px solid #42d232;
-        }
-        
         /* --- Animation & Misc --- */
         .animate-float {
             animation: float 6s ease-in-out infinite;
@@ -396,14 +390,6 @@
             text-shadow: 1px 1px 1px rgba(84, 0, 117, 0.2);
             letter-spacing: 1pt;
         }
-
-
-        #slideshow-container { background-color: #353f4d; }
-        #slideshow-container img {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; object-fit: contain;
-            transition: opacity 0.8s ease-in-out;
-        }
         
         #hero-wrapper { position: relative; }
         #hero-background-in {
@@ -424,7 +410,6 @@
             50% { transform: scale(1) rotate(1deg); filter: blur(12px); opacity: 0.1; }
             100% { transform: scale(0.8) rotate(0deg); filter: blur(20px); opacity: 0.06; }
         }
-        /* @media (max-width: 767px) { #hero-background { display: none; } } */
         
         @keyframes float-up-down {
             0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); }
@@ -435,9 +420,9 @@
         }
 
         .main-container {
-            background-color: #111827; /* Restored to bg-gray-700 */
+            background-color: #111827;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
-            position: relative; /* Needed for absolute positioning of child */
+            position: relative;
         }
         #game-grid-container { position: relative; }
         #game-grid-wrapper {
@@ -466,11 +451,10 @@
         @media (min-width: 768px) {
             #memde_pointLeft {
                 bottom: -30px;
-                width: auto; /* Let max-width control the size */
+                width: auto;
             }
         }
 
-        /* --- Nueva Estilo para la Descripción de Categoría --- */
         .software-cat-desc {
             background-color: #1a1332;
             border-radius: 1rem;
@@ -478,48 +462,7 @@
             margin-bottom: 1rem;
             transition: background 0.3s, color 0.3s;
         }
-        .software-card {
-            background-color: #23272f;
-            border-radius: 0.75rem;
-            padding: 1rem;
-            text-align: center;
-            transition: transform 0.3s, background 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .software-card.selected {
-            background-color: #374151;
-        }
-        .software-card.unselected {
-            opacity: 0.7;
-        }
-        .software-card:hover {
-            transform: translateY(-3px);
-            background-color: #374151;
-        }
-        .software-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 0.5rem;
-        }
-        .software-name {
-            font-weight: 500;
-            color: #e5e7eb;
-            margin-bottom: 0.25rem;
-        }
-        .software-tick {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: #22c55e;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .software-card.selected .software-tick {
-            opacity: 1;
-        }
-
-        /* --- Soporte Técnico (memde_think.png) Responsive --- */
+       
         #section-front-features .feature-card.soporte-tecnico-card {
             overflow: visible !important;
         }
@@ -574,45 +517,144 @@
             will-change: transform, top, left, right;
         }
 
-        /* Desktop and up */
-        @media (min-width: 1024px) {
-            .hero-crox-img {
-                height: 336px; /* 420px * 0.8 */
-            }
-        }
+        @media (min-width: 1024px) { .hero-crox-img { height: 336px; } }
+        @media (max-width: 1023px) { .hero-crox-img { height: 256px; } }
+        @media (max-width: 767px) { .hero-crox-img { height: 200px; } }
+        @media (max-width: 639px) { .hero-crox-img { display: none; } }
 
-        /* Tablet */
-        @media (max-width: 1023px) {
-            .hero-crox-img {
-                height: 256px; /* 320px * 0.8 */
-            }
+        /* --- Hardware Selection --- */
+        .component-category-title {
+            font-family: 'Press Start 2P', sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #42d232;
+            text-shadow: 0 0 8px rgba(66, 210, 50, 0.7);
+        }
+        .component-category-title span {
+            display: block;
+            font-family: 'Saira', sans-serif;
+            font-size: 1.125rem;
+            color: #9ca3af;
+            text-shadow: none;
+            margin-top: 0.25rem;
         }
         
-        /* Mobile */
-        @media (max-width: 767px) {
-             .hero-crox-img {
-                height: 200px; /* 250px * 0.8 */
-             }
+        #hardware-grid {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
         }
-
-        /* Small mobile - hide */
-        @media (max-width: 639px) {
-            .hero-crox-img {
-                display: none;
+        @media (min-width: 768px) {
+            #hardware-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
+        @media (min-width: 1280px) { /* xl */
+             #hardware-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        .hardware-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .hardware-option-card {
+            background-color: rgba(31, 41, 55, 0.6);
+            border: 2px solid #42d232;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+            width: 180px;
+            box-shadow: 0 0 15px rgba(66, 210, 50, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .hardware-option-card .content-wrapper {
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .hardware-option-card img {
+            height: 128px;
+            width: 100%;
+            object-fit: contain;
+            margin-bottom: 0.75rem;
+        }
+
+        .hardware-option-card .name {
+            font-weight: 600;
+            color: #e5e7eb;
+            min-height: 40px;
+        }
+        
+        .hardware-option-card .price-diff {
+            font-size: 0.875rem; /* text-sm */
+            color: #9ca3af;
+        }
+        
+        .hardware-selector-arrow {
+            background-color: rgba(75, 85, 99, 0.3);
+            border: 1px solid rgba(107, 114, 128, 0.5);
+            color: #e5e7eb;
+            border-radius: 9999px;
+            width: 2.5rem;
+            height: 2.5rem;
+            font-size: 1.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+        .hardware-selector-arrow:hover {
+            background-color: rgba(107, 114, 128, 0.5);
+            transform: scale(1.1);
+        }
+
+        #hardware-price-floater {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(75, 85, 99, 0.5);
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            z-index: 40;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        #hardware-price-floater.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
     </style>
 </head>
 <body class="bg-gray-900 text-white">
 
-    <!-- Dolar Popup Modal -->
+    <!-- Floating Price Display for Hardware Section -->
+    <div id="hardware-price-floater">
+        <div class="flex items-center gap-4">
+            <span class="font-saira text-gray-300 text-lg">Precio Actual:</span>
+            <div class="text-right">
+                <p id="floater-price-ars" class="font-saira font-bold text-3xl text-cyan-400">$0</p>
+                <p id="floater-price-usd" class="font-saira text-base text-violet-400">$0 USD</p>
+            </div>
+        </div>
+    </div>
+
+
     <div id="dolar-popup" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <div id="popup-content" class="bg-gray-800/80 backdrop-blur-lg border border-gray-600/50 rounded-xl p-6 w-full max-w-sm text-white flex flex-col items-center justify-center">
             <h3 class="text-xl font-saira font-bold text-center mb-4 text-cyan-300">Cotizaciones Dólar</h3>
             <div id="dolar-rates-list" class="space-y-3">
                 <!-- Rates will be injected here by JS -->
             </div>
-            <!-- Solo una línea separadora debajo de la lista -->
             <hr class="border-gray-600 my-4">
             <a id="google-link" href="#" target="_blank" class="block text-center text-sm text-indigo-400 hover:underline">Ver en Google &rarr;</a>
         </div>
@@ -624,7 +666,7 @@
         <button id="reset-selection-btn" class="hidden bg-white text-red-600 font-bold py-1 px-3 rounded-md text-sm">Reiniciar Selección</button>
     </div>
 
-    <div class="container main-container mx-auto p-4 md:p-8 max-w-5xl">
+    <div class="container main-container mx-auto p-4 md:p-8 max-w-7xl">
         <div id="hero-wrapper" class="relative">
             <div id="hero-background" style="left: -1px; top: 0px;pointer-events:none;"><div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div></div>
             
@@ -663,7 +705,6 @@
                     <h2 class="relative z-40 font-saira font-bold text-center mt-6 mb-8 text-3xl md:text-4xl lg:text-5xl" style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">ELEGÍ TU COMBO</h2>
                  </div>
                  
-                 <!-- NEW GRID LAYOUT FOR FEATURE CARDS -->
                  <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
                      <div class="feature-card">
                          <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
@@ -690,7 +731,6 @@
                          <p class="text-s text-gray-300 mt-1">Elegilos ✔</p>
                      </div>
 
-                    <!-- Card de Soporte Técnico Modificada -->
                     <div class="feature-card relative lg:col-span-2 soporte-tecnico-card" style="padding: 1rem; overflow: hidden; min-height: 200px;">
                         <img src="memde_think.png" alt="Soporte técnico personalizado"
                             class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none
@@ -716,7 +756,6 @@
                         </div>
                     </div>
                     
-                    <!-- Yellow Button for Tablet View -->
                     <div class="hidden md:flex lg:hidden items-center justify-center">
                         <a href="#games-section" class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
                             <div class="flex items-center justify-center gap-5">
@@ -742,59 +781,22 @@
                     </div>
                 </a>
              </div>
-             
-             <section class="hidden bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="flex flex-col items-center">
-                        <i class="fas fa-tasks text-4xl text-orange-400 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">1. Checá tu Pedido</h3>
-                    </div>
-                    <div class="flex flex-col items-center">
-                         <i class="fab fa-whatsapp text-4xl green-333 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">2. Enviámelo</h3>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <i class="fas fa-comments text-4xl text-cyan-400 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">3. Despejá tus Dudas</h3>
-                    </div>
-                </div>
-            </section>
         </div>
 
-        <section class="my-16 text-center max-w-3xl mx-auto px-4">
-            <h2 class="text-5xl font-bold mb-4 text-white">La Base de La Nave</h2>
-            <p class="text-lg text-gray-300 font-saira">
-               El <span class="text-indigo-400 text-2">hardware</span> impacta directamente en los limites de la experiencia. Luego de investigarlo en profundidad y testear diversas opciones, elegí promediar una única <b class="text-amber-400">configuración balanceada</b>.
-               <div class="font-vt323 text-5xl mt-3 green-333">
-                <p>Combo Recomendado</p>
-               <p class="text-3xl green-777 -mt-3">Poderosamente Suficiente</p>
-               <p class="-mt-3">▼</p>
-               </div>
-            </p>
+        <!-- NEW HARDWARE SELECTION SECTION -->
+        <section id="hardware-selection-section" class="my-20">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold mb-4 text-white">Tuneá tu Nave</h2>
+                <p class="text-lg text-gray-300 font-saira max-w-3xl mx-auto">
+                   La base de la Nave es un <b class="text-indigo-400">Intel i5</b> con <b class="text-indigo-400">16GB de RAM</b> en una Mother H61. A partir de ahí, ¡vos elegís el resto!
+                </p>
+            </div>
+            
+            <div id="hardware-grid" class="grid gap-x-6 gap-y-12">
+                <!-- Content generated by JS -->
+            </div>
         </section>
 
-
-        <h2 class="-mt-10 text-4xl font-bold mb-4 text-center">Componentes</h2>
-        <div class="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-6 md:p-8 mb-12">
-            <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6">
-                <div class="w-full md:w-1/3 flex-shrink-0">
-                    <div id="slideshow-container" class="relative w-full rounded-xl shadow-lg overflow-hidden cursor-pointer">
-                        </div>
-                </div>
-                <div class="w-full md:w-2/3">
-                    <ul id="component-list" class="space-y-3 text-gray-300">
-                        <li class="flex items-start gap-3"><i class="fas fa-microchip text-indigo-500 mt-1"></i><span><strong>Procesador:</strong> Intel i5 3.1Ghz <small class="font-black">4 Núcleos</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-500 mt-1"></i><span><strong>Motherboard:</strong> H61-M2 <small>OEM</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-500 mt-1"></i><span><strong>RAM:</strong> 16GB DDR3 <small class="font-black">Dual Channel</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-gamepad text-indigo-500 mt-1"></i><span><strong>Gráficos:</strong> NVIDIA GT 740 2GB<small class="font-black"> GDDR5</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-500 mt-1"></i><span><strong>Almacenamiento:</strong> 480GB SSD <small class="font-black">SATA</small></span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-500 mt-1"></i><span><strong>Fuente:</strong> ATX 550w</span></li>
-                        <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-500 mt-1"></i><span><strong>Sistema Operativo:</strong> WindOS 11 Pro<small> 23H2</small></span></li>
-                        <small>*monitor/teclado/mouse aparte*</small>
-                    </ul>
-                </div>
-            </section>
-        </div>
 
         <section id="garantia-section" class="mb-12">
             <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
@@ -835,7 +837,7 @@
                 <p class="text-center font-saira text-xl mb-1">Te marco lo que Recomiendo👍</p>
                 <p class="text-center text-gray-100 mb-1 text-xl">✅¡Hacé TU Selección!</p>
                 <p class="text-center text-gray-400 mb-6">Podés modificarla luego...</p>
-                <div id="software-list" class="max-w-2xl mx-auto space-y-4">
+                <div id="software-list" class="max-w-4xl mx-auto space-y-4">
                     </div>
                 <p class="text-center text-gray-400 mt-6">¿Falta el tuyo? Pedimelo en Notas📝</p>
             </section>
@@ -880,7 +882,7 @@
 
                             <div class="row-start-1 col-start-2 flex items-center justify-start">
                                 <div>
-                                    <p class="lucas-price text-left ml-4 font-saira">$<span id="total-price">500</span></p>
+                                    <p class="lucas-price text-left ml-4 font-saira">$<span id="total-price">555</span></p>
                                     <p class="text-2xl md:text-3xl text-cyan-400/70 font-saira text-left ml-4 -mt-2">LUCAS</p>
                                 </div>
                             </div>
@@ -918,11 +920,6 @@
                         <span>¡Vamos a WhatsApp!</span>
                     </button>
                 </div>
-                <div id="confirmation-message" class="hidden text-center p-6 bg-gray-900/80 border-2 border-green-333 rounded-2xl max-w-md mx-auto mt-4">
-                    <i class="fas fa-check-circle text-5xl green-333 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-white mb-2">¡Pedido enviado!</h3>
-                    <p class="text-gray-300 font-roboto">Gracias por tu consulta. Te responderemos a la brevedad por WhatsApp.</p>
-                </div>
             </div>
         </form>
 
@@ -947,259 +944,391 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- SMOOTH SCROLL FOR SPECIFIC LINK ---
-            document.querySelector('a.special-subtitle[href="#games-section"]').addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    const targetPosition = targetElement.offsetTop;
-                    const startPosition = window.pageYOffset;
-                    const distance = targetPosition - startPosition;
-                    const duration = 1500; // 1.5 seconds for a slow, smooth scroll
-                    let startTime = null;
-
-                    function animation(currentTime) {
-                        if (startTime === null) startTime = currentTime;
-                        const timeElapsed = currentTime - startTime;
-                        const run = ease(timeElapsed, startPosition, distance, duration);
-                        window.scrollTo(0, run);
-                        if (timeElapsed < duration) requestAnimationFrame(animation);
-                    }
-
-                    // easeInOutQuad easing function
-                    function ease(t, b, c, d) {
-                        t /= d / 2;
-                        if (t < 1) return c / 2 * t * t + b;
-                        t--;
-                        return -c / 2 * (t * (t - 2) - 1) + b;
-                    }
-                    requestAnimationFrame(animation);
-                }
-            });
-
-            // --- DATA ---
-            const gameNames = ['GTA V','LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered','Need for Speed: Underground HD','Half Life: Black Mesa','Half Life 2 HD','Abe´s Oddysey Remake','WoW Classic: en TurtleWoW','Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster','BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3','Fallout: New Vegas', 'Batman: Arkham Asylum','Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD','Need for Speed: Most Wanted HD', 'Blur', 'GRID 2','GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones','Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops','Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.','Mortal Kombat 11 Komplete Edition','Ultra Street Fighter IV','Ultimate Marvel vs. Capcom 3','The King of Fighters XIII','Injustice Gods Among Us','Heroes of Might & Magic HD V','Reckoning: Kingdoms of Amalur','Divinity Original Sin','Age of Empires II Definitive Edition','The Elder Scrolls V: Skyrim','The Elder Scrolls IV: Oblivion & AddOns HD'];
-            const softwareData = [
-                // SISTEMA
-                { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
-                { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
-                { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
-                { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
-                { name: 'Firewall App Blocker', slug: 'firewall_app_blocker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
-                { name: 'Fraps', slug: 'fraps', checked: true, disabled: false, category: 'Sistema', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
-                { name: 'HW Monitor', slug: 'hw_monitor', checked: true, disabled: false, category: 'Sistema', descripcion: 'Monitorea temperatura y voltajes.' },
-                { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
-                { name: 'Space Sniffer', slug: 'space_sniffer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza uso de espacio en disco. Ideal para hacer lugar.' },
-                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: true, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
-                { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
-                { name: 'Wise Registry Cleaner', slug: 'wise_registry_cleaner', checked: false, disabled: false, category: 'Sistema', descripcion: 'Limpia el registro de Windows.' },
-                // MULTIMEDIA
-                { name: 'Hear', slug: 'hear', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Mejora el audio del sistema. Alta configuración.' },
-                { name: 'PotPlayer', slug: 'potplayer', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Reproductor de video avanzado.' },
-                { name: 'VLC Player', slug: 'vlc_player', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Reproduce cualquier formato de video.' },
-                { name: 'WinAmp', slug: 'winamp', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Clásico reproductor de música, renovado por la comunidad.' },
-                { name: 'YouTube', slug: 'youtube', checked: true, disabled: false, category: 'Multimedia', descripcion: 'YouTube *sin publicidad*.' },
-                { name: 'Spotify', slug: 'spotify', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Música en streaming.' },
-                { name: 'Stremio', slug: 'stremio', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Películas y series online.' },
-                // WEB
-                { name: 'Brave', slug: 'brave', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador rápido y seguro basado en Chrome. Bloquea publicidad.' },
-                { name: 'Opera GX', slug: 'opera_gx', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador gamer personalizable. Bloquea publicidad.' },
-                { name: 'Google Chrome', slug: 'google_chrome', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador web popular.' },
-                { name: 'WhatsApp', slug: 'whatsapp', checked: true, disabled: false, category: 'Web', descripcion: 'Mensajería instantánea.' },
-                { name: 'Discord', slug: 'discord', checked: false, disabled: false, category: 'Web', descripcion: 'Chat de voz y texto para comunidades.' },
-                { name: 'Zoom', slug: 'zoom', checked: false, disabled: false, category: 'Web', descripcion: 'Videollamadas y reuniones online.' },
-                { name: 'Free Download Manager', slug: 'freedownloadmanager', checked: true, disabled: false, category: 'Web', descripcion: 'Gestor de descargas y torrents eficiente.' },
-                { name: 'JDownloader 2', slug: 'jdownloader_2', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
-                { name: 'qBitTorrent', slug: 'qbittorrent', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
-                // CREACIÓN
-                { name: 'Inkscape', slug: 'inkscape', checked: false, disabled: false, category: 'Creación', descripcion: 'Gráficos vectoriales. Ideal para diseñar logos profesionales.' },
-                { name: 'Krita', slug: 'krita', checked: false, disabled: false, category: 'Creación', descripcion: 'Pintura y arte digital.' },
-                { name: 'Photopea', slug: 'photopea', checked: true, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
-                { name: 'Canva', slug: 'canva', checked: true, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
-                { name: 'GIMP', slug: 'gimp', checked: false, disabled: false, category: 'Creación', descripcion: 'Editor de imágenes avanzado.' },
-                { name: 'XnConvert', slug: 'xnconvert', checked: true, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
-                { name: 'CapCut', slug: 'capcut', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video sencilla.' },
-                { name: 'DaVinci Resolve', slug: 'davinci_resolve', checked: true, disabled: false, category: 'Creación', descripcion: 'Edición de video profesional.' },
-                { name: 'OBS Studio', slug: 'obs_studio', checked: true, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
-                { name: 'GitHub Desktop', slug: 'github_desktop', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Cliente visual para Git.' },
-                { name: 'Visual Studio Code', slug: 'visual_studio_code', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Editor de código moderno.' },
-                // ...otros programas existentes...
-            ];
-            const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
-            const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
             
-            // --- PRICE CALCULATION & USD ---
-            const BASE_PRICE = 555000;
-            const JOYSTICK_PRICE = 25000;
-            const MOUSE_KEYBOARD_PRICE = 36000;
-            let joystickCount = 0;
-            let hasMouseKeyboard = false;
+            // --- DOM ELEMENTS ---
             const totalPriceEl = document.getElementById('total-price');
             const usdPriceTopEl = document.getElementById('usd-price-display-top');
             const usdPriceBottomEl = document.getElementById('total-price-usd');
             const usdLinkBottom = document.getElementById('usd-link-bottom');
             const usdLinkTop = document.getElementById('usd-link-top');
-            let allDolarRates = []; // To store all rates for the popup
+            const selectedGamesSection = document.getElementById('selected-games-section');
+            const selectedGamesList = document.getElementById('selected-games-list');
+            const errorToast = document.getElementById('error-toast');
+            const errorToastMessage = document.getElementById('error-toast-message');
+            const resetSelectionBtn = document.getElementById('reset-selection-btn');
+            const gameGridWrapper = document.getElementById('game-grid-wrapper');
+            const loadMoreGamesBtn = document.getElementById('load-more-games');
+            const noMoreGamesMsg = document.getElementById('no-more-games');
+            const loadMoreOverlay = document.getElementById('load-more-overlay');
+            const joystickCard = document.getElementById('joystick-card');
+            const mouseKeyboardCard = document.getElementById('mouse-keyboard-card');
+            const dolarPopup = document.getElementById('dolar-popup');
 
-            function updatePrices(rate) {
-                let total = BASE_PRICE;
-                if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
-                if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
+            // --- DATA & CONSTANTS ---
+            const BASE_PRICE = 450000; // Adjusted base price
+            const JOYSTICK_PRICE = 25000;
+            const MOUSE_KEYBOARD_PRICE = 36000;
+            const ROWS_TO_SHOW_INITIALLY = 6;
+
+            const hardwareData = {
+                gabinete: {
+                    title: "Torre",
+                    subtitle: "Elegila",
+                    options: [
+                        { id: 'gbt-01', name: 'Aureox Gamer Hype ARX', price: 0, image: 'https://placehold.co/200x200/1f2937/ffffff?text=Gabinete+1' },
+                        { id: 'gbt-02', name: 'Antec NX292 MESH RGB', price: 12000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=Gabinete+2' },
+                        { id: 'gbt-03', name: 'DeepCool Matrexx 30', price: 15000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=Gabinete+3' },
+                        { id: 'gbt-04', name: 'Corsair 4000D Airflow', price: 25000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=Gabinete+4' },
+                        { id: 'gbt-05', name: 'Cooler Master MasterBox Q300L', price: 18000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=Gabinete+5' },
+                        { id: 'gbt-06', name: 'NZXT H5 Flow', price: 30000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=Gabinete+6' },
+                        { id: 'gbt-07', name: 'Lian Li LANCOOL 215', price: 35000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=Gabinete+7' },
+                    ]
+                },
+                disco: {
+                    title: "Disco",
+                    subtitle: "¿De Cuánto?",
+                    options: [
+                        { id: 'ssd-01', name: 'SSD 240GB SATA', price: 0, image: 'https://placehold.co/200x200/1f2937/ffffff?text=SSD+240GB' },
+                        { id: 'ssd-02', name: 'SSD 480GB SATA', price: 20000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=SSD+480GB' },
+                        { id: 'ssd-03', name: 'SSD 1TB SATA', price: 55000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=SSD+1TB' },
+                    ]
+                },
+                gpu: {
+                    title: "GPU",
+                    subtitle: "Tu Gráfica",
+                    options: [
+                        { id: 'gpu-01', name: 'NVIDIA GT 740 2GB', price: 0, image: 'https://placehold.co/200x200/1f2937/ffffff?text=GT+740' },
+                        { id: 'gpu-02', name: 'AMD RX 560 4GB', price: 45000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=RX+560' },
+                    ]
+                },
+                fuente: {
+                    title: "Fuente",
+                    subtitle: "+Cara +Segura",
+                    options: [
+                        { id: 'psu-01', name: 'Fuente Genérica 550W', price: 0, image: 'https://placehold.co/200x200/1f2937/ffffff?text=PSU+Genérica' },
+                        { id: 'psu-02', name: 'Fuente 600W 80+ Bronze', price: 40000, image: 'https://placehold.co/200x200/1f2937/ffffff?text=PSU+80+Plus' },
+                    ]
+                }
+            };
+
+            const gameNames = ['GTA V','LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered','Need for Speed: Underground HD','Half Life: Black Mesa','Half Life 2 HD','Abe´s Oddysey Remake','WoW Classic: en TurtleWoW','Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster','BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3','Fallout: New Vegas', 'Batman: Arkham Asylum','Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD','Need for Speed: Most Wanted HD', 'Blur', 'GRID 2','GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones','Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops','Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.','Mortal Kombat 11 Komplete Edition','Ultra Street Fighter IV','Ultimate Marvel vs. Capcom 3','The King of Fighters XIII','Injustice Gods Among Us','Heroes of Might & Magic HD V','Reckoning: Kingdoms of Amalur','Divinity Original Sin','Age of Empires II Definitive Edition','The Elder Scrolls V: Skyrim','The Elder Scrolls IV: Oblivion & AddOns HD'];
+            const softwareData = [
+                { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
+                { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
+                { name: 'Fraps', slug: 'fraps', checked: true, disabled: false, category: 'Sistema', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
+                { name: 'HW Monitor', slug: 'hw_monitor', checked: true, disabled: false, category: 'Sistema', descripcion: 'Monitorea temperatura y voltajes.' },
+                { name: 'Space Sniffer', slug: 'space_sniffer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza uso de espacio en disco. Ideal para hacer lugar.' },
+                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: true, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
+                { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
+                { name: 'PotPlayer', slug: 'potplayer', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Reproductor de video avanzado.' },
+                { name: 'WinAmp', slug: 'winamp', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Clásico reproductor de música, renovado por la comunidad.' },
+                { name: 'YouTube', slug: 'youtube', checked: true, disabled: false, category: 'Multimedia', descripcion: 'YouTube *sin publicidad*.' },
+                { name: 'Spotify', slug: 'spotify', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Música en streaming.' },
+                { name: 'Stremio', slug: 'stremio', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Películas y series online.' },
+                { name: 'Brave', slug: 'brave', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador rápido y seguro basado en Chrome. Bloquea publicidad.' },
+                { name: 'Opera GX', slug: 'opera_gx', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador gamer personalizable. Bloquea publicidad.' },
+                { name: 'Google Chrome', slug: 'google_chrome', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador web popular.' },
+                { name: 'WhatsApp', slug: 'whatsapp', checked: true, disabled: false, category: 'Web', descripcion: 'Mensajería instantánea.' },
+                { name: 'Free Download Manager', slug: 'freedownloadmanager', checked: true, disabled: false, category: 'Web', descripcion: 'Gestor de descargas y torrents eficiente.' },
+                { name: 'Photopea', slug: 'photopea', checked: true, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
+                { name: 'Canva', slug: 'canva', checked: true, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
+                { name: 'XnConvert', slug: 'xnconvert', checked: true, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
+                { name: 'DaVinci Resolve', slug: 'davinci_resolve', checked: true, disabled: false, category: 'Creación', descripcion: 'Edición de video profesional.' },
+                { name: 'OBS Studio', slug: 'obs_studio', checked: true, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
+            ];
+            const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+            const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
+            
+            // --- STATE MANAGEMENT ---
+            let joystickCount = 0;
+            let hasMouseKeyboard = false;
+            let allDolarRates = [];
+            let currentHardwareIndices = {
+                gabinete: 0,
+                disco: 0,
+                gpu: 0,
+                fuente: 0,
+            };
+            const selectedHardware = {};
+            Object.keys(hardwareData).forEach(key => {
+                selectedHardware[key] = hardwareData[key].options[0].id;
+            });
+
+            // --- PRICE CALCULATION ---
+            function updatePrices(dolarVenta) {
+                let hardwareTotal = 0;
+                for (const category in selectedHardware) {
+                    const selectedId = selectedHardware[category];
+                    const option = hardwareData[category].options.find(opt => opt.id === selectedId);
+                    if (option) {
+                        hardwareTotal += option.price;
+                    }
+                }
+
+                let peripheralsTotal = 0;
+                if (joystickCount > 0) peripheralsTotal += joystickCount * JOYSTICK_PRICE;
+                if (hasMouseKeyboard) peripheralsTotal += MOUSE_KEYBOARD_PRICE;
+                
+                const total = BASE_PRICE + hardwareTotal + peripheralsTotal;
+
                 totalPriceEl.textContent = Math.floor(total / 1000);
-                // Mostrar precio en USD solo con dólar oficial
-                let oficial = null;
-                if (allDolarRates && allDolarRates.length) {
-                    oficial = allDolarRates.find(r => r.nombre && r.nombre.toLowerCase().includes('oficial'));
+
+                let oficialRate = dolarVenta;
+                if (!oficialRate && allDolarRates.length > 0) {
+                     const oficial = allDolarRates.find(r => r.nombre && r.nombre.toLowerCase().includes('oficial'));
+                     if (oficial) oficialRate = oficial.venta;
                 }
-                // Si no está en allDolarRates, usar el parámetro rate (de fetchDolarRate)
-                if (!oficial && rate) {
-                    oficial = { venta: rate };
-                }
-                if (oficial && oficial.venta) {
-                    const totalUSD = total / oficial.venta;
+
+                if (oficialRate) {
+                    const totalUSD = total / oficialRate;
                     const usdText = `$${totalUSD.toFixed(0)} USD`;
-                    if(usdPriceTopEl) {
-                        usdPriceTopEl.textContent = usdText;
-                        usdPriceTopEl.classList.remove('hidden');
-                        usdPriceTopEl.parentElement.style.display = '';
-                    }
-                    if(usdPriceBottomEl) {
-                        usdPriceBottomEl.textContent = usdText;
-                        usdPriceBottomEl.classList.remove('hidden');
-                        usdPriceBottomEl.parentElement.style.display = '';
-                    }
-                    if(usdLinkTop) usdLinkTop.classList.remove('hidden');
-                    if(usdLinkBottom) usdLinkBottom.classList.remove('hidden');
+                    if (usdPriceTopEl) usdPriceTopEl.textContent = usdText;
+                    if (usdPriceBottomEl) usdPriceBottomEl.textContent = usdText;
+                    [usdPriceTopEl, usdPriceBottomEl, usdLinkTop, usdLinkBottom].forEach(el => el && el.classList.remove('hidden'));
+                    
+                    document.getElementById('floater-price-ars').textContent = `$${total.toLocaleString('es-AR')}`;
+                    document.getElementById('floater-price-usd').textContent = usdText;
+
                 } else {
-                    if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
-                    if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
+                     [usdPriceTopEl, usdPriceBottomEl, usdLinkTop, usdLinkBottom].forEach(el => el && el.classList.add('hidden'));
                 }
             }
 
-            // UPDATED to use dolarapi.com
             async function fetchDolarRate() {
                 try {
-                    // Fetch for default display rate (Oficial)
-                    const responseOficial = await fetch('https://dolarapi.com/v1/dolares/oficial');
-                    if (!responseOficial.ok) throw new Error('Network response was not ok for Oficial rate');
-                    const dataOficial = await responseOficial.json();
-                    
-                    if (dataOficial && dataOficial.venta) {
-                        updatePrices(dataOficial.venta);
-                    }
-
-                    // Fetch all rates for the popup
                     const responseAll = await fetch('https://dolarapi.com/v1/dolares');
                     if (!responseAll.ok) throw new Error('Network response was not ok for All rates');
                     allDolarRates = await responseAll.json();
-
+                    const oficial = allDolarRates.find(r => r.nombre && r.nombre.toLowerCase().includes('oficial'));
+                    updatePrices(oficial ? oficial.venta : null);
                 } catch (error) {
                     console.error("Could not fetch exchange rate:", error);
-                    // Hide USD display if API fails
-                    if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
-                    if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
+                    updatePrices(null);
                 }
             }
-
-            // --- UI POPULATION ---
-            const gameListContainer = document.getElementById('game-list');
-             games.forEach(game => {
-                 const imageSrc = `cover/${game.slug}.webp`;
-                 const cardEl = document.createElement('div');
-                 cardEl.className = 'card-game'; 
-                 cardEl.id = `card-game-${game.slug}`;
-                 cardEl.innerHTML = `
-                     <input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" data-img-src="${imageSrc}" class="hidden">
-                     <label for="game-${game.slug}" class="rounded-xl cursor-pointer transition">
-                         <img src="${imageSrc}" alt="Carátula de ${game.name}" class="rounded-xl w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';">
-                         <div class="game-title-sticker hidden">${game.name}</div>
-                     </label>`;
-                 gameListContainer.appendChild(cardEl);
-             });
-
-
-            const softwareCategories = [
-                { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.', icon: 'fa-shield-alt' },
-                { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.', icon: 'fa-photo-film' },
-                { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.', icon: 'fa-globe' },
-                { name: 'Creación', description: 'Edición de imágenes, video, diseño y herramientas para creadores.', icon: 'fa-paint-brush' },
-                { name: 'Desarrollo', description: 'Herramientas para programar, editar código y gestionar proyectos.', icon: 'fa-code' },
-            ];
-
-            const softwareListContainer = document.getElementById('software-list');
-            softwareListContainer.innerHTML = '';
-
-            softwareCategories.forEach(category => {
-                const categoryWrapper = document.createElement('div');
-                categoryWrapper.className = 'mb-8';
-                // Add icon to category heading
-                categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2 flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</h3>`;
-                // Descripción de categoría
-                const descDiv = document.createElement('div');
-                descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
-                descDiv.style.transition = 'background 0.2s, color 0.2s';
-                descDiv.textContent = category.description;
-                categoryWrapper.appendChild(descDiv);
-                // Grid de programas (checkboxes)
-                const itemsWrapper = document.createElement('div');
-                itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
-                const programs = softwareData.filter(item => item.category === category.name);
-                programs.forEach(item => {
-                    const essentialClass = item.disabled ? 'essential-software' : '';
-                    const disabledClass = item.disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer';
-                    const labelColorClass = item.disabled ? 'green-333' : 'text-white';
-                    
-                    // Main container for the software item
-                    const softwareItemHTML = document.createElement('div');
-                    softwareItemHTML.className = `relative bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}`;
-                    
-                    // Custom Checkbox Element
-                    const customCheckbox = document.createElement('div');
-                    customCheckbox.className = 'custom-software-checkbox';
-                    customCheckbox.dataset.slug = item.slug; // Store the slug for submission
-                    if (item.checked) {
-                        customCheckbox.classList.add('checked');
-                    }
-
-                    // Text Span
-                    const span = document.createElement('span');
-                    span.className = `ml-3 text-sm font-medium ${labelColorClass}`;
-                    span.textContent = item.name;
-
-                    softwareItemHTML.appendChild(customCheckbox);
-                    softwareItemHTML.appendChild(span);
-
-                    // --- HOVER Y TOUCH EN TODO EL DIV ---
-                    function showProgramDesc() {
-                        descDiv.textContent = `${item.name}: ${item.descripcion}`;
-                    }
-                    function showCategoryDesc() {
-                        descDiv.textContent = category.description;
-                    }
-                    softwareItemHTML.addEventListener('mouseenter', showProgramDesc);
-                    softwareItemHTML.addEventListener('mouseleave', showCategoryDesc);
-                    
-                    // Add a single, reliable click listener to the parent div
-                    softwareItemHTML.addEventListener('click', () => {
-                        if (!item.disabled) {
-                            customCheckbox.classList.toggle('checked');
-                        }
-                    });
-
-                    itemsWrapper.appendChild(softwareItemHTML);
-                });
-                categoryWrapper.appendChild(itemsWrapper);
-                softwareListContainer.appendChild(categoryWrapper);
-            });
             
-            // --- SELECTED GAMES DISPLAY ---
-            const selectedGamesSection = document.getElementById('selected-games-section');
-            const selectedGamesList = document.getElementById('selected-games-list');
+            // --- DYNAMIC UI RENDERING ---
+            function renderHardwareSelection() {
+                const gridContainer = document.getElementById('hardware-grid');
+                if (!gridContainer) return;
+                gridContainer.innerHTML = '';
+
+                Object.keys(hardwareData).forEach(categoryKey => {
+                    const category = hardwareData[categoryKey];
+                    const categoryContainer = document.createElement('div');
+
+                    const initialOption = category.options[0];
+                    const priceDiffText = initialOption.price > 0 ? `+ $${(initialOption.price / 1000)}k` : 'Base';
+                    
+                    categoryContainer.innerHTML = `
+                        <h3 class="component-category-title">${category.title}<span>${category.subtitle}</span></h3>
+                        <div class="hardware-selector">
+                            <button class="hardware-selector-arrow" data-category="${categoryKey}" data-direction="-1">‹</button>
+                            <div class="hardware-option-card" data-category-card="${categoryKey}">
+                                <div class="content-wrapper">
+                                    <img src="${initialOption.image}" alt="${initialOption.name}" onerror="this.onerror=null;this.src='${initialOption.image}'">
+                                    <div>
+                                        <p class="name text-sm">${initialOption.name}</p>
+                                        <p class="price-diff">${priceDiffText}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="hardware-selector-arrow" data-category="${categoryKey}" data-direction="1">›</button>
+                        </div>
+                    `;
+                    gridContainer.appendChild(categoryContainer);
+                });
+
+                gridContainer.addEventListener('click', handleHardwareCarousel);
+            }
+
+            function updateHardwareCard(categoryKey) {
+                const currentIndex = currentHardwareIndices[categoryKey];
+                const categoryData = hardwareData[categoryKey];
+                const selectedOption = categoryData.options[currentIndex];
+                
+                const card = document.querySelector(`.hardware-option-card[data-category-card="${categoryKey}"]`);
+                if (!card) return;
+
+                const wrapper = card.querySelector('.content-wrapper');
+                
+                wrapper.style.opacity = '0';
+
+                setTimeout(() => {
+                    card.querySelector('img').src = selectedOption.image;
+                    card.querySelector('img').alt = selectedOption.name;
+                    card.querySelector('.name').textContent = selectedOption.name;
+                    card.querySelector('.price-diff').textContent = selectedOption.price > 0 ? `+ $${(selectedOption.price / 1000)}k` : 'Base';
+                    wrapper.style.opacity = '1';
+                }, 200);
+
+                selectedHardware[categoryKey] = selectedOption.id;
+                const oficial = allDolarRates.find(r => r.nombre && r.nombre.toLowerCase().includes('oficial'));
+                updatePrices(oficial ? oficial.venta : null);
+            }
+
+            function handleHardwareCarousel(e) {
+                const button = e.target.closest('.hardware-selector-arrow');
+                if (!button) return;
+
+                const categoryKey = button.dataset.category;
+                const direction = parseInt(button.dataset.direction);
+                const optionsCount = hardwareData[categoryKey].options.length;
+
+                let newIndex = currentHardwareIndices[categoryKey] + direction;
+
+                if (newIndex < 0) {
+                    newIndex = optionsCount - 1;
+                } else if (newIndex >= optionsCount) {
+                    newIndex = 0;
+                }
+                
+                currentHardwareIndices[categoryKey] = newIndex;
+                updateHardwareCard(categoryKey);
+            }
+
+            function setupPriceFloaterObserver() {
+                const floater = document.getElementById('hardware-price-floater');
+                const target = document.getElementById('hardware-selection-section');
+
+                if(!floater || !target) return;
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        floater.classList.toggle('visible', entry.isIntersecting);
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(target);
+            }
+
+            document.querySelectorAll('a.special-subtitle[href="#games-section"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
+            });
+
+            function populateGames() {
+                const gameListContainer = document.getElementById('game-list');
+                if (!gameListContainer) return;
+                 games.forEach(game => {
+                     const imageSrc = `cover/${game.slug}.webp`;
+                     const cardEl = document.createElement('div');
+                     cardEl.className = 'card-game'; 
+                     cardEl.id = `card-game-${game.slug}`;
+                     cardEl.innerHTML = `
+                         <input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" data-img-src="${imageSrc}" class="hidden">
+                         <label for="game-${game.slug}" class="rounded-xl cursor-pointer transition">
+                             <img src="${imageSrc}" alt="Carátula de ${game.name}" class="rounded-xl w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';">
+                             <div class="game-title-sticker hidden">${game.name}</div>
+                         </label>`;
+                     gameListContainer.appendChild(cardEl);
+                 });
+            }
+
+            function populateSoftware() {
+                 const softwareCategories = [
+                    { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.', icon: 'fa-shield-alt' },
+                    { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.', icon: 'fa-photo-film' },
+                    { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.', icon: 'fa-globe' },
+                    { name: 'Creación', description: 'Edición de imágenes, video, diseño y herramientas para creadores.', icon: 'fa-paint-brush' },
+                ];
+
+                const softwareListContainer = document.getElementById('software-list');
+                if (!softwareListContainer) return;
+                softwareListContainer.innerHTML = '';
+
+                softwareCategories.forEach(category => {
+                    const programs = softwareData.filter(item => item.category === category.name);
+                    if (programs.length === 0) return;
+
+                    const categoryWrapper = document.createElement('div');
+                    categoryWrapper.className = 'mb-8';
+                    categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2 flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</h3>`;
+                    
+                    const descDiv = document.createElement('div');
+                    descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
+                    descDiv.textContent = category.description;
+                    categoryWrapper.appendChild(descDiv);
+                    
+                    const itemsWrapper = document.createElement('div');
+                    itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
+                    
+                    programs.forEach(item => {
+                        const softwareItemHTML = document.createElement('div');
+                        softwareItemHTML.className = `relative bg-gray-800 p-3 rounded-lg flex items-center cursor-pointer`;
+                        
+                        const customCheckbox = document.createElement('div');
+                        customCheckbox.className = 'custom-software-checkbox';
+                        if (item.checked) customCheckbox.classList.add('checked');
+                        
+                        const span = document.createElement('span');
+                        span.className = `ml-3 text-sm font-medium text-white`;
+                        span.textContent = item.name;
+
+                        softwareItemHTML.appendChild(customCheckbox);
+                        softwareItemHTML.appendChild(span);
+                        
+                        softwareItemHTML.addEventListener('mouseenter', () => descDiv.textContent = `${item.name}: ${item.descripcion}`);
+                        softwareItemHTML.addEventListener('mouseleave', () => descDiv.textContent = category.description);
+                        softwareItemHTML.addEventListener('click', () => customCheckbox.classList.toggle('checked'));
+
+                        itemsWrapper.appendChild(softwareItemHTML);
+                    });
+                    categoryWrapper.appendChild(itemsWrapper);
+                    softwareListContainer.appendChild(categoryWrapper);
+                });
+            }
+
+            document.getElementById('orderForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const phoneNumber = '5492252513233';
+
+                let message = `¡Hola, me interesa la Nave del Medio!\n\n*Configuración de Hardware:*\n`;
+                for(const categoryKey in selectedHardware) {
+                    const option = hardwareData[categoryKey].options.find(o => o.id === selectedHardware[categoryKey]);
+                    if(option) {
+                      message += `- ${hardwareData[categoryKey].title}: ${option.name}\n`;
+                    }
+                }
+                
+                const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
+                if (selectedGames.length > 0) message += `\n*Juegos:* ${selectedGames.join(', ')}\n`;
+
+                let peripheralsMessage = '';
+                if (joystickCount > 0) peripheralsMessage += `${joystickCount} Joystick(s)`;
+                if (hasMouseKeyboard) {
+                    if (peripheralsMessage) peripheralsMessage += ' y ';
+                    peripheralsMessage += 'Mouse y Teclado Inalámbrico';
+                }
+                if(peripheralsMessage) message += `\n*Periféricos:* ${peripheralsMessage}\n`;
+
+                const selectedSoftwareNames = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => {
+                    const span = cb.nextElementSibling;
+                    return span ? span.textContent : '';
+                }).filter(name => name);
+                
+                if (selectedSoftwareNames.length > 0) {
+                     message += `\n*Programas:* ${selectedSoftwareNames.join(', ')}\n`;
+                }
+
+                const extraNotes = document.getElementById('extra-notes').value;
+                if (extraNotes.trim() !== '') message += `\n*Notas:* ${extraNotes}\n`;
+
+                const finalPrice = document.getElementById('total-price').textContent;
+                message += `\n*Precio Total Aproximado:* $${finalPrice}.000`;
+                message += `\n\n¡Quedo a la espera de tu respuesta!`;
+                
+                window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            });
 
             function updateSelectedGamesList() {
                 const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
+                if (!selectedGamesList) return;
                 selectedGamesList.innerHTML = '';
                 if (selectedCheckboxes.length > 0) {
                     selectedGamesSection.classList.remove('hidden');
@@ -1217,11 +1346,6 @@
                 }
             }
 
-
-            // --- ERROR TOAST ---
-            const errorToast = document.getElementById('error-toast');
-            const errorToastMessage = document.getElementById('error-toast-message');
-            const resetSelectionBtn = document.getElementById('reset-selection-btn');
             let errorToastTimeout;
             let consecutiveErrorClicks = 0;
 
@@ -1238,7 +1362,6 @@
                     if (consecutiveErrorClicks >= 2) {
                         resetSelectionBtn.classList.remove('hidden');
                     }
-                   
                     errorToast.classList.add('show');
                     errorToastTimeout = setTimeout(hideErrorToast, 4000);
                 }, 150);
@@ -1249,349 +1372,201 @@
                     cb.checked = false;
                     const label = cb.nextElementSibling;
                     const sticker = label.querySelector('.game-title-sticker');
-                    sticker.classList.add('hidden');
+                    if(sticker) sticker.classList.add('hidden');
                 });
                 updateSelectedGamesList();
                 hideErrorToast();
                 consecutiveErrorClicks = 0;
             }
-            resetSelectionBtn.addEventListener('click', resetGameSelection);
+            if(resetSelectionBtn) resetSelectionBtn.addEventListener('click', resetGameSelection);
 
-
-            // --- GAME GRID AND "LOAD MORE" LOGIC ---
-            const gameGridWrapper = document.getElementById('game-grid-wrapper');
-            const loadMoreGamesBtn = document.getElementById('load-more-games');
-            const noMoreGamesMsg = document.getElementById('no-more-games');
-            const loadMoreOverlay = document.getElementById('load-more-overlay');
-            const ROWS_TO_SHOW_INITIALLY = 6;
             let isGridExpanded = false;
-            const allGameCards = Array.from(gameListContainer.children);
-
+            
             function setInitialGridHeight() {
-
+                const gameList = document.getElementById('game-list');
+                if(!gameList) return;
+                const allGameCards = Array.from(gameList.children);
                 if (isGridExpanded || !allGameCards.length) return;
-
-                const gridGap = parseInt(window.getComputedStyle(gameListContainer).getPropertyValue('grid-row-gap')) || 24;
+                const gridGap = parseInt(window.getComputedStyle(allGameCards[0].parentElement).getPropertyValue('grid-row-gap')) || 24;
                 const cardHeight = allGameCards[0].offsetHeight;
-                
-                if (cardHeight === 0) {
-                    setTimeout(setInitialGridHeight, 100); return;
-                }
-
+                if (cardHeight === 0) { setTimeout(setInitialGridHeight, 100); return; }
                 const rowHeight = cardHeight + gridGap;
                 const teaserHeight = rowHeight / 2;
                 const targetHeight = (ROWS_TO_SHOW_INITIALLY * rowHeight) - gridGap + teaserHeight;
-                
                 gameGridWrapper.style.maxHeight = `${targetHeight}px`;
-
                 const totalRows = Math.ceil(allGameCards.length / getColumnCount());
-                if(ROWS_TO_SHOW_INITIALLY >= totalRows) {
-                    loadMoreGamesBtn.click();
-                }
+                if(ROWS_TO_SHOW_INITIALLY >= totalRows) { loadMoreGamesBtn && loadMoreGamesBtn.click(); }
             }
             
             function getColumnCount() {
                 const screenWidth = window.innerWidth;
-                if (screenWidth >= 1024) return 5;
-                if (screenWidth >= 768) return 4;
-                if (screenWidth >= 640) return 3;
-                return 2;
+                if (screenWidth >= 1024) return 5; if (screenWidth >= 768) return 4; if (screenWidth >= 640) return 3; return 2;
             }
 
-            loadMoreGamesBtn.addEventListener('click', () => {
-                gameGridWrapper.style.maxHeight = `${gameListContainer.scrollHeight}px`;
-                loadMoreGamesBtn.classList.add('hidden');
-                noMoreGamesMsg.classList.remove('hidden');
-                loadMoreOverlay.style.opacity = '0';
-                isGridExpanded = true; 
-                loadMoreOverlay.style.pointerEvents = 'none';
-            });
+            if(loadMoreGamesBtn) {
+                loadMoreGamesBtn.addEventListener('click', () => {
+                    const gameList = document.getElementById('game-list');
+                    if(gameList) gameGridWrapper.style.maxHeight = `${gameList.scrollHeight}px`;
+                    loadMoreGamesBtn.classList.add('hidden');
+                    noMoreGamesMsg.classList.remove('hidden');
+                    loadMoreOverlay.style.opacity = '0';
+                    isGridExpanded = true; 
+                    loadMoreOverlay.style.pointerEvents = 'none';
+                });
+            }
 
-            // --- HERO PRODUCT IMAGES POSITIONING ---
+
             function positionCroxImages() {
                 const croxA = document.getElementById('home-crox-a');
                 const croxB = document.getElementById('home-crox-b');
                 const hookSection = document.querySelector('.hook-section');
                 const wrapper = document.getElementById('hero-wrapper');
                 
-                if (croxA && croxB && hookSection && wrapper) {
-                     if (window.innerWidth > 639) { 
-                        const wrapperRect = wrapper.getBoundingClientRect();
-                        const hookSectionRect = hookSection.getBoundingClientRect();
-                        
-                        const topPosition = hookSectionRect.top - wrapperRect.top - (croxA.offsetHeight / 2) ;
-                        
-                        croxA.style.top = `${topPosition}px`;
-                        croxB.style.top = `${topPosition}px`;
+                if (!croxA || !croxB || !hookSection || !wrapper) return;
 
-                        const marginRem = -10;
-                        const marginPx = marginRem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+                if (croxA.offsetHeight === 0 && window.innerWidth > 639) {
+                    setTimeout(positionCroxImages, 100);
+                    return;
+                }
 
-                        const croxALeft = hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx;
-                        croxA.style.left = `${croxALeft}px`;
-                        
-                        const croxBRight = wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx;
-                        croxB.style.right = `${croxBRight+56}px`;
-                        croxB.style.left = 'auto';
-                    }
+                if (window.innerWidth > 639) { 
+                    const wrapperRect = wrapper.getBoundingClientRect();
+                    const hookSectionRect = hookSection.getBoundingClientRect();
+                    
+                    const topPosition = hookSectionRect.top - wrapperRect.top - (croxA.offsetHeight / 2);
+                    
+                    croxA.style.top = `${topPosition}px`;
+                    croxB.style.top = `${topPosition}px`;
+
+                    const marginRem = -10;
+                    const marginPx = marginRem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+                    const croxALeft = hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx;
+                    croxA.style.left = `${croxALeft + 33}px`;
+                    
+                    const croxBRight = wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx;
+                    croxB.style.right = `${croxBRight + 56}px`;
+                    croxB.style.left = 'auto';
                 }
             }
-
-            window.addEventListener('resize', () => {
-                setInitialGridHeight();
-                positionCroxImages();
-            });
-
-
-            // --- EVENT LISTENERS ---
-            document.querySelectorAll('input[name="game"]').forEach(checkbox => {
-                checkbox.addEventListener('change', (e) => {
-                    if (e.target.checked && document.querySelectorAll('input[name="game"]:checked').length > 3) {
-                        e.target.checked = false;
-                        consecutiveErrorClicks++;
-                        showErrorToast('MAX 3 Juegos Incluidos');
-                        return;
-                    }
-
-                    consecutiveErrorClicks = 0;
-                    hideErrorToast();
-                    
-                    const label = e.target.nextElementSibling;
-                    const sticker = label.querySelector('.game-title-sticker');
-                    if (e.target.checked) {
-                        const randomTop = Math.floor(Math.random() * 50) + 15;
-                        const randomLeft = Math.floor(Math.random() * 40) + 10;
-                        const randomRotate = Math.floor(Math.random() * 20) - 10;
-                        sticker.style.top = `${randomTop}%`;
-                        sticker.style.left = `${randomLeft}%`;
-
-                        sticker.style.transform = `rotate(${randomRotate}deg)`;
-                        sticker.classList.remove('hidden');
-                    } else {
-                        sticker.classList.add('hidden');
-                    }
-                    updateSelectedGamesList();
-                });
-            });
-
-            const joystickCard = document.getElementById('joystick-card');
-            const joystickImg = joystickCard.querySelector('img');
-            const joystickBadge = document.getElementById('joystick-badge');
-            joystickCard.addEventListener('click', () => {
-                joystickCount = (joystickCount + 1) % 3; // Cycle 0, 1, 2
-                joystickCard.classList.toggle('active', joystickCount > 0);
-                joystickBadge.classList.toggle('hidden', joystickCount !== 2);
-
-                if (joystickCount === 2) {
-                    joystickImg.src = 'comps/xboxc2.jpg';
-                } else {
-                    joystickImg.src = 'comps/xboxc1.jpg';
-                }
-
-                updatePrices(allDolarRates.find(rate => rate.casa === 'oficial')?.venta);
-            });
-
-            const mouseKeyboardCard = document.getElementById('mouse-keyboard-card');
-            mouseKeyboardCard.addEventListener('click', () => {
-                hasMouseKeyboard = !hasMouseKeyboard;
-                mouseKeyboardCard.classList.toggle('active', hasMouseKeyboard);
-                updatePrices(allDolarRates.find(rate => rate.casa === 'oficial')?.venta);
-            });
             
-            document.getElementById('orderForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const phoneNumber = '5492252513233';
-
-                const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
-                const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => {
-                    const slug = cb.dataset.slug;
-                    const software = softwareData.find(s => s.slug === slug);
-                    return software ? software.name : '';
-                }).filter(name => name);
-                
-                const extraNotes = document.getElementById('extra-notes').value;
-
-                let message = `¡Hola, me interesa la Nave del Medio!\n\n`;
-                if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
-
-                let peripheralsMessage = '';
-                if (joystickCount > 0) peripheralsMessage += `${joystickCount} Joystick(s)`;
-                if (hasMouseKeyboard) {
-                    if (peripheralsMessage) peripheralsMessage += ' y ';
-                    peripheralsMessage += 'Mouse y Teclado Inalámbrico';
-                }
-                if(peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
-
-                // --- Programas seleccionados, agrupados por categoría ---
-                if (selectedSoftware.length > 0) {
-                    const catOrder = ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'];
-                    let programasPorCat = {};
-                    catOrder.forEach(cat => programasPorCat[cat] = []);
-                    
-                    selectedSoftware.forEach(name => {
-                        const prog = softwareData.find(p => p.name === name);
-                        if (prog && programasPorCat[prog.category]) {
-                            programasPorCat[prog.category].push(prog.name);
+            const gameList = document.getElementById('game-list');
+            if(gameList) {
+                gameList.addEventListener('change', (e) => {
+                    if (e.target.name === 'game') {
+                        if (e.target.checked && document.querySelectorAll('input[name="game"]:checked').length > 3) {
+                            e.target.checked = false;
+                            consecutiveErrorClicks++;
+                            showErrorToast('MAX 3 Juegos Incluidos');
+                            return;
                         }
-                    });
-
-                    message += `*Programas:*\n`;
-                    catOrder.forEach(cat => {
-                        if (programasPorCat[cat].length > 0) {
-                            message += `- ${cat}: ${programasPorCat[cat].join(', ')}\n`;
+                        consecutiveErrorClicks = 0; hideErrorToast();
+                        const label = e.target.nextElementSibling;
+                        const sticker = label.querySelector('.game-title-sticker');
+                        if (e.target.checked) {
+                            sticker.style.top = `${Math.floor(Math.random() * 50) + 15}%`;
+                            sticker.style.left = `${Math.floor(Math.random() * 40) + 10}%`;
+                            sticker.style.transform = `rotate(${Math.floor(Math.random() * 20) - 10}deg)`;
+                            sticker.classList.remove('hidden');
+                        } else {
+                            sticker.classList.add('hidden');
                         }
-                    });
-                }
+                        updateSelectedGamesList();
+                    }
+                });
+            }
 
-                if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
-                message += `\nPrecio Total: $${totalPriceEl.textContent}.000`;
-                message += `\n¡Quedo a la espera de tu respuesta!`;
-                window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-            });
+            if(joystickCard) {
+                 joystickCard.addEventListener('click', () => {
+                    joystickCount = (joystickCount + 1) % 3;
+                    joystickCard.classList.toggle('active', joystickCount > 0);
+                    joystickCard.querySelector('img').src = joystickCount === 2 ? 'comps/xboxc2.jpg' : 'comps/xboxc1.jpg';
+                    document.getElementById('joystick-badge').classList.toggle('hidden', joystickCount !== 2);
+                    const oficial = allDolarRates.find(r => r.nombre.toLowerCase().includes('oficial'));
+                    updatePrices(oficial ? oficial.venta : null);
+                });
+            }
 
-            // --- DOLAR POPUP LOGIC ---
-            const dolarPopup = document.getElementById('dolar-popup');
-            const dolarRatesList = document.getElementById('dolar-rates-list');
-            const googleLink = document.getElementById('google-link');
+            if(mouseKeyboardCard) {
+                mouseKeyboardCard.addEventListener('click', () => {
+                    hasMouseKeyboard = !hasMouseKeyboard;
+                    mouseKeyboardCard.classList.toggle('active', hasMouseKeyboard);
+                    const oficial = allDolarRates.find(r => r.nombre.toLowerCase().includes('oficial'));
+                    updatePrices(oficial ? oficial.venta : null);
+                });
+            }
 
+            
             function showDolarPopup() {
                 if (allDolarRates.length === 0) return;
+                const dolarRatesList = document.getElementById('dolar-rates-list');
                 dolarRatesList.innerHTML = '';
-                // Solo mostrar Oficial, Blue y Cripto
-                const tiposPermitidos = [
-                    { key: 'oficial', label: 'Oficial' },
-                    { key: 'blue', label: 'Blue' },
-                    { key: 'cripto', label: 'Cripto' }
-                ];
-                const mapApiKey = (nombre) => {
-                    const n = nombre.toLowerCase();
-                    if (n.includes('oficial')) return 'oficial';
-                    if (n.includes('blue')) return 'blue';
-                    if (n.includes('cripto')) return 'cripto';
-                    return '';
-                };
-                let total = BASE_PRICE;
-                if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
-                if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
+                const tiposPermitidos = [{ key: 'oficial', label: 'Oficial' }, { key: 'blue', label: 'Blue' }, { key: 'cripto', label: 'Cripto' }];
+                let hardwareTotal = Object.values(selectedHardware).reduce((acc, id) => {
+                    for (const categoryKey in hardwareData) {
+                        const option = hardwareData[categoryKey].options.find(opt => opt.id === id);
+                        if (option) return acc + option.price;
+                    }
+                    return acc;
+                }, 0);
+                let total = BASE_PRICE + hardwareTotal + (joystickCount * JOYSTICK_PRICE) + (hasMouseKeyboard ? MOUSE_KEYBOARD_PRICE : 0);
+                
                 tiposPermitidos.forEach(tipo => {
-                    const rate = allDolarRates.find(r => mapApiKey(r.nombre) === tipo.key);
+                    const rate = allDolarRates.find(r => r.nombre.toLowerCase().includes(tipo.key));
                     if (!rate) return;
                     const precioEnDolar = rate.venta ? (total / rate.venta) : null;
-                    const name = tipo.label;
-                    const rateEl = document.createElement('div');
-                    rateEl.className = 'flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2';
-                    rateEl.innerHTML = `
-                        <div class="flex justify-between items-center text-sm">
-                            <span class="font-bold text-gray-300">${name}</span>
-                            <div class="text-right">
-                                <span class="text-gray-400">Compra: </span><span class="font-mono text-green-400">$${rate.compra}</span><br>
-                                <span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span>
+                    dolarRatesList.innerHTML += `
+                        <div class="flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="font-bold text-gray-300">${tipo.label}</span>
+                                <div class="text-right">
+                                    <span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="text-violet-400 font-bold text-lg text-center mt-1">$${precioEnDolar ? precioEnDolar.toFixed(0) : '-'} USD</div>
-                    `;
-                    dolarRatesList.appendChild(rateEl);
+                            <div class="text-violet-400 font-bold text-lg text-center mt-1">$${precioEnDolar ? precioEnDolar.toFixed(0) : '-'} USD</div>
+                        </div>`;
                 });
-                googleLink.href = `https://www.google.com/search?q=${total}+ars+to+usd`;
+                document.getElementById('google-link').href = `https://www.google.com/search?q=${total}+ars+to+usd`;
                 dolarPopup.classList.remove('hidden');
             }
 
-            dolarPopup.addEventListener('click', (e) => {
-                if (e.target.id === 'dolar-popup') {
-                    dolarPopup.classList.add('hidden');
-                }
+            if(dolarPopup) {
+                dolarPopup.addEventListener('click', (e) => { if (e.target.id === 'dolar-popup') dolarPopup.classList.add('hidden'); });
+            }
+            [usdLinkTop, usdPriceTopEl, usdLinkBottom, usdPriceBottomEl].forEach(el => {
+                if(el) el.addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
             });
 
-            document.getElementById('usd-link-top').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
-            document.getElementById('usd-price-display-top').addEventListener('click', showDolarPopup);
-            document.getElementById('usd-link-bottom').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
-            document.getElementById('total-price-usd').addEventListener('click', showDolarPopup);
-
-
-            // --- SLIDESHOW LOGIC ---
-            const slideshowContainer = document.getElementById('slideshow-container');
-            const componentList = document.getElementById('component-list');
-
-            if (slideshowContainer && componentList) {
-                const slideImages = ['comps/slideshow/c_fuente.webp', 'comps/slideshow/c_gabo1.webp', 'comps/slideshow/c_gabo2.webp', 'comps/slideshow/c_gt740.webp', 'comps/slideshow/c_mandos.webp'];
-                let currentSlideIndex = 0;
-                let slideInterval;
-
-                function adjustSlideshowHeight() {
-                    slideshowContainer.style.height = `${componentList.offsetHeight}px`;
-                }
-
-                function createSlides() {
-                    slideImages.forEach((src, index) => {
-                        const img = document.createElement('img');
-                        img.src = src;
-                        img.alt = `PC Gamer Build Image ${index + 1}`;
-
-                        img.onerror=function() { this.src='https://placehold.co/400x300/1f2937/ffffff?text=Componente' };
-                        img.style.opacity = index === 0 ? '1' : '0';
-                        slideshowContainer.appendChild(img);
-                    });
-                }
-
-                function showSlide(index) {
-                    slideshowContainer.querySelectorAll('img').forEach((img, i) => {
-                        img.style.opacity = i === index ? '1' : '0';
-                    });
-                }
-                
-                function nextSlide() {
-                    currentSlideIndex = (currentSlideIndex + 1) % slideImages.length;
-                    showSlide(currentSlideIndex);
-                }
-
-                slideInterval = setInterval(nextSlide, 4300);
-
-                slideshowContainer.addEventListener('click', () => {
-                    clearInterval(slideInterval);
-                    nextSlide();
-                });
-
-                createSlides();
-                adjustSlideshowHeight();
-                window.addEventListener('resize', adjustSlideshowHeight);
-            }
-
-            // --- MEME IMAGE POSITIONING ---
             function positionMemeImage() {
                 const serviceLink = document.getElementById('service-link');
                 const memeImage = document.getElementById('memde_pointLeft');
                 const footer = document.querySelector('footer');
-
                 if (serviceLink && memeImage && footer) {
                     const serviceLinkRect = serviceLink.getBoundingClientRect();
                     const footerRect = footer.getBoundingClientRect();
-                    
                     const leftPosition = serviceLinkRect.right - footerRect.left;
-                    
-                    // To prevent the image from overflowing on the right
-                    const footerWidth = footer.offsetWidth;
-                    const memeWidth = memeImage.offsetWidth;
-                    const maxLeft = footerWidth - memeWidth;
-
-                    // Apply the calculated left position, but not more than maxLeft
+                    const maxLeft = footer.offsetWidth - memeImage.offsetWidth;
                     memeImage.style.left = `${Math.min(leftPosition, maxLeft)}px`;
                 }
             }
 
-            // --- Initial calls ---
-            fetchDolarRate();
-            updateSelectedGamesList();
-            setInitialGridHeight();
-            positionMemeImage();
-            positionCroxImages();
-            
-            // --- Event Listeners ---
-            window.addEventListener('resize', () => {
+            // --- INITIALIZATION ---
+            function init() {
+                fetchDolarRate();
+                renderHardwareSelection();
+                populateGames();
+                populateSoftware();
+                setupPriceFloaterObserver();
+                updateSelectedGamesList();
                 setInitialGridHeight();
                 positionMemeImage();
                 positionCroxImages();
-            });
+            }
+            
+            init();
+
+            window.addEventListener('resize', () => { setInitialGridHeight(); positionMemeImage(); positionCroxImages(); });
         });
     </script>
 </body>
