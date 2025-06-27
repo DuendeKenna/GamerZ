@@ -687,7 +687,7 @@
                      <div class="feature-card">
                          <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
                          <h4 class="font-saira font-bold text-white text-xl leading-tight">Software Clave Integrado</h4>
-                         <p class="text-s text-gray-300 mt-1">A Elección ✔</p>
+                         <p class="text-s text-gray-300 mt-1">Elegí lo que te resuena ✔</p>
                      </div>
              
                      <div class="feature-card">
@@ -1166,10 +1166,10 @@
                     const checkboxColorClass = item.disabled ? 'text-green-333 focus:ring-green-333' : 'text-indigo-500 focus:ring-indigo-600';
                     const labelColorClass = item.disabled ? 'green-333' : 'text-white';
                     const softwareItemHTML = document.createElement('div');
-                    softwareItemHTML.className = `relative bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}`;
+                    softwareItemHTML.className = `relative bg-gray-800 p-3 rounded-lg flex items-center cursor-pointer ${disabledClass} ${essentialClass}`;
                     const label = document.createElement('label');
                     label.setAttribute('for', `sw-${item.slug}`);
-                    label.className = 'flex items-center cursor-pointer w-full';
+                    label.className = 'flex items-center cursor-pointer w-full pointer-events-none'; // Make label non-interactive to events
                     const input = document.createElement('input');
                     input.id = `sw-${item.slug}`;
                     input.name = 'software';
@@ -1177,10 +1177,15 @@
                     input.type = 'checkbox';
                     if (item.checked) input.checked = true;
                     if (item.disabled) input.disabled = true;
-                    input.className = `w-5 h-5 ${checkboxColorClass} bg-gray-700 border-gray-600 rounded ring-offset-gray-800 focus:ring-2`;
+                    input.className = `w-5 h-5 ${checkboxColorClass} bg-gray-700 border-gray-600 rounded ring-offset-gray-800 focus:ring-2 pointer-events-none`; // Make checkbox non-interactive to events
                     const span = document.createElement('span');
                     span.className = `ml-3 text-sm font-medium ${labelColorClass}`;
                     span.textContent = item.name;
+                    
+                    label.appendChild(input);
+                    label.appendChild(span);
+                    softwareItemHTML.appendChild(label);
+
                     // --- HOVER Y TOUCH EN TODO EL DIV ---
                     function showProgramDesc() {
                         descDiv.textContent = `${item.name}: ${item.descripcion}`;
@@ -1190,9 +1195,14 @@
                     }
                     softwareItemHTML.addEventListener('mouseenter', showProgramDesc);
                     softwareItemHTML.addEventListener('mouseleave', showCategoryDesc);
-                    label.appendChild(input);
-                    label.appendChild(span);
-                    softwareItemHTML.appendChild(label);
+                    
+                    // Add a single, reliable click listener to the parent div
+                    softwareItemHTML.addEventListener('click', () => {
+                        if (!input.disabled) {
+                            input.checked = !input.checked;
+                        }
+                    });
+
                     itemsWrapper.appendChild(softwareItemHTML);
                 });
                 categoryWrapper.appendChild(itemsWrapper);
