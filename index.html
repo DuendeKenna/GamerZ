@@ -1154,10 +1154,13 @@
             </section>
 
 
-            <h2 class="text-center font-saira-black text-2xl sm:text-3xl md:text-4xl mb-4">Torre+Gráfica+Disco+Fuente</h2>
-            <p class="monitor-note-mobile">
-                Monitor/Teclado/Mouse se venden aparte
-            </p>
+            <div class="flex flex-col sm:flex-row justify-center sm:justify-between items-baseline mb-4 px-4 sm:px-0">
+                <h2 class="text-center font-saira-black text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-0">Torre+Gráfica+Disco+Fuente</h2>
+                <p class="monitor-note text-gray-400 text-xs font-roboto sm:text-right sm:pr-4">
+                    Monitor/Teclado/Mouse se venden aparte
+                </p>
+            </div>
+            
             <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
                 <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6 h-full">
                     <div class="w-full md:w-1/2 flex-shrink-0 h-full flex items-center justify-center">
@@ -1206,7 +1209,7 @@
                     </div>
                 </section>
             </div>
-            <div id="price-summary-card" class="font-saira mx-auto mb-12 section-card-style" style="margin-top: -63px;">
+            <div id="price-summary-card" class="font-saira mx-auto mb-12 section-card-style hidden md:flex" style="margin-top: -63px;">
                 <div class="price-section ars-price">
                     <div class="price-value-row">
                         <span class="currency-value">$<span id="total-price-summary-ars">500</span></span>
@@ -1378,6 +1381,24 @@
             </div>
         </div>
 
+        <!-- NEW Mobile Sticky Price Summary -->
+        <div id="mobile-price-summary-card" class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center gap-x-4">
+            <div class="price-section ars-price">
+                <div class="price-value-row">
+                    <span class="currency-value text-cyan-400">$<span id="total-price-summary-ars-mobile">500</span></span>
+                    <span class="currency-text text-cyan-400">LUCAS</span>
+                </div>
+            </div>
+            <div class="separator h-8"></div> <!-- Adjust height as needed -->
+            <div class="price-section usd-price" id="usd-price-section-mobile">
+                <div class="price-value-row">
+                    <span class="currency-value text-violet-400"><span id="total-price-summary-usd-mobile"></span></span>
+                    <span class="currency-text text-violet-400">USD</span>
+                </div>
+                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline"><p>Ver cotizaciones</p></a>
+            </div>
+        </div>
+
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // --- SMOOTH SCROLL FOR SPECIFIC LINK ---
@@ -1540,6 +1561,13 @@
                 const usdLinkSummary = document.getElementById('usd-link-summary');
                 const usdPriceSectionEl = document.getElementById('usd-price-section'); // Get the USD price section element
 
+                // Mobile sticky price summary elements
+                const totalPriceSummaryArsMobileEl = document.getElementById('total-price-summary-ars-mobile');
+                const totalPriceSummaryUsdMobileEl = document.getElementById('total-price-summary-usd-mobile');
+                const usdPriceSectionMobileEl = document.getElementById('usd-price-section-mobile');
+                const usdLinkSummaryMobile = document.getElementById('usd-link-summary-mobile');
+
+
                 let allDolarRates = []; // To store all rates for the popup
                 let currentTowerIndex = 0; // Index of the currently selected tower
 
@@ -1576,11 +1604,13 @@
                     }
 
 
-                    // Update prices in main section and summary card
+                    // Update prices in main section and summary card (desktop/tablet)
                     const formattedTotal = Math.floor(total / 1000);
                     if (totalPriceEl) totalPriceEl.textContent = `${formattedTotal}`; // Removed .000 here
                     if (topTotalPriceEl) topTotalPriceEl.textContent = `${formattedTotal}.000`; // Always add .000
                     if (totalPriceSummaryArsEl) totalPriceSummaryArsEl.textContent = formattedTotal;
+                    if (totalPriceSummaryArsMobileEl) totalPriceSummaryArsMobileEl.textContent = formattedTotal;
+
 
                     let oficial = null;
                     if (allDolarRates && allDolarRates.length) {
@@ -1608,7 +1638,7 @@
                         if(usdLinkTop) usdLinkTop.classList.remove('hidden');
                         if(usdLinkBottom) usdLinkBottom.classList.remove('hidden');
 
-                        // Summary card USD display
+                        // Summary card USD display (desktop/tablet)
                         if(totalPriceSummaryUsdEl) {
                             totalPriceSummaryUsdEl.textContent = usdText; // No "USD" text here, it's in the span
                         }
@@ -1618,11 +1648,21 @@
                             usdPriceSectionEl.style.display = 'flex';
                         }
 
+                        // Mobile sticky price summary USD display
+                        if(totalPriceSummaryUsdMobileEl) {
+                            totalPriceSummaryUsdMobileEl.textContent = usdText;
+                        }
+                        if(usdLinkSummaryMobile) usdLinkSummaryMobile.classList.remove('hidden');
+                        if(usdPriceSectionMobileEl) {
+                            usdPriceSectionMobileEl.style.display = 'flex';
+                        }
+
                     } else {
                         // Hide USD display if API fails for all sections
                         if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                         if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
                         if(usdPriceSectionEl) usdPriceSectionEl.style.display = 'none'; // Hide USD section on error
+                        if(usdPriceSectionMobileEl) usdPriceSectionMobileEl.style.display = 'none'; // Hide mobile USD section on error
                     }
                 }
 
@@ -1637,7 +1677,7 @@
                         if (!responseOficial.ok) throw new Error('Network response was not ok for Oficial rate');
                         const dataOficial = await responseOficial.json();
                         
-                        if (dataOficial && dataOficial.venta) { /* Changed dataOfInicial to dataOficial */
+                        if (dataOficial && dataOficial.venta) { 
                             updatePrices(dataOficial.venta);
                         }
 
@@ -1652,6 +1692,7 @@
                         if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                         if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
                         if(usdPriceSectionEl) usdPriceSectionEl.style.display = 'none'; // Hide USD section on error
+                        if(usdPriceSectionMobileEl) usdPriceSectionMobileEl.style.display = 'none'; // Hide mobile USD section on error
                     }
                 }
 
@@ -2134,6 +2175,9 @@
                 // New listeners for summary USD price
                 document.getElementById('usd-link-summary').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
                 document.getElementById('total-price-summary-usd').addEventListener('click', showDolarPopup);
+                // New listeners for mobile summary USD price
+                document.getElementById('usd-link-summary-mobile').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
+                document.getElementById('total-price-summary-usd-mobile').addEventListener('click', showDolarPopup);
 
 
                 // --- TOWER SELECTION LOGIC ---
