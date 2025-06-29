@@ -455,6 +455,7 @@
                 background-color: #111827; /* Restored to bg-gray-700 */
                 box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
                 position: relative; /* Needed for absolute positioning of child */
+                overflow-x: hidden; /* Added to prevent horizontal scroll */
             }
             #game-grid-container {
                  position: relative; 
@@ -479,15 +480,28 @@
             #memde_pointLeft {
                 position: absolute;
                 bottom: -20px;
-                max-width: 150px;
-                width: 40%;
+                max-width: 150px; /* Max width for general use */
+                width: 40%; /* For smaller screens, width can be relative */
                 z-index: 10;
-                left: 576.422px;
+                right: 0; /* Align to the right edge of its parent */
+                transform: translateX(50%); /* Push half its width outside to the right */
+                /* No specific 'left' property here */
             }
-            @media (min-width: 768px) {
+            @media (max-width: 767px) { /* For mobile specific adjustments */
+                #memde_pointLeft {
+                    right: -10%; /* Adjust to keep it within view but slightly off-center */
+                    width: 50%; /* Make it responsive */
+                    max-width: 120px; /* Limit size on very small screens */
+                    transform: translateX(0%); /* Ensure no horizontal translation */
+                    bottom: -10px; /* Adjust vertical position for mobile */
+                }
+            }
+            @media (min-width: 768px) { /* Tablet and up */
                 #memde_pointLeft {
                     bottom: -30px;
-                    width: auto; /* Let max-width control the size */
+                    width: auto; /* Let image natural width or max-width: 150px apply */
+                    right: 0; /* Keep it on the right for desktop */
+                    transform: translateX(50%); /* Continue pushing it off the right */
                 }
             }
 
@@ -658,19 +672,19 @@
 
             /* New wrapper for name and arrows */
             #tower-name-and-arrows-wrapper {
-                position: absolute; /* Position at the very bottom of #tower-selector-container */
+                position: absolute;
                 bottom: 0;
                 left: 0;
                 width: 100%;
                 display: flex;
-                justify-content: center; /* Center content horizontally */
+                justify-content: center;
                 align-items: center;
-                padding: 0.5rem 0; /* Vertical padding */
+                padding: 0.5rem 0;
                 background-color: rgba(0, 0, 0, 0.6);
                 border-top: 1px solid rgba(75, 85, 99, 0.5);
                 box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
-                height: 2.5rem; /* Fixed height for the bottom bar */
-                z-index: 10; /* Above image */
+                height: 2.5rem;
+                z-index: 10;
             }
 
             #current-tower-name {
@@ -935,65 +949,43 @@
                 transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Added opacity transition */
             }
 
-            /* Desktop Hover Zoom Effects */
+            /* Desktop Hover Zoom Effects & New Sizing */
             @media (min-width: 768px) {
-                #current-tower-image:hover,
-                #gpu-image:hover,
-                #psu-image:hover {
+                #current-tower-image:hover {
                     transform: scale(1.3);
                     transform-origin: center center; /* Expand from center */
                 }
+                
+                #gpu-image, #psu-image {
+                    /* Base size and position for GPU and PSU on desktop */
+                    transform: scale(1.5);
+                    /* Using negative margin-right to make it "sobresalir" from the right */
+                    margin-right: -2.6rem; 
+                    transform-origin: right center; /* Scale from the right side */
+                }
+
+                #gpu-image:hover, #psu-image:hover {
+                    /* Enhanced hover effect for GPU and PSU */
+                    transform: scale(1.7); /* Further increase on hover */
+                }
+
+                #ssd-image {
+                    /* SSD retains original size and position */
+                    transform: scale(1); /* Ensure no scaling */
+                    margin-right: auto; /* Ensure it stays right-aligned, not sticking out */
+                }
                 #ssd-image:hover {
-                    transform: scale(1); /* No zoom for SSD */
+                    transform: scale(1); /* No zoom for SSD on hover */
                 }
             }
 
-            /* Monitor Note Styles (for mobile only) */
-            .monitor-note-mobile {
-                color: #9ca3af; /* gray-400 */
-                font-size: 0.75rem; /* text-xs */
-                font-family: 'Roboto', sans-serif;
-                text-align: center; /* Center the text */
-                margin-top: 0.5rem; /* Add some space below the H2 */
-                margin-bottom: 1rem; /* Add some space before the next section */
-            }
-            @media (min-width: 768px) {
-                .monitor-note-mobile {
-                    display: none; /* Hide on desktop */
+            /* For mobile, ensure they retain original behavior (width: 180px, margin-left: auto) */
+            @media (max-width: 767px) {
+                #gpu-image, #psu-image, #ssd-image {
+                    transform: scale(1); /* Reset scale for mobile */
+                    margin-right: 0; /* Reset negative margin for mobile */
+                    transform-origin: center center; /* Reset transform origin */
                 }
-            }
-
-            /* Fullscreen Overlay Styles */
-            .fullscreen-overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
-                backdrop-filter: blur(8px); /* Blur effect */
-                -webkit-backdrop-filter: blur(8px); /* For Safari */
-                z-index: 10000; /* Ensure it's on top of everything */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease;
-            }
-
-            .fullscreen-overlay.active {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .zoomed-content img {
-                max-width: 90%;
-                max-height: 90vh; /* Max height relative to viewport height */
-                object-fit: contain;
-                border-radius: 0.75rem; /* rounded-xl */
-                box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
-                transition: transform 0.3s ease;
             }
         </style>
     </head>
@@ -1162,7 +1154,7 @@
             </section>
 
 
-            <h2 class="text-center font-saira-black text-4xl mb-4">Torre+Gráfica+Disco+Fuente</h2>
+            <h2 class="text-center font-saira-black text-2xl sm:text-3xl md:text-4xl mb-4">Torre+Gráfica+Disco+Fuente</h2>
             <p class="monitor-note-mobile">
                 Monitor/Teclado/Mouse se venden aparte
             </p>
@@ -1645,7 +1637,7 @@
                         if (!responseOficial.ok) throw new Error('Network response was not ok for Oficial rate');
                         const dataOficial = await responseOficial.json();
                         
-                        if (dataOficial && dataOficial.venta) { 
+                        if (dataOficial && dataOficial.venta) { /* Changed dataOfInicial to dataOficial */
                             updatePrices(dataOficial.venta);
                         }
 
@@ -1772,7 +1764,7 @@
                             const gameSlug = toSlug(gameName);
                             const gameEl = document.createElement('div');
                             gameEl.className = 'w-1/4 md:w-1/5 p-1';
-                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${gameImageSrc}" alt="${gameName}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${gameName.replace(/\s/g, '+')}';"></a>`;
+                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${gameImageSrc}" alt="Carátula de ${game.name}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';"></a>`;
                             selectedGamesList.appendChild(gameEl);
                         });
                     } else {
