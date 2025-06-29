@@ -988,12 +988,11 @@
                 #component-list .component-option-image { /* Target all component images on mobile */
                     width: 100px; /* Smaller width for mobile */
                     margin-left: auto; /* Keep them to the right */
-                    transform: scale(1); /* Ensure no scaling */
                     margin-right: 0; /* Reset negative margin for mobile */
                     transform-origin: center center; /* Reset transform origin */
                 }
                 #gpu-image, #psu-image {
-                    transform: scale(2.3); /* Scale to 2.3 for mobile */
+                    transform: scale(1.5); /* Scale to 2.3 for mobile */
                     transform-origin: center center; /* Ensure scaling from center */
                     /* No specific margin-right needed here, as width is reduced and margin-left: auto handles positioning */
                 }
@@ -1005,6 +1004,7 @@
                 padding: 1rem 1.5rem;
                 justify-content: center;
                 align-items: center;
+                scale: 0.9;
                 gap: 1rem; /* Adjust gap for mobile */
                 box-shadow: 0 -4px 15px rgba(0,0,0,0.4); /* Shadow for sticky effect */
                 opacity: 0; /* Initially hidden */
