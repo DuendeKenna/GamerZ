@@ -479,11 +479,12 @@
                 position: relative;
             }
             #memde_pointLeft {
+                display: none; /* Hidden by default */
                 position: absolute;
                 bottom: -20px;
                 max-width: 150px; /* Max width for general use */
                 width: 40%; /* For smaller screens, width can be relative */
-                z-index: 10;
+                z-index: 0;
                 overflow-x: hidden;
                 right: 0; /* Align to the right edge of its parent */
                 transform: translateX(50%); /* Push half its width outside to the right */
@@ -491,7 +492,7 @@
             }
             @media (max-width: 767px) { /* For mobile specific adjustments */
                 #memde_pointLeft {
-                    right: -50%; /* Adjust to keep it within view but slightly off-center */
+                    right: -10%; /* Adjust to keep it within view but slightly off-center */
                     width: 50%; /* Make it responsive */
                     max-width: 120px; /* Limit size on very small screens */
                     transform: translateX(0%); /* Ensure no horizontal translation */
