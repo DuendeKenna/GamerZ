@@ -1006,7 +1006,7 @@
                 align-items: center;
                 position: fixed; /* Fixed position for sticky effect */
                 bottom: -10px; /* Stick to the bottom of the viewport */
-                gap: 1rem; /* Adjust gap for mobile */
+                gap: 0.5rem; /* Reduced gap for mobile, will adjust elements to fill space */
                 box-shadow: 0 -4px 15px rgba(0,0,0,0.4); /* Shadow for sticky effect */
                 opacity: 0; /* Initially hidden */
                 visibility: hidden; /* Initially hidden */
@@ -1016,22 +1016,36 @@
                 transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition */
             }
             #mobile-price-summary-card a {
-text-decoration: none;
+                text-decoration: none;
             }
             #mobile-price-summary-card.show-mobile-price {
                 opacity: 1;
                 visibility: visible;
             }
 
+            /* Styles for price sections within the mobile summary card */
             #mobile-price-summary-card .price-section {
+                display: flex;
                 flex-direction: row; /* Keep content in row for mobile price */
                 align-items: baseline;
                 font-family: 'Saira', sans-serif;
+                flex-grow: 1; /* Allow sections to grow */
+            }
+
+            #mobile-price-summary-card .ars-price {
+                justify-content: flex-end; /* Align ARS content to the right */
+                text-align: right;
+            }
+
+            #mobile-price-summary-card .usd-price {
+                justify-content: flex-start; /* Align USD content to the left */
+                text-align: left;
             }
 
             #mobile-price-summary-card .currency-value {
-                font-size: 3rem; /* Larger font size for main value on mobile (text-5xl) */
+                font-weight: bold;
                 line-height: 1;
+                font-size: 3rem; /* Larger font size for main value on mobile (text-5xl) */
             }
 
             #mobile-price-summary-card .currency-text {
@@ -1041,15 +1055,32 @@ text-decoration: none;
                 margin-left: 0.25rem; /* Smaller margin for mobile */
                 white-space: nowrap;
             }
+            #mobile-price-summary-card .ars-price .currency-text {
+                margin-left: 0.25rem; /* Ensure consistent spacing */
+            }
+            #mobile-price-summary-card .usd-price .currency-text {
+                margin-left: 0.25rem; /* Space between USD value and "USD" text */
+            }
+            /* Adjust the value text itself to be right-aligned for ARS and left-aligned for USD within their respective containers */
+            #mobile-price-summary-card .ars-price .currency-value {
+                text-align: right; /* Ensure the number is right-aligned */
+                margin-right: 0.25rem; /* Small margin to separator */
+            }
+            #mobile-price-summary-card .usd-price .currency-value {
+                text-align: left; /* Ensure the number is left-aligned */
+                margin-left: 0.25rem; /* Small margin to separator */
+            }
+
 
             #mobile-price-summary-card .separator {
                 width: 1px; /* Ensure width is 1px for vertical line */
-                height: 2.5rem; /* Shorter separator for mobile (h-8) */
+                height: 3.5rem; /* Shorter separator for mobile (h-8) */
                 background-color: rgba(75, 85, 99, 0.5); /* Gray-500 equivalent */
             }
             #mobile-price-summary-card #usd-link-summary-mobile {
-                align-self: center; /* Vertically align "aprox" */
-                padding-left: 0.5rem; /* Small padding to the left */
+                align-self: flex-end; /* Vertically align "aprox" */
+                padding-left: 0.2rem; /* Small padding to the left */
+                font-size: 0.75rem; /* Smaller font for link */
             }
 
         </style>
@@ -1090,7 +1121,9 @@ text-decoration: none;
                             <div class="launch-badge">a un precio de LOCOS!!</div>
                             <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$555.000</p>
                             <div class="mt-1 flex items-baseline justify-center gap-2">
-                                <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl cursor-pointer"></span>
+                                <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl cursor-pointer">
+                                    $<span id="usd-value-top"></span> USD
+                                </span>
                                 <a id="usd-link-top" href="#" class="text-gray-500 text-xs hover:underline hidden">Ver Cotizaciones</a>
                             </div>
                         </div>
@@ -1140,7 +1173,7 @@ text-decoration: none;
                         <div class="feature-card relative lg:col-span-2 soporte-tecnico-card" style="padding: 1rem; overflow: hidden; min-height: 200px;">
                             <img src="memde_think.png" alt="Soporte técnico personalizado"
                                 class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none"
-                                    md:z-10 md:opacity-100 md:h-[110%] md:-right-4"
+                                    md:z-10 md:opacity:100 md:h-[110%] md:-right-4"
                                 onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
                             
                             <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
@@ -1388,7 +1421,9 @@ text-decoration: none;
 
                                 <div class="row-start-2 col-start-2 flex items-center justify-start pl-4">
                                     <div>
-                                        <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden cursor-pointer"></p>
+                                        <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden cursor-pointer">
+                                            $<span id="usd-value-bottom"></span> USD
+                                        </p>
                                         <a id="usd-link-bottom" href="#" class="text-xs text-gray-500 hover:underline hidden -mt-1"><p>Ver Cotizaciones</p></a>
                                     </div>
                                 </div>
@@ -1451,16 +1486,16 @@ text-decoration: none;
             <div class="price-section ars-price">
                 <div class="price-value-row">
                     <span class="currency-value text-cyan-400 font-saira text-6xl">$<span id="total-price-summary-ars-mobile">500.000</span></span>
+                    <span class="currency-text text-cyan-400 font-saira text-lg">LUCAS</span>
                 </div>
             </div>
             <div class="separator h-8"></div> <!-- Adjust height as needed -->
             <div class="price-section usd-price" id="usd-price-section-mobile">
-
-                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline pl-1 self-center">
                 <div class="price-value-row">
                     <span class="currency-value text-violet-600 font-saira text-lg"><span id="total-price-summary-usd-mobile"></span></span>
+                    <span class="currency-text text-violet-600 font-saira text-lg">USD</span>
                 </div>
-                </a>
+                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline"><p>Ver cotizaciones</p></a>
             </div>
         </div>
 
@@ -1616,7 +1651,9 @@ text-decoration: none;
                 const topTotalPriceEl = document.getElementById('top-total-price'); // Price in the hero section (top header)
 
                 const usdPriceTopEl = document.getElementById('usd-price-display-top');
+                const usdValueTopEl = document.getElementById('usd-value-top'); // New element to hold just the USD value
                 const usdPriceBottomEl = document.getElementById('total-price-usd');
+                const usdValueBottomEl = document.getElementById('usd-value-bottom'); // New element to hold just the USD value
                 const usdLinkBottom = document.getElementById('usd-link-bottom');
                 const usdLinkTop = document.getElementById('usd-link-top');
 
@@ -1688,16 +1725,16 @@ text-decoration: none;
                     
                     if (oficial && oficial.venta) {
                         const totalUSD = total / oficial.venta;
-                        const usdText = `$${totalUSD.toFixed(0)}`; // Formatear sin decimales y sin "USD" al final
+                        const usdText = `${totalUSD.toFixed(0)}`; // Formatear sin decimales y sin "$" ni "USD"
 
                         // Main section USD display
                         if(usdPriceTopEl) {
-                            usdPriceTopEl.textContent = `${usdText} USD`; // Add "USD" back for this element
+                            usdValueTopEl.textContent = usdText; // Update only the value
                             usdPriceTopEl.classList.remove('hidden');
                             usdPriceTopEl.parentElement.style.display = '';
                         }
                         if(usdPriceBottomEl) {
-                            usdPriceBottomEl.textContent = `${usdText} USD`; // Add "USD" back for this element
+                            usdValueBottomEl.textContent = usdText; // Update only the value
                             usdPriceBottomEl.classList.remove('hidden');
                             usdPriceBottomEl.parentElement.style.display = '';
                         }
@@ -1871,7 +1908,7 @@ text-decoration: none;
                             const gameSlug = toSlug(gameName);
                             const gameEl = document.createElement('div');
                             gameEl.className = 'w-1/4 md:w-1/5 p-1';
-                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${imageSrc}" alt="Carátula de ${game.name}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';"></a>`;
+                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${gameImageSrc}" alt="Carátula de ${gameName}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${gameName.replace(/\s/g, '+')}';"></a>`;
                             selectedGamesList.appendChild(gameEl);
                         });
                     } else {
@@ -2414,7 +2451,7 @@ text-decoration: none;
                         imageElement.style.opacity = '1';
                         // Check if it's GPU or PSU on mobile to apply specific scale
                         if (window.innerWidth < 768 && (imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
-                            imageElement.style.transform = 'scale(2.3) rotateY(0deg)';
+                            imageElement.style.transform = 'scale(1.5) rotateY(0deg)';
                         } else {
                             imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
                         }
