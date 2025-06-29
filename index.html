@@ -803,6 +803,10 @@
                 background-color: rgba(75, 85, 99, 0.5); /* Gray-500 equivalent */
             }
 
+            #total-price-summary-usd-mobile {
+                font-size: 2rem;
+            }
+
             @media (max-width: 767px) { /* Mobile adjustments for summary card */
                 #price-summary-card {
                     flex-direction: column; /* Stack vertically on small screens */
@@ -811,6 +815,7 @@
                     width: calc(100% - 2rem);
                     max-width: 300px;
                     margin-top: -63px; /* Keep consistent overlap */
+                    display: none;
                 }
                 #price-summary-card .separator {
                     width: 80%;
@@ -1049,8 +1054,7 @@ text-decoration: none;
                 background-color: rgba(75, 85, 99, 0.5); /* Gray-500 equivalent */
             }
             #mobile-price-summary-card #usd-link-summary-mobile {
-                align-self: center; /* Vertically align "aprox" */
-                padding-left: 0.5rem; /* Small padding to the left */
+                align-self: left;
             }
 
         </style>
@@ -1451,7 +1455,7 @@ text-decoration: none;
         <div id="mobile-price-summary-card" class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
             <div class="price-section ars-price pr-4">
                 <div class="price-value-row">
-                    <span class="currency-value text-cyan-400 font-saira text-right text-6xl text-right">$<span id="total-price-summary-ars-mobile">500.000</span></span>
+                    <span class="currency-value text-cyan-400 font-saira text-right text-6xl text-right">$<span id="total-price-summary-ars-mobile" style="align-self: right;">500.000</span></span>
                 </div>
             </div>
             <div class="separator w-1 h-8"></div> <!-- Adjust height as needed -->
