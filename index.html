@@ -130,7 +130,6 @@
                 transform: scale(1.07);
                 z-index: 10;
             }
-            .card-game label:hover img,
             .card-game input:checked + label img {
                 filter: grayscale(0%) brightness(1.1);
             }
@@ -913,6 +912,11 @@
                 width: 100%; /* Corrected to prevent horizontal scroll */
                 padding-right: 1.5rem; /* Add some padding to the right for spacing */
             }
+            @media (max-width: 767px) {
+                #component-list li {
+                    gap: 1.5rem; /* Increased gap for mobile */
+                }
+            }
             #component-list li .component-content-wrapper {
                 display: flex;
                 flex-direction: column; /* Stack strong, select, description vertically */
@@ -981,18 +985,72 @@
 
             /* For mobile, ensure they retain original behavior (width: 180px, margin-left: auto) */
             @media (max-width: 767px) {
-                #gpu-image, #psu-image, #ssd-image {
-                    transform: scale(1); /* Reset scale for mobile */
+                #component-list .component-option-image { /* Target all component images on mobile */
+                    width: 100px; /* Smaller width for mobile */
+                    margin-left: auto; /* Keep them to the right */
+                    transform: scale(1); /* Ensure no scaling */
                     margin-right: 0; /* Reset negative margin for mobile */
                     transform-origin: center center; /* Reset transform origin */
                 }
+                #gpu-image, #psu-image {
+                    transform: scale(2.3); /* Scale to 2.3 for mobile */
+                    transform-origin: center center; /* Ensure scaling from center */
+                    /* No specific margin-right needed here, as width is reduced and margin-left: auto handles positioning */
+                }
             }
+
+            /* Mobile Sticky Price Summary Specific Styles */
+            #mobile-price-summary-card {
+                /* Inherits section-card-style */
+                padding: 1rem 1.5rem;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem; /* Adjust gap for mobile */
+                box-shadow: 0 -4px 15px rgba(0,0,0,0.4); /* Shadow for sticky effect */
+                opacity: 0; /* Initially hidden */
+                visibility: hidden; /* Initially hidden */
+                transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition */
+            }
+            #mobile-price-summary-card.show-mobile-price {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            #mobile-price-summary-card .price-section {
+                flex-direction: row; /* Keep content in row for mobile price */
+                align-items: baseline;
+                font-family: 'Saira', sans-serif;
+            }
+
+            #mobile-price-summary-card .currency-value {
+                font-size: 3rem; /* Larger font size for main value on mobile (text-5xl) */
+                line-height: 1;
+            }
+
+            #mobile-price-summary-card .currency-text {
+                font-size: 1.125rem; /* Adjust size for "LUCAS" or "USD" if they were present */
+                font-weight: bold;
+                line-height: 1;
+                margin-left: 0.25rem; /* Smaller margin for mobile */
+                white-space: nowrap;
+            }
+
+            #mobile-price-summary-card .separator {
+                width: 1px; /* Ensure width is 1px for vertical line */
+                height: 2.5rem; /* Shorter separator for mobile (h-8) */
+                background-color: rgba(75, 85, 99, 0.5); /* Gray-500 equivalent */
+            }
+            #mobile-price-summary-card #usd-link-summary-mobile {
+                align-self: center; /* Vertically align "aprox" */
+                padding-left: 0.5rem; /* Small padding to the left */
+            }
+
         </style>
     </head>
     <body class="bg-gray-900 text-white">
 
         <div id="dolar-popup" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div id="popup-content" class="bg-gray-800/80 backdrop-blur-lg border border-gray-600/50 rounded-xl p-6 w-full max-w-sm text-white flex flex-col items-center justify-center">
+            <div id="popup-content" class="bg-gray-800/80 backdrop-blur-lg border border-gray-600/50 rounded-xl p-6 w-full max-w_sm text-white flex flex-col items-center justify-center">
                 <h3 class="text-xl font-saira font-bold text-center mb-4 text-cyan-300">Cotizaciones Dólar</h3>
                 <div id="dolar-rates-list" class="space-y-3">
                     </div>
@@ -1011,12 +1069,12 @@
             <div id="hero-wrapper" class="relative">
                 <div id="hero-background" style="left: -1px; top: 0px;pointer-events:none;"><div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div></div>
                 
-                <img src="home-crox-A.png" id="home-crox-a" class="hero-crox-img" alt="[Gabinete PC Gamer Básico]" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Case'">
-                <img src="home-crox-B.png" id="home-crox-b" class="hero-crox-img" alt="[Gabinete PC Gamer con Periféricos]" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Bundle'">
+                <img src="home-crox-A.png" id="home-crox-a" class="hero-crox-img" alt="Gabinete PC Gamer Básico" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Case'">
+                <img src="home-crox-B.png" id="home-crox-b" class="hero-crox-img" alt="Gabinete PC Gamer con Periféricos" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Bundle'">
                 
                 <header class="text-center pt-8 relative">
-                    <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="[OVNI]" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
-                    <img src="LaNave_LogoLetras.png" alt="[Logo de La Nave del Medio]" class="w-96 h-auto mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/192x64/00000000/ffffff?text=Logo'">
+                    <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="OVNI" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
+                    <img src="LaNave_LogoLetras.png" alt="Logo de La Nave del Medio" class="w-96 h-auto mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/192x64/00000000/ffffff?text=Logo'">
                     <p class="font-vt323 text-4xl md:text-5xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p>
                     <p class="green-777 font-saira">Sistema Completo de Hard + Soft + Service</p>
                     
@@ -1029,7 +1087,7 @@
                                 <a id="usd-link-top" href="#" class="text-gray-500 text-xs hover:underline hidden">Ver Cotizaciones</a>
                             </div>
                         </div>
-                        <img src="smile-messi.gif" alt="[Meme de Messi sonriendo]" class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
+                        <img src="smile-messi.gif" alt="Meme de Messi sonriendo" class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                     </div>
 
                     <div class="mt-2 text-base text-gray-400 flex items-center justify-center gap-4">
@@ -1048,19 +1106,19 @@
                     
                     <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
                         <div class="feature-card">
-                            <img src="WinUpRound.png" alt="[Logo de Windows 11]" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
+                            <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
                             <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
                             <p class="text-s text-gray-300 mt-1">Ligero | Personalizable | Eficaz</p>
                         </div>
                 
                         <div class="feature-card">
-                            <img src="SoftInstalled.png" alt="[Icono de Software Instalado]" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
+                            <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
                             <h4 class="font-saira font-bold text-white text-xl leading-tight">Software Clave Integrado</h4>
                             <p class="text-s text-gray-300 mt-1">A Elección ✔</p>
                         </div>
                 
                         <div class="feature-card">
-                            <img src="HardSelect.png" alt="[Icono de Hardware Seleccionado]" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
+                            <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
                             <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
                             <p class="text-s text-gray-300 mt-1">Equilibrado Precio/Calidad </p>
                         </div>
@@ -1073,14 +1131,14 @@
                         </div>
 
                         <div class="feature-card relative lg:col-span-2 soporte-tecnico-card" style="padding: 1rem; overflow: hidden; min-height: 200px;">
-                            <img src="memde_think.png" alt="[Soporte técnico personalizado]"
+                            <img src="memde_think.png" alt="Soporte técnico personalizado"
                                 class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none"
                                     md:z-10 md:opacity-100 md:h-[110%] md:-right-4"
                                 onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
                             
                             <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
                                 <div class="flex items-center gap-4 mb-2 mt-1 sm:mb-3 sm:mt-0">
-                                    <img src="SoportePersonal.png" alt="[Icono de Soporte Técnico]" class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                                    <img src="SoportePersonal.png" alt="Icono de Soporte Técnico" class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
                                     <h4 class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap mt-1 sm:mt-0">Soporte Técnico</h4>
                                 </div>
                                 <div class="space-y-1 text-sm text-gray-300 max-w-xs pl-0">
@@ -1187,7 +1245,7 @@
                                     <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="gpu-description" class="description-text"></p>
                                 </div>
-                                <img id="gpu-image" src="" alt="[Tarjeta Gráfica]" class="component-option-image">
+                                <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image">
                             </li>
                             <li class="flex items-center justify-between w-full">
                                 <div class="component-content-wrapper">
@@ -1195,7 +1253,7 @@
                                     <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
-                                <img id="ssd-image" src="" alt="[Almacenamiento SSD]" class="component-option-image">
+                                <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image">
                             </li>
                             <li class="flex items-center justify-between w-full">
                                 <div class="component-content-wrapper">
@@ -1203,7 +1261,7 @@
                                     <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="psu-description" class="description-text"></p>
                                 </div>
-                                <img id="psu-image" src="" alt="[Fuente de Poder]" class="component-option-image">
+                                <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image">
                             </li>
                         </ul>
                     </div>
@@ -1275,13 +1333,13 @@
                     <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
                         <div id="joystick-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
                             <div class="image-wrapper relative aspect-[4/3]">
-                                <img src="comps/xboxc1.jpg" alt="[Joystick Xbox 360 Genérico]" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Joystick'">
+                                <img src="comps/xboxc1.jpg" alt="Joystick Xbox 360 Genérico" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Joystick'">
                                 <span id="joystick-badge" class="absolute top-2 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-6 w-6 items-center justify-center hidden">x2</span>
                             </div>
                         </div>
                         <div id="mouse-keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
                             <div class="image-wrapper aspect-[4/3]">
-                            <img src="comps/tecmou.jpg" alt="[Combo Teclado y Mouse Inalámbrico]" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado+y+Mouse'">
+                            <img src="comps/tecmou.jpg" alt="Combo Teclado y Mouse Inalámbrico" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado+y+Mouse'">
                             </div>
                         </div>
                     </div>
@@ -1385,17 +1443,15 @@
         <div id="mobile-price-summary-card" class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center gap-x-4">
             <div class="price-section ars-price">
                 <div class="price-value-row">
-                    <span class="currency-value text-cyan-400">$<span id="total-price-summary-ars-mobile">500</span></span>
-                    <span class="currency-text text-cyan-400">LUCAS</span>
+                    <span class="currency-value text-cyan-400 font-saira text-6xl">$<span id="total-price-summary-ars-mobile">500.000</span></span>
                 </div>
             </div>
             <div class="separator h-8"></div> <!-- Adjust height as needed -->
             <div class="price-section usd-price" id="usd-price-section-mobile">
                 <div class="price-value-row">
-                    <span class="currency-value text-violet-400"><span id="total-price-summary-usd-mobile"></span></span>
-                    <span class="currency-text text-violet-400">USD</span>
+                    <span class="currency-value text-violet-400 font-saira text-2xl"><span id="total-price-summary-usd-mobile"></span></span>
                 </div>
-                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline"><p>Ver cotizaciones</p></a>
+                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline pl-1 self-center"><p>aprox</p></a>
             </div>
         </div>
 
@@ -1609,7 +1665,8 @@
                     if (totalPriceEl) totalPriceEl.textContent = `${formattedTotal}`; // Removed .000 here
                     if (topTotalPriceEl) topTotalPriceEl.textContent = `${formattedTotal}.000`; // Always add .000
                     if (totalPriceSummaryArsEl) totalPriceSummaryArsEl.textContent = formattedTotal;
-                    if (totalPriceSummaryArsMobileEl) totalPriceSummaryArsMobileEl.textContent = formattedTotal;
+                    // Mobile price: show full amount with .000
+                    if (totalPriceSummaryArsMobileEl) totalPriceSummaryArsMobileEl.textContent = `${total.toLocaleString('es-AR')}`;
 
 
                     let oficial = null;
@@ -1805,7 +1862,7 @@
                             const gameSlug = toSlug(gameName);
                             const gameEl = document.createElement('div');
                             gameEl.className = 'w-1/4 md:w-1/5 p-1';
-                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${gameImageSrc}" alt="Carátula de ${game.name}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';"></a>`;
+                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${imageSrc}" alt="Carátula de ${game.name}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';"></a>`;
                             selectedGamesList.appendChild(gameEl);
                         });
                     } else {
@@ -2346,7 +2403,12 @@
                         // After a brief delay, reset styles for the incoming image with a new transition
                         imageElement.style.transition = 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out';
                         imageElement.style.opacity = '1';
-                        imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
+                        // Check if it's GPU or PSU on mobile to apply specific scale
+                        if (window.innerWidth < 768 && (imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
+                            imageElement.style.transform = 'scale(2.3) rotateY(0deg)';
+                        } else {
+                            imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
+                        }
                     }, 100); // This timeout controls the duration of the "glitch" out effect
                 }
 
@@ -2385,6 +2447,31 @@
                         openFullscreenZoom(imgEl.src);
                     });
                 });
+
+                // --- Intersection Observer for Mobile Price Summary ---
+                const mainComponentsContainer = document.getElementById('main-components-container');
+                const mobilePriceSummaryCard = document.getElementById('mobile-price-summary-card');
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Target element is visible
+                            mobilePriceSummaryCard.classList.add('show-mobile-price');
+                        } else {
+                            // Target element is not visible
+                            mobilePriceSummaryCard.classList.remove('show-mobile-price');
+                        }
+                    });
+                }, {
+                    root: null, // viewport as the root
+                    rootMargin: '0px',
+                    threshold: 0.1 // Trigger when 10% of the target is visible
+                });
+
+                if (mainComponentsContainer && mobilePriceSummaryCard) {
+                    observer.observe(mainComponentsContainer);
+                }
+
 
                 // --- Initial calls ---
                 fetchDolarRate();
