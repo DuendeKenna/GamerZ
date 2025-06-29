@@ -8,7 +8,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Press+Start+2P&family=Saira:wght@700&family=VT323&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Press+Start+2P&family=Saira:wght@400;700;900&family=VT323&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
         <style>
@@ -96,15 +96,31 @@
                 transition: transform 0.3s ease; /* Apply transition to the container */
                 aspect-ratio: 3/4;
             }
-            .card-game label::after { /* Glossy effect */
+            .card-game label::after { /* Glossy effect - Adjusted for plastic relief */
                 content: '';
                 position: absolute;
-                top: -50%; left: -60%;
-                width: 200%; height: 200%;
-                background: linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 50%);
-                transform: rotate(35deg);
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    to bottom right,
+                    rgba(255, 255, 255, 0.4) 0%,    /* Top-left highlight - more pronounced */
+                    rgba(255, 255, 255, 0.15) 50%, /* Center subtle */
+                    rgba(0, 0, 0, 0.15) 50%,       /* Bottom-right shadow */
+                    rgba(0, 0, 0, 0.4) 100%        /* Bottom-right darker shadow - more pronounced */
+                );
+                border-radius: 0.75rem; /* Match card border-radius */
                 pointer-events: none;
+                mix-blend-mode: overlay; /* Blends nicely with image */
+                transition: opacity 0.3s ease-in-out;
+                opacity: 1; /* Base opacity always visible, but subtle */
             }
+            .card-game label:hover::after,
+            .card-game input:checked + label::after {
+                opacity: 1; /* Make the effect more notable on hover/checked */
+            }
+
             .card-game label img {
                 transition: filter 0.3s ease;
                 filter: grayscale(33%); 
@@ -264,9 +280,10 @@
             
             /* --- "Ver más" Neon Button --- */
             .load-more-button {
+                background: transparent; /* Changed to transparent */
                 color: #42d232;
                 opacity: 0.6;
-                border: 6px solid #107c1054;
+                border: 6px solid #107c10; /* Solid border */
                 border-radius: 15px; padding: 20px 35px;
                 letter-spacing: 5px; cursor: pointer; font-weight: bold;
                 filter: drop-shadow(0 0 15px #42d232) drop-shadow(0 0 50px #42d232) contrast(2) brightness(2);
@@ -320,9 +337,6 @@
                 background: #c2410c; font-size: 1.1rem; z-index: 10;
                 animation: banner-swing-contado 2.5s ease-in-out infinite alternate;
                 transform: translateX(-60%) rotate(-12deg); bottom: 2.2rem;
-            }
-            @keyframes banner-swing-main {
-                from { transform: translateX(-50%) rotate(-5deg); } to { transform: translateX(-50%) rotate(5deg); }
             }
             @keyframes banner-swing-contado {
                 from { transform: translateX(-60%) rotate(-10deg); } to { transform: translateX(-60%) rotate(0deg); }
@@ -439,7 +453,11 @@
                 box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
                 position: relative; /* Needed for absolute positioning of child */
             }
-            #game-grid-container { position: relative; }
+            #game-grid-container {
+                 position: relative; 
+                 padding-top: 1.5rem; /* Adjusted padding-top */
+                 padding-bottom: 1.5rem; /* Adjusted padding-bottom */
+            }
             #game-grid-wrapper {
                 overflow: hidden;
                 transition: max-height 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -591,30 +609,400 @@
             /* Mobile */
             @media (max-width: 767px) {
                 .hero-crox-img {
-                    height: 250px;
+                    display: none;
                 }
             }
 
-            /* Small mobile - hide */
-            @media (max-width: 639px) {
-                .hero-crox-img {
-                    display: none;
+            /* --- Tower Selector Styles --- */
+            #tower-selector-container {
+                position: relative; /* Needed for absolute positioning of children if any, and for overflow */
+                width: 100%;
+                aspect-ratio: 4/5;
+                background-color: #353f4d;
+                border-radius: 0.75rem;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+                overflow: visible; /* Key to allow elements to overflow */
+                display: flex; /* Changed to flex container */
+                flex-direction: column; /* Stack children vertically */
+                justify-content: space-between; /* Push image container to top, controls to bottom */
+                align-items: center;
+                margin-bottom: 1rem;
+                padding-bottom: 2.5rem; /* Reserve space for the bottom controls */
+            }
+
+            #tower-selector-container .flex-grow {
+                /* This div holds the image and expands to fill available space */
+                position: absolute; /* Place it absolutely to allow name/arrows wrapper at bottom */
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: calc(100% - 2.5rem); /* Take all height except bottom control height */
+                display: flex; /* To center the image within it */
+                justify-content: center;
+                align-items: center;
+                overflow: visible; /* Important for image to overflow its bounds inside this wrapper */
+            }
+
+            #current-tower-image {
+                width: 100%; /* Fill the `flex-grow` container */
+                height: 100%; /* Fill the `flex-grow` container */
+                object-fit: contain; /* Keep aspect ratio, allow overflow if wider/taller than container */
+                cursor: default;
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Added opacity transition */
+                z-index: 1; /* Below bottom controls */
+            }
+
+            #current-tower-image:hover {
+                transform: scale(1.15); /* Increased zoom on hover */
+            }
+
+            /* New wrapper for name and arrows */
+            #tower-name-and-arrows-wrapper {
+                position: absolute; /* Position at the very bottom of #tower-selector-container */
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center; /* Center content horizontally */
+                align-items: center;
+                padding: 0.5rem 0; /* Vertical padding */
+                background-color: rgba(0, 0, 0, 0.6);
+                border-top: 1px solid rgba(75, 85, 99, 0.5);
+                box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
+                height: 2.5rem; /* Fixed height for the bottom bar */
+                z-index: 10; /* Above image */
+            }
+
+            #current-tower-name {
+                /* Styles as requested: same as select, plus padding for arrows */
+                font-family: 'Saira', sans-serif;
+                font-size: 1.125rem; /* text-lg */
+                font-weight: 600; /* font-semibold */
+                color: #95ef81; /* green-222 */
+                text-shadow: 0 0 3px rgba(149, 239, 129, 0.3);
+                white-space: nowrap;
+                padding: 0.25rem 3rem; /* Increased horizontal padding to make space for arrows */
+                background-color: transparent; /* No background here, parent wrapper provides it */
+                border-radius: 0.25rem;
+                z-index: 11; /* Ensure name is above arrows */
+            }
+
+            .tower-nav-arrow {
+                position: absolute; /* Absolute relative to #tower-name-and-arrows-wrapper */
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: rgba(66, 210, 50, 0.7); /* Green-333 with some transparency */
+                color: white;
+                padding: 0.75rem; /* Increased padding for larger round button */
+                border-radius: 50%; /* Make it round */
+                cursor: pointer;
+                z-index: 10;
+                transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+                border: 2px solid #95ef81; /* Green-222 border */
+                box-shadow: 0 0 8px #42d232, inset 0 0 5px rgba(149, 239, 129, 0.3); /* Neon glow */
+                display: flex; /* Use flex to center icon */
+                align-items: center;
+                justify-content: center;
+                width: 3rem; /* Fixed width for roundness */
+                height: 3rem; /* Fixed height for roundness */
+            }
+
+            #prev-tower {
+                left: 0; /* Align with left edge of wrapper */
+                margin-left: -1.5rem; /* Pull half its width out to overlap container border */
+            }
+
+            #next-tower {
+                right: 0; /* Align with right edge of wrapper */
+                margin-right: -1.5rem; /* Pull half its width out to overlap container border */
+            }
+
+            .tower-nav-arrow:hover {
+                background-color: rgba(66, 210, 50, 1); /* Solid green-333 on hover */
+                color: #95ef81; /* Green-222 on hover */
+                box-shadow: 0 0 15px #42d232, inset 0 0 8px rgba(149, 239, 129, 0.5); /* Stronger neon glow on hover */
+            }
+
+            /* New price summary card styling */
+            #price-summary-card {
+                position: relative; /* Position relative to its normal flow */
+                margin-top: -63px; /* Pull it up by 63px to overlap components container */
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+                min-width: 250px;
+                padding: 1rem 1.5rem;
+                background-color: rgba(31, 41, 55, 0.9);
+                border: 1px solid rgba(75, 85, 99, 0.5);
+                border-radius: 0.75rem;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                z-index: 50; /* Ensure it's above normal content */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1.5rem; /* Space between ARS and USD sections */
+            }
+
+            #price-summary-card .price-section {
+                display: flex;
+                flex-direction: column; /* Stack price and link vertically */
+                align-items: center;
+                justify-content: center;
+                font-family: 'Saira', sans-serif; /* Apply font family */
+            }
+
+            #price-summary-card .price-value-row {
+                display: flex;
+                align-items: baseline; /* Align value and text baseline */
+                white-space: nowrap; /* Keep value and text on one line */
+            }
+
+            #price-summary-card .currency-value {
+                font-weight: bold;
+                line-height: 1;
+                font-size: 3.5rem; /* Large size for number */
+            }
+
+            #price-summary-card .currency-text {
+                font-size: 1.75rem; /* Half size for LUCAS/USD text */
+                font-weight: bold; /* Make LUCAS/USD bold */
+                line-height: 1;
+                margin-left: 0.5rem; /* Space between value and text */
+            }
+
+            #price-summary-card .ars-price .currency-value,
+            #price-summary-card .ars-price .currency-text {
+                color: #22d3ee; /* Cyan color for pesos */
+                text-shadow: 2px 2px 3px black;
+            }
+
+            #price-summary-card .usd-price .currency-value,
+            #price-summary-card .usd-price .currency-text {
+                color: #7a3ab7; /* Updated color for USD */
+                text-shadow: 2px 2px 3px black;
+            }
+            
+            #price-summary-card .separator {
+                width: 1px;
+                height: 4rem; /* Height of the separator */
+                background-color: rgba(75, 85, 99, 0.5); /* Gray-500 equivalent */
+            }
+
+            @media (max-width: 767px) { /* Mobile adjustments for summary card */
+                #price-summary-card {
+                    flex-direction: column; /* Stack vertically on small screens */
+                    gap: 1rem;
+                    padding: 1rem;
+                    width: calc(100% - 2rem);
+                    max-width: 300px;
+                    margin-top: -63px; /* Keep consistent overlap */
                 }
+                #price-summary-card .separator {
+                    width: 80%;
+                    height: 1px;
+                }
+                #price-summary-card .currency-value {
+                    font-size: 2.5rem; /* Smaller on mobile */
+                }
+                #price-summary-card .currency-text {
+                    font-size: 1.25rem; /* Smaller on mobile */
+                }
+            }
+
+
+            /* Select Styling */
+            #ssd-select, #psu-select, #gpu-select {
+                background-color: #374151; /* bg-gray-700 */
+                border: 1px solid #42d232; /* green-333 border */
+                color: #e5e7eb; /* text-gray-200 */
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.375rem; /* rounded-md */
+                font-size: 1rem;
+                cursor: pointer;
+                outline: none; /* Remove default focus outline */
+                -webkit-appearance: none; /* Remove default browser styling for select */
+                -moz-appearance: none;
+                appearance: none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 0.5rem center; /* Adjusted position to fix overlap */
+                background-size: 1em;
+                padding-right: 2em; /* Ensure space for the arrow */
+                font-family: 'Saira', sans-serif; /* Apply Saira font */
+                transition: all 0.2s ease-in-out; /* Add transition for smoothness */
+            }
+
+            #ssd-select:focus, #psu-select:focus, #gpu-select:focus {
+                border-color: #95ef81; /* green-222 on focus */
+                box-shadow: 0 0 5px rgba(66, 210, 50, 0.4); /* Reduced glow intensity */
+                background-color: #107c10; /* Darker green background on focus/open state */
+            }
+            /* Styling for the selected option text within the closed select */
+            #component-list select {
+                color: #95ef81; /* green-222 for selected text in closed select */
+                font-weight: bold;
+                text-shadow: 0 0 3px rgba(149, 239, 129, 0.3); /* Reduced text shadow intensity */
+            }
+            /* Dolar Popup Specific Styling */
+            #dolar-popup { /* Ensure popup is on top */
+                z-index: 1000 !important;
+            }
+            #dolar-rates-list .dolar-rate-item {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end; /* Align all content to the right */
+                gap: 0.5rem; /* Space between name and values */
+            }
+
+            #dolar-rates-list .dolar-rate-item .dolar-name { /* New class for the dollar type name */
+                font-weight: bold;
+                color: #e5e7eb; /* Using Tailwind's gray-200 equivalent */
+                margin-bottom: 0.5rem; /* Space below the name */
+            }
+
+            #dolar-rates-list .dolar-rate-item .text-right {
+                text-align: right; /* Ensure text within this div aligns right */
+                align-self: flex-end; /* Align values to the right within the item */
+            }
+            /* New animation for slower glow */
+            @keyframes price-glow-slow {
+                0%, 100% { text-shadow: 2px 2px 30px rgba(0,0,0,0.5), 0 0 10px rgba(118, 18, 143, 0.5), 0 0 30px rgba(34, 211, 238, 0.1), 0 0 15px rgba(34, 211, 238, 0.1); }
+                50% { text-shadow: 2px 2px 30px rgba(0,0,0,0.5), 0 0 6px rgba(34, 211, 238, 0.2), 0 0 15px rgba(34, 211, 238, 0.1); }
+            }
+
+            /* Universal section card style */
+            .section-card-style {
+                background-color: rgba(31, 41, 55, 0.9); /* Same background as price card */
+                border: 1px solid rgba(75, 85, 99, 0.5);
+                border-radius: 0.75rem;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                padding-top: 2.5rem; /* Increased padding top */
+                padding-bottom: 2.5rem; /* Increased padding bottom */
+            }
+
+            /* Component List Custom Styles */
+            #component-list {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around; /* Distribute items vertically */
+                height: 100%; /* Occupy full height of parent column */
+            }
+
+            #component-list li {
+                display: flex;
+                align-items: center; /* Align items (text and image) vertically in the row */
+                gap: 1rem; /* Space between text content and image */
+                width: 130%; /* Ensure li takes full width */
+            }
+            #component-list li .component-content-wrapper {
+                display: flex;
+                flex-direction: column; /* Stack strong, select, description vertically */
+                flex-grow: 1; /* Allow text content to take available space */
+            }
+
+            #component-list li strong {
+                font-size: 1.125rem; /* text-lg */
+                font-weight: 600; /* font-semibold */
+                color: #e5e7eb; /* text-gray-200 */
+                margin-bottom: 0.25rem; /* Small space below title */
+            }
+
+            #component-list select {
+                width: 100%; /* Make selects take full available width */
+                max-width: 250px; /* Optional: limit max width for aesthetic */
+                margin-top: 0; /* Remove default margin from select */
+            }
+            #component-list .description-text {
+                font-family: 'Inter', sans-serif;
+                color: #42d232; /* Green color */
+                font-size: 1rem; /* Base size for description */
+                margin-top: 0.25rem; /* Space below select */
+            }
+            #component-list .component-option-image {
+                width: 181px;
+                object-fit: contain;
+                flex-shrink: 0;
+                margin-left: auto;
+                right: 26px;
+                position: relative;
+                transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Added opacity transition */
+            }
+
+            /* Desktop Hover Zoom Effects */
+            @media (min-width: 768px) {
+                #current-tower-image:hover {
+                    transform: scale(1.3);
+                    transform-origin: center center;
+                }
+                #gpu-image:hover,
+                #psu-image:hover {
+                    transform: scale(1.3);
+                    transform-origin: left center; /* Anchor to the left */
+                }
+                #ssd-image:hover {
+                    transform: scale(1); /* No zoom for SSD */
+                }
+            }
+
+            /* Style for the monitor note at the top right */
+            .monitor-note {
+                position: absolute;
+                top: 1rem; /* Posicionamiento superior */
+                right: 1rem; /* Posicionamiento a la derecha */
+                color: #9ca3af; /* gray-400 */
+                font-size: 0.75rem; /* text-xs */
+                font-family: 'Roboto', sans-serif; /* or Inter, depending on preference */
+                z-index: 50;
+                text-align: right;
+            }
+
+            /* Fullscreen Overlay Styles */
+            .fullscreen-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+                backdrop-filter: blur(8px); /* Blur effect */
+                -webkit-backdrop-filter: blur(8px); /* For Safari */
+                z-index: 10000; /* Ensure it's on top of everything */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .fullscreen-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .zoomed-content img {
+                max-width: 90%;
+                max-height: 90vh; /* Max height relative to viewport height */
+                object-fit: contain;
+                border-radius: 0.75rem; /* rounded-xl */
+                box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+                transition: transform 0.3s ease;
             }
         </style>
     </head>
     <body class="bg-gray-900 text-white">
 
-        <!-- Dolar Popup Modal -->
         <div id="dolar-popup" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
             <div id="popup-content" class="bg-gray-800/80 backdrop-blur-lg border border-gray-600/50 rounded-xl p-6 w-full max-w-sm text-white flex flex-col items-center justify-center">
                 <h3 class="text-xl font-saira font-bold text-center mb-4 text-cyan-300">Cotizaciones Dólar</h3>
                 <div id="dolar-rates-list" class="space-y-3">
-                    <!-- Rates will be injected here by JS -->
-                </div>
-                <!-- Solo una línea separadora debajo de la lista -->
+                    </div>
                 <hr class="border-gray-600 my-4">
-                <a id="google-link" href="#" target="_blank" class="block text-center text-sm text-indigo-400 hover:underline">Ver en Google &rarr;</a>
+                <a id="google-link" href="#" target="_blank" class="block text-center text-sm text-indigo-400 hover:underline">Googlear &rarr;</a>
             </div>
         </div>
 
@@ -628,12 +1016,12 @@
             <div id="hero-wrapper" class="relative">
                 <div id="hero-background" style="left: -1px; top: 0px;pointer-events:none;"><div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div></div>
                 
-                <img src="home-crox-A.png" id="home-crox-a" class="hero-crox-img" alt="Gabinete PC Gamer Básico" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Case'">
-                <img src="home-crox-B.png" id="home-crox-b" class="hero-crox-img" alt="Gabinete PC Gamer con Periféricos" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Bundle'">
+                <img src="home-crox-A.png" id="home-crox-a" class="hero-crox-img" alt="[Gabinete PC Gamer Básico]" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Case'">
+                <img src="home-crox-B.png" id="home-crox-b" class="hero-crox-img" alt="[Gabinete PC Gamer con Periféricos]" onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Bundle'">
                 
                 <header class="text-center pt-8 relative">
-                    <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="OVNI" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
-                    <img src="LaNave_LogoLetras.png" alt="Logo de La Nave del Medio" class="w-96 h-auto mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/192x64/00000000/ffffff?text=Logo'">
+                    <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="[OVNI]" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
+                    <img src="LaNave_LogoLetras.png" alt="[Logo de La Nave del Medio]" class="w-96 h-auto mx-auto mb-4" onerror="this.onerror=null;this.src='https://placehold.co/192x64/00000000/ffffff?text=Logo'">
                     <p class="font-vt323 text-4xl md:text-5xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p>
                     <p class="green-777 font-saira">Sistema Completo de Hard + Soft + Service</p>
                     
@@ -646,11 +1034,11 @@
                                 <a id="usd-link-top" href="#" class="text-gray-500 text-xs hover:underline hidden">Ver Cotizaciones</a>
                             </div>
                         </div>
-                        <img src="smile-messi.gif" alt="Meme de Messi sonriendo" class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
+                        <img src="smile-messi.gif" alt="[Meme de Messi sonriendo]" class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4" onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                     </div>
 
                     <div class="mt-2 text-base text-gray-400 flex items-center justify-center gap-4">
-                        <span class="flex items-center gap-2 "><i class="fas fa-house-circle-check"></i>Entrega y Service en <strong class="text-white"><i>🌊La Costa</i></strong></span>
+                        <span class="flex items-center gap-2 "><i class="fas fa-house-circle-check"></i>Entrega y Service en <strong class="text-white"><i>🌊La Costa</i></b></span>
                     </div>
                 </header>
                 
@@ -663,24 +1051,23 @@
                         <h2 class="relative z-40 font-saira font-bold text-center mt-6 mb-8 text-3xl md:text-4xl lg:text-5xl hidden" style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">ELEGÍ TU COMBO</h2>
                     </div>
                     
-                    <!-- NEW GRID LAYOUT FOR FEATURE CARDS -->
                     <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
                         <div class="feature-card">
-                            <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
+                            <img src="WinUpRound.png" alt="[Logo de Windows 11]" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
                             <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
-                            <p class="text-s text-gray-300 mt-1">Ligero | Moderno | Eficaz</p>
+                            <p class="text-s text-gray-300 mt-1">Ligero | Personalizable | Eficaz</p>
                         </div>
                 
                         <div class="feature-card">
-                            <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
+                            <img src="SoftInstalled.png" alt="[Icono de Software Instalado]" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
                             <h4 class="font-saira font-bold text-white text-xl leading-tight">Software Clave Integrado</h4>
                             <p class="text-s text-gray-300 mt-1">A Elección ✔</p>
                         </div>
                 
                         <div class="feature-card">
-                            <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
+                            <img src="HardSelect.png" alt="[Icono de Hardware Seleccionado]" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
                             <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
-                            <p class="text-s text-gray-300 mt-1">Equilibsuporando Precio/Calidad </p>
+                            <p class="text-s text-gray-300 mt-1">Equilibrado Precio/Calidad </p>
                         </div>
                 
                         <div class="feature-card animated-bg-games">
@@ -690,16 +1077,15 @@
                             <p class="text-s text-gray-300 mt-1">Elegilos ✔</p>
                         </div>
 
-                        <!-- Card de Soporte Técnico Modificada -->
                         <div class="feature-card relative lg:col-span-2 soporte-tecnico-card" style="padding: 1rem; overflow: hidden; min-height: 200px;">
-                            <img src="memde_think.png" alt="Soporte técnico personalizado"
-                                class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none
+                            <img src="memde_think.png" alt="[Soporte técnico personalizado]"
+                                class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none"
                                     md:z-10 md:opacity-100 md:h-[110%] md:-right-4"
                                 onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
                             
                             <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
                                 <div class="flex items-center gap-4 mb-2 mt-1 sm:mb-3 sm:mt-0">
-                                    <img src="SoportePersonal.png" alt="Icono de Soporte Técnico" class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                                    <img src="SoportePersonal.png" alt="[Icono de Soporte Técnico]" class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
                                     <h4 class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap mt-1 sm:mt-0">Soporte Técnico</h4>
                                 </div>
                                 <div class="space-y-1 text-sm text-gray-300 max-w-xs pl-0">
@@ -716,7 +1102,6 @@
                             </div>
                         </div>
                         
-                        <!-- Yellow Button for Tablet View -->
                         <div class="hidden md:flex lg:hidden items-center justify-center">
                             <a href="#games-section" class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
                                 <div class="flex items-center justify-center gap-5">
@@ -766,39 +1151,86 @@
                 <p class="text-lg text-gray-300 font-saira">
                 El <span class="text-indigo-400 text-2">hardware</span> impacta directamente en los limites de la experiencia. Luego de investigarlo en profundidad y testear diversas opciones, elegí promediar una única <b class="text-amber-400">configuración balanceada</b>.
                 <div class="font-vt323 text-5xl mt-3 green-333">
-                    <p>Combo Recomendado</p>
-                <p class="text-3xl green-777 -mt-3">Poderosamente Suficiente</p>
-                <p class="-mt-3">▼</p>
+                    <p>Intel i5 3.6 GHz | 16GB de RAM</p>
+                <p class="text-4xl green-777 font-saira mt-1">Acompañado de TU ELECCIÓN</p>
+                <p class="green-777 -mt-3">?</p>
                 </div>
                 </p>
             </section>
 
 
-            <h2 class="-mt-10 text-4xl font-bold mb-4 text-center">Componentes</h2>
-            <div class="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-6 md:p-8 mb-12">
-                <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6">
-                    <div class="w-full md:w-1/3 flex-shrink-0">
-                        <div id="slideshow-container" class="relative w-full rounded-xl shadow-lg overflow-hidden cursor-pointer">
+            <h2 class="text-center font-saira-black text-4xl mb-4">Torre   +   Gráfica + Disco + Fuente</h2>
+            <div id="main-components-container" class="max-w-3xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
+                <div class="monitor-note">
+                    *Monitor/Teclado/Mouse se venden aparte
+                </div>
+                <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6 h-full">
+                    <div class="w-full md:w-1/2 flex-shrink-0 h-full flex items-center justify-center">
+                        <div id="tower-selector-container" class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
+                            <!-- Main content area for the image, takes remaining height after bottom-controls -->
+                            <div class="flex-grow flex items-center justify-center w-full h-full relative">
+                                <img id="current-tower-image" src="" alt="Torre PC Gamer" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC'">
                             </div>
+                            
+                            <!-- This wrapper is positioned at the very bottom -->
+                            <div id="tower-name-and-arrows-wrapper" class="relative z-10 w-full flex justify-between items-center py-2 px-4">
+                                <!-- The actual arrows and name -->
+                                <i id="prev-tower" class="fas fa-chevron-left tower-nav-arrow"></i>
+                                <span id="current-tower-name" class="bg-gray-800/80 px-2 py-1 rounded"></span>
+                                <i id="next-tower" class="fas fa-chevron-right tower-nav-arrow"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-full md:w-2/3">
-                        <ul id="component-list" class="space-y-3 text-gray-300">
-                            <li class="flex items-start gap-3"><i class="fas fa-microchip text-indigo-500 mt-1"></i><span><strong>Procesador:</strong> Intel i5 3.6Ghz <small class="font-black">QuadCore</small></span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-desktop text-indigo-500 mt-1"></i><span><strong>Motherboard:</strong> H61-M2 <small>OEM</small></span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-memory text-indigo-500 mt-1"></i><span><strong>RAM:</strong> 16GB DDR3 <small class="font-black">Dual Channel</small></span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-gamepad text-indigo-500 mt-1"></i><span><strong>Gráficos:</strong> AMD 550 4GB<small class="font-black"> GDDR5</small></span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-hdd text-indigo-500 mt-1"></i><span><strong>Almacenamiento:</strong> 480GB SSD <small class="font-black">SATA</small></span></li>
-                            <li class="flex items-start gap-3"><i class="fas fa-bolt text-indigo-500 mt-1"></i><span><strong>Fuente:</strong> ATX 550w</span></li>
-                            <li class="flex items-start gap-3"><i class="fab fa-windows text-indigo-500 mt-1"></i><span><strong>Sistema Operativo:</strong> WindOS 11 Pro<small> 23H2</small></span></li>
-                            <small>*monitor/teclado/mouse aparte*</small>
+                    <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
+                        <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
+                            <li class="flex items-center justify-between w-full">
+                                <div class="component-content-wrapper">
+                                    <strong class="text-lg font-semibold">GPU:</strong> 
+                                    <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <p id="gpu-description" class="description-text"></p>
+                                </div>
+                                <img id="gpu-image" src="" alt="[Tarjeta Gráfica]" class="component-option-image">
+                            </li>
+                            <li class="flex items-center justify-between w-full">
+                                <div class="component-content-wrapper">
+                                    <strong class="text-lg font-semibold">Almacenamiento:</strong> 
+                                    <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <p id="ssd-description" class="description-text"></p>
+                                </div>
+                                <img id="ssd-image" src="" alt="[Almacenamiento SSD]" class="component-option-image">
+                            </li>
+                            <li class="flex items-center justify-between w-full">
+                                <div class="component-content-wrapper">
+                                    <strong class="text-lg font-semibold">Alimentación:</strong> 
+                                    <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <p id="psu-description" class="description-text"></p>
+                                </div>
+                                <img id="psu-image" src="" alt="[Fuente de Poder]" class="component-option-image">
+                            </li>
                         </ul>
                     </div>
                 </section>
             </div>
-
-            <section id="garantia-section" class="mb-12">
+            <div id="price-summary-card" class="font-saira mx-auto mb-12 section-card-style" style="margin-top: -63px;">
+                <div class="price-section ars-price">
+                    <div class="price-value-row">
+                        <span class="currency-value">$<span id="total-price-summary-ars">500</span></span>
+                        <span class="currency-text">LUCAS</span>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="price-section usd-price" id="usd-price-section">
+                    <div class="price-value-row">
+                        <span class="currency-value"><span id="total-price-summary-usd"></span></span>
+                        <span class="currency-text">USD</span>
+                    </div>
+                    <a id="usd-link-summary" href="#" class="text-xs text-gray-500 hover:underline"><p>Ver cotizaciones</p></a>
+                </div>
+            </div>
+            
+            <section id="garantia-section" class="mb-12 section-card-style">
                 <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
-                <div class="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-6 md:p-8 space-y-6">
+                <div class="max-w-3xl mx-auto p-6 md:p-8 space-y-6">
                     <ul class="space-y-4 text-gray-300">
                         <li class="flex items-start gap-3"><i class="fas fa-star green-333 mt-1"></i><span><strong>Componentes Nuevos:</strong> Con garantía de proveedores de confianza.</span></li>
                         <li class="flex items-start gap-3"><i class="fas fa-recycle text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong> Podemos <i>reciclar</i> los tuyos para abaratar el precio.</span></li>
@@ -813,12 +1245,11 @@
             </section>
 
             <form id="orderForm">
-                <section id="games-section" class="mb-12">
+                <section id="games-section" class="mb-12 section-card-style">
                     <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Viajan👌</h2>
                     <p class="text-center green-333 -mt-4 mb-4 font-gamer">👇Seleccioná hasta 3</p>
                     <p class="text-center text-violet-600 -mt-4 mb-8 font-gamer">Van Instalados!💾</p>
-                    <div id="game-grid-container" class="px-4">
-                        <div id="game-grid-wrapper">
+                    <div id="game-grid-container" class="px-4 pt-4"> <div id="game-grid-wrapper">
                             <div id="game-list" class="pt-2 pb-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                             </div>
                         </div>
@@ -826,37 +1257,37 @@
                     </div>
                     <div class="text-center mt-6">
                         <button type="button" id="load-more-games" class="load-more-button font-gamer text-lg">Ver Más</button>
-                        <p id="no-more-games" class="text-gray-500 mt-4 hidden">¿No viste el que querés? Pedimelo en Notas📝</p>
+                        <p id="no-more-games" class="text-gray-500 mt-4 hidden">¿No viste el que querés? Pedimelo en Notas?</p>
                     </div>
                 </section>
 
-                <section id="section-software" class="mb-12">
+                <section id="section-software" class="mb-12 section-card-style">
                     <h2 class="text-5xl font-bold text-center mb-8">Programas Clave</h2>
                     <p class="text-center font-saira text-xl mb-1">Te marco lo que Recomiendo👍</p>
                     <p class="text-center text-gray-100 mb-1 text-xl">✅¡Hacé TU Selección!</p>
                     <p class="text-center text-gray-400 mb-6">Podés modificarla luego...</p>
                     <div id="software-list" class="max-w-2xl mx-auto space-y-4">
                         </div>
-                    <p class="text-center text-gray-400 mt-6">¿Falta el tuyo? Pedimelo en Notas📝</p>
+                    <p class="text-center text-gray-400 mt-6">¿Falta el tuyo? Pedimelo en Notas?</p>
                 </section>
 
-                <section class="mb-12">
+                <section class="mb-12 section-card-style">
                     <h2 class="text-3xl font-bold text-center mb-3">Periféricos Extra</h2>
                     <p class="text-center text-gray-300 mb-3">Agregá Comodidad al Mando</p>
                     <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
                         <div id="joystick-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
                             <div class="image-wrapper relative aspect-[4/3]">
-                                <img src="comps/xboxc1.jpg" alt="Joystick Xbox 360 Genérico" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Joystick'">
+                                <img src="comps/xboxc1.jpg" alt="[Joystick Xbox 360 Genérico]" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Joystick'">
                                 <span id="joystick-badge" class="absolute top-2 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-6 w-6 items-center justify-center hidden">x2</span>
                             </div>
                         </div>
                         <div id="mouse-keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
                             <div class="image-wrapper aspect-[4/3]">
-                            <img src="comps/tecmou.jpg" alt="Combo Teclado y Mouse Inalámbrico" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado+y+Mouse'">
+                            <img src="comps/tecmou.jpg" alt="[Combo Teclado y Mouse Inalámbrico]" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado+y+Mouse'">
                             </div>
                         </div>
                     </div>
-                    <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto mt-2 text-center text-gray-400 text-sm">
+                    <div class="grid grid-cols-2 gap-6 max-w_lg mx-auto mt-2 text-center text-gray-400 text-sm">
                         <p>Joystick Xbox 360 (+25k)<br>Cable 2.5 mts</p>
                         <p>Mouse y Teclado (+36k)<br>Inalámbrico</p>
                     </div>
@@ -905,14 +1336,14 @@
                 </section>
     <br><br>
 
-                <section class="mb-12 text-center">
+                <section id="notes-section" class="mb-12 text-center section-card-style">
                     <h2 class="text-3xl font-bold text-center mb-8">Notas📝</h2>
                     <textarea id="extra-notes" class="w-full max-w-xl mx-auto block bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" rows="4" placeholder="🤔¿Dudas?&#10;💾¿Más Soft?&#10;⚙️¿Otro Hard?&#10;¿Alguna otra cuestión? . . ."></textarea>
                 </section>
 
                 <div class="text-center">
                     <p id="pre-submit-text" class="text-gray-400 mb-7">Enviame tu Pedido/Consulta</p>
-                    <div class="flex items-center justify-center">
+                    <div class="flex flex-col items-center">
                         <button id="submit-button" type="submit" class="cta-button text-white font-bold py-4 px-10 rounded-full text-xl flex items-center justify-center gap-4">
                             <i class="fab fa-whatsapp text-4xl"></i>
                             <span>¡Vamos a WhatsApp!</span>
@@ -940,9 +1371,16 @@
                     <a href="https://www.instagram.com/kenna.inf" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/kenna.inf" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
                 </div>
-                <img id="memde_pointLeft" src="memde_pointLeft.png" alt="" onerror="this.onerror=null;this.src='https://placehold.co/250x300/00000000/ffffff?text=Yo'" style="left: 576.422px;">
+                <img id="memde_pointLeft" src="memde_pointLeft.png" alt="" onerror="this.onerror=null;this.src='https://placehold.co/250x300/00000000/ffffff?text=Yo'">
             </footer>
 
+        </div>
+
+        <!-- Fullscreen Overlay for Image Zoom (hidden by default) -->
+        <div id="fullscreen-overlay" class="fullscreen-overlay">
+            <div class="zoomed-content">
+                <img id="zoomed-image" src="" alt="Imagen ampliada del componente">
+            </div>
         </div>
 
         <script>
@@ -987,7 +1425,7 @@
                     { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
                     { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
                     { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
-                    { name: 'Firewall App Blocker', slug: 'firewall_app_blocker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
+                    { name: 'Firewall App Blocker', slug: 'firewall_app_blcoker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
                     { name: 'Fraps', slug: 'fraps', checked: true, disabled: false, category: 'Sistema', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
                     { name: 'HW Monitor', slug: 'hw_monitor', checked: true, disabled: false, category: 'Sistema', descripcion: 'Monitorea temperatura y voltajes.' },
                     { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
@@ -1029,56 +1467,177 @@
                 ];
                 const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
                 const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
-                
+
+                // --- TOWER DATA (SIMULATED) ---
+                // NOTE: In a real-world scenario, you would dynamically fetch this data
+                // from your server by reading the 'comps/torres' directory.
+                // For example, a server-side script could return a JSON like this.
+                // The folder name convention is {name}_{price_in_k} (e.g., 'Sentey R20_45' for 45,000 ARS).
+                const towersData = [
+                    {
+                        name: 'Sentey R20',
+                        price: 45000,
+                        slug: 'sentey-r20',
+                        images: [
+                            'comps/torres/sentey-r20.webp',
+                            'https://placehold.co/400x500/1f2937/ffffff?text=Sentey+R20+2', // Placeholder for second image
+                            'https://placehold.co/400x500/1f2937/ffffff?text=Sentey+R20+3', // Placeholder for third image
+                        ]
+                    },
+                    {
+                        name: 'Antec Nx292',
+                        price: 75000,
+                        slug: 'antex-nx292',
+                        images: [
+                            'comps/torres/antex-nx292.webp',
+                            'https://placehold.co/400x500/1f2937/ffffff?text=Thermaltake+H200+2',
+                            'https://placehold.co/400x500/1f2937/ffffff?text=Thermaltake+H200+3',
+                        ]
+                    },
+                    {
+                        name: 'Deepcool Matrexx 55 Mesh',
+                        price: 75000,
+                        slug: 'deepcool-matrexx-55-mesh_75',
+                        images: [
+                            'comps/torres/deepcool-matrexx-55-mesh_75/img1.webp',
+                            'https://placehold.co/400x500/1f2937/ffffff?text=Deepcool+Matrexx+55+Mesh+2',
+                            'https://placehold.co/400x500/1f2937/ffffff?text=Deepcool+Matrexx+55+Mesh+3',
+                        ]
+                    }
+                ];
+
+                // --- SSD Storage Options ---
+                const ssdOptions = [
+                    { capacity: '240GB SSD SATA', additionalPrice: 0, description: 'Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.', image_url: 'comps/discos/ssd_hiksemi.webp' },
+                    { capacity: '480GB SSD SATA', additionalPrice: 20000, description: 'El estándar. Recomendado para Juegos y Aplicaciones.', image_url: 'comps/discos/ssd_hiksemi.webp' },
+                    { capacity: '1TB SSD SATA', additionalPrice: 50000, description: 'El doble que el estándar. Ideal si creás contenido además de jugar.', image_url: 'comps/discos/ssd_hiksemi.webp' }
+                ];
+
+                // --- GPU Options ---
+                const gpuOptions = [
+                    { name: 'AMD 560 4GB', additionalPrice: 0, description: 'Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.', image_url: 'comps/gpus/rx560.webp' },
+                    { name: 'GT 740 2GB', additionalPrice: -10000, description: 'Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)', image_url: 'comps/gpus/gt740.webp' }
+                ];
+
+                // --- PSU Options ---
+                const psuOptions = [
+                    { name: 'ATX 550w Sentey Genérica', additionalPrice: 0, description: 'Fuente estándar, suficiente para esta configuración base.', image_url: 'comps/psus/550sentey.webp' },
+                    { name: 'ATX 550w Sentey 80 Plus', additionalPrice: 15000, description: 'Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.', image_url: 'comps/psus/550sentey80.webp' }
+                ];
+
                 // --- PRICE CALCULATION & USD ---
                 const BASE_PRICE = 555000;
                 const JOYSTICK_PRICE = 25000;
                 const MOUSE_KEYBOARD_PRICE = 36000;
                 let joystickCount = 0;
                 let hasMouseKeyboard = false;
-                const totalPriceEl = document.getElementById('total-price');
+                const totalPriceEl = document.getElementById('total-price'); // Price in the hero section (main footer)
+                const topTotalPriceEl = document.getElementById('top-total-price'); // Price in the hero section (top header)
+
                 const usdPriceTopEl = document.getElementById('usd-price-display-top');
                 const usdPriceBottomEl = document.getElementById('total-price-usd');
                 const usdLinkBottom = document.getElementById('usd-link-bottom');
                 const usdLinkTop = document.getElementById('usd-link-top');
-                let allDolarRates = []; // To store all rates for the popup
 
+                // Floating price display elements (now renamed to summary card)
+                const totalPriceSummaryArsEl = document.getElementById('total-price-summary-ars');
+                const totalPriceSummaryUsdEl = document.getElementById('total-price-summary-usd');
+                const usdLinkSummary = document.getElementById('usd-link-summary');
+                const usdPriceSectionEl = document.getElementById('usd-price-section'); // Get the USD price section element
+
+                let allDolarRates = []; // To store all rates for the popup
+                let currentTowerIndex = 0; // Index of the currently selected tower
+
+                /**
+                 * Updates the displayed prices (ARS and USD) based on selected components and exchange rates.
+                 * @param {number} rate - The current official USD selling rate.
+                 */
                 function updatePrices(rate) {
                     let total = BASE_PRICE;
                     if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
                     if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
-                    totalPriceEl.textContent = Math.floor(total / 1000);
-                    // Mostrar precio en USD solo con dólar oficial
+                    
+                    // Add selected tower price
+                    if (towersData.length > 0) {
+                        total += towersData[currentTowerIndex].price;
+                    }
+
+                    // Add selected SSD storage price from the select value
+                    const ssdSelect = document.getElementById('ssd-select');
+                    if (ssdSelect) {
+                        total += parseInt(ssdSelect.value);
+                    }
+
+                    // Add selected GPU price from the select value
+                    const gpuSelect = document.getElementById('gpu-select');
+                    if (gpuSelect) {
+                        total += parseInt(gpuSelect.value);
+                    }
+
+                    // Add selected PSU price from the select value
+                    const psuSelect = document.getElementById('psu-select');
+                    if (psuSelect) {
+                        total += parseInt(psuSelect.value);
+                    }
+
+
+                    // Update prices in main section and summary card
+                    const formattedTotal = Math.floor(total / 1000);
+                    if (totalPriceEl) totalPriceEl.textContent = `${formattedTotal}`; // Removed .000 here
+                    if (topTotalPriceEl) topTotalPriceEl.textContent = `${formattedTotal}.000`; // Always add .000
+                    if (totalPriceSummaryArsEl) totalPriceSummaryArsEl.textContent = formattedTotal;
+
                     let oficial = null;
                     if (allDolarRates && allDolarRates.length) {
                         oficial = allDolarRates.find(r => r.nombre && r.nombre.toLowerCase().includes('oficial'));
                     }
-                    // Si no está en allDolarRates, usar el parámetro rate (de fetchDolarRate)
                     if (!oficial && rate) {
                         oficial = { venta: rate };
                     }
+                    
                     if (oficial && oficial.venta) {
                         const totalUSD = total / oficial.venta;
-                        const usdText = `$${totalUSD.toFixed(0)} USD`;
+                        const usdText = `$${totalUSD.toFixed(0)}`; // Formatear sin decimales y sin "USD" al final
+
+                        // Main section USD display
                         if(usdPriceTopEl) {
-                            usdPriceTopEl.textContent = usdText;
+                            usdPriceTopEl.textContent = `${usdText} USD`; // Add "USD" back for this element
                             usdPriceTopEl.classList.remove('hidden');
                             usdPriceTopEl.parentElement.style.display = '';
                         }
                         if(usdPriceBottomEl) {
-                            usdPriceBottomEl.textContent = usdText;
+                            usdPriceBottomEl.textContent = `${usdText} USD`; // Add "USD" back for this element
                             usdPriceBottomEl.classList.remove('hidden');
                             usdPriceBottomEl.parentElement.style.display = '';
                         }
                         if(usdLinkTop) usdLinkTop.classList.remove('hidden');
                         if(usdLinkBottom) usdLinkBottom.classList.remove('hidden');
+
+                        // Summary card USD display
+                        if(totalPriceSummaryUsdEl) {
+                            totalPriceSummaryUsdEl.textContent = usdText; // No "USD" text here, it's in the span
+                        }
+                        if(usdLinkSummary) usdLinkSummary.classList.remove('hidden');
+                        // Ensure USD section is visible
+                        if(usdPriceSectionEl) {
+                            usdPriceSectionEl.style.display = 'flex';
+                        }
+
                     } else {
+                        // Hide USD display if API fails for all sections
                         if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                         if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
+                        // Hide USD section in summary card
+                        if(usdPriceSectionEl) {
+                            usdPriceSectionEl.style.display = 'none';
+                        }
                     }
                 }
 
                 // UPDATED to use dolarapi.com
+                /**
+                 * Fetches the current dollar exchange rates from an API.
+                 */
                 async function fetchDolarRate() {
                     try {
                         // Fetch for default display rate (Oficial)
@@ -1086,7 +1645,7 @@
                         if (!responseOficial.ok) throw new Error('Network response was not ok for Oficial rate');
                         const dataOficial = await responseOficial.json();
                         
-                        if (dataOficial && dataOficial.venta) {
+                        if (dataOficial && dataOficial.venta) { 
                             updatePrices(dataOficial.venta);
                         }
 
@@ -1100,6 +1659,7 @@
                         // Hide USD display if API fails
                         if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                         if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
+                        if(usdPriceSectionEl) usdPriceSectionEl.style.display = 'none'; // Hide USD section on error
                     }
                 }
 
@@ -1198,6 +1758,9 @@
                 const selectedGamesSection = document.getElementById('selected-games-section');
                 const selectedGamesList = document.getElementById('selected-games-list');
 
+                /**
+                 * Updates the list of selected games displayed on the page.
+                 */
                 function updateSelectedGamesList() {
                     const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
                     selectedGamesList.innerHTML = '';
@@ -1209,7 +1772,7 @@
                             const gameSlug = toSlug(gameName);
                             const gameEl = document.createElement('div');
                             gameEl.className = 'w-1/4 md:w-1/5 p-1';
-                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${imageSrc}" alt="${gameName}" class="rounded-md shadow-lg w-full h-auto object-cover aspect-[3/4]" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${gameName.replace(/\s/g, '+')}';"></a>`;
+                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${gameImageSrc}" alt="${gameName}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${gameName.replace(/\s/g, '+')}';"></a>`;
                             selectedGamesList.appendChild(gameEl);
                         });
                     } else {
@@ -1225,12 +1788,19 @@
                 let errorToastTimeout;
                 let consecutiveErrorClicks = 0;
 
+                /**
+                 * Hides the error toast message.
+                 */
                 function hideErrorToast() {
                     clearTimeout(errorToastTimeout);
                     errorToast.classList.remove('show');
                     resetSelectionBtn.classList.add('hidden');
                 }
                 
+                /**
+                 * Displays an error toast message.
+                 * @param {string} message - The message to display.
+                 */
                 function showErrorToast(message) {
                     hideErrorToast(); 
                     setTimeout(() => {
@@ -1244,6 +1814,9 @@
                     }, 150);
                 }
                 
+                /**
+                 * Resets the game selection to none.
+                 */
                 function resetGameSelection() {
                     document.querySelectorAll('input[name="game"]:checked').forEach(cb => {
                         cb.checked = false;
@@ -1267,6 +1840,9 @@
                 let isGridExpanded = false;
                 const allGameCards = Array.from(gameListContainer.children);
 
+                /**
+                 * Sets the initial height of the game grid to show a limited number of rows.
+                 */
                 function setInitialGridHeight() {
 
                     if (isGridExpanded || !allGameCards.length) return;
@@ -1290,6 +1866,10 @@
                     }
                 }
                 
+                /**
+                 * Determines the number of columns in the game grid based on screen width.
+                 * @returns {number} The number of columns.
+                 */
                 function getColumnCount() {
                     const screenWidth = window.innerWidth;
                     if (screenWidth >= 1024) return 5;
@@ -1308,6 +1888,9 @@
                 });
 
                 // --- HERO PRODUCT IMAGES POSITIONING ---
+                /**
+                 * Positions the main product images (Crox A and Crox B) dynamically.
+                 */
                 function positionCroxImages() {
                     const croxA = document.getElementById('home-crox-a');
                     const croxB = document.getElementById('home-crox-b');
@@ -1422,6 +2005,33 @@
                     }
                     if(peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
 
+                    // Add selected tower to WhatsApp message
+                    if (towersData.length > 0) {
+                        message += `*Torre Seleccionada:* ${towersData[currentTowerIndex].name}\n`;
+                    }
+
+                    // Add selected SSD to WhatsApp message
+                    const ssdSelect = document.getElementById('ssd-select');
+                    if (ssdSelect) {
+                        const selectedOption = ssdSelect.options[ssdSelect.selectedIndex];
+                        message += `*Almacenamiento:* ${selectedOption.textContent}\n`;
+                    }
+
+                    // Add selected GPU to WhatsApp message
+                    const gpuSelect = document.getElementById('gpu-select');
+                    if (gpuSelect) {
+                        const selectedOption = gpuSelect.options[gpuSelect.selectedIndex];
+                        message += `*Tarjeta Gráfica:* ${selectedOption.textContent}\n`;
+                    }
+
+                    // Add selected PSU to WhatsApp message
+                    const psuSelect = document.getElementById('psu-select');
+                    if (psuSelect) {
+                        const selectedOption = psuSelect.options[psuSelect.selectedIndex];
+                        message += `*Fuente de Poder:* ${selectedOption.textContent}\n`;
+                    }
+
+
                     // --- Programas seleccionados, agrupados por categoría ---
                     if (selectedSoftware.length > 0) {
                         const catOrder = ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'];
@@ -1445,7 +2055,7 @@
 
                     if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
-                    message += `\nPrecio Total: $${totalPriceEl.textContent}.000`;
+                    message += `\nPrecio Total: $${topTotalPriceEl.textContent}`; // Use the top price for consistency
                     message += `\n¡Quedo a la espera de tu respuesta!`;
                     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
                 });
@@ -1455,6 +2065,12 @@
                 const dolarRatesList = document.getElementById('dolar-rates-list');
                 const googleLink = document.getElementById('google-link');
 
+                // Asegura que el popup esté oculto al inicio con display: none;
+                dolarPopup.style.display = 'none';
+
+                /**
+                 * Displays the dollar exchange rates popup.
+                 */
                 function showDolarPopup() {
                     if (allDolarRates.length === 0) return;
                     dolarRatesList.innerHTML = '';
@@ -1474,32 +2090,48 @@
                     let total = BASE_PRICE;
                     if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
                     if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
+                    if (towersData.length > 0) {
+                        total += towersData[currentTowerIndex].price;
+                    }
+                    const ssdSelect = document.getElementById('ssd-select');
+                    if (ssdSelect) {
+                        total += parseInt(ssdSelect.value);
+                    }
+                    const gpuSelect = document.getElementById('gpu-select');
+                    if (gpuSelect) {
+                        total += parseInt(gpuSelect.value);
+                    }
+                    const psuSelect = document.getElementById('psu-select');
+                    if (psuSelect) {
+                        total += parseInt(psuSelect.value);
+                    }
+
+
                     tiposPermitidos.forEach(tipo => {
                         const rate = allDolarRates.find(r => mapApiKey(r.nombre) === tipo.key);
                         if (!rate) return;
                         const precioEnDolar = rate.venta ? (total / rate.venta) : null;
                         const name = tipo.label;
                         const rateEl = document.createElement('div');
-                        rateEl.className = 'flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2';
+                        rateEl.className = 'flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2 dolar-rate-item'; // Added class for styling
                         rateEl.innerHTML = `
-                            <div class="flex justify-between items-center text-sm">
-                                <span class="font-bold text-gray-300">${name}</span>
-                                <div class="text-right">
-                                    <span class="text-gray-400">Compra: </span><span class="font-mono text-green-400">$${rate.compra}</span><br>
-                                    <span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span>
-                                </div>
+                            <span class="font-bold text-gray-300 dolar-name">${name}</span>
+                            <div class="text-right">
+                                <span class="text-gray-400">Compra: </span><span class="font-mono text-green-400">$${rate.compra}</span><br>
+                                <span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span>
                             </div>
-                            <div class="text-violet-400 font-bold text-lg text-center mt-1">$${precioEnDolar ? precioEnDolar.toFixed(0) : '-'} USD</div>
+                            <div class="font-saira text-violet-400 font-bold text-lg text-center mt-1">serían $${precioEnDolar ? precioEnDolar.toFixed(0) : '-'} USD</div>
                         `;
                         dolarRatesList.appendChild(rateEl);
                     });
                     googleLink.href = `https://www.google.com/search?q=${total}+ars+to+usd`;
-                    dolarPopup.classList.remove('hidden');
+                    dolarPopup.style.display = 'flex'; // Cambiar a flex para mostrar
                 }
 
                 dolarPopup.addEventListener('click', (e) => {
-                    if (e.target.id === 'dolar-popup') {
-                        dolarPopup.classList.add('hidden');
+                    // Check if the click occurred on the overlay itself, not its children
+                    if (e.target === dolarPopup) { // Fixed: Ensure e.target is the popup overlay itself
+                        dolarPopup.style.display = 'none'; // Ocultar al hacer clic fuera
                     }
                 });
 
@@ -1507,89 +2139,270 @@
                 document.getElementById('usd-price-display-top').addEventListener('click', showDolarPopup);
                 document.getElementById('usd-link-bottom').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
                 document.getElementById('total-price-usd').addEventListener('click', showDolarPopup);
+                // New listeners for summary USD price
+                document.getElementById('usd-link-summary').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
+                document.getElementById('total-price-summary-usd').addEventListener('click', showDolarPopup);
 
 
-                // --- SLIDESHOW LOGIC ---
-                const slideshowContainer = document.getElementById('slideshow-container');
-                const componentList = document.getElementById('component-list');
+                // --- TOWER SELECTION LOGIC ---
+                const towerImageEl = document.getElementById('current-tower-image');
+                const currentTowerNameEl = document.getElementById('current-tower-name');
+                const prevTowerBtn = document.getElementById('prev-tower');
+                const nextTowerBtn = document.getElementById('next-tower');
+                const towerSelectorContainer = document.getElementById('tower-selector-container');
 
-                if (slideshowContainer && componentList) {
-                    const slideImages = ['comps/slideshow/c_fuente.webp', 'comps/slideshow/c_gabo1.webp', 'comps/slideshow/c_gabo2.webp', 'comps/slideshow/c_gt740.webp', 'comps/slideshow/c_mandos.webp'];
-                    let currentSlideIndex = 0;
-                    let slideInterval;
+                let touchStartX = 0;
+                let touchEndX = 0;
+                const swipeThreshold = 50; // Minimum distance for a swipe
 
-                    function adjustSlideshowHeight() {
-                        slideshowContainer.style.height = `${componentList.offsetHeight}px`;
+                /**
+                 * Updates the displayed tower image and name.
+                 */
+                function updateTowerDisplay() {
+                    if (towersData.length === 0) {
+                        towerImageEl.src = 'https://placehold.co/400x500/1f2937/ffffff?text=No+Towers';
+                        currentTowerNameEl.textContent = 'No hay torres disponibles';
+                        return;
                     }
-
-                    function createSlides() {
-                        slideImages.forEach((src, index) => {
-                            const img = document.createElement('img');
-                            img.src = src;
-                            img.alt = `PC Gamer Build Image ${index + 1}`;
-
-                            img.onerror=function() { this.src='https://placehold.co/400x300/1f2937/ffffff?text=Componente' };
-                            img.style.opacity = index === 0 ? '1' : '0';
-                            slideshowContainer.appendChild(img);
-                        });
-                    }
-
-                    function showSlide(index) {
-                        slideshowContainer.querySelectorAll('img').forEach((img, i) => {
-                            img.style.opacity = i === index ? '1' : '0';
-                        });
-                    }
+                    const selectedTower = towersData[currentTowerIndex];
                     
-                    function nextSlide() {
-                        currentSlideIndex = (currentSlideIndex + 1) % slideImages.length;
-                        showSlide(currentSlideIndex);
+                    animateImageChange(towerImageEl); // Animate the image change
+                    
+                    // Set a timeout to change the src after the fade-out starts
+                    setTimeout(() => {
+                        towerImageEl.src = selectedTower.images[0]; // Show the first image as main
+                    }, 150); // Match this with a point within the animation duration
+
+                    currentTowerNameEl.textContent = selectedTower.name;
+                    updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
+                }
+
+                /**
+                 * Navigates to the previous tower in the list.
+                 */
+                function prevTower() {
+                    currentTowerIndex = (currentTowerIndex - 1 + towersData.length) % towersData.length;
+                    updateTowerDisplay();
+                }
+
+                /**
+                 * Navigates to the next tower in the list.
+                 */
+                function nextTower() {
+                    currentTowerIndex = (currentTowerIndex + 1) % towersData.length;
+                    updateTowerDisplay();
+                }
+
+                prevTowerBtn.addEventListener('click', prevTower);
+                nextTowerBtn.addEventListener('click', nextTower);
+
+                // Swipe functionality for tower selection
+                towerSelectorContainer.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                });
+
+                towerSelectorContainer.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].clientX;
+                    const swipeDistance = touchEndX - touchStartX;
+
+                    if (Math.abs(swipeDistance) > swipeThreshold) { // Only if a significant swipe occurred
+                        if (swipeDistance > 0) { // Swiped right
+                            prevTower();
+                        } else { // Swiped left
+                            nextTower();
+                        }
                     }
+                });
 
-                    slideInterval = setInterval(nextSlide, 4300);
 
-                    slideshowContainer.addEventListener('click', () => {
-                        clearInterval(slideInterval);
-                        nextSlide();
+                // --- SSD Storage Selector Logic (Combobox) ---
+                const ssdSelect = document.getElementById('ssd-select');
+                const ssdDescriptionEl = document.getElementById('ssd-description');
+                const ssdImageEl = document.getElementById('ssd-image');
+
+                /**
+                 * Updates the displayed SSD information and image.
+                 */
+                function updateSsdDisplay() {
+                    const selectedOption = ssdOptions.find(opt => opt.additionalPrice == ssdSelect.value);
+                    if (selectedOption) {
+                        ssdDescriptionEl.textContent = selectedOption.description;
+                        animateImageChange(ssdImageEl); // Animate the image change
+                        setTimeout(() => {
+                            ssdImageEl.src = selectedOption.image_url;
+                        }, 150);
+                    } else {
+                        ssdDescriptionEl.textContent = '';
+                        animateImageChange(ssdImageEl); // Animate the image change even if empty
+                        setTimeout(() => {
+                            ssdImageEl.src = '';
+                        }, 150);
+                    }
+                    updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
+                }
+
+                if (ssdSelect) {
+                    // Populate options based on ssdOptions array
+                    ssdSelect.innerHTML = ssdOptions.map((option, index) => 
+                        `<option value="${option.additionalPrice}" ${index === 0 ? 'selected' : ''}>${option.capacity}</option>`
+                    ).join('');
+                    ssdSelect.addEventListener('change', updateSsdDisplay);
+                }
+
+                // --- GPU Selector Logic (Combobox) ---
+                const gpuSelect = document.getElementById('gpu-select');
+                const gpuDescriptionEl = document.getElementById('gpu-description');
+                const gpuImageEl = document.getElementById('gpu-image');
+
+                /**
+                 * Updates the displayed GPU information and image.
+                 */
+                function updateGpuDisplay() {
+                    const selectedOption = gpuOptions.find(opt => opt.additionalPrice == gpuSelect.value);
+                    if (selectedOption) {
+                        gpuDescriptionEl.textContent = selectedOption.description;
+                        animateImageChange(gpuImageEl); // Animate the image change
+                        setTimeout(() => {
+                            gpuImageEl.src = selectedOption.image_url;
+                        }, 150);
+                    } else {
+                        gpuDescriptionEl.textContent = '';
+                        animateImageChange(gpuImageEl); // Animate the image change even if empty
+                        setTimeout(() => {
+                            gpuImageEl.src = '';
+                        }, 150);
+                    }
+                    updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
+                }
+
+                if (gpuSelect) {
+                    gpuSelect.innerHTML = gpuOptions.map((option, index) => 
+                        `<option value="${option.additionalPrice}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
+                    ).join('');
+                    gpuSelect.addEventListener('change', updateGpuDisplay);
+                }
+
+                // --- PSU Selector Logic (Combobox) ---
+                const psuSelect = document.getElementById('psu-select');
+                const psuDescriptionEl = document.getElementById('psu-description');
+                const psuImageEl = document.getElementById('psu-image');
+
+                /**
+                 * Updates the displayed PSU information and image.
+                 */
+                function updatePsuDisplay() {
+                    const selectedOption = psuOptions.find(opt => opt.additionalPrice == psuSelect.value);
+                    if (selectedOption) {
+                        psuDescriptionEl.textContent = selectedOption.description;
+                        animateImageChange(psuImageEl); // Animate the image change
+                        setTimeout(() => {
+                            psuImageEl.src = selectedOption.image_url;
+                        }, 150);
+                    } else {
+                        psuDescriptionEl.textContent = '';
+                        animateImageChange(psuImageEl); // Animate the image change even if empty
+                        setTimeout(() => {
+                            psuImageEl.src = '';
+                        }, 150);
+                    }
+                    updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
+                }
+
+                if (psuSelect) {
+                    psuSelect.innerHTML = psuOptions.map((option, index) => 
+                        `<option value="${option.additionalPrice}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
+                    ).join('');
+                    psuSelect.addEventListener('change', updatePsuDisplay);
+                }
+
+                /**
+                 * Function to apply a smooth fade-out/scale-down and then fade-in/scale-up animation
+                 * to an image element when its source is about to change.
+                 * @param {HTMLElement} imageElement - The image element to animate.
+                 */
+                function animateImageChange(imageElement) {
+                    // Temporarily set transition to 'none' to immediately apply the start state
+                    imageElement.style.transition = 'none'; 
+                    imageElement.style.opacity = '0';
+                    imageElement.style.transform = 'scale(0.95)';
+
+                    // Use setTimeout to allow the browser to render the 'start' state
+                    // then apply the 'end' state with transitions re-enabled
+                    setTimeout(() => {
+                        imageElement.style.transition = 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out';
+                        imageElement.style.opacity = '1';
+                        // Reset transform for general images, specific hover rules will re-apply on desktop
+                        if (imageElement.id !== 'current-tower-image' && imageElement.id !== 'gpu-image' && imageElement.id !== 'psu-image') {
+                            imageElement.style.transform = 'scale(1)';
+                        }
+                    }, 50); // Small delay, adjust as needed
+                }
+
+                // --- Fullscreen Overlay Logic ---
+                const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+                const zoomedImage = document.getElementById('zoomed-image');
+
+                /**
+                 * Opens the fullscreen image zoom overlay.
+                 * @param {string} imageSrc - The source URL of the image to display.
+                 */
+                function openFullscreenZoom(imageSrc) {
+                    zoomedImage.src = imageSrc;
+                    fullscreenOverlay.classList.add('active');
+                }
+
+                /**
+                 * Closes the fullscreen image zoom overlay.
+                 */
+                function closeFullscreenZoom() {
+                    fullscreenOverlay.classList.remove('active');
+                    // Clear image src after transition for memory optimization
+                    setTimeout(() => { zoomedImage.src = ''; }, 300); // Matches CSS transition duration
+                }
+
+                // Event listener to close fullscreen overlay
+                fullscreenOverlay.addEventListener('click', closeFullscreenZoom);
+
+                // --- Event Listeners for mobile touch zoom on component images ---
+                const componentImagesForZoom = [towerImageEl, gpuImageEl, ssdImageEl, psuImageEl];
+
+                componentImagesForZoom.forEach(imgEl => {
+                    imgEl.addEventListener('click', (e) => {
+                        // Check if it's a mobile device (based on screen width)
+                        if (window.innerWidth < 768) {
+                            e.preventDefault(); // Prevent any default click behavior (e.g., following a link)
+                            openFullscreenZoom(imgEl.src);
+                        }
                     });
-
-                    createSlides();
-                    adjustSlideshowHeight();
-                    window.addEventListener('resize', adjustSlideshowHeight);
-                }
-
-                // --- MEME IMAGE POSITIONING ---
-                function positionMemeImage() {
-                    const serviceLink = document.getElementById('service-link');
-                    const memeImage = document.getElementById('memde_pointLeft');
-                    const footer = document.querySelector('footer');
-
-                    if (serviceLink && memeImage && footer) {
-                        const serviceLinkRect = serviceLink.getBoundingClientRect();
-                        const footerRect = footer.getBoundingClientRect();
-                        
-                        const leftPosition = serviceLinkRect.right - footerRect.left;
-                        
-                        // To prevent the image from overflowing on the right
-                        const footerWidth = footer.offsetWidth;
-                        const memeWidth = memeImage.offsetWidth;
-                        const maxLeft = footerWidth - memeWidth;
-
-                        // Apply the calculated left position, but not more than maxLeft
-                        memeImage.style.left = `${Math.min(leftPosition, maxLeft)}px`;
-                    }
-                }
+                });
 
                 // --- Initial calls ---
                 fetchDolarRate();
                 updateSelectedGamesList();
                 setInitialGridHeight();
-                positionMemeImage();
                 positionCroxImages();
+                
+                // Set initial SSD, GPU, PSU values and update prices
+                if (ssdSelect) {
+                    ssdSelect.value = ssdOptions[0].additionalPrice; // Ensure initial selection is 240GB
+                }
+                if (gpuSelect) {
+                    gpuSelect.value = gpuOptions[0].additionalPrice;
+                }
+                if (psuSelect) {
+                    psuSelect.value = psuOptions[0].additionalPrice;
+                }
+                // Initial display for component images and descriptions
+                updateTowerDisplay(); // Initialize tower display and animate
+                updateSsdDisplay();
+                updateGpuDisplay();
+                updatePsuDisplay();
+
+                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta); // Initial price update after all elements are set
                 
                 // --- Event Listeners ---
                 window.addEventListener('resize', () => {
                     setInitialGridHeight();
-                    positionMemeImage();
                     positionCroxImages();
                 });
             });
