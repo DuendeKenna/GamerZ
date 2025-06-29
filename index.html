@@ -988,6 +988,7 @@
                 #component-list .component-option-image { /* Target all component images on mobile */
                     width: 100px; /* Smaller width for mobile */
                     margin-left: auto; /* Keep them to the right */
+                    padding-left: 1.2rem;
                     margin-right: 0; /* Reset negative margin for mobile */
                     transform-origin: center center; /* Reset transform origin */
                 }
@@ -1006,7 +1007,7 @@
                 align-items: center;
                 position: fixed; /* Fixed position for sticky effect */
                 bottom: -10px; /* Stick to the bottom of the viewport */
-                gap: 1rem; /* Adjust gap for mobile */
+                gap: 0rem; /* Adjust gap for mobile */
                 box-shadow: 0 -4px 15px rgba(0,0,0,0.4); /* Shadow for sticky effect */
                 opacity: 0; /* Initially hidden */
                 visibility: hidden; /* Initially hidden */
@@ -1450,7 +1451,7 @@ text-decoration: none;
         <div id="mobile-price-summary-card" class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
             <div class="price-section ars-price pr-4">
                 <div class="price-value-row">
-                    <span class="currency-value text-cyan-400 font-saira text-right text-6xl">$<span id="total-price-summary-ars-mobile">500.000</span></span>
+                    <span class="currency-value text-cyan-400 font-saira text-right text-6xl text-right">$<span id="total-price-summary-ars-mobile">500.000</span></span>
                 </div>
             </div>
             <div class="separator w-1 h-8"></div> <!-- Adjust height as needed -->
@@ -1458,7 +1459,7 @@ text-decoration: none;
 
                 <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline pl-1 self-center">
                 <div class="price-value-row">
-                    <span class="currency-value text-violet-600 font-saira text-left text-lg"><span id="total-price-summary-usd-mobile"></span></span>
+                    <span class="currency-value text-violet-600 font-saira text-left text-lg text-left"><span id="total-price-summary-usd-mobile"></span></span>
                 </div>
                 </a>
             </div>
@@ -2413,7 +2414,7 @@ text-decoration: none;
                         imageElement.style.transition = 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out';
                         imageElement.style.opacity = '1';
                         // Check if it's GPU or PSU on mobile to apply specific scale
-                        if (window.innerWidth < 768 && (imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
+                        if (window.innerWidth < 768 && (imageElement.id === 'ssd-image' || imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
                             imageElement.style.transform = 'scale(2.3) rotateY(0deg)';
                         } else {
                             imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
