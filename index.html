@@ -1019,12 +1019,16 @@
                 opacity: 0; /* Initially hidden */
                 visibility: hidden; /* Initially hidden */
                 text-shadow: 2px 2px 3px black;
-                padding-left: 1.2rem;
-                padding-right: 1.2rem;
                 transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition */
+                /* Centering and width for mobile */
+                width: fit-content; /* Make it fit its content */
+                left: 50%; /* Center horizontally */
+                transform: translateX(-50%); /* Adjust for perfect centering */
+                /* Ensure general padding is applied correctly for internal spacing */
+                padding: 1rem 1.5rem;
             }
             #mobile-price-summary-card a {
-text-decoration: none;
+                text-decoration: none;
             }
             #mobile-price-summary-card.show-mobile-price {
                 opacity: 1;
@@ -1035,6 +1039,19 @@ text-decoration: none;
                 flex-direction: row;
                 align-items: baseline;
                 font-family: 'Saira', sans-serif;
+                flex-grow: 1; /* Allow price sections to grow and fill available space */
+            }
+
+            /* Specific alignment for ARS price on mobile */
+            #mobile-price-summary-card .ars-price {
+                justify-content: flex-end; /* Align ARS content to the right */
+                text-align: right;
+            }
+
+            /* Specific alignment for USD price on mobile */
+            #mobile-price-summary-card .usd-price {
+                justify-content: flex-start; /* Align USD content to the left */
+                text-align: left;
             }
 
             #mobile-price-summary-card .currency-value {
@@ -1050,13 +1067,24 @@ text-decoration: none;
                 white-space: nowrap;
             }
 
+            /* Ensure value text is aligned correctly within its flex container */
+            #mobile-price-summary-card .ars-price .currency-value {
+                margin-right: 0.25rem; /* Small margin to the separator */
+            }
+            #mobile-price-summary-card .usd-price .currency-value {
+                margin-left: 0.25rem; /* Small margin from the separator */
+            }
+
+
             #mobile-price-summary-card .separator {
                 width: 1px;
                 height: 2.5rem; /* Shorter separator for mobile (h-8) */
                 background-color: rgba(75, 85, 99, 0.5); /* Gray-500 equivalent */
             }
             #mobile-price-summary-card #usd-link-summary-mobile {
-                align-self: left;
+                align-self: flex-end; /* Align to the bottom of the USD price section */
+                font-size: 0.75rem; /* Smaller font for link */
+                padding-left: 0.2rem; /* Small padding to the left of the link */
             }
 
         </style>
@@ -1455,19 +1483,19 @@ text-decoration: none;
 
         <!-- NEW Mobile Sticky Price Summary -->
         <div id="mobile-price-summary-card" class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
-            <div class="price-section ars-price pr-4">
+            <div class="price-section ars-price">
                 <div class="price-value-row">
                     <span class="currency-value text-cyan-400 font-saira text-right">$<span id="total-price-summary-ars-mobile">500.000</span></span>
+                    <span class="currency-text text-cyan-400 font-saira">LUCAS</span>
                 </div>
             </div>
             <div class="separator w-1 h-8"></div> <!-- Adjust height as needed -->
-            <div class="price-section usd-price pl-4" id="usd-price-section-mobile">
-
-                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline">
+            <div class="price-section usd-price" id="usd-price-section-mobile">
                 <div class="price-value-row">
-                    <span class="currency-value text-violet-600 font-saira"><span id="total-price-summary-usd-mobile"></span></span>
+                    <span class="currency-value text-violet-600 font-saira text-left"><span id="total-price-summary-usd-mobile"></span></span>
+                    <span class="currency-text text-violet-600 font-saira">USD</span>
                 </div>
-                </a>
+                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline"><p>Ver cotizaciones</p></a>
             </div>
         </div> 
 
