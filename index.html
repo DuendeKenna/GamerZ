@@ -420,7 +420,7 @@
             
             #hero-wrapper { 
                 position: relative; 
-                overflow-x: hidden; /* Added to prevent horizontal scroll from internal elements */
+                /* Removed overflow-x: hidden to allow child elements to extend beyond its bounds */
             }
             #hero-background-in {
                 position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -448,13 +448,15 @@
             #ovniUp {
                 position: absolute; left: 33%; top:-15px; opacity: 0.63;
                 filter: hue-rotate(50deg); animation: float-up-down 4s ease-in-out infinite;
+                z-index: 30; /* Ensure OVNI is above other elements */
             }
 
             .main-container {
                 background-color: #111827; /* Restored to bg-gray-700 */
                 box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
                 position: relative; /* Needed for absolute positioning of child */
-                overflow-x: hidden; /* Added to prevent horizontal scroll */
+                /* Removed overflow-x: hidden to prevent clipping of pop-out images */
+                overflow: visible; /* Allow content to overflow without being cut */
             }
             #game-grid-container {
                  position: relative; 
@@ -1216,9 +1218,9 @@ text-decoration: none;
                 <p class="text-lg text-gray-300 font-saira">
                 El <span class="text-indigo-400 text-2">hardware</span> impacta directamente en los limites de la experiencia. Luego de investigarlo en profundidad y testear diversas opciones, elegí promediar una única <b class="text-amber-400">configuración balanceada</b>.
                 <div class="font-vt323 text-5xl mt-3 green-333">
-                    <p>Intel i5 3.6 GHz | 16GB de RAM</p>
-                <p class="text-4xl green-777 font-saira mt-1">Acompañado de TU ELECCIÓN</p>
-                <p class="green-777 -mt-3">?</p>
+                    <p>Intel i5 3.6 GHz con 16GB de RAM</p>
+                <p class="text-4xl text-green-500 font-saira mt-1">Acompañado de TU ELECCIÓN</p>
+                <p class="text-green-500 -mt-3">▼</p>
                 </div>
                 </p>
             </section>
@@ -1455,15 +1457,17 @@ text-decoration: none;
         <div id="mobile-price-summary-card" class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
             <div class="price-section ars-price pr-4">
                 <div class="price-value-row">
-                    <span class="currency-value text-cyan-400 font-saira text-right text-6xl text-right">$<span id="total-price-summary-ars-mobile" style="align-self: right;">500.000</span></span>
+                    <span class="currency-value text-cyan-400 font-saira text-right">$<span id="total-price-summary-ars-mobile">500.000</span></span>
+                    <span class="currency-text text-cyan-400 font-saira">LUCAS</span>
                 </div>
             </div>
             <div class="separator w-1 h-8"></div> <!-- Adjust height as needed -->
             <div class="price-section usd-price pl-4" id="usd-price-section-mobile">
 
-                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline pl-1 self-center">
+                <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline">
                 <div class="price-value-row">
-                    <span class="currency-value text-violet-600 font-saira text-left text-lg text-left"><span id="total-price-summary-usd-mobile"></span></span>
+                    <span class="currency-value text-violet-600 font-saira"><span id="total-price-summary-usd-mobile"></span></span>
+                    <span class="currency-text text-violet-600 font-saira">USD</span>
                 </div>
                 </a>
             </div>
@@ -1876,7 +1880,7 @@ text-decoration: none;
                             const gameSlug = toSlug(gameName);
                             const gameEl = document.createElement('div');
                             gameEl.className = 'w-1/4 md:w-1/5 p-1';
-                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${imageSrc}" alt="Carátula de ${game.name}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';"></a>`;
+                            gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${gameImageSrc}" alt="Carátula de ${gameName}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${gameName.replace(/\s/g, '+')}';"></a>`;
                             selectedGamesList.appendChild(gameEl);
                         });
                     } else {
@@ -2419,7 +2423,7 @@ text-decoration: none;
                         imageElement.style.opacity = '1';
                         // Check if it's GPU or PSU on mobile to apply specific scale
                         if (window.innerWidth < 768 && (imageElement.id === 'ssd-image' || imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
-                            imageElement.style.transform = 'scale(2.3) rotateY(0deg)';
+                            imageElement.style.transform = 'scale(1.5) rotateY(0deg)';
                         } else {
                             imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
                         }
