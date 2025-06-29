@@ -419,7 +419,10 @@
                 transition: opacity 0.8s ease-in-out;
             }
             
-            #hero-wrapper { position: relative; }
+            #hero-wrapper { 
+                position: relative; 
+                overflow-x: hidden; /* Added to prevent horizontal scroll from internal elements */
+            }
             #hero-background-in {
                 position: absolute; top: 0; left: 0; width: 100%; height: 100%;
                 pointer-events:none; background-image: url('hero-background.webp');
@@ -645,15 +648,12 @@
 
             #current-tower-image {
                 width: 100%; /* Fill the `flex-grow` container */
-                height: 100%; /* Fill the `flex-grow` container */
+                height: 125%; /* Make it taller to overflow upwards */
                 object-fit: contain; /* Keep aspect ratio, allow overflow if wider/taller than container */
-                cursor: default;
+                cursor: pointer; /* Change cursor to pointer for click interaction */
                 transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Added opacity transition */
                 z-index: 1; /* Below bottom controls */
-            }
-
-            #current-tower-image:hover {
-                transform: scale(1.15); /* Increased zoom on hover */
+                margin-top: -10%; /* Push the image up to show overflow at the top */
             }
 
             /* New wrapper for name and arrows */
@@ -896,7 +896,8 @@
                 display: flex;
                 align-items: center; /* Align items (text and image) vertically in the row */
                 gap: 1rem; /* Space between text content and image */
-                width: 130%; /* Ensure li takes full width */
+                width: 100%; /* Corrected to prevent horizontal scroll */
+                padding-right: 1.5rem; /* Add some padding to the right for spacing */
             }
             #component-list li .component-content-wrapper {
                 display: flex;
@@ -921,43 +922,45 @@
                 color: #42d232; /* Green color */
                 font-size: 1rem; /* Base size for description */
                 margin-top: 0.25rem; /* Space below select */
+                min-height: 4.5rem; /* Ensures 3 lines of space (1rem * 3 lines = 3rem. Line-height 1.5 * 3 = 4.5rem) */
+                line-height: 1.5; /* Ensures consistent line height */
             }
             #component-list .component-option-image {
-                width: 181px;
+                width: 180px; /* Increased width for larger images */
                 object-fit: contain;
                 flex-shrink: 0;
                 margin-left: auto;
-                right: 26px;
                 position: relative;
+                cursor: pointer; /* Change cursor to pointer for click interaction */
                 transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Added opacity transition */
             }
 
             /* Desktop Hover Zoom Effects */
             @media (min-width: 768px) {
-                #current-tower-image:hover {
-                    transform: scale(1.3);
-                    transform-origin: center center;
-                }
+                #current-tower-image:hover,
                 #gpu-image:hover,
                 #psu-image:hover {
                     transform: scale(1.3);
-                    transform-origin: left center; /* Anchor to the left */
+                    transform-origin: center center; /* Expand from center */
                 }
                 #ssd-image:hover {
                     transform: scale(1); /* No zoom for SSD */
                 }
             }
 
-            /* Style for the monitor note at the top right */
-            .monitor-note {
-                position: absolute;
-                top: 1rem; /* Posicionamiento superior */
-                right: 1rem; /* Posicionamiento a la derecha */
+            /* Monitor Note Styles (for mobile only) */
+            .monitor-note-mobile {
                 color: #9ca3af; /* gray-400 */
                 font-size: 0.75rem; /* text-xs */
-                font-family: 'Roboto', sans-serif; /* or Inter, depending on preference */
-                z-index: 50;
-                text-align: right;
+                font-family: 'Roboto', sans-serif;
+                text-align: center; /* Center the text */
+                margin-top: 0.5rem; /* Add some space below the H2 */
+                margin-bottom: 1rem; /* Add some space before the next section */
+            }
+            @media (min-width: 768px) {
+                .monitor-note-mobile {
+                    display: none; /* Hide on desktop */
+                }
             }
 
             /* Fullscreen Overlay Styles */
@@ -1159,11 +1162,11 @@
             </section>
 
 
-            <h2 class="text-center font-saira-black text-4xl mb-4">Torre   +   Gráfica + Disco + Fuente</h2>
-            <div id="main-components-container" class="max-w-3xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
-                <div class="monitor-note">
-                    *Monitor/Teclado/Mouse se venden aparte
-                </div>
+            <h2 class="text-center font-saira-black text-4xl mb-4">Torre+Gráfica+Disco+Fuente</h2>
+            <p class="monitor-note-mobile">
+                Monitor/Teclado/Mouse se venden aparte
+            </p>
+            <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
                 <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6 h-full">
                     <div class="w-full md:w-1/2 flex-shrink-0 h-full flex items-center justify-center">
                         <div id="tower-selector-container" class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
@@ -1627,10 +1630,7 @@
                         // Hide USD display if API fails for all sections
                         if(usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                         if(usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
-                        // Hide USD section in summary card
-                        if(usdPriceSectionEl) {
-                            usdPriceSectionEl.style.display = 'none';
-                        }
+                        if(usdPriceSectionEl) usdPriceSectionEl.style.display = 'none'; // Hide USD section on error
                     }
                 }
 
@@ -2151,9 +2151,7 @@
                 const nextTowerBtn = document.getElementById('next-tower');
                 const towerSelectorContainer = document.getElementById('tower-selector-container');
 
-                let touchStartX = 0;
-                let touchEndX = 0;
-                const swipeThreshold = 50; // Minimum distance for a swipe
+                // Removed swipe functionality for mobile
 
                 /**
                  * Updates the displayed tower image and name.
@@ -2195,24 +2193,6 @@
 
                 prevTowerBtn.addEventListener('click', prevTower);
                 nextTowerBtn.addEventListener('click', nextTower);
-
-                // Swipe functionality for tower selection
-                towerSelectorContainer.addEventListener('touchstart', (e) => {
-                    touchStartX = e.touches[0].clientX;
-                });
-
-                towerSelectorContainer.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].clientX;
-                    const swipeDistance = touchEndX - touchStartX;
-
-                    if (Math.abs(swipeDistance) > swipeThreshold) { // Only if a significant swipe occurred
-                        if (swipeDistance > 0) { // Swiped right
-                            prevTower();
-                        } else { // Swiped left
-                            nextTower();
-                        }
-                    }
-                });
 
 
                 // --- SSD Storage Selector Logic (Combobox) ---
@@ -2321,22 +2301,19 @@
                  * @param {HTMLElement} imageElement - The image element to animate.
                  */
                 function animateImageChange(imageElement) {
-                    // Temporarily set transition to 'none' to immediately apply the start state
-                    imageElement.style.transition = 'none'; 
+                    // Apply a "glitch-like" transition effect
+                    imageElement.style.transition = 'opacity 0.1s ease-out, transform 0.1s ease-out';
                     imageElement.style.opacity = '0';
-                    imageElement.style.transform = 'scale(0.95)';
+                    imageElement.style.transform = 'scale(0.8) rotateY(180deg)'; // Start state for the glitch effect (full flip)
 
-                    // Use setTimeout to allow the browser to render the 'start' state
-                    // then apply the 'end' state with transitions re-enabled
                     setTimeout(() => {
+                        // After a brief delay, reset styles for the incoming image with a new transition
                         imageElement.style.transition = 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out';
                         imageElement.style.opacity = '1';
-                        // Reset transform for general images, specific hover rules will re-apply on desktop
-                        if (imageElement.id !== 'current-tower-image' && imageElement.id !== 'gpu-image' && imageElement.id !== 'psu-image') {
-                            imageElement.style.transform = 'scale(1)';
-                        }
-                    }, 50); // Small delay, adjust as needed
+                        imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
+                    }, 100); // This timeout controls the duration of the "glitch" out effect
                 }
+
 
                 // --- Fullscreen Overlay Logic ---
                 const fullscreenOverlay = document.getElementById('fullscreen-overlay');
@@ -2368,11 +2345,8 @@
 
                 componentImagesForZoom.forEach(imgEl => {
                     imgEl.addEventListener('click', (e) => {
-                        // Check if it's a mobile device (based on screen width)
-                        if (window.innerWidth < 768) {
-                            e.preventDefault(); // Prevent any default click behavior (e.g., following a link)
-                            openFullscreenZoom(imgEl.src);
-                        }
+                        e.preventDefault(); // Prevent any default click behavior (e.g., following a link)
+                        openFullscreenZoom(imgEl.src);
                     });
                 });
 
