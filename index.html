@@ -1005,10 +1005,14 @@
                 justify-content: center;
                 align-items: center;
                 scale: 0.9;
+                width: 106%;
+                position: fixed; /* Fixed position for sticky effect */
+                bottom: -10px; /* Stick to the bottom of the viewport */
                 gap: 1rem; /* Adjust gap for mobile */
                 box-shadow: 0 -4px 15px rgba(0,0,0,0.4); /* Shadow for sticky effect */
                 opacity: 0; /* Initially hidden */
                 visibility: hidden; /* Initially hidden */
+                text-shadow: 2px 2px 3px black;
                 transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition */
             }
             #mobile-price-summary-card.show-mobile-price {
