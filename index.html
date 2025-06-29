@@ -1024,7 +1024,7 @@ text-decoration: none;
             }
 
             #mobile-price-summary-card .price-section {
-                flex-direction: row; /* Keep content in row for mobile price */
+                flex-direction: row;
                 align-items: baseline;
                 font-family: 'Saira', sans-serif;
             }
@@ -1043,7 +1043,7 @@ text-decoration: none;
             }
 
             #mobile-price-summary-card .separator {
-                width: 1px; /* Ensure width is 1px for vertical line */
+                width: 1px;
                 height: 2.5rem; /* Shorter separator for mobile (h-8) */
                 background-color: rgba(75, 85, 99, 0.5); /* Gray-500 equivalent */
             }
@@ -1447,14 +1447,14 @@ text-decoration: none;
         </div>
 
         <!-- NEW Mobile Sticky Price Summary -->
-        <div id="mobile-price-summary-card" class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center gap-x-4">
-            <div class="price-section ars-price">
+        <div id="mobile-price-summary-card" class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
+            <div class="price-section ars-price pr-4">
                 <div class="price-value-row">
                     <span class="currency-value text-cyan-400 font-saira text-6xl">$<span id="total-price-summary-ars-mobile">500.000</span></span>
                 </div>
             </div>
             <div class="separator h-8"></div> <!-- Adjust height as needed -->
-            <div class="price-section usd-price" id="usd-price-section-mobile">
+            <div class="price-section usd-price pl-4" id="usd-price-section-mobile">
 
                 <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline pl-1 self-center">
                 <div class="price-value-row">
@@ -1462,7 +1462,7 @@ text-decoration: none;
                 </div>
                 </a>
             </div>
-        </div>
+        </div> 
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
