@@ -446,9 +446,15 @@
                 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); }
             }
             #ovniUp {
-                position: absolute; left: 33%; top:-15px; opacity: 0.63;
-                filter: hue-rotate(50deg); animation: float-up-down 4s ease-in-out infinite;
+                position: absolute; left: 54%; top:-15px; opacity: 0.63;
+                filter: hue-rotate(50deg); animation: float-up-down 4s ease-in-out infinite, energy-beam 6s ease-in-out infinite;
                 z-index: 30; /* Ensure OVNI is above other elements */
+            }
+
+             @keyframes energy-beam {
+                0% {filter: hue-rotate(5deg); opacity: 0.6; }
+                50% {filter:  hue-rotate(50deg); opacity: 0.8; }
+                100% {filter: hue-rotate(5deg); opacity: 0.6; }
             }
 
             .main-container {
@@ -1585,7 +1591,7 @@ text-decoration: none;
                             'https://placehold.co/400x500/1f2937/ffffff?text=Thermaltake+H200+2',
                             'https://placehold.co/400x500/1f2937/ffffff?text=Thermaltake+H200+3',
                         ]
-                    }
+                    }   
                 ];
 
                 // --- SSD Storage Options ---
