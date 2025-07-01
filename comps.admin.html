@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Vectores de Productos</title>
+    <!-- Incluye Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&family=Press+Start+2P&family=Saira:wght@400;900;1,400&family=VT323&display=swap" rel="stylesheet">
+    <!-- Iconos de Lucide React, aunque se usarán como SVG para HTML directo -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Fondo principal de Manual de Marca */
+            color: #e5e7eb; /* Color de texto principal de Manual de Marca */
+        }
+        .font-saira { font-family: 'Saira', sans-serif; }
+        .font-saira-black { font-family: 'Saira', sans-serif; font-weight: 900; }
+        .font-press-start { font-family: 'Press Start 2P', cursive; }
+        .font-vt323 { font-family: 'VT323', monospace; }
+
+        .product-card {
+            background-color: #1f2937; /* Color de contenedor de Manual de Marca */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1rem; /* mb-4 */
+            border: 1px solid #374151; /* border-gray-700 */
+            cursor: grab; /* Indica que el elemento es arrastrable */
+        }
+        .product-card.dragging {
+            opacity: 0.5;
+            border: 2px dashed #6366f1; /* Borde para el elemento arrastrado */
+        }
+        .product-card.drag-over {
+            border: 2px solid #a855f7; /* Borde para el objetivo de soltar */
+        }
+        input[type="text"], input[type="number"], textarea {
+            background-color: #374151; /* bg-gray-700 */
+            border: 1px solid #4b5563; /* border-gray-600 */
+            color: #e5e7eb; /* text-gray-200 */
+            border-radius: 0.375rem; /* rounded-md */
+            padding: 0.5rem 0.75rem; /* px-3 py-2 */
+            width: 100%;
+            font-size: 0.875rem; /* text-sm */
+            line-height: 1.25rem; /* leading-5 */
+            outline: none;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+            border-color: #6366f1; /* focus:border-indigo-500 */
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25); /* focus:ring-indigo-500 */
+        }
+        input[type="file"] {
+            color: #e5e7eb; /* text-gray-200 */
+            font-size: 0.875rem; /* text-sm */
+        }
+        input[type="file"]::file-selector-button {
+            background-color: #4b5563; /* bg-gray-600 */
+            color: #ffffff; /* text-white */
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            margin-right: 0.5rem;
+        }
+        input[type="file"]::file-selector-button:hover {
+            background-color: #374151; /* hover:bg-gray-700 */
+        }
+
+        .btn-primary {
+            background-color: #6366f1; /* bg-indigo-500 */
+            color: #ffffff; /* text-white */
+            padding: 0.75rem 1.25rem; /* px-5 py-3 */
+            border-radius: 0.5rem; /* rounded-lg */
+            font-weight: 600; /* font-semibold */
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #4f46e5; /* hover:bg-indigo-600 */
+        }
+        .btn-danger {
+            background-color: #ef4444; /* bg-red-500 */
+            color: #ffffff; /* text-white */
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 500; /* font-medium */
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-danger:hover {
+            background-color: #dc2626; /* hover:bg-red-600 */
+        }
+        .btn-secondary {
+            background-color: #4b5563; /* bg-gray-600 */
+            color: #ffffff; /* text-white */
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            border-radius: 0.375rem; /* rounded-md */
+            font-weight: 500; /* font-medium */
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background-color: #374151; /* hover:bg-gray-700 */
+        }
+        .lucide-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 1em;
+            height: 1em;
+            stroke-width: 2;
+            stroke: currentColor;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .section-title-admin {
+            border-bottom: 3px solid;
+            border-image: linear-gradient(to right, #6366f1, #a855f7) 1;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        #output-code {
+            background-color: #1f2937; /* bg-gray-800 */
+            border-color: #374151; /* border-gray-700 */
+            color: #42d232; /* green-333 */
+        }
+        #copy-message {
+            color: #42d232; /* green-333 */
+        }
+        #error-message {
+            color: #ef4444; /* red-500 */
+        }
+        .propagate-btn {
+            background-color: #22d3ee; /* cyan-400 */
+            color: #111827; /* Fondo principal */
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            margin-left: 0.5rem;
+            white-space: nowrap; /* Evita que el texto se rompa */
+        }
+        .propagate-btn:hover {
+            background-color: #06b6d4; /* cyan-500 */
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* Espacio entre input y botón */
+        }
+        .input-group input, .input-group textarea {
+            flex-grow: 1; /* Permite que el input ocupe el espacio disponible */
+        }
+        /* Clase para el efecto de flash en la imagen */
+        .image-flash {
+            border-color: #42d232 !important; /* green-333 */
+            box-shadow: 0 0 0 3px rgba(66, 210, 50, 0.5); /* Sombra verde */
+            transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 bg-gray-900 min-h-screen text-gray-200">
+    <div class="max-w-6xl mx-auto bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700">
+        <h1 class="text-3xl font-saira-black text-white mb-6 text-center">Administrador de Vectores de Productos</h1>
+
+        <!-- Sección de Carga de Datos Inicial -->
+        <section class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Cargar Datos Iniciales</h2>
+            <p class="text-gray-400 mb-4">Pega aquí el código JavaScript de tus vectores de productos. Asegúrate de que sea un JSON válido para cada variable (towersOptions, ssdOptions, gpuOptions, psuOptions, motherboardOptions, cpuOptions).</p>
+            <textarea id="initial-data-input" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-700 text-gray-200 font-mono text-sm resize-y"></textarea>
+            <div class="flex justify-center mt-4 space-x-4">
+                <button onclick="loadDataFromInput()" class="btn-primary flex items-center">
+                    <span class="lucide-icon mr-2" data-lucide="upload"></span> Cargar Datos
+                </button>
+                <button onclick="pasteDataIntoInput()" class="btn-secondary flex items-center">
+                    <span class="lucide-icon mr-2" data-lucide="clipboard"></span> Pegar Datos
+                </button>
+            </div>
+            <p id="error-message" class="text-center text-sm text-red-500 mt-2 hidden">Error al cargar los datos. Asegúrate de que el formato sea correcto.</p>
+        </section>
+
+        <!-- Sección de Torres -->
+        <section id="section-towers" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Torres</h2>
+            <div id="towers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                <!-- Las tarjetas de torres se renderizarán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección de Opciones de SSD -->
+        <section id="section-ssdOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de SSD</h2>
+            <div id="ssdOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                <!-- Las tarjetas de SSD se renderizarán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección de Opciones de GPU -->
+        <section id="section-gpuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de GPU</h2>
+            <div id="gpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                <!-- Las tarjetas de GPU se renderizarán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección de Opciones de PSU -->
+        <section id="section-psuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de PSU</h2>
+            <div id="psuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                <!-- Las tarjetas de PSU se renderizarán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección de Opciones de Motherboard -->
+        <section id="section-motherboardOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Motherboard</h2>
+            <div id="motherboardOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                <!-- Las tarjetas de Motherboard se renderizarán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección de Opciones de CPU -->
+        <section id="section-cpuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de CPU</h2>
+            <div id="cpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                <!-- Las tarjetas de CPU se renderizarán aquí -->
+            </div>
+        </section>
+
+        <!-- Sección de Generar y Copiar Código -->
+        <section class="mt-10 p-6 bg-gray-900 rounded-lg shadow-inner border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar y Copiar Código de Vectores</h2>
+            <textarea id="output-code" rows="15" class="w-full p-4 border border-blue-300 rounded-lg bg-blue-50 text-blue-900 font-mono text-sm resize-y" readonly></textarea>
+            <div class="flex flex-col sm:flex-row justify-center mt-4 space-y-4 sm:space-y-0 sm:space-x-4">
+                <button onclick="generateCode()" class="btn-primary flex items-center justify-center">
+                    <span class="lucide-icon mr-2" data-lucide="code"></span> Generar Código
+                </button>
+                <button onclick="copyCode()" class="btn-secondary flex items-center justify-center">
+                    <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código
+                </button>
+            </div>
+            <p id="copy-message" class="text-center text-sm text-green-600 mt-2 hidden">¡Código copiado al portapapeles!</p>
+            <p id="warning-message" class="text-center text-sm text-amber-400 mt-2 hidden">¡Advertencia: Las imágenes cargadas localmente asumen que el archivo estará en la carpeta 'comps/' de tu servidor!</p>
+        </section>
+    </div>
+
+    <!-- Global Floating Add Button -->
+    <button id="global-add-button" class="btn-primary fixed bottom-4 right-4 z-50">
+        <span class="lucide-icon mr-2" data-lucide="plus"></span> <span id="global-add-button-text">Añadir</span>
+    </button>
+
+    <script>
+        // Datos iniciales hardcodeados como un objeto para facilitar la carga en el textarea
+        const initialHardcodedData = {
+            towersOptions: [
+                {
+                    name: 'Sentey R20',
+                    price: 45000,
+                    slug: 'sentey-r20',
+                    image_url: 'comps/torres/sentey-r20.webp',
+                    link: ''
+                },
+                {
+                    name: 'Antec Nx292',
+                    price: 75000,
+                    slug: 'antex-nx292',
+                    image_url: 'comps/torres/antex-nx292.webp',
+                    link: 'https://www.antec.com/product/case/nx292'
+                }
+            ],
+            ssdOptions: [
+                { name: '240GB SSD SATA', price: 25000, description: 'Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.', image_url: 'comps/discos/ssd_hiksemi.webp', link: '' },
+                { name: '480GB SSD SATA', price: 45000, description: 'El estándar. Recomendado para Juegos y Aplicaciones.', image_url: 'comps/discos/ssd_hiksemi.webp', link: '' },
+                { name: '1TB SSD SATA', price: 75000, description: 'El doble que el estándar. Ideal si creás contenido además de jugar.', image_url: 'comps/discos/ssd_hiksemi.webp', link: 'https://www.hiksemi.com/ssd/e100n-ssd/' }
+            ],
+            gpuOptions: [
+                { name: 'AMD 560 4GB', price: 60000, description: 'Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.', image_url: 'comps/gpus/rx560.webp', link: '' },
+                { name: 'GT 740 2GB', price: 70000, description: 'Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)', image_url: 'comps/gpus/gt740.webp', link: 'https://www.nvidia.com/es-la/geforce/graphics-cards/gt-740/' }
+            ],
+            psuOptions: [
+                { name: 'ATX 550w Sentey Genérica', price: 30000, description: 'Fuente estándar, suficiente para esta configuración base.', image_url: 'comps/psus/550sentey.webp', link: '' },
+                { name: 'ATX 550w Sentey 80 Plus', price: 45000, description: 'Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.', image_url: 'comps/psus/550sentey80.webp', link: 'https://sentey.com/fuentes-de-poder/xplus-power-550w-80-plus-bronze/' }
+            ],
+            motherboardOptions: [
+                { name: 'Gigabyte H410M H V3', price: 80000, description: 'Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.', image_url: 'comps/motherboards/gigabyte-h410m.webp', link: 'https://www.gigabyte.com/Motherboard/H410M-H-V3-rev-10' },
+                { name: 'ASUS Prime B550M-A', price: 120000, description: 'Placa madre AM4 versátil con soporte PCIe 4.0. Excelente para Ryzen.', image_url: 'comps/motherboards/asus-b550m.webp', link: 'https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a/' }
+            ],
+            cpuOptions: [
+                { name: 'Intel Core i3-10100F', price: 70000, description: 'Procesador de 4 núcleos y 8 hilos. Buen rendimiento para gaming y tareas diarias.', image_url: 'comps/cpus/intel-i3-10100f.webp', link: 'https://www.intel.la/content/www/xl/es/products/sku/203473/intel-core-i310100f-processor/specifications.html' },
+                { name: 'AMD Ryzen 5 3600', price: 100000, description: 'Procesador de 6 núcleos y 12 hilos. Excelente para gaming y multitarea.', image_url: 'comps/cpus/amd-ryzen-5-3600.webp', link: 'https://www.amd.com/es/products/cpu/amd-ryzen-5-3600' }
+            ]
+        };
+
+        // Variables globales para los datos de los productos
+        let towersOptions = [];
+        let ssdOptions = [];
+        let gpuOptions = [];
+        let psuOptions = [];
+        let motherboardOptions = [];
+        let cpuOptions = [];
+
+        // Objeto para mapear nombres de categorías a sus arrays de datos
+        const dataMap = {
+            towers: towersOptions,
+            ssdOptions: ssdOptions,
+            gpuOptions: gpuOptions,
+            psuOptions: psuOptions,
+            motherboardOptions: motherboardOptions,
+            cpuOptions: cpuOptions
+        };
+
+        // Mapeo de categorías a sus carpetas de imágenes
+        const categoryFolderMap = {
+            towers: 'torres',
+            ssdOptions: 'discos',
+            gpuOptions: 'gpus',
+            psuOptions: 'psus',
+            motherboardOptions: 'motherboards',
+            cpuOptions: 'cpus'
+        };
+
+        // Flag para rastrear cambios no guardados en la sesión
+        let hasUnsavedChanges = false;
+
+        // Variables para el drag and drop
+        let draggedItemCategory = null;
+        let draggedItemIndex = null;
+
+        // Global floating add button elements
+        const globalAddButton = document.getElementById('global-add-button');
+        const globalAddButtonText = document.getElementById('global-add-button-text');
+
+        // Map section IDs to their component types for the global add button
+        const sectionComponentTypeMap = {
+            'section-towers': 'towers',
+            'section-ssdOptions': 'ssdOptions',
+            'section-gpuOptions': 'gpuOptions',
+            'section-psuOptions': 'psuOptions',
+            'section-motherboardOptions': 'motherboardOptions',
+            'section-cpuOptions': 'cpuOptions',
+        };
+
+        /**
+         * Helper para obtener el nombre legible del componente para el botón flotante.
+         * @param {string} type - El tipo de componente (ej. 'towers').
+         * @returns {string} El nombre legible.
+         */
+        function getComponentName(type) {
+            switch (type) {
+                case 'towers': return 'Torre';
+                case 'ssdOptions': return 'SSD';
+                case 'gpuOptions': return 'GPU';
+                case 'psuOptions': return 'PSU';
+                case 'motherboardOptions': return 'Motherboard';
+                case 'cpuOptions': return 'CPU';
+                default: return 'Componente';
+            }
+        }
+
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '0px 0px -50% 0px', // Trigger when top of section enters, and stays active until it scrolls past 50% of viewport
+            threshold: 0 // Trigger as soon as any part of the section enters/leaves
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            let activeSectionType = null;
+            let highestIntersectingRatio = 0;
+
+            // Find the section that is most in view
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.intersectionRatio > highestIntersectingRatio) {
+                        activeSectionType = sectionComponentTypeMap[entry.target.id];
+                        highestIntersectingRatio = entry.intersectionRatio;
+                    }
+                }
+            });
+
+            if (activeSectionType) {
+                globalAddButtonText.textContent = `Añadir ${getComponentName(activeSectionType)}`;
+                globalAddButton.onclick = () => addProduct(activeSectionType);
+                globalAddButton.classList.remove('hidden');
+            } else {
+                // If no section is currently intersecting with a high ratio, hide the button
+                // Or set a default if desired, but hiding is cleaner if no clear "active" section
+                globalAddButton.classList.add('hidden');
+            }
+        }, observerOptions);
+
+
+        /**
+         * Muestra un mensaje de error en la UI.
+         * @param {string} message - El mensaje de error a mostrar.
+         */
+        function showErrorMessage(message) {
+            const errorMessageElement = document.getElementById('error-message');
+            errorMessageElement.textContent = message;
+            errorMessageElement.classList.remove('hidden');
+            setTimeout(() => {
+                errorMessageElement.classList.add('hidden');
+            }, 5000); // Ocultar después de 5 segundos
+        }
+
+        /**
+         * Muestra un mensaje de advertencia en la UI.
+         * @param {string} message - El mensaje de advertencia a mostrar.
+         */
+        function showWarningMessage(message) {
+            const warningMessageElement = document.getElementById('warning-message');
+            warningMessageElement.textContent = message;
+            warningMessageElement.classList.remove('hidden');
+            setTimeout(() => {
+                warningMessageElement.classList.add('hidden');
+            }, 7000); // Ocultar después de 7 segundos
+        }
+
+        /**
+         * Guarda el estado actual de los datos en sessionStorage.
+         */
+        function saveDataToSessionStorage() {
+            try {
+                sessionStorage.setItem('productAdminData', JSON.stringify({
+                    towersOptions: dataMap.towers,
+                    ssdOptions: dataMap.ssdOptions,
+                    gpuOptions: dataMap.gpuOptions,
+                    psuOptions: dataMap.psuOptions,
+                    motherboardOptions: dataMap.motherboardOptions,
+                    cpuOptions: dataMap.cpuOptions
+                }));
+                hasUnsavedChanges = true; // Marcar que hay cambios sin guardar
+            } catch (e) {
+                console.error("Error al guardar en sessionStorage:", e);
+                // Podrías mostrar un mensaje al usuario si el almacenamiento falla (ej. cuota excedida)
+            }
+        }
+
+        /**
+         * Carga los datos desde sessionStorage si existen.
+         * @returns {Object|null} Los datos cargados o null si no hay.
+         */
+        function loadDataFromSessionStorage() {
+            try {
+                const storedData = sessionStorage.getItem('productAdminData');
+                if (storedData) {
+                    const parsedData = JSON.parse(storedData);
+                    // Asegurarse de que todas las propiedades existan, incluso si no estaban en la sesión guardada
+                    return {
+                        towersOptions: parsedData.towersOptions || [],
+                        ssdOptions: parsedData.ssdOptions || [],
+                        gpuOptions: parsedData.gpuOptions || [],
+                        psuOptions: parsedData.psuOptions || [],
+                        motherboardOptions: parsedData.motherboardOptions || [],
+                        cpuOptions: parsedData.cpuOptions || []
+                    };
+                }
+            } catch (e) {
+                console.error("Error al cargar de sessionStorage:", e);
+                // Si hay un error de parseo, es mejor limpiar el storage para evitar bucles
+                sessionStorage.removeItem('productAdminData');
+            }
+            return null;
+        }
+
+        /**
+         * Carga los datos desde el textarea de entrada inicial.
+         */
+        function loadDataFromInput() {
+            const initialDataInput = document.getElementById('initial-data-input');
+            try {
+                const dataString = initialDataInput.value;
+
+                const extractArray = (variableName, dataStr) => {
+                    const regex = new RegExp(`const ${variableName} =\\s*(\\[[\\s\\S]*?\\]);`);
+                    const match = dataStr.match(regex);
+                    if (match && match[1]) {
+                        return JSON.parse(match[1]);
+                    }
+                    return [];
+                };
+
+                // Asignar los arrays parseados a las variables globales
+                towersOptions = extractArray('towersOptions', dataString);
+                ssdOptions = extractArray('ssdOptions', dataString);
+                gpuOptions = extractArray('gpuOptions', dataString);
+                psuOptions = extractArray('psuOptions', dataString);
+                motherboardOptions = extractArray('motherboardOptions', dataString);
+                cpuOptions = extractArray('cpuOptions', dataString);
+
+                // Actualizar el dataMap para que apunte a los nuevos arrays
+                dataMap.towers = towersOptions;
+                dataMap.ssdOptions = ssdOptions;
+                dataMap.gpuOptions = gpuOptions;
+                dataMap.psuOptions = psuOptions;
+                dataMap.motherboardOptions = motherboardOptions;
+                dataMap.cpuOptions = cpuOptions;
+
+                renderAllProducts();
+                saveDataToSessionStorage(); // Guardar los datos recién cargados
+                hasUnsavedChanges = false; // Resetear el flag de cambios no guardados
+                document.getElementById('error-message').classList.add('hidden'); // Ocultar cualquier error previo
+            } catch (error) {
+                console.error('Error al parsear los datos iniciales:', error);
+                showErrorMessage('Error al cargar los datos. Asegúrate de que el formato JavaScript sea correcto y las variables estén bien definidas (ej. `const towersOptions = [...]`).');
+            }
+        }
+
+        /**
+         * Pega el contenido del portapapeles en el textarea de carga inicial.
+         */
+        async function pasteDataIntoInput() {
+            const initialDataInput = document.getElementById('initial-data-input');
+            try {
+                const text = await navigator.clipboard.readText();
+                initialDataInput.value = text;
+                showWarningMessage('¡Datos pegados! Haz clic en "Cargar Datos" para aplicar los cambios.');
+            } catch (err) {
+                console.error('Error al pegar del portapapeles:', err);
+                showErrorMessage('No se pudo acceder al portapapeles. Por favor, pega los datos manualmente (Ctrl+V o Cmd+V).');
+            }
+        }
+
+        /**
+         * Maneja la carga de archivos de imagen.
+         * @param {Event} event - El evento de cambio del input file.
+         * @param {string} category - La categoría del producto.
+         * @param {number} index - El índice del producto en el array.
+         * @param {string} keyToUpdate - La clave de la propiedad a actualizar ('image_url').
+         */
+        async function handleImageUpload(event, category, index, keyToUpdate) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const categoryFolder = categoryFolderMap[category];
+            const relativePath = `comps/${categoryFolder}/${file.name}`;
+
+            dataMap[category][index][keyToUpdate] = relativePath;
+
+            // Limpiar el valor del input file para permitir seleccionar el mismo archivo de nuevo si es necesario
+            event.target.value = '';
+
+            // Solo re-renderizar la tarjeta específica que cambió la imagen
+            updateProductCard(category, index);
+            saveDataToSessionStorage(); // Guardar cambios
+            showWarningMessage('¡Advertencia: Las imágenes cargadas localmente asumen que el archivo estará en la carpeta \'comps/\' de tu servidor!');
+
+            // Mostrar el botón de propagación para el campo de URL de imagen después de la carga
+            const cardElement = document.getElementById(`product-card-${category}-${index}`);
+            if (cardElement) {
+                // Find the specific input for image_url within the card
+                const imageUrlInput = cardElement.querySelector(`input[oninput*="updateProduct('${category}', ${index}, 'image_url'"]`);
+                if (imageUrlInput) {
+                    showPropagateButton(imageUrlInput); // Make propagate button visible
+                }
+            }
+        }
+
+        /**
+         * Muestra el botón de propagación al enfocar o escribir en un input.
+         * @param {HTMLElement} inputElement - El elemento input que disparó el evento.
+         */
+        function showPropagateButton(inputElement) {
+            const propagateBtn = inputElement.closest('.input-group').querySelector('.propagate-btn');
+            if (propagateBtn) {
+                propagateBtn.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Oculta el botón de propagación al desenfocar un input.
+         * Se usa un pequeño retraso para permitir el clic en el botón.
+         * @param {HTMLElement} inputElement - El elemento input que disparó el evento.
+         */
+        function hidePropagateButton(inputElement) {
+            const propagateBtn = inputElement.closest('.input-group').querySelector('.propagate-btn');
+            if (propagateBtn) {
+                setTimeout(() => {
+                    propagateBtn.classList.add('hidden');
+                }, 150); // Pequeño retraso
+            }
+        }
+
+        /**
+         * Propaga y formatea los datos del producto basándose en un campo de origen.
+         * @param {string} category - La categoría del producto.
+         * @param {number} index - El índice del producto.
+         * @param {string} sourceField - El campo que se usó como origen ('name', 'slug', 'image_url').
+         */
+        function propagateProductData(category, index, sourceField) {
+            const product = dataMap[category][index];
+            let baseName = '';
+
+            if (sourceField === 'name') {
+                baseName = product.name || '';
+            } else if (sourceField === 'slug') {
+                // Convertir slug a nombre: reemplazar guiones y _ por espacios y capitalizar cada palabra
+                baseName = (product.slug || '').replace(/[-_]/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            } else if (sourceField === 'image_url') {
+                // Extraer nombre del archivo sin extensión y convertir a nombre
+                const imageUrl = product.image_url || '';
+                const parts = imageUrl.split('/');
+                let filename = parts[parts.length - 1]; // Obtener el último segmento (nombre del archivo)
+                filename = filename.replace(/\.(webp|png|jpg|jpeg|gif)$/i, ''); // Quitar extensión
+                baseName = filename.replace(/[-_]/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            }
+
+            if (!baseName) {
+                showErrorMessage('No se pudo derivar un nombre base para propagar.');
+                return;
+            }
+
+            // Formatear para 'name'
+            const formattedName = baseName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            product.name = formattedName;
+
+            // Formatear para 'slug' (solo si la categoría lo tiene)
+            if (category === 'towers') {
+                product.slug = formattedName.toLowerCase().replace(/\s+/g, '-');
+            }
+
+            // Formatear para 'image_url'
+            const categoryFolder = categoryFolderMap[category];
+            const formattedSlugForImage = formattedName.toLowerCase().replace(/\s+/g, '-');
+            product.image_url = `comps/${categoryFolder}/${formattedSlugForImage}.webp`; // Asumimos .webp
+
+            updateProductCard(category, index); // Re-renderizar la tarjeta para mostrar los cambios
+            saveDataToSessionStorage(); // Guardar cambios
+            showWarningMessage('¡Datos propagados! Recuerda que las URLs de imagen asumen la carpeta "comps/" y extensión ".webp".');
+        }
+
+
+        /**
+         * Genera el HTML para una sola tarjeta de producto.
+         * @param {string} category - La categoría del producto.
+         * @param {Object} product - El objeto producto.
+         * @param {number} index - El índice del producto en el array.
+         * @returns {string} El HTML de la tarjeta del producto.
+         */
+        function generateProductCardHtml(category, product, index) {
+            // Generar un timestamp para cache-busting
+            const timestamp = new Date().getTime();
+            // Use the actual image_url, and add the timestamp for cache busting
+            const actualImageUrl = product.image_url || '';
+            const imageUrlToDisplay = actualImageUrl ? `${actualImageUrl}?t=${timestamp}` : 'https://placehold.co/100x100/374151/9ca3af?text=Sin+Imagen';
+
+            // Alt text for debugging and accessibility
+            const altText = `Imagen de ${product.name || 'Producto'} - Ruta: ${actualImageUrl}`;
+
+            let fieldsHtml = '';
+            
+            // Campo Nombre (común a todos ahora)
+            fieldsHtml += `
+                <label class="block text-sm font-medium text-gray-400">Nombre:</label>
+                <div class="input-group mb-2">
+                    <input type="text" value="${product.name || ''}"
+                           oninput="updateProduct('${category}', ${index}, 'name', this.value)"
+                           onfocus="showPropagateButton(this)" onblur="hidePropagateButton(this)">
+                    <button class="propagate-btn hidden" onclick="propagateProductData('${category}', ${index}, 'name')">Propagar</button>
+                </div>
+            `;
+
+            // Campo Precio (común a todos)
+            fieldsHtml += `
+                <label class="block text-sm font-medium text-gray-400">Precio:</label>
+                <input type="number" value="${product.price || 0}" oninput="updateProduct('${category}', ${index}, 'price', parseFloat(this.value))" class="mb-2">
+            `;
+
+            // Campo Slug (solo para Torres)
+            if (category === 'towers') {
+                fieldsHtml += `
+                    <label class="block text-sm font-medium text-gray-400">Slug:</label>
+                    <div class="input-group mb-2">
+                        <input type="text" value="${product.slug || ''}"
+                               oninput="updateProduct('${category}', ${index}, 'slug', this.value)"
+                               onfocus="showPropagateButton(this)" onblur="hidePropagateButton(this)">
+                        <button class="propagate-btn hidden" onclick="propagateProductData('${category}', ${index}, 'slug')">Propagar</button>
+                    </div>
+                `;
+            }
+            
+            // Descripción (común a SSD, GPU, PSU, Motherboard, CPU)
+            if (category !== 'towers') { // Si no es towers, tiene descripción
+                 fieldsHtml += `
+                    <label class="block text-sm font-medium text-gray-400">Descripción:</label>
+                    <textarea rows="2" oninput="updateProduct('${category}', ${index}, 'description', this.value)" class="mb-2">${product.description || ''}</textarea>
+                `;
+            }
+
+            // Campo URL de Imagen y previsualización (común a todos)
+            fieldsHtml += `
+                <label class="block text-sm font-medium text-gray-400">URL de Imagen:</label>
+                <div class="input-group mb-2">
+                    <input type="file" id="file-input-${category}-${index}" accept="image/*" class="hidden" onchange="handleImageUpload(event, '${category}', ${index}, 'image_url')">
+                    <button onclick="document.getElementById('file-input-${category}-${index}').click()" class="btn-secondary text-xs py-1 px-2 flex items-center">
+                        <span class="lucide-icon mr-1" data-lucide="image"></span> Subir Archivo
+                    </button>
+                    <input type="text" value="${product.image_url || ''}"
+                           oninput="updateProduct('${category}', ${index}, 'image_url', this.value)"
+                           onfocus="showPropagateButton(this)" onblur="hidePropagateButton(this)"
+                           class="text-xs" placeholder="o pega una URL aquí">
+                    <button class="propagate-btn hidden" onclick="propagateProductData('${category}', ${index}, 'image_url')">Propagar</button>
+                </div>
+                <img id="img-${category}-${index}" src="${imageUrlToDisplay}" alt="${altText}" class="w-24 h-24 object-cover rounded-md border border-gray-600 mb-2" onerror="this.onerror=null;this.src='https://placehold.co/100x100/374151/9ca3af?text=Error+Carga';">
+            `;
+
+            // Campo 'link' común a todas las categorías
+            fieldsHtml += `
+                <label class="block text-sm font-medium text-gray-400">Link (URL):</label>
+                <input type="text" value="${product.link || ''}" oninput="updateProduct('${category}', ${index}, 'link', this.value)" class="mb-2">
+                ${product.link ? `<a href="${product.link}" target="_blank" class="text-blue-400 hover:underline text-sm flex items-center mt-1"><span class="lucide-icon mr-1" data-lucide="external-link"></span> Visitar Link</a>` : ''}
+            `;
+
+            return `
+                <div class="flex justify-end mb-2">
+                    <button onclick="removeProduct('${category}', ${index})" class="btn-danger text-xs py-1 px-2">
+                        <span class="lucide-icon" data-lucide="trash-2"></span> Eliminar
+                    </button>
+                </div>
+                ${fieldsHtml}
+            `;
+        }
+
+        /**
+         * Renderiza las tarjetas de productos para una categoría específica.
+         * @param {string} category - El nombre de la categoría (ej. 'towers').
+         * @param {Array<Object>} dataArray - El array de datos de la categoría.
+         */
+        function renderProducts(category, dataArray) {
+            const container = document.getElementById(`${category}-container`);
+            container.innerHTML = ''; // Limpiar el contenedor antes de renderizar
+
+            dataArray.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.id = `product-card-${category}-${index}`; // Asignar ID único a la tarjeta
+                card.setAttribute('draggable', 'true'); // Hacer arrastrable
+                card.dataset.category = category;
+                card.dataset.index = index;
+                card.className = 'product-card flex flex-col space-y-3'; // Class for styling
+                card.innerHTML = generateProductCardHtml(category, product, index);
+                container.appendChild(card);
+            });
+            // Re-renderizar iconos de Lucide
+            lucide.createIcons();
+            addDragDropListeners(category); // Añadir listeners de drag and drop
+        }
+
+        /**
+         * Actualiza solo una tarjeta de producto específica en el DOM.
+         * Se usa para cambios que afectan la estructura visual de la tarjeta (imagen, link).
+         * @param {string} category - La categoría del producto.
+         * @param {number} index - El índice del producto en el array.
+         */
+        function updateProductCard(category, index) {
+            const cardElement = document.getElementById(`product-card-${category}-${index}`);
+            if (cardElement) {
+                const product = dataMap[category][index];
+                cardElement.innerHTML = generateProductCardHtml(category, product, index);
+                // Ensure the draggable attributes are maintained on the card itself
+                cardElement.setAttribute('draggable', 'true');
+                cardElement.dataset.category = category;
+                cardElement.dataset.index = index;
+
+                lucide.createIcons(); // Volver a crear iconos para la tarjeta actualizada
+
+                // Efecto visual de flash en la imagen
+                const imgElement = cardElement.querySelector(`#img-${category}-${index}`);
+                if (imgElement) {
+                    imgElement.classList.add('image-flash');
+                    setTimeout(() => {
+                        imgElement.classList.remove('image-flash');
+                    }, 1000); // Remover la clase después de 1 segundo
+                }
+            }
+        }
+
+        /**
+         * Actualiza una propiedad de un producto en el array de datos.
+         * @param {string} category - La categoría del producto.
+         * @param {number} index - El índice del producto en el array.
+         * @param {string} key - La clave de la propiedad a actualizar.
+         * @param {*} value - El nuevo valor de la propiedad.
+         */
+        function updateProduct(category, index, key, value) {
+            dataMap[category][index][key] = value;
+            saveDataToSessionStorage(); // Guardar cambios cada vez que se actualiza un producto
+
+            // Solo re-renderizar la tarjeta si la imagen o el link cambian
+            // Esto evita perder el foco en los inputs de texto/número
+            if (key === 'image_url' || key === 'link') {
+                updateProductCard(category, index);
+            }
+            // Para otros campos, el oninput ya actualiza el valor del campo, no es necesario re-renderizar.
+        }
+
+        /**
+         * Añade un nuevo producto a una categoría.
+         * @param {string} category - La categoría a la que añadir el producto.
+         */
+        function addProduct(category) {
+            let newProduct;
+            if (category === 'towers') {
+                newProduct = {
+                    name: 'Nueva Torre',
+                    price: 0,
+                    slug: 'nueva-torre',
+                    image_url: 'https://placehold.co/400x500/374151/9ca3af?text=Nueva+Torre',
+                    link: ''
+                };
+            } else if (category === 'ssdOptions') {
+                newProduct = {
+                    name: 'Nuevo SSD',
+                    price: 0,
+                    description: 'Descripción del nuevo SSD.',
+                    image_url: 'https://placehold.co/100x100/374151/9ca3af?text=Nuevo+SSD',
+                    link: ''
+                };
+            } else if (category === 'gpuOptions') {
+                newProduct = {
+                    name: 'Nueva GPU',
+                    price: 0,
+                    description: 'Descripción de la nueva GPU.',
+                    image_url: 'https://placehold.co/100x100/374151/9ca3af?text=Nueva+GPU',
+                    link: ''
+                };
+            } else if (category === 'psuOptions') {
+                newProduct = {
+                    name: 'Nueva PSU',
+                    price: 0,
+                    description: 'Descripción de la nueva PSU.',
+                    image_url: 'https://placehold.co/100x100/374151/9ca3af?text=Nueva+PSU',
+                    link: ''
+                };
+            } else if (category === 'motherboardOptions') {
+                newProduct = {
+                    name: 'Nueva Motherboard',
+                    price: 0,
+                    description: 'Descripción de la nueva Motherboard.',
+                    image_url: 'https://placehold.co/100x100/374151/9ca3af?text=Nueva+Motherboard',
+                    link: ''
+                };
+            } else if (category === 'cpuOptions') {
+                newProduct = {
+                    name: 'Nuevo CPU',
+                    price: 0,
+                    description: 'Descripción del nuevo CPU.',
+                    image_url: 'https://placehold.co/100x100/374151/9ca3af?text=Nuevo+CPU',
+                    link: ''
+                };
+            }
+            dataMap[category].push(newProduct);
+            renderProducts(category, dataMap[category]); // Se re-renderiza la categoría para añadir la nueva tarjeta
+            saveDataToSessionStorage(); // Guardar cambios
+        }
+
+        /**
+         * Elimina un producto de una categoría.
+         * @param {string} category - La categoría del producto a eliminar.
+         * @param {number} index - El índice del producto a eliminar.
+         */
+        function removeProduct(category, index) {
+            if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+                dataMap[category].splice(index, 1);
+                renderProducts(category, dataMap[category]); // Se re-renderiza la categoría para reflejar la eliminación
+                saveDataToSessionStorage(); // Guardar cambios
+            }
+        }
+
+        /**
+         * Genera el código JavaScript con los datos actuales de los vectores.
+         */
+        function generateCode() {
+            const outputTextArea = document.getElementById('output-code');
+            let code = `const towersOptions = ${JSON.stringify(dataMap.towers, null, 4)};\n\n`;
+            code += `const ssdOptions = ${JSON.stringify(dataMap.ssdOptions, null, 4)};\n\n`;
+            code += `const gpuOptions = ${JSON.stringify(dataMap.gpuOptions, null, 4)};\n\n`;
+            code += `const psuOptions = ${JSON.stringify(dataMap.psuOptions, null, 4)};\n\n`;
+            code += `const motherboardOptions = ${JSON.stringify(dataMap.motherboardOptions, null, 4)};\n\n`;
+            code += `const cpuOptions = ${JSON.stringify(dataMap.cpuOptions, null, 4)};\n`;
+            outputTextArea.value = code;
+        }
+
+        /**
+         * Copia el código generado al portapapeles.
+         */
+        function copyCode() {
+            const outputTextArea = document.getElementById('output-code');
+            outputTextArea.select();
+            document.execCommand('copy'); // Usar execCommand para compatibilidad en iframes
+            const copyMessage = document.getElementById('copy-message');
+            copyMessage.classList.remove('hidden');
+            setTimeout(() => {
+                copyMessage.classList.add('hidden');
+            }, 2000);
+        }
+
+        /**
+         * Renderiza todos los productos al cargar la página.
+         */
+        function renderAllProducts() {
+            renderProducts('towers', dataMap.towers);
+            renderProducts('ssdOptions', dataMap.ssdOptions);
+            renderProducts('gpuOptions', dataMap.gpuOptions);
+            renderProducts('psuOptions', dataMap.psuOptions);
+            renderProducts('motherboardOptions', dataMap.motherboardOptions);
+            renderProducts('cpuOptions', dataMap.cpuOptions);
+        }
+
+        // --- Funciones de Drag and Drop ---
+        function handleDragStart(e) {
+            // Check if the drag was initiated from an interactive element (input, textarea, button)
+            // If so, prevent default drag behavior
+            const targetTagName = e.target.tagName;
+            if (targetTagName === 'INPUT' || targetTagName === 'TEXTAREA' || targetTagName === 'BUTTON') {
+                e.preventDefault();
+                return;
+            }
+            // Also prevent drag if the target is inside a button (e.g., a Lucide icon inside a button)
+            if (e.target.closest('button')) {
+                e.preventDefault();
+                return;
+            }
+
+            const card = e.target.closest('.product-card');
+            if (!card) return; // Should not happen if event listener is on card
+
+            draggedItemCategory = card.dataset.category; // Get category from the card
+            draggedItemIndex = parseInt(card.dataset.index); // Get index from the card
+            e.dataTransfer.effectAllowed = 'move';
+            card.classList.add('dragging'); // Add class to the card for visual style
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault(); // Necesario para permitir el drop
+            const targetCard = e.target.closest('.product-card');
+            if (targetCard && targetCard.dataset.category === draggedItemCategory) {
+                // Evitar que el drag-over se active en el elemento arrastrado
+                if (targetCard.id !== `product-card-${draggedItemCategory}-${draggedItemIndex}`) {
+                    targetCard.classList.add('drag-over'); // Añadir clase para estilo visual del objetivo
+                }
+            }
+        }
+
+        function handleDragLeave(e) {
+            const targetCard = e.target.closest('.product-card');
+            if (targetCard) {
+                targetCard.classList.remove('drag-over'); // Remover estilo visual del objetivo
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const targetCard = e.target.closest('.product-card');
+            if (targetCard) {
+                targetCard.classList.remove('drag-over'); // Remover estilo visual del objetivo
+
+                const targetCategory = targetCard.dataset.category;
+                const targetIndex = parseInt(targetCard.dataset.index);
+
+                // Solo permitir reordenar dentro de la misma categoría y si no es el mismo elemento
+                if (draggedItemCategory === targetCategory && draggedItemIndex !== targetIndex) {
+                    const currentArray = dataMap[draggedItemCategory];
+                    const [draggedProduct] = currentArray.splice(draggedItemIndex, 1); // Eliminar el arrastrado
+                    currentArray.splice(targetIndex, 0, draggedProduct); // Insertar en la nueva posición
+
+                    renderProducts(draggedItemCategory, currentArray); // Re-renderizar la categoría para reflejar el nuevo orden
+                    saveDataToSessionStorage(); // Guardar el nuevo orden
+                }
+            }
+        }
+
+        function handleDragEnd(e) {
+            // Limpiar la clase 'dragging' de cualquier elemento que la tenga
+            const draggingElement = document.querySelector('.dragging');
+            if (draggingElement) {
+                draggingElement.classList.remove('dragging');
+            }
+            // Limpiar la clase 'drag-over' de cualquier elemento que la tenga (por si acaso)
+            const dragOverElements = document.querySelectorAll('.drag-over');
+            dragOverElements.forEach(el => el.classList.remove('drag-over'));
+
+            draggedItemCategory = null;
+            draggedItemIndex = null;
+        }
+
+        /**
+         * Añade los listeners de drag and drop a todas las tarjetas de una categoría.
+         * @param {string} category - La categoría a la que añadir los listeners.
+         */
+        function addDragDropListeners(category) {
+            const container = document.getElementById(`${category}-container`);
+            const cards = container.querySelectorAll('.product-card'); // Seleccionar todas las tarjetas
+            cards.forEach(card => {
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragover', handleDragOver);
+                card.addEventListener('dragleave', handleDragLeave);
+                card.addEventListener('drop', handleDrop);
+                card.addEventListener('dragend', handleDragEnd);
+            });
+        }
+
+        // Inicializar la página al cargar el DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedData = loadDataFromSessionStorage();
+
+            if (storedData) {
+                // Si hay datos en sessionStorage, usarlos
+                towersOptions = storedData.towersOptions;
+                ssdOptions = storedData.ssdOptions;
+                gpuOptions = storedData.gpuOptions;
+                psuOptions = storedData.psuOptions;
+                motherboardOptions = storedData.motherboardOptions;
+                cpuOptions = storedData.cpuOptions;
+
+                // Actualizar el dataMap para que apunte a los arrays cargados
+                dataMap.towers = towersOptions;
+                dataMap.ssdOptions = ssdOptions;
+                dataMap.gpuOptions = gpuOptions;
+                dataMap.psuOptions = psuOptions;
+                dataMap.motherboardOptions = motherboardOptions;
+                dataMap.cpuOptions = cpuOptions;
+
+                hasUnsavedChanges = true; // Si cargamos de sesión, asumimos que puede haber cambios sin "guardar" en el código final
+                showWarningMessage('¡Datos restaurados de la sesión anterior! Genera y copia el código si quieres guardar los cambios.');
+
+            } else {
+                // Si no hay datos en sessionStorage, cargar los iniciales hardcodeados
+                towersOptions = initialHardcodedData.towersOptions;
+                ssdOptions = initialHardcodedData.ssdOptions;
+                gpuOptions = initialHardcodedData.gpuOptions;
+                psuOptions = initialHardcodedData.psuOptions;
+                motherboardOptions = initialHardcodedData.motherboardOptions;
+                cpuOptions = initialHardcodedData.cpuOptions;
+
+                // Actualizar el dataMap para que apunte a los arrays iniciales
+                dataMap.towers = towersOptions;
+                dataMap.ssdOptions = ssdOptions;
+                dataMap.gpuOptions = gpuOptions;
+                dataMap.psuOptions = psuOptions;
+                dataMap.motherboardOptions = motherboardOptions;
+                dataMap.cpuOptions = cpuOptions;
+
+                // Cargar el JSON inicial en el textarea al cargar la página
+                const initialDataInput = document.getElementById('initial-data-input');
+                let initialCodeString = `const towersOptions = ${JSON.stringify(initialHardcodedData.towersOptions, null, 4)};\n\n`;
+                initialCodeString += `const ssdOptions = ${JSON.stringify(initialHardcodedData.ssdOptions, null, 4)};\n\n`;
+                initialCodeString += `const gpuOptions = ${JSON.stringify(initialHardcodedData.gpuOptions, null, 4)};\n\n`;
+                initialCodeString += `const psuOptions = ${JSON.stringify(initialHardcodedData.psuOptions, null, 4)};\n\n`;
+                initialCodeString += `const motherboardOptions = ${JSON.stringify(initialHardcodedData.motherboardOptions, null, 4)};\n\n`;
+                initialCodeString += `const cpuOptions = ${JSON.stringify(initialHardcodedData.cpuOptions, null, 4)};\n`;
+                initialDataInput.value = initialCodeString;
+
+                hasUnsavedChanges = false; // No hay cambios sin guardar al inicio si se cargan los hardcodeados
+            }
+
+            renderAllProducts();
+            lucide.createIcons(); // Crear los iconos de Lucide al cargar
+
+            // Observe all sections for the global add button
+            document.querySelectorAll('section[id^="section-"]').forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Set initial text for the global add button if no section is immediately visible
+            // This ensures it's not empty when the page first loads
+            if (globalAddButton.classList.contains('hidden')) {
+                globalAddButtonText.textContent = `Añadir ${getComponentName('towers')}`; // Default to first category
+                globalAddButton.onclick = () => addProduct('towers');
+                globalAddButton.classList.remove('hidden');
+            }
+        });
+
+        // Advertencia al intentar cerrar o navegar si hay cambios sin guardar
+        window.onbeforeunload = function() {
+            if (hasUnsavedChanges) {
+                return 'Tienes cambios sin guardar en el administrador de productos. ¿Estás seguro de que quieres salir?';
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1571,52 +1571,123 @@ text-decoration: none;
                 const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
                 const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
 
-                // --- TOWER DATA (SIMULATED) ---
-                // NOTE: In a real-world scenario, you would dynamically fetch this data
-                // from your server by reading the 'comps/torres' directory.
-                // For example, a server-side script could return a JSON like this.
-                // The folder name convention is {name}_{price_in_k} (e.g., 'Sentey R20_45' for 45,000 ARS).
-                const towersData = [
-                    {
-                        name: 'Sentey R20',
-                        price: 45000,
-                        slug: 'sentey-r20',
-                        images: [
-                            'comps/torres/sentey-r20.webp',
-                            'https://placehold.co/400x500/1f2937/ffffff?text=Sentey+R20+2', // Placeholder for second image
-                            'https://placehold.co/400x500/1f2937/ffffff?text=Sentey+R20+3', // Placeholder for third image
-                        ]
-                    },
-                    {
-                        name: 'Antec Nx292',
-                        price: 75000,
-                        slug: 'antex-nx292',
-                        images: [
-                            'comps/torres/antex-nx292.webp',
-                            'https://placehold.co/400x500/1f2937/ffffff?text=Thermaltake+H200+2',
-                            'https://placehold.co/400x500/1f2937/ffffff?text=Thermaltake+H200+3',
-                        ]
-                    }   
-                ];
+//---COMPSOPTIONS---//
+const towersOptions = [
+    {
+        "name": "Sentey R20",
+        "price": 45000,
+        "slug": "sentey-r20",
+        "image_url": "comps/torres/sentey-r20.webp",
+        "link": ""
+    },
+    {
+        "name": "Antec Nx292",
+        "price": 75000,
+        "slug": "antex-nx292",
+        "image_url": "comps/torres/antex-nx292.webp",
+        "link": "https://www.antec.com/product/case/nx292"
+    },
+    {
+        "name": "Gigabyte C102",
+        "price": 0,
+        "slug": "gigabyte-c102",
+        "image_url": "comps/torres/gigabyte-c102.webp",
+        "link": ""
+    }
+];
 
-                // --- SSD Storage Options ---
-                const ssdOptions = [
-                    { capacity: '240GB SSD SATA', additionalPrice: 0, description: 'Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.', image_url: 'comps/discos/ssd_hiksemi.webp' },
-                    { capacity: '480GB SSD SATA', additionalPrice: 20000, description: 'El estándar. Recomendado para Juegos y Aplicaciones.', image_url: 'comps/discos/ssd_hiksemi.webp' },
-                    { capacity: '1TB SSD SATA', additionalPrice: 50000, description: 'El doble que el estándar. Ideal si creás contenido además de jugar.', image_url: 'comps/discos/ssd_hiksemi.webp' }
-                ];
+const ssdOptions = [
+    {
+        "name": "240GB SSD SATA",
+        "price": 25000,
+        "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
+        "image_url": "comps/discos/ssd_hiksemi.webp",
+        "link": ""
+    },
+    {
+        "name": "480GB SSD SATA",
+        "price": 45000,
+        "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
+        "image_url": "comps/discos/ssd_hiksemi.webp",
+        "link": ""
+    },
+    {
+        "name": "1TB SSD SATA",
+        "price": 75000,
+        "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
+        "image_url": "comps/discos/ssd_hiksemi.webp",
+        "link": "https://www.hiksemi.com/ssd/e100n-ssd/"
+    }
+];
 
-                // --- GPU Options ---
-                const gpuOptions = [
-                    { name: 'AMD 560 4GB', additionalPrice: 0, description: 'Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.', image_url: 'comps/gpus/rx560.webp' },
-                    { name: 'GT 740 2GB', additionalPrice: -10000, description: 'Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)', image_url: 'comps/gpus/gt740.webp' }
-                ];
+const gpuOptions = [
+    {
+        "name": "AMD 560 4GB",
+        "price": 60000,
+        "description": "Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.",
+        "image_url": "comps/gpus/rx560.webp",
+        "link": ""
+    },
+    {
+        "name": "GT 740 2GB",
+        "price": 70000,
+        "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
+        "image_url": "comps/gpus/gt740.webp",
+        "link": "https://www.nvidia.com/es-la/geforce/graphics-cards/gt-740/"
+    }
+];
 
-                // --- PSU Options ---
-                const psuOptions = [
-                    { name: 'ATX 550w Sentey Genérica', additionalPrice: 0, description: 'Fuente estándar, suficiente para esta configuración base.', image_url: 'comps/psus/550sentey.webp' },
-                    { name: 'ATX 550w Sentey 80 Plus', additionalPrice: 15000, description: 'Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.', image_url: 'comps/psus/550sentey80.webp' }
-                ];
+const psuOptions = [
+    {
+        "name": "ATX 550w Sentey Genérica",
+        "price": 30000,
+        "description": "Fuente estándar, suficiente para esta configuración base.",
+        "image_url": "comps/psus/550sentey.webp",
+        "link": ""
+    },
+    {
+        "name": "ATX 550w Sentey 80 Plus",
+        "price": 45000,
+        "description": "Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.",
+        "image_url": "comps/psus/550sentey80.webp",
+        "link": "https://sentey.com/fuentes-de-poder/xplus-power-550w-80-plus-bronze/"
+    }
+];
+
+const motherboardOptions = [
+    {
+        "name": "Gigabyte H410M H V3",
+        "price": 80000,
+        "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.",
+        "image_url": "comps/motherboards/gigabyte-h410m.webp",
+        "link": "https://www.gigabyte.com/Motherboard/H410M-H-V3-rev-10"
+    },
+    {
+        "name": "ASUS Prime B550M-A",
+        "price": 120000,
+        "description": "Placa madre AM4 versátil con soporte PCIe 4.0. Excelente para Ryzen.",
+        "image_url": "comps/motherboards/asus-b550m.webp",
+        "link": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a/"
+    }
+];
+
+const cpuOptions = [
+    {
+        "name": "Intel Core i3-10100F",
+        "price": 70000,
+        "description": "Procesador de 4 núcleos y 8 hilos. Buen rendimiento para gaming y tareas diarias.",
+        "image_url": "comps/cpus/intel-i3-10100f.webp",
+        "link": "https://www.intel.la/content/www/xl/es/products/sku/203473/intel-core-i310100f-processor/specifications.html"
+    },
+    {
+        "name": "AMD Ryzen 5 3600",
+        "price": 100000,
+        "description": "Procesador de 6 núcleos y 12 hilos. Excelente para gaming y multitarea.",
+        "image_url": "comps/cpus/amd-ryzen-5-3600.webp",
+        "link": "https://www.amd.com/es/products/cpu/amd-ryzen-5-3600"
+    }
+];
+
 
                 // --- PRICE CALCULATION & USD ---
                 const BASE_PRICE = 555000;
@@ -1658,8 +1729,8 @@ text-decoration: none;
                     if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
                     
                     // Add selected tower price
-                    if (towersData.length > 0) {
-                        total += towersData[currentTowerIndex].price;
+                    if (towersOptions.length > 0) {
+                        total += towersOptions[currentTowerIndex].price;
                     }
 
                     // Add selected SSD storage price from the select value
@@ -2117,8 +2188,8 @@ text-decoration: none;
                     if(peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
 
                     // Add selected tower to WhatsApp message
-                    if (towersData.length > 0) {
-                        message += `*Torre Seleccionada:* ${towersData[currentTowerIndex].name}\n`;
+                    if (towersOptions.length > 0) {
+                        message += `*Torre Seleccionada:* ${towersOptions[currentTowerIndex].name}\n`;
                     }
 
                     // Add selected SSD to WhatsApp message
@@ -2201,8 +2272,8 @@ text-decoration: none;
                     let total = BASE_PRICE;
                     if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
                     if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
-                    if (towersData.length > 0) {
-                        total += towersData[currentTowerIndex].price;
+                    if (towersOptions.length > 0) {
+                        total += towersOptions[currentTowerIndex].price;
                     }
                     const ssdSelect = document.getElementById('ssd-select');
                     if (ssdSelect) {
@@ -2271,18 +2342,18 @@ text-decoration: none;
                  * Updates the displayed tower image and name.
                  */
                 function updateTowerDisplay() {
-                    if (towersData.length === 0) {
+                    if (towersOptions.length === 0) {
                         towerImageEl.src = 'https://placehold.co/400x500/1f2937/ffffff?text=No+Towers';
                         currentTowerNameEl.textContent = 'No hay torres disponibles';
                         return;
                     }
-                    const selectedTower = towersData[currentTowerIndex];
+                    const selectedTower = towersOptions[currentTowerIndex];
                     
                     animateImageChange(towerImageEl); // Animate the image change
                     
                     // Set a timeout to change the src after the fade-out starts
                     setTimeout(() => {
-                        towerImageEl.src = selectedTower.images[0]; // Show the first image as main
+                        towerImageEl.src = selectedTower.image_url; // Show the first image as main
                     }, 150); // Match this with a point within the animation duration
 
                     currentTowerNameEl.textContent = selectedTower.name;
@@ -2293,7 +2364,7 @@ text-decoration: none;
                  * Navigates to the previous tower in the list.
                  */
                 function prevTower() {
-                    currentTowerIndex = (currentTowerIndex - 1 + towersData.length) % towersData.length;
+                    currentTowerIndex = (currentTowerIndex - 1 + towersOptions.length) % towersOptions.length;
                     updateTowerDisplay();
                 }
 
@@ -2301,7 +2372,7 @@ text-decoration: none;
                  * Navigates to the next tower in the list.
                  */
                 function nextTower() {
-                    currentTowerIndex = (currentTowerIndex + 1) % towersData.length;
+                    currentTowerIndex = (currentTowerIndex + 1) % towersOptions.length;
                     updateTowerDisplay();
                 }
 
@@ -2318,7 +2389,7 @@ text-decoration: none;
                  * Updates the displayed SSD information and image.
                  */
                 function updateSsdDisplay() {
-                    const selectedOption = ssdOptions.find(opt => opt.additionalPrice == ssdSelect.value);
+                    const selectedOption = ssdOptions.find(opt => opt.price == ssdSelect.value);
                     if (selectedOption) {
                         ssdDescriptionEl.textContent = selectedOption.description;
                         animateImageChange(ssdImageEl); // Animate the image change
@@ -2338,7 +2409,7 @@ text-decoration: none;
                 if (ssdSelect) {
                     // Populate options based on ssdOptions array
                     ssdSelect.innerHTML = ssdOptions.map((option, index) => 
-                        `<option value="${option.additionalPrice}" ${index === 0 ? 'selected' : ''}>${option.capacity}</option>`
+                        `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
                     ).join('');
                     ssdSelect.addEventListener('change', updateSsdDisplay);
                 }
@@ -2352,7 +2423,7 @@ text-decoration: none;
                  * Updates the displayed GPU information and image.
                  */
                 function updateGpuDisplay() {
-                    const selectedOption = gpuOptions.find(opt => opt.additionalPrice == gpuSelect.value);
+                    const selectedOption = gpuOptions.find(opt => opt.price == gpuSelect.value);
                     if (selectedOption) {
                         gpuDescriptionEl.textContent = selectedOption.description;
                         animateImageChange(gpuImageEl); // Animate the image change
@@ -2371,7 +2442,7 @@ text-decoration: none;
 
                 if (gpuSelect) {
                     gpuSelect.innerHTML = gpuOptions.map((option, index) => 
-                        `<option value="${option.additionalPrice}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
+                        `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
                     ).join('');
                     gpuSelect.addEventListener('change', updateGpuDisplay);
                 }
@@ -2385,7 +2456,7 @@ text-decoration: none;
                  * Updates the displayed PSU information and image.
                  */
                 function updatePsuDisplay() {
-                    const selectedOption = psuOptions.find(opt => opt.additionalPrice == psuSelect.value);
+                    const selectedOption = psuOptions.find(opt => opt.price == psuSelect.value);
                     if (selectedOption) {
                         psuDescriptionEl.textContent = selectedOption.description;
                         animateImageChange(psuImageEl); // Animate the image change
@@ -2404,7 +2475,7 @@ text-decoration: none;
 
                 if (psuSelect) {
                     psuSelect.innerHTML = psuOptions.map((option, index) => 
-                        `<option value="${option.additionalPrice}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
+                        `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
                     ).join('');
                     psuSelect.addEventListener('change', updatePsuDisplay);
                 }
@@ -2502,13 +2573,13 @@ text-decoration: none;
                 
                 // Set initial SSD, GPU, PSU values and update prices
                 if (ssdSelect) {
-                    ssdSelect.value = ssdOptions[0].additionalPrice; // Ensure initial selection is 240GB
+                    ssdSelect.value = ssdOptions[0].price; // Ensure initial selection is 240GB
                 }
                 if (gpuSelect) {
-                    gpuSelect.value = gpuOptions[0].additionalPrice;
+                    gpuSelect.value = gpuOptions[0].price;
                 }
                 if (psuSelect) {
-                    psuSelect.value = psuOptions[0].additionalPrice;
+                    psuSelect.value = psuOptions[0].price;
                 }
                 // Initial display for component images and descriptions
                 updateTowerDisplay(); // Initialize tower display and animate
