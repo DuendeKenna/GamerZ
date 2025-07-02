@@ -259,46 +259,114 @@
     </button>
 
     <script>
-        // Datos iniciales hardcodeados como un objeto para facilitar la carga en el textarea
-        const initialHardcodedData = {
-            towersOptions: [
+        // Default product data as a JSON string, embedded directly in the HTML
+        // This replaces the external products.json file for simplicity in this environment.
+        const defaultProductDataJsonString = `{
+            "towersOptions": [
                 {
-                    name: 'Sentey R20',
-                    price: 45000,
-                    slug: 'sentey-r20',
-                    image_url: 'comps/torres/sentey-r20.webp',
-                    link: ''
+                    "name": "Sentey R20",
+                    "price": 45000,
+                    "slug": "sentey-r20",
+                    "image_url": "comps/torres/sentey-r20.webp",
+                    "link": ""
                 },
                 {
-                    name: 'Antec Nx292',
-                    price: 75000,
-                    slug: 'antex-nx292',
-                    image_url: 'comps/torres/antex-nx292.webp',
-                    link: 'https://www.antec.com/product/case/nx292'
+                    "name": "Antec Nx292",
+                    "price": 75000,
+                    "slug": "antex-nx292",
+                    "image_url": "comps/torres/antex-nx292.webp",
+                    "link": "https://www.antec.com/product/case/nx292"
                 }
             ],
-            ssdOptions: [
-                { name: '240GB SSD SATA', price: 25000, description: 'Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.', image_url: 'comps/discos/ssd_hiksemi.webp', link: '' },
-                { name: '480GB SSD SATA', price: 45000, description: 'El estándar. Recomendado para Juegos y Aplicaciones.', image_url: 'comps/discos/ssd_hiksemi.webp', link: '' },
-                { name: '1TB SSD SATA', price: 75000, description: 'El doble que el estándar. Ideal si creás contenido además de jugar.', image_url: 'comps/discos/ssd_hiksemi.webp', link: 'https://www.hiksemi.com/ssd/e100n-ssd/' }
+            "ssdOptions": [
+                {
+                    "name": "240GB SSD SATA",
+                    "price": 25000,
+                    "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
+                    "image_url": "comps/discos/ssd_hiksemi.webp",
+                    "link": ""
+                },
+                {
+                    "name": "480GB SSD SATA",
+                    "price": 45000,
+                    "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
+                    "image_url": "comps/discos/ssd_hiksemi.webp",
+                    "link": ""
+                },
+                {
+                    "name": "1TB SSD SATA",
+                    "price": 75000,
+                    "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
+                    "image_url": "comps/discos/ssd_hiksemi.webp",
+                    "link": "https://www.hiksemi.com/ssd/e100n-ssd/"
+                }
             ],
-            gpuOptions: [
-                { name: 'AMD 560 4GB', price: 60000, description: 'Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.', image_url: 'comps/gpus/rx560.webp', link: '' },
-                { name: 'GT 740 2GB', price: 70000, description: 'Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)', image_url: 'comps/gpus/gt740.webp', link: 'https://www.nvidia.com/es-la/geforce/graphics-cards/gt-740/' }
+            "gpuOptions": [
+                {
+                    "name": "AMD 560 4GB",
+                    "price": 60000,
+                    "description": "Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.",
+                    "image_url": "comps/gpus/rx560.webp",
+                    "link": ""
+                },
+                {
+                    "name": "GT 740 2GB",
+                    "price": 70000,
+                    "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
+                    "image_url": "comps/gpus/gt740.webp",
+                    "link": "https://www.nvidia.com/es-la/geforce/graphics-cards/gt-740/"
+                }
             ],
-            psuOptions: [
-                { name: 'ATX 550w Sentey Genérica', price: 30000, description: 'Fuente estándar, suficiente para esta configuración base.', image_url: 'comps/psus/550sentey.webp', link: '' },
-                { name: 'ATX 550w Sentey 80 Plus', price: 45000, description: 'Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.', image_url: 'comps/psus/550sentey80.webp', link: 'https://sentey.com/fuentes-de-poder/xplus-power-550w-80-plus-bronze/' }
+            "psuOptions": [
+                {
+                    "name": "ATX 550w Sentey Genérica",
+                    "price": 30000,
+                    "description": "Fuente estándar, suficiente para esta configuración base.",
+                    "image_url": "comps/psus/550sentey.webp",
+                    "link": ""
+                },
+                {
+                    "name": "ATX 550w Sentey 80 Plus",
+                    "price": 45000,
+                    "description": "Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.",
+                    "image_url": "comps/psus/550sentey80.webp",
+                    "link": "https://sentey.com/fuentes-de-poder/xplus-power-550w-80-plus-bronze/"
+                }
             ],
-            motherboardOptions: [
-                { name: 'Gigabyte H410M H V3', price: 80000, description: 'Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.', image_url: 'comps/motherboards/gigabyte-h410m.webp', link: 'https://www.gigabyte.com/Motherboard/H410M-H-V3-rev-10' },
-                { name: 'ASUS Prime B550M-A', price: 120000, description: 'Placa madre AM4 versátil con soporte PCIe 4.0. Excelente para Ryzen.', image_url: 'comps/motherboards/asus-b550m.webp', link: 'https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a/' }
+            "motherboardOptions": [
+                {
+                    "name": "Gigabyte H410M H V3",
+                    "price": 80000,
+                    "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.",
+                    "image_url": "comps/motherboards/gigabyte-h410m.webp",
+                    "link": "https://www.gigabyte.com/Motherboard/H410M-H-V3-rev-10"
+                },
+                {
+                    "name": "ASUS Prime B550M-A",
+                    "price": 120000,
+                    "description": "Placa madre AM4 versátil con soporte PCIe 4.0. Excelente para Ryzen.",
+                    "image_url": "comps/motherboards/asus-b550m.webp",
+                    "link": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a/"
+                }
             ],
-            cpuOptions: [
-                { name: 'Intel Core i3-10100F', price: 70000, description: 'Procesador de 4 núcleos y 8 hilos. Buen rendimiento para gaming y tareas diarias.', image_url: 'comps/cpus/intel-i3-10100f.webp', link: 'https://www.intel.la/content/www/xl/es/products/sku/203473/intel-core-i310100f-processor/specifications.html' },
-                { name: 'AMD Ryzen 5 3600', price: 100000, description: 'Procesador de 6 núcleos y 12 hilos. Excelente para gaming y multitarea.', image_url: 'comps/cpus/amd-ryzen-5-3600.webp', link: 'https://www.amd.com/es/products/cpu/amd-ryzen-5-3600' }
+            "cpuOptions": [
+                {
+                    "name": "Intel Core i3-10100F",
+                    "price": 70000,
+                    "description": "Procesador de 4 núcleos y 8 hilos. Buen rendimiento para gaming y tareas diarias.",
+                    "image_url": "comps/cpus/intel-i3-10100f.webp",
+                    "link": "https://www.intel.la/content/www/xl/es/products/sku/203473/intel-core-i310100f-processor/specifications.html"
+                },
+                {
+                    "name": "AMD Ryzen 5 3600",
+                    "price": 100000,
+                    "description": "Procesador de 6 núcleos y 12 hilos. Excelente para gaming y multitarea.",
+                    "image_url": "comps/cpus/amd-ryzen-5-3600.webp",
+                    "link": "https://www.amd.com/es/products/cpu/amd-ryzen-5-3600"
+                }
             ]
-        };
+        }`;
+
 
         // Variables globales para los datos de los productos
         let towersOptions = [];
@@ -548,18 +616,17 @@
             // Limpiar el valor del input file para permitir seleccionar el mismo archivo de nuevo si es necesario
             event.target.value = '';
 
-            // Solo re-renderizar la tarjeta específica que cambió la imagen
+            // Only re-render the specific card that changed the image
             updateProductCard(category, index);
-            saveDataToSessionStorage(); // Guardar cambios
+            saveDataToSessionStorage(); // Save changes
             showWarningMessage('¡Advertencia: Las imágenes cargadas localmente asumen que el archivo estará en la carpeta \'comps/\' de tu servidor!');
 
-            // Mostrar el botón de propagación para el campo de URL de imagen después de la carga
+            // Show the propagate button for the image_url field after upload
             const cardElement = document.getElementById(`product-card-${category}-${index}`);
             if (cardElement) {
-                // Find the specific input for image_url within the card
                 const imageUrlInput = cardElement.querySelector(`input[oninput*="updateProduct('${category}', ${index}, 'image_url'"]`);
                 if (imageUrlInput) {
-                    showPropagateButton(imageUrlInput); // Make propagate button visible
+                    showPropagateButton(imageUrlInput);
                 }
             }
         }
@@ -1008,8 +1075,9 @@
         }
 
         // Inicializar la página al cargar el DOM
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => { // Made async to allow await fetch
             const storedData = loadDataFromSessionStorage();
+            let dataLoadedSuccessfully = false; // Flag to track if data was loaded from session or default string
 
             if (storedData) {
                 // Si hay datos en sessionStorage, usarlos
@@ -1020,49 +1088,64 @@
                 motherboardOptions = storedData.motherboardOptions;
                 cpuOptions = storedData.cpuOptions;
 
-                // Actualizar el dataMap para que apunte a los arrays cargados
-                dataMap.towers = towersOptions;
-                dataMap.ssdOptions = ssdOptions;
-                dataMap.gpuOptions = gpuOptions;
-                dataMap.psuOptions = psuOptions;
-                dataMap.motherboardOptions = motherboardOptions;
-                dataMap.cpuOptions = cpuOptions;
-
+                dataLoadedSuccessfully = true;
                 hasUnsavedChanges = true; // Si cargamos de sesión, asumimos que puede haber cambios sin "guardar" en el código final
                 showWarningMessage('¡Datos restaurados de la sesión anterior! Genera y copia el código si quieres guardar los cambios.');
 
             } else {
-                // Si no hay datos en sessionStorage, cargar los iniciales hardcodeados
-                towersOptions = initialHardcodedData.towersOptions;
-                ssdOptions = initialHardcodedData.ssdOptions;
-                gpuOptions = initialHardcodedData.gpuOptions;
-                psuOptions = initialHardcodedData.psuOptions;
-                motherboardOptions = initialHardcodedData.motherboardOptions;
-                cpuOptions = initialHardcodedData.cpuOptions;
+                // Si no hay datos en sessionStorage, cargar desde defaultProductDataJsonString
+                try {
+                    const jsonData = JSON.parse(defaultProductDataJsonString);
 
-                // Actualizar el dataMap para que apunte a los arrays iniciales
-                dataMap.towers = towersOptions;
-                dataMap.ssdOptions = ssdOptions;
-                dataMap.gpuOptions = gpuOptions;
-                dataMap.psuOptions = psuOptions;
-                dataMap.motherboardOptions = motherboardOptions;
-                dataMap.cpuOptions = cpuOptions;
+                    towersOptions = jsonData.towersOptions || [];
+                    ssdOptions = jsonData.ssdOptions || [];
+                    gpuOptions = jsonData.gpuOptions || [];
+                    psuOptions = jsonData.psuOptions || [];
+                    motherboardOptions = jsonData.motherboardOptions || [];
+                    cpuOptions = jsonData.cpuOptions || [];
 
-                // Cargar el JSON inicial en el textarea al cargar la página
-                const initialDataInput = document.getElementById('initial-data-input');
-                let initialCodeString = `const towersOptions = ${JSON.stringify(initialHardcodedData.towersOptions, null, 4)};\n\n`;
-                initialCodeString += `const ssdOptions = ${JSON.stringify(initialHardcodedData.ssdOptions, null, 4)};\n\n`;
-                initialCodeString += `const gpuOptions = ${JSON.stringify(initialHardcodedData.gpuOptions, null, 4)};\n\n`;
-                initialCodeString += `const psuOptions = ${JSON.stringify(initialHardcodedData.psuOptions, null, 4)};\n\n`;
-                initialCodeString += `const motherboardOptions = ${JSON.stringify(initialHardcodedData.motherboardOptions, null, 4)};\n\n`;
-                initialCodeString += `const cpuOptions = ${JSON.stringify(initialHardcodedData.cpuOptions, null, 4)};\n`;
-                initialDataInput.value = initialCodeString;
+                    dataLoadedSuccessfully = true;
+                    hasUnsavedChanges = false; // No hay cambios sin guardar si se cargan del JSON por defecto
+                    showWarningMessage('¡Datos cargados desde la configuración predeterminada!');
 
-                hasUnsavedChanges = false; // No hay cambios sin guardar al inicio si se cargan los hardcodeados
+                } catch (error) {
+                    console.error('Error al parsear defaultProductDataJsonString:', error);
+                    showErrorMessage('Error al cargar los datos predeterminados. Las colecciones de productos están vacías.');
+
+                    // Si falla el parseo de la cadena JSON por defecto, inicializar colecciones como vacías
+                    towersOptions = [];
+                    ssdOptions = [];
+                    gpuOptions = [];
+                    psuOptions = [];
+                    motherboardOptions = [];
+                    cpuOptions = [];
+
+                    dataLoadedSuccessfully = false; // Los datos NO se cargaron con éxito
+                    hasUnsavedChanges = false; // No hay cambios que guardar si se empieza vacío
+                }
             }
+
+            // Actualizar el dataMap para que apunte a los arrays actuales (cargados o vacíos)
+            dataMap.towers = towersOptions;
+            dataMap.ssdOptions = ssdOptions;
+            dataMap.gpuOptions = gpuOptions;
+            dataMap.psuOptions = psuOptions;
+            dataMap.motherboardOptions = motherboardOptions;
+            dataMap.cpuOptions = cpuOptions;
 
             renderAllProducts();
             lucide.createIcons(); // Crear los iconos de Lucide al cargar
+
+            // Rellenar el textarea de carga inicial con los datos actuales
+            const initialDataInput = document.getElementById('initial-data-input');
+            let contentForTextarea = `const towersOptions = ${JSON.stringify(dataMap.towers, null, 4)};\n\n`;
+            contentForTextarea += `const ssdOptions = ${JSON.stringify(dataMap.ssdOptions, null, 4)};\n\n`;
+            contentForTextarea += `const gpuOptions = ${JSON.stringify(dataMap.gpuOptions, null, 4)};\n\n`;
+            contentForTextarea += `const psuOptions = ${JSON.stringify(dataMap.psuOptions, null, 4)};\n\n`;
+            contentForTextarea += `const motherboardOptions = ${JSON.stringify(dataMap.motherboardOptions, null, 4)};\n\n`;
+            contentForTextarea += `const cpuOptions = ${JSON.stringify(dataMap.cpuOptions, null, 4)};\n`;
+            initialDataInput.value = contentForTextarea;
+
 
             // Observe all sections for the global add button
             document.querySelectorAll('section[id^="section-"]').forEach(section => {
@@ -1070,7 +1153,6 @@
             });
 
             // Set initial text for the global add button if no section is immediately visible
-            // This ensures it's not empty when the page first loads
             if (globalAddButton.classList.contains('hidden')) {
                 globalAddButtonText.textContent = `Añadir ${getComponentName('towers')}`; // Default to first category
                 globalAddButton.onclick = () => addProduct('towers');

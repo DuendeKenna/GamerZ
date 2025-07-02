@@ -1571,127 +1571,64 @@ text-decoration: none;
                 const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
                 const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
 
-//---COMPSOPTIONS---//
-const towersOptions = [
-    {
-        "name": "Sentey R20",
-        "price": 45000,
-        "slug": "sentey-r20",
-        "image_url": "comps/torres/sentey-r20.webp",
-        "link": ""
-    },
-    {
-        "name": "Antec Nx292",
-        "price": 75000,
-        "slug": "antex-nx292",
-        "image_url": "comps/torres/antex-nx292.webp",
-        "link": "https://www.antec.com/product/case/nx292"
-    },
-    {
-        "name": "Gigabyte C102",
-        "price": 0,
-        "slug": "gigabyte-c102",
-        "image_url": "comps/torres/gigabyte-c102.webp",
-        "link": ""
-    }
-];
+// #region COMPOP
 
-const ssdOptions = [
-    {
-        "name": "240GB SSD SATA",
-        "price": 25000,
-        "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
-        "image_url": "comps/discos/ssd_hiksemi.webp",
-        "link": ""
-    },
-    {
-        "name": "480GB SSD SATA",
-        "price": 45000,
-        "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
-        "image_url": "comps/discos/ssd_hiksemi.webp",
-        "link": ""
-    },
-    {
-        "name": "1TB SSD SATA",
-        "price": 75000,
-        "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
-        "image_url": "comps/discos/ssd_hiksemi.webp",
-        "link": "https://www.hiksemi.com/ssd/e100n-ssd/"
-    }
-];
+let towersOptions = [];
+let ssdOptions = [];
+let gpuOptions = [];
+let psuOptions = [];
+let motherboardOptions = [];
+let cpuOptions = [];
 
-const gpuOptions = [
-    {
-        "name": "AMD 560 4GB",
-        "price": 60000,
-        "description": "Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.",
-        "image_url": "comps/gpus/rx560.webp",
-        "link": ""
-    },
-    {
-        "name": "GT 740 2GB",
-        "price": 70000,
-        "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
-        "image_url": "comps/gpus/gt740.webp",
-        "link": "https://www.nvidia.com/es-la/geforce/graphics-cards/gt-740/"
-    }
-];
+// Cargar los datos desde products.json usando fetch
+fetch('products.json')
+    .then(response => response.json())
+    .then(data => {
+        towersOptions = data.towersOptions || [];
+        ssdOptions = data.ssdOptions || [];
+        gpuOptions = data.gpuOptions || [];
+        psuOptions = data.psuOptions || [];
+        motherboardOptions = data.motherboardOptions || [];
+        cpuOptions = data.cpuOptions || [];
 
-const psuOptions = [
-    {
-        "name": "ATX 550w Sentey Genérica",
-        "price": 30000,
-        "description": "Fuente estándar, suficiente para esta configuración base.",
-        "image_url": "comps/psus/550sentey.webp",
-        "link": ""
-    },
-    {
-        "name": "ATX 550w Sentey 80 Plus",
-        "price": 45000,
-        "description": "Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.",
-        "image_url": "comps/psus/550sentey80.webp",
-        "link": "https://sentey.com/fuentes-de-poder/xplus-power-550w-80-plus-bronze/"
-    }
-];
+        // --- POBLAR SELECTS Y ACTUALIZAR UI ---
+        // SSD
+        const ssdSelect = document.getElementById('ssd-select');
+        if (ssdSelect) {
+            ssdSelect.innerHTML = ssdOptions.map((option, index) =>
+                `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
+            ).join('');
+        }
+        // GPU
+        const gpuSelect = document.getElementById('gpu-select');
+        if (gpuSelect) {
+            gpuSelect.innerHTML = gpuOptions.map((option, index) =>
+                `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
+            ).join('');
+        }
+        // PSU
+        const psuSelect = document.getElementById('psu-select');
+        if (psuSelect) {
+            psuSelect.innerHTML = psuOptions.map((option, index) =>
+                `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
+            ).join('');
+        }
 
-const motherboardOptions = [
-    {
-        "name": "Gigabyte H410M H V3",
-        "price": 80000,
-        "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.",
-        "image_url": "comps/motherboards/gigabyte-h410m.webp",
-        "link": "https://www.gigabyte.com/Motherboard/H410M-H-V3-rev-10"
-    },
-    {
-        "name": "ASUS Prime B550M-A",
-        "price": 120000,
-        "description": "Placa madre AM4 versátil con soporte PCIe 4.0. Excelente para Ryzen.",
-        "image_url": "comps/motherboards/asus-b550m.webp",
-        "link": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a/"
-    }
-];
+        // Llamar a las funciones de actualización SOLO después de poblar los selects
+        if (typeof updateTowerDisplay === 'function') updateTowerDisplay();
+        if (typeof updateSsdDisplay === 'function') updateSsdDisplay();
+        if (typeof updateGpuDisplay === 'function') updateGpuDisplay();
+        if (typeof updatePsuDisplay === 'function') updatePsuDisplay();
+        // Si tienes selectores para motherboard/cpu, inicialízalos aquí también.
+    })
+    .catch(error => {
+        console.error('Error cargando products.json:', error);
+    });
 
-const cpuOptions = [
-    {
-        "name": "Intel Core i3-10100F",
-        "price": 70000,
-        "description": "Procesador de 4 núcleos y 8 hilos. Buen rendimiento para gaming y tareas diarias.",
-        "image_url": "comps/cpus/intel-i3-10100f.webp",
-        "link": "https://www.intel.la/content/www/xl/es/products/sku/203473/intel-core-i310100f-processor/specifications.html"
-    },
-    {
-        "name": "AMD Ryzen 5 3600",
-        "price": 100000,
-        "description": "Procesador de 6 núcleos y 12 hilos. Excelente para gaming y multitarea.",
-        "image_url": "comps/cpus/amd-ryzen-5-3600.webp",
-        "link": "https://www.amd.com/es/products/cpu/amd-ryzen-5-3600"
-    }
-];
+// #endregion COMPOP
 
-
-                // --- PRICE CALCULATION & USD ---
-                const BASE_PRICE = 555000;
-                const JOYSTICK_PRICE = 25000;
+                const BASE_PRICE = 99000;
+                const JOYSTICK_PRICE = 22000;
                 const MOUSE_KEYBOARD_PRICE = 36000;
                 let joystickCount = 0;
                 let hasMouseKeyboard = false;

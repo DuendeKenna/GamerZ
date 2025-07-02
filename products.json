@@ -1,0 +1,105 @@
+{
+  "towersOptions": [
+    {
+      "name": "Sentey R20",
+      "price": 45000,
+      "slug": "sentey-r20",
+      "image_url": "comps/torres/sentey-r20.webp",
+      "link": ""
+    },
+    {
+      "name": "Antec Nx292",
+      "price": 75000,
+      "slug": "antex-nx292",
+      "image_url": "comps/torres/antex-nx292.webp",
+      "link": "https://www.antec.com/product/case/nx292"
+    }
+  ],
+  "ssdOptions": [
+    {
+      "name": "240GB SSD SATA",
+      "price": 25000,
+      "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
+      "image_url": "comps/discos/ssd_hiksemi.webp",
+      "link": ""
+    },
+    {
+      "name": "480GB SSD SATA",
+      "price": 45000,
+      "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
+      "image_url": "comps/discos/ssd_hiksemi.webp",
+      "link": ""
+    },
+    {
+      "name": "1TB SSD SATA",
+      "price": 75000,
+      "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
+      "image_url": "comps/discos/ssd_hiksemi.webp",
+      "link": "https://www.hiksemi.com/ssd/e100n-ssd/"
+    }
+  ],
+  "gpuOptions": [
+    {
+      "name": "AMD 560 4GB",
+      "price": 60000,
+      "description": "Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.",
+      "image_url": "comps/gpus/rx560.webp",
+      "link": ""
+    },
+    {
+      "name": "GT 740 2GB",
+      "price": 70000,
+      "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
+      "image_url": "comps/gpus/gt740.webp",
+      "link": "https://www.nvidia.com/es-la/geforce/graphics-cards/gt-740/"
+    }
+  ],
+  "psuOptions": [
+    {
+      "name": "ATX 550w Sentey Genérica",
+      "price": 30000,
+      "description": "Fuente estándar, suficiente para esta configuración base.",
+      "image_url": "comps/psus/550sentey.webp",
+      "link": ""
+    },
+    {
+      "name": "ATX 550w Sentey 80 Plus",
+      "price": 45000,
+      "description": "Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.",
+      "image_url": "comps/psus/550sentey80.webp",
+      "link": "https://sentey.com/fuentes-de-poder/xplus-power-550w-80-plus-bronze/"
+    }
+  ],
+  "motherboardOptions": [
+    {
+      "name": "Gigabyte H410M H V3",
+      "price": 80000,
+      "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.",
+      "image_url": "comps/motherboards/gigabyte-h410m.webp",
+      "link": "https://www.gigabyte.com/Motherboard/H410M-H-V3-rev-10"
+    },
+    {
+      "name": "ASUS Prime B550M-A",
+      "price": 120000,
+      "description": "Placa madre AM4 versátil con soporte PCIe 4.0. Excelente para Ryzen.",
+      "image_url": "comps/motherboards/asus-b550m.webp",
+      "link": "https://www.asus.com/motherboards-components/motherboards/prime/prime-b550m-a/"
+    }
+  ],
+  "cpuOptions": [
+    {
+      "name": "Intel Core i3-10100F",
+      "price": 70000,
+      "description": "Procesador de 4 núcleos y 8 hilos. Buen rendimiento para gaming y tareas diarias.",
+      "image_url": "comps/cpus/intel-i3-10100f.webp",
+      "link": "https://www.intel.la/content/www/xl/es/products/sku/203473/intel-core-i310100f-processor/specifications.html"
+    },
+    {
+      "name": "AMD Ryzen 5 3600",
+      "price": 100000,
+      "description": "Procesador de 6 núcleos y 12 hilos. Excelente para gaming y multitarea.",
+      "image_url": "comps/cpus/amd-ryzen-5-3600.webp",
+      "link": "https://www.amd.com/es/products/cpu/amd-ryzen-5-3600"
+    }
+  ]
+}
