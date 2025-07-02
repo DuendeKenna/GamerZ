@@ -16,56 +16,56 @@
         },
         {
             "name": "Sentey 6100 White",
-            "price": 0,
+            "price": 45000,
             "slug": "sentey-6100-white",
             "image_url": "comps/torres/sentey-6100-white.webp",
-            "link": ""
+            "link": "https://www.mercadolibre.com.ar/gabinete-gamer-sentey-6100-sf-w-tg-h10-white-color-blanco-sfans/p/MLA39317184"
         },
         {
             "name": "Haxly U500",
-            "price": 0,
+            "price": 73000,
             "slug": "haxly-u500",
             "image_url": "comps/torres/haxly-u500.webp",
             "link": ""
         },
         {
             "name": "Lnz Y11",
-            "price": 0,
+            "price": 55000,
             "slug": "lnz-y11",
             "image_url": "comps/torres/lnz-y11.webp",
             "link": ""
         },
         {
             "name": "Sentey A8 Micro White",
-            "price": 0,
+            "price": 65000,
             "slug": "sentey-a8-micro-white",
             "image_url": "comps/torres/sentey-a8-micro-white.webp",
             "link": ""
         },
         {
             "name": "Gigabyte C102",
-            "price": 0,
+            "price": 70000,
             "slug": "gigabyte-c102",
             "image_url": "comps/torres/gigabyte-c102.webp",
             "link": ""
         },
         {
             "name": "Sentey H10",
-            "price": 0,
+            "price": 45000,
             "slug": "sentey-h10",
             "image_url": "comps/torres/sentey-h10.webp",
             "link": ""
         },
         {
             "name": "Sentey A8 Micro Black",
-            "price": 0,
+            "price": 65000,
             "slug": "sentey-a8-micro-black",
             "image_url": "comps/torres/sentey-a8-micro-black.webp",
             "link": ""
         },
         {
             "name": "Sentey S20",
-            "price": 0,
+            "price": 46000,
             "slug": "sentey-s20",
             "image_url": "comps/torres/sentey-s20.webp",
             "link": ""
@@ -73,18 +73,18 @@
     ],
     "ssdOptions": [
         {
-            "name": "240GB SSD SATA",
-            "price": 30000,
-            "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
-            "image_url": "comps/discos/ssd_hiksemi.webp",
-            "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds240g2g0a-240gb-verde/p/MLA8739495"
-        },
-        {
             "name": "480GB SSD SATA",
             "price": 46000,
             "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
             "image_url": "comps/discos/ssd_hiksemi.webp",
             "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-480gb-hiksemi-wave-sata-30/p/MLA37601593"
+        },
+        {
+            "name": "240GB SSD SATA",
+            "price": 30000,
+            "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
+            "image_url": "comps/discos/ssd_hiksemi.webp",
+            "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds240g2g0a-240gb-verde/p/MLA8739495"
         },
         {
             "name": "1TB SSD SATA",

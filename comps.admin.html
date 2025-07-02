@@ -166,77 +166,151 @@
             box-shadow: 0 0 0 3px rgba(66, 210, 50, 0.5); /* Sombra verde */
             transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
         }
+
+        /* Tab Styles */
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #374151; /* gray-700 */
+            overflow-x: auto; /* Allow horizontal scrolling if many tabs */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            color: #9ca3af; /* gray-400 */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .tab-button:hover {
+            color: #e5e7eb; /* gray-200 */
+        }
+        .tab-button.active {
+            color: #6366f1; /* indigo-500 */
+            border-color: #6366f1; /* indigo-500 */
+        }
+        .tab-content {
+            padding-top: 1rem;
+        }
+
+        /* Table specific styles for overview */
+        .overview-table th, .overview-table td {
+            padding: 0.75rem 1.5rem; /* px-6 py-3 */
+            vertical-align: top; /* Align content to top for multi-line textarea */
+        }
+        .overview-table input[type="text"],
+        .overview-table input[type="number"],
+        .overview-table textarea {
+            background-color: transparent;
+            border: 1px solid transparent; /* Make border transparent by default */
+            border-radius: 0.25rem; /* rounded-sm */
+            padding: 0.25rem 0.5rem; /* px-2 py-1 */
+            font-size: 0.875rem; /* text-sm */
+            color: #e5e7eb; /* text-gray-200 */
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            min-width: 80px; /* Ensure inputs don't collapse too much */
+        }
+        .overview-table input[type="text"]:focus,
+        .overview-table input[type="number"]:focus,
+        .overview-table textarea:focus {
+            border-color: #4b5563; /* gray-600 */
+            box-shadow: 0 0 0 1px rgba(75, 85, 99, 0.5); /* subtle shadow */
+        }
+        .overview-table textarea {
+            min-height: 40px; /* Ensure description textarea has some height */
+        }
     </style>
 </head>
 <body class="p-4 md:p-8 bg-gray-900 min-h-screen text-gray-200">
     <div class="max-w-6xl mx-auto bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700">
         <h1 class="text-3xl font-saira-black text-white mb-6 text-center">Administrador de Vectores de Productos</h1>
 
-        <!-- Sección de Carga de Datos Inicial -->
-        <section class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Cargar Datos Iniciales</h2>
-            <p class="text-gray-400 mb-4">Pega aquí el código JSON de tus vectores de productos.</p>
-            <textarea id="initial-data-input" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-700 text-gray-200 font-mono text-sm resize-y"></textarea>
-            <div class="flex justify-center mt-4 space-x-4">
-                <button onclick="loadDataFromInput()" class="btn-primary flex items-center">
-                    <span class="lucide-icon mr-2" data-lucide="upload"></span> Cargar Datos
-                </button>
-                <button onclick="pasteDataIntoInput()" class="btn-secondary flex items-center">
-                    <span class="lucide-icon mr-2" data-lucide="clipboard"></span> Pegar Datos
-                </button>
-            </div>
-            <p id="error-message" class="text-center text-sm text-red-500 mt-2 hidden">Error al cargar los datos. Asegúrate de que el formato sea correcto.</p>
-        </section>
+        <!-- Tab Buttons -->
+        <div class="tab-buttons">
+            <button class="tab-button active" data-tab="detailed-view" onclick="openTab('detailed-view')">Vista Detallada</button>
+            <button class="tab-button" data-tab="overview-view" onclick="openTab('overview-view')">Vista General (Tablas)</button>
+            <button class="tab-button" data-tab="initial-load-view" onclick="openTab('initial-load-view')">Cargar Datos Iniciales</button>
+        </div>
 
-        <!-- Sección de Torres -->
-        <section id="section-towers" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Torres</h2>
-            <div id="towers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                <!-- Las tarjetas de torres se renderizarán aquí -->
-            </div>
-        </section>
+        <!-- Tab Content: Cargar Datos Iniciales -->
+        <div id="initial-load-view" class="tab-content hidden">
+            <section class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Cargar Datos Iniciales</h2>
+                <p class="text-gray-400 mb-4">Pega aquí el código JSON de tus vectores de productos. Este JSON debe ser un objeto con las claves `towersOptions`, `ssdOptions`, `gpuOptions`, `psuOptions`, `motherboardOptions`, `cpuOptions` y sus respectivos arrays de productos.</p>
+                <textarea id="initial-data-input" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-700 text-gray-200 font-mono text-sm resize-y"></textarea>
+                <div class="flex justify-center mt-4 space-x-4">
+                    <button onclick="loadDataFromInput()" class="btn-primary flex items-center">
+                        <span class="lucide-icon mr-2" data-lucide="upload"></span> Cargar Datos
+                    </button>
+                    <button onclick="pasteDataIntoInput()" class="btn-secondary flex items-center">
+                        <span class="lucide-icon mr-2" data-lucide="clipboard"></span> Pegar Datos
+                    </button>
+                </div>
+                <p id="error-message" class="text-center text-sm text-red-500 mt-2 hidden">Error al cargar los datos. Asegúrate de que el formato sea correcto.</p>
+            </section>
+        </div>
 
-        <!-- Sección de Opciones de SSD -->
-        <section id="section-ssdOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de SSD</h2>
-            <div id="ssdOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                <!-- Las tarjetas de SSD se renderizarán aquí -->
-            </div>
-        </section>
+        <!-- Tab Content: Vista Detallada -->
+        <div id="detailed-view" class="tab-content">
+            <!-- Sección de Torres -->
+            <section id="section-towers" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Torres</h2>
+                <div id="towers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- Las tarjetas de torres se renderizarán aquí -->
+                </div>
+            </section>
 
-        <!-- Sección de Opciones de GPU -->
-        <section id="section-gpuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de GPU</h2>
-            <div id="gpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                <!-- Las tarjetas de GPU se renderizarán aquí -->
-            </div>
-        </section>
+            <!-- Sección de Opciones de SSD -->
+            <section id="section-ssdOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de SSD</h2>
+                <div id="ssdOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- Las tarjetas de SSD se renderizarán aquí -->
+                </div>
+            </section>
 
-        <!-- Sección de Opciones de PSU -->
-        <section id="section-psuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de PSU</h2>
-            <div id="psuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                <!-- Las tarjetas de PSU se renderizarán aquí -->
-            </div>
-        </section>
+            <!-- Sección de Opciones de GPU -->
+            <section id="section-gpuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de GPU</h2>
+                <div id="gpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- Las tarjetas de GPU se renderizarán aquí -->
+                </div>
+            </section>
 
-        <!-- Sección de Opciones de Motherboard -->
-        <section id="section-motherboardOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Motherboard</h2>
-            <div id="motherboardOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                <!-- Las tarjetas de Motherboard se renderizarán aquí -->
-            </div>
-        </section>
+            <!-- Sección de Opciones de PSU -->
+            <section id="section-psuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de PSU</h2>
+                <div id="psuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- Las tarjetas de PSU se renderizarán aquí -->
+                </div>
+            </section>
 
-        <!-- Sección de Opciones de CPU -->
-        <section id="section-cpuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de CPU</h2>
-            <div id="cpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                <!-- Las tarjetas de CPU se renderizarán aquí -->
-            </div>
-        </section>
+            <!-- Sección de Opciones de Motherboard -->
+            <section id="section-motherboardOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Motherboard</h2>
+                <div id="motherboardOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- Las tarjetas de Motherboard se renderizarán aquí -->
+                </div>
+            </section>
 
-        <!-- Sección de Generar y Copiar Código -->
+            <!-- Sección de Opciones de CPU -->
+            <section id="section-cpuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de CPU</h2>
+                <div id="cpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- Las tarjetas de CPU se renderizarán aquí -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Tab Content: Vista General (Tablas) -->
+        <div id="overview-view" class="tab-content hidden">
+            <!-- Las tablas de vista general se renderizarán aquí -->
+        </div>
+
+        <!-- Sección de Generar y Copiar Código (siempre visible) -->
         <section class="mt-10 p-6 bg-gray-900 rounded-lg shadow-inner border border-gray-700">
             <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar y Copiar Código de Vectores</h2>
             <textarea id="output-code" rows="15" class="w-full p-4 border border-blue-300 rounded-lg bg-blue-50 text-blue-900 font-mono text-sm resize-y" readonly></textarea>
@@ -976,6 +1050,115 @@
             renderProducts('cpuOptions', dataMap.cpuOptions);
         }
 
+        /**
+         * Renderiza las tablas de vista general para todas las categorías.
+         */
+        function renderOverviewTables() {
+            const overviewContainer = document.getElementById('overview-view');
+            overviewContainer.innerHTML = ''; // Limpiar contenido previo
+
+            for (const categoryKey in dataMap) {
+                const categoryData = dataMap[categoryKey];
+                const readableCategoryName = getComponentName(categoryKey) + (categoryKey === 'towers' ? 's' : 's'); // Pluralize for display
+
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700';
+                categoryDiv.innerHTML = `<h3 class="text-xl font-semibold text-gray-100 mb-4">${readableCategoryName}</h3>`;
+
+                if (categoryData.length === 0) {
+                    categoryDiv.innerHTML += `<p class="text-gray-400">No hay ${readableCategoryName.toLowerCase()} en esta colección.</p>`;
+                } else {
+                    const table = document.createElement('table');
+                    table.className = 'overview-table w-full text-left text-sm text-gray-400';
+                    table.innerHTML = `
+                        <thead class="text-xs text-gray-200 uppercase bg-gray-700">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Nombre</th>
+                                <th scope="col" class="px-6 py-3">Precio</th>
+                                ${categoryKey === 'towers' ? '<th scope="col" class="px-6 py-3">Slug</th>' : ''}
+                                ${categoryKey !== 'towers' ? '<th scope="col" class="px-6 py-3">Descripción</th>' : ''}
+                                <th scope="col" class="px-6 py-3">URL Imagen</th>
+                                <th scope="col" class="px-6 py-3">Link</th>
+                                <th scope="col" class="px-6 py-3">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${categoryData.map((product, index) => {
+                                const uniqueId = `${categoryKey}-${index}`;
+                                return `
+                                    <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700 transition-colors duration-200">
+                                        <td class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                            <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full bg-transparent border-none focus:ring-0">
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <input type="number" value="${product.price || 0}" oninput="updateProduct('${categoryKey}', ${index}, 'price', parseFloat(this.value))" class="w-full bg-transparent border-none focus:ring-0">
+                                        </td>
+                                        ${categoryKey === 'towers' ? `
+                                        <td class="px-6 py-4">
+                                            <input type="text" value="${product.slug || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'slug', this.value)" class="w-full bg-transparent border-none focus:ring-0">
+                                        </td>` : ''}
+                                        ${categoryKey !== 'towers' ? `
+                                        <td class="px-6 py-4">
+                                            <textarea rows="1" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full bg-transparent border-none focus:ring-0 resize-none">${product.description || ''}</textarea>
+                                        </td>` : ''}
+                                        <td class="px-6 py-4">
+                                            <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" class="w-full bg-transparent border-none focus:ring-0 text-xs">
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <input type="text" value="${product.link || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'link', this.value)" class="w-full bg-transparent border-none focus:ring-0 text-xs">
+                                            ${product.link ? `<a href="${product.link}" target="_blank" class="text-blue-400 hover:underline text-xs flex items-center mt-1"><span class="lucide-icon w-3 h-3 mr-1" data-lucide="external-link"></span></a>` : ''}
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button onclick="removeProduct('${categoryKey}', ${index})" class="btn-danger text-xs py-1 px-2">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    `;
+                    categoryDiv.appendChild(table);
+                }
+                overviewContainer.appendChild(categoryDiv);
+            }
+            lucide.createIcons(); // Re-render icons for the new table content
+        }
+
+
+        /**
+         * Función para abrir una pestaña específica.
+         * @param {string} tabName - El ID de la pestaña a abrir (ej. 'detailed-view', 'overview-view').
+         */
+        function openTab(tabName) {
+            // Ocultar todos los contenidos de las pestañas
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Desactivar todos los botones de las pestañas
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Mostrar el contenido de la pestaña seleccionada
+            document.getElementById(tabName).classList.remove('hidden');
+            // Activar el botón de la pestaña seleccionada
+            document.querySelector(`.tab-button[data-tab="${tabName}"]`).classList.add('active');
+
+            // Re-renderizar el contenido de la pestaña activa para asegurar que esté actualizado
+            if (tabName === 'detailed-view') {
+                renderAllProducts(); // Existing render function for cards
+            } else if (tabName === 'overview-view') {
+                renderOverviewTables(); // New render function for tables
+            }
+            // No need to render initial-load-view, its content is static except for textarea value
+            lucide.createIcons(); // Re-render icons after tab switch
+        }
+
+
         // --- Funciones de Drag and Drop ---
         function handleDragStart(e) {
             // Check if the drag was initiated from an interactive element (input, textarea, button)
@@ -1072,8 +1255,7 @@
         // Inicializar la página al cargar el DOM
         document.addEventListener('DOMContentLoaded', async () => {
             const storedData = loadDataFromSessionStorage();
-            let dataInitialized = false; // Flag to track if data was initialized from session or products.json
-
+            
             if (storedData) {
                 // Si hay datos en sessionStorage, usarlos
                 towersOptions = storedData.towersOptions;
@@ -1083,7 +1265,6 @@
                 motherboardOptions = storedData.motherboardOptions;
                 cpuOptions = storedData.cpuOptions;
 
-                dataInitialized = true;
                 hasUnsavedChanges = true; // Si cargamos de sesión, asumimos que puede haber cambios sin "guardar"
                 showWarningMessage('¡Datos restaurados de la sesión anterior! Genera y copia el código si quieres guardar los cambios.');
 
@@ -1102,9 +1283,8 @@
                     gpuOptions = jsonData.gpuOptions || [];
                     psuOptions = jsonData.psuOptions || [];
                     motherboardOptions = jsonData.motherboardOptions || [];
-                    cpuOptions = jsonData.cpuOptions || [];
+                    cpuOptions = jsonData.convcpuOptions || []; // Corrected: should be cpuOptions
 
-                    dataInitialized = true;
                     hasUnsavedChanges = false; // No hay cambios sin guardar si se cargan del JSON
                     showWarningMessage('¡Datos cargados desde products.json!');
 
@@ -1120,7 +1300,6 @@
                     motherboardOptions = [];
                     cpuOptions = [];
 
-                    dataInitialized = false; // Los datos NO se cargaron con éxito de una fuente externa
                     hasUnsavedChanges = false; // No hay cambios que guardar si se empieza vacío
                 }
             }
@@ -1133,7 +1312,7 @@
             dataMap.motherboardOptions = motherboardOptions;
             dataMap.cpuOptions = cpuOptions;
 
-            renderAllProducts();
+            renderAllProducts(); // Renderiza la vista detallada por defecto
             lucide.createIcons(); // Crear los iconos de Lucide al cargar
 
             // Rellenar el textarea de carga inicial con el estado actual de los datos (JSON puro)
