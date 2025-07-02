@@ -223,6 +223,101 @@
         .overview-table textarea {
             min-height: 40px; /* Ensure description textarea has some height */
         }
+
+        /* Configurator View Styles */
+        .configurator-columns-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .configurator-column {
+            flex: 1 1 280px; /* Allow columns to grow and shrink, min-width 280px */
+            max-width: 350px;
+            background-color: #1f2937;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            border: 1px solid #374151;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .configurator-column-title {
+            font-weight: 600;
+            color: #6366f1; /* indigo-500 */
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .configurator-card {
+            background-color: #374151; /* gray-700 */
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease-in-out;
+            position: relative; /* For the remove button */
+        }
+        .configurator-card:hover {
+            background-color: #4b5563; /* gray-600 */
+        }
+        .configurator-card.selected {
+            border-color: #42d232; /* green-333 */
+            box-shadow: 0 0 0 3px rgba(66, 210, 50, 0.5);
+        }
+        .configurator-card img {
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .configurator-card .product-name {
+            font-weight: 500;
+            color: #e5e7eb;
+            margin-bottom: 0.25rem;
+        }
+        .configurator-card .product-price {
+            font-weight: bold;
+            color: #a855f7; /* purple-500 */
+            font-size: 1.1rem;
+        }
+        .configurator-card .product-description {
+            font-size: 0.85rem;
+            color: #9ca3af; /* gray-400 */
+            margin-top: 0.5rem;
+        }
+        .configurator-card .product-link,
+        .configurator-card .product-link-input {
+            font-size: 0.75rem;
+            color: #22d3ee; /* cyan-400 */
+            display: block;
+            margin-top: 0.5rem;
+        }
+        .configurator-card .product-link-input {
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            width: calc(100% - 1rem); /* Adjust for padding */
+            color: #e5e7eb;
+        }
+        .configurator-card .remove-selection-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .configurator-card .remove-selection-btn:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="p-4 md:p-8 bg-gray-900 min-h-screen text-gray-200">
@@ -231,22 +326,23 @@
 
         <!-- Tab Buttons -->
         <div class="tab-buttons">
-            <button class="tab-button active" data-tab="detailed-view" onclick="openTab('detailed-view')">Vista Detallada</button>
-            <button class="tab-button" data-tab="overview-view" onclick="openTab('overview-view')">Vista General (Tablas)</button>
-            <button class="tab-button" data-tab="initial-load-view" onclick="openTab('initial-load-view')">Cargar Datos Iniciales</button>
+            <button class="tab-button active" id="tab-initial-load-view" data-tab="initial-load-view">Cargar Datos Iniciales</button>
+            <button class="tab-button" id="tab-detailed-view" data-tab="detailed-view">Vista Detallada</button>
+            <button class="tab-button" id="tab-overview-view" data-tab="overview-view">Vista General (Tablas)</button>
+            <button class="tab-button" id="tab-configurator-view" data-tab="configurator-view">Configurador</button>
         </div>
 
         <!-- Tab Content: Cargar Datos Iniciales -->
-        <div id="initial-load-view" class="tab-content hidden">
+        <div id="initial-load-view" class="tab-content">
             <section class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Cargar Datos Iniciales</h2>
                 <p class="text-gray-400 mb-4">Pega aquí el código JSON de tus vectores de productos. Este JSON debe ser un objeto con las claves `towersOptions`, `ssdOptions`, `gpuOptions`, `psuOptions`, `motherboardOptions`, `cpuOptions` y sus respectivos arrays de productos.</p>
                 <textarea id="initial-data-input" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-700 text-gray-200 font-mono text-sm resize-y"></textarea>
                 <div class="flex justify-center mt-4 space-x-4">
-                    <button onclick="loadDataFromInput()" class="btn-primary flex items-center">
+                    <button id="load-data-button" class="btn-primary flex items-center">
                         <span class="lucide-icon mr-2" data-lucide="upload"></span> Cargar Datos
                     </button>
-                    <button onclick="pasteDataIntoInput()" class="btn-secondary flex items-center">
+                    <button id="paste-data-button" class="btn-secondary flex items-center">
                         <span class="lucide-icon mr-2" data-lucide="clipboard"></span> Pegar Datos
                     </button>
                 </div>
@@ -255,7 +351,7 @@
         </div>
 
         <!-- Tab Content: Vista Detallada -->
-        <div id="detailed-view" class="tab-content">
+        <div id="detailed-view" class="tab-content hidden">
             <!-- Sección de Torres -->
             <section id="section-towers" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Torres</h2>
@@ -303,11 +399,40 @@
                     <!-- Las tarjetas de CPU se renderizarán aquí -->
                 </div>
             </section>
+
+            <!-- Sección de RAM Options -->
+            <section id="section-ramOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de RAM</h2>
+                <div id="ramOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- Las tarjetas de RAM se renderizarán aquí -->
+                </div>
+            </section>
+
+            <!-- Sección de Combo Options -->
+            <section id="section-comboOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Combo</h2>
+                <div id="comboOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                    <!-- Las tarjetas de Combo se renderizarán aquí -->
+                </div>
+            </section>
         </div>
 
         <!-- Tab Content: Vista General (Tablas) -->
         <div id="overview-view" class="tab-content hidden">
             <!-- Las tablas de vista general se renderizarán aquí -->
+        </div>
+
+        <!-- Tab Content: Configurador -->
+        <div id="configurator-view" class="tab-content hidden">
+            <section class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin text-center">Configurador de Componentes</h2>
+                <div class="text-center text-3xl font-bold text-green-400 mb-6">
+                    Precio Total: <span id="total-config-price">$0</span>
+                </div>
+                <div id="configurator-columns-container" class="configurator-columns-container">
+                    <!-- Las columnas del configurador se renderizarán aquí -->
+                </div>
+            </section>
         </div>
 
         <!-- Sección de Generar y Copiar Código (siempre visible) -->
@@ -334,7 +459,6 @@
 
     <script>
         // Default product data as a JSON string, embedded directly in the HTML
-        // This will be used if sessionStorage is empty AND products.json cannot be fetched.
         const defaultProductDataJsonString = `{
             "towersOptions": [
                 {
@@ -438,6 +562,38 @@
                     "image_url": "comps/cpus/amd-ryzen-5-3600.webp",
                     "link": "https://www.amd.com/es/products/cpu/amd-ryzen-5-3600"
                 }
+            ],
+            "ramOptions": [
+                {
+                    "name": "8GB DDR4 2666MHz",
+                    "price": 35000,
+                    "description": "Memoria RAM estándar para tareas básicas y gaming ligero.",
+                    "image_url": "comps/ram/ram_8gb.webp",
+                    "link": ""
+                },
+                {
+                    "name": "16GB DDR4 3200MHz",
+                    "price": 60000,
+                    "description": "Ideal para gaming moderno y multitarea intensiva.",
+                    "image_url": "comps/ram/ram_16gb.webp",
+                    "link": ""
+                }
+            ],
+            "comboOptions": [
+                {
+                    "name": "Combo i3-10100F + H410M",
+                    "price": 140000,
+                    "description": "Kit básico de CPU y Motherboard para un inicio económico.",
+                    "image_url": "comps/combos/combo_i3_h410.webp",
+                    "link": ""
+                },
+                {
+                    "name": "Combo Ryzen 5 3600 + B550M",
+                    "price": 200000,
+                    "description": "Potente combinación de CPU y Motherboard para alto rendimiento.",
+                    "image_url": "comps/combos/combo_r5_b550.webp",
+                    "link": ""
+                }
             ]
         }`;
 
@@ -449,6 +605,8 @@
         let psuOptions = [];
         let motherboardOptions = [];
         let cpuOptions = [];
+        let ramOptions = []; // Nueva variable
+        let comboOptions = []; // Nueva variable
 
         // Objeto para mapear nombres de categorías a sus arrays de datos
         const dataMap = {
@@ -457,7 +615,9 @@
             gpuOptions: gpuOptions,
             psuOptions: psuOptions,
             motherboardOptions: motherboardOptions,
-            cpuOptions: cpuOptions
+            cpuOptions: cpuOptions,
+            ramOptions: ramOptions, // Añadido al dataMap
+            comboOptions: comboOptions // Añadido al dataMap
         };
 
         // Mapeo de categorías a sus carpetas de imágenes
@@ -467,7 +627,9 @@
             gpuOptions: 'gpus',
             psuOptions: 'psus',
             motherboardOptions: 'motherboards',
-            cpuOptions: 'cpus'
+            cpuOptions: 'cpus',
+            ramOptions: 'ram', // Nueva carpeta
+            comboOptions: 'combos' // Nueva carpeta
         };
 
         // Flag para rastrear cambios no guardados en la sesión
@@ -489,6 +651,20 @@
             'section-psuOptions': 'psuOptions',
             'section-motherboardOptions': 'motherboardOptions',
             'section-cpuOptions': 'cpuOptions',
+            'section-ramOptions': 'ramOptions', // Añadido
+            'section-comboOptions': 'comboOptions' // Añadido
+        };
+
+        // Object to store selected components in the configurator view
+        let selectedComponents = {
+            towers: null,
+            ssdOptions: null,
+            gpuOptions: null,
+            psuOptions: null,
+            motherboardOptions: null,
+            cpuOptions: null,
+            ramOptions: null, // Añadido
+            comboOptions: null // Añadido
         };
 
         /**
@@ -504,6 +680,8 @@
                 case 'psuOptions': return 'PSU';
                 case 'motherboardOptions': return 'Motherboard';
                 case 'cpuOptions': return 'CPU';
+                case 'ramOptions': return 'RAM'; // Añadido
+                case 'comboOptions': return 'Combo'; // Añadido
                 default: return 'Componente';
             }
         }
@@ -577,37 +755,47 @@
                     gpuOptions: dataMap.gpuOptions,
                     psuOptions: dataMap.psuOptions,
                     motherboardOptions: dataMap.motherboardOptions,
-                    cpuOptions: dataMap.cpuOptions
+                    cpuOptions: dataMap.cpuOptions,
+                    ramOptions: dataMap.ramOptions, // Guardar RAM
+                    comboOptions: dataMap.comboOptions, // Guardar Combo
+                    selectedComponents: selectedComponents // Save selected components too
                 }));
                 hasUnsavedChanges = true; // Marcar que hay cambios sin guardar
             } catch (e) {
                 console.error("Error al guardar en sessionStorage:", e);
-                // Podrías mostrar un mensaje al usuario si el almacenamiento falla (ej. cuota excedida)
+                // You might want to show a message to the user if storage fails (e.g., quota exceeded)
             }
         }
 
         /**
-         * Carga los datos desde sessionStorage si existen.
-         * @returns {Object|null} Los datos cargados o null si no hay.
+         * Carga los datos desde sessionStorage if they exist.
+         * @returns {Object|null} The loaded data or null if none.
          */
         function loadDataFromSessionStorage() {
             try {
                 const storedData = sessionStorage.getItem('productAdminData');
                 if (storedData) {
                     const parsedData = JSON.parse(storedData);
-                    // Asegurarse de que todas las propiedades existan, incluso si no estaban en la sesión guardada
+                    // Ensure all properties exist, even if they weren't in the saved session
                     return {
                         towersOptions: parsedData.towersOptions || [],
                         ssdOptions: parsedData.ssdOptions || [],
                         gpuOptions: parsedData.gpuOptions || [],
                         psuOptions: parsedData.psuOptions || [],
                         motherboardOptions: parsedData.motherboardOptions || [],
-                        cpuOptions: parsedData.cpuOptions || []
+                        cpuOptions: parsedData.cpuOptions || [],
+                        ramOptions: parsedData.ramOptions || [], // Cargar RAM
+                        comboOptions: parsedData.comboOptions || [], // Cargar Combo
+                        selectedComponents: parsedData.selectedComponents || { // Load selected components
+                            towers: null, ssdOptions: null, gpuOptions: null,
+                            psuOptions: null, motherboardOptions: null, cpuOptions: null,
+                            ramOptions: null, comboOptions: null // Inicializar para nuevas categorías
+                        }
                     };
                 }
             } catch (e) {
                 console.error("Error al cargar de sessionStorage:", e);
-                // Si hay un error de parseo, es mejor limpiar el storage para evitar bucles
+                // If there's a parsing error, it's best to clear the storage to avoid loops
                 sessionStorage.removeItem('productAdminData');
             }
             return null;
@@ -629,6 +817,15 @@
                 psuOptions = parsedData.psuOptions || [];
                 motherboardOptions = parsedData.motherboardOptions || [];
                 cpuOptions = parsedData.cpuOptions || [];
+                ramOptions = parsedData.ramOptions || []; // Cargar RAM
+                comboOptions = parsedData.comboOptions || []; // Cargar Combo
+
+                // Reset selected components when loading new data
+                selectedComponents = {
+                    towers: null, ssdOptions: null, gpuOptions: null,
+                    psuOptions: null, motherboardOptions: null, cpuOptions: null,
+                    ramOptions: null, comboOptions: null // Reset para nuevas categorías
+                };
 
                 // Update the dataMap to point to the new arrays
                 dataMap.towers = towersOptions;
@@ -637,9 +834,13 @@
                 dataMap.psuOptions = psuOptions;
                 dataMap.motherboardOptions = motherboardOptions;
                 dataMap.cpuOptions = cpuOptions;
+                dataMap.ramOptions = ramOptions; // Actualizar dataMap
+                dataMap.comboOptions = comboOptions; // Actualizar dataMap
 
                 renderAllProducts();
-                saveDataToSessionStorage(); // Guardar los datos recién cargados
+                renderOverviewTables(); // Re-render overview tables
+                renderConfiguratorView(); // Re-render configurator view
+                saveDataToSessionStorage(); // Save the newly loaded data
                 hasUnsavedChanges = false; // Reset unsaved changes flag
                 document.getElementById('error-message').classList.add('hidden'); // Hide any previous error
             } catch (error) {
@@ -820,7 +1021,7 @@
                 `;
             }
             
-            // Descripción (común a SSD, GPU, PSU, Motherboard, CPU)
+            // Descripción (común a SSD, GPU, PSU, Motherboard, CPU, RAM, Combo)
             if (category !== 'towers') { // Si no es towers, tiene descripción
                  fieldsHtml += `
                     <label class="block text-sm font-medium text-gray-400">Descripción:</label>
@@ -926,12 +1127,16 @@
             dataMap[category][index][key] = value;
             saveDataToSessionStorage(); // Guardar cambios cada vez que se actualiza un producto
 
-            // Solo re-renderizar la tarjeta si la imagen o el link cambian
-            // Esto evita perder el foco en los inputs de texto/número
+            // Only re-render the card if the image or link change
+            // This avoids losing focus on text/number inputs
             if (key === 'image_url' || key === 'link') {
                 updateProductCard(category, index);
             }
-            // Para otros campos, el oninput ya actualiza el valor del campo, no es necesario re-renderizar.
+            // For other fields, the oninput already updates the field value, no need to re-render.
+            // Also update configurator view if the selected component's data changes
+            if (selectedComponents[category] && selectedComponents[category].name === dataMap[category][index].name) {
+                renderConfiguratorView(); // Re-render configurator to update price/details
+            }
         }
 
         /**
@@ -988,10 +1193,27 @@
                     image_url: 'https://placehold.co/100x100/374151/9ca3af?text=Nuevo+CPU',
                     link: ''
                 };
+            } else if (category === 'ramOptions') { // Add new RAM product
+                newProduct = {
+                    name: 'Nueva RAM',
+                    price: 0,
+                    description: 'Descripción de la nueva RAM.',
+                    image_url: 'https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM',
+                    link: ''
+                };
+            } else if (category === 'comboOptions') { // Add new Combo product
+                newProduct = {
+                    name: 'Nuevo Combo',
+                    price: 0,
+                    description: 'Descripción del nuevo Combo.',
+                    image_url: 'https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo',
+                    link: ''
+                };
             }
             dataMap[category].push(newProduct);
-            renderProducts(category, dataMap[category]); // Se re-renderiza la categoría para añadir la nueva tarjeta
+            renderProducts(category, dataMap[category]); // Re-render the category to add the new card
             saveDataToSessionStorage(); // Guardar cambios
+            renderConfiguratorView(); // Re-render configurator view
         }
 
         /**
@@ -1001,9 +1223,14 @@
          */
         function removeProduct(category, index) {
             if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+                // If the deleted product was selected in the configurator, deselect it
+                if (selectedComponents[category] === dataMap[category][index]) {
+                    selectedComponents[category] = null;
+                }
                 dataMap[category].splice(index, 1);
-                renderProducts(category, dataMap[category]); // Se re-renderiza la categoría para reflejar la eliminación
+                renderProducts(category, dataMap[category]); // Re-render the category to reflect deletion
                 saveDataToSessionStorage(); // Guardar cambios
+                renderConfiguratorView(); // Re-render configurator view
             }
         }
 
@@ -1019,7 +1246,9 @@
                 gpuOptions: dataMap.gpuOptions,
                 psuOptions: dataMap.psuOptions,
                 motherboardOptions: dataMap.motherboardOptions,
-                cpuOptions: dataMap.cpuOptions
+                cpuOptions: dataMap.cpuOptions,
+                ramOptions: dataMap.ramOptions, // Añadido
+                comboOptions: dataMap.comboOptions // Añadido
             };
             outputTextArea.value = JSON.stringify(fullData, null, 4);
         }
@@ -1030,7 +1259,7 @@
         function copyCode() {
             const outputTextArea = document.getElementById('output-code');
             outputTextArea.select();
-            document.execCommand('copy'); // Usar execCommand para compatibilidad en iframes
+            document.execCommand('copy'); // Use execCommand for iframe compatibility
             const copyMessage = document.getElementById('copy-message');
             copyMessage.classList.remove('hidden');
             setTimeout(() => {
@@ -1048,6 +1277,8 @@
             renderProducts('psuOptions', dataMap.psuOptions);
             renderProducts('motherboardOptions', dataMap.motherboardOptions);
             renderProducts('cpuOptions', dataMap.cpuOptions);
+            renderProducts('ramOptions', dataMap.ramOptions); // Añadido
+            renderProducts('comboOptions', dataMap.comboOptions); // Añadido
         }
 
         /**
@@ -1055,7 +1286,7 @@
          */
         function renderOverviewTables() {
             const overviewContainer = document.getElementById('overview-view');
-            overviewContainer.innerHTML = ''; // Limpiar contenido previo
+            overviewContainer.innerHTML = ''; // Clear previous content
 
             for (const categoryKey in dataMap) {
                 const categoryData = dataMap[categoryKey];
@@ -1125,39 +1356,100 @@
             lucide.createIcons(); // Re-render icons for the new table content
         }
 
-
         /**
-         * Función para abrir una pestaña específica.
-         * @param {string} tabName - El ID de la pestaña a abrir (ej. 'detailed-view', 'overview-view').
+         * Renderiza la vista del configurador.
          */
-        function openTab(tabName) {
-            // Ocultar todos los contenidos de las pestañas
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => {
-                content.classList.add('hidden');
-            });
+        function renderConfiguratorView() {
+            const configuratorContainer = document.getElementById('configurator-columns-container');
+            configuratorContainer.innerHTML = ''; // Limpiar contenido previo
 
-            // Desactivar todos los botones de las pestañas
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                button.classList.remove('active');
-            });
+            let currentTotalPrice = 0;
 
-            // Mostrar el contenido de la pestaña seleccionada
-            document.getElementById(tabName).classList.remove('hidden');
-            // Activar el botón de la pestaña seleccionada
-            document.querySelector(`.tab-button[data-tab="${tabName}"]`).classList.add('active');
+            for (const categoryKey in dataMap) {
+                const categoryData = dataMap[categoryKey];
+                const readableCategoryName = getComponentName(categoryKey);
 
-            // Re-renderizar el contenido de la pestaña activa para asegurar que esté actualizado
-            if (tabName === 'detailed-view') {
-                renderAllProducts(); // Existing render function for cards
-            } else if (tabName === 'overview-view') {
-                renderOverviewTables(); // New render function for tables
+                const columnDiv = document.createElement('div');
+                columnDiv.className = 'configurator-column';
+                columnDiv.innerHTML = `<h3 class="configurator-column-title">${readableCategoryName}</h3>`;
+
+                if (categoryData.length === 0) {
+                    columnDiv.innerHTML += `<p class="text-gray-400 text-center">No hay ${readableCategoryName.toLowerCase()}s.</p>`;
+                } else {
+                    categoryData.forEach((product, index) => {
+                        const cardDiv = document.createElement('div');
+                        cardDiv.className = `configurator-card ${selectedComponents[categoryKey] === product ? 'selected' : ''}`;
+                        cardDiv.dataset.category = categoryKey;
+                        cardDiv.dataset.index = index;
+                        cardDiv.onclick = () => handleConfiguratorCardClick(categoryKey, index);
+
+                        // Add selected product's price to total
+                        if (selectedComponents[categoryKey] === product) {
+                            currentTotalPrice += product.price || 0;
+                        }
+
+                        // Image URL for display
+                        const imageUrlToDisplay = product.image_url || 'https://placehold.co/100x100/374151/9ca3af?text=Sin+Imagen';
+                        const altText = `Imagen de ${product.name || 'Producto'}`;
+
+                        // Link input or anchor
+                        let linkHtml = '';
+                        if (product.link) {
+                            linkHtml = `<a href="${product.link}" target="_blank" class="product-link flex items-center"><span class="lucide-icon w-4 h-4 mr-1" data-lucide="external-link"></span> Ver Link</a>`;
+                        } else {
+                            linkHtml = `
+                                <input type="text" value="${product.link || ''}"
+                                    oninput="updateProduct('${categoryKey}', ${index}, 'link', this.value)"
+                                    onclick="event.stopPropagation()" class="product-link-input" placeholder="Añadir link">
+                            `;
+                        }
+
+                        cardDiv.innerHTML = `
+                            <img src="${imageUrlToDisplay}" alt="${altText}" class="w-full h-24 object-cover mb-2 rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/100x100/374151/9ca3af?text=Error+Carga';">
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-price">$${(product.price || 0).toLocaleString('es-AR')}</div>
+                            <div class="product-description">${product.description || ''}</div>
+                            ${linkHtml}
+                            ${selectedComponents[categoryKey] === product ? `
+                                <button class="remove-selection-btn" onclick="event.stopPropagation(); removeConfiguratorSelection('${categoryKey}')">
+                                    <span class="lucide-icon w-3 h-3" data-lucide="x"></span>
+                                </button>
+                            ` : ''}
+                        `;
+                        columnDiv.appendChild(cardDiv);
+                    });
+                }
+                configuratorContainer.appendChild(columnDiv);
             }
-            // No need to render initial-load-view, its content is static except for textarea value
-            lucide.createIcons(); // Re-render icons after tab switch
+            document.getElementById('total-config-price').textContent = `$${currentTotalPrice.toLocaleString('es-AR')}`;
+            lucide.createIcons(); // Re-render icons for the new configurator content
         }
 
+        /**
+         * Maneja el clic en una tarjeta del configurador para seleccionar/deseleccionar.
+         * @param {string} category - La categoría del componente.
+         * @param {number} index - El índice del componente en el array.
+         */
+        function handleConfiguratorCardClick(category, index) {
+            const product = dataMap[category][index];
+            if (selectedComponents[category] === product) {
+                selectedComponents[category] = null; // Deselect
+            } else {
+                selectedComponents[category] = product; // Select
+            }
+            saveDataToSessionStorage(); // Persist selection changes
+            renderConfiguratorView(); // Re-render the configurator to update highlights and total
+        }
+
+        /**
+         * Elimina la selección de un componente en el configurador.
+         * @param {string} category - La categoría del componente a deseleccionar.
+         */
+        function removeConfiguratorSelection(category) {
+            selectedComponents[category] = null;
+            saveDataToSessionStorage();
+            renderConfiguratorView();
+        }
 
         // --- Funciones de Drag and Drop ---
         function handleDragStart(e) {
@@ -1252,6 +1544,38 @@
             });
         }
 
+        // Función para abrir una pestaña específica.
+        function openTab(tabName) {
+            // Ocultar todos los contenidos de las pestañas
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Desactivar todos los botones de las pestañas
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Mostrar el contenido de la pestaña seleccionada
+            document.getElementById(tabName).classList.remove('hidden');
+            // Activar el botón de la pestaña seleccionada
+            document.querySelector(`.tab-button[data-tab="${tabName}"]`).classList.add('active');
+
+            // Re-renderizar el contenido de la pestaña activa para asegurar que esté actualizado
+            if (tabName === 'detailed-view') {
+                renderAllProducts(); // Existing render function for cards
+            } else if (tabName === 'overview-view') {
+                renderOverviewTables(); // New render function for tables
+            } else if (tabName === 'configurator-view') {
+                renderConfiguratorView(); // New render function for configurator
+            }
+            // No need to render initial-load-view, its content is static except for textarea value
+            lucide.createIcons(); // Re-render icons after tab switch
+        }
+
+
         // Inicializar la página al cargar el DOM
         document.addEventListener('DOMContentLoaded', async () => {
             const storedData = loadDataFromSessionStorage();
@@ -1264,6 +1588,9 @@
                 psuOptions = storedData.psuOptions;
                 motherboardOptions = storedData.motherboardOptions;
                 cpuOptions = storedData.cpuOptions;
+                ramOptions = storedData.ramOptions; // Cargar RAM
+                comboOptions = storedData.comboOptions; // Cargar Combo
+                selectedComponents = storedData.selectedComponents; // Load selected components
 
                 hasUnsavedChanges = true; // Si cargamos de sesión, asumimos que puede haber cambios sin "guardar"
                 showWarningMessage('¡Datos restaurados de la sesión anterior! Genera y copia el código si quieres guardar los cambios.');
@@ -1283,7 +1610,9 @@
                     gpuOptions = jsonData.gpuOptions || [];
                     psuOptions = jsonData.psuOptions || [];
                     motherboardOptions = jsonData.motherboardOptions || [];
-                    cpuOptions = jsonData.convcpuOptions || []; // Corrected: should be cpuOptions
+                    cpuOptions = jsonData.cpuOptions || [];
+                    ramOptions = jsonData.ramOptions || []; // Cargar RAM
+                    comboOptions = jsonData.comboOptions || []; // Cargar Combo
 
                     hasUnsavedChanges = false; // No hay cambios sin guardar si se cargan del JSON
                     showWarningMessage('¡Datos cargados desde products.json!');
@@ -1299,6 +1628,8 @@
                     psuOptions = [];
                     motherboardOptions = [];
                     cpuOptions = [];
+                    ramOptions = []; // Vacío por error
+                    comboOptions = []; // Vacío por error
 
                     hasUnsavedChanges = false; // No hay cambios que guardar si se empieza vacío
                 }
@@ -1311,9 +1642,8 @@
             dataMap.psuOptions = psuOptions;
             dataMap.motherboardOptions = motherboardOptions;
             dataMap.cpuOptions = cpuOptions;
-
-            renderAllProducts(); // Renderiza la vista detallada por defecto
-            lucide.createIcons(); // Crear los iconos de Lucide al cargar
+            dataMap.ramOptions = ramOptions; // Actualizar dataMap
+            dataMap.comboOptions = comboOptions; // Actualizar dataMap
 
             // Rellenar el textarea de carga inicial con el estado actual de los datos (JSON puro)
             const initialDataInput = document.getElementById('initial-data-input');
@@ -1323,7 +1653,9 @@
                 gpuOptions: dataMap.gpuOptions,
                 psuOptions: dataMap.psuOptions,
                 motherboardOptions: dataMap.motherboardOptions,
-                cpuOptions: dataMap.cpuOptions
+                cpuOptions: dataMap.cpuOptions,
+                ramOptions: dataMap.ramOptions,
+                comboOptions: dataMap.comboOptions
             };
             initialDataInput.value = JSON.stringify(currentDataAsJson, null, 4);
 
@@ -1339,6 +1671,10 @@
                 globalAddButton.onclick = () => addProduct('towers');
                 globalAddButton.classList.remove('hidden');
             }
+
+            // Open the default tab (initial-load-view)
+            openTab('initial-load-view'); // Moved to end of DOMContentLoaded
+            lucide.createIcons(); // Create Lucide icons on initial load
         });
 
         // Advertencia al intentar cerrar o navegar si hay cambios sin guardar
