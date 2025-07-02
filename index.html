@@ -2122,7 +2122,7 @@ fetch('products.json')
                     
                     const extraNotes = document.getElementById('extra-notes').value;
 
-                    let message = `¡Hola, me interesa la Nave del Medio!\n\n`;
+                    let message = `¡Hola, me interesa esta Nave del Medio!\n\n`;
                     if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
 
                     let peripheralsMessage = '';
@@ -2183,7 +2183,7 @@ fetch('products.json')
 
                     if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
-                    message += `\nPrecio Total: $${topTotalPriceEl.textContent}`; // Use the top price for consistency
+                    message += `\nPrecio Total: ${topTotalPriceEl.textContent}`; // Use the top price for consistency
                     message += `\n¡Quedo a la espera de tu respuesta!`;
                     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
                 });
