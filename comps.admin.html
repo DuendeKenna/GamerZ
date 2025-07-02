@@ -175,7 +175,7 @@
         <!-- Sección de Carga de Datos Inicial -->
         <section class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
             <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Cargar Datos Iniciales</h2>
-            <p class="text-gray-400 mb-4">Pega aquí el código JavaScript de tus vectores de productos. Asegúrate de que sea un JSON válido para cada variable (towersOptions, ssdOptions, gpuOptions, psuOptions, motherboardOptions, cpuOptions).</p>
+            <p class="text-gray-400 mb-4">Pega aquí el código JSON de tus vectores de productos.</p>
             <textarea id="initial-data-input" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-700 text-gray-200 font-mono text-sm resize-y"></textarea>
             <div class="flex justify-center mt-4 space-x-4">
                 <button onclick="loadDataFromInput()" class="btn-primary flex items-center">
@@ -260,7 +260,7 @@
 
     <script>
         // Default product data as a JSON string, embedded directly in the HTML
-        // This replaces the external products.json file for simplicity in this environment.
+        // This will be used if sessionStorage is empty AND products.json cannot be fetched.
         const defaultProductDataJsonString = `{
             "towersOptions": [
                 {
@@ -314,7 +314,7 @@
                     "price": 70000,
                     "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
                     "image_url": "comps/gpus/gt740.webp",
-                    "link": "https://www.nvidia.com/es-la/geforce/graphics-cards/gt-740/"
+                    "link": "https://www.nvidia.com/es-la-la/geforce/graphics-cards/gt-740/"
                 }
             ],
             "psuOptions": [
@@ -546,25 +546,17 @@
             const initialDataInput = document.getElementById('initial-data-input');
             try {
                 const dataString = initialDataInput.value;
+                const parsedData = JSON.parse(dataString); // Expecting pure JSON
 
-                const extractArray = (variableName, dataStr) => {
-                    const regex = new RegExp(`const ${variableName} =\\s*(\\[[\\s\\S]*?\\]);`);
-                    const match = dataStr.match(regex);
-                    if (match && match[1]) {
-                        return JSON.parse(match[1]);
-                    }
-                    return [];
-                };
+                // Assign the parsed data to the global variables
+                towersOptions = parsedData.towersOptions || [];
+                ssdOptions = parsedData.ssdOptions || [];
+                gpuOptions = parsedData.gpuOptions || [];
+                psuOptions = parsedData.psuOptions || [];
+                motherboardOptions = parsedData.motherboardOptions || [];
+                cpuOptions = parsedData.cpuOptions || [];
 
-                // Asignar los arrays parseados a las variables globales
-                towersOptions = extractArray('towersOptions', dataString);
-                ssdOptions = extractArray('ssdOptions', dataString);
-                gpuOptions = extractArray('gpuOptions', dataString);
-                psuOptions = extractArray('psuOptions', dataString);
-                motherboardOptions = extractArray('motherboardOptions', dataString);
-                cpuOptions = extractArray('cpuOptions', dataString);
-
-                // Actualizar el dataMap para que apunte a los nuevos arrays
+                // Update the dataMap to point to the new arrays
                 dataMap.towers = towersOptions;
                 dataMap.ssdOptions = ssdOptions;
                 dataMap.gpuOptions = gpuOptions;
@@ -574,11 +566,11 @@
 
                 renderAllProducts();
                 saveDataToSessionStorage(); // Guardar los datos recién cargados
-                hasUnsavedChanges = false; // Resetear el flag de cambios no guardados
-                document.getElementById('error-message').classList.add('hidden'); // Ocultar cualquier error previo
+                hasUnsavedChanges = false; // Reset unsaved changes flag
+                document.getElementById('error-message').classList.add('hidden'); // Hide any previous error
             } catch (error) {
                 console.error('Error al parsear los datos iniciales:', error);
-                showErrorMessage('Error al cargar los datos. Asegúrate de que el formato JavaScript sea correcto y las variables estén bien definidas (ej. `const towersOptions = [...]`).');
+                showErrorMessage('Error al cargar los datos. Asegúrate de que el formato JSON sea correcto.');
             }
         }
 
@@ -942,17 +934,20 @@
         }
 
         /**
-         * Genera el código JavaScript con los datos actuales de los vectores.
+         * Genera el código JSON con los datos actuales de los vectores.
          */
         function generateCode() {
             const outputTextArea = document.getElementById('output-code');
-            let code = `const towersOptions = ${JSON.stringify(dataMap.towers, null, 4)};\n\n`;
-            code += `const ssdOptions = ${JSON.stringify(dataMap.ssdOptions, null, 4)};\n\n`;
-            code += `const gpuOptions = ${JSON.stringify(dataMap.gpuOptions, null, 4)};\n\n`;
-            code += `const psuOptions = ${JSON.stringify(dataMap.psuOptions, null, 4)};\n\n`;
-            code += `const motherboardOptions = ${JSON.stringify(dataMap.motherboardOptions, null, 4)};\n\n`;
-            code += `const cpuOptions = ${JSON.stringify(dataMap.cpuOptions, null, 4)};\n`;
-            outputTextArea.value = code;
+            // Generate pure JSON string
+            const fullData = {
+                towersOptions: dataMap.towers,
+                ssdOptions: dataMap.ssdOptions,
+                gpuOptions: dataMap.gpuOptions,
+                psuOptions: dataMap.psuOptions,
+                motherboardOptions: dataMap.motherboardOptions,
+                cpuOptions: dataMap.cpuOptions
+            };
+            outputTextArea.value = JSON.stringify(fullData, null, 4);
         }
 
         /**
@@ -1075,9 +1070,9 @@
         }
 
         // Inicializar la página al cargar el DOM
-        document.addEventListener('DOMContentLoaded', async () => { // Made async to allow await fetch
+        document.addEventListener('DOMContentLoaded', async () => {
             const storedData = loadDataFromSessionStorage();
-            let dataLoadedSuccessfully = false; // Flag to track if data was loaded from session or default string
+            let dataInitialized = false; // Flag to track if data was initialized from session or products.json
 
             if (storedData) {
                 // Si hay datos en sessionStorage, usarlos
@@ -1088,14 +1083,19 @@
                 motherboardOptions = storedData.motherboardOptions;
                 cpuOptions = storedData.cpuOptions;
 
-                dataLoadedSuccessfully = true;
-                hasUnsavedChanges = true; // Si cargamos de sesión, asumimos que puede haber cambios sin "guardar" en el código final
+                dataInitialized = true;
+                hasUnsavedChanges = true; // Si cargamos de sesión, asumimos que puede haber cambios sin "guardar"
                 showWarningMessage('¡Datos restaurados de la sesión anterior! Genera y copia el código si quieres guardar los cambios.');
 
             } else {
-                // Si no hay datos en sessionStorage, cargar desde defaultProductDataJsonString
+                // Si no hay datos en sessionStorage, intentar cargar desde products.json
                 try {
-                    const jsonData = JSON.parse(defaultProductDataJsonString);
+                    const response = await fetch('products.json');
+                    if (!response.ok) {
+                        // Si fetch falla o la respuesta no es OK, lanzar error para el bloque catch
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const jsonData = await response.json();
 
                     towersOptions = jsonData.towersOptions || [];
                     ssdOptions = jsonData.ssdOptions || [];
@@ -1104,15 +1104,15 @@
                     motherboardOptions = jsonData.motherboardOptions || [];
                     cpuOptions = jsonData.cpuOptions || [];
 
-                    dataLoadedSuccessfully = true;
-                    hasUnsavedChanges = false; // No hay cambios sin guardar si se cargan del JSON por defecto
-                    showWarningMessage('¡Datos cargados desde la configuración predeterminada!');
+                    dataInitialized = true;
+                    hasUnsavedChanges = false; // No hay cambios sin guardar si se cargan del JSON
+                    showWarningMessage('¡Datos cargados desde products.json!');
 
                 } catch (error) {
-                    console.error('Error al parsear defaultProductDataJsonString:', error);
-                    showErrorMessage('Error al cargar los datos predeterminados. Las colecciones de productos están vacías.');
+                    console.error('Error al cargar products.json:', error);
+                    showErrorMessage('Error al cargar products.json. Las colecciones de productos están vacías. Por favor, carga los datos manualmente o verifica el archivo products.json.');
 
-                    // Si falla el parseo de la cadena JSON por defecto, inicializar colecciones como vacías
+                    // Si la carga de products.json falla, inicializar colecciones como vacías
                     towersOptions = [];
                     ssdOptions = [];
                     gpuOptions = [];
@@ -1120,7 +1120,7 @@
                     motherboardOptions = [];
                     cpuOptions = [];
 
-                    dataLoadedSuccessfully = false; // Los datos NO se cargaron con éxito
+                    dataInitialized = false; // Los datos NO se cargaron con éxito de una fuente externa
                     hasUnsavedChanges = false; // No hay cambios que guardar si se empieza vacío
                 }
             }
@@ -1136,15 +1136,17 @@
             renderAllProducts();
             lucide.createIcons(); // Crear los iconos de Lucide al cargar
 
-            // Rellenar el textarea de carga inicial con los datos actuales
+            // Rellenar el textarea de carga inicial con el estado actual de los datos (JSON puro)
             const initialDataInput = document.getElementById('initial-data-input');
-            let contentForTextarea = `const towersOptions = ${JSON.stringify(dataMap.towers, null, 4)};\n\n`;
-            contentForTextarea += `const ssdOptions = ${JSON.stringify(dataMap.ssdOptions, null, 4)};\n\n`;
-            contentForTextarea += `const gpuOptions = ${JSON.stringify(dataMap.gpuOptions, null, 4)};\n\n`;
-            contentForTextarea += `const psuOptions = ${JSON.stringify(dataMap.psuOptions, null, 4)};\n\n`;
-            contentForTextarea += `const motherboardOptions = ${JSON.stringify(dataMap.motherboardOptions, null, 4)};\n\n`;
-            contentForTextarea += `const cpuOptions = ${JSON.stringify(dataMap.cpuOptions, null, 4)};\n`;
-            initialDataInput.value = contentForTextarea;
+            const currentDataAsJson = {
+                towersOptions: dataMap.towers,
+                ssdOptions: dataMap.ssdOptions,
+                gpuOptions: dataMap.gpuOptions,
+                psuOptions: dataMap.psuOptions,
+                motherboardOptions: dataMap.motherboardOptions,
+                cpuOptions: dataMap.cpuOptions
+            };
+            initialDataInput.value = JSON.stringify(currentDataAsJson, null, 4);
 
 
             // Observe all sections for the global add button

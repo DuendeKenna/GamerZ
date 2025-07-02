@@ -1110,7 +1110,7 @@ text-decoration: none;
                     <div class="flex items-center justify-center mt-6">
                         <div class="price-container relative">
                             <div class="launch-badge">OFERTA DESPEGUE!!</div>
-                            <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira">$555.000</p>
+                            <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira" id="top-total-price">$555.000</p>
                             <div class="mt-1 flex items-baseline justify-center gap-2">
                                 <span id="usd-price-display-top" class="hidden font-saira text-violet-500 text-2xl cursor-pointer"></span>
                                 <a id="usd-link-top" href="#" class="text-gray-500 text-xs hover:underline hidden">¿cuánto está?</a>
@@ -1573,6 +1573,11 @@ text-decoration: none;
 
 // #region COMPOP
 
+// (Removed duplicate variable declarations and fetch block here)
+
+// #endregion COMPOP
+// #region COMPOP
+
 let towersOptions = [];
 let ssdOptions = [];
 let gpuOptions = [];
@@ -1627,7 +1632,11 @@ fetch('products.json')
 
 // #endregion COMPOP
 
-                const BASE_PRICE = 99000;
+// --- PRECIOS ---
+                // Precios base y componentes
+                const GAIN = 99000;
+                const COMBO_MOTHER_CPU_RAM = 200000;
+                const BASE_PRICE = COMBO_MOTHER_CPU_RAM + GAIN;
                 const JOYSTICK_PRICE = 22000;
                 const MOUSE_KEYBOARD_PRICE = 36000;
                 let joystickCount = 0;
@@ -1692,7 +1701,7 @@ fetch('products.json')
                     // Update prices in main section and summary card (desktop/tablet)
                     const formattedTotal = Math.floor(total / 1000);
                     if (totalPriceEl) totalPriceEl.textContent = `${formattedTotal}`; // Removed .000 here
-                    if (topTotalPriceEl) topTotalPriceEl.textContent = `${formattedTotal}.000`; // Always add .000
+                    if (topTotalPriceEl) topTotalPriceEl.textContent = `$${formattedTotal}.000`; // Always add .000
                     if (totalPriceSummaryArsEl) totalPriceSummaryArsEl.textContent = formattedTotal;
                     // Mobile price: show full amount with .000
                     if (totalPriceSummaryArsMobileEl) totalPriceSummaryArsMobileEl.textContent = `${total.toLocaleString('es-AR')}`;
