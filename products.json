@@ -96,18 +96,18 @@
     ],
     "gpuOptions": [
         {
-            "name": "AMD 560 4GB",
-            "price": 165000,
-            "description": "Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.",
-            "image_url": "comps/gpus/rx560.webp",
-            "link": "www.mercadolibre.com.ar/placa-de-video-sentey-rx-560-4gb-ddr5-amd-radeon-rx560/p/MLA24558468"
-        },
-        {
             "name": "GT 740 2GB",
             "price": 75000,
             "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
             "image_url": "comps/gpus/gt740.webp",
             "link": "https://www.mercadolibre.com.ar/placa-video-geforce-gt740-2gb-gddr5-128bit-hdmi-vga-dvi/p/MLA22805535"
+        },
+        {
+            "name": "AMD 560 4GB",
+            "price": 165000,
+            "description": "Excelente para gaming en 1080p/60 FPS/Alta Calidad. Edición de Video fluida.",
+            "image_url": "comps/gpus/rx560.webp",
+            "link": "www.mercadolibre.com.ar/placa-de-video-sentey-rx-560-4gb-ddr5-amd-radeon-rx560/p/MLA24558468"
         }
     ],
     "psuOptions": [
