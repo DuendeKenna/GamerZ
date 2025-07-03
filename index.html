@@ -363,6 +363,10 @@
             }
         }
 
+        #games-section {
+            padding-bottom: 0px;
+        }
+
         /* --- "Ver más" Neon Button --- */
         .load-more-button {
             background: transparent;
@@ -489,6 +493,12 @@
 
         .hook-section .font-normal {
             font-family: 'Inter', sans-serif;
+        }
+
+        .load-more-container {
+            padding-bottom: 4rem;
+            margin-top: -4rem;
+            background-color: #111827;
         }
 
         /* --- Feature Cards --- */
@@ -690,7 +700,7 @@
             position: relative;
             padding-top: 1.5rem;
             /* Adjusted padding-top */
-            padding-bottom: 1.5rem;
+
             /* Adjusted padding-bottom */
         }
 
@@ -702,10 +712,10 @@
 
         #load-more-overlay {
             position: absolute;
-            bottom: 0;
+            bottom: 0px;
             left: 0;
             width: 100%;
-            height: 12rem;
+            height: 500px;
             background: linear-gradient(to top, #111827 25%, transparent);
             pointer-events: none;
             transition: opacity 1.5s;
@@ -1233,6 +1243,10 @@
             width: 300px;
         }
 
+        #load-more-overlay {
+            position: absolute;
+        }
+
         #dolar-rates-list .dolar-rate-item {
             display: flex;
             flex-direction: column;
@@ -1629,8 +1643,9 @@
                 En <span class="text-indigo-400 text-2">HARDWARE</span> buscamos un BUEN PRECIO con la MAYOR CALIDAD
                 posible.</p> -->
             <p class="text-xl text-gray-300 font-saira">
-                Para <span class="text-indigo-400 text-2">Jugar & Crear</span> fluidamente precisamos un hard Confiable y Potente.</p>
-                
+                Para <span class="text-indigo-400 text-2">Jugar & Crear</span> fluidamente precisamos un hard Confiable
+                y Potente.</p>
+
             <p class="mt-2 text-xl font-normal font-saira"> Estos componentes<i class="text-gray-500"> no son random</i>
                 - están cuidadosamente elegidos para ofrecer un Rendimiento Espectacular <b class="text-amber-400">sin
                     pagar en exceso</b>.</p>
@@ -1892,7 +1907,7 @@
                     </div>
                     <div id="load-more-overlay" style="pointer-events:auto;"></div>
                 </div>
-                <div class="text-center mt-6">
+                <div class="text-center load-more-container">
                     <button type="button" id="load-more-games" class="load-more-button font-gamer text-lg">Ver
                         Más</button>
                     <p id="no-more-games" class="text-gray-500 mt-4 hidden">¿No viste el que querés? Pedimelo en Notas?
