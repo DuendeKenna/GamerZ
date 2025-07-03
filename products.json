@@ -75,15 +75,15 @@
         {
             "name": "500 GB - NVMe",
             "price": 51000,
-            "description": "Descripción del nuevo SSD.",
+            "description": "Más que suficiente para la mayoría de los casos.",
             "image_url": "comps/discos/nvme_hik_500.webp",
             "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
         },
         {
             "name": "1 TB - NVMe",
             "price": 93000,
-            "description": "Descripción del nuevo SSD.",
-            "image_url": "comps/discos/nvme_wd_1.webp",
+            "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
+            "image_url": "comps/discos/nvme_wd_1webp",
             "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
         },
         {
@@ -156,7 +156,38 @@
             "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?pdp_filters=item_id%3AMLA1476267425&from=gshop&matt_tool=72987486&matt_word=&matt_source=google&matt_campaign_id=22107887694&matt_ad_group_id=172980949883&matt_match_type=&matt_network=g&matt_device=c&matt_creative=729634834007&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735111307&matt_product_id=MLA24527962-product&matt_product_partition_id=2392713567981&matt_target_id=aud-2014906607007:pla-2392713567981&cq_src=google_ads&cq_cmp=22107887694&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22107887694&gclid=Cj0KCQjw1JjDBhDjARIsABlM2SsJ9uxu1_Onflwo0BbzcsuDkRubkTGR-_-rrMrE-iXmRP3d13AEWzcaAh8kEALw_wcB"
         }
     ],
-    "cpuOptions": [],
-    "ramOptions": [],
-    "comboOptions": []
+    "cpuOptions": [
+        {
+            "name": "Ryzen 5 4500",
+            "price": 119000,
+            "description": "Descripción del nuevo CPU.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+CPU",
+            "link": "https://articulo.mercadolibre.com.ar/MLA-1506210339-procesador-amd-ryzen-5-4500-36ghz-am4-6n-12h-c-cooler-_JM"
+        }
+    ],
+    "ramOptions": [
+        {
+            "name": "DDR4 8 GB - Hiksemi",
+            "price": 24000,
+            "description": "Descripción de la nueva RAM.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
+            "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493"
+        },
+        {
+            "name": "DDR4 8 GB - Hiksemi OEM",
+            "price": 18000,
+            "description": "Descripción de la nueva RAM.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
+            "link": "https://articulo.mercadolibre.com.ar/MLA-2073303382-memoria-ram-ddr4-8gb-3200hz-_JM"
+        }
+    ],
+    "comboOptions": [
+        {
+            "name": "Ryzen 5 4500 + A520 + 8 Gb",
+            "price": 224000,
+            "description": "Descripción del nuevo Combo.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
+            "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684"
+        }
+    ]
 }
