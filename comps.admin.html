@@ -39,6 +39,36 @@
         .product-card.drag-over {
             border: 2px solid #a855f7; /* Borde para el objetivo de soltar */
         }
+        /* Style for the "Add New Product" card */
+        .add-product-card {
+            background-color: #374151; /* A slightly different background */
+            border: 2px dashed #6366f1; /* Dashed border for visual distinction */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px; /* Ensure it's large enough to click */
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+        .add-product-card:hover {
+            background-color: #4b5563;
+            border-color: #4f46e5;
+        }
+        .add-product-card button {
+            background-color: transparent;
+            border: none;
+            color: #6366f1;
+            font-weight: 600;
+            font-size: 1.125rem; /* text-lg */
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+        .add-product-card button .lucide-icon {
+            margin-right: 0.5rem;
+        }
+
+
         input[type="text"], input[type="number"], textarea {
             background-color: #374151; /* bg-gray-700 */
             border: 1px solid #4b5563; /* border-gray-600 */
@@ -223,100 +253,22 @@
         .overview-table textarea {
             min-height: 40px; /* Ensure description textarea has some height */
         }
-
-        /* Configurator View Styles */
-        .configurator-columns-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-        .configurator-column {
-            flex: 1 1 280px; /* Allow columns to grow and shrink, min-width 280px */
-            max-width: 350px;
-            background-color: #1f2937;
-            border-radius: 0.75rem;
-            padding: 1rem;
-            border: 1px solid #374151;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .configurator-column-title {
-            font-weight: 600;
-            color: #6366f1; /* indigo-500 */
-            margin-bottom: 1rem;
+        .add-row-button-cell {
             text-align: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
-        .configurator-card {
-            background-color: #374151; /* gray-700 */
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.2s ease-in-out;
-            position: relative; /* For the remove button */
-        }
-        .configurator-card:hover {
-            background-color: #4b5563; /* gray-600 */
-        }
-        .configurator-card.selected {
-            border-color: #42d232; /* green-333 */
-            box-shadow: 0 0 0 3px rgba(66, 210, 50, 0.5);
-        }
-        .configurator-card img {
-            border-radius: 0.25rem;
-            margin-bottom: 0.5rem;
-        }
-        .configurator-card .product-name {
-            font-weight: 500;
-            color: #e5e7eb;
-            margin-bottom: 0.25rem;
-        }
-        .configurator-card .product-price {
-            font-weight: bold;
-            color: #a855f7; /* purple-500 */
-            font-size: 1.1rem;
-        }
-        .configurator-card .product-description {
-            font-size: 0.85rem;
-            color: #9ca3af; /* gray-400 */
-            margin-top: 0.5rem;
-        }
-        .configurator-card .product-link,
-        .configurator-card .product-link-input {
-            font-size: 0.75rem;
-            color: #22d3ee; /* cyan-400 */
-            display: block;
-            margin-top: 0.5rem;
-        }
-        .configurator-card .product-link-input {
-            background-color: #1f2937;
-            border: 1px solid #4b5563;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            width: calc(100% - 1rem); /* Adjust for padding */
-            color: #e5e7eb;
-        }
-        .configurator-card .remove-selection-btn {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background-color: #ef4444;
+        .add-row-button {
+            background-color: #6366f1;
             color: white;
-            border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
             cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.2s;
+            transition: background-color 0.2s ease;
         }
-        .configurator-card .remove-selection-btn:hover {
-            opacity: 1;
+        .add-row-button:hover {
+            background-color: #4f46e5;
         }
     </style>
 </head>
@@ -329,7 +281,6 @@
             <button class="tab-button active" id="tab-initial-load-view" data-tab="initial-load-view">Cargar Datos Iniciales</button>
             <button class="tab-button" id="tab-detailed-view" data-tab="detailed-view">Vista Detallada</button>
             <button class="tab-button" id="tab-overview-view" data-tab="overview-view">Vista General (Tablas)</button>
-            <button class="tab-button" id="tab-configurator-view" data-tab="configurator-view">Configurador</button>
         </div>
 
         <!-- Tab Content: Cargar Datos Iniciales -->
@@ -422,19 +373,6 @@
             <!-- Las tablas de vista general se renderizarán aquí -->
         </div>
 
-        <!-- Tab Content: Configurador -->
-        <div id="configurator-view" class="tab-content hidden">
-            <section class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-                <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin text-center">Configurador de Componentes</h2>
-                <div class="text-center text-3xl font-bold text-green-400 mb-6">
-                    Precio Total: <span id="total-config-price">$0</span>
-                </div>
-                <div id="configurator-columns-container" class="configurator-columns-container">
-                    <!-- Las columnas del configurador se renderizarán aquí -->
-                </div>
-            </section>
-        </div>
-
         <!-- Sección de Generar y Copiar Código (siempre visible) -->
         <section class="mt-10 p-6 bg-gray-900 rounded-lg shadow-inner border border-gray-700">
             <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar y Copiar Código de Vectores</h2>
@@ -451,11 +389,6 @@
             <p id="warning-message" class="text-center text-sm text-amber-400 mt-2 hidden">¡Advertencia: Las imágenes cargadas localmente asumen que el archivo estará en la carpeta 'comps/' de tu servidor!</p>
         </section>
     </div>
-
-    <!-- Global Floating Add Button -->
-    <button id="global-add-button" class="btn-primary fixed bottom-4 right-4 z-50">
-        <span class="lucide-icon mr-2" data-lucide="plus"></span> <span id="global-add-button-text">Añadir</span>
-    </button>
 
     <script>
         // Default product data as a JSON string, embedded directly in the HTML
@@ -639,11 +572,11 @@
         let draggedItemCategory = null;
         let draggedItemIndex = null;
 
-        // Global floating add button elements
-        const globalAddButton = document.getElementById('global-add-button');
-        const globalAddButtonText = document.getElementById('global-add-button-text');
+        // Global floating add button elements (removed from HTML, so these are no longer needed)
+        // const globalAddButton = document.getElementById('global-add-button');
+        // const globalAddButtonText = document.getElementById('global-add-button-text');
 
-        // Map section IDs to their component types for the global add button
+        // Map section IDs to their component types for the addProduct function
         const sectionComponentTypeMap = {
             'section-towers': 'towers',
             'section-ssdOptions': 'ssdOptions',
@@ -651,24 +584,12 @@
             'section-psuOptions': 'psuOptions',
             'section-motherboardOptions': 'motherboardOptions',
             'section-cpuOptions': 'cpuOptions',
-            'section-ramOptions': 'ramOptions', // Añadido
-            'section-comboOptions': 'comboOptions' // Añadido
-        };
-
-        // Object to store selected components in the configurator view
-        let selectedComponents = {
-            towers: null,
-            ssdOptions: null,
-            gpuOptions: null,
-            psuOptions: null,
-            motherboardOptions: null,
-            cpuOptions: null,
-            ramOptions: null, // Añadido
-            comboOptions: null // Añadido
+            'section-ramOptions': 'ramOptions',
+            'section-comboOptions': 'comboOptions'
         };
 
         /**
-         * Helper para obtener el nombre legible del componente para el botón flotante.
+         * Helper para obtener el nombre legible del componente.
          * @param {string} type - El tipo de componente (ej. 'towers').
          * @returns {string} El nombre legible.
          */
@@ -680,42 +601,17 @@
                 case 'psuOptions': return 'PSU';
                 case 'motherboardOptions': return 'Motherboard';
                 case 'cpuOptions': return 'CPU';
-                case 'ramOptions': return 'RAM'; // Añadido
-                case 'comboOptions': return 'Combo'; // Añadido
+                case 'ramOptions': return 'RAM';
+                case 'comboOptions': return 'Combo';
                 default: return 'Componente';
             }
         }
 
-        const observerOptions = {
-            root: null, // viewport
-            rootMargin: '0px 0px -50% 0px', // Trigger when top of section enters, and stays active until it scrolls past 50% of viewport
-            threshold: 0 // Trigger as soon as any part of the section enters/leaves
-        };
-
-        const sectionObserver = new IntersectionObserver((entries, observer) => {
-            let activeSectionType = null;
-            let highestIntersectingRatio = 0;
-
-            // Find the section that is most in view
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.intersectionRatio > highestIntersectingRatio) {
-                        activeSectionType = sectionComponentTypeMap[entry.target.id];
-                        highestIntersectingRatio = entry.intersectionRatio;
-                    }
-                }
-            });
-
-            if (activeSectionType) {
-                globalAddButtonText.textContent = `Añadir ${getComponentName(activeSectionType)}`;
-                globalAddButton.onclick = () => addProduct(activeSectionType);
-                globalAddButton.classList.remove('hidden');
-            } else {
-                // If no section is currently intersecting with a high ratio, hide the button
-                // Or set a default if desired, but hiding is cleaner if no clear "active" section
-                globalAddButton.classList.add('hidden');
-            }
-        }, observerOptions);
+        // Removed IntersectionObserver as global add button is removed
+        /*
+        const observerOptions = { ... };
+        const sectionObserver = new IntersectionObserver((entries, observer) => { ... }, observerOptions);
+        */
 
 
         /**
@@ -757,10 +653,9 @@
                     motherboardOptions: dataMap.motherboardOptions,
                     cpuOptions: dataMap.cpuOptions,
                     ramOptions: dataMap.ramOptions, // Guardar RAM
-                    comboOptions: dataMap.comboOptions, // Guardar Combo
-                    selectedComponents: selectedComponents // Save selected components too
+                    comboOptions: dataMap.comboOptions // Guardar Combo
                 }));
-                hasUnsavedChanges = true; // Marcar que hay cambios sin guardar
+                hasUnsavedChanges = true; // Mark that there are unsaved changes
             } catch (e) {
                 console.error("Error al guardar en sessionStorage:", e);
                 // You might want to show a message to the user if storage fails (e.g., quota exceeded)
@@ -785,12 +680,7 @@
                         motherboardOptions: parsedData.motherboardOptions || [],
                         cpuOptions: parsedData.cpuOptions || [],
                         ramOptions: parsedData.ramOptions || [], // Cargar RAM
-                        comboOptions: parsedData.comboOptions || [], // Cargar Combo
-                        selectedComponents: parsedData.selectedComponents || { // Load selected components
-                            towers: null, ssdOptions: null, gpuOptions: null,
-                            psuOptions: null, motherboardOptions: null, cpuOptions: null,
-                            ramOptions: null, comboOptions: null // Inicializar para nuevas categorías
-                        }
+                        comboOptions: parsedData.comboOptions || [] // Cargar Combo
                     };
                 }
             } catch (e) {
@@ -820,13 +710,6 @@
                 ramOptions = parsedData.ramOptions || []; // Cargar RAM
                 comboOptions = parsedData.comboOptions || []; // Cargar Combo
 
-                // Reset selected components when loading new data
-                selectedComponents = {
-                    towers: null, ssdOptions: null, gpuOptions: null,
-                    psuOptions: null, motherboardOptions: null, cpuOptions: null,
-                    ramOptions: null, comboOptions: null // Reset para nuevas categorías
-                };
-
                 // Update the dataMap to point to the new arrays
                 dataMap.towers = towersOptions;
                 dataMap.ssdOptions = ssdOptions;
@@ -839,7 +722,6 @@
 
                 renderAllProducts();
                 renderOverviewTables(); // Re-render overview tables
-                renderConfiguratorView(); // Re-render configurator view
                 saveDataToSessionStorage(); // Save the newly loaded data
                 hasUnsavedChanges = false; // Reset unsaved changes flag
                 document.getElementById('error-message').classList.add('hidden'); // Hide any previous error
@@ -1082,6 +964,21 @@
                 card.innerHTML = generateProductCardHtml(category, product, index);
                 container.appendChild(card);
             });
+
+            // Add the "Add New Product" card at the end
+            const addCard = document.createElement('div');
+            addCard.className = 'product-card add-product-card';
+            // Make sure the add card is NOT draggable
+            addCard.setAttribute('draggable', 'false');
+            addCard.onclick = () => addProduct(category);
+            addCard.innerHTML = `
+                <button>
+                    <span class="lucide-icon" data-lucide="plus"></span> Añadir ${getComponentName(category)}
+                </button>
+            `;
+            container.appendChild(addCard);
+
+
             // Re-renderizar iconos de Lucide
             lucide.createIcons();
             addDragDropListeners(category); // Añadir listeners de drag and drop
@@ -1133,10 +1030,6 @@
                 updateProductCard(category, index);
             }
             // For other fields, the oninput already updates the field value, no need to re-render.
-            // Also update configurator view if the selected component's data changes
-            if (selectedComponents[category] && selectedComponents[category].name === dataMap[category][index].name) {
-                renderConfiguratorView(); // Re-render configurator to update price/details
-            }
         }
 
         /**
@@ -1211,9 +1104,10 @@
                 };
             }
             dataMap[category].push(newProduct);
-            renderProducts(category, dataMap[category]); // Re-render the category to add the new card
+            // Re-render the active tab to show the new product
+            const activeTab = document.querySelector('.tab-button.active').dataset.tab;
+            openTab(activeTab); // This will call the correct render function for the active tab
             saveDataToSessionStorage(); // Guardar cambios
-            renderConfiguratorView(); // Re-render configurator view
         }
 
         /**
@@ -1223,14 +1117,11 @@
          */
         function removeProduct(category, index) {
             if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-                // If the deleted product was selected in the configurator, deselect it
-                if (selectedComponents[category] === dataMap[category][index]) {
-                    selectedComponents[category] = null;
-                }
                 dataMap[category].splice(index, 1);
-                renderProducts(category, dataMap[category]); // Re-render the category to reflect deletion
+                // Re-render the active tab to reflect the deletion
+                const activeTab = document.querySelector('.tab-button.active').dataset.tab;
+                openTab(activeTab); // This will call the correct render function for the active tab
                 saveDataToSessionStorage(); // Guardar cambios
-                renderConfiguratorView(); // Re-render configurator view
             }
         }
 
@@ -1296,160 +1187,102 @@
                 categoryDiv.className = 'mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700';
                 categoryDiv.innerHTML = `<h3 class="text-xl font-semibold text-gray-100 mb-4">${readableCategoryName}</h3>`;
 
-                if (categoryData.length === 0) {
-                    categoryDiv.innerHTML += `<p class="text-gray-400">No hay ${readableCategoryName.toLowerCase()} en esta colección.</p>`;
-                } else {
-                    const table = document.createElement('table');
-                    table.className = 'overview-table w-full text-left text-sm text-gray-400';
-                    table.innerHTML = `
-                        <thead class="text-xs text-gray-200 uppercase bg-gray-700">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">Nombre</th>
-                                <th scope="col" class="px-6 py-3">Precio</th>
-                                ${categoryKey === 'towers' ? '<th scope="col" class="px-6 py-3">Slug</th>' : ''}
-                                ${categoryKey !== 'towers' ? '<th scope="col" class="px-6 py-3">Descripción</th>' : ''}
-                                <th scope="col" class="px-6 py-3">URL Imagen</th>
-                                <th scope="col" class="px-6 py-3">Link</th>
-                                <th scope="col" class="px-6 py-3">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${categoryData.map((product, index) => {
-                                const uniqueId = `${categoryKey}-${index}`;
-                                return `
-                                    <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700 transition-colors duration-200">
-                                        <td class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                            <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full bg-transparent border-none focus:ring-0">
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <input type="number" value="${product.price || 0}" oninput="updateProduct('${categoryKey}', ${index}, 'price', parseFloat(this.value))" class="w-full bg-transparent border-none focus:ring-0">
-                                        </td>
-                                        ${categoryKey === 'towers' ? `
-                                        <td class="px-6 py-4">
-                                            <input type="text" value="${product.slug || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'slug', this.value)" class="w-full bg-transparent border-none focus:ring-0">
-                                        </td>` : ''}
-                                        ${categoryKey !== 'towers' ? `
-                                        <td class="px-6 py-4">
-                                            <textarea rows="1" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full bg-transparent border-none focus:ring-0 resize-none">${product.description || ''}</textarea>
-                                        </td>` : ''}
-                                        <td class="px-6 py-4">
-                                            <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" class="w-full bg-transparent border-none focus:ring-0 text-xs">
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <input type="text" value="${product.link || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'link', this.value)" class="w-full bg-transparent border-none focus:ring-0 text-xs">
-                                            ${product.link ? `<a href="${product.link}" target="_blank" class="text-blue-400 hover:underline text-xs flex items-center mt-1"><span class="lucide-icon w-3 h-3 mr-1" data-lucide="external-link"></span></a>` : ''}
-                                        </td>
-                                        <td class="px-6 py-4 text-right">
-                                            <button onclick="removeProduct('${categoryKey}', ${index})" class="btn-danger text-xs py-1 px-2">
-                                                <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    `;
-                    categoryDiv.appendChild(table);
-                }
+                const table = document.createElement('table');
+                table.className = 'overview-table w-full text-left text-sm text-gray-400';
+                table.innerHTML = `
+                    <thead class="text-xs text-gray-200 uppercase bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Nombre</th>
+                            <th scope="col" class="px-6 py-3">Precio</th>
+                            ${categoryKey === 'towers' ? '<th scope="col" class="px-6 py-3">Slug</th>' : ''}
+                            ${categoryKey !== 'towers' ? '<th scope="col" class="px-6 py-3">Descripción</th>' : ''}
+                            <th scope="col" class="px-6 py-3">URL Imagen</th>
+                            <th scope="col" class="px-6 py-3">Link</th>
+                            <th scope="col" class="px-6 py-3">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${categoryData.map((product, index) => {
+                            const uniqueId = `${categoryKey}-${index}`;
+                            return `
+                                <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700 transition-colors duration-200">
+                                    <td class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                        <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full bg-transparent border-none focus:ring-0">
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <input type="number" value="${product.price || 0}" oninput="updateProduct('${categoryKey}', ${index}, 'price', parseFloat(this.value))" class="w-full bg-transparent border-none focus:ring-0">
+                                    </td>
+                                    ${categoryKey === 'towers' ? `
+                                    <td class="px-6 py-4">
+                                        <input type="text" value="${product.slug || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'slug', this.value)" class="w-full bg-transparent border-none focus:ring-0">
+                                    </td>` : ''}
+                                    ${categoryKey !== 'towers' ? `
+                                    <td class="px-6 py-4">
+                                        <textarea rows="1" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full bg-transparent border-none focus:ring-0 resize-none">${product.description || ''}</textarea>
+                                    </td>` : ''}
+                                    <td class="px-6 py-4">
+                                        <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" class="w-full bg-transparent border-none focus:ring-0 text-xs">
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <input type="text" value="${product.link || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'link', this.value)" class="w-full bg-transparent border-none focus:ring-0 text-xs">
+                                        ${product.link ? `<a href="${product.link}" target="_blank" class="text-blue-400 hover:underline text-xs flex items-center mt-1"><span class="lucide-icon w-3 h-3 mr-1" data-lucide="external-link"></span></a>` : ''}
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <button onclick="removeProduct('${categoryKey}', ${index})" class="btn-danger text-xs py-1 px-2">
+                                            <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                        <!-- Add row for adding new product in overview table -->
+                        <tr>
+                            <td colspan="7" class="add-row-button-cell">
+                                <button onclick="addProduct('${categoryKey}')" class="add-row-button">
+                                    <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir ${getComponentName(categoryKey)}
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                `;
+                categoryDiv.appendChild(table);
                 overviewContainer.appendChild(categoryDiv);
             }
             lucide.createIcons(); // Re-render icons for the new table content
         }
 
         /**
-         * Renderiza la vista del configurador.
+         * Función para abrir una pestaña específica.
+         * @param {string} tabName - El ID de la pestaña a abrir (ej. 'detailed-view', 'overview-view').
          */
-        function renderConfiguratorView() {
-            const configuratorContainer = document.getElementById('configurator-columns-container');
-            configuratorContainer.innerHTML = ''; // Limpiar contenido previo
+        function openTab(tabName) {
+            // Ocultar todos los contenidos de las pestañas
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
 
-            let currentTotalPrice = 0;
+            // Desactivar todos los botones de las pestañas
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
 
-            for (const categoryKey in dataMap) {
-                const categoryData = dataMap[categoryKey];
-                const readableCategoryName = getComponentName(categoryKey);
+            // Mostrar el contenido de la pestaña seleccionada
+            document.getElementById(tabName).classList.remove('hidden');
+            // Activar el botón de la pestaña seleccionada
+            document.querySelector(`.tab-button[data-tab="${tabName}"]`).classList.add('active');
 
-                const columnDiv = document.createElement('div');
-                columnDiv.className = 'configurator-column';
-                columnDiv.innerHTML = `<h3 class="configurator-column-title">${readableCategoryName}</h3>`;
-
-                if (categoryData.length === 0) {
-                    columnDiv.innerHTML += `<p class="text-gray-400 text-center">No hay ${readableCategoryName.toLowerCase()}s.</p>`;
-                } else {
-                    categoryData.forEach((product, index) => {
-                        const cardDiv = document.createElement('div');
-                        cardDiv.className = `configurator-card ${selectedComponents[categoryKey] === product ? 'selected' : ''}`;
-                        cardDiv.dataset.category = categoryKey;
-                        cardDiv.dataset.index = index;
-                        cardDiv.onclick = () => handleConfiguratorCardClick(categoryKey, index);
-
-                        // Add selected product's price to total
-                        if (selectedComponents[categoryKey] === product) {
-                            currentTotalPrice += product.price || 0;
-                        }
-
-                        // Image URL for display
-                        const imageUrlToDisplay = product.image_url || 'https://placehold.co/100x100/374151/9ca3af?text=Sin+Imagen';
-                        const altText = `Imagen de ${product.name || 'Producto'}`;
-
-                        // Link input or anchor
-                        let linkHtml = '';
-                        if (product.link) {
-                            linkHtml = `<a href="${product.link}" target="_blank" class="product-link flex items-center"><span class="lucide-icon w-4 h-4 mr-1" data-lucide="external-link"></span> Ver Link</a>`;
-                        } else {
-                            linkHtml = `
-                                <input type="text" value="${product.link || ''}"
-                                    oninput="updateProduct('${categoryKey}', ${index}, 'link', this.value)"
-                                    onclick="event.stopPropagation()" class="product-link-input" placeholder="Añadir link">
-                            `;
-                        }
-
-                        cardDiv.innerHTML = `
-                            <img src="${imageUrlToDisplay}" alt="${altText}" class="w-full h-24 object-cover mb-2 rounded-md" onerror="this.onerror=null;this.src='https://placehold.co/100x100/374151/9ca3af?text=Error+Carga';">
-                            <div class="product-name">${product.name}</div>
-                            <div class="product-price">$${(product.price || 0).toLocaleString('es-AR')}</div>
-                            <div class="product-description">${product.description || ''}</div>
-                            ${linkHtml}
-                            ${selectedComponents[categoryKey] === product ? `
-                                <button class="remove-selection-btn" onclick="event.stopPropagation(); removeConfiguratorSelection('${categoryKey}')">
-                                    <span class="lucide-icon w-3 h-3" data-lucide="x"></span>
-                                </button>
-                            ` : ''}
-                        `;
-                        columnDiv.appendChild(cardDiv);
-                    });
-                }
-                configuratorContainer.appendChild(columnDiv);
+            // Re-renderizar el contenido de la pestaña activa para asegurar que esté actualizado
+            if (tabName === 'detailed-view') {
+                renderAllProducts(); // Existing render function for cards
+            } else if (tabName === 'overview-view') {
+                renderOverviewTables(); // New render function for tables
             }
-            document.getElementById('total-config-price').textContent = `$${currentTotalPrice.toLocaleString('es-AR')}`;
-            lucide.createIcons(); // Re-render icons for the new configurator content
+            // No need to render initial-load-view, its content is static except for textarea value
+            lucide.createIcons(); // Re-render icons after tab switch
         }
 
-        /**
-         * Maneja el clic en una tarjeta del configurador para seleccionar/deseleccionar.
-         * @param {string} category - La categoría del componente.
-         * @param {number} index - El índice del componente en el array.
-         */
-        function handleConfiguratorCardClick(category, index) {
-            const product = dataMap[category][index];
-            if (selectedComponents[category] === product) {
-                selectedComponents[category] = null; // Deselect
-            } else {
-                selectedComponents[category] = product; // Select
-            }
-            saveDataToSessionStorage(); // Persist selection changes
-            renderConfiguratorView(); // Re-render the configurator to update highlights and total
-        }
-
-        /**
-         * Elimina la selección de un componente en el configurador.
-         * @param {string} category - La categoría del componente a deseleccionar.
-         */
-        function removeConfiguratorSelection(category) {
-            selectedComponents[category] = null;
-            saveDataToSessionStorage();
-            renderConfiguratorView();
-        }
 
         // --- Funciones de Drag and Drop ---
         function handleDragStart(e) {
@@ -1467,6 +1300,12 @@
             }
 
             const card = e.target.closest('.product-card');
+            // Prevent dragging the "Add New Product" card
+            if (card && card.classList.contains('add-product-card')) {
+                e.preventDefault();
+                return;
+            }
+
             if (!card) return; // Should not happen if event listener is on card
 
             draggedItemCategory = card.dataset.category; // Get category from the card
@@ -1478,6 +1317,10 @@
         function handleDragOver(e) {
             e.preventDefault(); // Necesario para permitir el drop
             const targetCard = e.target.closest('.product-card');
+            // Prevent dropping on the "Add New Product" card
+            if (targetCard && targetCard.classList.contains('add-product-card')) {
+                 return;
+            }
             if (targetCard && targetCard.dataset.category === draggedItemCategory) {
                 // Evitar que el drag-over se active en el elemento arrastrado
                 if (targetCard.id !== `product-card-${draggedItemCategory}-${draggedItemIndex}`) {
@@ -1496,6 +1339,10 @@
         function handleDrop(e) {
             e.preventDefault();
             const targetCard = e.target.closest('.product-card');
+            // Prevent dropping on the "Add New Product" card
+            if (targetCard && targetCard.classList.contains('add-product-card')) {
+                return;
+            }
             if (targetCard) {
                 targetCard.classList.remove('drag-over'); // Remover estilo visual del objetivo
 
@@ -1536,45 +1383,16 @@
             const container = document.getElementById(`${category}-container`);
             const cards = container.querySelectorAll('.product-card'); // Seleccionar todas las tarjetas
             cards.forEach(card => {
-                card.addEventListener('dragstart', handleDragStart);
-                card.addEventListener('dragover', handleDragOver);
-                card.addEventListener('dragleave', handleDragLeave);
-                card.addEventListener('drop', handleDrop);
-                card.addEventListener('dragend', handleDragEnd);
+                // Only make draggable if it's not the "Add New Product" card
+                if (!card.classList.contains('add-product-card')) {
+                    card.addEventListener('dragstart', handleDragStart);
+                    card.addEventListener('dragover', handleDragOver);
+                    card.addEventListener('dragleave', handleDragLeave);
+                    card.addEventListener('drop', handleDrop);
+                    card.addEventListener('dragend', handleDragEnd);
+                }
             });
         }
-
-        // Función para abrir una pestaña específica.
-        function openTab(tabName) {
-            // Ocultar todos los contenidos de las pestañas
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => {
-                content.classList.add('hidden');
-            });
-
-            // Desactivar todos los botones de las pestañas
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                button.classList.remove('active');
-            });
-
-            // Mostrar el contenido de la pestaña seleccionada
-            document.getElementById(tabName).classList.remove('hidden');
-            // Activar el botón de la pestaña seleccionada
-            document.querySelector(`.tab-button[data-tab="${tabName}"]`).classList.add('active');
-
-            // Re-renderizar el contenido de la pestaña activa para asegurar que esté actualizado
-            if (tabName === 'detailed-view') {
-                renderAllProducts(); // Existing render function for cards
-            } else if (tabName === 'overview-view') {
-                renderOverviewTables(); // New render function for tables
-            } else if (tabName === 'configurator-view') {
-                renderConfiguratorView(); // New render function for configurator
-            }
-            // No need to render initial-load-view, its content is static except for textarea value
-            lucide.createIcons(); // Re-render icons after tab switch
-        }
-
 
         // Inicializar la página al cargar el DOM
         document.addEventListener('DOMContentLoaded', async () => {
@@ -1590,7 +1408,6 @@
                 cpuOptions = storedData.cpuOptions;
                 ramOptions = storedData.ramOptions; // Cargar RAM
                 comboOptions = storedData.comboOptions; // Cargar Combo
-                selectedComponents = storedData.selectedComponents; // Load selected components
 
                 hasUnsavedChanges = true; // Si cargamos de sesión, asumimos que puede haber cambios sin "guardar"
                 showWarningMessage('¡Datos restaurados de la sesión anterior! Genera y copia el código si quieres guardar los cambios.');
@@ -1660,20 +1477,13 @@
             initialDataInput.value = JSON.stringify(currentDataAsJson, null, 4);
 
 
-            // Observe all sections for the global add button
-            document.querySelectorAll('section[id^="section-"]').forEach(section => {
-                sectionObserver.observe(section);
-            });
-
-            // Set initial text for the global add button if no section is immediately visible
-            if (globalAddButton.classList.contains('hidden')) {
-                globalAddButtonText.textContent = `Añadir ${getComponentName('towers')}`; // Default to first category
-                globalAddButton.onclick = () => addProduct('towers');
-                globalAddButton.classList.remove('hidden');
-            }
+            // Add event listeners for tab buttons
+            document.getElementById('tab-initial-load-view').addEventListener('click', () => openTab('initial-load-view'));
+            document.getElementById('tab-detailed-view').addEventListener('click', () => openTab('detailed-view'));
+            document.getElementById('tab-overview-view').addEventListener('click', () => openTab('overview-view'));
 
             // Open the default tab (initial-load-view)
-            openTab('initial-load-view'); // Moved to end of DOMContentLoaded
+            openTab('initial-load-view');
             lucide.createIcons(); // Create Lucide icons on initial load
         });
 
