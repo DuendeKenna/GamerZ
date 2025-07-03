@@ -73,6 +73,20 @@
     ],
     "ssdOptions": [
         {
+            "name": "500 GB - NVMe",
+            "price": 51000,
+            "description": "Descripción del nuevo SSD.",
+            "image_url": "comps/discos/nvme_hik_500.webp",
+            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
+        },
+        {
+            "name": "1 TB - NVMe",
+            "price": 93000,
+            "description": "Descripción del nuevo SSD.",
+            "image_url": "comps/discos/nvme_wd_1webp",
+            "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
+        },
+        {
             "name": "480 GB - SATA",
             "price": 46000,
             "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
@@ -92,20 +106,6 @@
             "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
             "image_url": "comps/discos/ssd_hiksemi.webp",
             "link": "https://articulo.mercadolibre.com.ar/MLA-1146810320-disco-interno-ssd-western-digital-green-wds100t3g0a-1tb-_JM"
-        },
-        {
-            "name": "500 GB - NVMe",
-            "price": 51000,
-            "description": "Descripción del nuevo SSD.",
-            "image_url": "comps/discos/nvme_hik_500.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
-        },
-        {
-            "name": "1 TB - NVMe",
-            "price": 93000,
-            "description": "Descripción del nuevo SSD.",
-            "image_url": "comps/discos/nvme_wd_1webp",
-            "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
         }
     ],
     "gpuOptions": [
