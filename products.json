@@ -1,6 +1,13 @@
 {
     "towersOptions": [
         {
+            "name": "Sentey R20",
+            "price": 45000,
+            "slug": "sentey-r20",
+            "image_url": "comps/torres/sentey-r20.webp",
+            "link": ""
+        },
+        {
             "name": "Antex Nx292",
             "price": 75000,
             "slug": "antex-nx292",
@@ -57,13 +64,6 @@
             "link": ""
         },
         {
-            "name": "Sentey R20",
-            "price": 45000,
-            "slug": "sentey-r20",
-            "image_url": "comps/torres/sentey-r20.webp",
-            "link": ""
-        },
-        {
             "name": "Sentey S20",
             "price": 46000,
             "slug": "sentey-s20",
@@ -72,6 +72,27 @@
         }
     ],
     "ssdOptions": [
+        {
+            "name": "240 GB - SATA",
+            "price": 30000,
+            "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
+            "image_url": "comps/discos/ssd_hiksemi.webp",
+            "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds240g2g0a-240gb-verde/p/MLA8739495"
+        },
+        {
+            "name": "480 GB - SATA",
+            "price": 46000,
+            "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
+            "image_url": "comps/discos/ssd_hiksemi.webp",
+            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-480gb-hiksemi-wave-sata-30/p/MLA37601593"
+        },
+        {
+            "name": "1 TB - SATA",
+            "price": 91000,
+            "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
+            "image_url": "comps/discos/ssd_hiksemi.webp",
+            "link": "https://articulo.mercadolibre.com.ar/MLA-1146810320-disco-interno-ssd-western-digital-green-wds100t3g0a-1tb-_JM"
+        },
         {
             "name": "500 GB - NVMe",
             "price": 51000,
@@ -85,43 +106,22 @@
             "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
             "image_url": "comps/discos/nvme_wd_1.webp",
             "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
-        },
-        {
-            "name": "480 GB - SATA",
-            "price": 46000,
-            "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
-            "image_url": "comps/discos/ssd_hiksemi.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-480gb-hiksemi-wave-sata-30/p/MLA37601593"
-        },
-        {
-            "name": "240 GB - SATA",
-            "price": 30000,
-            "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
-            "image_url": "comps/discos/ssd_hiksemi.webp",
-            "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds240g2g0a-240gb-verde/p/MLA8739495"
-        },
-        {
-            "name": "1 TB - SATA",
-            "price": 91000,
-            "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
-            "image_url": "comps/discos/ssd_hiksemi.webp",
-            "link": "https://articulo.mercadolibre.com.ar/MLA-1146810320-disco-interno-ssd-western-digital-green-wds100t3g0a-1tb-_JM"
         }
     ],
     "gpuOptions": [
-        {
-            "name": "AMD 560 4GB",
-            "price": 145000,
-            "description": "Excelente para gaming moderno en 1080p/60+ FPS/Calidad Alta o Media.",
-            "image_url": "comps/gpus/rx560.webp",
-            "link": "www.mercadolibre.com.ar/placa-de-video-sentey-rx-560-4gb-ddr5-amd-radeon-rx560/p/MLA24558468"
-        },
         {
             "name": "GT 740 2GB",
             "price": 75000,
             "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
             "image_url": "comps/gpus/gt740.webp",
             "link": "https://www.mercadolibre.com.ar/placa-video-geforce-gt740-2gb-gddr5-128bit-hdmi-vga-dvi/p/MLA22805535"
+        },
+        {
+            "name": "AMD 560 4GB",
+            "price": 145000,
+            "description": "Excelente para gaming moderno en 1080p/60+ FPS/Calidad Alta o Media.",
+            "image_url": "comps/gpus/rx560.webp",
+            "link": "www.mercadolibre.com.ar/placa-de-video-sentey-rx-560-4gb-ddr5-amd-radeon-rx560/p/MLA24558468"
         }
     ],
     "psuOptions": [
