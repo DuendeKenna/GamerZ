@@ -1290,7 +1290,7 @@
             #component-list li {
                 flex-direction: row; /* Revert to row layout on desktop */
                 align-items: center;
-                gap: 3rem; /* Increased gap for desktop */
+                gap: 1.5rem; /* Adjusted gap for desktop */
                 margin-bottom: 0;
             }
         }
@@ -1354,7 +1354,7 @@
             #component-list .component-option-image {
                 width: 180px;
                 max-width: none;
-                margin-left: auto;
+                margin-left: 50px;
             }
         }
 
@@ -1667,24 +1667,24 @@
                     </div>
                     <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
                         <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-8">
-                                <div class="component-content-wrapper text-center md:text-left">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                                <div class="component-content-wrapper text-left md:text-left">
                                     <strong class="text-lg font-semibold">Placa de Video:</strong>
                                     <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="gpu-description" class="description-text"></p>
                                 </div>
                                 <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-8">
-                                <div class="component-content-wrapper text-center md:text-left">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                                <div class="component-content-wrapper text-left md:text-left">
                                     <strong class="text-lg font-semibold">Almacenamiento:</strong>
                                     <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
                                 <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-8">
-                                <div class="component-content-wrapper text-center md:text-left">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                                <div class="component-content-wrapper text-left md:text-left">
                                     <strong class="text-lg font-semibold">Alimentación:</strong>
                                     <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="psu-description" class="description-text"></p>
