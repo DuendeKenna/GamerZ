@@ -73,25 +73,32 @@
     ],
     "ssdOptions": [
         {
-            "name": "500 GB - NVMe",
-            "price": 51000,
-            "description": "Más que suficiente para la mayoría de los casos. Alta velocidad PCIe 3.0.",
-            "image_url": "comps/discos/nvme_hik_500.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
-        },
-                {
             "name": "240 GB - SATA",
             "price": 30000,
-            "description": "Un punto intermedio si querés ahorrar unas lucas, pero al ser SATA en vez de NVMe es bastante más lento.",
+            "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
             "image_url": "comps/discos/ssd_hiksemi.webp",
             "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds240g2g0a-240gb-verde/p/MLA8739495"
         },
         {
-            "name": "128 GB - NVMe",
-            "price": 20000,
-            "description": "Lo mínimo para Windows y un par de juegos. Ideal si tenés otro disco y querés ahorrar.",
-            "image_url": "comps/discos/nvme_hik_128.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-128-gb-nvme-hiksemi-pci3-color-negro/p/MLA24285384#polycard_client=search-nordic&searchVariation=MLA24285384&wid=MLA1499766969&position=3&search_layout=stack&type=product&tracking_id=19bd5ce3-c7f4-4bd3-a98d-e9c3fcc232b6&sid=search"
+            "name": "480 GB - SATA",
+            "price": 46000,
+            "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
+            "image_url": "comps/discos/ssd_hiksemi.webp",
+            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-480gb-hiksemi-wave-sata-30/p/MLA37601593"
+        },
+        {
+            "name": "1 TB - SATA",
+            "price": 91000,
+            "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
+            "image_url": "comps/discos/ssd_hiksemi.webp",
+            "link": "https://articulo.mercadolibre.com.ar/MLA-1146810320-disco-interno-ssd-western-digital-green-wds100t3g0a-1tb-_JM"
+        },
+        {
+            "name": "500 GB - NVMe",
+            "price": 51000,
+            "description": "Más que suficiente para la mayoría de los casos.",
+            "image_url": "comps/discos/nvme_hik_500.webp",
+            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
         },
         {
             "name": "1 TB - NVMe",
@@ -99,13 +106,20 @@
             "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
             "image_url": "comps/discos/nvme_wd_1.webp",
             "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
+        },
+        {
+            "name": "128 GB - NVMe",
+            "price": 20000,
+            "description": "Descripción del nuevo SSD.",
+            "image_url": "comps/discos/nvme_hik_128.webp",
+            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-128-gb-nvme-hiksemi-pci3-color-negro/p/MLA24285384#polycard_client=search-nordic&searchVariation=MLA24285384&wid=MLA1499766969&position=3&search_layout=stack&type=product&tracking_id=19bd5ce3-c7f4-4bd3-a98d-e9c3fcc232b6&sid=search"
         }
     ],
     "gpuOptions": [
         {
             "name": "GT 740 2GB",
             "price": 75000,
-            "description": "Se la banca muy bien para editar video hasta 2K y en juegos como LoL/Minecraft/Overwatch (Fortnite o CS2 no tanto).",
+            "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
             "image_url": "comps/gpus/gt740.webp",
             "link": "https://www.mercadolibre.com.ar/placa-video-geforce-gt740-2gb-gddr5-128bit-hdmi-vga-dvi/p/MLA22805535"
         },
@@ -119,18 +133,18 @@
     ],
     "psuOptions": [
         {
-            "name": "500w Sentey 80 Plus",
+            "name": "ATX 550w Sentey Genérica",
+            "price": 21000,
+            "description": "Fuente estándar, suficiente para esta configuración base.",
+            "image_url": "comps/psus/550sentey.webp",
+            "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-sx550-fs-550w-negra/p/MLA43936421"
+        },
+        {
+            "name": "ATX 550w Sentey 80 Plus",
             "price": 80000,
             "description": "Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.",
             "image_url": "comps/psus/550sentey80.webp",
             "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-sentey-steel-nitro-power-snp550-gs-550w-negra/p/MLA43939305"
-        },
-        {
-            "name": "550w Sentey Genérica",
-            "price": 21000,
-            "description": "Fuente estándar, suficiente para que ande todo bien...mientras no se rompa y se lleve puesto algun componente.",
-            "image_url": "comps/psus/550sentey.webp",
-            "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-sx550-fs-550w-negra/p/MLA43936421"
         }
     ],
     "motherboardOptions": [

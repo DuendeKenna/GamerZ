@@ -1059,124 +1059,92 @@
             /* Stronger neon glow on hover */
         }
 
-        /* New price summary card styling */
+        /* --- Sticky Price Summary Card --- */
         #price-summary-card {
-            position: relative;
-            /* Position relative to its normal flow */
-            margin-top: -63px;
-            /* Pull it up by 63px to overlap components container */
-            margin-left: auto;
-            margin-right: auto;
+            position: fixed;
+            bottom: 0;
+            right: 0;
             width: fit-content;
             min-width: 250px;
             padding: 1rem 1.5rem;
             background-color: rgba(31, 41, 55, 0.9);
-            border: 1px solid rgba(75, 85, 99, 0.5);
-            border-radius: 0.75rem;
+            border-top: 1px solid rgba(75, 85, 99, 0.5);
+            border-left: 1px solid rgba(75, 85, 99, 0.5);
+            border-top-left-radius: 0.75rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            z-index: 50;
-            /* Ensure it's above normal content */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            /* Space between ARS and USD sections */
+            z-index: 100;
+            
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100%);
+            transition: opacity 0.4s ease-out, visibility 0.4s ease-out, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            display: none; /* Hidden on mobile by default */
+        }
+
+        @media (min-width: 768px) {
+            #price-summary-card {
+                display: flex; /* Shown on tablet and up */
+            }
+        }
+
+        #price-summary-card.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         #price-summary-card .price-section {
             display: flex;
             flex-direction: column;
-            /* Stack price and link vertically */
             align-items: center;
             justify-content: center;
             font-family: 'Saira', sans-serif;
-            /* Apply font family */
         }
 
         #price-summary-card .price-value-row {
             display: flex;
             align-items: baseline;
-            /* Align value and text baseline */
             white-space: nowrap;
-            /* Keep value and text on one line */
         }
 
         #price-summary-card .currency-value {
             font-weight: bold;
             line-height: 1;
             font-size: 3.5rem;
-            /* Large size for number */
         }
 
         #price-summary-card .currency-text {
             font-size: 1.75rem;
-            /* Half size for LUCAS/USD text */
             font-weight: bold;
-            /* Make LUCAS/USD bold */
             line-height: 1;
             margin-left: 0.5rem;
-            /* Space between value and text */
         }
 
         #price-summary-card .ars-price .currency-value,
         #price-summary-card .ars-price .currency-text {
             color: #22d3ee;
-            /* Cyan color for pesos */
             text-shadow: 2px 2px 3px black;
         }
 
         #price-summary-card .usd-price .currency-value,
         #price-summary-card .usd-price .currency-text {
             color: #7a3ab7;
-            /* Updated color for USD */
             text-shadow: 2px 2px 3px black;
         }
 
         #price-summary-card .separator {
             width: 1px;
             height: 4rem;
-            /* Height of the separator */
             background-color: rgba(75, 85, 99, 0.5);
-            /* Gray-500 equivalent */
+            margin: 0 1.5rem;
         }
-
+        
         #total-price-summary-usd-mobile {
             font-size: 2rem;
         }
-
-        @media (max-width: 767px) {
-
-            /* Mobile adjustments for summary card */
-            #price-summary-card {
-                flex-direction: column;
-                /* Stack vertically on small screens */
-                gap: 1rem;
-                padding: 1rem;
-                width: calc(100% - 2rem);
-                max-width: 300px;
-                margin-top: -63px;
-                /* Keep consistent overlap */
-                display: none;
-            }
-
-            #price-summary-card .separator {
-                width: 80%;
-                height: 1px;
-            }
-
-            #price-summary-card .currency-value {
-                font-size: 2.5rem;
-                /* Smaller on mobile */
-            }
-
-            #price-summary-card .currency-text {
-                font-size: 1.25rem;
-                /* Smaller on mobile */
-            }
-        }
-
 
         /* Select Styling */
         #ssd-select,
@@ -1455,6 +1423,7 @@
             justify-content: center;
             align-items: center;
             position: fixed;
+            font-weight: 600;
             /* Fixed position for sticky effect */
             bottom: -10px;
             /* Stick to the bottom of the viewport */
@@ -1565,7 +1534,7 @@
 
                 <div class="flex items-center justify-center mt-6">
                     <div class="price-container relative">
-                        <div class="launch-badge">JUGÁ & CREÁ desde</div>
+                        <div class="launch-badge">JUGÁ & CREÁ con Calidá!!</div>
                         <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira" id="top-total-price">
                             $555.000</p>
                         <div class="mt-1 flex items-baseline justify-center gap-2">
@@ -1579,11 +1548,15 @@
                         class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4"
                         onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                 </div>
-
+                <p class="monitor-note text-gray-400 text-xs font-roboto text-center sm:pr-4">
+                    Monitor/Teclado/Mouse/Joysticks aparte
+                </p>
                 <div class="mt-2 text-base text-gray-200 flex items-center justify-center gap-4">
+                    
                     <span class="flex items-center gap-2 "><i class="fas fa-house-circle-check"></i>Entrega GRATIS en
-                        <strong class="text-white"><i>🌊La Costa</i></b></span>
+                        <strong class="text-white"><i>🌊La Costa</i></strong></span>
                 </div>
+                
             </header>
 
             <div class="hook-section text-center max-w-4xl mx-auto mt-8 space-y-6 relative z-40">
@@ -1598,14 +1571,15 @@
                     </div>
                     <!--                         <p class="text-gray-200 font-saira text-xl mt-1">pq lo que cuenta</p>
                         <p class="text-gray-200 font-saira text-xl mt-1">no es <i>La Máquina</i>... es <i><b>La Experiencia ♾️</b></i></p> -->
-                    <h2 class="relative z-40 font-saira font-bold text-center mt-6 mb-8 text-3xl md:text-4xl lg:text-5xl "
+                    <h2 class="relative z-40 font-saira font-bold text-center mt-6 text-3xl md:text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">ARMÁ TU COMPU</h2>
+                        <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
 
             </div>
 
-            <div class="text-center mt-8 md:hidden lg:block">
+<!--             <div class="text-center mt-8 md:hidden lg:block">
                 <a href="#games-section"
                     class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
                     <div class="flex items-center justify-center gap-5">
@@ -1616,7 +1590,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
             <section class="hidden bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -1636,262 +1610,228 @@
             </section>
         </div>
 
-        <section ID="section-hardware" class="my-16 text-center max-w-3xl mx-auto px-4">
-            <h2 class="text-5xl font-bold mb-4 text-white">La Base de<p> La Nave</p>
-            </h2>
-            <!--             <p class="text-xl text-gray-300 font-saira">
-                En <span class="text-indigo-400 text-2">HARDWARE</span> buscamos un BUEN PRECIO con la MAYOR CALIDAD
-                posible.</p> -->
-            <p class="text-xl text-gray-300 font-saira">
-                Para <span class="text-indigo-400 text-2">Jugar & Crear</span> fluidamente precisamos un hard Confiable
-                y Potente.</p>
+        <div id="price-card-visibility-zone">
+            <section ID="section-hardware" class="my-6 text-center max-w-3xl mx-auto px-4 overflow-hidden md:overflow-visible">
+<!--                 <h2 class="text-5xl font-bold mb-4 text-white">La Base de<p> La Nave</p>
+                </h2> -->
+                <p class="text-xl text-gray-300 font-saira">
+                    De <span class="text-2"><i>base</i></span> usamos un clásico proce gama media, que nos corre de todo y al no tener gráfica integrada ahorramos unos cuantos mangos.</p>
 
-            <p class="mt-2 text-xl font-normal font-saira"> Estos componentes<i class="text-gray-500"> no son random</i>
-                - están cuidadosamente elegidos para ofrecer un Rendimiento Espectacular <b class="text-amber-400">sin
-                    pagar en exceso</b>.</p>
+                <p class="mt-2 text-xl font-normal font-saira"> Estos componentes<i class="text-gray-500"> no son random</i>
+                    - están astutamente elegidos para ofrecer Excelente Rendimiento + Durabilidad <b class="text-amber-400">sin
+                        pagar en exceso</b>.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mt-10">
-                <!-- CPU -->
-
-                <div class="flex col-span-3 justify-end items-end">
-                    <img src="comps/ryzen5-4500.png" alt="Ryzen 5 4500" class="w-40 md:w-56 h-auto rounded-xl shadow-lg"
-                        onerror="this.onerror=null;this.src='comps/cpus/ryzen5_4500.webp';">
-                </div>
-                <div class="col-span-9 flex flex-col justify-center items-start text-left">
-                    <p class="font-saira text-5xl green-333">Ryzen 5 4500 <small>6 Núcleos</small></p>
-                    <p class="text-4xl text-green-500 mt-2">Una joya de procesador que banca juegos pesados y edición de
-                        video fluida.</p>
-                </div>
-                <!-- RAM -->
-
-                <div class="flex col-span-3 justify-end items-center items-start">
-                    <img src="comps/ram16gb.png" alt="16GB RAM DDR4" class="w-40 md:w-56 h-auto rounded-xl shadow-lg"
-                        onerror="this.onerror=null;this.src='comps/rams/16ddr4_hiksemi_white_x2.webp';">
-                </div>
-                <div class="col-span-9 flex flex-col justify-center items-start text-left">
-                    <p class="font-saira text-5xl green-333 mt-4">16GB de RAM DDR4</p>
-                    <div class="text-xl text-green-500 mt-2">
-                        <p>o el doble si realmente lo precisás.
-                        <p>Viene en 2 módulos
-                            <small class="green-333">(Dual Channel)</small> 👈👌
-                        </p>
-                        </p>
-                    </div>
-                </div>
-                <!-- Motherboard -->
-
-                <div class="flex col-span-3 justify-end items-center items-start">
-                    <img src="comps/gigabyte-a520.png" alt="Mother Gigabyte A520"
-                        class="w-40 md:w-56 h-auto rounded-xl shadow-lg"
-                        onerror="this.onerror=null;this.src='comps/moms/gigabyte_a5020m.webp';">
-                </div>
-                <div class="col-span-9 flex flex-col justify-center items-start text-left">
-                    <p class="font-saira text-5xl green-333 mt-4">Mother Gigabyte A520</p>
-                    <p class="text-xl text-green-500 mt-2">Una de las marcas más prestigiosas del mercado</p>
-                    <p class="text-xl text-green-500">con Servicio Técnico Oficial en Argentina.</p>
-                </div>
-            </div>
-            <h2 class="relative z-40 font-saira font-bold text-center mt-12 text-xl md:text-2xl lg:text-5xl">
-                <span class="hidden sm:inline"
-                    style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ELEGÍ EL RESTO <span
-                        style="color:rgba(66, 210, 50, 0.7);">▼</span>
-                </span>
-                <span class="inline sm:hidden"
-                    style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                    ELEGÍ EL RESTO
-                    <p style="color:rgba(66, 210, 50, 0.7);">▼</p>
-                </span>
-
-            </h2>
-        </section>
-
-
-        <div class="flex flex-col sm:flex-row justify-end sm:justify-between items-baseline  px-4 sm:px-0">
-            <h2 class="text-center font-saira-black text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-0 hidden">
-                Torre+Gráfica+Disco+Fuente</h2>
-            <div id="price-summary-card" class="font-saira mx-auto section-card-style hidden md:flex"
-                style="margin-top: 3px;">
-                <div class="price-section ars-price">
-                    <div class="price-value-row">
-                        <span class="currency-value">$<span id="total-price-summary-ars">500</span></span>
-                        <span class="currency-text">LUCAS</span>
-                    </div>
-                </div>
-                <div class="separator"></div>
-                <div class="price-section usd-price" id="usd-price-section">
-                    <div class="price-value-row">
-                        <span class="currency-value"><span id="total-price-summary-usd"></span></span>
-                        <span class="currency-text">USD</span>
-                    </div>
-                    <a id="usd-link-summary" href="#" class="text-xs text-gray-500 hover:underline">
-                        <p>Ver cotizaciones</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
-            <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6 h-full">
-                <div class="w-full md:w-1/2 flex-shrink-0 h-full flex items-center justify-center">
-                    <div id="tower-selector-container"
-                        class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
-                        <!-- Main content area for the image, takes remaining height after bottom-controls -->
-                        <div class="flex-grow flex items-center justify-center w-full h-full relative">
-                            <img id="current-tower-image" src="" alt="Torre PC Gamer"
-                                class="w-full h-full object-contain"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC'">
+                <div class="mt-16 space-y-3">
+                    <!-- CPU Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
+                        <div class="md:col-span-5">
+                            <img src="comps/ryzen5-4500.png" alt="Ryzen 5 4500" class="w-3/4 mx-auto md:w-[130%] md:-ml-16 h-auto rounded-xl shadow-lg" onerror="this.onerror=null;this.src='comps/cpus/ryzen5_4500.webp';">
                         </div>
-
-                        <!-- This wrapper is positioned at the very bottom -->
-                        <div id="tower-name-and-arrows-wrapper"
-                            class="relative z-10 w-full flex justify-between items-center py-2 px-4">
-                            <!-- The actual arrows and name -->
-                            <i id="prev-tower" class="fas fa-chevron-left tower-nav-arrow"></i>
-                            <span id="current-tower-name" class="bg-gray-800/80 px-2 py-1 rounded"></span>
-                            <i id="next-tower" class="fas fa-chevron-right tower-nav-arrow"></i>
+                        <div class="md:col-span-7 text-center md:text-left">
+                            <p class="font-saira text-4xl md:text-5xl green-333">Ryzen 5 4500</p>
+                            <p class="text-lg md:text-xl text-green-500 mt-2">Con esta bestia de 6 nucleos y una placa gráfica dedicada (que elgís más abajo) vas a poder jugar y crear fluidamente si lo acompañamos de...</p>
+                        </div>
+                    </div>
+            
+                    <!-- RAM Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-12  md:-ml-8 items-center gap-x-1 gap-y-6">
+                        <div class="md:col-span-5">
+                            <img src="comps/ram16gb.png" alt="16GB RAM DDR4" class="w-1/2 mx-auto md:w-[65%] md:-ml-8 h-auto rounded-xl shadow-lg" onerror="this.onerror=null;this.src='comps/rams/16ddr4_hiksemi_white_x2.webp';">
+                        </div>
+                        <div class="md:col-span-7 text-center md:text-left">
+                            <p class="font-saira text-4xl md:text-5xl green-333">16GB RAM DDR4</p>
+                            <div class="text-lg md:text-xl text-green-500 mt-2">
+                                <p>o 32 si vas a streamear/editar en 4K. Clave que venga en 2 módulos <small class="green-333">(Dual Channel)</small></p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Motherboard Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-12  md:-ml-8 items-center gap-x-1 gap-y-6">
+                        <div class="md:col-span-5">
+                            <img src="comps/gigabyte-a520.png" alt="Mother Gigabyte A520" class="w-3/4 mx-auto md:w-[130%] md:-ml-16 h-auto rounded-xl shadow-lg" onerror="this.onerror=null;this.src='comps/moms/gigabyte_a5020m.webp';">
+                        </div>
+                        <div class="md:col-span-7 text-center md:text-left">
+                            <p class="font-saira text-4xl md:text-5xl green-333">Mother Gigabyte A520</p>
+                            <p class="text-lg md:text-xl text-green-500 mt-2">Todo enchufado a esta confiable placa base de una de las marcas más prestigiosas del mercado, con Servicio Técnico Oficial en Argentina.</p>
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
-                    <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
-                        <li class="flex items-center justify-between w-full">
-                            <div class="component-content-wrapper">
-                                <strong class="text-lg font-semibold">GPU:</strong>
-                                <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
-                                <p id="gpu-description" class="description-text"></p>
+                <h2 class="relative z-40 font-saira font-bold text-center mt-12 text-4xl md:text-2xl lg:text-5xl">
+                    <span class="hidden sm:inline"
+                        style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                        <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ELEGÍ EL RESTO <span
+                            style="color:rgba(66, 210, 50, 0.7);">▼</span>
+                    </span>
+                    <span class="inline sm:hidden"
+                        style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                        ELEGÍ EL RESTO
+                        <p style="color:rgba(66, 210, 50, 0.7);">▼</p>
+                    </span>
+
+                </h2>
+            </section>
+
+
+            <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
+                <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6 h-full">
+                    <div class="w-full md:w-1/2 flex-shrink-0 h-full flex items-center justify-center">
+                        <div id="tower-selector-container"
+                            class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
+                            <!-- Main content area for the image, takes remaining height after bottom-controls -->
+                            <div class="flex-grow flex items-center justify-center w-full h-full relative">
+                                <img id="current-tower-image" src="" alt="Torre PC Gamer"
+                                    class="w-full h-full object-contain"
+                                    onerror="this.onerror=null;this.src='https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC'">
                             </div>
-                            <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image">
-                        </li>
-                        <li class="flex items-center justify-between w-full">
-                            <div class="component-content-wrapper">
-                                <strong class="text-lg font-semibold">Almacenamiento:</strong>
-                                <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
-                                <p id="ssd-description" class="description-text"></p>
+
+                            <!-- This wrapper is positioned at the very bottom -->
+                            <div id="tower-name-and-arrows-wrapper"
+                                class="relative z-10 w-full flex justify-between items-center py-2 px-4">
+                                <!-- The actual arrows and name -->
+                                <i id="prev-tower" class="fas fa-chevron-left tower-nav-arrow"></i>
+                                <span id="current-tower-name" class="bg-gray-800/80 px-2 py-1 rounded"></span>
+                                <i id="next-tower" class="fas fa-chevron-right tower-nav-arrow"></i>
                             </div>
-                            <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image">
-                        </li>
-                        <li class="flex items-center justify-between w-full">
-                            <div class="component-content-wrapper">
-                                <strong class="text-lg font-semibold">Alimentación:</strong>
-                                <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
-                                <p id="psu-description" class="description-text"></p>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
+                        <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
+                            <li class="flex items-center justify-between w-full">
+                                <div class="component-content-wrapper">
+                                    <strong class="text-lg font-semibold">GPU:</strong>
+                                    <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <p id="gpu-description" class="description-text"></p>
+                                </div>
+                                <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image">
+                            </li>
+                            <li class="flex items-center justify-between w-full">
+                                <div class="component-content-wrapper">
+                                    <strong class="text-lg font-semibold">Almacenamiento:</strong>
+                                    <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <p id="ssd-description" class="description-text"></p>
+                                </div>
+                                <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image">
+                            </li>
+                            <li class="flex items-center justify-between w-full">
+                                <div class="component-content-wrapper">
+                                    <strong class="text-lg font-semibold">Alimentación:</strong>
+                                    <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <p id="psu-description" class="description-text"></p>
+                                </div>
+                                <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image">
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+
+
+            <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
+                <div class="feature-card">
+                    <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
+                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
+                    <p class="text-s text-gray-300 mt-1">Ligero | Fachero | Eficaz</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
+                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Software Clave Instalado</h4>
+                    <p class="text-s text-gray-300 mt-1">a TU Elección ✔</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3"
+                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
+                    <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
+                </div>
+
+                <div class="feature-card animated-bg-games">
+                    <div class="corner-ribbon-wrapper">
+                        <div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span
+                                class="despegue-text text-violet-700">DESPEGUE</span></div>
+                    </div>
+                    <div class="text-orange-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Hasta <p
+                            class="text-orange-400 text-xl">3 Juegos Incluidos</p>
+                    </h4>
+                    <p class="text-s text-gray-300 mt-1">✔ Elegilos abajo▼</p>
+                </div>
+
+                <div class="feature-card relative lg:col-span-2 soporte-tecnico-card"
+                    style="padding: 1rem; overflow: hidden; min-height: 200px;">
+                    <img src="memde_think.png" alt="Soporte técnico personalizado"
+                        class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none" md:z-10
+                        md:opacity-100 md:h-[110%] md:-right-4"
+                        onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
+
+                    <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
+                        <div class="flex items-center gap-4 mb-2 mt-1 sm:mb-3 sm:mt-0">
+                            <img src="SoportePersonal.png" alt="Icono de Soporte Técnico"
+                                class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0"
+                                onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                            <h4
+                                class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap mt-1 sm:mt-0">
+                                Soporte Técnico</h4>
+                        </div>
+                        <div class="space-y-1 text-sm text-gray-300 max-w-xs pl-0">
+                            <p class="flex items-center justify-start"><i
+                                    class="fas fa-comments blueish fa-fw w-6"></i><span class="ml-2">Contacto Directo</span>
+                            </p>
+                            <p class="flex items-center justify-start"><i class="fas fa-desktop blueish fa-fw w-6"></i><span
+                                    class="ml-2">Asistencia Remota</span></p>
+                            <div class="flex items-center justify-start">
+                                <i class="fas fa-screwdriver blueish fa-fw w-6"></i>
+                                <div class="ml-2">
+                                    <p>Servicio a Domicilio</p>
+                                    <p class="text-xs text-gray-400 -mt-1">en todo el Partido de La Costa</p>
+                                </div>
                             </div>
-                            <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image">
-                        </li>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex lg:hidden items-center justify-center">
+                    <div
+                        class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
+                        <div class="flex items-center justify-center gap-5">
+                            <i class="fas fa-tasks text-2xl"></i>
+                            <div class="text-left">
+                                <span class="block leading-tight">Usá esta Web Interactiva</span>
+                                <span class="block text-2sm font-sans -mt-2">para simular tu pedido</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="garantia-section" class="mb-12 section-card-style">
+                <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
+                <div class="max-w-3xl mx-auto p-6 md:p-8 space-y-6">
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start gap-3"><i
+                                class="fas fa-star green-333 mt-1"></i><span><strong>Componentes Nuevos:</strong> Con
+                                garantía de proveedores de confianza.</span></li>
+                        <li class="flex items-start gap-3"><i
+                                class="fas fa-recycle text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong>
+                                Podemos <i>reciclar</i> los tuyos para abaratar el precio.</span></li>
+                        <li class="flex items-start gap-3"><i
+                                class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 12
+                                meses de garantía en todos los componentes.</span></li>
                     </ul>
+                    <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
+                        <i class="fas fa-headset text-2xl"></i>
+                        <span class="text-xl font-bold text-gray-200">Servicio Postventa | </span>
+                        <span class="font-gamer text-xs">¿Algún Problema?<br>¡Lo Arreglo!</span>
+                    </div>
                 </div>
             </section>
-            <p class="monitor-note text-gray-400 text-xs font-roboto sm:text-right sm:pr-4">
-                Monitor/Teclado/Mouse se venden aparte
-            </p>
         </div>
-
-
-
-        <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
-            <div class="feature-card">
-                <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
-                    onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
-                <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
-                <p class="text-s text-gray-300 mt-1">Ligero | Fachero | Eficaz</p>
-            </div>
-
-            <div class="feature-card">
-                <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
-                    onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
-                <h4 class="font-saira font-bold text-white text-xl leading-tight">Software Clave Instalado</h4>
-                <p class="text-s text-gray-300 mt-1">a TU Elección ✔</p>
-            </div>
-
-            <div class="feature-card">
-                <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3"
-                    onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
-                <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
-                <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
-            </div>
-
-            <div class="feature-card animated-bg-games">
-                <div class="corner-ribbon-wrapper">
-                    <div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span
-                            class="despegue-text text-violet-700">DESPEGUE</span></div>
-                </div>
-                <div class="text-orange-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
-                <h4 class="font-saira font-bold text-white text-xl leading-tight">Hasta <p
-                        class="text-orange-400 text-xl">3 Juegos Incluidos</p>
-                </h4>
-                <p class="text-s text-gray-300 mt-1">✔ Elegilos abajo▼</p>
-            </div>
-
-            <div class="feature-card relative lg:col-span-2 soporte-tecnico-card"
-                style="padding: 1rem; overflow: hidden; min-height: 200px;">
-                <img src="memde_think.png" alt="Soporte técnico personalizado"
-                    class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none" md:z-10
-                    md:opacity-100 md:h-[110%] md:-right-4"
-                    onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
-
-                <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
-                    <div class="flex items-center gap-4 mb-2 mt-1 sm:mb-3 sm:mt-0">
-                        <img src="SoportePersonal.png" alt="Icono de Soporte Técnico"
-                            class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0"
-                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
-                        <h4
-                            class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap mt-1 sm:mt-0">
-                            Soporte Técnico</h4>
-                    </div>
-                    <div class="space-y-1 text-sm text-gray-300 max-w-xs pl-0">
-                        <p class="flex items-center justify-start"><i
-                                class="fas fa-comments blueish fa-fw w-6"></i><span class="ml-2">Contacto Directo</span>
-                        </p>
-                        <p class="flex items-center justify-start"><i class="fas fa-desktop blueish fa-fw w-6"></i><span
-                                class="ml-2">Asistencia Remota</span></p>
-                        <div class="flex items-center justify-start">
-                            <i class="fas fa-screwdriver blueish fa-fw w-6"></i>
-                            <div class="ml-2">
-                                <p>Servicio a Domicilio</p>
-                                <p class="text-xs text-gray-400 -mt-1">en todo el Partido de La Costa</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hidden md:flex lg:hidden items-center justify-center">
-                <div
-                    class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
-                    <div class="flex items-center justify-center gap-5">
-                        <i class="fas fa-tasks text-2xl"></i>
-                        <div class="text-left">
-                            <span class="block leading-tight">Usá esta Web Interactiva</span>
-                            <span class="block text-2sm font-sans -mt-2">para simular tu pedido</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section id="garantia-section" class="mb-12 section-card-style">
-            <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
-            <div class="max-w-3xl mx-auto p-6 md:p-8 space-y-6">
-                <ul class="space-y-4 text-gray-300">
-                    <li class="flex items-start gap-3"><i
-                            class="fas fa-star green-333 mt-1"></i><span><strong>Componentes Nuevos:</strong> Con
-                            garantía de proveedores de confianza.</span></li>
-                    <li class="flex items-start gap-3"><i
-                            class="fas fa-recycle text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong>
-                            Podemos <i>reciclar</i> los tuyos para abaratar el precio.</span></li>
-                    <li class="flex items-start gap-3"><i
-                            class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 12
-                            meses de garantía en todos los componentes.</span></li>
-                </ul>
-                <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
-                    <i class="fas fa-headset text-2xl"></i>
-                    <span class="text-xl font-bold text-gray-200">Servicio Postventa | </span>
-                    <span class="font-gamer text-xs">¿Algún Problema?<br>¡Lo Arreglo!</span>
-                </div>
-            </div>
-        </section>
-
 
 
         <form id="orderForm">
@@ -2062,6 +2002,27 @@
             <img id="zoomed-image" src="" alt="Imagen ampliada del componente">
         </div>
     </div>
+    
+    <!-- Sticky Price Summary Card -->
+    <div id="price-summary-card" class="font-saira">
+        <div class="price-section ars-price">
+            <div class="price-value-row">
+                <span class="currency-value">$<span id="total-price-summary-ars">500</span></span>
+                <span class="currency-text">LUCAS</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="price-section usd-price" id="usd-price-section">
+            <div class="price-value-row">
+                <span class="currency-value"><span id="total-price-summary-usd"></span></span>
+                <span class="currency-text">USD</span>
+            </div>
+            <a id="usd-link-summary" href="#" class="text-xs text-gray-500 hover:underline">
+                <p>Ver cotizaciones</p>
+            </a>
+        </div>
+    </div>
+
 
     <!-- NEW Mobile Sticky Price Summary -->
     <div id="mobile-price-summary-card"
@@ -2087,7 +2048,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // --- SMOOTH SCROLL FOR SPECIFIC LINK ---
-            document.querySelector('a.special-subtitle[href="#games-section"]').addEventListener('click', function (e) {
+            /* document.querySelector('a.special-subtitle[href="#games-section"]').addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
@@ -2116,7 +2077,7 @@
                     }
                     requestAnimationFrame(animation);
                 }
-            });
+            }); */
 
             // --- DATA ---
             const gameNames = ['GTA V', 'LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered', 'Need for Speed: Underground HD', 'Half Life: Black Mesa', 'Half Life 2 HD', 'Abe´s Oddysey Remake', 'WoW Classic: en TurtleWoW', 'Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster', 'BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3', 'Fallout: New Vegas', 'Batman: Arkham Asylum', 'Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD', 'Need for Speed: Most Wanted HD', 'Blur', 'GRID 2', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones', 'Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops', 'Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.', 'Mortal Kombat 11 Komplete Edition', 'Ultra Street Fighter IV', 'Ultimate Marvel vs. Capcom 3', 'The King of Fighters XIII', 'Injustice Gods Among Us', 'Heroes of Might & Magic HD V', 'Reckoning: Kingdoms of Amalur', 'Divinity Original Sin', 'Age of Empires II Definitive Edition', 'The Elder Scrolls V: Skyrim', 'The Elder Scrolls IV: Oblivion & AddOns HD'];
@@ -2279,19 +2240,19 @@
 
                 // Add selected SSD storage price from the select value
                 const ssdSelect = document.getElementById('ssd-select');
-                if (ssdSelect) {
+                if (ssdSelect && ssdSelect.value) {
                     total += parseInt(ssdSelect.value);
                 }
 
                 // Add selected GPU price from the select value
                 const gpuSelect = document.getElementById('gpu-select');
-                if (gpuSelect) {
+                if (gpuSelect && gpuSelect.value) {
                     total += parseInt(gpuSelect.value);
                 }
 
                 // Add selected PSU price from the select value
                 const psuSelect = document.getElementById('psu-select');
-                if (psuSelect) {
+                if (psuSelect && psuSelect.value) {
                     total += parseInt(psuSelect.value);
                 }
 
@@ -3040,8 +3001,8 @@
                     imageElement.style.transition = 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out';
                     imageElement.style.opacity = '1';
                     // Check if it's GPU or PSU on mobile to apply specific scale
-                    if (window.innerWidth < 768 && (imageElement.id === 'ssd-image' || imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
-                        imageElement.style.transform = 'scale(1.5) rotateY(0deg)';
+                    if ((imageElement.id === 'ssd-image' || imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
+                        imageElement.style.transform = 'scale(1.3) translateX(33px) rotateY(0deg)';
                     } else {
                         imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
                     }
@@ -3084,28 +3045,33 @@
                 });
             });
 
-            // --- Intersection Observer for Mobile Price Summary ---
-            const mainComponentsContainer = document.getElementById('main-components-container');
+            // --- Intersection Observer for Price Summary Cards ---
             const mobilePriceSummaryCard = document.getElementById('mobile-price-summary-card');
+            const priceSummaryCard = document.getElementById('price-summary-card');
+            const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
 
-            const observer = new IntersectionObserver((entries) => {
+            const observerOptions = {
+                root: null, // relative to the viewport
+                rootMargin: '0px',
+                threshold: 0 // trigger as soon as 1px is visible or not
+            };
+
+            const priceCardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Target element is visible
+                        // The trigger zone is visible
                         mobilePriceSummaryCard.classList.add('show-mobile-price');
+                        priceSummaryCard.classList.add('visible');
                     } else {
-                        // Target element is not visible
+                        // The trigger zone is not visible
                         mobilePriceSummaryCard.classList.remove('show-mobile-price');
+                        priceSummaryCard.classList.remove('visible');
                     }
                 });
-            }, {
-                root: null, // viewport as the root
-                rootMargin: '0px',
-                threshold: 0.1 // Trigger when 10% of the target is visible
-            });
+            }, observerOptions);
 
-            if (mainComponentsContainer && mobilePriceSummaryCard) {
-                observer.observe(mainComponentsContainer);
+            if (priceVisibilityZone) {
+                priceCardObserver.observe(priceVisibilityZone);
             }
 
 
