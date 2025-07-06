@@ -962,8 +962,7 @@
             /* Keep aspect ratio, allow overflow if wider/taller than container */
             cursor: pointer;
             /* Change cursor to pointer for click interaction */
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            /* Added opacity transition */
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
             z-index: 1;
             /* Below bottom controls */
             margin-top: -10%;
@@ -1280,29 +1279,36 @@
 
         #component-list li {
             display: flex;
-            align-items: center;
-            /* Align items (text and image) vertically in the row */
+            flex-direction: column; /* Mobile-first: single column */
+            align-items: center; /* Center content on mobile */
             gap: 1rem;
-            /* Space between text content and image */
             width: 100%;
-            /* Corrected to prevent horizontal scroll */
-            padding-right: 1.5rem;
-            /* Add some padding to the right for spacing */
+            padding: 1rem 0; /* Add vertical padding for mobile */
         }
 
-        @media (max-width: 767px) {
+        @media (min-width: 768px) { /* md breakpoint */
             #component-list li {
-                gap: 1.5rem;
-                /* Increased gap for mobile */
+                flex-direction: row; /* Revert to row layout on desktop */
+                align-items: center;
+                gap: 1rem;
+                padding: 0;
+                padding-right: 1.5rem;
             }
         }
 
         #component-list li .component-content-wrapper {
             display: flex;
             flex-direction: column;
-            /* Stack strong, select, description vertically */
-            flex-grow: 1;
-            /* Allow text content to take available space */
+            align-items: center; /* Center text on mobile */
+            width: 100%;
+            text-align: center; /* Center text alignment on mobile */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            #component-list li .component-content-wrapper {
+                align-items: flex-start; /* Align text to the left on desktop */
+                text-align: left;
+            }
         }
 
         #component-list li strong {
@@ -1339,17 +1345,32 @@
             /* Ensures consistent line height */
         }
 
+        /* NEW CSS-based image transition */
+        .component-option-image, #current-tower-image {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .component-option-image.loading, #current-tower-image.loading {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
         #component-list .component-option-image {
-            width: 180px;
-            /* Increased width for larger images */
+            width: 100%; /* Full width on mobile */
+            max-width: 20rem; /* Limit max width on mobile */
             object-fit: contain;
             flex-shrink: 0;
-            margin-left: auto;
-            position: relative;
+            margin-top: 1rem; /* Space between text and image on mobile */
             cursor: pointer;
-            /* Change cursor to pointer for click interaction */
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            /* Added opacity transition */
+        }
+
+        @media (min-width: 768px) { /* md breakpoint */
+            #component-list .component-option-image {
+                width: 180px;
+                max-width: none;
+                margin-left: auto;
+                margin-top: 0;
+            }
         }
 
         /* Desktop Hover Zoom Effects & New Sizing */
@@ -1388,31 +1409,6 @@
             #ssd-image:hover {
                 transform: scale(1);
                 /* No zoom for SSD on hover */
-            }
-        }
-
-        /* For mobile, ensure they retain original behavior (width: 180px, margin-left: auto) */
-        @media (max-width: 767px) {
-            #component-list .component-option-image {
-                /* Target all component images on mobile */
-                width: 100px;
-                /* Smaller width for mobile */
-                margin-left: auto;
-                /* Keep them to the right */
-                padding-left: 1.2rem;
-                margin-right: 0;
-                /* Reset negative margin for mobile */
-                transform-origin: center center;
-                /* Reset transform origin */
-            }
-
-            #gpu-image,
-            #psu-image {
-                transform: scale(1.5);
-                /* Scale to 2.3 for mobile */
-                transform-origin: center center;
-                /* Ensure scaling from center */
-                /* No specific margin-right needed here, as width is reduced and margin-left: auto handles positioning */
             }
         }
 
@@ -1697,29 +1693,29 @@
                     </div>
                     <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
                         <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
-                            <li class="flex items-center justify-between w-full">
-                                <div class="component-content-wrapper">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4">
+                                <div class="component-content-wrapper text-center md:text-left">
                                     <strong class="text-lg font-semibold">Placa de Video:</strong>
-                                    <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <select id="gpu-select" class="ml-0 w-full max-w-[250px] mx-auto md:mx-0"></select>
                                     <p id="gpu-description" class="description-text"></p>
                                 </div>
-                                <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image">
+                                <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
-                            <li class="flex items-center justify-between w-full">
-                                <div class="component-content-wrapper">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4">
+                                <div class="component-content-wrapper text-center md:text-left">
                                     <strong class="text-lg font-semibold">Almacenamiento:</strong>
-                                    <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <select id="ssd-select" class="ml-0 w-full max-w-[250px] mx-auto md:mx-0"></select>
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
-                                <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image">
+                                <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
-                            <li class="flex items-center justify-between w-full">
-                                <div class="component-content-wrapper">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4">
+                                <div class="component-content-wrapper text-center md:text-left">
                                     <strong class="text-lg font-semibold">Alimentación:</strong>
-                                    <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
+                                    <select id="psu-select" class="ml-0 w-full max-w-[250px] mx-auto md:mx-0"></select>
                                     <p id="psu-description" class="description-text"></p>
                                 </div>
-                                <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image">
+                                <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
                         </ul>
                     </div>
@@ -2841,41 +2837,27 @@
             const nextTowerBtn = document.getElementById('next-tower');
             const towerSelectorContainer = document.getElementById('tower-selector-container');
 
-            // Removed swipe functionality for mobile
-
-            /**
-             * Updates the displayed tower image and name.
-             */
-            function updateTowerDisplay() {
-                if (towersOptions.length === 0) {
-                    towerImageEl.src = 'https://placehold.co/400x500/1f2937/ffffff?text=No+Towers';
-                    currentTowerNameEl.textContent = 'No hay torres disponibles';
-                    return;
-                }
-                const selectedTower = towersOptions[currentTowerIndex];
-
-                animateImageChange(towerImageEl); // Animate the image change
-
-                // Set a timeout to change the src after the fade-out starts
+            function handleImageChange(imageElement, newSrc) {
+                imageElement.classList.add('loading');
                 setTimeout(() => {
-                    towerImageEl.src = selectedTower.image_url; // Show the first image as main
-                }, 150); // Match this with a point within the animation duration
+                    imageElement.src = newSrc;
+                    imageElement.classList.remove('loading');
+                }, 300); // Match CSS transition duration
+            }
 
+            function updateTowerDisplay() {
+                if (towersOptions.length === 0) return;
+                const selectedTower = towersOptions[currentTowerIndex];
+                handleImageChange(towerImageEl, selectedTower.image_url);
                 currentTowerNameEl.textContent = selectedTower.name;
                 updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
             }
 
-            /**
-             * Navigates to the previous tower in the list.
-             */
             function prevTower() {
                 currentTowerIndex = (currentTowerIndex - 1 + towersOptions.length) % towersOptions.length;
                 updateTowerDisplay();
             }
 
-            /**
-             * Navigates to the next tower in the list.
-             */
             function nextTower() {
                 currentTowerIndex = (currentTowerIndex + 1) % towersOptions.length;
                 updateTowerDisplay();
@@ -2885,167 +2867,67 @@
             nextTowerBtn.addEventListener('click', nextTower);
 
 
-            // --- SSD Storage Selector Logic (Combobox) ---
+            // --- Component Selector Logic ---
             const ssdSelect = document.getElementById('ssd-select');
             const ssdDescriptionEl = document.getElementById('ssd-description');
             const ssdImageEl = document.getElementById('ssd-image');
 
-            /**
-             * Updates the displayed SSD information and image.
-             */
-            function updateSsdDisplay() {
-                const selectedOption = ssdOptions.find(opt => opt.price == ssdSelect.value);
-                if (selectedOption) {
-                    ssdDescriptionEl.textContent = selectedOption.description;
-                    animateImageChange(ssdImageEl); // Animate the image change
-                    setTimeout(() => {
-                        ssdImageEl.src = selectedOption.image_url;
-                    }, 150);
-                } else {
-                    ssdDescriptionEl.textContent = '';
-                    animateImageChange(ssdImageEl); // Animate the image change even if empty
-                    setTimeout(() => {
-                        ssdImageEl.src = '';
-                    }, 150);
-                }
-                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
-            }
-
-            if (ssdSelect) {
-                // Populate options based on ssdOptions array
-                ssdSelect.innerHTML = ssdOptions.map((option, index) =>
-                    `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
-                ).join('');
-                ssdSelect.addEventListener('change', updateSsdDisplay);
-            }
-
-            // --- GPU Selector Logic (Combobox) ---
             const gpuSelect = document.getElementById('gpu-select');
             const gpuDescriptionEl = document.getElementById('gpu-description');
             const gpuImageEl = document.getElementById('gpu-image');
 
-            /**
-             * Updates the displayed GPU information and image.
-             */
-            function updateGpuDisplay() {
-                const selectedOption = gpuOptions.find(opt => opt.price == gpuSelect.value);
-                if (selectedOption) {
-                    gpuDescriptionEl.textContent = selectedOption.description;
-                    animateImageChange(gpuImageEl); // Animate the image change
-                    setTimeout(() => {
-                        gpuImageEl.src = selectedOption.image_url;
-                    }, 150);
-                } else {
-                    gpuDescriptionEl.textContent = '';
-                    animateImageChange(gpuImageEl); // Animate the image change even if empty
-                    setTimeout(() => {
-                        gpuImageEl.src = '';
-                    }, 150);
-                }
-                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
-            }
-
-            if (gpuSelect) {
-                gpuSelect.innerHTML = gpuOptions.map((option, index) =>
-                    `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
-                ).join('');
-                gpuSelect.addEventListener('change', updateGpuDisplay);
-            }
-
-            // --- PSU Selector Logic (Combobox) ---
             const psuSelect = document.getElementById('psu-select');
             const psuDescriptionEl = document.getElementById('psu-description');
             const psuImageEl = document.getElementById('psu-image');
 
-            /**
-             * Updates the displayed PSU information and image.
-             */
-            function updatePsuDisplay() {
-                const selectedOption = psuOptions.find(opt => opt.price == psuSelect.value);
-                if (selectedOption) {
-                    psuDescriptionEl.textContent = selectedOption.description;
-                    animateImageChange(psuImageEl); // Animate the image change
-                    setTimeout(() => {
-                        psuImageEl.src = selectedOption.image_url;
-                    }, 150);
-                } else {
-                    psuDescriptionEl.textContent = '';
-                    animateImageChange(psuImageEl); // Animate the image change even if empty
-                    setTimeout(() => {
-                        psuImageEl.src = '';
-                    }, 150);
-                }
-                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
-            }
-
-            if (psuSelect) {
-                psuSelect.innerHTML = psuOptions.map((option, index) =>
-                    `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
-                ).join('');
-                psuSelect.addEventListener('change', updatePsuDisplay);
-            }
-
-            /**
-             * Function to apply a smooth fade-out/scale-down and then fade-in/scale-up animation
-             * to an image element when its source is about to change.
-             * @param {HTMLElement} imageElement - The image element to animate.
-             */
-            function animateImageChange(imageElement) {
-                // Apply a "glitch-like" transition effect
-                imageElement.style.transition = 'opacity 0.1s ease-out, transform 0.1s ease-out';
-                imageElement.style.opacity = '0';
-                imageElement.style.transform = 'scale(0.8) rotateY(180deg)'; // Start state for the glitch effect (full flip)
+            function updateComponentDisplay(selectEl, descEl, imageEl, options) {
+                const selectedOption = options.find(opt => opt.price == selectEl.value);
+                
+                imageEl.classList.add('loading');
 
                 setTimeout(() => {
-                    // After a brief delay, reset styles for the incoming image with a new transition
-                    imageElement.style.transition = 'transform 0.3s ease-in-out, opacity 0.3s ease-in-out';
-                    imageElement.style.opacity = '1';
-                    // Check if it's GPU or PSU on mobile to apply specific scale
-                    if ((imageElement.id === 'ssd-image' || imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
-                        if (window.innerWidth <= 640) {
-                            imageElement.style.transform = 'scale(2) translateX(-33px) rotateY(0deg)'; // Scale up for mobile
-                        } else {
-                            imageElement.style.transform = 'scale(1.3) translateX(33px) rotateY(0deg)'; // Scale up for desktop
-                        }
-                        imageElement.style.transform = 'scale(1.3) translateX(33px) rotateY(0deg)';
+                    if (selectedOption) {
+                        descEl.textContent = selectedOption.description;
+                        imageEl.src = selectedOption.image_url;
                     } else {
-                        imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
+                        descEl.textContent = '';
+                        imageEl.src = '';
                     }
-                }, 10); // This timeout controls the duration of the "glitch" out effect
+                    imageEl.classList.remove('loading');
+                    updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
+                }, 150);
             }
 
+            if (ssdSelect) {
+                ssdSelect.addEventListener('change', () => updateComponentDisplay(ssdSelect, ssdDescriptionEl, ssdImageEl, ssdOptions));
+            }
+            if (gpuSelect) {
+                gpuSelect.addEventListener('change', () => updateComponentDisplay(gpuSelect, gpuDescriptionEl, gpuImageEl, gpuOptions));
+            }
+            if (psuSelect) {
+                psuSelect.addEventListener('change', () => updateComponentDisplay(psuSelect, psuDescriptionEl, psuImageEl, psuOptions));
+            }
 
             // --- Fullscreen Overlay Logic ---
             const fullscreenOverlay = document.getElementById('fullscreen-overlay');
             const zoomedImage = document.getElementById('zoomed-image');
 
-            /**
-             * Opens the fullscreen image zoom overlay.
-             * @param {string} imageSrc - The source URL of the image to display.
-             */
             function openFullscreenZoom(imageSrc) {
                 zoomedImage.src = imageSrc;
                 fullscreenOverlay.classList.add('active');
             }
 
-            /**
-             * Closes the fullscreen image zoom overlay.
-             */
             function closeFullscreenZoom() {
                 fullscreenOverlay.classList.remove('active');
-                // Clear image src after transition for memory optimization
-                setTimeout(() => { zoomedImage.src = ''; }, 300); // Matches CSS transition duration
+                setTimeout(() => { zoomedImage.src = ''; }, 300);
             }
 
-            // Event listener to close fullscreen overlay
             fullscreenOverlay.addEventListener('click', closeFullscreenZoom);
 
-            // --- Event Listeners for mobile touch zoom on component images ---
             const componentImagesForZoom = [towerImageEl, gpuImageEl, ssdImageEl, psuImageEl];
-
             componentImagesForZoom.forEach(imgEl => {
                 imgEl.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent any default click behavior (e.g., following a link)
+                    e.preventDefault();
                     openFullscreenZoom(imgEl.src);
                 });
             });
@@ -3056,19 +2938,17 @@
             const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
 
             const observerOptions = {
-                root: null, // relative to the viewport
+                root: null,
                 rootMargin: '0px',
-                threshold: 0 // trigger as soon as 1px is visible or not
+                threshold: 0
             };
 
             const priceCardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // The trigger zone is visible
                         mobilePriceSummaryCard.classList.add('show-mobile-price');
                         priceSummaryCard.classList.add('visible');
                     } else {
-                        // The trigger zone is not visible
                         mobilePriceSummaryCard.classList.remove('show-mobile-price');
                         priceSummaryCard.classList.remove('visible');
                     }
@@ -3087,22 +2967,20 @@
             positionCroxImages();
 
             // Set initial SSD, GPU, PSU values and update prices
-            if (ssdSelect) {
-                ssdSelect.value = ssdOptions[0].price; // Ensure initial selection is 240GB
+            if (ssdSelect && ssdOptions.length > 0) {
+                ssdSelect.value = ssdOptions[0].price;
+                updateComponentDisplay(ssdSelect, ssdDescriptionEl, ssdImageEl, ssdOptions);
             }
-            if (gpuSelect) {
+            if (gpuSelect && gpuOptions.length > 0) {
                 gpuSelect.value = gpuOptions[0].price;
+                updateComponentDisplay(gpuSelect, gpuDescriptionEl, gpuImageEl, gpuOptions);
             }
-            if (psuSelect) {
+            if (psuSelect && psuOptions.length > 0) {
                 psuSelect.value = psuOptions[0].price;
+                updateComponentDisplay(psuSelect, psuDescriptionEl, psuImageEl, psuOptions);
             }
-            // Initial display for component images and descriptions
-            updateTowerDisplay(); // Initialize tower display and animate
-            updateSsdDisplay();
-            updateGpuDisplay();
-            updatePsuDisplay();
-
-            updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta); // Initial price update after all elements are set
+            
+            updateTowerDisplay();
 
             // --- Event Listeners ---
             window.addEventListener('resize', () => {
