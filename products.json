@@ -119,14 +119,14 @@
     ],
     "psuOptions": [
         {
-            "name": "500w Sentey 80 Plus",
+            "name": "Certificada 80+",
             "price": 80000,
-            "description": "Certificación 80 Plus: Cuida nuestros componentes. Una genérica es más barata, pero puede terminar saliendo cara...",
+            "description": "Cuida nuestros componentes. Una genérica es más barata, pero puede terminar saliendo cara...",
             "image_url": "comps/psus/550sentey80.webp",
             "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-sentey-steel-nitro-power-snp550-gs-550w-negra/p/MLA43939305"
         },
         {
-            "name": "550w Sentey Genérica",
+            "name": "Genérica",
             "price": 21000,
             "description": "Fuente estándar, suficiente para que ande todo bien...mientras no se queme y lleve puesto algun componente.",
             "image_url": "comps/psus/550sentey.webp",

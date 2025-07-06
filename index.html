@@ -1280,69 +1280,55 @@
         #component-list li {
             display: flex;
             flex-direction: column; /* Mobile-first: single column */
-            align-items: center; /* Center content on mobile */
-            gap: 1rem;
+            align-items: flex-start; /* Align content to the left on mobile */
+            gap: 0.5rem; /* Reduced gap for tighter mobile layout */
             width: 100%;
-            padding: 1rem 0; /* Add vertical padding for mobile */
+            margin-bottom: 2rem; /* Space between items on mobile */
         }
 
         @media (min-width: 768px) { /* md breakpoint */
             #component-list li {
                 flex-direction: row; /* Revert to row layout on desktop */
                 align-items: center;
-                gap: 1rem;
-                padding: 0;
-                padding-right: 1.5rem;
+                gap: 3rem; /* Increased gap for desktop */
+                margin-bottom: 0;
             }
         }
 
         #component-list li .component-content-wrapper {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center text on mobile */
+            align-items: flex-start; /* Align text to the left */
             width: 100%;
-            text-align: center; /* Center text alignment on mobile */
+            text-align: left; /* Align text to the left */
         }
 
         @media (min-width: 768px) { /* md breakpoint */
             #component-list li .component-content-wrapper {
-                align-items: flex-start; /* Align text to the left on desktop */
-                text-align: left;
+                width: auto;
             }
         }
 
         #component-list li strong {
             font-size: 1.125rem;
-            /* text-lg */
             font-weight: 600;
-            /* font-semibold */
             color: #e5e7eb;
-            /* text-gray-200 */
             margin-bottom: 0.25rem;
-            /* Small space below title */
         }
 
         #component-list select {
             width: 100%;
-            /* Make selects take full available width */
             max-width: 250px;
-            /* Optional: limit max width for aesthetic */
             margin-top: 0;
-            /* Remove default margin from select */
         }
 
         #component-list .description-text {
             font-family: 'Inter', sans-serif;
             color: #42d232;
-            /* Green color */
             font-size: 1rem;
-            /* Base size for description */
             margin-top: 0.25rem;
-            /* Space below select */
             min-height: 4.5rem;
-            /* Ensures 3 lines of space (1rem * 3 lines = 3rem. Line-height 1.5 * 3 = 4.5rem) */
             line-height: 1.5;
-            /* Ensures consistent line height */
         }
 
         /* NEW CSS-based image transition */
@@ -1356,11 +1342,11 @@
         }
 
         #component-list .component-option-image {
-            width: 100%; /* Full width on mobile */
-            max-width: 20rem; /* Limit max width on mobile */
+            width: 100%; 
+            max-width: 20rem; 
             object-fit: contain;
             flex-shrink: 0;
-            margin-top: 1rem; /* Space between text and image on mobile */
+            margin-top: 0; 
             cursor: pointer;
         }
 
@@ -1369,7 +1355,6 @@
                 width: 180px;
                 max-width: none;
                 margin-left: auto;
-                margin-top: 0;
             }
         }
 
@@ -1383,32 +1368,21 @@
 
             #gpu-image,
             #psu-image {
-                /* Base size and position for GPU and PSU on desktop */
                 transform: scale(1.5);
-                /* Using negative margin-right to make it "sobresalir" from the right */
-                margin-right: -2.6rem;
                 transform-origin: right center;
-                /* Scale from the right side */
             }
 
             #gpu-image:hover,
             #psu-image:hover {
-                /* Enhanced hover effect for GPU and PSU */
                 transform: scale(1.7);
-                /* Further increase on hover */
             }
 
             #ssd-image {
-                /* SSD retains original size and position */
                 transform: scale(1);
-                /* Ensure no scaling */
-                margin-right: auto;
-                /* Ensure it stays right-aligned, not sticking out */
             }
 
             #ssd-image:hover {
                 transform: scale(1);
-                /* No zoom for SSD on hover */
             }
         }
 
@@ -1693,26 +1667,26 @@
                     </div>
                     <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
                         <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-8">
                                 <div class="component-content-wrapper text-center md:text-left">
                                     <strong class="text-lg font-semibold">Placa de Video:</strong>
-                                    <select id="gpu-select" class="ml-0 w-full max-w-[250px] mx-auto md:mx-0"></select>
+                                    <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="gpu-description" class="description-text"></p>
                                 </div>
                                 <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-8">
                                 <div class="component-content-wrapper text-center md:text-left">
                                     <strong class="text-lg font-semibold">Almacenamiento:</strong>
-                                    <select id="ssd-select" class="ml-0 w-full max-w-[250px] mx-auto md:mx-0"></select>
+                                    <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
                                 <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4">
+                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-8">
                                 <div class="component-content-wrapper text-center md:text-left">
                                     <strong class="text-lg font-semibold">Alimentación:</strong>
-                                    <select id="psu-select" class="ml-0 w-full max-w-[250px] mx-auto md:mx-0"></select>
+                                    <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="psu-description" class="description-text"></p>
                                 </div>
                                 <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
@@ -2175,11 +2149,11 @@
                     }
 
                     // Llamar a las funciones de actualización SOLO después de poblar los selects
-                    if (typeof updateTowerDisplay === 'function') updateTowerDisplay();
-                    if (typeof updateSsdDisplay === 'function') updateSsdDisplay();
-                    if (typeof updateGpuDisplay === 'function') updateGpuDisplay();
-                    if (typeof updatePsuDisplay === 'function') updatePsuDisplay();
-                    // Si tienes selectores para motherboard/cpu, inicialízalos aquí también.
+                    updateTowerDisplay();
+                    updateComponentDisplay(ssdSelect, document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions);
+                    updateComponentDisplay(gpuSelect, document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions);
+                    updateComponentDisplay(psuSelect, document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions);
+
                 })
                 .catch(error => {
                     console.error('Error cargando products.json:', error);
