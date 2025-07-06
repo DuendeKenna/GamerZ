@@ -3002,11 +3002,16 @@
                     imageElement.style.opacity = '1';
                     // Check if it's GPU or PSU on mobile to apply specific scale
                     if ((imageElement.id === 'ssd-image' || imageElement.id === 'gpu-image' || imageElement.id === 'psu-image')) {
+                        if (window.innerWidth <= 640) {
+                            imageElement.style.transform = 'scale(1.5) translateX(3px) rotateY(0deg)'; // Scale up for mobile
+                        } else {
+                            imageElement.style.transform = 'scale(1.3) translateX(33px) rotateY(0deg)'; // Scale up for desktop
+                        }
                         imageElement.style.transform = 'scale(1.3) translateX(33px) rotateY(0deg)';
                     } else {
                         imageElement.style.transform = 'scale(1) rotateY(0deg)'; // End state for the glitch effect
                     }
-                }, 100); // This timeout controls the duration of the "glitch" out effect
+                }, 10); // This timeout controls the duration of the "glitch" out effect
             }
 
 
