@@ -605,7 +605,7 @@
         #hero-background {
             position: absolute;
             overflow: hidden;
-            top: 0;
+            top: 55vh;
             left: 0;
             width: 100%;
             height: 100%;
@@ -627,7 +627,7 @@
             0% {
                 transform: scale(0.8) rotate(0deg);
                 filter: blur(20px);
-                opacity: 0.06;
+                opacity: 0.2;
             }
 
             50% {
@@ -639,7 +639,7 @@
             100% {
                 transform: scale(0.8) rotate(0deg);
                 filter: blur(20px);
-                opacity: 0.06;
+                opacity: 0.2;
             }
         }
 
@@ -1331,14 +1331,16 @@
             line-height: 1.5;
         }
 
-        /* NEW CSS-based image transition */
-        .component-option-image, #current-tower-image {
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        /* MODIFIED: CSS-based image transition for loading */
+        .component-option-image,
+        #current-tower-image {
+            transition: filter 0.4s ease-in-out, opacity 0.4s ease-in-out;
         }
 
-        .component-option-image.loading, #current-tower-image.loading {
-            opacity: 0;
-            transform: scale(0.95);
+        .component-option-image.loading,
+        #current-tower-image.loading {
+            filter: grayscale(100%);
+            opacity: 0.8;
         }
 
         #component-list .component-option-image {
@@ -1354,7 +1356,8 @@
             #component-list .component-option-image {
                 width: 180px;
                 max-width: none;
-                margin-left: 6rem;
+                left: 6rem;
+                position: relative;
             }
         }
 
@@ -1456,6 +1459,10 @@
         #mobile-price-summary-card #usd-link-summary-mobile {
             align-self: left;
         }
+
+        #garantia-section{
+            font-size: 1.18rem;
+        }
     </style>
 </head>
 
@@ -1484,7 +1491,7 @@
 
     <div class="container main-container mx-auto p-4 md:p-8 max-w-5xl">
         <div id="hero-wrapper" class="relative">
-            <div id="hero-background" style="left: -1px; top: 0px;pointer-events:none;">
+            <div id="hero-background" style="left: -1px; top: 66vh;pointer-events:none;">
                 <div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div>
             </div>
 
@@ -1585,11 +1592,11 @@
 <!--                 <h2 class="text-5xl font-bold mb-4 text-white">La Base de<p> La Nave</p>
                 </h2> -->
                 <p class="text-xl text-gray-300 font-saira">
-                    De <span class="text-2"><i>base</i></span> usamos un clásico proce gama media, que nos corre de todo y al no tener gráfica integrada ahorramos unos cuantos mangos.</p>
+                    De <strong class="text-2xl font-vt323">base</strong> usamos un clásico procesador gama media, que nos corre de todo y al no tener gráfica integrada ahorramos unos cuantos mangos.</p>
 
                 <p class="mt-2 text-xl font-normal font-saira"> Estos componentes<i class="text-gray-500"> no son random</i>
-                    - están astutamente elegidos para ofrecer Excelente Rendimiento + Durabilidad <b class="text-amber-400">sin
-                        pagar en exceso</b>.</p>
+                    - están astutamente elegidos para ofrecer Excelente Rendimiento + Durabilidad <p class="text-amber-400 text-xl font-bold">sin
+                        pagar en exceso</p></p>
 
                 <div class="mt-16 space-y-3">
                     <!-- CPU Row -->
@@ -1611,7 +1618,7 @@
                         <div class="md:col-span-7 text-center md:text-left">
                             <p class="font-saira text-4xl md:text-5xl green-333">16GB RAM DDR4</p>
                             <div class="text-lg md:text-xl text-green-500 mt-2">
-                                <p>o 32 si vas a streamear/editar en 4K. Clave que venga en 2 módulos <small class="green-333">(Dual Channel)</small></p>
+                                <p>o 32 si vas a streamear/editar en 4K. <p>Clave: viene en 2 módulos <small class="green-333">(Dual Channel)</small></p></p>
                             </div>
                         </div>
                     </div>
@@ -1780,7 +1787,7 @@
                 </div>
             </div>
 
-            <section id="garantia-section" class="mb-12 section-card-style">
+            <section id="garantia-section" class="mb-12 section-card-style garantia-lista">
                 <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
                 <div class="max-w-3xl mx-auto p-6 md:p-8 space-y-6">
                     <ul class="space-y-4 text-gray-300">
@@ -1820,9 +1827,9 @@
                 <div class="text-center load-more-container">
                     <button type="button" id="load-more-games" class="load-more-button font-gamer text-lg">Ver
                         Más</button>
-                    <p id="no-more-games" class="text-gray-500 mt-4 hidden">¿No viste el que querés? Pedimelo en Notas?
-                    </p>
                 </div>
+                    <p id="no-more-games" class="text-gray-500 text-center mt-2 mb-4 hidden">¿No viste el que querés? Pedimelo en Notas?
+                    </p>
             </section>
 
             <section id="section-software" class="mb-12 section-card-style">
@@ -2809,37 +2816,6 @@
             const currentTowerNameEl = document.getElementById('current-tower-name');
             const prevTowerBtn = document.getElementById('prev-tower');
             const nextTowerBtn = document.getElementById('next-tower');
-            const towerSelectorContainer = document.getElementById('tower-selector-container');
-
-            function handleImageChange(imageElement, newSrc) {
-                imageElement.classList.add('loading');
-                setTimeout(() => {
-                    imageElement.src = newSrc;
-                    imageElement.classList.remove('loading');
-                }, 300); // Match CSS transition duration
-            }
-
-            function updateTowerDisplay() {
-                if (towersOptions.length === 0) return;
-                const selectedTower = towersOptions[currentTowerIndex];
-                handleImageChange(towerImageEl, selectedTower.image_url);
-                currentTowerNameEl.textContent = selectedTower.name;
-                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
-            }
-
-            function prevTower() {
-                currentTowerIndex = (currentTowerIndex - 1 + towersOptions.length) % towersOptions.length;
-                updateTowerDisplay();
-            }
-
-            function nextTower() {
-                currentTowerIndex = (currentTowerIndex + 1) % towersOptions.length;
-                updateTowerDisplay();
-            }
-
-            prevTowerBtn.addEventListener('click', prevTower);
-            nextTowerBtn.addEventListener('click', nextTower);
-
 
             // --- Component Selector Logic ---
             const ssdSelect = document.getElementById('ssd-select');
@@ -2854,22 +2830,77 @@
             const psuDescriptionEl = document.getElementById('psu-description');
             const psuImageEl = document.getElementById('psu-image');
 
+            /**
+             * MODIFIED: Handles image loading gracefully with a grayscale effect.
+             * @param {HTMLElement} imageElement - The <img> element to update.
+             * @param {string} newSrc - The URL of the new image to load.
+             */
+            function loadImageWithGrayscale(imageElement, newSrc) {
+                // Apply loading styles (grayscale) to the image
+                imageElement.classList.add('loading');
+
+                // Create a temporary image object to load the new source in the background
+                const tempImage = new Image();
+                tempImage.src = newSrc;
+
+                // Event handler for when the new image is successfully loaded
+                tempImage.onload = () => {
+                    // Update the actual image element's source on the page
+                    imageElement.src = newSrc;
+                    // Remove the loading style, which will trigger the CSS transition back to full color
+                    imageElement.classList.remove('loading');
+                };
+
+                // Event handler for loading errors
+                tempImage.onerror = () => {
+                    console.error(`Failed to load image: ${newSrc}`);
+                    // If the image fails to load, remove the loading style to un-grayscale the old image
+                    imageElement.classList.remove('loading');
+                };
+            }
+
+            /**
+             * MODIFIED: Updates the tower display using the new image loading logic.
+             */
+            function updateTowerDisplay() {
+                if (towersOptions.length === 0) return;
+                const selectedTower = towersOptions[currentTowerIndex];
+                loadImageWithGrayscale(towerImageEl, selectedTower.image_url);
+                currentTowerNameEl.textContent = selectedTower.name;
+                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
+            }
+            
+            function prevTower() {
+                currentTowerIndex = (currentTowerIndex - 1 + towersOptions.length) % towersOptions.length;
+                updateTowerDisplay();
+            }
+
+            function nextTower() {
+                currentTowerIndex = (currentTowerIndex + 1) % towersOptions.length;
+                updateTowerDisplay();
+            }
+
+            prevTowerBtn.addEventListener('click', prevTower);
+            nextTowerBtn.addEventListener('click', nextTower);
+
+            /**
+             * MODIFIED: Updates a component's display (description and image) using the new loading logic.
+             * @param {HTMLElement} selectEl - The <select> element for the component.
+             * @param {HTMLElement} descEl - The <p> element for the description.
+             * @param {HTMLElement} imageEl - The <img> element for the component.
+             * @param {Array} options - The array of options for this component.
+             */
             function updateComponentDisplay(selectEl, descEl, imageEl, options) {
                 const selectedOption = options.find(opt => opt.price == selectEl.value);
                 
-                imageEl.classList.add('loading');
-
-                setTimeout(() => {
-                    if (selectedOption) {
-                        descEl.textContent = selectedOption.description;
-                        imageEl.src = selectedOption.image_url;
-                    } else {
-                        descEl.textContent = '';
-                        imageEl.src = '';
-                    }
-                    imageEl.classList.remove('loading');
-                    updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
-                }, 150);
+                if (selectedOption) {
+                    descEl.textContent = selectedOption.description;
+                    loadImageWithGrayscale(imageEl, selectedOption.image_url);
+                } else {
+                    descEl.textContent = '';
+                    imageEl.src = '';
+                }
+                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
             }
 
             if (ssdSelect) {
