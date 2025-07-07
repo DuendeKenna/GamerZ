@@ -3,217 +3,723 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual Interactivo de Tailwind CSS</title>
+    <title>Guía Práctica Interactiva de Tailwind CSS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chosen Palette: Warm Neutrals (Slate, Amber) -->
-    <!-- Application Structure Plan: He diseñado una SPA con un diseño de dos columnas: una barra de navegación lateral fija para un acceso rápido y un área de contenido principal desplazable. Esta estructura es ideal para un manual técnico, ya que permite a los usuarios navegar fácilmente por los temas sin perder el contexto. En lugar de simplemente mostrar el texto del informe, he creado "playgrounds" interactivos donde los usuarios pueden aplicar clases de Tailwind y ver los resultados al instante. Este enfoque de "aprender haciendo" es mucho más eficaz para comprender un framework de CSS como Tailwind, ya que conecta directamente el nombre de la clase con su resultado visual, cumpliendo el objetivo de facilitar la exploración y la comprensión. -->
-    <!-- Visualization & Content Choices: Informe -> Clases Esenciales; Meta -> Enseñar la función de las clases; Visualización -> Playground interactivo (Elemento HTML + Controles JS); Interacción -> El usuario hace clic en botones que usan JS para manipular la `classList` del elemento de demostración y actualizar un fragmento de código, proporcionando retroalimentación visual y de código inmediata; Justificación -> Este es el método más directo y eficaz para enseñar un sistema de clases de utilidad. Para la comparación de frameworks, se utiliza un gráfico de barras (Chart.js) en lugar de una tabla estática para una presentación visual más atractiva. Se ha implementado un interruptor para el modo oscuro para demostrar la variante `dark:`. -->
+    <!-- Chosen Palette: Warm Neutrals (Slate, Amber, Sky, Green, Purple) -->
+    <!-- Application Structure Plan: He diseñado una SPA con un encabezado flotante que contiene un menú de navegación y un campo de búsqueda, permitiendo una navegación rápida y un filtrado de contenido eficiente. El cuerpo principal se divide en secciones temáticas, cada una presentando las clases de Tailwind en un formato de tabla o cuadrícula con descripciones concisas y ejemplos. Cada sección principal incluye un "Playground" interactivo donde los usuarios pueden aplicar clases y ver los resultados en tiempo real, junto con el código HTML actualizado. Este diseño facilita la exploración y el aprendizaje al permitir a los usuarios saltar directamente a la información que necesitan y ver ejemplos claros. El enfoque interactivo de copiar clases al portapapeles mejora la utilidad como "guía práctica". -->
+    <!-- Visualization & Content Choices: Para cada categoría de clases, se utiliza una combinación de tablas y cuadrículas (HTML/CSS con Tailwind) para presentar la clase, su descripción y un ejemplo de uso. Se ha optado por no usar Chart.js o Plotly.js ya que el objetivo es una referencia rápida de clases y no la visualización de datos complejos. La interactividad se centra en la función de copiar al portapapeles para los nombres de las clases y en los "Playgrounds" que manipulan las clases de elementos de demostración. La sección de colores muestra visualmente todas las tonalidades de las paletas de Tailwind. El modo oscuro se mantiene para demostrar la variante `dark:`. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             transition: background-color 0.3s, color 0.3s;
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 400px;
-            max-height: 50vh;
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+            background-color: rgba(248, 250, 252, 0.9); /* slate-50 with opacity */
         }
-        /* Estilos para el scroll suave */
-        html {
-            scroll-behavior: smooth;
+        .dark .sticky-header {
+            background-color: rgba(15, 23, 42, 0.9); /* slate-900 with opacity */
+        }
+        .class-item {
+            cursor: pointer;
+            transition: transform 0.1s ease-in-out;
+        }
+        .class-item:active {
+            transform: scale(0.98);
+        }
+        pre code {
+            white-space: pre-wrap; /* Permite que el texto se ajuste */
+            word-wrap: break-word; /* Rompe palabras largas si es necesario */
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-sans">
 
-    <div class="relative min-h-screen md:flex">
-        <!-- Barra lateral de navegación -->
-        <aside class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 w-full md:w-64 py-4 px-2 md:fixed md:h-full">
-            <h2 class="text-xl font-bold text-center px-4 mb-4">Tailwind CSS</h2>
-            <nav>
-                <a href="#introduccion" class="flex items-center px-4 py-2 mt-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md">Introducción</a>
-                <a href="#comparacion" class="flex items-center px-4 py-2 mt-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md">Comparación</a>
-                <a href="#fundamentos" class="flex items-center px-4 py-2 mt-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md">Fundamentos</a>
-                <a href="#clases-esenciales" class="flex items-center px-4 py-2 mt-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md">Clases Esenciales</a>
-                <a href="#diseno-adaptable" class="flex items-center px-4 py-2 mt-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md">Diseño Adaptable</a>
-                <a href="#interactividad" class="flex items-center px-4 py-2 mt-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md">Interactividad</a>
-                <a href="#consejos" class="flex items-center px-4 py-2 mt-2 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-md">Consejos</a>
+    <!-- Encabezado Flotante -->
+    <header class="sticky-header shadow-md py-4 px-6 md:px-10 flex flex-col md:flex-row items-center justify-between rounded-b-lg">
+        <div class="flex items-center mb-4 md:mb-0">
+            <h1 class="text-2xl font-bold text-slate-900 dark:text-white mr-4">Guía Tailwind CSS</h1>
+            <nav class="hidden md:flex space-x-4">
+                <a href="#maquetacion" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Maquetación</a>
+                <a href="#display" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Display</a>
+                <a href="#posicionamiento" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Posicionamiento</a>
+                <a href="#espaciado" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Espaciado</a>
+                <a href="#tamano" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Tamaño</a>
+                <a href="#tipografia" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Tipografía</a>
+                <a href="#fondos-bordes" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Fondos y Bordes</a>
+                <a href="#transformaciones" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Transformaciones</a>
+                <a href="#transiciones-animaciones" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Transiciones</a>
+                <a href="#filtros" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Filtros</a>
+                <a href="#listas-tablas" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Listas y Tablas</a>
+                <a href="#overflow" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Overflow</a>
+                <a href="#interactividad" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Interactividad</a>
+                <a href="#colores" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Colores</a>
+                <a href="#responsive" class="text-slate-600 dark:text-slate-300 hover:text-amber-600 dark:hover:text-amber-400 font-semibold">Responsive</a>
             </nav>
-            <div class="absolute bottom-4 left-0 w-full px-4">
-                 <div class="flex items-center justify-center space-x-2 mt-4">
-                    <span>☀️</span>
-                    <label for="dark-mode-toggle" class="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" value="" id="dark-mode-toggle" class="sr-only peer">
-                        <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-amber-500"></div>
-                    </label>
-                    <span>🌙</span>
+        </div>
+        <div class="flex items-center space-x-4 w-full md:w-auto">
+            <input type="text" id="search-input" placeholder="Buscar clase o tema..." class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500 w-full md:w-64">
+            <div class="flex items-center space-x-2">
+                <span>☀️</span>
+                <label for="dark-mode-toggle" class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" value="" id="dark-mode-toggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-amber-500"></div>
+                </label>
+                <span>🌙</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-8 py-8">
+        <section id="introduccion" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4">Bienvenido a tu Guía Práctica de Tailwind CSS</h2>
+            <p class="text-lg mb-4">Esta guía interactiva te ayudará a dominar las clases esenciales de Tailwind CSS de forma rápida y eficiente. Explora las categorías, haz clic en las clases para copiarlas y experimenta con los ejemplos.</p>
+            <p class="text-md text-slate-600 dark:text-slate-400">Tailwind CSS es un framework "utility-first" que te permite construir diseños directamente en tu HTML, combinando pequeñas clases de utilidad para crear interfaces únicas y responsivas.</p>
+        </section>
+
+        <section id="maquetacion" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">1. Maquetación (Layout & Positioning)</h2>
+            <p class="mb-6">Estas clases son fundamentales para organizar y posicionar elementos en la página web utilizando Flexbox y CSS Grid.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Flexbox Contenedor</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="flex">flex</span>: Contenedor flex.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="flex-row">flex-row</span>: Elementos en fila.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="flex-col">flex-col</span>: Elementos en columna.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="flex-wrap">flex-wrap</span>: Permite que los ítems se envuelvan.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="justify-center">justify-center</span>: Centra ítems en eje principal.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="items-center">items-center</span>: Centra ítems en eje transversal.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="gap-4">gap-4</span>: Espacio entre ítems.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Flexbox Ítem</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="flex-1">flex-1</span>: `flex: 1 1 0%`.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="flex-auto">flex-auto</span>: `flex: 1 1 auto`.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="flex-grow">flex-grow</span>: Permite crecer.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="flex-shrink">flex-shrink</span>: Permite encogerse.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="self-end">self-end</span>: Alinea ítem individualmente.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="order-first">order-first</span>: Ordena el ítem al principio.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="order-last">order-last</span>: Ordena el ítem al final.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Grid</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="grid">grid</span>: Contenedor grid.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="grid-cols-3">grid-cols-3</span>: Define 3 columnas.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="grid-rows-2">grid-rows-2</span>: Define 2 filas.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="col-span-2">col-span-2</span>: Ocupa 2 columnas.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="row-span-1">row-span-1</span>: Ocupa 1 fila.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="col-start-2">col-start-2</span>: Inicia en columna 2.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="auto-cols-fr">auto-cols-fr</span>: Columnas de tamaño automático.</li>
+                    </ul>
                 </div>
             </div>
-        </aside>
 
-        <!-- Contenido principal -->
-        <main class="md:ml-64 flex-1 p-6 md:p-10">
-            <section id="introduccion" class="mb-16">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Manual de Aprendizaje Rápido de Tailwind CSS</h1>
-                <p class="text-lg mb-6">Tailwind CSS se ha consolidado como un enfoque revolucionario en el desarrollo frontend. Este manual interactivo está diseñado para proporcionar una comprensión práctica de sus principios, clases más utilizadas y mejores prácticas.</p>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-2">Filosofía Utility-First</h3>
-                        <p>A diferencia de frameworks como Bootstrap que ofrecen componentes pre-diseñados (botones, tarjetas), Tailwind proporciona clases de utilidad de bajo nivel. En lugar de escribir CSS, combinas estas pequeñas clases en tu HTML para construir diseños únicos.</p>
-                    </div>
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                         <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-2">Ventajas Clave</h3>
-                        <ul class="list-disc list-inside space-y-1">
-                            <li>Mayor velocidad de desarrollo.</li>
-                            <li>Consistencia de diseño inherente.</li>
-                            <li>Archivos CSS de producción optimizados.</li>
-                            <li>Mantenimiento más sencillo y seguro.</li>
-                        </ul>
+            <!-- Playground de Maquetación -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Maquetación</h3>
+                <p class="mb-4 text-sm">Experimenta con Flexbox y Grid. Los botones aplican clases al contenedor principal.</p>
+                <div id="layout-demo-container" class="bg-blue-200 dark:bg-blue-800 p-4 rounded-md min-h-[150px] flex items-center justify-center border-2 border-blue-400 dark:border-blue-600 transition-all duration-300">
+                    <div class="bg-blue-500 text-white p-2 rounded-md w-16 h-16 flex items-center justify-center">1</div>
+                    <div class="bg-blue-500 text-white p-2 rounded-md w-16 h-16 flex items-center justify-center">2</div>
+                    <div class="bg-blue-500 text-white p-2 rounded-md w-16 h-16 flex items-center justify-center">3</div>
+                </div>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="flex" data-target="layout-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">flex</button>
+                    <button data-class="flex-col" data-target="layout-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">flex-col</button>
+                    <button data-class="justify-around" data-target="layout-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">justify-around</button>
+                    <button data-class="items-end" data-target="layout-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">items-end</button>
+                    <button data-class="gap-8" data-target="layout-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">gap-8</button>
+                    <button data-class="grid grid-cols-2" data-target="layout-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">grid grid-cols-2</button>
+                    <button data-class="grid grid-cols-3" data-target="layout-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">grid grid-cols-3</button>
+                    <button id="reset-layout-demo-container" data-target="layout-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-layout-demo-container">&lt;div class="bg-blue-200 ..."&gt;...&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <section id="display" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">2. Display</h2>
+            <p class="mb-6">Controla cómo se muestra un elemento en la página (block, inline, etc.).</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Clases de Display</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="block">block</span>: Se muestra como un bloque.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="inline">inline</span>: Se muestra en línea.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="inline-block">inline-block</span>: En línea, pero con propiedades de bloque.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="hidden">hidden</span>: Oculta el elemento.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Playground de Display -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Display</h3>
+                <p class="mb-4 text-sm">Observa cómo cambia el comportamiento de los elementos al aplicar diferentes clases de display.</p>
+                <div class="flex justify-center items-center h-24">
+                    <div id="display-demo-container" class="bg-purple-300 dark:bg-purple-700 text-slate-800 dark:text-white p-4 rounded-md border-2 border-purple-500 dark:border-purple-900 transition-all duration-300">Elemento de Demostración</div>
+                </div>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="block" data-target="display-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">block</button>
+                    <button data-class="inline" data-target="display-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">inline</button>
+                    <button data-class="inline-block" data-target="display-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">inline-block</button>
+                    <button data-class="hidden" data-target="display-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">hidden</button>
+                    <button id="reset-display-demo-container" data-target="display-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-display-demo-container">&lt;div class="bg-purple-300 ..."&gt;Elemento de Demostración&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <section id="posicionamiento" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">3. Posicionamiento</h2>
+            <p class="mb-6">Controla la posición de un elemento en relación con su flujo normal, su contenedor o el viewport.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Tipos de Posición</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="static">static</span>: Posición por defecto.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="relative">relative</span>: Posicionado relativo a sí mismo.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="absolute">absolute</span>: Posicionado relativo al ancestro posicionado más cercano.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="fixed">fixed</span>: Posicionado relativo al viewport.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="sticky">sticky</span>: Se comporta como relativo hasta un punto de scroll, luego como fijo.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Offsets y Z-Index</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="top-0">top-0</span>: `top: 0px`.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="bottom-4">bottom-4</span>: `bottom: 16px`.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="left-1/2">left-1/2</span>: `left: 50%`.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="right-0">right-0</span>: `right: 0px`.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="inset-0">inset-0</span>: `top:0; right:0; bottom:0; left:0;`.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="z-10">z-10</span>: `z-index: 10`.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Playground de Posicionamiento -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md relative h-48 border-2 border-slate-300 dark:border-slate-600">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Posicionamiento</h3>
+                <p class="mb-4 text-sm">Observa cómo el elemento se posiciona dentro de su contenedor relativo.</p>
+                <div id="position-demo-container" class="bg-red-400 dark:bg-red-700 text-white p-3 rounded-md w-24 h-24 transition-all duration-300 absolute top-0 left-0">Elemento</div>
+                <div class="mt-4 text-center space-x-2 space-y-2 absolute bottom-4 left-1/2 -translate-x-1/2 w-full">
+                    <button data-class="static" data-target="position-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">static</button>
+                    <button data-class="relative top-4 left-4" data-target="position-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">relative top-4 left-4</button>
+                    <button data-class="absolute bottom-0 right-0" data-target="position-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">absolute bottom-0 right-0</button>
+                    <button data-class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" data-target="position-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">fixed center</button>
+                    <button data-class="z-50" data-target="position-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">z-50</button>
+                    <button id="reset-position-demo-container" data-target="position-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg absolute bottom-0 left-0 w-full"><code id="code-position-demo-container">&lt;div class="bg-red-400 ..."&gt;Elemento&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <section id="espaciado" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">4. Espaciado (Padding y Margin)</h2>
+            <p class="mb-6">Controla el espacio interno (padding) y externo (margin) de los elementos, así como el espacio entre ellos. Las unidades por defecto son `1rem = 16px`.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Padding (p-)</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="p-4">p-4</span>: Padding en todos los lados (16px).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="px-8">px-8</span>: Padding horizontal (32px).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="py-2">py-2</span>: Padding vertical (8px).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="pt-4">pt-4</span>: Padding superior.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="pb-4">pb-4</span>: Padding inferior.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="pl-4">pl-4</span>: Padding izquierdo.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="pr-4">pr-4</span>: Padding derecho.</li>
+                    </ul>
+                    <div class="mt-4 mx-auto bg-emerald-200 dark:bg-emerald-900 w-48 h-24 flex items-center justify-center p-4 rounded-md">
+                        <div class="bg-emerald-500 text-white p-2 rounded">Contenido</div>
                     </div>
                 </div>
-            </section>
-
-            <hr class="my-12 border-slate-200 dark:border-slate-700">
-
-            <section id="comparacion" class="mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Comparación con otros Frameworks</h2>
-                <p class="mb-8">La diferencia fundamental de Tailwind es su enfoque "utility-first" frente a los frameworks basados en componentes. Mientras otros te dan "piezas de lego ya construidas", Tailwind te da "los bloques individuales para que construyas lo que quieras". El siguiente gráfico ilustra las diferencias conceptuales en varios ejes.</p>
-                <div class="bg-white dark:bg-slate-800 p-4 md:p-6 rounded-xl shadow-md">
-                    <div class="chart-container">
-                        <canvas id="frameworkChart"></canvas>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Margin (m-)</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="m-4">m-4</span>: Margin en todos los lados (16px).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="mx-auto">mx-auto</span>: Centra horizontalmente.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="my-8">my-8</span>: Margin vertical (32px).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="mt-4">mt-4</span>: Margin superior.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="mb-4">mb-4</span>: Margin inferior.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="ml-4">ml-4</span>: Margin izquierdo.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="mr-4">mr-4</span>: Margin derecho.</li>
+                    </ul>
+                    <div class="mt-4 bg-emerald-200 dark:bg-emerald-900 w-48 h-24 flex items-center justify-center m-4 rounded-md">
+                        <div class="bg-emerald-500 text-white p-2 rounded">Contenido</div>
                     </div>
                 </div>
-            </section>
-            
-            <hr class="my-12 border-slate-200 dark:border-slate-700">
-
-            <section id="fundamentos" class="mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Conceptos Fundamentales</h2>
-                 <p class="mb-8">Para empezar, es crucial entender cómo se aplican las clases y cómo el framework impone un sistema de diseño coherente. Todo se basa en añadir clases directamente a tus elementos HTML.</p>
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Ejemplo: Aplicación de Clases</h3>
-                    <p class="mb-4">Así es como se estiliza un botón. Observa cómo cada clase corresponde a una propiedad de CSS, aplicada directamente en el HTML.</p>
-                    <div class="flex justify-center mb-4">
-                        <button class="bg-amber-500 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-amber-600 transition-colors">
-                            Botón de Ejemplo
-                        </button>
-                    </div>
-                    <pre class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 p-4 rounded-lg overflow-x-auto"><code class="language-html">&lt;button class="bg-amber-500 text-white font-bold py-2 px-4 rounded-lg shadow-md hover:bg-amber-600 transition-colors"&gt;
-    Botón de Ejemplo
-&lt;/button&gt;</code></pre>
+            </div>
+            <div class="mt-6 p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Espacio entre elementos (space-x/y)</h3>
+                <ul class="space-y-2 mb-4">
+                    <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="space-x-4">space-x-4</span>: Espacio horizontal entre hijos.</li>
+                    <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="space-y-2">space-y-2</span>: Espacio vertical entre hijos.</li>
+                </ul>
+                <div class="flex space-x-4 justify-center">
+                    <div class="bg-sky-500 text-white p-2 rounded">Item A</div>
+                    <div class="bg-sky-500 text-white p-2 rounded">Item B</div>
+                    <div class="bg-sky-500 text-white p-2 rounded">Item C</div>
                 </div>
-            </section>
+            </div>
 
-            <hr class="my-12 border-slate-200 dark:border-slate-700">
-
-            <section id="clases-esenciales" class="mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Playground de Clases Esenciales</h2>
-                <p class="mb-8">Esta es tu caja de herramientas básica. Experimenta con los controles para aplicar diferentes clases de utilidad y observa cómo afectan al elemento de demostración en tiempo real. El código HTML correspondiente se actualizará a continuación.</p>
-
-                <!-- Playground de Espaciado -->
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md mb-8">
-                    <h3 class="text-xl font-bold mb-4">Espaciado (Padding y Margin)</h3>
-                    <div id="spacing-demo" class="bg-sky-200 dark:bg-sky-800 w-48 h-24 flex items-center justify-center m-auto transition-all duration-300">
-                        <div class="bg-sky-500 dark:bg-sky-500 text-white p-2 rounded">Caja</div>
+            <!-- Playground de Espaciado -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Espaciado</h3>
+                <p class="mb-4 text-sm">Aplica padding y margin al cuadro exterior. El cuadro interior tiene un padding fijo.</p>
+                <div class="flex justify-center">
+                    <div id="spacing-demo-container" class="bg-green-200 dark:bg-green-800 border-2 border-green-400 dark:border-green-600 rounded-md transition-all duration-300">
+                        <div class="bg-green-500 text-white p-4 rounded-md">Contenido Interno</div>
                     </div>
-                    <div class="mt-4 text-center space-x-2 space-y-2">
-                        <button data-class="p-2" data-target="spacing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">p-2</button>
-                        <button data-class="p-4" data-target="spacing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">p-4</button>
-                        <button data-class="p-8" data-target="spacing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">p-8</button>
-                        <button data-class="m-2" data-target="spacing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">m-2</button>
-                        <button data-class="m-4" data-target="spacing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">m-4</button>
-                        <button data-class="m-8" data-target="spacing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">m-8</button>
-                        <button data-class="px-12" data-target="spacing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">px-12</button>
-                        <button id="reset-spacing" data-target="spacing-demo" class="bg-red-500 text-white px-3 py-1 rounded">Reset</button>
-                    </div>
-                    <pre class="mt-4 bg-slate-100 dark:bg-slate-900 p-4 rounded-lg"><code id="code-spacing-demo">&lt;div class="bg-sky-200 ..."&gt;...&lt;/div&gt;</code></pre>
                 </div>
-                
-                <!-- Playground de Tamaño y Bordes -->
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-bold mb-4">Tamaño, Bordes y Sombras</h3>
-                    <div class="h-48 flex items-center justify-center">
-                         <div id="sizing-demo" class="bg-emerald-500 text-white flex items-center justify-center w-32 h-32 transition-all duration-300">Elemento</div>
-                    </div>
-                    <div class="mt-4 text-center space-x-2 space-y-2">
-                        <button data-class="w-48" data-target="sizing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">w-48</button>
-                        <button data-class="w-64" data-target="sizing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">w-64</button>
-                        <button data-class="h-40" data-target="sizing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">h-40</button>
-                        <button data-class="rounded-md" data-target="sizing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">rounded-md</button>
-                        <button data-class="rounded-full" data-target="sizing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">rounded-full</button>
-                        <button data-class="shadow-lg" data-target="sizing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">shadow-lg</button>
-                        <button data-class="shadow-2xl" data-target="sizing-demo" class="control-btn bg-slate-200 dark:bg-slate-700 px-3 py-1 rounded">shadow-2xl</button>
-                         <button id="reset-sizing" data-target="sizing-demo" class="bg-red-500 text-white px-3 py-1 rounded">Reset</button>
-                    </div>
-                     <pre class="mt-4 bg-slate-100 dark:bg-slate-900 p-4 rounded-lg"><code id="code-sizing-demo">&lt;div class="bg-emerald-500 w-32 h-32 ..."&gt;Elemento&lt;/div&gt;</code></pre>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="p-4" data-target="spacing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">p-4</button>
+                    <button data-class="p-8" data-target="spacing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">p-8</button>
+                    <button data-class="px-12" data-target="spacing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">px-12</button>
+                    <button data-class="m-4" data-target="spacing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">m-4</button>
+                    <button data-class="m-8" data-target="spacing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">m-8</button>
+                    <button data-class="mx-auto" data-target="spacing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">mx-auto</button>
+                    <button id="reset-spacing-demo-container" data-target="spacing-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
                 </div>
-            </section>
-            
-            <hr class="my-12 border-slate-200 dark:border-slate-700">
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-spacing-demo-container">&lt;div class="bg-green-200 ..."&gt;...&lt;/div&gt;</code></pre>
+            </div>
+        </section>
 
-            <section id="diseno-adaptable" class="mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Diseño Adaptable</h2>
-                <p class="mb-8">Tailwind utiliza un enfoque "mobile-first". Los estilos sin prefijo se aplican a todos los tamaños de pantalla. Luego, puedes añadir prefijos como `md:` o `lg:` para aplicar estilos solo en pantallas más grandes. Redimensiona tu navegador para ver cómo cambia el siguiente elemento.</p>
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                    <div class="bg-violet-500 p-6 rounded-lg text-white font-bold text-center text-lg md:bg-pink-500 lg:bg-orange-500">
-                        <p class="sm:hidden">Soy Violeta en pantallas XS</p>
-                        <p class="hidden sm:block md:hidden">Soy Violeta en pantallas SM</p>
-                        <p class="hidden md:block lg:hidden">Soy Rosa en pantallas MD</p>
-                        <p class="hidden lg:block">Soy Naranja en pantallas LG o más grandes</p>
-                    </div>
-                     <pre class="mt-4 bg-slate-100 dark:bg-slate-900 p-4 rounded-lg overflow-x-auto"><code class="language-html">&lt;div class="bg-violet-500 md:bg-pink-500 lg:bg-orange-500"&gt;...&lt;/div&gt;</code></pre>
+        <section id="tamano" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">5. Tamaño (Width y Height)</h2>
+            <p class="mb-6">Define las dimensiones (ancho y alto) de los elementos. Puedes usar valores fijos (ej. `w-64`), porcentajes (`w-1/2`) o relativos al viewport (`w-screen`).</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Ancho (w-)</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="w-full">w-full</span>: Ancho completo (100%).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="w-1/2">w-1/2</span>: 50% de ancho.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="w-64">w-64</span>: Ancho fijo (256px).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="max-w-md">max-w-md</span>: Ancho máximo (448px).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="min-w-0">min-w-0</span>: Ancho mínimo 0.</li>
+                    </ul>
                 </div>
-            </section>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Alto (h-) y Aspect Ratio</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="h-full">h-full</span>: Alto completo (100%).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="h-screen">h-screen</span>: 100vh.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="h-40">h-40</span>: Alto fijo (160px).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="aspect-video">aspect-video</span>: `aspect-ratio: 16 / 9`.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="object-cover">object-cover</span>: Escala para cubrir el contenedor.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="object-center">object-center</span>: Alinea el contenido en el centro.</li>
+                    </ul>
+                </div>
+            </div>
 
-            <hr class="my-12 border-slate-200 dark:border-slate-700">
+            <!-- Playground de Tamaño -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Tamaño</h3>
+                <p class="mb-4 text-sm">Modifica el ancho y alto del elemento de demostración.</p>
+                <div class="flex justify-center items-center h-48">
+                    <div id="sizing-demo-container" class="bg-purple-500 text-white flex items-center justify-center rounded-md transition-all duration-300 w-32 h-32">Elemento</div>
+                </div>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="w-48" data-target="sizing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">w-48</button>
+                    <button data-class="w-full" data-target="sizing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">w-full</button>
+                    <button data-class="h-24" data-target="sizing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">h-24</button>
+                    <button data-class="h-48" data-target="sizing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">h-48</button>
+                    <button data-class="aspect-square" data-target="sizing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">aspect-square</button>
+                    <button data-class="max-w-xs" data-target="sizing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">max-w-xs</button>
+                    <button data-class="max-h-32" data-target="sizing-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">max-h-32</button>
+                    <button id="reset-sizing-demo-container" data-target="sizing-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-sizing-demo-container">&lt;div class="bg-purple-500 w-32 h-32 ..."&gt;Elemento&lt;/div&gt;</code></pre>
+            </div>
+        </section>
 
-            <section id="interactividad" class="mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Interactividad y Estados</h2>
-                <p class="mb-8">Añadir estilos para estados como `hover`, `focus` o `active` es tan simple como añadir un prefijo. Interactúa con el botón de abajo para ver los estilos en acción.</p>
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md text-center">
-                    <button class="px-8 py-3 bg-slate-600 text-white font-semibold rounded-lg shadow-md
-                                   hover:bg-amber-500 hover:scale-105
-                                   focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-opacity-75
-                                   active:bg-amber-700
-                                   dark:bg-slate-700 dark:hover:bg-amber-500
+        <section id="tipografia" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">6. Tipografía</h2>
+            <p class="mb-6">Estiliza el texto: tamaño, peso, color, alineación, altura de línea y espaciado entre letras.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Tamaño, Peso y Estilo</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="text-sm">text-sm</span>: Texto pequeño.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="text-2xl">text-2xl</span>: Texto muy grande.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="font-light">font-light</span>: Peso de fuente ligero.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="font-extrabold">font-extrabold</span>: Peso de fuente extra negrita.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="italic">italic</span>: Texto en cursiva.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="underline">underline</span>: Texto subrayado.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="line-through">line-through</span>: Texto tachado.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Color, Alineación y Transformación</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="text-blue-500">text-blue-500</span>: Color de texto azul.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="text-center">text-center</span>: Texto centrado.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="leading-tight">leading-tight</span>: Altura de línea ajustada.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="tracking-wide">tracking-wide</span>: Espaciado entre letras amplio.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="uppercase">uppercase</span>: Todo mayúsculas.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="truncate">truncate</span>: Trunca el texto con elipsis.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="whitespace-nowrap">whitespace-nowrap</span>: No envuelve el texto.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Playground de Tipografía -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Tipografía</h3>
+                <p class="mb-4 text-sm">Modifica el tamaño, peso y color del texto.</p>
+                <div class="flex justify-center items-center h-24">
+                    <p id="typography-demo-container" class="transition-all duration-300 text-base text-slate-700 dark:text-slate-300 w-48 text-center">¡Hola Tailwind!</p>
+                </div>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="text-xs" data-target="typography-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">text-xs</button>
+                    <button data-class="text-xl" data-target="typography-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">text-xl</button>
+                    <button data-class="text-4xl" data-target="typography-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">text-4xl</button>
+                    <button data-class="font-light" data-target="typography-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">font-light</button>
+                    <button data-class="font-extrabold" data-target="typography-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">font-extrabold</button>
+                    <button data-class="text-red-500" data-target="typography-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">text-red-500</button>
+                    <button data-class="text-blue-500" data-target="typography-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">text-blue-500</button>
+                    <button data-class="truncate" data-target="typography-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">truncate</button>
+                    <button id="reset-typography-demo-container" data-target="typography-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-typography-demo-container">&lt;p class="text-base ..."&gt;¡Hola Tailwind!&lt;/p&gt;</code></pre>
+            </div>
+        </section>
+
+        <section id="fondos-bordes" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">7. Fondos y Bordes</h2>
+            <p class="mb-6">Aplica estilos visuales como colores de fondo, bordes, esquinas redondeadas y sombras.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Fondos (bg-)</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="bg-red-500">bg-red-500</span>: Fondo rojo.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="bg-blue-200">bg-blue-200</span>: Fondo azul claro.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="bg-gradient-to-r">bg-gradient-to-r</span>: Gradiente de izquierda a derecha.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="from-purple-400">from-purple-400</span>: Color inicial del gradiente.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="to-pink-500">to-pink-500</span>: Color final del gradiente.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Bordes y Sombras</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="border">border</span>: Borde por defecto.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="border-2">border-2</span>: Borde de 2px.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="border-blue-500">border-blue-500</span>: Borde azul.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="border-t-4">border-t-4</span>: Borde superior 4px.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="border-dashed">border-dashed</span>: Borde discontinuo.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="rounded-md">rounded-md</span>: Esquinas redondeadas.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="shadow-xl">shadow-xl</span>: Sombra grande.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="ring-4 ring-blue-500">ring-4 ring-blue-500</span>: Anillo de enfoque.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Playground de Fondos y Bordes -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Fondos y Bordes</h3>
+                <p class="mb-4 text-sm">Cambia el fondo, bordes y sombras del elemento.</p>
+                <div class="flex justify-center items-center h-48">
+                    <div id="background-border-demo-container" class="w-48 h-32 bg-yellow-300 dark:bg-yellow-700 text-slate-800 dark:text-white flex items-center justify-center rounded-lg transition-all duration-300">Demo</div>
+                </div>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="bg-red-500" data-target="background-border-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">bg-red-500</button>
+                    <button data-class="bg-green-300" data-target="background-border-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">bg-green-300</button>
+                    <button data-class="rounded-full" data-target="background-border-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">rounded-full</button>
+                    <button data-class="border-4 border-blue-500" data-target="background-border-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">border-4 border-blue-500</button>
+                    <button data-class="shadow-2xl" data-target="background-border-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">shadow-2xl</button>
+                    <button data-class="ring-4 ring-purple-500" data-target="background-border-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">ring-4 ring-purple-500</button>
+                    <button id="reset-background-border-demo-container" data-target="background-border-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-background-border-demo-container">&lt;div class="w-48 h-32 bg-yellow-300 ..."&gt;Demo&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <section id="transformaciones" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">8. Transformaciones</h2>
+            <p class="mb-6">Aplica transformaciones 2D y 3D a los elementos (escalar, rotar, trasladar, sesgar).</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Escala y Rotación</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="scale-110">scale-110</span>: Escala 110%.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="rotate-45">rotate-45</span>: Rota 45 grados.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="rotate-90">rotate-90</span>: Rota 90 grados.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Traslación y Sesgado</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="translate-x-4">translate-x-4</span>: Traslada 16px en X.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="translate-y-full">translate-y-full</span>: Traslada 100% en Y.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="skew-x-6">skew-x-6</span>: Sesga 6 grados en X.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Playground de Transformaciones -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Transformaciones</h3>
+                <p class="mb-4 text-sm">Aplica transformaciones al elemento. Requiere `transform` para activar.</p>
+                <div class="flex justify-center items-center h-48">
+                    <div id="transform-demo-container" class="w-32 h-32 bg-teal-500 text-white flex items-center justify-center rounded-lg transition-all duration-300 transform">Elemento</div>
+                </div>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="scale-125" data-target="transform-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">scale-125</button>
+                    <button data-class="rotate-45" data-target="transform-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">rotate-45</button>
+                    <button data-class="-rotate-90" data-target="transform-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">-rotate-90</button>
+                    <button data-class="translate-x-10" data-target="transform-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">translate-x-10</button>
+                    <button data-class="skew-y-6" data-target="transform-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">skew-y-6</button>
+                    <button id="reset-transform-demo-container" data-target="transform-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-transform-demo-container">&lt;div class="w-32 h-32 bg-teal-500 ... transform"&gt;Elemento&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <section id="transiciones-animaciones" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">9. Transiciones y Animaciones</h2>
+            <p class="mb-6">Crea transiciones suaves entre estados y aplica animaciones predefinidas.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Transiciones</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="transition">transition</span>: Aplica transición a todas las propiedades.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="transition-colors">transition-colors</span>: Solo a propiedades de color.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="duration-300">duration-300</span>: Duración de 300ms.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="ease-in-out">ease-in-out</span>: Función de temporización.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="delay-150">delay-150</span>: Retraso de 150ms.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Animaciones</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="animate-spin">animate-spin</span>: Gira un elemento.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="animate-ping">animate-ping</span>: Escala y se desvanece.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="animate-pulse">animate-pulse</span>: Pulsa suavemente.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="animate-bounce">animate-bounce</span>: Rebota.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Playground de Transiciones y Animaciones -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Transiciones y Animaciones</h3>
+                <p class="mb-4 text-sm">Pasa el ratón sobre el cuadro para ver la transición. Haz clic para aplicar animaciones.</p>
+                <div class="flex justify-center items-center h-48">
+                    <div id="transition-animation-demo-container" class="w-32 h-32 bg-pink-500 text-white flex items-center justify-center rounded-lg transition-all duration-300 hover:bg-pink-700 hover:scale-110">Hover Me</div>
+                </div>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="animate-spin" data-target="transition-animation-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">animate-spin</button>
+                    <button data-class="animate-ping" data-target="transition-animation-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">animate-ping</button>
+                    <button data-class="animate-pulse" data-target="transition-animation-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">animate-pulse</button>
+                    <button data-class="animate-bounce" data-target="transition-animation-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">animate-bounce</button>
+                    <button id="reset-transition-animation-demo-container" data-target="transition-animation-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-transition-animation-demo-container">&lt;div class="w-32 h-32 bg-pink-500 ... hover:bg-pink-700"&gt;Hover Me&lt;/div&gt;</code></pre>
+            </div>
+        </section>
+
+        <section id="filtros" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">10. Filtros (Effects)</h2>
+            <p class="mb-6">Aplica efectos visuales como desenfoque, brillo, contraste, escala de grises, etc.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Clases de Filtro</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="filter">filter</span>: Habilita los filtros.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="blur-md">blur-md</span>: Desenfoque medio.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="brightness-150">brightness-150</span>: Aumenta el brillo.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="contrast-125">contrast-125</span>: Aumenta el contraste.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="grayscale">grayscale</span>: Escala de grises.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="invert">invert</span>: Invierte los colores.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="sepia">sepia</span>: Efecto sepia.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="drop-shadow-lg">drop-shadow-lg</span>: Sombra de filtro.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Playground de Filtros -->
+            <div class="mt-8 p-6 bg-slate-100 dark:bg-slate-700 rounded-xl shadow-md">
+                <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-4">Playground: Filtros</h3>
+                <p class="mb-4 text-sm">Aplica diferentes filtros a la imagen de demostración.</p>
+                <div class="flex justify-center items-center h-48">
+                    <img id="filter-demo-container" src="https://placehold.co/150x150/808080/FFFFFF?text=IMAGEN" alt="Imagen de Demostración" class="w-32 h-32 rounded-lg transition-all duration-300 filter">
+                </div>
+                <div class="mt-4 text-center space-x-2 space-y-2">
+                    <button data-class="blur-md" data-target="filter-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">blur-md</button>
+                    <button data-class="brightness-150" data-target="filter-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">brightness-150</button>
+                    <button data-class="grayscale" data-target="filter-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">grayscale</button>
+                    <button data-class="invert" data-target="filter-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">invert</button>
+                    <button data-class="sepia" data-target="filter-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">sepia</button>
+                    <button data-class="drop-shadow-lg" data-target="filter-demo-container" class="control-btn bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-md">drop-shadow-lg</button>
+                    <button id="reset-filter-demo-container" data-target="filter-demo-container" class="bg-red-500 text-white px-3 py-1 rounded-md">Reset</button>
+                </div>
+                <pre class="mt-4 bg-slate-200 dark:bg-slate-900 p-4 rounded-lg"><code id="code-filter-demo-container">&lt;img src="..." class="w-32 h-32 ... filter"&gt;</code></pre>
+            </div>
+        </section>
+
+        <section id="listas-tablas" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">11. Listas y Tablas</h2>
+            <p class="mb-6">Estiliza listas y tablas para una presentación de datos clara.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Listas</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="list-none">list-none</span>: Sin marcador de lista.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="list-disc">list-disc</span>: Marcador de disco.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="list-decimal">list-decimal</span>: Marcador decimal.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="list-inside">list-inside</span>: Marcador dentro del contenido.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="list-outside">list-outside</span>: Marcador fuera del contenido.</li>
+                    </ul>
+                    <ul class="list-disc list-inside mt-4 p-2 bg-sky-100 dark:bg-sky-900 rounded-md">
+                        <li>Elemento 1</li>
+                        <li>Elemento 2</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Tablas</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="table-auto">table-auto</span>: Ancho de columna automático.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="table-fixed">table-fixed</span>: Ancho de columna fijo.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="border-collapse">border-collapse</span>: Bordes de celda colapsados.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="border-separate">border-separate</span>: Bordes de celda separados.</li>
+                    </ul>
+                    <table class="table-auto w-full mt-4 bg-sky-100 dark:bg-sky-900 rounded-md border-collapse">
+                        <thead>
+                            <tr><th class="border px-4 py-2">Col 1</th><th class="border px-4 py-2">Col 2</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="border px-4 py-2">Dato A</td><td class="border px-4 py-2">Dato B</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="overflow" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">12. Overflow</h2>
+            <p class="mb-6">Controla cómo se maneja el contenido que excede el tamaño de un contenedor.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Clases de Overflow</h3>
+                    <ul class="space-y-2">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="overflow-auto">overflow-auto</span>: Scroll si es necesario.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="overflow-hidden">overflow-hidden</span>: Recorta el contenido.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="overflow-scroll">overflow-scroll</span>: Siempre muestra scrollbars.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="overflow-x-hidden">overflow-x-hidden</span>: Recorta horizontalmente.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="overflow-y-scroll">overflow-y-scroll</span>: Scroll vertical.</li>
+                    </ul>
+                    <div class="w-48 h-24 bg-sky-100 dark:bg-sky-900 mt-4 overflow-hidden rounded-md">
+                        <p class="w-64">Este es un texto muy largo que debería desbordar el contenedor si no se maneja el overflow.</p>
+                        <p>Más texto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interactividad" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">13. Interactividad y Estados</h2>
+            <p class="mb-6">Añadir estilos para estados como `hover`, `focus` o `active` y el modo oscuro es tan simple como añadir un prefijo.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Estados Interactivos</h3>
+                    <ul class="space-y-2 mb-4">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="hover:">hover:</span>: Al pasar el ratón.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="focus:">focus:</span>: Al enfocar un elemento (ej. input, botón).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="active:">active:</span>: Al hacer clic (mientras está presionado).</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="cursor-pointer">cursor-pointer</span>: Cambia el cursor a puntero.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="pointer-events-none">pointer-events-none</span>: Deshabilita eventos de puntero.</li>
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="select-none">select-none</span>: Evita la selección de texto.</li>
+                    </ul>
+                    <button class="px-8 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md
+                                   hover:bg-blue-700 hover:scale-105
+                                   focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75
+                                   active:bg-blue-800
                                    transition-all duration-200">
                         Pasa el cursor y haz clic
                     </button>
-                    <pre class="mt-6 text-left bg-slate-100 dark:bg-slate-900 p-4 rounded-lg overflow-x-auto"><code class="language-html">&lt;button class="... hover:bg-amber-500 focus:ring-2 active:bg-amber-700 ..."&gt;...&lt;/button&gt;</code></pre>
                 </div>
-            </section>
-
-            <hr class="my-12 border-slate-200 dark:border-slate-700">
-
-            <section id="consejos" class="mb-16">
-                 <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-6">Consejos y Buenas Prácticas</h2>
-                 <p class="mb-8">Para dominar Tailwind, la práctica es clave. Aquí tienes algunos consejos para acelerar tu aprendizaje y evitar errores comunes.</p>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-2">Practica y Explora</h3>
-                        <p>La mejor manera de aprender es construir. Intenta recrear componentes de otras webs. Usa la documentación oficial, es tu mejor amiga. Herramientas como Tailwind Play son geniales para experimentar.</p>
+                <div class="p-4 bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-lg text-amber-600 dark:text-amber-400 mb-2">Modo Oscuro</h3>
+                    <ul class="space-y-2 mb-4">
+                        <li><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="dark:">dark:</span>: Aplica estilos solo en modo oscuro.</li>
+                    </ul>
+                    <div class="p-4 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-md shadow-md text-center">
+                        Este texto y fondo cambian con el modo oscuro.
                     </div>
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                         <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-2">Evita la Sobrecarga de Clases</h3>
-                        <p>Si una combinación de clases se repite mucho, es mejor crear un componente (en React, Vue, etc.) o, como última opción, usar `@apply` en tu CSS. Esto mantiene tu HTML limpio y legible.</p>
-                    </div>
-                     <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-2">Personaliza tu Configuración</h3>
-                        <p>No te limites a los valores por defecto. El archivo `tailwind.config.js` te permite personalizar colores, espaciado, fuentes y más para que coincida con la identidad de tu marca.</p>
-                    </div>
-                     <div class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-bold text-amber-600 dark:text-amber-400 mb-2">Organiza tus Clases</h3>
-                        <p>Para mejorar la legibilidad, agrupa tus clases por función: primero maquetación (`flex`, `grid`), luego espaciado, tamaño, tipografía, fondos y finalmente estados (`hover`, `focus`).</p>
-                    </div>
+                    <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">Usa el interruptor de sol/luna en el encabezado para probarlo.</p>
                 </div>
-            </section>
-        </main>
-    </div>
+            </div>
+        </section>
+
+        <section id="colores" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">14. Colores</h2>
+            <p class="mb-6">Tailwind incluye una paleta de colores por defecto extensa y personalizable. Cada color tiene 10 tonos, del 50 (más claro) al 950 (más oscuro).</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <!-- Generación dinámica de colores -->
+            </div>
+            <p class="mt-6 text-slate-600 dark:text-slate-400 text-sm">Puedes usar estos colores para fondos (`bg-`), texto (`text-`), bordes (`border-`) y más.</p>
+        </section>
+
+        <section id="responsive" class="mb-12 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">15. Diseño Adaptable (Responsive Design)</h2>
+            <p class="mb-6">Tailwind utiliza un enfoque "mobile-first". Los estilos sin prefijo se aplican a todos los tamaños de pantalla. Luego, puedes añadir prefijos para aplicar estilos solo en pantallas más grandes. Redimensiona tu navegador para ver cómo cambia el siguiente elemento.</p>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-slate-100 dark:bg-slate-700 rounded-lg shadow-sm">
+                    <thead>
+                        <tr class="bg-slate-200 dark:bg-slate-600">
+                            <th class="py-2 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">Prefijo</th>
+                            <th class="py-2 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">Ancho Mínimo por Defecto</th>
+                            <th class="py-2 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600"><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="sm:">sm:</span></td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">640px</td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">Estilos aplicados en pantallas pequeñas y superiores.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600"><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="md:">md:</span></td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">768px</td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">Estilos aplicados en pantallas medianas y superiores.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600"><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="lg:">lg:</span></td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">1024px</td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">Estilos aplicados en pantallas grandes y superiores.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600"><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="xl:">xl:</span></td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">1280px</td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">Estilos aplicados en pantallas extra grandes y superiores.</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600"><span class="class-item font-mono bg-slate-200 dark:bg-slate-600 px-2 py-1 rounded-md text-sm" data-class="2xl:">2xl:</span></td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">1536px</td>
+                            <td class="py-2 px-4 border-t border-slate-300 dark:border-slate-600">Estilos aplicados en pantallas muy grandes y superiores.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-6 p-6 rounded-lg text-white font-bold text-center text-lg
+                        bg-violet-500
+                        sm:bg-pink-500
+                        md:bg-orange-500
+                        lg:bg-teal-500
+                        xl:bg-sky-500
+                        2xl:bg-indigo-500">
+                <p class="sm:hidden">Soy Violeta (XS)</p>
+                <p class="hidden sm:block md:hidden">Soy Rosa (SM)</p>
+                <p class="hidden md:block lg:hidden">Soy Naranja (MD)</p>
+                <p class="hidden lg:block xl:hidden">Soy Teal (LG)</p>
+                <p class="hidden xl:block 2xl:hidden">Soy Sky (XL)</p>
+                <p class="hidden 2xl:block">Soy Índigo (2XL)</p>
+            </div>
+        </section>
+    </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -221,49 +727,192 @@
             const darkModeToggle = document.getElementById('dark-mode-toggle');
             const htmlElement = document.documentElement;
 
+            // Cargar preferencia del sistema o localStorage
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                darkModeToggle.checked = true;
+            } else {
+                htmlElement.classList.remove('dark');
+                darkModeToggle.checked = false;
+            }
+
             darkModeToggle.addEventListener('change', () => {
-                htmlElement.classList.toggle('dark');
+                if (darkModeToggle.checked) {
+                    htmlElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                } else {
+                    htmlElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                }
             });
 
-            // Lógica del playground interactivo
-            const demoElements = new Map();
-            const originalClasses = new Map();
+            // Lógica de copiar al portapapeles
+            document.querySelectorAll('.class-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const classToCopy = this.dataset.class;
+                    
+                    // Usar document.execCommand para compatibilidad en iframe
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = classToCopy;
+                    document.body.appendChild(tempInput);
+        
+                    // Seleccionar el texto en el textarea
+                    tempInput.select();
+                    tempInput.setSelectionRange(0, 99999); // Para dispositivos móviles
+        
+                    // Copiar el texto
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+
+                    // Feedback visual
+                    const originalText = this.textContent;
+                    this.textContent = '¡Copiado!';
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                    }, 1000);
+                });
+            });
+
+            // Lógica de búsqueda
+            const searchInput = document.getElementById('search-input');
+            const sections = document.querySelectorAll('section:not(#introduccion)'); // Excluir la introducción de la búsqueda
             
-            function updateCode(targetId) {
-                const target = demoElements.get(targetId);
-                const codeElement = document.getElementById(`code-${targetId}`);
-                if (target && codeElement) {
-                    const currentClasses = target.className;
-                    const tag = target.tagName.toLowerCase();
-                    codeElement.textContent = `<${tag} class="${currentClasses}">...</${tag}>`;
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+
+                sections.forEach(section => {
+                    let sectionHasMatch = false;
+                    const sectionContent = section.textContent.toLowerCase();
+
+                    // Si el término de búsqueda está en el contenido general de la sección
+                    if (sectionContent.includes(searchTerm)) {
+                        sectionHasMatch = true;
+                    }
+
+                    // También verificar si alguna clase dentro de la sección coincide
+                    section.querySelectorAll('.class-item').forEach(item => {
+                        const className = item.dataset.class.toLowerCase();
+                        if (className.includes(searchTerm)) {
+                            sectionHasMatch = true;
+                        }
+                    });
+
+                    if (sectionHasMatch) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+
+                // Si el campo de búsqueda está vacío, mostrar todas las secciones
+                if (searchTerm === '') {
+                    sections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                }
+            });
+
+            // Lógica de navegación del menú flotante (scroll suave)
+            document.querySelectorAll('header nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Lógica de los Playgrounds
+            const playgroundOriginalClasses = new Map();
+
+            function initializePlayground(containerId, initialClass, codeId) {
+                const container = document.getElementById(containerId);
+                if (container) {
+                    playgroundOriginalClasses.set(containerId, initialClass);
+                    updatePlaygroundCode(containerId, codeId);
                 }
             }
 
-            document.querySelectorAll('[id$="-demo"]').forEach(el => {
-                demoElements.set(el.id, el);
-                originalClasses.set(el.id, el.className);
-                updateCode(el.id);
-            });
+            function updatePlaygroundCode(containerId, codeId) {
+                const container = document.getElementById(containerId);
+                const codeElement = document.getElementById(codeId);
+                if (container && codeElement) {
+                    const currentClasses = container.className;
+                    const tag = container.tagName.toLowerCase();
+                    codeElement.textContent = `<${tag} class="${currentClasses}">...&lt;/${tag}&gt;`;
+                }
+            }
+            
+            // Inicializar playgrounds
+            initializePlayground('layout-demo-container', 'bg-blue-200 dark:bg-blue-800 p-4 rounded-md min-h-[150px] flex items-center justify-center border-2 border-blue-400 dark:border-blue-600 transition-all duration-300', 'code-layout-demo-container');
+            initializePlayground('display-demo-container', 'bg-purple-300 dark:bg-purple-700 text-slate-800 dark:text-white p-4 rounded-md border-2 border-purple-500 dark:border-purple-900 transition-all duration-300', 'code-display-demo-container');
+            initializePlayground('position-demo-container', 'bg-red-400 dark:bg-red-700 text-white p-3 rounded-md w-24 h-24 transition-all duration-300 absolute top-0 left-0', 'code-position-demo-container');
+            initializePlayground('spacing-demo-container', 'bg-green-200 dark:bg-green-800 border-2 border-green-400 dark:border-green-600 rounded-md transition-all duration-300', 'code-spacing-demo-container');
+            initializePlayground('sizing-demo-container', 'w-32 h-32 bg-purple-500 text-white flex items-center justify-center rounded-md transition-all duration-300', 'code-sizing-demo-container');
+            initializePlayground('typography-demo-container', 'text-base text-slate-700 dark:text-slate-300 transition-all duration-300 w-48 text-center', 'code-typography-demo-container');
+            initializePlayground('background-border-demo-container', 'w-48 h-32 bg-yellow-300 dark:bg-yellow-700 text-slate-800 dark:text-white flex items-center justify-center rounded-lg transition-all duration-300', 'code-background-border-demo-container');
+            initializePlayground('transform-demo-container', 'w-32 h-32 bg-teal-500 text-white flex items-center justify-center rounded-lg transition-all duration-300 transform', 'code-transform-demo-container');
+            initializePlayground('transition-animation-demo-container', 'w-32 h-32 bg-pink-500 text-white flex items-center justify-center rounded-lg transition-all duration-300 hover:bg-pink-700 hover:scale-110', 'code-transition-animation-demo-container');
+            initializePlayground('filter-demo-container', 'w-32 h-32 rounded-lg transition-all duration-300 filter', 'code-filter-demo-container');
+
+
+            const utilityGroupPrefixes = {
+                'layout': ['flex', 'grid', 'justify-', 'items-', 'gap-', 'flex-row', 'flex-col', 'flex-wrap', 'flex-nowrap', 'flex-grow', 'flex-shrink', 'self-', 'order-', 'grid-cols-', 'grid-rows-', 'col-span-', 'row-span-', 'col-start-', 'col-end-', 'row-start-', 'row-end-', 'auto-cols-', 'auto-rows-'],
+                'display': ['block', 'inline', 'inline-block', 'hidden', 'table', 'table-row', 'table-cell', 'list-item'],
+                'positioning': ['static', 'relative', 'absolute', 'fixed', 'sticky', 'top-', 'bottom-', 'left-', 'right-', 'inset-', 'z-'],
+                'spacing': ['p-', 'px-', 'py-', 'pt-', 'pb-', 'pl-', 'pr-', 'm-', 'mx-', 'my-', 'mt-', 'mb-', 'ml-', 'mr-', 'space-x-', 'space-y-'],
+                'sizing': ['w-', 'h-', 'min-w-', 'max-w-', 'min-h-', 'max-h-', 'aspect-', 'object-'],
+                'typography': ['text-', 'font-', 'leading-', 'tracking-', 'italic', 'underline', 'line-through', 'no-underline', 'uppercase', 'lowercase', 'capitalize', 'normal-case', 'truncate', 'break-words', 'whitespace-'],
+                'backgrounds': ['bg-', 'from-', 'to-'],
+                'borders': ['border', 'border-', 'rounded-', 'shadow-', 'ring-', 'outline-'],
+                'transforms': ['scale-', 'rotate-', 'translate-', 'skew-', 'transform'],
+                'transitions-animations': ['transition', 'duration-', 'ease-', 'delay-', 'animate-'],
+                'filters': ['filter', 'blur-', 'brightness-', 'contrast-', 'grayscale', 'invert', 'sepia', 'drop-shadow-'],
+                'lists': ['list-'],
+                'tables': ['table-auto', 'table-fixed', 'border-collapse', 'border-separate'],
+                'overflow': ['overflow-', 'overflow-x-', 'overflow-y-'],
+                'interactivity': ['cursor-', 'pointer-events-', 'select-'],
+            };
 
             document.querySelectorAll('.control-btn').forEach(button => {
                 button.addEventListener('click', () => {
                     const targetId = button.dataset.target;
-                    const target = demoElements.get(targetId);
+                    const target = document.getElementById(targetId);
                     if(target) {
-                        // Limpiar clases similares antes de añadir una nueva
                         const newClass = button.dataset.class;
-                        const prefix = newClass.split('-')[0];
                         const classList = Array.from(target.classList);
                         
-                        // Quitar clases que empiecen con el mismo prefijo (p-, m-, w-, etc)
-                        classList.forEach(cls => {
-                            if (cls.startsWith(prefix) && isNaN(cls.substring(prefix.length))) {
-                                target.classList.remove(cls);
+                        let groupFound = null;
+                        for (const group in utilityGroupPrefixes) {
+                            if (utilityGroupPrefixes[group].some(prefix => newClass.startsWith(prefix))) {
+                                groupFound = group;
+                                break;
                             }
-                        });
+                        }
+
+                        if (groupFound) {
+                            const prefixesInGroup = utilityGroupPrefixes[groupFound];
+                            const classesToRemove = classList.filter(cls => 
+                                prefixesInGroup.some(prefix => cls.startsWith(prefix))
+                            );
+                            classesToRemove.forEach(cls => target.classList.remove(cls));
+                        }
+
+                        // Special handling for 'transform' class needed for transform playground
+                        if (newClass.startsWith('scale-') || newClass.startsWith('rotate-') || newClass.startsWith('translate-') || newClass.startsWith('skew-')) {
+                            target.classList.add('transform');
+                        } else if (newClass === 'static' || newClass === 'relative' || newClass === 'absolute' || newClass === 'fixed' || newClass === 'sticky') {
+                             // Ensure only one position type is present
+                             target.classList.remove('static', 'relative', 'absolute', 'fixed', 'sticky');
+                        } else if (newClass === 'block' || newClass === 'inline' || newClass === 'inline-block' || newClass === 'hidden') {
+                            target.classList.remove('block', 'inline', 'inline-block', 'hidden');
+                        } else if (newClass === 'filter') {
+                             target.classList.add('filter');
+                        }
                         
-                        target.classList.add(newClass);
-                        updateCode(targetId);
+                        newClass.split(' ').forEach(cls => target.classList.add(cls));
+                        
+                        updatePlaygroundCode(targetId, `code-${targetId}`);
                     }
                 });
             });
@@ -271,99 +920,57 @@
             document.querySelectorAll('[id^="reset-"]').forEach(button => {
                 button.addEventListener('click', () => {
                     const targetId = button.dataset.target;
-                    const target = demoElements.get(targetId);
+                    const target = document.getElementById(targetId);
                     if(target) {
-                        target.className = originalClasses.get(targetId);
-                        updateCode(targetId);
+                        target.className = playgroundOriginalClasses.get(targetId);
+                        updatePlaygroundCode(targetId, `code-${targetId}`);
                     }
                 });
             });
 
-            // Lógica del Gráfico de Comparación
-            const ctx = document.getElementById('frameworkChart').getContext('2d');
-            const frameworkChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Curva de Aprendizaje', 'Personalización', 'Velocidad (Prototipo)', 'Tamaño de Archivo Final'],
-                    datasets: [{
-                        label: 'Tailwind CSS',
-                        data: [7, 10, 8, 9],
-                        backgroundColor: 'rgba(245, 158, 11, 0.6)', // amber
-                        borderColor: 'rgba(245, 158, 11, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: 'Bootstrap',
-                        data: [3, 5, 10, 5],
-                        backgroundColor: 'rgba(59, 130, 246, 0.6)', // blue
-                        borderColor: 'rgba(59, 130, 246, 1)',
-                        borderWidth: 1
-                    }, {
-                        label: 'Bulma',
-                        data: [5, 6, 9, 7],
-                        backgroundColor: 'rgba(16, 185, 129, 0.6)', // emerald
-                        borderColor: 'rgba(16, 185, 129, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 10,
-                            ticks: {
-                                color: document.documentElement.classList.contains('dark') ? '#cbd5e1' : '#475569'
-                            },
-                            grid: {
-                                color: document.documentElement.classList.contains('dark') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                            }
-                        },
-                        x: {
-                             ticks: {
-                                color: document.documentElement.classList.contains('dark') ? '#cbd5e1' : '#475569'
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: document.documentElement.classList.contains('dark') ? '#cbd5e1' : '#475569'
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                title: function(context) {
-                                    return context[0].label;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            
-             // Observador para actualizar colores del gráfico en cambio de tema
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    if (mutation.attributeName === "class") {
-                        const isDark = htmlElement.classList.contains('dark');
-                        const textColor = isDark ? '#cbd5e1' : '#475569';
-                        const gridColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
 
-                        frameworkChart.options.scales.y.ticks.color = textColor;
-                        frameworkChart.options.scales.x.ticks.color = textColor;
-                        frameworkChart.options.plugins.legend.labels.color = textColor;
-                        frameworkChart.options.scales.y.grid.color = gridColor;
-                        frameworkChart.update();
-                    }
+            // Generación de la sección de colores
+            const colorsContainer = document.querySelector('#colores .grid');
+            const colors = ['slate', 'gray', 'zinc', 'neutral', 'stone', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
+            const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+
+            colors.forEach(color => {
+                const colorPaletteDiv = document.createElement('div');
+                colorPaletteDiv.className = 'bg-slate-100 dark:bg-slate-700 p-3 rounded-lg shadow-sm text-center';
+                
+                const colorName = document.createElement('p');
+                colorName.className = 'text-lg font-bold text-slate-900 dark:text-slate-200 mb-2 capitalize';
+                colorName.textContent = color;
+                colorPaletteDiv.appendChild(colorName);
+
+                shades.forEach(shade => {
+                    const shadeDiv = document.createElement('div');
+                    shadeDiv.className = `w-full h-6 bg-${color}-${shade} rounded-md mb-1`;
+                    shadeDiv.title = `${color}-${shade}`; // Tooltip para ver la clase
+                    shadeDiv.dataset.class = `bg-${color}-${shade}`; // Para copiar
+                    shadeDiv.classList.add('class-item'); // Para que sea clickeable
+                    colorPaletteDiv.appendChild(shadeDiv);
                 });
+                colorsContainer.appendChild(colorPaletteDiv);
             });
 
-            observer.observe(htmlElement, {
-                attributes: true
+            // Re-aplicar listener de copiar a los nuevos elementos de color
+            document.querySelectorAll('#colores .class-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const classToCopy = this.dataset.class;
+                    const tempInput = document.createElement('textarea');
+                    tempInput.value = classToCopy;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+
+                    const originalTitle = this.title;
+                    this.title = '¡Copiado!';
+                    setTimeout(() => {
+                        this.title = originalTitle;
+                    }, 1000);
+                });
             });
         });
     </script>
