@@ -79,7 +79,14 @@
             "image_url": "comps/discos/nvme_hik_500.webp",
             "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
         },
-                {
+        {
+            "name": "1 TB - NVMe",
+            "price": 93000,
+            "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
+            "image_url": "comps/discos/nvme_wd_1.webp",
+            "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
+        },
+        {
             "name": "240 GB - SATA",
             "price": 30000,
             "description": "Un punto intermedio si querés ahorrar unas lucas, pero al ser SATA en vez de NVMe es bastante más lento.",
@@ -92,16 +99,16 @@
             "description": "Lo mínimo para Windows y un par de juegos. Ideal si tenés otro disco y querés ahorrar.",
             "image_url": "comps/discos/nvme_hik_128.webp",
             "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-128-gb-nvme-hiksemi-pci3-color-negro/p/MLA24285384#polycard_client=search-nordic&searchVariation=MLA24285384&wid=MLA1499766969&position=3&search_layout=stack&type=product&tracking_id=19bd5ce3-c7f4-4bd3-a98d-e9c3fcc232b6&sid=search"
-        },
-        {
-            "name": "1 TB - NVMe",
-            "price": 93000,
-            "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
-            "image_url": "comps/discos/nvme_wd_1.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
         }
     ],
     "gpuOptions": [
+        {
+            "name": "Integrada",
+            "price": 0,
+            "description": "Viene con el CPU y es más que suficiente para eSports en calidad media/alta y Creación de Contenido amateur.",
+            "image_url": "comps/cpus/ryzen5_4500.webp",
+            "link": ""
+        },
         {
             "name": "GT 740 2GB",
             "price": 75000,
@@ -119,18 +126,18 @@
     ],
     "psuOptions": [
         {
-            "name": "Certificada 80+",
-            "price": 80000,
-            "description": "Cuida nuestros componentes. Una genérica es bastante más barata, pero puede terminar saliendo caro...",
-            "image_url": "comps/psus/550sentey80.webp",
-            "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-sentey-steel-nitro-power-snp550-gs-550w-negra/p/MLA43939305"
-        },
-        {
             "name": "Genérica",
             "price": 21000,
             "description": "Fuente estándar, suficiente para que ande todo bien...mientras no se queme y lleve puesto algun componente.",
             "image_url": "comps/psus/550sentey.webp",
             "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-sx550-fs-550w-negra/p/MLA43936421"
+        },
+        {
+            "name": "Certificada 80+",
+            "price": 80000,
+            "description": "Cuida nuestros componentes. Una genérica es bastante más barata, pero puede terminar saliendo caro...",
+            "image_url": "comps/psus/550sentey80.webp",
+            "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-sentey-steel-nitro-power-snp550-gs-550w-negra/p/MLA43939305"
         }
     ],
     "motherboardOptions": [
@@ -175,6 +182,13 @@
         }
     ],
     "comboOptions": [
+        {
+            "name": "5 5600g + A520/b450m - Compufan",
+            "price": 286000,
+            "description": "Descripción del nuevo Combo.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
+            "link": ""
+        },
         {
             "name": "Ryzen 5 4500 + A520 + 8 Gb",
             "price": 224000,
