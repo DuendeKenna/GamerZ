@@ -63,18 +63,18 @@
     ],
     "psuOptions": [
         {
-            "name": "Genérica",
-            "price": 24000,
-            "description": "Lo mínimo indispensable de una marca decente. No es la mejor opción, pero es la más barata.",
-            "image_url": "comps/psus/550sentey.webp",
-            "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-xs550-ps-550w-negra/p/MLA43933347#polycard_client=search-nordic&searchVariation=MLA43933347&wid=MLA1643587862&position=10&search_layout=grid&type=product&tracking_id=dea3a19d-2257-4521-bc15-8b7c4bbbb0bb&sid=search"
-        },
-        {
             "name": "Certificada 80+",
             "price": 83000,
-            "description": "Cuida nuestros componentes. Una genérica es bastante más barata, pero puede terminar saliendo caro...",
+            "description": "Recomendada para cuidar nuestros componentes. 3 años de garantía.",
             "image_url": "comps/psus/550sentey80.webp",
             "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438#polycard_client=search_best-seller&tracking_id=773e34fd-c7e9-4df8-94d6-2ab5e5326732&wid=MLA1389033851&sid=search"
+        },
+        {
+            "name": "Genérica",
+            "price": 24000,
+            "description": "Opción económica de una marca decente.",
+            "image_url": "comps/psus/550sentey.webp",
+            "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-xs550-ps-550w-negra/p/MLA43933347#polycard_client=search-nordic&searchVariation=MLA43933347&wid=MLA1643587862&position=10&search_layout=grid&type=product&tracking_id=dea3a19d-2257-4521-bc15-8b7c4bbbb0bb&sid=search"
         }
     ],
     "motherboardOptions": [

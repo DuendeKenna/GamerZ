@@ -885,6 +885,7 @@
         .hero-crox-img {
             position: absolute;
             margin-top: -133px;
+            top: 55px !important;
             pointer-events: none;
             z-index: 20;
             width: auto;
@@ -1375,7 +1376,7 @@
                 transform-origin: right center;
             }
 
-/*             #gpu-image:hover,
+/* #gpu-image:hover,
             #psu-image:hover {
                 transform: scale(1.7);
             } */
@@ -1507,10 +1508,10 @@
                     onerror="this.onerror=null;this.src='https://placehold.co/192x64/00000000/ffffff?text=Logo'">
                 <p class="font-vt323 text-5xl green-333 mt-2 tracking-wider"
                     style="text-shadow: 0 0 8px #42d232;">PC Gamer/Creator </p>
-                <p class="green-333 text-xl font-saira">Sistema Completo |<small> Hard + Soft + Serv</small></p>
+                <p class="green-333 text-2xl font-saira">Óptima Opción de Gama Media</small></p>
 
                 <div class="flex items-center justify-center mt-6">
-                    <div class="price-container relative">
+                    <div class="price-container relative hidden">
                         <div class="launch-badge">JUGÁ & CREÁ con Calidá!!</div>
                         <p class="text-5xl font-bold text-cyan-400 price-highlight font-saira" id="top-total-price">
                             $555.000</p>
@@ -1522,33 +1523,60 @@
                         </div>
                     </div>
                     <img src="smile-messi.gif" alt="Meme de Messi sonriendo"
-                        class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4"
+                        class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4 hidden"
                         onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                 </div>
-                <p class="monitor-note text-gray-400 text-xs font-roboto text-center sm:pr-4">
-                    Monitor/Teclado/Mouse/Joysticks aparte
-                </p>
-                <div class="mt-2 text-base text-gray-200 flex items-center justify-center gap-4">
-                    
-                    <span class="flex items-center gap-2 "><i class="fas fa-house-circle-check"></i>Entrega GRATIS en
-                        <strong class="text-white"><i>🌊La Costa</i></strong></span>
+            <!-- PORDIOCH -->
+            <div  class="grid grid-cols-2 gap-4 ">
+                <div class="feature-card">
+                    <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
+                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Personalizado</h4>
+                    <p class="text-s text-gray-300 mt-1">Ligero | Fachero | Eficaz</p>
                 </div>
+
+                <div class="feature-card">
+                    <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
+                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Software Clave Instalado</h4>
+                    <p class="text-s text-gray-300 mt-1">a TU Elección ✔</p>
+                </div>
+
+                <div class="feature-card">
+                    <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3"
+                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
+                    <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
+                </div>
+
+                <div class="feature-card animated-bg-games">
+                    <div class="corner-ribbon-wrapper">
+                        <div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span
+                                class="despegue-text text-violet-700">DESPEGUE</span></div>
+                    </div>
+                    <div class="text-orange-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Hasta <p
+                            class="text-orange-400 text-xl">3 Juegos Incluidos</p>
+                    </h4>
+                    <p class="text-s text-gray-300 mt-1">✔ Elegilos abajo▼</p>
+                </div>
+            </div>
                 
             </header>
 
             <div class="hook-section text-center max-w-4xl mx-auto mt-8 space-y-6 relative z-40">
                 <div>
-                    <!--<p class="text-4xl font-bold"><strong><i>¿Gama Alta?</i><br class="sm:hidden"> ¡Ni Hace Falta!</strong></p>
-                        <p class="text-gray-200 font-saira text-3xl mt-2">con MENO<b class="text-4xl">$</b> de la 1/2 <i class="text-violet-500 text-4xl">VOLÁS⚡</i></p> -->
-                    <div class="text-4xl font-bold">
-                        <p class="text-lg"><strong><i>¿Demasiadas Opciones?🧐</i></p>
-                        <p>¡No des Vueltas!🪐</strong></p>
-                        <p class="text-green-100 font-saira text-3xl mt-2">Te doy 1 Opción <i>personalizable</i> Potente + Económica</p>
-                    </div>
-                    <!--                         <p class="text-gray-200 font-saira text-xl mt-1">pq lo que cuenta</p>
-                        <p class="text-gray-200 font-saira text-xl mt-1">no es <i>La Máquina</i>... es <i><b>La Experiencia ♾️</b></i></p> -->
+                    <p class="text-4xl font-bold"><strong><i>¿Gama Alta?</i><br class="sm:hidden"> ¡Ni Hace Falta!</strong></p>
+                        <p class="text-gray-200 font-saira text-3xl mt-2">con MENO<span class="text-3xl">$</span> de la 1/2 <i class="text-violet-500 text-4xl">VOLÁS⚡</i></p>
+                <div class="mt-2 text-base text-gray-200 flex items-center justify-center gap-4">
+                    
+                    <p ><i class="fas fa-house-circle-check"></i> Entrega a Domicilio</p>
+                    <p> </i><i class="fas fa-screwdriver-wrench"></i> Asistencia Técnica</p>
+                        <p >en Toda <i class="text-blue-300">🌊La Costa</i></p>
+                </div>
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
+                        <h1 class="text-2xl">Elegí un mejor precio o potenciala</h1>
                         <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
@@ -1589,7 +1617,7 @@
             <section ID="section-hardware" class="my-16 -mt-4 text-center max-w-3xl mx-auto px-4 overflow-hidden md:overflow-visible">
 <!--                 <h2 class="text-5xl font-bold mb-4 text-white">La Base de<p> La Nave</p>
                 </h2> -->
-                <p class="text-3xl text-gray-300 font-saira">
+                <p class="text-3xl text-gray-100 font-saira">
                     De <strong class="text-4xl font-vt323">base</strong> usamos:</p>
 
 
@@ -1601,10 +1629,10 @@
                         </div>
                         <div class="md:col-span-7 text-center md:text-left">
                             <p class="font-saira text-4xl md:text-5xl green-333">Ryzen 5 5600g</p>
-                            <p class="font-saira text-2xl md:text-3xl green-333 mt-2">16GB RAM en DualChannel</p>
-                            <p class="font-saira text-2xl md:text-3xl green-333">Mother Gigabyte o Asus</p>
-                            <p class="text-lg md:text-xl text-green-500 mt-2">Con este excelente combo con gráfica integrada ¡no te hace falta placa de video!</p>
-                            <p class="text-lg md:text-xl text-green-500 mt-2">...pero podemos agregar una si querés gráficos tope de gama.</p>
+                            <p class="font-saira text-2xl md:text-3xl green-333 mt-2">16GB RAM <small>en DualChannel</small></p>
+                            <p class="font-saira text-2xl md:text-3xl green-333">Motherboard <small>Gigabyte o Asus</small></p>
+                            <p class="text-lg md:text-xl text-green-500 mt-2">Con este <b>excelente</b> combo con gráfica integrada ¡no te hace falta placa de video!</p>
+                            <p class="text-lg md:text-xl text-green-600 text-right mt-1">...pero podemos agregarla si buscás gráficos <i>tope de gama</i></p>
                         </div>
                     </div></div>
             
@@ -1998,38 +2026,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // --- SMOOTH SCROLL FOR SPECIFIC LINK ---
-            /* document.querySelector('a.special-subtitle[href="#games-section"]').addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    const targetPosition = targetElement.offsetTop;
-                    const startPosition = window.pageYOffset;
-                    const distance = targetPosition - startPosition;
-                    const duration = 1500; // 1.5 seconds for a slow, smooth scroll
-                    let startTime = null;
-
-                    function animation(currentTime) {
-                        if (startTime === null) startTime = currentTime;
-                        const timeElapsed = currentTime - startTime;
-                        const run = ease(timeElapsed, startPosition, distance, duration);
-                        window.scrollTo(0, run);
-                        if (timeElapsed < duration) requestAnimationFrame(animation);
-                    }
-
-                    // easeInOutQuad easing function
-                    function ease(t, b, c, d) {
-                        t /= d / 2;
-                        if (t < 1) return c / 2 * t * t + b;
-                        t--;
-                        return -c / 2 * (t * (t - 2) - 1) + b;
-                    }
-                    requestAnimationFrame(animation);
-                }
-            }); */
-
             // --- DATA ---
             const gameNames = ['GTA V', 'LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered', 'Need for Speed: Underground HD', 'Half Life: Black Mesa', 'Half Life 2 HD', 'Abe´s Oddysey Remake', 'WoW Classic: en TurtleWoW', 'Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster', 'BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3', 'Fallout: New Vegas', 'Batman: Arkham Asylum', 'Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD', 'Need for Speed: Most Wanted HD', 'Blur', 'GRID 2', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones', 'Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops', 'Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.', 'Mortal Kombat 11 Komplete Edition', 'Ultra Street Fighter IV', 'Ultimate Marvel vs. Capcom 3', 'The King of Fighters XIII', 'Injustice Gods Among Us', 'Heroes of Might & Magic HD V', 'Reckoning: Kingdoms of Amalur', 'Divinity Original Sin', 'Age of Empires II Definitive Edition', 'The Elder Scrolls V: Skyrim', 'The Elder Scrolls IV: Oblivion & AddOns HD'];
             const softwareData = [
@@ -2076,17 +2072,9 @@
                 { name: 'OBS Studio', slug: 'obs_studio', checked: true, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
                 { name: 'GitHub Desktop', slug: 'github_desktop', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Cliente visual para Git.' },
                 { name: 'Visual Studio Code', slug: 'visual_studio_code', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Editor de código moderno.' },
-                // ...otros programas existentes...
             ];
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
-
-            // #region COMPOP
-
-            // (Removed duplicate variable declarations and fetch block here)
-
-            // #endregion COMPOP
-            // #region COMPOP
 
             let towersOptions = [];
             let ssdOptions = [];
@@ -2094,6 +2082,8 @@
             let psuOptions = [];
             let motherboardOptions = [];
             let cpuOptions = [];
+            let ramOptions = [];
+            let comboOptions = [];
 
             // Cargar los datos desde products.json usando fetch
             fetch('products.json')
@@ -2105,6 +2095,8 @@
                     psuOptions = data.psuOptions || [];
                     motherboardOptions = data.motherboardOptions || [];
                     cpuOptions = data.cpuOptions || [];
+                    ramOptions = data.ramOptions || [];
+                    comboOptions = data.comboOptions || [];
 
                     // --- POBLAR SELECTS Y ACTUALIZAR UI ---
                     // SSD
@@ -2139,8 +2131,6 @@
                 .catch(error => {
                     console.error('Error cargando products.json:', error);
                 });
-
-            // #endregion COMPOP
 
             // --- PRECIOS ---
             // Precios base y componentes
