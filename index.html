@@ -1527,7 +1527,7 @@
                         onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                 </div>
             <!-- PORDIOCH -->
-            <div  class="grid grid-cols-2 gap-4 ">
+            <div  class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
                 <div class="feature-card">
                     <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
                         onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
@@ -1538,8 +1538,39 @@
                 <div class="feature-card">
                     <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
                         onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Software Clave Instalado</h4>
-                    <p class="text-s text-gray-300 mt-1">a TU Elección ✔</p>
+                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Programas Clave</h4>
+                    <p class="text-s text-gray-300 mt-1">
+                        Instalados para <br>PRENDER &gt; 
+                        <span id="dynamic-word" class="transition-all duration-700 ease-in-out font-bold text-green-333">USAR</span>
+                    </p>
+                    <script>
+                        // Palabras a rotar
+                        const words = ["USAR", "JUGAR", "CREAR","VOLAR"];
+                        let current = 0;
+                        const el = document.getElementById("dynamic-word");
+                        // Calcular el ancho máximo
+                        const maxLen = Math.max(...words.map(w => w.length));
+                        el.style.width = `${maxLen}ch`;
+                        el.style.display = "inline-block";
+                        el.style.textAlign = "center";
+                        setInterval(() => {
+                            el.style.opacity = "0.2";
+                            setTimeout(() => {
+                                current = (current + 1) % words.length;
+                                el.textContent = words[current];
+                                el.style.opacity = "1";
+                            }, 350);
+                        }, 2300);
+                    </script>
+                    <style>
+                        #dynamic-word {
+                            transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+                            opacity: 1;
+                            width: 5ch; /* Fallback for 5 characters */
+                            display: inline-block;
+                            text-align: center;
+                        }
+                    </style>
                 </div>
 
                 <div class="feature-card">
