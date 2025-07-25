@@ -1,81 +1,39 @@
 {
     "towersOptions": [
         {
-            "name": "Sentey R20",
-            "price": 45000,
-            "slug": "sentey-r20",
-            "image_url": "comps/torres/sentey-r20.webp",
-            "link": ""
-        },
-        {
-            "name": "Antex Nx292",
-            "price": 75000,
-            "slug": "antex-nx292",
-            "image_url": "comps/torres/antex-nx292.webp",
-            "link": "https://www.antec.com/product/case/nx292"
-        },
-        {
-            "name": "Haxly U500",
-            "price": 73000,
-            "slug": "haxly-u500",
-            "image_url": "comps/torres/haxly-u500.webp",
-            "link": ""
-        },
-        {
-            "name": "Sentey 6100 White",
-            "price": 45000,
-            "slug": "sentey-6100-white",
-            "image_url": "comps/torres/sentey-6100-white.webp",
-            "link": "https://www.mercadolibre.com.ar/gabinete-gamer-sentey-6100-sf-w-tg-h10-white-color-blanco-sfans/p/MLA39317184"
-        },
-        {
-            "name": "Lnz Y11",
-            "price": 55000,
+            "name": "LNZ Y11",
+            "price": 60000,
             "slug": "lnz-y11",
             "image_url": "comps/torres/lnz-y11.webp",
-            "link": ""
+            "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234#polycard_client=search-nordic&searchVariation=MLA47405234&wid=MLA2117514314&position=2&search_layout=grid&type=product&tracking_id=78329ca3-0e8f-4b13-ae42-e7dc5076524d&sid=search"
         },
         {
-            "name": "Sentey A8 Micro White",
-            "price": 65000,
-            "slug": "sentey-a8-micro-white",
-            "image_url": "comps/torres/sentey-a8-micro-white.webp",
-            "link": ""
-        },
-        {
-            "name": "Gigabyte C102",
-            "price": 70000,
-            "slug": "gigabyte-c102",
-            "image_url": "comps/torres/gigabyte-c102.webp",
-            "link": ""
+            "name": "Antec AX20",
+            "price": 57000,
+            "slug": "antec-ax20",
+            "image_url": "comps/torres/antec-ax20.webp",
+            "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175#reco_item_pos=2&reco_backend=first_search_promotions_or_top_sales&reco_backend_type=function&reco_client=pom-promotions&reco_id=1205fb4e-4bd3-41ec-bae0-1f95883ced00&reco_model=best-seller-sorted-by-score"
         },
         {
             "name": "Sentey H10",
             "price": 45000,
             "slug": "sentey-h10",
             "image_url": "comps/torres/sentey-h10.webp",
-            "link": ""
+            "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385#polycard_client=search-nordic&searchVariation=MLA45231385&wid=MLA2082695088&position=2&search_layout=grid&type=product&tracking_id=f12620c7-491b-4e40-a860-0725a08f6aff&sid=search"
         },
         {
-            "name": "Sentey A8 Micro Black",
-            "price": 65000,
-            "slug": "sentey-a8-micro-black",
-            "image_url": "comps/torres/sentey-a8-micro-black.webp",
-            "link": ""
-        },
-        {
-            "name": "Sentey S20",
-            "price": 46000,
-            "slug": "sentey-s20",
-            "image_url": "comps/torres/sentey-s20.webp",
-            "link": ""
+            "name": "Sentey A8 Micro White",
+            "price": 69000,
+            "slug": "sentey-a8-micro-white",
+            "image_url": "comps/torres/sentey-a8-micro-white.webp",
+            "link": "https://www.mercadolibre.com.ar/sentey-a8-cube-rgb-gabinete-sentey-a8-vidrio-temp-5-coolers-blanco/p/MLA50547846#polycard_client=search-nordic&searchVariation=MLA50547846&wid=MLA2144326674&position=3&search_layout=stack&type=product&tracking_id=0f8e8620-745d-4136-91b6-f1e1300ed9e9&sid=search"
         }
     ],
     "ssdOptions": [
         {
             "name": "500 GB - NVMe",
             "price": 52000,
-            "description": "Más que suficiente para la mayoría de los casos. Alta velocidad PCIe 3.0.",
+            "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
             "image_url": "comps/discos/nvme_hik_500.webp",
             "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
         },
@@ -98,7 +56,7 @@
         {
             "name": "RX 6600",
             "price": 368000,
-            "description": "La mejor relación precio/calidad para correr juegos AAA o eSports en máxima calidad.",
+            "description": "La mejor opción en calidad/precio para correr juegos AAA o eSports en máxima calidad.",
             "image_url": "comps/gpus/rx6600.webp",
             "link": "https://www.mercadolibre.com.ar/placa-de-video-amd-asrock-challenger-radeon-rx-6600-series-rx-6600-oc-edition-8gb/p/MLA19811124#polycard_client=search-nordic&searchVariation=MLA19811124&wid=MLA1382605699&position=9&search_layout=grid&type=product&tracking_id=f6ed7ab0-1ce7-4efa-be59-83ac04c244ed&sid=search"
         }
@@ -107,7 +65,7 @@
         {
             "name": "Genérica",
             "price": 24000,
-            "description": "Fuente estándar, suficiente para que ande todo bien...mientras no se queme y lleve puesto algun componente.",
+            "description": "Lo mínimo indispensable de una marca decente. No es la mejor opción, pero es la más barata.",
             "image_url": "comps/psus/550sentey.webp",
             "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-xs550-ps-550w-negra/p/MLA43933347#polycard_client=search-nordic&searchVariation=MLA43933347&wid=MLA1643587862&position=10&search_layout=grid&type=product&tracking_id=dea3a19d-2257-4521-bc15-8b7c4bbbb0bb&sid=search"
         },
@@ -158,6 +116,13 @@
             "description": "Descripción de la nueva RAM.",
             "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
             "link": "https://www.mercadolibre.com.ar/memoria-ram-patriot-signature-8gb-3200mhz-dimm-negra/p/MLA37810612#polycard_client=search-nordic&searchVariation=MLA37810612&wid=MLA1475197229&position=12&search_layout=grid&type=product&tracking_id=ba5f911d-a130-49f4-b5f7-0e4bf0c00f10&sid=search"
+        },
+        {
+            "name": "DDR4 8x2 = 16 GB",
+            "price": 43000,
+            "description": "Descripción de la nueva RAM.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
+            "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665#polycard_client=search-nordic&searchVariation=MLA48899665&wid=MLA1510165821&position=23&search_layout=grid&type=product&tracking_id=edd66528-232f-4784-bd5b-4d7503bf1118&sid=search"
         }
     ],
     "comboOptions": [
