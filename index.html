@@ -1547,7 +1547,7 @@
                         onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
                     <h4 class="font-saira font-bold text-white text-xl leading-tight">Programas Clave</h4>
                     <p class="text-s text-gray-300 mt-1">
-                        Instalados para <br><b class="text-green-200">PRENDER&gt;</b>
+                        Instalados para <br><b class="text-green-200">PRENDER</b>
                         <span id="dynamic-word" class="transition-all duration-700 ease-in-out font-bold text-green-333">USAR</span>
                     </p>
                     <script>
@@ -1573,6 +1573,7 @@
                         #dynamic-word {
                             transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
                             opacity: 1;
+                            color: #42d232; /* green-333 */
                             width: 5ch; /* Fallback for 5 characters */
                             display: inline-block;
                             text-align: center;
@@ -1741,40 +1742,37 @@
             </div>
 
 
+            <section class="mb-12 section-card-style">
+                <h2 class="text-3xl font-bold text-center mb-3">Periféricos Extra</h2>
+                <p class="text-center text-gray-300 mb-3">Agregá Comodidad al Mando</p>
+                <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
+                    <div id="joystick-card"
+                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
+                        <div class="image-wrapper relative aspect-[4/3]">
+                            <img src="comps/xboxc1.jpg" alt="Joystick Xbox 360 Genérico"
+                                class="rounded-md w-full h-full object-cover"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Joystick'">
+                            <span id="joystick-badge"
+                                class="absolute top-2 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-6 w-6 items-center justify-center hidden">x2</span>
+                        </div>
+                    </div>
+                    <div id="mouse-keyboard-card"
+                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
+                        <div class="image-wrapper aspect-[4/3]">
+                            <img src="comps/tecmou.jpg" alt="Combo Teclado y Mouse Inalámbrico"
+                                class="rounded-md w-full h-full object-cover"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado+y+Mouse'">
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6 max-w_lg mx-auto mt-2 text-center text-gray-400 text-sm">
+                    <p>Joystick Xbox 360 (+22k)<br>Cable 2.5 mts</p>
+                    <p>Mouse y Teclado (+36k)<br>Inalámbrico</p>
+                </div>
+            </section>
 
             <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
-                <div class="feature-card">
-                    <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
-                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
-                    <p class="text-s text-gray-300 mt-1">Ligero | Fachero | Eficaz</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
-                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Software Clave Instalado</h4>
-                    <p class="text-s text-gray-300 mt-1">a TU Elección ✔</p>
-                </div>
-
-                <div class="feature-card">
-                    <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3"
-                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
-                    <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
-                </div>
-
-                <div class="feature-card animated-bg-games">
-                    <div class="corner-ribbon-wrapper">
-                        <div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span
-                                class="despegue-text text-violet-700">DESPEGUE</span></div>
-                    </div>
-                    <div class="text-orange-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Hasta <p
-                            class="text-orange-400 text-xl">3 Juegos Incluidos</p>
-                    </h4>
-                    <p class="text-s text-gray-300 mt-1">✔ Elegilos abajo▼</p>
-                </div>
+           
 
                 <div class="feature-card relative lg:col-span-2 soporte-tecnico-card"
                     style="padding: 1rem; overflow: hidden; min-height: 200px;">
@@ -1879,7 +1877,7 @@
             </section>
 
             <section class="mb-12 section-card-style">
-                <h2 class="text-3xl font-bold text-center mb-3">Periféricos Extra</h2>
+                <!-- <h2 class="text-3xl font-bold text-center mb-3">Periféricos Extra</h2>
                 <p class="text-center text-gray-300 mb-3">Agregá Comodidad al Mando</p>
                 <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
                     <div id="joystick-card"
@@ -1904,7 +1902,7 @@
                 <div class="grid grid-cols-2 gap-6 max-w_lg mx-auto mt-2 text-center text-gray-400 text-sm">
                     <p>Joystick Xbox 360 (+22k)<br>Cable 2.5 mts</p>
                     <p>Mouse y Teclado (+36k)<br>Inalámbrico</p>
-                </div>
+                </div> -->
 
                 <div class="text-center mt-10 max-w-4xl mx-auto">
                     <div id="selected-games-section" class="mb-6 hidden">
