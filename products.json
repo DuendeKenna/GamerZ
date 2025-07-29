@@ -16,7 +16,7 @@
         },
         {
             "name": "Sentey H10",
-            "price": 45000,
+            "price": 68000,
             "slug": "sentey-h10",
             "image_url": "comps/torres/sentey-h10.webp",
             "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385#polycard_client=search-nordic&searchVariation=MLA45231385&wid=MLA2082695088&position=2&search_layout=grid&type=product&tracking_id=f12620c7-491b-4e40-a860-0725a08f6aff&sid=search"
@@ -123,6 +123,13 @@
             "description": "Descripción de la nueva RAM.",
             "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
             "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665#polycard_client=search-nordic&searchVariation=MLA48899665&wid=MLA1510165821&position=23&search_layout=grid&type=product&tracking_id=edd66528-232f-4784-bd5b-4d7503bf1118&sid=search"
+        },
+        {
+            "name": "Ddr3 4gb ",
+            "price": 14500,
+            "description": "Descripción de la nueva RAM.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
+            "link": "https://www.mercadolibre.com.ar/memoria-ddr3-4gb-1333mhz-pc310600-hynix-en-blister-nuevas/up/MLAU313860758#reco_item_pos=9&reco_backend=cart_congrats_machinalis-p2p-same_seller&reco_backend_type=low_level&reco_client=cart_congrats_seller-recommendations&reco_id=3b2336d0-902b-45c8-bf2c-8334b9657c18&reco_model=rk_v2_retsys_org_compl_ss"
         }
     ],
     "comboOptions": [
@@ -139,6 +146,20 @@
             "description": "Descripción del nuevo Combo.",
             "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
             "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684"
+        },
+        {
+            "name": " I5 4570 + Mother + 8gb",
+            "price": 179990,
+            "description": "Descripción del nuevo Combo.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
+            "link": "https://www.mercadolibre.com.ar/combo-actualizacion-pc-intel-i5-4570--mother--8gb-ram/up/MLAU3143273772#polycard_client=search-nordic&searchVariation=MLAU3143273772&wid=MLA1491525217&position=17&search_layout=stack&type=product&tracking_id=ac78b378-948b-443b-a40f-eddb778b31e7&sid=search"
+        },
+        {
+            "name": "Armada Intel Core I5 16 Gb 480 Gb",
+            "price": 235999,
+            "description": "Descripción del nuevo Combo.",
+            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
+            "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?pdp_filters=item_id%3AMLA2093619282&from=gshop&matt_tool=68681271&matt_word=&matt_source=google&matt_campaign_id=22107887682&matt_ad_group_id=172980945243&matt_match_type=&matt_network=g&matt_device=c&matt_creative=729634833566&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735111307&matt_product_id=MLA45398956-product&matt_product_partition_id=2389830763361&matt_target_id=aud-1930507555360%3Apla-2389830763361&cq_src=google_ads&cq_cmp=22107887682&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22107887682&gbraid=0AAAAAD01zQZSYcOEoO7Dif5cS8T-IV1OQ&gclid=CjwKCAjw6NrBBhB6EiwAvnT_rtZlmXpw3zpVSowgF_WjqBVaIrDe79D6HDABhgAUvpzLl8X4Jgb8YxoCiJQQAvD_BwE&offer_type=OFFICIAL_STORE#reviews"
         }
     ]
 }
