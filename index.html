@@ -194,18 +194,27 @@
         }
 
         .card-peripheral {
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            opacity: 0.5;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .card-peripheral img {
+            transition: filter 0.3s ease-in-out;
         }
 
         .card-peripheral:hover,
         .card-peripheral.active {
-            opacity: 1;
             transform: scale(1.05);
         }
 
         .card-peripheral.active {
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        .card-peripheral.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(100%);
         }
 
         /* --- Game Title Sticker --- */
@@ -1471,6 +1480,59 @@
         .coneste b{
             color: #42d232;
         }
+        
+        /* NEW: Styles for selected components preview */
+        .summary-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .summary-card {
+            background-color: white;
+            color: #1f2937; /* text-gray-800 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.75rem; /* p-3 */
+            width: 140px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .summary-card-category {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #4f46e5; /* bg-indigo-600 */
+            color: white;
+            padding: 0.125rem 0.5rem;
+            font-size: 0.75rem; /* text-xs */
+            font-weight: bold;
+            border-top-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .summary-card img {
+            margin-top: 1.5rem; /* space for category tag */
+            max-height: 96px; /* h-24 */
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            flex-grow: 1;
+        }
+        .summary-card p {
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 600;
+            text-align: center;
+            margin-top: 0.5rem;
+            line-height: 1.2;
+        }
     </style>
 </head>
 
@@ -1749,32 +1811,52 @@
             </div>
 
 
-            <section class="mb-12 section-card-style">
+            <section id="section-perifericos" class="mb-12 section-card-style">
                 <h2 class="text-3xl font-bold text-center mb-3">Periféricos Extra</h2>
-                <p class="text-center text-gray-300 mb-3">Agregá Comodidad al Mando</p>
-                <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
-                    <div id="joystick-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
-                        <div class="image-wrapper relative aspect-[4/3]">
-                            <img src="comps/xboxc1.jpg" alt="Joystick Xbox 360 Genérico"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Joystick'">
-                            <span id="joystick-badge"
-                                class="absolute top-2 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-6 w-6 items-center justify-center hidden">x2</span>
+                <p class="text-center text-gray-300 mb-8">Agregá Comodidad al Mando</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <!-- Combo Mouse y Teclado Card -->
+                    <div id="combo-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                        <div class="image-wrapper relative aspect-[4/3] w-full">
+                            <img id="combo-image" src="" alt="Combo Mouse y Teclado" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Combo'">
                         </div>
+                        <p id="combo-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Combo Mouse+Teclado</p>
                     </div>
-                    <div id="mouse-keyboard-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
-                        <div class="image-wrapper aspect-[4/3]">
-                            <img src="comps/tecmou.jpg" alt="Combo Teclado y Mouse Inalámbrico"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado+y+Mouse'">
+                    <!-- Keyboard Card -->
+                    <div id="keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                        <div class="image-wrapper relative aspect-[4/3] w-full">
+                            <img id="keyboard-image" src="" alt="Teclado" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado'">
                         </div>
+                        <p id="keyboard-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Teclado</p>
                     </div>
-                </div>
-                <div class="grid grid-cols-2 gap-6 max-w_lg mx-auto mt-2 text-center text-gray-400 text-sm">
-                    <p>Joystick Xbox 360 (+22k)<br>Cable 2.5 mts</p>
-                    <p>Mouse y Teclado (+36k)<br>Inalámbrico</p>
+                    <!-- Mouse Card -->
+                    <div id="mouse-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                        <div class="image-wrapper relative aspect-[4/3] w-full">
+                            <img id="mouse-image" src="" alt="Mouse" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Mouse'">
+                        </div>
+                        <p id="mouse-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Mouse</p>
+                    </div>
+                    <!-- Monitor Card -->
+                    <div id="monitor-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                        <div class="image-wrapper relative aspect-[4/3] w-full">
+                            <img id="monitor-image" src="" alt="Monitor" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Monitor'">
+                        </div>
+                        <p id="monitor-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Monitor</p>
+                    </div>
+                    <!-- Auriculares Card -->
+                    <div id="auriculares-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                        <div class="image-wrapper relative aspect-[4/3] w-full">
+                            <img id="auriculares-image" src="" alt="Auriculares" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Auriculares'">
+                        </div>
+                        <p id="auriculares-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Auriculares</p>
+                    </div>
+                    <!-- Parlantes Card -->
+                    <div id="parlantes-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                        <div class="image-wrapper relative aspect-[4/3] w-full">
+                            <img id="parlantes-image" src="" alt="Parlantes" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Parlantes'">
+                        </div>
+                        <p id="parlantes-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Parlantes</p>
+                    </div>
                 </div>
             </section>
 
@@ -1884,42 +1966,23 @@
             </section>
 
             <section class="mb-12 section-card-style">
-                <!-- <h2 class="text-3xl font-bold text-center mb-3">Periféricos Extra</h2>
-                <p class="text-center text-gray-300 mb-3">Agregá Comodidad al Mando</p>
-                <div class="grid grid-cols-2 gap-6 max-w-lg mx-auto">
-                    <div id="joystick-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
-                        <div class="image-wrapper relative aspect-[4/3]">
-                            <img src="comps/xboxc1.jpg" alt="Joystick Xbox 360 Genérico"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Joystick'">
-                            <span id="joystick-badge"
-                                class="absolute top-2 right-2 bg-indigo-500 text-white text-xs font-bold rounded-full h-6 w-6 items-center justify-center hidden">x2</span>
-                        </div>
-                    </div>
-                    <div id="mouse-keyboard-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer">
-                        <div class="image-wrapper aspect-[4/3]">
-                            <img src="comps/tecmou.jpg" alt="Combo Teclado y Mouse Inalámbrico"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado+y+Mouse'">
-                        </div>
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-6 max-w_lg mx-auto mt-2 text-center text-gray-400 text-sm">
-                    <p>Joystick Xbox 360 (+22k)<br>Cable 2.5 mts</p>
-                    <p>Mouse y Teclado (+36k)<br>Inalámbrico</p>
-                </div> -->
-
-                <div class="text-center mt-10 max-w-4xl mx-auto">
+                <div class="text-center max-w-4xl mx-auto">
                     <div id="selected-games-section" class="mb-6 hidden">
                         <p class="text-gray-400 text-lg">Juegos Incluidos</p>
                         <div id="selected-games-list" class="flex justify-center flex-wrap gap-2 mt-2">
                         </div>
                     </div>
-
+            
                     <div class="flex flex-col items-center">
-                        <h2 class="text-3xl font-bold mb-4">Precio Total</h2>
+                        <h2 class="text-4xl font-bold mb-2">Selección y Precio Total</h2>
+                        
+                        <!-- Contenedor para las imágenes de los componentes seleccionados -->
+                        <div id="selected-components-preview" class="w-full p-4 border-y border-gray-700 my-6">
+                            <div id="selected-images-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
+                                <!-- Las imágenes se insertarán aquí con JS -->
+                            </div>
+                        </div>
+            
                         <div class="grid grid-cols-2 gap-y-2 md:gap-x-4 w-full max-w-lg mt-4">
                             <div class="row-start-1 col-start-1 flex justify-center items-center">
                                 <div class="relative h-24 w-40">
@@ -1927,31 +1990,25 @@
                                     <span class="offer-banner-main font-saira">¡OFERTA ÚNICA!</span>
                                 </div>
                             </div>
-
+            
                             <div class="row-start-1 col-start-2 flex items-center justify-start">
                                 <div>
-                                    <p class="lucas-price text-left ml-4 font-saira">$<span id="total-price">500</span>
-                                    </p>
-                                    <p class="text-2xl md:text-3xl text-cyan-400/70 font-saira text-left ml-4 -mt-2">
-                                        LUCAS</p>
+                                    <p class="lucas-price text-left ml-4 font-saira">$<span id="total-price">500</span></p>
+                                    <p class="text-2xl md:text-3xl text-cyan-400/70 font-saira text-left ml-4 -mt-2">LUCAS</p>
                                 </div>
                             </div>
-
+            
                             <div class="row-start-2 col-start-1 flex items-center justify-center text-right pr-2">
                                 <div>
-                                    <p class="text-sm green-333 whitespace-nowrap"><i
-                                            class="fas fa-truck mr-1"></i>Entrega GRATIS</p>
-                                    <p class="text-base text-white font-bold">🌊 En Toda <strong class="text-white">La
-                                            Costa</strong></p>
+                                    <p class="text-sm green-333 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega GRATIS</p>
+                                    <p class="text-base text-white font-bold">🌊 En Toda <strong class="text-white">La Costa</strong></p>
                                 </div>
                             </div>
-
+            
                             <div class="row-start-2 col-start-2 flex items-center justify-start pl-4">
                                 <div>
-                                    <p id="total-price-usd"
-                                        class="font-saira text-2xl text-violet-400 hidden cursor-pointer"></p>
-                                    <a id="usd-link-bottom" href="#"
-                                        class="text-xs text-gray-500 hover:underline hidden -mt-1">
+                                    <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden cursor-pointer"></p>
+                                    <a id="usd-link-bottom" href="#" class="text-xs text-gray-500 hover:underline hidden -mt-1">
                                         <p>Ver Cotizaciones</p>
                                     </a>
                                 </div>
@@ -1959,7 +2016,6 @@
                         </div>
                     </div>
                 </div>
-
             </section>
             <br><br>
 
@@ -2119,10 +2175,12 @@
             let ssdOptions = [];
             let gpuOptions = [];
             let psuOptions = [];
-            let motherboardOptions = [];
-            let cpuOptions = [];
-            let ramOptions = [];
-            let comboOptions = [];
+            let monitorOptions = [];
+            let mouseOptions = [];
+            let keyboardOptions = [];
+            let comboMouseTecladoOptions = [];
+            let auricularesOptions = [];
+            let parlantesOptions = [];
 
             // Cargar los datos desde products.json usando fetch
             fetch('products.json')
@@ -2132,27 +2190,26 @@
                     ssdOptions = data.ssdOptions || [];
                     gpuOptions = data.gpuOptions || [];
                     psuOptions = data.psuOptions || [];
-                    motherboardOptions = data.motherboardOptions || [];
-                    cpuOptions = data.cpuOptions || [];
-                    ramOptions = data.ramOptions || [];
-                    comboOptions = data.comboOptions || [];
+                    monitorOptions = data.monitorOptions || [];
+                    mouseOptions = data.mouseOptions || [];
+                    keyboardOptions = data.keyboardOptions || [];
+                    comboMouseTecladoOptions = data.comboMouseTecladoOptions || [];
+                    auricularesOptions = data.auricularesOptions || [];
+                    parlantesOptions = data.parlantesOptions || [];
 
                     // --- POBLAR SELECTS Y ACTUALIZAR UI ---
-                    // SSD
                     const ssdSelect = document.getElementById('ssd-select');
                     if (ssdSelect) {
                         ssdSelect.innerHTML = ssdOptions.map((option, index) =>
                             `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
                         ).join('');
                     }
-                    // GPU
                     const gpuSelect = document.getElementById('gpu-select');
                     if (gpuSelect) {
                         gpuSelect.innerHTML = gpuOptions.map((option, index) =>
                             `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
                         ).join('');
                     }
-                    // PSU
                     const psuSelect = document.getElementById('psu-select');
                     if (psuSelect) {
                         psuSelect.innerHTML = psuOptions.map((option, index) =>
@@ -2160,91 +2217,87 @@
                         ).join('');
                     }
 
-                    // Llamar a las funciones de actualización SOLO después de poblar los selects
+                    // Llamar a las funciones de actualización
                     updateTowerDisplay();
                     updateComponentDisplay(ssdSelect, document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions);
                     updateComponentDisplay(gpuSelect, document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions);
                     updateComponentDisplay(psuSelect, document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions);
-
+                    setupPeripheralCards();
                 })
                 .catch(error => {
                     console.error('Error cargando products.json:', error);
                 });
 
-            // --- PRECIOS ---
-            // Precios base y componentes
-            const GAIN = 121000;
+            // --- PRECIOS Y ESTADO ---
+            const GAIN = 123000;
             const COMBO_MOTHER_CPU_RAM = 325000;
             const BASE_PRICE = COMBO_MOTHER_CPU_RAM + GAIN;
-            const JOYSTICK_PRICE = 22000;
-            const MOUSE_KEYBOARD_PRICE = 36000;
-            let joystickCount = 0;
-            let hasMouseKeyboard = false;
-            const totalPriceEl = document.getElementById('total-price'); // Price in the hero section (main footer)
-            const topTotalPriceEl = document.getElementById('top-total-price'); // Price in the hero section (top header)
+            
+            // Objeto para manejar el estado de los periféricos
+            const peripheralState = {
+                currentMonitorIndex: -1,
+                currentMouseIndex: -1,
+                currentKeyboardIndex: -1,
+                currentComboIndex: -1,
+                currentAuricularesIndex: -1,
+                currentParlantesIndex: -1,
+            };
+
+            const totalPriceEl = document.getElementById('total-price');
+            const topTotalPriceEl = document.getElementById('top-total-price');
 
             const usdPriceTopEl = document.getElementById('usd-price-display-top');
             const usdPriceBottomEl = document.getElementById('total-price-usd');
             const usdLinkBottom = document.getElementById('usd-link-bottom');
             const usdLinkTop = document.getElementById('usd-link-top');
 
-            // Floating price display elements (now renamed to summary card)
             const totalPriceSummaryArsEl = document.getElementById('total-price-summary-ars');
             const totalPriceSummaryUsdEl = document.getElementById('total-price-summary-usd');
             const usdLinkSummary = document.getElementById('usd-link-summary');
-            const usdPriceSectionEl = document.getElementById('usd-price-section'); // Get the USD price section element
+            const usdPriceSectionEl = document.getElementById('usd-price-section');
 
-            // Mobile sticky price summary elements
             const totalPriceSummaryArsMobileEl = document.getElementById('total-price-summary-ars-mobile');
             const totalPriceSummaryUsdMobileEl = document.getElementById('total-price-summary-usd-mobile');
             const usdPriceSectionMobileEl = document.getElementById('usd-price-section-mobile');
             const usdLinkSummaryMobile = document.getElementById('usd-link-summary-mobile');
 
+            let allDolarRates = [];
+            let currentTowerIndex = 0;
 
-            let allDolarRates = []; // To store all rates for the popup
-            let currentTowerIndex = 0; // Index of the currently selected tower
-
-            /**
-             * Updates the displayed prices (ARS and USD) based on selected components and exchange rates.
-             * @param {number} rate - The current official USD selling rate.
-             */
             function updatePrices(rate) {
                 let total = BASE_PRICE;
-                if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
-                if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
 
-                // Add selected tower price
+                if (peripheralState.currentMonitorIndex > -1) total += monitorOptions[peripheralState.currentMonitorIndex].price;
+                if (peripheralState.currentMouseIndex > -1) total += mouseOptions[peripheralState.currentMouseIndex].price;
+                if (peripheralState.currentKeyboardIndex > -1) total += keyboardOptions[peripheralState.currentKeyboardIndex].price;
+                if (peripheralState.currentComboIndex > -1) total += comboMouseTecladoOptions[peripheralState.currentComboIndex].price;
+                if (peripheralState.currentAuricularesIndex > -1) total += auricularesOptions[peripheralState.currentAuricularesIndex].price;
+                if (peripheralState.currentParlantesIndex > -1) total += parlantesOptions[peripheralState.currentParlantesIndex].price;
+
                 if (towersOptions.length > 0) {
                     total += towersOptions[currentTowerIndex].price;
                 }
 
-                // Add selected SSD storage price from the select value
                 const ssdSelect = document.getElementById('ssd-select');
                 if (ssdSelect && ssdSelect.value) {
                     total += parseInt(ssdSelect.value);
                 }
 
-                // Add selected GPU price from the select value
                 const gpuSelect = document.getElementById('gpu-select');
                 if (gpuSelect && gpuSelect.value) {
                     total += parseInt(gpuSelect.value);
                 }
 
-                // Add selected PSU price from the select value
                 const psuSelect = document.getElementById('psu-select');
                 if (psuSelect && psuSelect.value) {
                     total += parseInt(psuSelect.value);
                 }
 
-
-                // Update prices in main section and summary card (desktop/tablet)
                 const formattedTotal = Math.floor(total / 1000);
-                if (totalPriceEl) totalPriceEl.textContent = `${formattedTotal}`; // Removed .000 here
-                if (topTotalPriceEl) topTotalPriceEl.textContent = `$${formattedTotal}.000`; // Always add .000
+                if (totalPriceEl) totalPriceEl.textContent = `${formattedTotal}`;
+                if (topTotalPriceEl) topTotalPriceEl.textContent = `$${formattedTotal}.000`;
                 if (totalPriceSummaryArsEl) totalPriceSummaryArsEl.textContent = formattedTotal;
-                // Mobile price: show full amount with .000
                 if (totalPriceSummaryArsMobileEl) totalPriceSummaryArsMobileEl.textContent = `${total.toLocaleString('es-AR')}`;
-
 
                 let oficial = null;
                 if (allDolarRates && allDolarRates.length) {
@@ -2256,33 +2309,29 @@
 
                 if (oficial && oficial.venta) {
                     const totalUSD = total / oficial.venta;
-                    const usdText = `$${totalUSD.toFixed(0)}`; // Formatear sin decimales y sin "USD" al final
+                    const usdText = `$${totalUSD.toFixed(0)}`;
 
-                    // Main section USD display
                     if (usdPriceTopEl) {
-                        usdPriceTopEl.textContent = `${usdText} USD`; // Add "USD" back for this element
+                        usdPriceTopEl.textContent = `${usdText} USD`;
                         usdPriceTopEl.classList.remove('hidden');
                         usdPriceTopEl.parentElement.style.display = '';
                     }
                     if (usdPriceBottomEl) {
-                        usdPriceBottomEl.textContent = `${usdText} USD`; // Add "USD" back for this element
+                        usdPriceBottomEl.textContent = `${usdText} USD`;
                         usdPriceBottomEl.classList.remove('hidden');
                         usdPriceBottomEl.parentElement.style.display = '';
                     }
                     if (usdLinkTop) usdLinkTop.classList.remove('hidden');
                     if (usdLinkBottom) usdLinkBottom.classList.remove('hidden');
 
-                    // Summary card USD display (desktop/tablet)
                     if (totalPriceSummaryUsdEl) {
-                        totalPriceSummaryUsdEl.textContent = usdText; // No "USD" text here, it's in the span
+                        totalPriceSummaryUsdEl.textContent = usdText;
                     }
                     if (usdLinkSummary) usdLinkSummary.classList.remove('hidden');
-                    // Ensure USD section is visible
                     if (usdPriceSectionEl) {
                         usdPriceSectionEl.style.display = 'flex';
                     }
 
-                    // Mobile sticky price summary USD display
                     if (totalPriceSummaryUsdMobileEl) {
                         totalPriceSummaryUsdMobileEl.textContent = usdText;
                     }
@@ -2292,21 +2341,16 @@
                     }
 
                 } else {
-                    // Hide USD display if API fails for all sections
                     if (usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                     if (usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
-                    if (usdPriceSectionEl) usdPriceSectionEl.style.display = 'none'; // Hide USD section on error
-                    if (usdPriceSectionMobileEl) usdPriceSectionMobileEl.style.display = 'none'; // Hide mobile USD section on error
+                    if (usdPriceSectionEl) usdPriceSectionEl.style.display = 'none';
+                    if (usdPriceSectionMobileEl) usdPriceSectionMobileEl.style.display = 'none';
                 }
+                updateSelectedComponentsDisplay(); // Update images whenever price changes
             }
 
-            // UPDATED to use dolarapi.com
-            /**
-             * Fetches the current dollar exchange rates from an API.
-             */
             async function fetchDolarRate() {
                 try {
-                    // Fetch for default display rate (Oficial)
                     const responseOficial = await fetch('https://dolarapi.com/v1/dolares/oficial');
                     if (!responseOficial.ok) throw new Error('Network response was not ok for Oficial rate');
                     const dataOficial = await responseOficial.json();
@@ -2315,18 +2359,16 @@
                         updatePrices(dataOficial.venta);
                     }
 
-                    // Fetch all rates for the popup
                     const responseAll = await fetch('https://dolarapi.com/v1/dolares');
                     if (!responseAll.ok) throw new Error('Network response was not ok for All rates');
                     allDolarRates = await responseAll.json();
 
                 } catch (error) {
                     console.error("Could not fetch exchange rate:", error);
-                    // Hide USD display if API fails
                     if (usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
                     if (usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
-                    if (usdPriceSectionEl) usdPriceSectionEl.style.display = 'none'; // Hide USD section on error
-                    if (usdPriceSectionMobileEl) usdPriceSectionMobileEl.style.display = 'none'; // Hide mobile USD section on error
+                    if (usdPriceSectionEl) usdPriceSectionEl.style.display = 'none';
+                    if (usdPriceSectionMobileEl) usdPriceSectionMobileEl.style.display = 'none';
                 }
             }
 
@@ -2361,15 +2403,12 @@
             softwareCategories.forEach(category => {
                 const categoryWrapper = document.createElement('div');
                 categoryWrapper.className = 'mb-8';
-                // Add icon to category heading
                 categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2 flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</h3>`;
-                // Descripción de categoría
                 const descDiv = document.createElement('div');
                 descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
                 descDiv.style.transition = 'background 0.2s, color 0.2s';
                 descDiv.textContent = category.description;
                 categoryWrapper.appendChild(descDiv);
-                // Grid de programas (checkboxes)
                 const itemsWrapper = document.createElement('div');
                 itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
                 const programs = softwareData.filter(item => item.category === category.name);
@@ -2377,28 +2416,19 @@
                     const essentialClass = item.disabled ? 'essential-software' : '';
                     const disabledClass = item.disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer';
                     const labelColorClass = item.disabled ? 'green-333' : 'text-white';
-
-                    // Main container for the software item
                     const softwareItemHTML = document.createElement('div');
                     softwareItemHTML.className = `relative bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}`;
-
-                    // Custom Checkbox Element
                     const customCheckbox = document.createElement('div');
                     customCheckbox.className = 'custom-software-checkbox';
-                    customCheckbox.dataset.slug = item.slug; // Store the slug for submission
+                    customCheckbox.dataset.slug = item.slug;
                     if (item.checked) {
                         customCheckbox.classList.add('checked');
                     }
-
-                    // Text Span
                     const span = document.createElement('span');
                     span.className = `ml-3 text-sm font-medium ${labelColorClass}`;
                     span.textContent = item.name;
-
                     softwareItemHTML.appendChild(customCheckbox);
                     softwareItemHTML.appendChild(span);
-
-                    // --- HOVER Y TOUCH EN TODO EL DIV ---
                     function showProgramDesc() {
                         descDiv.textContent = `${item.name}: ${item.descripcion}`;
                     }
@@ -2407,27 +2437,20 @@
                     }
                     softwareItemHTML.addEventListener('mouseenter', showProgramDesc);
                     softwareItemHTML.addEventListener('mouseleave', showCategoryDesc);
-
-                    // Add a single, reliable click listener to the parent div
                     softwareItemHTML.addEventListener('click', () => {
                         if (!item.disabled) {
                             customCheckbox.classList.toggle('checked');
                         }
                     });
-
                     itemsWrapper.appendChild(softwareItemHTML);
                 });
                 categoryWrapper.appendChild(itemsWrapper);
                 softwareListContainer.appendChild(categoryWrapper);
             });
 
-            // --- SELECTED GAMES DISPLAY ---
             const selectedGamesSection = document.getElementById('selected-games-section');
             const selectedGamesList = document.getElementById('selected-games-list');
 
-            /**
-             * Updates the list of selected games displayed on the page.
-             */
             function updateSelectedGamesList() {
                 const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
                 selectedGamesList.innerHTML = '';
@@ -2447,27 +2470,18 @@
                 }
             }
 
-
-            // --- ERROR TOAST ---
             const errorToast = document.getElementById('error-toast');
             const errorToastMessage = document.getElementById('error-toast-message');
             const resetSelectionBtn = document.getElementById('reset-selection-btn');
             let errorToastTimeout;
             let consecutiveErrorClicks = 0;
 
-            /**
-             * Hides the error toast message.
-             */
             function hideErrorToast() {
                 clearTimeout(errorToastTimeout);
                 errorToast.classList.remove('show');
                 resetSelectionBtn.classList.add('hidden');
             }
 
-            /**
-             * Displays an error toast message.
-             * @param {string} message - The message to display.
-             */
             function showErrorToast(message) {
                 hideErrorToast();
                 setTimeout(() => {
@@ -2475,15 +2489,11 @@
                     if (consecutiveErrorClicks >= 2) {
                         resetSelectionBtn.classList.remove('hidden');
                     }
-
                     errorToast.classList.add('show');
                     errorToastTimeout = setTimeout(hideErrorToast, 4000);
                 }, 150);
             }
 
-            /**
-             * Resets the game selection to none.
-             */
             function resetGameSelection() {
                 document.querySelectorAll('input[name="game"]:checked').forEach(cb => {
                     cb.checked = false;
@@ -2497,8 +2507,6 @@
             }
             resetSelectionBtn.addEventListener('click', resetGameSelection);
 
-
-            // --- GAME GRID AND "LOAD MORE" LOGIC ---
             const gameGridWrapper = document.getElementById('game-grid-wrapper');
             const loadMoreGamesBtn = document.getElementById('load-more-games');
             const noMoreGamesMsg = document.getElementById('no-more-games');
@@ -2507,36 +2515,23 @@
             let isGridExpanded = false;
             const allGameCards = Array.from(gameListContainer.children);
 
-            /**
-             * Sets the initial height of the game grid to show a limited number of rows.
-             */
             function setInitialGridHeight() {
-
                 if (isGridExpanded || !allGameCards.length) return;
-
                 const gridGap = parseInt(window.getComputedStyle(gameListContainer).getPropertyValue('grid-row-gap')) || 24;
                 const cardHeight = allGameCards[0].offsetHeight;
-
                 if (cardHeight === 0) {
                     setTimeout(setInitialGridHeight, 100); return;
                 }
-
                 const rowHeight = cardHeight + gridGap;
                 const teaserHeight = rowHeight / 2;
                 const targetHeight = (ROWS_TO_SHOW_INITIALLY * rowHeight) - gridGap + teaserHeight;
-
                 gameGridWrapper.style.maxHeight = `${targetHeight}px`;
-
                 const totalRows = Math.ceil(allGameCards.length / getColumnCount());
                 if (ROWS_TO_SHOW_INITIALLY >= totalRows) {
                     loadMoreGamesBtn.click();
                 }
             }
 
-            /**
-             * Determines the number of columns in the game grid based on screen width.
-             * @returns {number} The number of columns.
-             */
             function getColumnCount() {
                 const screenWidth = window.innerWidth;
                 if (screenWidth >= 1024) return 5;
@@ -2554,32 +2549,22 @@
                 loadMoreOverlay.style.pointerEvents = 'none';
             });
 
-            // --- HERO PRODUCT IMAGES POSITIONING ---
-            /**
-             * Positions the main product images (Crox A and Crox B) dynamically.
-             */
             function positionCroxImages() {
                 const croxA = document.getElementById('home-crox-a');
                 const croxB = document.getElementById('home-crox-b');
                 const hookSection = document.querySelector('.hook-section');
                 const wrapper = document.getElementById('hero-wrapper');
-
                 if (croxA && croxB && hookSection && wrapper) {
                     if (window.innerWidth > 639) {
                         const wrapperRect = wrapper.getBoundingClientRect();
                         const hookSectionRect = hookSection.getBoundingClientRect();
-
                         const topPosition = hookSectionRect.top - wrapperRect.top - (croxA.offsetHeight / 2);
-
                         croxA.style.top = `${topPosition}px`;
                         croxB.style.top = `${topPosition}px`;
-
                         const marginRem = -10;
                         const marginPx = marginRem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-
                         const croxALeft = hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx;
                         croxA.style.left = `${croxALeft + 33}px`;
-
                         const croxBRight = wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx;
                         croxB.style.right = `${croxBRight + 56}px`;
                         croxB.style.left = 'auto';
@@ -2592,8 +2577,6 @@
                 positionCroxImages();
             });
 
-
-            // --- EVENT LISTENERS ---
             document.querySelectorAll('input[name="game"]').forEach(checkbox => {
                 checkbox.addEventListener('change', (e) => {
                     if (e.target.checked && document.querySelectorAll('input[name="game"]:checked').length > 3) {
@@ -2602,10 +2585,8 @@
                         showErrorToast('MAX 3 Juegos Incluidos');
                         return;
                     }
-
                     consecutiveErrorClicks = 0;
                     hideErrorToast();
-
                     const label = e.target.nextElementSibling;
                     const sticker = label.querySelector('.game-title-sticker');
                     if (e.target.checked) {
@@ -2614,7 +2595,6 @@
                         const randomRotate = Math.floor(Math.random() * 20) - 10;
                         sticker.style.top = `${randomTop}%`;
                         sticker.style.left = `${randomLeft}%`;
-
                         sticker.style.transform = `rotate(${randomRotate}deg)`;
                         sticker.classList.remove('hidden');
                     } else {
@@ -2623,30 +2603,187 @@
                     updateSelectedGamesList();
                 });
             });
+            
+            function setupPeripheralCards() {
+                const peripheralConfig = [
+                    {
+                        id: 'combo-card',
+                        options: comboMouseTecladoOptions,
+                        stateKey: 'currentComboIndex',
+                        defaultText: 'Combo Mouse+Teclado',
+                        onSelect: () => {
+                            peripheralState.currentMouseIndex = -1;
+                            peripheralState.currentKeyboardIndex = -1;
+                            updatePeripheralStates();
+                        }
+                    },
+                    {
+                        id: 'keyboard-card',
+                        options: keyboardOptions,
+                        stateKey: 'currentKeyboardIndex',
+                        defaultText: 'Teclado',
+                        onSelect: () => {
+                            peripheralState.currentComboIndex = -1;
+                            updatePeripheralStates();
+                        }
+                    },
+                    {
+                        id: 'mouse-card',
+                        options: mouseOptions,
+                        stateKey: 'currentMouseIndex',
+                        defaultText: 'Mouse',
+                        onSelect: () => {
+                            peripheralState.currentComboIndex = -1;
+                            updatePeripheralStates();
+                        }
+                    },
+                    {
+                        id: 'monitor-card',
+                        options: monitorOptions,
+                        stateKey: 'currentMonitorIndex',
+                        defaultText: 'Monitor'
+                    },
+                    {
+                        id: 'auriculares-card',
+                        options: auricularesOptions,
+                        stateKey: 'currentAuricularesIndex',
+                        defaultText: 'Auriculares'
+                    },
+                    {
+                        id: 'parlantes-card',
+                        options: parlantesOptions,
+                        stateKey: 'currentParlantesIndex',
+                        defaultText: 'Parlantes'
+                    }
+                ];
 
-            const joystickCard = document.getElementById('joystick-card');
-            const joystickImg = joystickCard.querySelector('img');
-            const joystickBadge = document.getElementById('joystick-badge');
-            joystickCard.addEventListener('click', () => {
-                joystickCount = (joystickCount + 1) % 3; // Cycle 0, 1, 2
-                joystickCard.classList.toggle('active', joystickCount > 0);
-                joystickBadge.classList.toggle('hidden', joystickCount !== 2);
+                peripheralConfig.forEach(config => {
+                    const card = document.getElementById(config.id);
+                    if (!card || !config.options || config.options.length === 0) return;
 
-                if (joystickCount === 2) {
-                    joystickImg.src = 'comps/xboxc2.jpg';
-                } else {
-                    joystickImg.src = 'comps/xboxc1.jpg';
+                    card.addEventListener('click', () => {
+                        if (card.classList.contains('disabled')) return;
+
+                        let currentIndex = peripheralState[config.stateKey];
+                        currentIndex = (currentIndex + 2) % (config.options.length + 1) - 1;
+                        peripheralState[config.stateKey] = currentIndex;
+                        
+                        if (config.onSelect) {
+                            config.onSelect();
+                        } else {
+                            updatePeripheralStates();
+                        }
+                    });
+                });
+                
+                updatePeripheralStates();
+            }
+
+            function updatePeripheralStates() {
+                const peripherals = [
+                    { id: 'combo-card', options: comboMouseTecladoOptions, stateKey: 'currentComboIndex', defaultText: 'Combo Mouse+Teclado' },
+                    { id: 'keyboard-card', options: keyboardOptions, stateKey: 'currentKeyboardIndex', defaultText: 'Teclado' },
+                    { id: 'mouse-card', options: mouseOptions, stateKey: 'currentMouseIndex', defaultText: 'Mouse' },
+                    { id: 'monitor-card', options: monitorOptions, stateKey: 'currentMonitorIndex', defaultText: 'Monitor' },
+                    { id: 'auriculares-card', options: auricularesOptions, stateKey: 'currentAuricularesIndex', defaultText: 'Auriculares' },
+                    { id: 'parlantes-card', options: parlantesOptions, stateKey: 'currentParlantesIndex', defaultText: 'Parlantes' }
+                ];
+
+                const isComboActive = peripheralState.currentComboIndex > -1;
+
+                peripherals.forEach(p => {
+                    const card = document.getElementById(p.id);
+                    if (!card) return;
+                    const image = card.querySelector('img');
+                    const text = card.querySelector('p');
+                    const currentIndex = peripheralState[p.stateKey];
+
+                    if (isComboActive && (p.id === 'mouse-card' || p.id === 'keyboard-card')) {
+                        card.classList.add('disabled');
+                        card.classList.remove('active');
+                    } else {
+                        card.classList.remove('disabled');
+                    }
+
+                    if (currentIndex > -1) {
+                        const selected = p.options[currentIndex];
+                        card.classList.add('active');
+                        image.src = selected.image_url;
+                        image.style.filter = 'grayscale(0%)';
+                        text.innerHTML = `${selected.name}<br>(+$${(selected.price / 1000)}k)`;
+                    } else {
+                        card.classList.remove('active');
+                        if (p.options.length > 0) {
+                            image.src = p.options[0].image_url;
+                        }
+                        image.style.filter = 'grayscale(100%)';
+                        text.textContent = p.defaultText;
+                    }
+                });
+
+                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
+            }
+
+            // NEW: Function to update the selected components display
+            function updateSelectedComponentsDisplay() {
+                const container = document.getElementById('selected-images-container');
+                if (!container) return;
+                container.innerHTML = '';
+
+                const createSummaryCardHTML = (item, category) => {
+                    if (!item || !item.image_url || !item.name) return '';
+                    const link = item.link ? `href="${item.link}" target="_blank"` : 'href="#" onclick="event.preventDefault()"';
+                    return `
+                        <a ${link} class="summary-card-link">
+                            <div class="summary-card">
+                                <div class="summary-card-category">${category}</div>
+                                <img src="${item.image_url}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/128x96/ffffff/333333?text=Error'">
+                                <p>${item.name}</p>
+                            </div>
+                        </a>
+                    `;
+                };
+
+                // Tower
+                if (towersOptions.length > 0) {
+                    container.innerHTML += createSummaryCardHTML(towersOptions[currentTowerIndex], 'Gabinete');
                 }
 
-                updatePrices(allDolarRates.find(rate => rate.casa === 'oficial')?.venta);
-            });
+                // GPU, SSD, PSU
+                const gpuSelect = document.getElementById('gpu-select');
+                const ssdSelect = document.getElementById('ssd-select');
+                const psuSelect = document.getElementById('psu-select');
 
-            const mouseKeyboardCard = document.getElementById('mouse-keyboard-card');
-            mouseKeyboardCard.addEventListener('click', () => {
-                hasMouseKeyboard = !hasMouseKeyboard;
-                mouseKeyboardCard.classList.toggle('active', hasMouseKeyboard);
-                updatePrices(allDolarRates.find(rate => rate.casa === 'oficial')?.venta);
-            });
+                const selectedGPU = gpuOptions.find(opt => opt.price == gpuSelect.value);
+                const selectedSSD = ssdOptions.find(opt => opt.price == ssdSelect.value);
+                const selectedPSU = psuOptions.find(opt => opt.price == psuSelect.value);
+
+                container.innerHTML += createSummaryCardHTML(selectedGPU, 'Gráfica');
+                container.innerHTML += createSummaryCardHTML(selectedSSD, 'Almacenamiento');
+                container.innerHTML += createSummaryCardHTML(selectedPSU, 'Fuente');
+
+                // Peripherals
+                if (peripheralState.currentComboIndex > -1) {
+                    container.innerHTML += createSummaryCardHTML(comboMouseTecladoOptions[peripheralState.currentComboIndex], 'Combo');
+                } else {
+                    if (peripheralState.currentKeyboardIndex > -1) {
+                        container.innerHTML += createSummaryCardHTML(keyboardOptions[peripheralState.currentKeyboardIndex], 'Teclado');
+                    }
+                    if (peripheralState.currentMouseIndex > -1) {
+                        container.innerHTML += createSummaryCardHTML(mouseOptions[peripheralState.currentMouseIndex], 'Mouse');
+                    }
+                }
+                if (peripheralState.currentMonitorIndex > -1) {
+                    container.innerHTML += createSummaryCardHTML(monitorOptions[peripheralState.currentMonitorIndex], 'Monitor');
+                }
+                if (peripheralState.currentAuricularesIndex > -1) {
+                    container.innerHTML += createSummaryCardHTML(auricularesOptions[peripheralState.currentAuricularesIndex], 'Auriculares');
+                }
+                if (peripheralState.currentParlantesIndex > -1) {
+                    container.innerHTML += createSummaryCardHTML(parlantesOptions[peripheralState.currentParlantesIndex], 'Parlantes');
+                }
+            }
+
 
             document.getElementById('orderForm').addEventListener('submit', function (e) {
                 e.preventDefault();
@@ -2662,44 +2799,56 @@
                 const extraNotes = document.getElementById('extra-notes').value;
 
                 let message = `¡Hola, me interesa esta Nave del Medio!\n\n`;
-                if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
-
-                let peripheralsMessage = '';
-                if (joystickCount > 0) peripheralsMessage += `${joystickCount} Joystick(s)`;
-                if (hasMouseKeyboard) {
-                    if (peripheralsMessage) peripheralsMessage += ' y ';
-                    peripheralsMessage += 'Mouse y Teclado Inalámbrico';
-                }
-                if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
-
-                // Add selected tower to WhatsApp message
+                
                 if (towersOptions.length > 0) {
                     message += `*Torre Seleccionada:* ${towersOptions[currentTowerIndex].name}\n`;
                 }
 
-                // Add selected SSD to WhatsApp message
                 const ssdSelect = document.getElementById('ssd-select');
                 if (ssdSelect) {
-                    const selectedOption = ssdSelect.options[ssdSelect.selectedIndex];
-                    message += `*Almacenamiento:* ${selectedOption.textContent}\n`;
+                    message += `*Almacenamiento:* ${ssdSelect.options[ssdSelect.selectedIndex].textContent}\n`;
                 }
 
-                // Add selected GPU to WhatsApp message
                 const gpuSelect = document.getElementById('gpu-select');
                 if (gpuSelect) {
-                    const selectedOption = gpuSelect.options[gpuSelect.selectedIndex];
-                    message += `*Tarjeta Gráfica:* ${selectedOption.textContent}\n`;
+                    message += `*Tarjeta Gráfica:* ${gpuSelect.options[gpuSelect.selectedIndex].textContent}\n`;
                 }
 
-                // Add selected PSU to WhatsApp message
                 const psuSelect = document.getElementById('psu-select');
                 if (psuSelect) {
-                    const selectedOption = psuSelect.options[psuSelect.selectedIndex];
-                    message += `*Fuente de Poder:* ${selectedOption.textContent}\n`;
+                    message += `*Fuente de Poder:* ${psuSelect.options[psuSelect.selectedIndex].textContent}\n`;
                 }
 
+                let peripheralsMessage = '';
+                if (peripheralState.currentComboIndex > -1) {
+                    peripheralsMessage += `Combo: ${comboMouseTecladoOptions[peripheralState.currentComboIndex].name}`;
+                } else {
+                    if (peripheralState.currentMouseIndex > -1) {
+                        peripheralsMessage += `Mouse: ${mouseOptions[peripheralState.currentMouseIndex].name}`;
+                    }
+                    if (peripheralState.currentKeyboardIndex > -1) {
+                        if (peripheralsMessage) peripheralsMessage += ', ';
+                        peripheralsMessage += `Teclado: ${keyboardOptions[peripheralState.currentKeyboardIndex].name}`;
+                    }
+                }
 
-                // --- Programas seleccionados, agrupados por categoría ---
+                if (peripheralState.currentMonitorIndex > -1) {
+                    if (peripheralsMessage) peripheralsMessage += ', ';
+                    peripheralsMessage += `Monitor: ${monitorOptions[peripheralState.currentMonitorIndex].name}`;
+                }
+                if (peripheralState.currentAuricularesIndex > -1) {
+                    if (peripheralsMessage) peripheralsMessage += ', ';
+                    peripheralsMessage += `Auriculares: ${auricularesOptions[peripheralState.currentAuricularesIndex].name}`;
+                }
+                if (peripheralState.currentParlantesIndex > -1) {
+                    if (peripheralsMessage) peripheralsMessage += ', ';
+                    peripheralsMessage += `Parlantes: ${parlantesOptions[peripheralState.currentParlantesIndex].name}`;
+                }
+
+                if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
+
+                if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
+
                 if (selectedSoftware.length > 0) {
                     const catOrder = ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'];
                     let programasPorCat = {};
@@ -2722,26 +2871,20 @@
 
                 if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
-                message += `\nPrecio Total: ${topTotalPriceEl.textContent}`; // Use the top price for consistency
+                message += `\nPrecio Total: ${topTotalPriceEl.textContent}`;
                 message += `\n¡Quedo a la espera de tu respuesta!`;
                 window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
             });
 
-            // --- DOLAR POPUP LOGIC ---
             const dolarPopup = document.getElementById('dolar-popup');
             const dolarRatesList = document.getElementById('dolar-rates-list');
             const googleLink = document.getElementById('google-link');
 
-            // Asegura que el popup esté oculto al inicio con display: none;
             dolarPopup.style.display = 'none';
 
-            /**
-             * Displays the dollar exchange rates popup.
-             */
             function showDolarPopup() {
                 if (allDolarRates.length === 0) return;
                 dolarRatesList.innerHTML = '';
-                // Solo mostrar Oficial, Blue y Cripto
                 const tiposPermitidos = [
                     { key: 'oficial', label: 'Oficial' },
                     { key: 'blue', label: 'Blue' },
@@ -2755,8 +2898,13 @@
                     return '';
                 };
                 let total = BASE_PRICE;
-                if (joystickCount > 0) total += joystickCount * JOYSTICK_PRICE;
-                if (hasMouseKeyboard) total += MOUSE_KEYBOARD_PRICE;
+                if (peripheralState.currentMonitorIndex > -1) total += monitorOptions[peripheralState.currentMonitorIndex].price;
+                if (peripheralState.currentMouseIndex > -1) total += mouseOptions[peripheralState.currentMouseIndex].price;
+                if (peripheralState.currentKeyboardIndex > -1) total += keyboardOptions[peripheralState.currentKeyboardIndex].price;
+                if (peripheralState.currentComboIndex > -1) total += comboMouseTecladoOptions[peripheralState.currentComboIndex].price;
+                if (peripheralState.currentAuricularesIndex > -1) total += auricularesOptions[peripheralState.currentAuricularesIndex].price;
+                if (peripheralState.currentParlantesIndex > -1) total += parlantesOptions[peripheralState.currentParlantesIndex].price;
+
                 if (towersOptions.length > 0) {
                     total += towersOptions[currentTowerIndex].price;
                 }
@@ -2773,14 +2921,13 @@
                     total += parseInt(psuSelect.value);
                 }
 
-
                 tiposPermitidos.forEach(tipo => {
                     const rate = allDolarRates.find(r => mapApiKey(r.nombre) === tipo.key);
                     if (!rate) return;
                     const precioEnDolar = rate.venta ? (total / rate.venta) : null;
                     const name = tipo.label;
                     const rateEl = document.createElement('div');
-                    rateEl.className = 'flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2 dolar-rate-item'; // Added class for styling
+                    rateEl.className = 'flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2 dolar-rate-item';
                     rateEl.innerHTML = `
                             <span class="font-bold text-gray-300 dolar-name">${name}</span>
                             <div class="text-right">
@@ -2792,13 +2939,12 @@
                     dolarRatesList.appendChild(rateEl);
                 });
                 googleLink.href = `https://www.google.com/search?q=${total}+ars+to+usd`;
-                dolarPopup.style.display = 'flex'; // Cambiar a flex para mostrar
+                dolarPopup.style.display = 'flex';
             }
 
             dolarPopup.addEventListener('click', (e) => {
-                // Check if the click occurred on the overlay itself, not its children
-                if (e.target === dolarPopup) { // Fixed: Ensure e.target is the popup overlay itself
-                    dolarPopup.style.display = 'none'; // Ocultar al hacer clic fuera
+                if (e.target === dolarPopup) {
+                    dolarPopup.style.display = 'none';
                 }
             });
 
@@ -2806,21 +2952,16 @@
             document.getElementById('usd-price-display-top').addEventListener('click', showDolarPopup);
             document.getElementById('usd-link-bottom').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
             document.getElementById('total-price-usd').addEventListener('click', showDolarPopup);
-            // New listeners for summary USD price
             document.getElementById('usd-link-summary').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
             document.getElementById('total-price-summary-usd').addEventListener('click', showDolarPopup);
-            // New listeners for mobile summary USD price
             document.getElementById('usd-link-summary-mobile').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
             document.getElementById('total-price-summary-usd-mobile').addEventListener('click', showDolarPopup);
 
-
-            // --- TOWER SELECTION LOGIC ---
             const towerImageEl = document.getElementById('current-tower-image');
             const currentTowerNameEl = document.getElementById('current-tower-name');
             const prevTowerBtn = document.getElementById('prev-tower');
             const nextTowerBtn = document.getElementById('next-tower');
 
-            // --- Component Selector Logic ---
             const ssdSelect = document.getElementById('ssd-select');
             const ssdDescriptionEl = document.getElementById('ssd-description');
             const ssdImageEl = document.getElementById('ssd-image');
@@ -2833,38 +2974,20 @@
             const psuDescriptionEl = document.getElementById('psu-description');
             const psuImageEl = document.getElementById('psu-image');
 
-            /**
-             * MODIFIED: Handles image loading gracefully with a grayscale effect.
-             * @param {HTMLElement} imageElement - The <img> element to update.
-             * @param {string} newSrc - The URL of the new image to load.
-             */
             function loadImageWithGrayscale(imageElement, newSrc) {
-                // Apply loading styles (grayscale) to the image
                 imageElement.classList.add('loading');
-
-                // Create a temporary image object to load the new source in the background
                 const tempImage = new Image();
                 tempImage.src = newSrc;
-
-                // Event handler for when the new image is successfully loaded
                 tempImage.onload = () => {
-                    // Update the actual image element's source on the page
                     imageElement.src = newSrc;
-                    // Remove the loading style, which will trigger the CSS transition back to full color
                     imageElement.classList.remove('loading');
                 };
-
-                // Event handler for loading errors
                 tempImage.onerror = () => {
                     console.error(`Failed to load image: ${newSrc}`);
-                    // If the image fails to load, remove the loading style to un-grayscale the old image
                     imageElement.classList.remove('loading');
                 };
             }
 
-            /**
-             * MODIFIED: Updates the tower display using the new image loading logic.
-             */
             function updateTowerDisplay() {
                 if (towersOptions.length === 0) return;
                 const selectedTower = towersOptions[currentTowerIndex];
@@ -2886,13 +3009,6 @@
             prevTowerBtn.addEventListener('click', prevTower);
             nextTowerBtn.addEventListener('click', nextTower);
 
-            /**
-             * MODIFIED: Updates a component's display (description and image) using the new loading logic.
-             * @param {HTMLElement} selectEl - The <select> element for the component.
-             * @param {HTMLElement} descEl - The <p> element for the description.
-             * @param {HTMLElement} imageEl - The <img> element for the component.
-             * @param {Array} options - The array of options for this component.
-             */
             function updateComponentDisplay(selectEl, descEl, imageEl, options) {
                 const selectedOption = options.find(opt => opt.price == selectEl.value);
                 
@@ -2916,7 +3032,6 @@
                 psuSelect.addEventListener('change', () => updateComponentDisplay(psuSelect, psuDescriptionEl, psuImageEl, psuOptions));
             }
 
-            // --- Fullscreen Overlay Logic ---
             const fullscreenOverlay = document.getElementById('fullscreen-overlay');
             const zoomedImage = document.getElementById('zoomed-image');
 
@@ -2940,7 +3055,6 @@
                 });
             });
 
-            // --- Intersection Observer for Price Summary Cards ---
             const mobilePriceSummaryCard = document.getElementById('mobile-price-summary-card');
             const priceSummaryCard = document.getElementById('price-summary-card');
             const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
@@ -2967,14 +3081,12 @@
                 priceCardObserver.observe(priceVisibilityZone);
             }
 
-
             // --- Initial calls ---
             fetchDolarRate();
             updateSelectedGamesList();
             setInitialGridHeight();
             positionCroxImages();
 
-            // Set initial SSD, GPU, PSU values and update prices
             if (ssdSelect && ssdOptions.length > 0) {
                 ssdSelect.value = ssdOptions[0].price;
                 updateComponentDisplay(ssdSelect, ssdDescriptionEl, ssdImageEl, ssdOptions);
@@ -2990,7 +3102,6 @@
             
             updateTowerDisplay();
 
-            // --- Event Listeners ---
             window.addEventListener('resize', () => {
                 setInitialGridHeight();
                 positionCroxImages();
