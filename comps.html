@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de Vectores de Productos</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' x='3' font-family='Arial'%3E%24%3C/text%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&family=Saira:wght@400;900;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* General Styles */
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #e5e7eb; /* text-gray-200 */
+        }
+        .font-saira-black { font-family: 'Saira', sans-serif; font-weight: 900; }
+
+        /* Input and Textarea Styles */
+        .overview-table input,
+        .overview-table textarea {
+            background: rgba(31,41,55,0.5)!important; /* bg-gray-800/50 */
+            font-family: 'Saira', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+            color: #e5e7eb;
+            border-radius: 0.375rem;
+            border: 1px solid #374151;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .overview-table input:focus,
+        .overview-table textarea:focus {
+            border-color: #6366f1; /* indigo-500 */
+            box-shadow: 0 0 0 2px #6366f1;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out, opacity 0.2s;
+            cursor: pointer;
+        }
+        .btn-primary { background-color: #6366f1; color: #ffffff; }
+        .btn-primary:hover { background-color: #4f46e5; }
+        .btn-secondary { background-color: #4b5563; color: #ffffff; padding: 0.5rem 1rem; }
+        .btn-secondary:hover { background-color: #374151; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        /* Icon and Title Styles */
+        .lucide-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: 1em;
+            height: 1em;
+            stroke-width: 2;
+            stroke: currentColor;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .section-title-admin {
+            border-bottom: 3px solid;
+            border-image: linear-gradient(to right, #6366f1, #a855f7) 1;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        /* Output and Message Styles */
+        #output-code {
+            background-color: #1f2937; /* bg-gray-800 */
+            border-color: #374151; /* border-gray-700 */
+            color: #42d232; /* green-400 */
+        }
+        #copy-message { color: #42d232; }
+        #error-message { color: #ef4444; }
+        #warning-message { color: #f59e0b; }
+
+        /* Table Styles */
+        .overview-table th, .overview-table td {
+            padding: 0.75rem 1.5rem;
+            vertical-align: middle;
+        }
+        .price-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 50px; /* Ensure space for indicators */
+        }
+        .indicators-container {
+            display: flex;
+            gap: 0.25rem;
+            margin-top: 0.25rem;
+            height: 18px; /* Give a fixed height to prevent layout shifts */
+        }
+        .overview-table input[type="text"],
+        .overview-table input[type="number"],
+        .overview-table textarea {
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+            color: #e5e7eb;
+            transition: all 0.15s ease-in-out;
+            min-width: 80px;
+        }
+        .overview-table input[type="text"]:focus,
+        .overview-table input[type="number"]:focus,
+        .overview-table textarea:focus {
+            border-color: #4b5563; /* gray-600 */
+            box-shadow: 0 0 0 1px rgba(75, 85, 99, 0.5);
+        }
+        .overview-table textarea { min-height: 40px; }
+        .add-row-button-cell {
+            text-align: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .add-row-button {
+            background-color: #6366f1;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .add-row-button:hover { background-color: #4f46e5; }
+
+        /* Price Check Highlight Styles */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 3px 2px rgba(20, 184, 166, 0.3); }
+            50% { box-shadow: 0 0 10px 5px rgba(20, 184, 166, 0); }
+        }
+        .price-scraping {
+            animation: pulse-glow 1.5s infinite;
+        }
+        tr.price-lower { background-color: rgba(34, 197, 94, 0.2); } /* Verde */
+        tr.price-higher { background-color: rgba(168, 85, 247, 0.2); } /* Violeta */
+        tr.price-same { background-color: rgba(59, 130, 246, 0.15); } /* Azul */
+        tr.price-error { background-color: rgba(239, 68, 68, 0.2); } /* Rojo */
+
+        .indicator-badge {
+            padding: 0.1rem 0.4rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            white-space: nowrap;
+        }
+        .indicator-badge.positive { background-color: #9333ea; }
+        .indicator-badge.negative { background-color: #16a34a; }
+        .indicator-badge.status { background-color: #dc2626; }
+        .indicator-badge.quantity { background-color: #4b5563; }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+
+        /* Image Preview Styles */
+        #image-preview {
+            max-width: 250px;
+            max-height: 250px;
+            transition: opacity 0.2s ease-in-out;
+        }
+        #image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Category Navigation Bar Styles */
+        .category-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 50;
+            background: linear-gradient(to right, #1f2937 80%, #6366f1 100%);
+            border-bottom: 2px solid #6366f1;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.25);
+            padding: 0.5rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            overflow-x: auto;
+            transition: top 0.2s;
+        }
+        .category-navbar.hidden { display: none; }
+        .category-navbar .cat-nav-btn {
+            background: none;
+            border: none;
+            color: #e5e7eb;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: background 0.15s, color 0.15s;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .category-navbar .cat-nav-btn.active, .category-navbar .cat-nav-btn:hover {
+            background: #6366f1;
+            color: #fff;
+        }
+        .category-navbar-spacer {
+            height: 3.2rem;
+            width: 100%;
+        }
+        @media (max-width: 640px) {
+            .category-navbar { font-size: 0.95rem; }
+            .category-navbar-spacer { height: 3.5rem; }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 bg-gray-900 min-h-screen text-gray-200">
+    <!-- Image preview element -->
+    <div id="image-preview" class="hidden fixed bottom-4 right-4 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-50 p-2">
+        <img src="" alt="Vista Previa" class="max-w-xs max-h-xs object-contain">
+    </div>
+
+    <!-- Sticky category navigation bar -->
+    <div id="category-navbar" class="category-navbar"></div>
+    <div class="category-navbar-spacer"></div>
+
+    <!-- Main container -->
+    <div class="mx-auto bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700" style="width:95%;max-width:1800px;">
+        <h1 class="text-3xl font-saira-black text-white mb-6 text-center">Administrador de Vectores de Productos</h1>
+        
+        <!-- Top Action Buttons -->
+        <div id="top-actions" class="flex justify-center items-center gap-4 mb-8">
+             <button onclick="reloadDataFromJson()" class="btn btn-secondary">
+                <span class="lucide-icon mr-2" data-lucide="refresh-ccw"></span> Recargar de Archivo
+            </button>
+            <button id="check-prices-btn" onclick="checkAllPrices()" class="btn btn-primary bg-teal-500 hover:bg-teal-600">
+                <span id="check-prices-icon" class="lucide-icon mr-2" data-lucide="scan-line"></span>
+                <span id="check-prices-text">Chequear Precios</span>
+            </button>
+        </div>
+
+        <!-- Table View Container -->
+        <div id="overview-view" class="tab-content">
+            <!-- Content will be generated by JavaScript -->
+        </div>
+
+        <!-- Code Generation Section -->
+        <section class="mt-10 p-6 bg-gray-900 rounded-lg shadow-inner border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar y Copiar Código de Vectores</h2>
+            <textarea id="output-code" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-800 text-green-400 font-mono text-sm resize-y" readonly></textarea>
+            <div class="flex flex-wrap justify-center items-center mt-4 gap-4">
+                <button onclick="generateCode()" class="btn btn-primary">
+                    <span class="lucide-icon mr-2" data-lucide="code"></span> Generar Código
+                </button>
+                <button onclick="copyCode()" class="btn btn-secondary">
+                    <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código
+                </button>
+            </div>
+            <p id="copy-message" class="text-center text-sm text-green-500 mt-2 hidden">¡Código copiado al portapapeles!</p>
+            <p id="error-message" class="text-center text-sm text-red-500 mt-2 hidden"></p>
+            <p id="warning-message" class="text-center text-sm text-amber-400 mt-2 hidden"></p>
+            <div id="success-message-container"></div>
+        </section>
+    </div>
+
+<script>
+    // --- Data Configuration ---
+    const CATEGORY_NAV_LIST = [
+      { key: 'towersOptions', label: 'Torres' }, { key: 'ssdOptions', label: 'SSD' },
+      { key: 'gpuOptions', label: 'GPU' }, { key: 'psuOptions', label: 'PSU' },
+      { key: 'motherboardOptions', label: 'Mother' }, { key: 'cpuOptions', label: 'CPU' },
+      { key: 'ramOptions', label: 'RAM' }, { key: 'comboOptions', label: 'Combos' },
+      { key: 'monitorOptions', label: 'Monitores' }, { key: 'mouseOptions', label: 'Mouse' },
+      { key: 'joystickOptions', label: 'Joysticks' }, { key: 'keyboardOptions', label: 'Teclados' },
+      { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado' }, { key: 'auricularesOptions', label: 'Auris' },
+      { key: 'parlantesOptions', label: 'Parlantes' }
+    ];
+
+    const dataMap = {
+        towersOptions: [], ssdOptions: [], gpuOptions: [], psuOptions: [], motherboardOptions: [],
+        cpuOptions: [], ramOptions: [], comboOptions: [], monitorOptions: [], mouseOptions: [],
+        joystickOptions: [], keyboardOptions: [], comboMouseTecladoOptions: [], auricularesOptions: [],
+        parlantesOptions: []
+    };
+    
+    const CORS_PROXIES = [
+        'https://api.allorigins.win/raw?url=',
+        'https://corsproxy.io/?'
+    ];
+
+    // --- Category Navigation ---
+    
+    function renderCategoryNavbar() {
+        const navbar = document.getElementById('category-navbar');
+        navbar.innerHTML = CATEGORY_NAV_LIST.map(cat =>
+            `<button class="cat-nav-btn" data-cat="${cat.key}" onclick="scrollToCategory('${cat.key}')">${cat.label}</button>`
+        ).join('');
+    }
+
+    function scrollToCategory(catKey) {
+        document.querySelectorAll('.category-navbar .cat-nav-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.cat === catKey);
+        });
+        
+        const categoryDiv = document.getElementById(`table-container-${catKey}`);
+        if(categoryDiv) {
+            categoryDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // --- Helper & Utility Functions ---
+
+    function getComponentName(type) {
+        const keyWithoutOptions = type.replace('Options', '');
+        const names = {
+            towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
+            motherboard: 'Motherboard', cpu: 'CPU', ram: 'RAM',
+            combo: 'Combo', monitor: 'Monitor', mouse: 'Mouse',
+            joystick: 'Joystick', keyboard: 'Teclado',
+            comboMouseTeclado: 'Combo Mouse y Teclado', auriculares: 'Auricular',
+            parlantes: 'Parlante'
+        };
+        return names[keyWithoutOptions] || 'Componente';
+    }
+    
+    function showMessage(elementId, message, duration = 4000) {
+        const messageElement = document.getElementById(elementId);
+        if (messageElement) {
+            messageElement.innerHTML = message;
+            messageElement.classList.remove('hidden');
+            setTimeout(() => {
+                messageElement.classList.add('hidden');
+            }, duration);
+        }
+    }
+    
+    function showSuccessMessage(message) {
+        let container = document.getElementById('success-message-container');
+        const msg = document.createElement('div');
+        msg.style.cssText = `position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #22c55e; color: #fff; padding: 12px 24px; border-radius: 8px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.25);`;
+        msg.innerHTML = message;
+        container.appendChild(msg);
+        setTimeout(() => msg.remove(), 2500);
+    }
+
+    // --- Data Persistence ---
+
+    function saveDataToSessionStorage() {
+        try {
+            sessionStorage.setItem('productAdminData', JSON.stringify(dataMap));
+        } catch (e) {
+            console.error("Error saving to sessionStorage:", e);
+            showMessage('error-message', 'Error al guardar datos en la sesión.');
+        }
+    }
+
+    function loadDataFromSessionStorage() {
+        try {
+            const storedData = sessionStorage.getItem('productAdminData');
+            return storedData ? JSON.parse(storedData) : null;
+        } catch (e) {
+            console.error("Error loading from sessionStorage:", e);
+            sessionStorage.removeItem('productAdminData');
+            return null;
+        }
+    }
+
+    // --- Core Data Operations ---
+
+    function addProduct(categoryKey) {
+        const newProduct = { name: '', price: 0, description: '', image_url: '', link: '' };
+        dataMap[categoryKey].push(newProduct);
+        renderOverviewTables();
+        saveDataToSessionStorage();
+    }
+
+    function removeProduct(categoryKey, index) {
+        if (!dataMap[categoryKey] || index < 0 || index >= dataMap[categoryKey].length) return;
+        dataMap[categoryKey].splice(index, 1);
+        renderOverviewTables();
+        saveDataToSessionStorage();
+    }
+
+    function updateProduct(categoryKey, index, key, value) {
+        if (dataMap[categoryKey] && dataMap[categoryKey][index]) {
+            dataMap[categoryKey][index][key] = value;
+            saveDataToSessionStorage();
+        }
+    }
+
+    function formatAndUpdatePrice(input, categoryKey, index) {
+        let raw = input.value.replace(/[^\d]/g, '');
+        if (raw.length > 9) raw = raw.slice(0,9);
+        let num = parseInt(raw, 10) || 0;
+        input.value = num ? num.toLocaleString('es-AR') : '';
+        updateProduct(categoryKey, index, 'price', num);
+    }
+    
+    async function replaceLink(categoryKey, index) {
+        try {
+            const text = await navigator.clipboard.readText();
+            if (typeof text !== 'string' || !text.trim().startsWith('http')) {
+                showMessage('error-message', 'El portapapeles no contiene un link válido.');
+                return;
+            }
+            dataMap[categoryKey][index].link = text.trim();
+            saveDataToSessionStorage();
+            renderOverviewTables();
+            showSuccessMessage('Link reemplazado con éxito.');
+        } catch (err) {
+            showMessage('error-message', 'No se pudo acceder al portapapeles.');
+        }
+    }
+    
+    // --- UI Rendering ---
+
+    function showImagePreview(imageUrl) {
+        const preview = document.getElementById('image-preview');
+        const img = preview.querySelector('img');
+        if (imageUrl) {
+            img.src = imageUrl;
+            preview.classList.remove('hidden');
+        }
+    }
+
+    function hideImagePreview() {
+        document.getElementById('image-preview').classList.add('hidden');
+    }
+
+    function renderOverviewTables() {
+        const overviewContainer = document.getElementById('overview-view');
+        overviewContainer.innerHTML = '';
+
+        for (const categoryKey in dataMap) {
+            const categoryData = dataMap[categoryKey];
+            const readableCategoryName = getComponentName(categoryKey) + 's';
+            const NAME_COL_STATIC_WIDTH = 330;
+
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700 category-table-container';
+            categoryDiv.id = `table-container-${categoryKey}`;
+            categoryDiv.innerHTML = `<h3 class="text-xl font-semibold text-gray-100 mb-4">${readableCategoryName}</h3>`;
+
+            const table = document.createElement('table');
+            table.className = 'overview-table w-full text-left text-sm text-gray-400';
+            table.innerHTML = `
+                <thead class="text-xs text-gray-200 uppercase bg-gray-700">
+                    <tr>
+                        <th scope="col" class="px-6 py-3" style="width: ${NAME_COL_STATIC_WIDTH}px;">Nombre</th>
+                        <th scope="col" class="px-6 py-3" style="width: 120px; text-align: left;">Precio</th>
+                        ${categoryKey !== 'towersOptions' ? '<th scope="col" class="px-6 py-3">Descripción</th>' : ''}
+                        <th scope="col" class="px-6 py-3">URL Imagen</th>
+                        <th scope="col" class="px-1 py-3" style="width:1%;min-width:70px;">Link</th>
+                        <th scope="col" class="px-2 py-3" style="width:1%;min-width:70px;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${(categoryData || []).map((product, index) => `
+                        <tr id="row-${categoryKey}-${index}" class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-200" 
+                            ondragover="onRowDragOver(event)" 
+                            ondrop="onRowDrop(event, '${categoryKey}', ${index})"
+                            onmouseenter="showImagePreview('${product.image_url || ''}')"
+                            onmouseleave="hideImagePreview()">
+                            <td class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
+                            </td>
+                            <td class="px-6 py-4 price-cell">
+                                <div class="price-wrapper">
+                                    <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
+                                    <div class="indicators-container"></div>
+                                </div>
+                            </td>
+                            ${categoryKey !== 'towersOptions' ? `
+                            <td class="px-6 py-4">
+                                <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
+                            </td>` : ''}
+                            <td class="px-6 py-4">
+                                <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" class="w-full text-xs">
+                            </td>
+                            <td class="px-1 py-4">
+                                <div class="flex items-center gap-1 h-full">
+                                    <a href="${product.link || '#'}" target="_blank" class="btn btn-secondary min-w-0 h-full flex items-center justify-center text-xs py-1 px-1">
+                                        <span class="lucide-icon mr-1" data-lucide="external-link" style="margin-right:2px;"></span>Visitar
+                                    </a>
+                                    <button onclick="replaceLink('${categoryKey}', ${index})" class="btn btn-primary text-xs py-1 px-1 ml-1" title="Reemplazar Link desde portapapeles">
+                                        <span class="lucide-icon" data-lucide="edit"></span>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="px-2 py-4 text-right">
+                                <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700" title="Eliminar"><span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span></button>
+                                <button draggable="true" ondragstart="onRowDragStart(event, '${categoryKey}', ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar"><span class="lucide-icon w-4 h-4" data-lucide="move"></span></button>
+                            </td>
+                        </tr>
+                    `).join('')}
+                    <tr>
+                        <td colspan="7" class="add-row-button-cell">
+                            <button onclick="addProduct('${categoryKey}')" class="add-row-button">
+                                <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir ${getComponentName(categoryKey)}
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            `;
+            categoryDiv.appendChild(table);
+            overviewContainer.appendChild(categoryDiv);
+        }
+        lucide.createIcons();
+    }
+
+    // --- Drag and Drop for Table Rows ---
+    let dragSrcIndex = null;
+    let dragSrcCategory = null;
+
+    function onRowDragStart(event, categoryKey, index) {
+        dragSrcIndex = index;
+        dragSrcCategory = categoryKey;
+        event.dataTransfer.effectAllowed = 'move';
+    }
+    function onRowDragOver(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+    }
+    function onRowDrop(event, categoryKey, index) {
+        event.preventDefault();
+        if (dragSrcCategory === categoryKey && dragSrcIndex !== null && dragSrcIndex !== index) {
+            const arr = dataMap[categoryKey];
+            const moved = arr.splice(dragSrcIndex, 1)[0];
+            arr.splice(index, 0, moved);
+            renderOverviewTables();
+            saveDataToSessionStorage();
+        }
+        dragSrcIndex = null;
+        dragSrcCategory = null;
+    }
+
+    // --- Price Checking ---
+    
+    async function fetchWithProxyFallback(url) {
+        for (const proxy of CORS_PROXIES) {
+            try {
+                const proxyUrl = `${proxy}${encodeURIComponent(url)}`;
+                const response = await fetch(proxyUrl);
+                if (!response.ok) throw new Error(`Proxy ${proxy} failed with status: ${response.status}`);
+                return response;
+            } catch (error) {
+                console.warn(`Proxy ${proxy} failed for URL ${url}. Trying next...`, error);
+            }
+        }
+        throw new Error(`All proxies failed for URL ${url}`);
+    }
+
+    async function checkAllPrices() {
+        const btn = document.getElementById('check-prices-btn');
+        const btnText = document.getElementById('check-prices-text');
+        const btnIcon = document.getElementById('check-prices-icon');
+        
+        btn.disabled = true;
+        btnText.textContent = 'Chequeando...';
+        btnIcon.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+
+        for (const categoryKey in dataMap) {
+            for (let i = 0; i < dataMap[categoryKey].length; i++) {
+                const product = dataMap[categoryKey][i];
+                const row = document.getElementById(`row-${categoryKey}-${i}`);
+                
+                if (!product.link || !product.link.includes('mercadolibre.com')) {
+                    continue;
+                }
+
+                const localPrice = product.price;
+                row.className = 'border-b border-gray-700 transition-colors duration-200 price-scraping';
+                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                const indicatorsContainer = row.querySelector('.indicators-container');
+                indicatorsContainer.innerHTML = '';
+
+                try {
+                    const response = await fetchWithProxyFallback(product.link);
+                    const html = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    const buyButton = Array.from(doc.querySelectorAll('.andes-button__content')).find(el => el.textContent.trim() === 'Comprar ahora');
+                    if (!buyButton) {
+                        throw new Error('Producto no disponible');
+                    }
+                    
+                    const priceElementContainer = doc.querySelector('.ui-pdp-price__second-line');
+                    if (!priceElementContainer) throw new Error('Price container not found.');
+                    
+                    const priceElement = priceElementContainer.querySelector('.andes-money-amount__fraction');
+                    if (!priceElement) throw new Error('Price fraction element not found.');
+
+                    const priceText = priceElement.textContent;
+                    const onlinePrice = parseInt(priceText.replace(/\./g, ''), 10);
+
+                    if (isNaN(onlinePrice)) throw new Error('Could not parse price.');
+
+                    updateProduct(categoryKey, i, 'price', onlinePrice);
+                    const priceInput = row.querySelector('input[oninput*="formatAndUpdatePrice"]');
+                    if (priceInput) {
+                        priceInput.value = onlinePrice.toLocaleString('es-AR');
+                    }
+                    
+                    const diff = onlinePrice - localPrice;
+                    if (diff !== 0) {
+                        const diffSpan = document.createElement('span');
+                        diffSpan.className = 'indicator-badge';
+                        if (diff > 0) {
+                            diffSpan.classList.add('positive');
+                            diffSpan.textContent = `+${diff.toLocaleString('es-AR')}`;
+                        } else {
+                            diffSpan.classList.add('negative');
+                            diffSpan.textContent = `${diff.toLocaleString('es-AR')}`;
+                        }
+                        indicatorsContainer.appendChild(diffSpan);
+                    }
+
+                    const quantityContainer = doc.querySelector('#buybox_available_quantity');
+                    if (quantityContainer) {
+                        const quantityElement = quantityContainer.querySelector('.ui-pdp-buybox__quantity__available');
+                        if (quantityElement) {
+                            const quantityText = quantityElement.textContent.trim();
+                            if (quantityText) {
+                                const quantitySpan = document.createElement('span');
+                                quantitySpan.className = 'indicator-badge quantity';
+                                quantitySpan.textContent = quantityText.replace(/[()]/g, '');
+                                indicatorsContainer.appendChild(quantitySpan);
+                            }
+                        }
+                    }
+
+                    row.classList.remove('price-scraping');
+                    if (onlinePrice < localPrice) {
+                        row.classList.add('price-lower');
+                    } else if (onlinePrice > localPrice) {
+                        row.classList.add('price-higher');
+                    } else {
+                        row.classList.add('price-same');
+                    }
+
+                } catch (error) {
+                    console.error(`Error checking price for ${product.name}:`, error);
+                    row.classList.remove('price-scraping');
+                    row.classList.add('price-error');
+
+                    if (error.message === 'Producto no disponible') {
+                        const statusSpan = document.createElement('span');
+                        statusSpan.className = 'indicator-badge status';
+                        statusSpan.textContent = 'No disponible';
+                        indicatorsContainer.appendChild(statusSpan);
+                    }
+                }
+                await new Promise(resolve => setTimeout(resolve, 300)); // Slightly increased delay for smoother scrolling
+            }
+        }
+
+        btn.disabled = false;
+        btnText.textContent = 'Chequear Precios';
+        btnIcon.innerHTML = '';
+        lucide.createIcons({
+            nodes: [btnIcon],
+            attrs: { 'data-lucide': 'scan-line' }
+        });
+    }
+
+    // --- Code Export ---
+
+    function generateCode() {
+        function getSlugFromImageUrl(imageUrl) {
+            if (!imageUrl) return '';
+            const parts = imageUrl.split('/');
+            const filename = parts[parts.length - 1] || '';
+            return filename.replace(/\.(webp|png|jpg|jpeg|gif)$/i, '');
+        }
+
+        const exportData = {};
+        for (const mapKey in dataMap) {
+            if (mapKey === 'towersOptions') {
+                exportData[mapKey] = dataMap[mapKey].map(product => ({
+                    ...product,
+                    slug: getSlugFromImageUrl(product.image_url)
+                }));
+            } else {
+                exportData[mapKey] = dataMap[mapKey];
+            }
+        }
+        
+        const code = JSON.stringify(exportData, null, 2);
+        document.getElementById('output-code').value = code;
+        return code;
+    }
+
+    function copyCode() {
+        const outputTextArea = document.getElementById('output-code');
+        generateCode();
+        outputTextArea.select();
+        document.execCommand('copy');
+        showMessage('copy-message', '¡Código copiado al portapapeles!');
+    }
+
+    async function reloadDataFromJson() {
+        try {
+            const response = await fetch('products.json?cache_bust=' + new Date().getTime());
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const dataToLoad = await response.json();
+            
+            for (const key in dataMap) {
+                if (dataToLoad.hasOwnProperty(key)) {
+                    dataMap[key] = dataToLoad[key];
+                } else {
+                    dataMap[key] = [];
+                }
+            }
+            
+            renderOverviewTables();
+            saveDataToSessionStorage();
+            showSuccessMessage('Datos recargados desde products.json');
+
+        } catch (error) {
+            console.error("Error reloading from JSON:", error);
+            showMessage('error-message', 'Error al recargar el archivo products.json.');
+        }
+    }
+
+    // --- Page Initialization ---
+    document.addEventListener('DOMContentLoaded', async () => {
+        let dataToLoad = null;
+        const storedData = loadDataFromSessionStorage();
+
+        if (storedData) {
+            dataToLoad = storedData;
+            showMessage('warning-message', '¡Datos restaurados de la sesión anterior!');
+        } else {
+            try {
+                const response = await fetch('products.json?cache_bust=' + new Date().getTime());
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                dataToLoad = await response.json();
+            } catch (error) {
+                console.error('Error loading products.json:', error);
+                showMessage('error-message', 'No se pudo cargar products.json. Se iniciará con datos vacíos.');
+            }
+        }
+
+        if (dataToLoad) {
+            for (const key in dataMap) {
+                if (dataToLoad.hasOwnProperty(key)) {
+                    dataMap[key] = dataToLoad[key];
+                }
+            }
+        }
+
+        renderCategoryNavbar();
+        renderOverviewTables();
+        saveDataToSessionStorage();
+        lucide.createIcons();
+    });
+
+</script>
+</body>
+</html>
