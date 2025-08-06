@@ -274,21 +274,21 @@
 <script>
     // --- Data Configuration ---
     const CATEGORY_NAV_LIST = [
-      { key: 'towersOptions', label: 'Torres' }, { key: 'ssdOptions', label: 'SSD' },
-      { key: 'gpuOptions', label: 'GPU' }, { key: 'psuOptions', label: 'PSU' },
-      { key: 'motherboardOptions', label: 'Mother' }, { key: 'cpuOptions', label: 'CPU' },
-      { key: 'ramOptions', label: 'RAM' }, { key: 'comboOptions', label: 'Combos' },
-      { key: 'monitorOptions', label: 'Monitores' }, { key: 'mouseOptions', label: 'Mouse' },
-      { key: 'joystickOptions', label: 'Joysticks' }, { key: 'keyboardOptions', label: 'Teclados' },
-      { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado' }, { key: 'auricularesOptions', label: 'Auris' },
-      { key: 'parlantesOptions', label: 'Parlantes' }
+      { key: 'armadasOptions', label: 'Armadas' }, { key: 'towersOptions', label: 'Torres' }, 
+      { key: 'ssdOptions', label: 'SSD' }, { key: 'gpuOptions', label: 'GPU' }, 
+      { key: 'psuOptions', label: 'PSU' }, { key: 'motherboardOptions', label: 'Mother' }, 
+      { key: 'cpuOptions', label: 'CPU' }, { key: 'ramOptions', label: 'RAM' }, 
+      { key: 'comboOptions', label: 'Combos' }, { key: 'monitorOptions', label: 'Monitores' }, 
+      { key: 'mouseOptions', label: 'Mouse' }, { key: 'joystickOptions', label: 'Joysticks' }, 
+      { key: 'keyboardOptions', label: 'Teclados' }, { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado' }, 
+      { key: 'auricularesOptions', label: 'Auris' }, { key: 'parlantesOptions', label: 'Parlantes' }
     ];
 
     const dataMap = {
-        towersOptions: [], ssdOptions: [], gpuOptions: [], psuOptions: [], motherboardOptions: [],
-        cpuOptions: [], ramOptions: [], comboOptions: [], monitorOptions: [], mouseOptions: [],
-        joystickOptions: [], keyboardOptions: [], comboMouseTecladoOptions: [], auricularesOptions: [],
-        parlantesOptions: []
+        armadasOptions: [], towersOptions: [], ssdOptions: [], gpuOptions: [], psuOptions: [], 
+        motherboardOptions: [], cpuOptions: [], ramOptions: [], comboOptions: [], monitorOptions: [], 
+        mouseOptions: [], joystickOptions: [], keyboardOptions: [], comboMouseTecladoOptions: [], 
+        auricularesOptions: [], parlantesOptions: []
     };
     
     const CORS_PROXIES = [
@@ -321,7 +321,7 @@
     function getComponentName(type) {
         const keyWithoutOptions = type.replace('Options', '');
         const names = {
-            towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
+            armadas: 'Armada', towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
             motherboard: 'Motherboard', cpu: 'CPU', ram: 'RAM',
             combo: 'Combo', monitor: 'Monitor', mouse: 'Mouse',
             joystick: 'Joystick', keyboard: 'Teclado',
@@ -375,8 +375,43 @@
 
     // --- Core Data Operations ---
 
-    function addProduct(categoryKey) {
-        const newProduct = { name: '', price: 0, description: '', image_url: '', link: '' };
+    function getAllIds() {
+        const ids = new Set();
+        for (const categoryKey in dataMap) {
+            dataMap[categoryKey].forEach(product => {
+                if (product.id) ids.add(product.id);
+            });
+        }
+        return ids;
+    }
+
+    function generateUniqueId(existingIds) {
+        let newId;
+        do {
+            newId = Math.floor(Math.random() * 99999) + 1;
+        } while (existingIds.has(newId));
+        return newId;
+    }
+
+    function assignIdsToMissingProducts() {
+        const existingIds = getAllIds();
+        for (const categoryKey in dataMap) {
+            dataMap[categoryKey].forEach(product => {
+                if (!product.id) {
+                    const newId = generateUniqueId(existingIds);
+                    product.id = newId;
+                    existingIds.add(newId);
+                }
+            });
+        }
+    }
+
+    function addProduct(categoryKey, productData) {
+        const existingIds = getAllIds();
+        const newProduct = productData || { name: '', price: 0, description: '', image_url: '', link: '' };
+        if (!newProduct.id) {
+            newProduct.id = generateUniqueId(existingIds);
+        }
         dataMap[categoryKey].push(newProduct);
         renderOverviewTables();
         saveDataToSessionStorage();
@@ -454,6 +489,7 @@
             table.innerHTML = `
                 <thead class="text-xs text-gray-200 uppercase bg-gray-700">
                     <tr>
+                        <th scope="col" class="px-4 py-3" style="width: 1%;">ID</th>
                         <th scope="col" class="px-6 py-3" style="width: ${NAME_COL_STATIC_WIDTH}px;">Nombre</th>
                         <th scope="col" class="px-6 py-3" style="width: 120px; text-align: left;">Precio</th>
                         ${categoryKey !== 'towersOptions' ? '<th scope="col" class="px-6 py-3">Descripción</th>' : ''}
@@ -469,6 +505,7 @@
                             ondrop="onRowDrop(event, '${categoryKey}', ${index})"
                             onmouseenter="showImagePreview('${product.image_url || ''}')"
                             onmouseleave="hideImagePreview()">
+                            <td class="px-4 py-4 text-center text-xs text-gray-400 font-mono">${product.id || ''}</td>
                             <td class="px-6 py-4 font-medium text-white whitespace-nowrap">
                                 <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
                             </td>
@@ -496,16 +533,28 @@
                                 </div>
                             </td>
                             <td class="px-2 py-4 text-right">
-                                <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700" title="Eliminar"><span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span></button>
-                                <button draggable="true" ondragstart="onRowDragStart(event, '${categoryKey}', ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar"><span class="lucide-icon w-4 h-4" data-lucide="move"></span></button>
+                                <button id="scrape-btn-${categoryKey}-${index}" onclick="checkSingleProduct('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-200" title="Chequear este producto">
+                                    <span class="lucide-icon w-4 h-4" data-lucide="scan-line"></span>
+                                </button>
+                                <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar">
+                                    <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
+                                </button>
+                                <button draggable="true" ondragstart="onRowDragStart(event, '${categoryKey}', ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
+                                    <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
+                                </button>
                             </td>
                         </tr>
                     `).join('')}
                     <tr>
-                        <td colspan="7" class="add-row-button-cell">
-                            <button onclick="addProduct('${categoryKey}')" class="add-row-button">
-                                <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir ${getComponentName(categoryKey)}
-                            </button>
+                        <td colspan="8" class="add-row-button-cell">
+                            <div class="flex justify-center items-center gap-4">
+                                <button onclick="addProduct('${categoryKey}')" class="add-row-button">
+                                    <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir ${getComponentName(categoryKey)}
+                                </button>
+                                <button id="add-from-clipboard-${categoryKey}" onclick="addProductFromClipboard('${categoryKey}')" class="add-row-button bg-sky-600 hover:bg-sky-700">
+                                    <span class="lucide-icon mr-2" data-lucide="clipboard-plus"></span> Añadir desde Link
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -542,7 +591,7 @@
         dragSrcCategory = null;
     }
 
-    // --- Price Checking ---
+    // --- Price Checking & Scraping ---
     
     async function fetchWithProxyFallback(url) {
         for (const proxy of CORS_PROXIES) {
@@ -558,6 +607,125 @@
         throw new Error(`All proxies failed for URL ${url}`);
     }
 
+    async function scrapeProductData(product, row) {
+        const localPrice = product.price;
+        row.className = 'border-b border-gray-700 transition-colors duration-200 price-scraping';
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        showImagePreview(product.image_url);
+        
+        const indicatorsContainer = row.querySelector('.indicators-container');
+        indicatorsContainer.innerHTML = '';
+
+        try {
+            const response = await fetchWithProxyFallback(product.link);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            const buyButton = Array.from(doc.querySelectorAll('.andes-button__content')).find(el => el.textContent.trim() === 'Comprar ahora');
+            if (!buyButton) {
+                throw new Error('Producto no disponible');
+            }
+            
+            const priceElementContainer = doc.querySelector('.ui-pdp-price__second-line');
+            if (!priceElementContainer) throw new Error('Price container not found.');
+            
+            const priceElement = priceElementContainer.querySelector('.andes-money-amount__fraction');
+            if (!priceElement) throw new Error('Price fraction element not found.');
+
+            const priceText = priceElement.textContent;
+            const onlinePrice = parseInt(priceText.replace(/\./g, ''), 10);
+
+            if (isNaN(onlinePrice)) throw new Error('Could not parse price.');
+
+            updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'price', onlinePrice);
+            const priceInput = row.querySelector('input[oninput*="formatAndUpdatePrice"]');
+            if (priceInput) {
+                priceInput.value = onlinePrice.toLocaleString('es-AR');
+            }
+            
+            const diff = onlinePrice - localPrice;
+            if (diff !== 0) {
+                const diffSpan = document.createElement('span');
+                diffSpan.className = 'indicator-badge';
+                if (diff > 0) {
+                    diffSpan.classList.add('positive');
+                    diffSpan.textContent = `+${diff.toLocaleString('es-AR')}`;
+                } else {
+                    diffSpan.classList.add('negative');
+                    diffSpan.textContent = `${diff.toLocaleString('es-AR')}`;
+                }
+                indicatorsContainer.appendChild(diffSpan);
+            }
+
+            const quantityContainer = doc.querySelector('#buybox_available_quantity');
+            if (quantityContainer) {
+                const quantityElement = quantityContainer.querySelector('.ui-pdp-buybox__quantity__available');
+                if (quantityElement) {
+                    const quantityText = quantityElement.textContent.trim();
+                    if (quantityText) {
+                        const quantitySpan = document.createElement('span');
+                        quantitySpan.className = 'indicator-badge quantity';
+                        quantitySpan.textContent = quantityText.replace(/[()]/g, '');
+
+                        const isLastAvailable = quantityText.toLowerCase().includes('¡últim');
+                        if (isLastAvailable) {
+                             quantitySpan.style.backgroundColor = `hsl(0, 85%, 55%)`; // Red
+                        } else if (!quantityText.includes('+') && !quantityText.toLowerCase().includes('más de')) {
+                             const availableQuantityMatch = quantityText.match(/(\d+)/);
+                             if(availableQuantityMatch && availableQuantityMatch[1]){
+                                const availableQuantity = parseInt(availableQuantityMatch[1], 10);
+                                if (availableQuantity < 10) {
+                                    const normalized = (availableQuantity - 1) / 8; // 0 for 1, 1 for 9
+                                    const hue = 30 - (normalized * 30); // 30 for orange, 0 for red
+                                    quantitySpan.style.backgroundColor = `hsl(${hue}, 85%, 55%)`;
+                                }
+                             }
+                        }
+                        indicatorsContainer.appendChild(quantitySpan);
+                    }
+                }
+            }
+
+            row.classList.remove('price-scraping');
+            if (onlinePrice < localPrice) {
+                row.classList.add('price-lower');
+            } else if (onlinePrice > localPrice) {
+                row.classList.add('price-higher');
+            } else {
+                row.classList.add('price-same');
+            }
+
+        } catch (error) {
+            console.error(`Error checking price for ${product.name}:`, error);
+            row.classList.remove('price-scraping');
+            row.classList.add('price-error');
+
+            if (error.message === 'Producto no disponible') {
+                const statusSpan = document.createElement('span');
+                statusSpan.className = 'indicator-badge status';
+                statusSpan.textContent = 'No disponible';
+                indicatorsContainer.appendChild(statusSpan);
+            }
+        }
+    }
+
+    async function checkSingleProduct(categoryKey, index) {
+        const product = dataMap[categoryKey][index];
+        const row = document.getElementById(`row-${categoryKey}-${index}`);
+        const scrapeBtn = document.getElementById(`scrape-btn-${categoryKey}-${index}`);
+        const originalIcon = scrapeBtn.innerHTML;
+        
+        scrapeBtn.innerHTML = `<svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+        scrapeBtn.disabled = true;
+
+        await scrapeProductData(product, row);
+        hideImagePreview();
+
+        scrapeBtn.disabled = false;
+        scrapeBtn.innerHTML = originalIcon;
+    }
+
     async function checkAllPrices() {
         const btn = document.getElementById('check-prices-btn');
         const btnText = document.getElementById('check-prices-text');
@@ -571,99 +739,12 @@
             for (let i = 0; i < dataMap[categoryKey].length; i++) {
                 const product = dataMap[categoryKey][i];
                 const row = document.getElementById(`row-${categoryKey}-${i}`);
-                
-                if (!product.link || !product.link.includes('mercadolibre.com')) {
-                    continue;
-                }
-
-                const localPrice = product.price;
-                row.className = 'border-b border-gray-700 transition-colors duration-200 price-scraping';
-                row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
-                const indicatorsContainer = row.querySelector('.indicators-container');
-                indicatorsContainer.innerHTML = '';
-
-                try {
-                    const response = await fetchWithProxyFallback(product.link);
-                    const html = await response.text();
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    
-                    const buyButton = Array.from(doc.querySelectorAll('.andes-button__content')).find(el => el.textContent.trim() === 'Comprar ahora');
-                    if (!buyButton) {
-                        throw new Error('Producto no disponible');
-                    }
-                    
-                    const priceElementContainer = doc.querySelector('.ui-pdp-price__second-line');
-                    if (!priceElementContainer) throw new Error('Price container not found.');
-                    
-                    const priceElement = priceElementContainer.querySelector('.andes-money-amount__fraction');
-                    if (!priceElement) throw new Error('Price fraction element not found.');
-
-                    const priceText = priceElement.textContent;
-                    const onlinePrice = parseInt(priceText.replace(/\./g, ''), 10);
-
-                    if (isNaN(onlinePrice)) throw new Error('Could not parse price.');
-
-                    updateProduct(categoryKey, i, 'price', onlinePrice);
-                    const priceInput = row.querySelector('input[oninput*="formatAndUpdatePrice"]');
-                    if (priceInput) {
-                        priceInput.value = onlinePrice.toLocaleString('es-AR');
-                    }
-                    
-                    const diff = onlinePrice - localPrice;
-                    if (diff !== 0) {
-                        const diffSpan = document.createElement('span');
-                        diffSpan.className = 'indicator-badge';
-                        if (diff > 0) {
-                            diffSpan.classList.add('positive');
-                            diffSpan.textContent = `+${diff.toLocaleString('es-AR')}`;
-                        } else {
-                            diffSpan.classList.add('negative');
-                            diffSpan.textContent = `${diff.toLocaleString('es-AR')}`;
-                        }
-                        indicatorsContainer.appendChild(diffSpan);
-                    }
-
-                    const quantityContainer = doc.querySelector('#buybox_available_quantity');
-                    if (quantityContainer) {
-                        const quantityElement = quantityContainer.querySelector('.ui-pdp-buybox__quantity__available');
-                        if (quantityElement) {
-                            const quantityText = quantityElement.textContent.trim();
-                            if (quantityText) {
-                                const quantitySpan = document.createElement('span');
-                                quantitySpan.className = 'indicator-badge quantity';
-                                quantitySpan.textContent = quantityText.replace(/[()]/g, '');
-                                indicatorsContainer.appendChild(quantitySpan);
-                            }
-                        }
-                    }
-
-                    row.classList.remove('price-scraping');
-                    if (onlinePrice < localPrice) {
-                        row.classList.add('price-lower');
-                    } else if (onlinePrice > localPrice) {
-                        row.classList.add('price-higher');
-                    } else {
-                        row.classList.add('price-same');
-                    }
-
-                } catch (error) {
-                    console.error(`Error checking price for ${product.name}:`, error);
-                    row.classList.remove('price-scraping');
-                    row.classList.add('price-error');
-
-                    if (error.message === 'Producto no disponible') {
-                        const statusSpan = document.createElement('span');
-                        statusSpan.className = 'indicator-badge status';
-                        statusSpan.textContent = 'No disponible';
-                        indicatorsContainer.appendChild(statusSpan);
-                    }
-                }
-                await new Promise(resolve => setTimeout(resolve, 300)); // Slightly increased delay for smoother scrolling
+                await scrapeProductData(product, row);
+                await new Promise(resolve => setTimeout(resolve, 300));
             }
         }
 
+        hideImagePreview();
         btn.disabled = false;
         btnText.textContent = 'Chequear Precios';
         btnIcon.innerHTML = '';
@@ -671,6 +752,56 @@
             nodes: [btnIcon],
             attrs: { 'data-lucide': 'scan-line' }
         });
+    }
+
+    async function addProductFromClipboard(categoryKey) {
+        const btn = document.getElementById(`add-from-clipboard-${categoryKey}`);
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+        btn.disabled = true;
+
+        try {
+            const link = await navigator.clipboard.readText();
+            if (!link || !link.includes('mercadolibre.com')) {
+                throw new Error('El portapapeles no contiene un link válido de Mercado Libre.');
+            }
+
+            const response = await fetchWithProxyFallback(link);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            const nameElement = doc.querySelector('.ui-pdp-title');
+            const name = nameElement ? nameElement.textContent.trim() : 'Nombre no encontrado';
+
+            const priceElementContainer = doc.querySelector('.ui-pdp-price__second-line');
+            if (!priceElementContainer) throw new Error('Price container not found.');
+            const priceElement = priceElementContainer.querySelector('.andes-money-amount__fraction');
+            if (!priceElement) throw new Error('Price fraction element not found.');
+            const priceText = priceElement.textContent;
+            const price = parseInt(priceText.replace(/\./g, ''), 10);
+            
+            const imageElement = doc.querySelector('.ui-pdp-gallery__figure img');
+            const imageUrl = imageElement ? imageElement.getAttribute('src') : '';
+
+            const newProduct = {
+                name: name,
+                price: isNaN(price) ? 0 : price,
+                description: '',
+                image_url: imageUrl,
+                link: link
+            };
+
+            addProduct(categoryKey, newProduct);
+            showSuccessMessage('Producto añadido desde el link.');
+
+        } catch (error) {
+            console.error('Error al añadir desde clipboard:', error);
+            showMessage('error-message', error.message);
+        } finally {
+            btn.innerHTML = originalContent;
+            btn.disabled = false;
+        }
     }
 
     // --- Code Export ---
@@ -685,14 +816,23 @@
 
         const exportData = {};
         for (const mapKey in dataMap) {
-            if (mapKey === 'towersOptions') {
-                exportData[mapKey] = dataMap[mapKey].map(product => ({
-                    ...product,
-                    slug: getSlugFromImageUrl(product.image_url)
-                }));
-            } else {
-                exportData[mapKey] = dataMap[mapKey];
-            }
+             exportData[mapKey] = dataMap[mapKey].map(p => {
+                const { id, name, price, description, image_url, link } = p;
+                const orderedProduct = { id, name, price };
+
+                if (mapKey === 'towersOptions') {
+                    orderedProduct.slug = getSlugFromImageUrl(image_url);
+                }
+                
+                if (description !== undefined && mapKey !== 'towersOptions') {
+                    orderedProduct.description = description;
+                }
+
+                orderedProduct.image_url = image_url;
+                orderedProduct.link = link;
+                
+                return orderedProduct;
+            });
         }
         
         const code = JSON.stringify(exportData, null, 2);
@@ -722,6 +862,7 @@
                 }
             }
             
+            assignIdsToMissingProducts();
             renderOverviewTables();
             saveDataToSessionStorage();
             showSuccessMessage('Datos recargados desde products.json');
@@ -758,7 +899,8 @@
                 }
             }
         }
-
+        
+        assignIdsToMissingProducts();
         renderCategoryNavbar();
         renderOverviewTables();
         saveDataToSessionStorage();
