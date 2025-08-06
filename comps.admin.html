@@ -1,9 +1,10 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador de Vectores de Productos</title>
+    <!-- Favicon símbolo de dinero -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' x='3' font-family='Arial'%3E%24%3C/text%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,29 +23,56 @@
         .font-vt323 { font-family: 'VT323', monospace; }
 
         .product-card {
-            background-color: #1f2937; /* Color de contenedor de Manual de Marca */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-            padding: 1.5rem; /* p-6 */
-            margin-bottom: 1rem; /* mb-4 */
-            border: 1px solid #374151; /* border-gray-700 */
-            cursor: grab; /* Indica que el elemento es arrastrable */
+            position: relative;
+            background-color: #1f2937;
+            background-size: cover;
+            background-position: center;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px -1px rgba(0,0,0,0.10), 0 1px 2px -1px rgba(0,0,0,0.06);
+            padding: 0.75rem 0.5rem 0.5rem 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #374151;
+            min-height: 260px;
+            max-height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
         }
-        .product-card.dragging {
-            opacity: 0.5;
-            border: 2px dashed #6366f1; /* Borde para el elemento arrastrado */
+        /* El overlay se elimina para que la imagen no tenga transparencia */
+        .product-card .card-content {
+            position: relative;
+            z-index: 2;
         }
-        .product-card.drag-over {
-            border: 2px solid #a855f7; /* Borde para el objetivo de soltar */
+        .input-group input,
+        .input-group textarea,
+        .overview-table input,
+        .overview-table textarea {
+            background: rgba(31,41,55,0.5)!important; /* bg-gray-800/50 */
+            font-family: 'Saira', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+            color: #e5e7eb;
+            border-radius: 0.375rem;
+            border: 1px solid #374151;
+            transition: border-color 0.15s, box-shadow 0.15s;
         }
+        .input-group input:focus,
+        .input-group textarea:focus,
+        .overview-table input:focus,
+        .overview-table textarea:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px #6366f1;
+        }
+        
         /* Style for the "Add New Product" card */
         .add-product-card {
-            background-color: #374151; /* A slightly different background */
-            border: 2px dashed #6366f1; /* Dashed border for visual distinction */
+            background-color: #374151;
+            border: 2px dashed #6366f1;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 200px; /* Ensure it's large enough to click */
+            min-height: 80px;
             cursor: pointer;
             transition: background-color 0.2s ease, border-color 0.2s ease;
         }
@@ -268,16 +296,77 @@
         .add-row-button:hover {
             background-color: #4f46e5;
         }
-    </style>
+
+        #image-preview {
+            max-width: 250px;
+            max-height: 250px;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        #image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+</style>
+<style>
+  .category-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 50;
+    background: linear-gradient(to right, #1f2937 80%, #6366f1 100%);
+    border-bottom: 2px solid #6366f1;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.25);
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    transition: top 0.2s;
+  }
+  .category-navbar.hidden { display: none; }
+  .category-navbar .cat-nav-btn {
+    background: none;
+    border: none;
+    color: #e5e7eb;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .category-navbar .cat-nav-btn.active, .category-navbar .cat-nav-btn:hover {
+    background: #6366f1;
+    color: #fff;
+  }
+  .category-navbar-spacer {
+    height: 3.2rem;
+    width: 100%;
+    display: none;
+  }
+  @media (max-width: 640px) {
+    .category-navbar { font-size: 0.95rem; }
+    .category-navbar-spacer { height: 3.5rem; }
+  }
+</style>
 </head>
 <body class="p-4 md:p-8 bg-gray-900 min-h-screen text-gray-200">
-    <div class="max-w-6xl mx-auto bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700">
+    <div id="image-preview" class="hidden fixed bottom-4 right-4 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-50 p-2">
+        <img src="" alt="Vista Previa" class="max-w-xs max-h-xs object-contain">
+    </div>
+    <div id="category-navbar" class="category-navbar hidden"></div>
+    <div class="category-navbar-spacer"></div>
+    <div class="mx-auto bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700" style="width:95%;max-width:1800px;">
         <h1 class="text-3xl font-saira-black text-white mb-6 text-center">Administrador de Vectores de Productos</h1>
 
         <div class="tab-buttons">
             <button class="tab-button active" id="tab-initial-load-view" data-tab="initial-load-view">Cargar Datos Iniciales</button>
-            <button class="tab-button" id="tab-detailed-view" data-tab="detailed-view">Vista Detallada</button>
-            <button class="tab-button" id="tab-overview-view" data-tab="overview-view">Vista General (Tablas)</button>
+            <button class="tab-button" id="tab-detailed-view" data-tab="detailed-view">Tarjetas</button>
+            <button class="tab-button" id="tab-overview-view" data-tab="overview-view">Tablas</button>
         </div>
 
         <div id="initial-load-view" class="tab-content">
@@ -300,77 +389,77 @@
         <div id="detailed-view" class="tab-content hidden">
             <section id="section-towers" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Torres</h2>
-                <div id="towers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="towers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-ssdOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de SSD</h2>
-                <div id="ssdOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="ssdOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-gpuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de GPU</h2>
-                <div id="gpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="gpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-psuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de PSU</h2>
-                <div id="psuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="psuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-motherboardOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Motherboard</h2>
-                <div id="motherboardOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="motherboardOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-cpuOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de CPU</h2>
-                <div id="cpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="cpuOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-ramOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de RAM</h2>
-                <div id="ramOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="ramOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-comboOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Combo</h2>
-                <div id="comboOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="comboOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
             
             <section id="section-monitorOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Monitor</h2>
-                <div id="monitorOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="monitorOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-mouseOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Mouse</h2>
-                <div id="mouseOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="mouseOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-joystickOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Joystick</h2>
-                <div id="joystickOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="joystickOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-keyboardOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Teclado</h2>
-                <div id="keyboardOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="keyboardOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
             
             <section id="section-comboMouseTecladoOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Combo Mouse y Teclado</h2>
-                <div id="comboMouseTecladoOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="comboMouseTecladoOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-auricularesOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Auriculares</h2>
-                <div id="auricularesOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="auricularesOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
 
             <section id="section-parlantesOptions" class="mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
                 <h2 class="text-2xl font-semibold text-gray-100 mb-4 section-title-admin">Opciones de Parlantes</h2>
-                <div id="parlantesOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"></div>
+                <div id="parlantesOptions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-2 mt-2"></div>
             </section>
             </div>
 
@@ -387,6 +476,44 @@
                 <button onclick="copyCode()" class="btn-secondary flex items-center justify-center">
                     <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código
                 </button>
+                <button onclick="reloadDataFromJson()" class="btn-secondary flex items-center justify-center">
+                    <span class="lucide-icon mr-2" data-lucide="refresh-ccw"></span> Recargar
+                </button>
+    <script>
+    // ...existing code...
+    /**
+     * Recarga la data desde el archivo products.json y actualiza la vista.
+     */
+    async function reloadDataFromJson() {
+        try {
+            const response = await fetch('products.json');
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const dataToLoad = await response.json();
+            dataMap.towers = dataToLoad.towersOptions || [];
+            dataMap.ssdOptions = dataToLoad.ssdOptions || [];
+            dataMap.gpuOptions = dataToLoad.gpuOptions || [];
+            dataMap.psuOptions = dataToLoad.psuOptions || [];
+            dataMap.motherboardOptions = dataToLoad.motherboardOptions || [];
+            dataMap.cpuOptions = dataToLoad.cpuOptions || [];
+            dataMap.ramOptions = dataToLoad.ramOptions || [];
+            dataMap.comboOptions = dataToLoad.comboOptions || [];
+            dataMap.monitorOptions = dataToLoad.monitorOptions || [];
+            dataMap.mouseOptions = dataToLoad.mouseOptions || [];
+            dataMap.joystickOptions = dataToLoad.joystickOptions || [];
+            dataMap.keyboardOptions = dataToLoad.keyboardOptions || [];
+            dataMap.comboMouseTecladoOptions = dataToLoad.comboMouseTecladoOptions || [];
+            dataMap.auricularesOptions = dataToLoad.auricularesOptions || [];
+            dataMap.parlantesOptions = dataToLoad.parlantesOptions || [];
+            renderAllProducts();
+            renderOverviewTables();
+            saveDataToSessionStorage();
+            showSuccessMessage('Datos recargados desde products.json');
+        } catch (error) {
+            showErrorMessage('Error al recargar products.json.');
+        }
+    }
+    // ...existing code...
+    </script>
             </div>
             <p id="copy-message" class="text-center text-sm text-green-500 mt-2 hidden">¡Código copiado al portapapeles!</p>
             <p id="warning-message" class="text-center text-sm text-amber-400 mt-2 hidden">¡Advertencia: Las imágenes cargadas localmente asumen que el archivo estará en la carpeta 'comps/' de tu servidor!</p>
@@ -394,6 +521,62 @@
     </div>
 
     <script>
+    // --- Categorías para la barra de navegación ---
+    const CATEGORY_NAV_LIST = [
+      { key: 'towers', label: 'Torres' },
+      { key: 'ssdOptions', label: 'SSD' },
+      { key: 'gpuOptions', label: 'GPU' },
+      { key: 'psuOptions', label: 'PSU' },
+      { key: 'motherboardOptions', label: 'Mother' },
+      { key: 'cpuOptions', label: 'CPU' },
+      { key: 'ramOptions', label: 'RAM' },
+      { key: 'comboOptions', label: 'Combos' },
+      { key: 'monitorOptions', label: 'Monitores' },
+      { key: 'mouseOptions', label: 'Mouse' },
+      { key: 'joystickOptions', label: 'Joysticks' },
+      { key: 'keyboardOptions', label: 'Teclados' },
+      { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado' },
+      { key: 'auricularesOptions', label: 'Auris' },
+      { key: 'parlantesOptions', label: 'Parlantes' }
+    ];
+
+    function renderCategoryNavbar(activeTab) {
+      const navbar = document.getElementById('category-navbar');
+      const spacer = document.querySelector('.category-navbar-spacer');
+      if (activeTab === 'detailed-view' || activeTab === 'overview-view') {
+        navbar.classList.remove('hidden');
+        spacer.style.display = 'block';
+        // Construir botones
+        navbar.innerHTML = CATEGORY_NAV_LIST.map(cat =>
+          `<button class="cat-nav-btn" data-cat="${cat.key}" onclick="scrollToCategory('${cat.key}', '${activeTab}')">${cat.label}</button>`
+        ).join('');
+      } else {
+        navbar.classList.add('hidden');
+        spacer.style.display = 'none';
+      }
+    }
+
+    function scrollToCategory(catKey, tab) {
+      // Resaltar botón activo
+      document.querySelectorAll('.category-navbar .cat-nav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === catKey);
+      });
+      // Scroll a la sección correspondiente
+      if (tab === 'detailed-view') {
+        const section = document.getElementById('section-' + catKey);
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (tab === 'overview-view') {
+        // Buscar el div de la tabla de la categoría
+        const overview = document.getElementById('overview-view');
+        const cats = overview.querySelectorAll('div.mb-8');
+        for (const div of cats) {
+          if (div.querySelector('h3') && div.querySelector('h3').textContent.toLowerCase().includes(getComponentName(catKey).toLowerCase())) {
+            div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            break;
+          }
+        }
+      }
+    }
         // Variables globales para los datos de los productos
         let towersOptions = [];
         let ssdOptions = [];
@@ -672,7 +855,8 @@
             if (sourceField === 'name') {
                 baseName = product.name || '';
             } else if (sourceField === 'slug') {
-                baseName = (product.slug || '').replace(/[-_]/g, ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                // Ya no hay campo slug, no hacer nada
+                return;
             } else if (sourceField === 'image_url') {
                 const imageUrl = product.image_url || '';
                 const parts = imageUrl.split('/');
@@ -689,9 +873,7 @@
             const formattedName = baseName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
             product.name = formattedName;
 
-            if (category === 'towers') {
-                product.slug = formattedName.toLowerCase().replace(/\s+/g, '-');
-            }
+            // No setear slug, se genera automáticamente al exportar
 
             const categoryFolder = categoryFolderMap[category];
             const formattedSlugForImage = formattedName.toLowerCase().replace(/\s+/g, '-');
@@ -709,11 +891,9 @@
         function generateProductCardHtml(category, product, index) {
             const timestamp = new Date().getTime();
             const actualImageUrl = product.image_url || '';
-            const imageUrlToDisplay = actualImageUrl ? `${actualImageUrl}?t=${timestamp}` : 'https://placehold.co/100x100/374151/9ca3af?text=Sin+Imagen';
-            const altText = `Imagen de ${product.name || 'Producto'} - Ruta: ${actualImageUrl}`;
+            const imageUrlToDisplay = actualImageUrl ? `${actualImageUrl}?t=${timestamp}` : 'https://placehold.co/400x300/374151/9ca3af?text=Sin+Imagen';
 
             let fieldsHtml = '';
-            
             fieldsHtml += `
                 <label class="block text-sm font-medium text-gray-400">Nombre:</label>
                 <div class="input-group mb-2">
@@ -723,31 +903,24 @@
                     <button class="propagate-btn hidden" onclick="propagateProductData('${category}', ${index}, 'name')">Propagar</button>
                 </div>
             `;
-
+            // Formateo de precio y símbolo $
+            const formattedPrice = product.price ? `$ ${product.price.toLocaleString('es-AR')}` : '$ 0';
             fieldsHtml += `
                 <label class="block text-sm font-medium text-gray-400">Precio:</label>
-                <input type="number" value="${product.price || 0}" oninput="updateProduct('${category}', ${index}, 'price', parseFloat(this.value))" class="mb-2">
+                <div class="input-group mb-2">
+                    <span class="text-gray-300 font-bold">$</span>
+                    <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}"
+                        oninput="formatAndUpdatePrice(this, '${category}', ${index})"
+                        class="text-right" style="max-width:110px;">
+                </div>
             `;
-
-            if (category === 'towers') {
-                fieldsHtml += `
-                    <label class="block text-sm font-medium text-gray-400">Slug:</label>
-                    <div class="input-group mb-2">
-                        <input type="text" value="${product.slug || ''}"
-                               oninput="updateProduct('${category}', ${index}, 'slug', this.value)"
-                               onfocus="showPropagateButton(this)" onblur="hidePropagateButton(this)">
-                        <button class="propagate-btn hidden" onclick="propagateProductData('${category}', ${index}, 'slug')">Propagar</button>
-                    </div>
-                `;
-            }
-            
+            // No mostrar campo slug
             if (category !== 'towers') {
                  fieldsHtml += `
                     <label class="block text-sm font-medium text-gray-400">Descripción:</label>
                     <textarea rows="2" oninput="updateProduct('${category}', ${index}, 'description', this.value)" class="mb-2">${product.description || ''}</textarea>
                 `;
             }
-
             fieldsHtml += `
                 <label class="block text-sm font-medium text-gray-400">URL de Imagen:</label>
                 <div class="input-group mb-2">
@@ -761,9 +934,7 @@
                            class="text-xs" placeholder="o pega una URL aquí">
                     <button class="propagate-btn hidden" onclick="propagateProductData('${category}', ${index}, 'image_url')">Propagar</button>
                 </div>
-                <img id="img-${category}-${index}" src="${imageUrlToDisplay}" alt="${altText}" class="w-24 h-24 object-cover rounded-md border border-gray-600 mb-2" onerror="this.onerror=null;this.src='https://placehold.co/100x100/374151/9ca3af?text=Error+Carga';">
             `;
-
             fieldsHtml += `
                 <label class="block text-sm font-medium text-gray-400">Link (URL):</label>
                 <input type="text" value="${product.link || ''}" oninput="updateProduct('${category}', ${index}, 'link', this.value)" class="mb-2">
@@ -771,18 +942,34 @@
             `;
 
             return `
-                <div class="flex justify-end mb-2">
-                    <button onclick="removeProduct('${category}', ${index})" class="btn-danger text-xs py-1 px-2">
-                        <span class="lucide-icon" data-lucide="trash-2"></span> Eliminar
-                    </button>
+                <div class="card-content">
+                    <div class="flex justify-end mb-2 gap-2">
+                        <button onclick="moveProduct('${category}', ${index}, -1)" class="text-gray-400 hover:text-indigo-400" title="Subir"><span class="lucide-icon" data-lucide="arrow-up"></span></button>
+                        <button onclick="moveProduct('${category}', ${index}, 1)" class="text-gray-400 hover:text-indigo-400" title="Bajar"><span class="lucide-icon" data-lucide="arrow-down"></span></button>
+                        <button onclick="removeProduct('${category}', ${index})" class="btn-danger text-xs py-1 px-2" title="Eliminar">
+                            <span class="lucide-icon" data-lucide="trash-2"></span>
+                        </button>
+                    </div>
+                    ${fieldsHtml}
                 </div>
-                ${fieldsHtml}
             `;
         }
 
         /**
          * Renderiza las tarjetas de productos para una categoría específica.
          */
+        // --- Función para mover productos ---
+        function moveProduct(category, index, direction) {
+            const arr = dataMap[category];
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= arr.length) return;
+            const temp = arr[index];
+            arr[index] = arr[newIndex];
+            arr[newIndex] = temp;
+            renderProducts(category, arr);
+            saveDataToSessionStorage();
+        }
+
         function renderProducts(category, dataArray) {
             const container = document.getElementById(`${category}-container`);
             if (!container) return;
@@ -791,17 +978,20 @@
             dataArray.forEach((product, index) => {
                 const card = document.createElement('div');
                 card.id = `product-card-${category}-${index}`;
-                card.setAttribute('draggable', 'true');
                 card.dataset.category = category;
                 card.dataset.index = index;
-                card.className = 'product-card flex flex-col space-y-3';
+                card.className = 'product-card flex flex-col';
+                // Fondo de la tarjeta
+                const timestamp = new Date().getTime();
+                const actualImageUrl = product.image_url || '';
+                const imageUrlToDisplay = actualImageUrl ? `${actualImageUrl}?t=${timestamp}` : 'https://placehold.co/400x300/374151/9ca3af?text=Sin+Imagen';
+                card.style.backgroundImage = `url('${imageUrlToDisplay}')`;
                 card.innerHTML = generateProductCardHtml(category, product, index);
                 container.appendChild(card);
             });
 
             const addCard = document.createElement('div');
             addCard.className = 'product-card add-product-card';
-            addCard.setAttribute('draggable', 'false');
             addCard.onclick = () => addProduct(category);
             addCard.innerHTML = `
                 <button>
@@ -811,7 +1001,30 @@
             container.appendChild(addCard);
 
             lucide.createIcons();
-            addDragDropListeners(category);
+        }
+
+                /**
+         * Agrega un nuevo producto vacío a la categoría indicada y refresca la vista.
+         */
+        function addProduct(category) {
+            const newProduct = {};
+            // Prellenar campos básicos si se desea
+            if (category === 'towers') {
+                newProduct.name = '';
+                newProduct.price = 0;
+                newProduct.image_url = '';
+                newProduct.link = '';
+            } else {
+                newProduct.name = '';
+                newProduct.price = 0;
+                newProduct.description = '';
+                newProduct.image_url = '';
+                newProduct.link = '';
+            }
+            dataMap[category].push(newProduct);
+            renderAllProducts();
+            renderOverviewTables();
+            saveDataToSessionStorage();
         }
 
         /**
@@ -822,7 +1035,6 @@
             if (cardElement) {
                 const product = dataMap[category][index];
                 cardElement.innerHTML = generateProductCardHtml(category, product, index);
-                cardElement.setAttribute('draggable', 'true');
                 cardElement.dataset.category = category;
                 cardElement.dataset.index = index;
 
@@ -838,89 +1050,37 @@
             }
         }
 
+                /**
+         * Elimina un producto de la categoría indicada y refresca la vista.
+         * @param {string} category - La categoría del producto.
+         * @param {number} index - El índice del producto a eliminar.
+         */
+        function removeProduct(category, index) {
+            if (!dataMap[category] || index < 0 || index >= dataMap[category].length) return;
+            dataMap[category].splice(index, 1);
+            renderAllProducts();
+            renderOverviewTables();
+            saveDataToSessionStorage();
+        }
+
         /**
          * Actualiza una propiedad de un producto en el array de datos.
          */
+        function formatAndUpdatePrice(input, category, index) {
+            // Solo permitir números
+            let raw = input.value.replace(/[^\d]/g, '');
+            if (raw.length > 9) raw = raw.slice(0,9);
+            let num = parseInt(raw, 10) || 0;
+            input.value = num ? num.toLocaleString('es-AR') : '';
+            updateProduct(category, index, 'price', num);
+        }
+
         function updateProduct(category, index, key, value) {
             dataMap[category][index][key] = value;
             saveDataToSessionStorage();
-
-            if (key === 'image_url' || key === 'link') {
+            if (key === 'image_url' || key === 'link' || key === 'price') {
                 updateProductCard(category, index);
             }
-        }
-
-        /**
-         * Añade un nuevo producto a una categoría.
-         */
-        function addProduct(category) {
-            let newProduct;
-            const componentName = getComponentName(category);
-            const placeholderImageUrl = `https://placehold.co/100x100/374151/9ca3af?text=Nuevo+${componentName.replace(' ', '+')}`;
-            
-            if (category === 'towers') {
-                newProduct = {
-                    name: `Nuevo ${componentName}`,
-                    price: 0,
-                    slug: `nuevo-${componentName.toLowerCase()}`,
-                    image_url: placeholderImageUrl,
-                    link: ''
-                };
-            } else {
-                newProduct = {
-                    name: `Nuevo ${componentName}`,
-                    price: 0,
-                    description: `Descripción del nuevo ${componentName}.`,
-                    image_url: placeholderImageUrl,
-                    link: ''
-                };
-            }
-
-            dataMap[category].push(newProduct);
-            const activeTab = document.querySelector('.tab-button.active').dataset.tab;
-            openTab(activeTab);
-            saveDataToSessionStorage();
-        }
-
-        /**
-         * Elimina un producto de una categoría.
-         */
-        function removeProduct(category, index) {
-            if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-                dataMap[category].splice(index, 1);
-                const activeTab = document.querySelector('.tab-button.active').dataset.tab;
-                openTab(activeTab);
-                saveDataToSessionStorage();
-            }
-        }
-
-        /**
-         * Genera el código JSON con los datos actuales y lo devuelve como string.
-         * También actualiza el textarea de salida.
-         * @returns {string} El código JSON formateado.
-         */
-        function generateCode() {
-            const outputTextArea = document.getElementById('output-code');
-            const fullData = {
-                towersOptions: dataMap.towers,
-                ssdOptions: dataMap.ssdOptions,
-                gpuOptions: dataMap.gpuOptions,
-                psuOptions: dataMap.psuOptions,
-                motherboardOptions: dataMap.motherboardOptions,
-                cpuOptions: dataMap.cpuOptions,
-                ramOptions: dataMap.ramOptions,
-                comboOptions: dataMap.comboOptions,
-                monitorOptions: dataMap.monitorOptions,
-                mouseOptions: dataMap.mouseOptions,
-                joystickOptions: dataMap.joystickOptions,
-                keyboardOptions: dataMap.keyboardOptions,
-                comboMouseTecladoOptions: dataMap.comboMouseTecladoOptions, // Nueva propiedad
-                auricularesOptions: dataMap.auricularesOptions,           // Nueva propiedad
-                parlantesOptions: dataMap.parlantesOptions              // Nueva propiedad
-            };
-            const jsonString = JSON.stringify(fullData, null, 4);
-            outputTextArea.value = jsonString;
-            return jsonString;
         }
 
         /**
@@ -948,6 +1108,26 @@
         }
 
         /**
+         * Muestra la vista previa de la imagen al pasar el mouse sobre una fila de la tabla.
+         */
+        function showImagePreview(imageUrl) {
+            const preview = document.getElementById('image-preview');
+            const img = preview.querySelector('img');
+            if (imageUrl) {
+                img.src = imageUrl;
+                preview.classList.remove('hidden');
+            }
+        }
+
+        /**
+         * Oculta la vista previa de la imagen.
+         */
+        function hideImagePreview() {
+            const preview = document.getElementById('image-preview');
+            preview.classList.add('hidden');
+        }
+
+        /**
          * Renderiza las tablas de vista general para todas las categorías.
          */
         function renderOverviewTables() {
@@ -958,6 +1138,12 @@
                 const categoryData = dataMap[categoryKey];
                 const readableCategoryName = getComponentName(categoryKey) + 's';
 
+                // Calculate max name length for the current category
+                const maxNameLength = categoryData.reduce((max, product) => {
+                    const nameLength = product.name ? product.name.length : 0;
+                    return nameLength > max ? nameLength : max;
+                }, 20); // Start with a minimum width
+
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700';
                 categoryDiv.innerHTML = `<h3 class="text-xl font-semibold text-gray-100 mb-4">${readableCategoryName}</h3>`;
@@ -967,43 +1153,49 @@
                 table.innerHTML = `
                     <thead class="text-xs text-gray-200 uppercase bg-gray-700">
                         <tr>
-                            <th scope="col" class="px-6 py-3">Nombre</th>
-                            <th scope="col" class="px-6 py-3">Precio</th>
-                            ${categoryKey === 'towers' ? '<th scope="col" class="px-6 py-3">Slug</th>' : ''}
+                            <th scope="col" class="px-6 py-3" style="width: ${maxNameLength}ch;">Nombre</th>
+                            <th scope="col" class="px-6 py-3" style="width: 120px; text-align: left;">Precio</th>
+                            
                             ${categoryKey !== 'towers' ? '<th scope="col" class="px-6 py-3">Descripción</th>' : ''}
                             <th scope="col" class="px-6 py-3">URL Imagen</th>
-                            <th scope="col" class="px-6 py-3">Link</th>
-                            <th scope="col" class="px-6 py-3">Acciones</th>
+                            <th scope="col" class="px-1 py-3" style="width:1%;min-width:70px;">Link</th>
+                            <th scope="col" class="px-2 py-3" style="width:1%;min-width:70px;"></th>
                         </tr>
                     </thead>
                     <tbody>
                         ${categoryData.map((product, index) => `
-                            <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700 transition-colors duration-200">
+                            <tr class="bg-gray-800 border-b border-gray-700 hover:bg-gray-700 transition-colors duration-200" 
+                                ondragover="onRowDragOver(event)" 
+                                ondrop="onRowDrop(event, '${categoryKey}', ${index})"
+                                onmouseenter="showImagePreview('${product.image_url || ''}')"
+                                onmouseleave="hideImagePreview()">
                                 <td class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                    <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full bg-transparent border-none focus:ring-0">
+                                    <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
                                 </td>
                                 <td class="px-6 py-4">
-                                    <input type="number" value="${product.price || 0}" oninput="updateProduct('${categoryKey}', ${index}, 'price', parseFloat(this.value))" class="w-full bg-transparent border-none focus:ring-0">
+                                    <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
                                 </td>
-                                ${categoryKey === 'towers' ? `
-                                <td class="px-6 py-4">
-                                    <input type="text" value="${product.slug || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'slug', this.value)" class="w-full bg-transparent border-none focus:ring-0">
-                                </td>` : ''}
+                                
                                 ${categoryKey !== 'towers' ? `
                                 <td class="px-6 py-4">
-                                    <textarea rows="1" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full bg-transparent border-none focus:ring-0 resize-none">${product.description || ''}</textarea>
+                                    <textarea rows="1" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
                                 </td>` : ''}
                                 <td class="px-6 py-4">
-                                    <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" class="w-full bg-transparent border-none focus:ring-0 text-xs">
+                                    <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" class="w-full text-xs">
                                 </td>
-                                <td class="px-6 py-4">
-                                    <input type="text" value="${product.link || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'link', this.value)" class="w-full bg-transparent border-none focus:ring-0 text-xs">
-                                    ${product.link ? `<a href="${product.link}" target="_blank" class="text-blue-400 hover:underline text-xs flex items-center mt-1"><span class="lucide-icon w-3 h-3 mr-1" data-lucide="external-link"></span></a>` : ''}
+                                <td class="px-1 py-4" style="width:1%;white-space:nowrap;">
+                                    <div class="flex items-center gap-1 h-full">
+                                        <a href="${product.link || '#'}" target="_blank" class="btn-secondary min-w-0 h-full flex items-center justify-center text-xs py-1 px-1" style="padding-left:6px;padding-right:6px;min-width:0;">
+                                            <span class="lucide-icon mr-1" data-lucide="external-link" style="margin-right:2px;"></span>Visitar
+                                        </a>
+                                        <button onclick="replaceLink('${categoryKey}', ${index})" class="btn-primary text-xs py-1 px-1 ml-1" style="padding-left:6px;padding-right:6px;min-width:0;" title="Reemplazar Link desde portapapeles">
+                                            <span class="lucide-icon" data-lucide="edit"></span>
+                                        </button>
+                                    </div>
                                 </td>
-                                <td class="px-6 py-4 text-right">
-                                    <button onclick="removeProduct('${categoryKey}', ${index})" class="btn-danger text-xs py-1 px-2">
-                                        <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
-                                    </button>
+                                <td class="px-2 py-4 text-right" style="width:1%;white-space:nowrap;">
+                                    <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700" title="Eliminar"><span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span></button>
+                                    <button draggable="true" ondragstart="onRowDragStart(event, '${categoryKey}', ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar"><span class="lucide-icon w-4 h-4" data-lucide="move"></span></button>
                                 </td>
                             </tr>
                         `).join('')}
@@ -1021,6 +1213,78 @@
             }
             lucide.createIcons();
         }
+        /**
+         * Reemplaza el link del producto con el texto del portapapeles y muestra un mensaje de éxito o error.
+         */
+        async function replaceLink(category, index) {
+            try {
+                const text = await navigator.clipboard.readText();
+                if (typeof text !== 'string' || text.trim() === '') {
+                    showErrorMessage('El portapapeles está vacío o no contiene texto.');
+                    return;
+                }
+                const trimmedText = text.trim();
+                if (!trimmedText.startsWith('https')) {
+                    showErrorMessage('El link debe comenzar con "https". No se realizó el reemplazo.');
+                    return;
+                }
+                dataMap[category][index].link = trimmedText;
+                saveDataToSessionStorage();
+                renderOverviewTables();
+                showSuccessMessage('Link reemplazado: <span class="font-mono text-green-300">' + trimmedText + '</span>');
+            } catch (err) {
+                showErrorMessage('No se pudo acceder al portapapeles.');
+            }
+        }
+
+        // Muestra un mensaje de éxito en la parte inferior de la pantalla
+        function showSuccessMessage(message) {
+            let msg = document.getElementById('success-message');
+            if (!msg) {
+                msg = document.createElement('div');
+                msg.id = 'success-message';
+                msg.style.position = 'fixed';
+                msg.style.bottom = '24px';
+                msg.style.left = '50%';
+                msg.style.transform = 'translateX(-50%)';
+                msg.style.background = '#22c55e';
+                msg.style.color = '#fff';
+                msg.style.padding = '12px 24px';
+                msg.style.borderRadius = '8px';
+                msg.style.fontSize = '1rem';
+                msg.style.zIndex = '9999';
+                msg.style.boxShadow = '0 2px 8px rgba(0,0,0,0.25)';
+                document.body.appendChild(msg);
+            }
+            msg.innerHTML = message;
+            msg.classList.remove('hidden');
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 2000);
+        }
+        let dragSrcIndex = null;
+        let dragSrcCategory = null;
+        function onRowDragStart(event, category, index) {
+            dragSrcIndex = index;
+            dragSrcCategory = category;
+            event.dataTransfer.effectAllowed = 'move';
+        }
+        function onRowDragOver(event) {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'move';
+        }
+        function onRowDrop(event, category, index) {
+            event.preventDefault();
+            if (dragSrcCategory === category && dragSrcIndex !== null && dragSrcIndex !== index) {
+                const arr = dataMap[category];
+                const moved = arr.splice(dragSrcIndex, 1)[0];
+                arr.splice(index, 0, moved);
+                renderOverviewTables();
+                saveDataToSessionStorage();
+            }
+            dragSrcIndex = null;
+            dragSrcCategory = null;
+        }
 
         /**
          * Función para abrir una pestaña específica.
@@ -1031,6 +1295,8 @@
             document.getElementById(tabName).classList.remove('hidden');
             document.querySelector(`.tab-button[data-tab="${tabName}"]`).classList.add('active');
 
+            renderCategoryNavbar(tabName);
+
             if (tabName === 'detailed-view') {
                 renderAllProducts();
             } else if (tabName === 'overview-view') {
@@ -1040,80 +1306,7 @@
         }
 
 
-        // --- Funciones de Drag and Drop ---
-        function handleDragStart(e) {
-            const targetTagName = e.target.tagName;
-            if (['INPUT', 'TEXTAREA', 'BUTTON'].includes(targetTagName) || e.target.closest('button')) {
-                e.preventDefault();
-                return;
-            }
-            const card = e.target.closest('.product-card');
-            if (!card || card.classList.contains('add-product-card')) {
-                e.preventDefault();
-                return;
-            }
-            draggedItemCategory = card.dataset.category;
-            draggedItemIndex = parseInt(card.dataset.index);
-            e.dataTransfer.effectAllowed = 'move';
-            card.classList.add('dragging');
-        }
 
-        function handleDragOver(e) {
-            e.preventDefault();
-            const targetCard = e.target.closest('.product-card');
-            if (targetCard && !targetCard.classList.contains('add-product-card') && targetCard.dataset.category === draggedItemCategory) {
-                if (targetCard.id !== `product-card-${draggedItemCategory}-${draggedItemIndex}`) {
-                    targetCard.classList.add('drag-over');
-                }
-            }
-        }
-
-        function handleDragLeave(e) {
-            const targetCard = e.target.closest('.product-card');
-            if (targetCard) {
-                targetCard.classList.remove('drag-over');
-            }
-        }
-
-        function handleDrop(e) {
-            e.preventDefault();
-            const targetCard = e.target.closest('.product-card');
-            if (targetCard && !targetCard.classList.contains('add-product-card')) {
-                targetCard.classList.remove('drag-over');
-                const targetCategory = targetCard.dataset.category;
-                const targetIndex = parseInt(targetCard.dataset.index);
-                if (draggedItemCategory === targetCategory && draggedItemIndex !== targetIndex) {
-                    const currentArray = dataMap[draggedItemCategory];
-                    const [draggedProduct] = currentArray.splice(draggedItemIndex, 1);
-                    currentArray.splice(targetIndex, 0, draggedProduct);
-                    renderProducts(draggedItemCategory, currentArray);
-                    saveDataToSessionStorage();
-                }
-            }
-        }
-
-        function handleDragEnd(e) {
-            document.querySelectorAll('.dragging, .drag-over').forEach(el => {
-                el.classList.remove('dragging', 'drag-over');
-            });
-            draggedItemCategory = null;
-            draggedItemIndex = null;
-        }
-
-        /**
-         * Añade los listeners de drag and drop a todas las tarjetas de una categoría.
-         */
-        function addDragDropListeners(category) {
-            const container = document.getElementById(`${category}-container`);
-            if (!container) return;
-            container.querySelectorAll('.product-card:not(.add-product-card)').forEach(card => {
-                card.addEventListener('dragstart', handleDragStart);
-                card.addEventListener('dragover', handleDragOver);
-                card.addEventListener('dragleave', handleDragLeave);
-                card.addEventListener('drop', handleDrop);
-                card.addEventListener('dragend', handleDragEnd);
-            });
-        }
 
         // Inicializar la página al cargar el DOM
         document.addEventListener('DOMContentLoaded', async () => {
@@ -1170,11 +1363,53 @@
             document.getElementById('tab-detailed-view').addEventListener('click', () => openTab('detailed-view'));
             document.getElementById('tab-overview-view').addEventListener('click', () => openTab('overview-view'));
 
-            // Abrir la pestaña por defecto y renderizar iconos
-            openTab('initial-load-view');
+            // Abrir la pestaña de tablas por defecto y renderizar iconos
+            openTab('overview-view');
+            renderCategoryNavbar('overview-view');
             lucide.createIcons();
         });
 
+        /**
+         * Genera el JSON de todos los productos para exportar/copiar.
+         * @returns {string} JSON formateado de los productos.
+         */
+        function generateCode() {
+            // Solo exporta los arrays principales, no el objeto dataMap completo
+            // Generar slug automáticamente para towers
+            function getSlugFromImageUrl(imageUrl) {
+                if (!imageUrl) return '';
+                const parts = imageUrl.split('/');
+                const filename = parts[parts.length - 1] || '';
+                return filename.replace(/\.(webp|png|jpg|jpeg|gif)$/i, '');
+            }
+            const towersWithSlug = dataMap.towers.map(product => ({
+                ...product,
+                slug: getSlugFromImageUrl(product.image_url)
+            }));
+            const exportData = {
+                towersOptions: towersWithSlug,
+                ssdOptions: dataMap.ssdOptions,
+                gpuOptions: dataMap.gpuOptions,
+                psuOptions: dataMap.psuOptions,
+                motherboardOptions: dataMap.motherboardOptions,
+                cpuOptions: dataMap.cpuOptions,
+                ramOptions: dataMap.ramOptions,
+                comboOptions: dataMap.comboOptions,
+                monitorOptions: dataMap.monitorOptions,
+                mouseOptions: dataMap.mouseOptions,
+                joystickOptions: dataMap.joystickOptions,
+                keyboardOptions: dataMap.keyboardOptions,
+                comboMouseTecladoOptions: dataMap.comboMouseTecladoOptions,
+                auricularesOptions: dataMap.auricularesOptions,
+                parlantesOptions: dataMap.parlantesOptions
+            };
+            const code = JSON.stringify(exportData, null, 2);
+            const outputTextArea = document.getElementById('output-code');
+            if (outputTextArea) {
+                outputTextArea.value = code;
+            }
+            return code;
+        }
     </script>
 </body>
 </html>
