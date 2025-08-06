@@ -1138,11 +1138,9 @@
                 const categoryData = dataMap[categoryKey];
                 const readableCategoryName = getComponentName(categoryKey) + 's';
 
-                // Calculate max name length for the current category
-                const maxNameLength = categoryData.reduce((max, product) => {
-                    const nameLength = product.name ? product.name.length : 0;
-                    return nameLength > max ? nameLength : max;
-                }, 20); // Start with a minimum width
+                // --- STATIC WIDTH for 'Nombre' column in overview tables ---
+                // To change the width of the 'Nombre' column, modify the value below:
+                const NAME_COL_STATIC_WIDTH = 330; // <-- Change this value (in px) to adjust the width
 
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700';
@@ -1153,7 +1151,7 @@
                 table.innerHTML = `
                     <thead class="text-xs text-gray-200 uppercase bg-gray-700">
                         <tr>
-                            <th scope="col" class="px-6 py-3" style="width: ${maxNameLength}ch;">Nombre</th>
+                            <th scope="col" class="px-6 py-3" style="width: ${NAME_COL_STATIC_WIDTH}px;">Nombre</th>
                             <th scope="col" class="px-6 py-3" style="width: 120px; text-align: left;">Precio</th>
                             
                             ${categoryKey !== 'towers' ? '<th scope="col" class="px-6 py-3">Descripción</th>' : ''}
@@ -1169,8 +1167,8 @@
                                 ondrop="onRowDrop(event, '${categoryKey}', ${index})"
                                 onmouseenter="showImagePreview('${product.image_url || ''}')"
                                 onmouseleave="hideImagePreview()">
-                                <td class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                    <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
+                                <td class="px-6 py-4 font-medium text-white whitespace-nowrap" style="width: ${NAME_COL_STATIC_WIDTH}px;">
+                                    <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full" style="width:100%;min-width:0;max-width:100%;">
                                 </td>
                                 <td class="px-6 py-4">
                                     <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
@@ -1178,7 +1176,7 @@
                                 
                                 ${categoryKey !== 'towers' ? `
                                 <td class="px-6 py-4">
-                                    <textarea rows="1" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
+                                    <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
                                 </td>` : ''}
                                 <td class="px-6 py-4">
                                     <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" class="w-full text-xs">
