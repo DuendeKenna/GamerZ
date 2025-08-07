@@ -2459,7 +2459,7 @@
                 let towerPriceHTML = '';
                 if (selectedTower.link) {
                     const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} | ` : '';
-                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull}Ver + <i class="fas fa-external-link-alt"></i></a>`;
                 }
                 document.getElementById('current-tower-price-display').innerHTML = towerPriceHTML;
                 updatePrices();
@@ -2472,7 +2472,7 @@
                     let linkHTML = '';
                     if (selectedOption.link) {
                         const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} | ` : '';
-                        linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                        linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Ver + <i class="fas fa-external-link-alt"></i></a>`;
                     }
                     descEl.innerHTML = selectedOption.description + linkHTML;
                     loadImageWithGrayscale(imageEl, selectedOption.image_url);
@@ -2531,7 +2531,7 @@
                             let linkHTML = '';
                             if (selected.link) {
                                 const priceFull = selected.price > 0 ? `$${selected.price.toLocaleString('es-AR')} | ` : '';
-                                linkHTML = `<a href="${selected.link}" target="_blank" class="component-link text-xs" onclick="event.stopPropagation()">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                                linkHTML = `<a href="${selected.link}" target="_blank" class="component-link text-xs" onclick="event.stopPropagation()">${priceFull}Ver + <i class="fas fa-external-link-alt"></i></a>`;
                             }
                             text.innerHTML = `<span>${selected.name}</span>${linkHTML}`;
                         }
