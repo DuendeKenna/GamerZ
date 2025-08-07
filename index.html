@@ -2720,10 +2720,10 @@
                 const extraNotes = document.getElementById('extra-notes').value;
                 
                 let message = `¡Hola, me interesa esta Nave del Medio!\n\n`;
-                message += `*Torre Seleccionada:* ${towersOptions[currentTowerIndex].name}\n`;
+                message += `*Torre:* ${towersOptions[currentTowerIndex].name}\n`;
                 message += `*Almacenamiento:* ${document.getElementById('ssd-select').options[document.getElementById('ssd-select').selectedIndex].text}\n`;
-                message += `*Tarjeta Gráfica:* ${document.getElementById('gpu-select').options[document.getElementById('gpu-select').selectedIndex].text}\n`;
-                message += `*Fuente de Poder:* ${document.getElementById('psu-select').options[document.getElementById('psu-select').selectedIndex].text}\n`;
+                message += `*Gráfica:* ${document.getElementById('gpu-select').options[document.getElementById('gpu-select').selectedIndex].text}\n`;
+                message += `*Fuente:* ${document.getElementById('psu-select').options[document.getElementById('psu-select').selectedIndex].text}\n`;
 
                 let peripheralsMessage = '';
                 if (peripheralState.currentComboIndex > -1) peripheralsMessage += `Combo: ${comboMouseTecladoOptions[peripheralState.currentComboIndex].name}`;
