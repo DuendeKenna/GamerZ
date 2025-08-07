@@ -1,200 +1,269 @@
 {
-    "towersOptions": [
-        {
-            "name": "Sentey R20",
-            "price": 45000,
-            "slug": "sentey-r20",
-            "image_url": "comps/torres/sentey-r20.webp",
-            "link": ""
-        },
-        {
-            "name": "Antex Nx292",
-            "price": 75000,
-            "slug": "antex-nx292",
-            "image_url": "comps/torres/antex-nx292.webp",
-            "link": "https://www.antec.com/product/case/nx292"
-        },
-        {
-            "name": "Haxly U500",
-            "price": 73000,
-            "slug": "haxly-u500",
-            "image_url": "comps/torres/haxly-u500.webp",
-            "link": ""
-        },
-        {
-            "name": "Sentey 6100 White",
-            "price": 45000,
-            "slug": "sentey-6100-white",
-            "image_url": "comps/torres/sentey-6100-white.webp",
-            "link": "https://www.mercadolibre.com.ar/gabinete-gamer-sentey-6100-sf-w-tg-h10-white-color-blanco-sfans/p/MLA39317184"
-        },
-        {
-            "name": "Lnz Y11",
-            "price": 55000,
-            "slug": "lnz-y11",
-            "image_url": "comps/torres/lnz-y11.webp",
-            "link": ""
-        },
-        {
-            "name": "Sentey A8 Micro White",
-            "price": 65000,
-            "slug": "sentey-a8-micro-white",
-            "image_url": "comps/torres/sentey-a8-micro-white.webp",
-            "link": ""
-        },
-        {
-            "name": "Gigabyte C102",
-            "price": 70000,
-            "slug": "gigabyte-c102",
-            "image_url": "comps/torres/gigabyte-c102.webp",
-            "link": ""
-        },
-        {
-            "name": "Sentey H10",
-            "price": 45000,
-            "slug": "sentey-h10",
-            "image_url": "comps/torres/sentey-h10.webp",
-            "link": ""
-        },
-        {
-            "name": "Sentey A8 Micro Black",
-            "price": 65000,
-            "slug": "sentey-a8-micro-black",
-            "image_url": "comps/torres/sentey-a8-micro-black.webp",
-            "link": ""
-        },
-        {
-            "name": "Sentey S20",
-            "price": 46000,
-            "slug": "sentey-s20",
-            "image_url": "comps/torres/sentey-s20.webp",
-            "link": ""
-        }
-    ],
-    "ssdOptions": [
-        {
-            "name": "240 GB - SATA",
-            "price": 30000,
-            "description": "Si querés exprimir el ahorro y no vas instalar más de 3 juegos grandes, es tu opción.",
-            "image_url": "comps/discos/ssd_hiksemi.webp",
-            "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds240g2g0a-240gb-verde/p/MLA8739495"
-        },
-        {
-            "name": "480 GB - SATA",
-            "price": 46000,
-            "description": "El estándar. Recomendado para Juegos y Aplicaciones.",
-            "image_url": "comps/discos/ssd_hiksemi.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-480gb-hiksemi-wave-sata-30/p/MLA37601593"
-        },
-        {
-            "name": "1 TB - SATA",
-            "price": 91000,
-            "description": "El doble que el estándar. Ideal si creás contenido además de jugar.",
-            "image_url": "comps/discos/ssd_hiksemi.webp",
-            "link": "https://articulo.mercadolibre.com.ar/MLA-1146810320-disco-interno-ssd-western-digital-green-wds100t3g0a-1tb-_JM"
-        },
-        {
-            "name": "500 GB - NVMe",
-            "price": 51000,
-            "description": "Más que suficiente para la mayoría de los casos.",
-            "image_url": "comps/discos/nvme_hik_500.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
-        },
-        {
-            "name": "1 TB - NVMe",
-            "price": 93000,
-            "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
-            "image_url": "comps/discos/nvme_wd_1.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
-        },
-        {
-            "name": "128 GB - NVMe",
-            "price": 20000,
-            "description": "Descripción del nuevo SSD.",
-            "image_url": "comps/discos/nvme_hik_128.webp",
-            "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-128-gb-nvme-hiksemi-pci3-color-negro/p/MLA24285384#polycard_client=search-nordic&searchVariation=MLA24285384&wid=MLA1499766969&position=3&search_layout=stack&type=product&tracking_id=19bd5ce3-c7f4-4bd3-a98d-e9c3fcc232b6&sid=search"
-        }
-    ],
-    "gpuOptions": [
-        {
-            "name": "GT 740 2GB",
-            "price": 75000,
-            "description": "Se la banca muy bien para Editar Video y en juegos como LoL, Minecraft e incluso Overwatch 2 (no le pidas un Fortnite o CS2)",
-            "image_url": "comps/gpus/gt740.webp",
-            "link": "https://www.mercadolibre.com.ar/placa-video-geforce-gt740-2gb-gddr5-128bit-hdmi-vga-dvi/p/MLA22805535"
-        },
-        {
-            "name": "AMD 560 4GB",
-            "price": 145000,
-            "description": "Excelente para gaming moderno en 1080p/60+ FPS/Calidad Alta o Media.",
-            "image_url": "comps/gpus/rx560.webp",
-            "link": "www.mercadolibre.com.ar/placa-de-video-sentey-rx-560-4gb-ddr5-amd-radeon-rx560/p/MLA24558468"
-        }
-    ],
-    "psuOptions": [
-        {
-            "name": "ATX 550w Sentey Genérica",
-            "price": 21000,
-            "description": "Fuente estándar, suficiente para esta configuración base.",
-            "image_url": "comps/psus/550sentey.webp",
-            "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-sx550-fs-550w-negra/p/MLA43936421"
-        },
-        {
-            "name": "ATX 550w Sentey 80 Plus",
-            "price": 80000,
-            "description": "Certificación 80 Plus: Mejor consumo energético, mayor durabilidad y seguridad para nuestros componentes.",
-            "image_url": "comps/psus/550sentey80.webp",
-            "link": "www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-sentey-steel-nitro-power-snp550-gs-550w-negra/p/MLA43939305"
-        }
-    ],
-    "motherboardOptions": [
-        {
-            "name": "Asrock B450m-HDV R4.0",
-            "price": 94000,
-            "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.",
-            "image_url": "comps/moms/asrock_b450m.png",
-            "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333#reco_item_pos=1&reco_backend=first_search_promotions_or_top_sales&reco_backend_type=function&reco_client=pom-promotions&reco_id=29321c27-5e73-4195-8c2e-baf7a0921a8e&reco_model=best-seller-sorted-by-score"
-        },
-        {
-            "name": "Asrock A520m",
-            "price": 86000,
-            "description": "Descripción de la nueva Motherboard.",
-            "image_url": "comps/moms/asrock_a50m.webp",
-            "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?pdp_filters=item_id%3AMLA1476267425&from=gshop&matt_tool=72987486&matt_word=&matt_source=google&matt_campaign_id=22107887694&matt_ad_group_id=172980949883&matt_match_type=&matt_network=g&matt_device=c&matt_creative=729634834007&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735111307&matt_product_id=MLA24527962-product&matt_product_partition_id=2392713567981&matt_target_id=aud-2014906607007:pla-2392713567981&cq_src=google_ads&cq_cmp=22107887694&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22107887694&gclid=Cj0KCQjw1JjDBhDjARIsABlM2SsJ9uxu1_Onflwo0BbzcsuDkRubkTGR-_-rrMrE-iXmRP3d13AEWzcaAh8kEALw_wcB"
-        }
-    ],
-    "cpuOptions": [
-        {
-            "name": "Ryzen 5 4500",
-            "price": 119000,
-            "description": "Descripción del nuevo CPU.",
-            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+CPU",
-            "link": "https://articulo.mercadolibre.com.ar/MLA-1506210339-procesador-amd-ryzen-5-4500-36ghz-am4-6n-12h-c-cooler-_JM"
-        }
-    ],
-    "ramOptions": [
-        {
-            "name": "DDR4 8 GB - Hiksemi",
-            "price": 24000,
-            "description": "Descripción de la nueva RAM.",
-            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
-            "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493"
-        },
-        {
-            "name": "DDR4 8 GB - Hiksemi OEM",
-            "price": 18000,
-            "description": "Descripción de la nueva RAM.",
-            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
-            "link": "https://articulo.mercadolibre.com.ar/MLA-2073303382-memoria-ram-ddr4-8gb-3200hz-_JM"
-        }
-    ],
-    "comboOptions": [
-        {
-            "name": "Ryzen 5 4500 + A520 + 8 Gb",
-            "price": 224000,
-            "description": "Descripción del nuevo Combo.",
-            "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
-            "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684"
-        }
-    ]
+  "towersOptions": [
+    {
+      "name": "LNZ Y11",
+      "price": 57040,
+      "slug": "lnz-y11",
+      "image_url": "comps/torres/lnz-y11.webp",
+      "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234#polycard_client=search-nordic&searchVariation=MLA47405234&wid=MLA2117514314&position=2&search_layout=grid&type=product&tracking_id=78329ca3-0e8f-4b13-ae42-e7dc5076524d&sid=search"
+    },
+    {
+      "name": "Antec AX20",
+      "price": 61222,
+      "slug": "antec-ax20",
+      "image_url": "comps/torres/antec-ax20.webp",
+      "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175#reco_item_pos=2&reco_backend=first_search_promotions_or_top_sales&reco_backend_type=function&reco_client=pom-promotions&reco_id=1205fb4e-4bd3-41ec-bae0-1f95883ced00&reco_model=best-seller-sorted-by-score"
+    },
+    {
+      "name": "Sentey H10",
+      "price": 69629,
+      "slug": "sentey-h10",
+      "image_url": "comps/torres/sentey-h10.webp",
+      "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385#polycard_client=search-nordic&searchVariation=MLA45231385&wid=MLA2082695088&position=2&search_layout=grid&type=product&tracking_id=f12620c7-491b-4e40-a860-0725a08f6aff&sid=search"
+    },
+    {
+      "name": "Sentey A8 Micro White",
+      "price": 74399,
+      "slug": "sentey-a8-micro-white",
+      "image_url": "comps/torres/sentey-a8-micro-white.webp",
+      "link": "https://www.mercadolibre.com.ar/sentey-a8-cube-rgb-gabinete-sentey-a8-vidrio-temp-5-coolers-blanco/p/MLA50547846#polycard_client=search-nordic&searchVariation=MLA50547846&wid=MLA2144326674&position=3&search_layout=stack&type=product&tracking_id=0f8e8620-745d-4136-91b6-f1e1300ed9e9&sid=search"
+    }
+  ],
+  "ssdOptions": [
+    {
+      "name": "500 GB - NVMe",
+      "price": 52999,
+      "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
+      "image_url": "comps/discos/nvme_hik_500.webp",
+      "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
+    },
+    {
+      "name": "1 TB - NVMe",
+      "price": 91511,
+      "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
+      "image_url": "comps/discos/nvme_wd_1.webp",
+      "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
+    },
+    {
+      "name": "Disco Solido Ssd Hiksemi Wave 240gb 3d Nand Pc Notebook",
+      "price": 27799,
+      "description": "No es tan rápido como un NVMe pero es una versión económica si precisás exprimir el precio y no precisás tanto espacio.",
+      "image_url": "comps/discos/ssd_hiksemi.webp",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1424032565-disco-solido-ssd-240-gb-sata-hiksemi-wave-color-negro-_JM"
+    }
+  ],
+  "gpuOptions": [
+    {
+      "name": "Integrada",
+      "price": 0,
+      "description": "Viene con el CPU - más que suficiente para arrancar.",
+      "image_url": "comps/cpus/ryzen5_4500.webp",
+      "link": ""
+    },
+    {
+      "name": "RX 6600",
+      "price": 431271,
+      "description": "La mejor opción para correr juegos AAA o eSports fluidos en Alta Calidad a un moderado costo.",
+      "image_url": "comps/gpus/rx6600.webp",
+      "link": "https://www.mercadolibre.com.ar/placa-de-video-amd-asrock-challenger-radeon-rx-6600-series-rx-6600-oc-edition-8gb/p/MLA19811124#polycard_client=search-nordic&searchVariation=MLA19811124&wid=MLA1382605699&position=9&search_layout=grid&type=product&tracking_id=f6ed7ab0-1ce7-4efa-be59-83ac04c244ed&sid=search"
+    }
+  ],
+  "psuOptions": [
+    {
+      "name": "Certificada Sentey",
+      "price": 92000,
+      "description": "Recomendada para cuidar nuestros componentes. Más cara, pero más segura. 3 Años de Garantía.",
+      "image_url": "comps/psus/550sentey80.webp",
+      "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438#polycard_client=search_best-seller&tracking_id=773e34fd-c7e9-4df8-94d6-2ab5e5326732&wid=MLA1389033851&sid=search"
+    },
+    {
+      "name": "Genérica",
+      "price": 25999,
+      "description": "Opción económica. Segunda marca de Sentey.",
+      "image_url": "comps/psus/550sentey.webp",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1507344437-fuente-para-pc-atx-lnz-fb600-lx-600w-oem-_JM"
+    }
+  ],
+  "motherboardOptions": [
+    {
+      "name": "Asrock B450m-HDV R4.0",
+      "price": 88349,
+      "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.",
+      "image_url": "comps/moms/asrock_b450m.png",
+      "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333#reco_item_pos=1&reco_backend=first_search_promotions_or_top_sales&reco_backend_type=function&reco_client=pom-promotions&reco_id=29321c27-5e73-4195-8c2e-baf7a0921a8e&reco_model=best-seller-sorted-by-score"
+    },
+    {
+      "name": "Asrock A520m",
+      "price": 100592,
+      "description": "Descripción de la nueva Motherboard.",
+      "image_url": "comps/moms/asrock_a50m.webp",
+      "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?pdp_filters=item_id%3AMLA1476267425&from=gshop&matt_tool=72987486&matt_word=&matt_source=google&matt_campaign_id=22107887694&matt_ad_group_id=172980949883&matt_match_type=&matt_network=g&matt_device=c&matt_creative=729634834007&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735111307&matt_product_id=MLA24527962-product&matt_product_partition_id=2392713567981&matt_target_id=aud-2014906607007:pla-2392713567981&cq_src=google_ads&cq_cmp=22107887694&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22107887694&gclid=Cj0KCQjw1JjDBhDjARIsABlM2SsJ9uxu1_Onflwo0BbzcsuDkRubkTGR-_-rrMrE-iXmRP3d13AEWzcaAh8kEALw_wcB"
+    }
+  ],
+  "cpuOptions": [],
+  "ramOptions": [
+    {
+      "name": "DDR4 8x2 = 16 GB",
+      "price": 48999,
+      "description": "Descripción de la nueva RAM.",
+      "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665#polycard_client=search-nordic&searchVariation=MLA48899665&wid=MLA1510165821&position=23&search_layout=grid&type=product&tracking_id=edd66528-232f-4784-bd5b-4d7503bf1118&sid=search"
+    },
+    {
+      "name": "DDR4 8 GB - Hiksemi",
+      "price": 37499,
+      "description": "Descripción de la nueva RAM.",
+      "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493"
+    },
+    {
+      "name": "DDR4 8 GB - Patriot OEM",
+      "price": 28392,
+      "description": "Descripción de la nueva RAM.",
+      "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-patriot-signature-8gb-3200mhz-dimm-negra/p/MLA37810612#polycard_client=search-nordic&searchVariation=MLA37810612&wid=MLA1475197229&position=12&search_layout=grid&type=product&tracking_id=ba5f911d-a130-49f4-b5f7-0e4bf0c00f10&sid=search"
+    },
+    {
+      "name": "Ddr3 4gb ",
+      "price": 14500,
+      "description": "Descripción de la nueva RAM.",
+      "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nueva+RAM",
+      "link": "https://www.mercadolibre.com.ar/memoria-ddr3-4gb-1333mhz-pc310600-hynix-en-blister-nuevas/up/MLAU313860758#reco_item_pos=9&reco_backend=cart_congrats_machinalis-p2p-same_seller&reco_backend_type=low_level&reco_client=cart_congrats_seller-recommendations&reco_id=3b2336d0-902b-45c8-bf2c-8334b9657c18&reco_model=rk_v2_retsys_org_compl_ss"
+    }
+  ],
+  "comboOptions": [
+    {
+      "name": "5 5600g + A520 Asrock",
+      "price": 444576,
+      "description": "Descripción del nuevo Combo.",
+      "image_url": "comps/combos/ryzen5600g.webp",
+      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-ddr4-ryzen-5-5600g-a520m-am4-color-negro/p/MLA43499795#polycard_client=recommendations_pdp-v2p&reco_backend=ranker_retrieval_online_vpp_v2p&reco_model=rk_online_v3_retsys_vpp_v2p%2C+coldstart_high_exposition%2C+coldstart_low_exposition&reco_client=pdp-v2p&reco_item_pos=0&reco_backend_type=low_level&reco_id=2accb88f-3de5-45bd-a1d2-872c74516dd9&wid=MLA1965060188&sid=recos"
+    },
+    {
+      "name": "Ryzen 5 4500 + A520 + 8 Gb",
+      "price": 242444,
+      "description": "Descripción del nuevo Combo.",
+      "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
+      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684"
+    },
+    {
+      "name": " I5 4570 + Mother + 8gb",
+      "price": 179990,
+      "description": "Descripción del nuevo Combo.",
+      "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
+      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-pc-intel-i5-4570--mother--8gb-ram/up/MLAU3143273772#polycard_client=search-nordic&searchVariation=MLAU3143273772&wid=MLA1491525217&position=17&search_layout=stack&type=product&tracking_id=ac78b378-948b-443b-a40f-eddb778b31e7&sid=search"
+    },
+    {
+      "name": "Armada Intel Core I5 16 Gb 480 Gb",
+      "price": 299000,
+      "description": "Descripción del nuevo Combo.",
+      "image_url": "https://placehold.co/100x100/374151/9ca3af?text=Nuevo+Combo",
+      "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?pdp_filters=item_id%3AMLA2093619282&from=gshop&matt_tool=68681271&matt_word=&matt_source=google&matt_campaign_id=22107887682&matt_ad_group_id=172980945243&matt_match_type=&matt_network=g&matt_device=c&matt_creative=729634833566&matt_keyword=&matt_ad_position=&matt_ad_type=pla&matt_merchant_id=735111307&matt_product_id=MLA45398956-product&matt_product_partition_id=2389830763361&matt_target_id=aud-1930507555360%3Apla-2389830763361&cq_src=google_ads&cq_cmp=22107887682&cq_net=g&cq_plt=gp&cq_med=pla&gad_source=1&gad_campaignid=22107887682&gbraid=0AAAAAD01zQZSYcOEoO7Dif5cS8T-IV1OQ&gclid=CjwKCAjw6NrBBhB6EiwAvnT_rtZlmXpw3zpVSowgF_WjqBVaIrDe79D6HDABhgAUvpzLl8X4Jgb8YxoCiJQQAvD_BwE&offer_type=OFFICIAL_STORE#reviews"
+    }
+  ],
+  "monitorOptions": [
+    {
+      "name": "Cooler Master 24'' 100hz",
+      "price": 166250,
+      "description": "",
+      "image_url": "comps/monitores/cooler-master-24''-100hz.webp",
+      "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684#polycard_client=bookmarks&wid=MLA1508091731&sid=bookmarks"
+    },
+    {
+      "name": "Noblex 25''",
+      "price": 173799,
+      "description": "",
+      "image_url": "comps/monitores/noblex-25''.webp",
+      "link": "https://www.mercadolibre.com.ar/monitor-noblex-25-pulgadas-nxsm2500-led-fhd/p/MLA45717090#polycard_client=search_best-seller&tracking_id=9b46ecc9-8f43-4093-88a5-a2c3e7da7a0e&wid=MLA1473725571&sid=search"
+    },
+    {
+      "name": "Gigabyte 27'' 180Hz",
+      "price": 400000,
+      "description": "",
+      "image_url": "comps/monitores/gigabyte-27''-180hz.webp",
+      "link": "https://www.mercadolibre.com.ar/monitor-gamer-gigabyte-gs27fa-27-180hz-panel-ips-1ms-hdr-full-hd/p/MLA48944295#polycard_client=search_best-seller&tracking_id=9b46ecc9-8f43-4093-88a5-a2c3e7da7a0e&wid=MLA2123846624&sid=search"
+    }
+  ],
+  "mouseOptions": [
+    {
+      "name": "Redragon Wireless",
+      "price": 27797,
+      "description": "",
+      "image_url": "comps/mouses/redragon-wireless.webp",
+      "link": "https://www.mercadolibre.com.ar/mouse-y-pad-2-en-1-gamer-redragon-m601wl-ba-negrorojo/p/MLA17588671?pdp_filters=item_id%3AMLA1478243957#polycard_client=wishlist&wid=MLA1478243957&sid=bookmarks"
+    },
+    {
+      "name": "Wesdar Cableado",
+      "price": 8931,
+      "description": "Descripción del nuevo Mouse.",
+      "image_url": "comps/mouses/wesdar-cableado.webp",
+      "link": "https://www.mercadolibre.com.ar/mouse-gamer-usb-wesdar-2400-dpi-pc-led-de-6-botones-pad-color-negro/p/MLA21250931?pdp_filters=item_id%3AMLA1872147546#polycard_client=wishlist&wid=MLA1872147546&sid=bookmarks"
+    }
+  ],
+  "joystickOptions": [
+    {
+      "name": "Xbox 360 Con Cable",
+      "price": 29499,
+      "description": "Generico Xbox 360 Con Cable",
+      "image_url": "comps/joysticks/xbox-360-con-cable.webp",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-2210994016-joystick-mando-generico-para-xbox-360-con-cable-pc-_JM"
+    }
+  ],
+  "keyboardOptions": [
+    {
+      "name": "Shiva K512 Cableado",
+      "price": 51999,
+      "description": "",
+      "image_url": "comps/teclados/shiva-k512-cableado.webp",
+      "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952#polycard_client=wishlist&wid=MLA917590502&sid=bookmarks"
+    },
+    {
+      "name": "Mecánico Noganet Cabledo",
+      "price": 35000,
+      "description": "Descripción del nuevo Teclado.",
+      "image_url": "comps/teclados/mecanico-noganet-cabledo.webp",
+      "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184#polycard_client=search-nordic&searchVariation=MLA16189184&wid=MLA1464940010&position=3&search_layout=stack&type=product&tracking_id=406ad706-2331-4380-acff-78b5012c093c&sid=search"
+    },
+    {
+      "name": "Inalámbrico Noganet",
+      "price": 34410,
+      "description": "Descripción del nuevo Teclado.",
+      "image_url": "comps/teclados/inalambrico-noganet.webp",
+      "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565#polycard_client=search_best-seller&tracking_id=a3c920a8-fea8-48c7-8cfb-d1c4964ada0b&wid=MLA1898154462&sid=search"
+    }
+  ],
+  "comboMouseTecladoOptions": [
+    {
+      "name": "Mouse Y Teclado Inalámbricos Solarmax",
+      "price": 16297,
+      "description": "",
+      "image_url": "comps/combos-mouse-teclado/mouse-y-teclado-inalámbricos-solarmax.webp",
+      "link": "https://www.mercadolibre.com.ar/teclado-y-mouse-combo-inalambrico-solarmax-kb302wmw200-color-negro/p/MLA21805667?pdp_filters=item_id:MLA1363919279#wid=MLA1363919279&sid=search&is_advertising=true&searchVariation=MLA21805667&backend_model=search-backend&position=2&search_layout=stack&type=pad&tracking_id=33ba37d2-7c95-447b-b7ad-4d368a2027b7&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=2&ad_click_id=NjQxNDA2NDktMWI1OC00ZWE1LWE0ZTMtYjM3YWU5OTU0ODdm"
+    }
+  ],
+  "auricularesOptions": [
+    {
+      "name": "Kotion Each Cableado",
+      "price": 50000,
+      "description": "Descripción del nuevo Auricular.",
+      "image_url": "comps/auriculares/kotion-each-cableado.webp",
+      "link": "https://www.mercadolibre.com.ar/auriculares-gamer-kotion-each-g9000-black-y-red-con-luz-led/p/MLA9406416#polycard_client=search-nordic&searchVariation=MLA9406416&wid=MLA1476567335&position=9&search_layout=stack&type=product&tracking_id=c7453b41-a35d-46e6-8996-c17763c6b2d3&sid=search"
+    }
+  ],
+  "parlantesOptions": [
+    {
+      "name": "Genius Madera",
+      "price": 33000,
+      "description": "Descripción del nuevo Parlante.",
+      "image_url": "comps/parlantes/genius-madera.webp",
+      "link": "https://www.mercadolibre.com.ar/parlantes-genius-sp-hf180-madera/p/MLA15840120#polycard_client=search-nordic&searchVariation=MLA15840120&wid=MLA884349537&position=9&search_layout=stack&type=product&tracking_id=a1cf087c-6df5-424f-9634-c32ac0c926e8&sid=search"
+    },
+    {
+      "name": "Panter Gamer 2.1",
+      "price": 53587,
+      "description": "Descripción del nuevo Parlante.",
+      "image_url": "comps/parlantes/panter-gamer-2.1.webp",
+      "link": "https://www.mercadolibre.com.ar/parlante-gamer-21-ultra-iluminacion-rgb-panter-gs302-color-negro/p/MLA20019328#polycard_client=search_best-seller&tracking_id=e5c88d70-bc96-422d-8f7b-037ed0237f50&wid=MLA1452046944&sid=search"
+    }
+  ]
 }

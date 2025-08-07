@@ -39,6 +39,34 @@
             box-shadow: 0 0 0 2px #6366f1;
         }
 
+        /* Shared input style for tables and base details */
+        .overview-table input[type="text"],
+        .overview-table input[type="number"],
+        .overview-table textarea,
+        #base-details input,
+        #base-details textarea,
+        #base-details select {
+            background-color: #1f2937; /* bg-gray-800 */
+            border: 1px solid #374151; /* border-gray-700 */
+            border-radius: 0.375rem;
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            color: #e5e7eb;
+            transition: all 0.15s ease-in-out;
+            width: 100%;
+        }
+        .overview-table input[type="text"]:focus,
+        .overview-table input[type="number"]:focus,
+        .overview-table textarea:focus,
+        #base-details input:focus,
+        #base-details textarea:focus,
+        #base-details select:focus {
+            border-color: #6366f1; /* indigo-500 */
+            box-shadow: 0 0 0 2px #4f46e5;
+        }
+        .overview-table textarea { min-height: 40px; }
+
+
         /* Button Styles */
         .btn {
             display: inline-flex;
@@ -54,6 +82,8 @@
         .btn-primary:hover { background-color: #4f46e5; }
         .btn-secondary { background-color: #4b5563; color: #ffffff; padding: 0.5rem 1rem; }
         .btn-secondary:hover { background-color: #374151; }
+        .btn-danger { background-color: #ef4444; color: #ffffff; }
+        .btn-danger:hover { background-color: #dc2626; }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         
         /* Icon and Title Styles */
@@ -86,7 +116,8 @@
         #warning-message { color: #f59e0b; }
 
         /* Table Styles */
-        .overview-table th, .overview-table td {
+        .overview-table th, .overview-table td,
+        .bases-table th, .bases-table td {
             padding: 0.75rem 1.5rem;
             vertical-align: middle;
         }
@@ -101,25 +132,7 @@
             margin-top: 0.25rem;
             height: 18px; /* Give a fixed height to prevent layout shifts */
         }
-        .overview-table input[type="text"],
-        .overview-table input[type="number"],
-        .overview-table textarea {
-            background-color: transparent;
-            border: 1px solid transparent;
-            border-radius: 0.25rem;
-            padding: 0.25rem 0.5rem;
-            font-size: 0.875rem;
-            color: #e5e7eb;
-            transition: all 0.15s ease-in-out;
-            min-width: 80px;
-        }
-        .overview-table input[type="text"]:focus,
-        .overview-table input[type="number"]:focus,
-        .overview-table textarea:focus {
-            border-color: #4b5563; /* gray-600 */
-            box-shadow: 0 0 0 1px rgba(75, 85, 99, 0.5);
-        }
-        .overview-table textarea { min-height: 40px; }
+        
         .add-row-button-cell {
             text-align: center;
             padding-top: 1rem;
@@ -216,6 +229,58 @@
             height: 3.2rem;
             width: 100%;
         }
+        
+        /* Bases Section Styles */
+        .bases-section {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 1.5rem;
+        }
+        .base-list-item {
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            border: 1px solid #374151;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            min-height: 64px;
+        }
+        .base-list-item.active {
+            background-color: #6366f1;
+            color: white;
+            border-color: #4f46e5;
+        }
+        .base-list-item:not(.active):hover {
+            background-color: #374151;
+        }
+        .base-list-item .component-thumbs img {
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            border-radius: 0.375rem; /* rounded-md */
+        }
+        
+        /* Accordion Styles */
+        #bases-accordion-header .lucide-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+        #bases-accordion-header .rotate-180 {
+            transform: rotate(180deg);
+        }
+        #bases-accordion-content {
+            transition: max-height 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+
+        @media (max-width: 1024px) {
+            .bases-section {
+                grid-template-columns: 1fr;
+            }
+        }
         @media (max-width: 640px) {
             .category-navbar { font-size: 0.95rem; }
             .category-navbar-spacer { height: 3.5rem; }
@@ -247,6 +312,20 @@
             </button>
         </div>
 
+        <!-- Bases Section (Accordion) -->
+        <div id="bases-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h3 id="bases-accordion-header" class="flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
+                <span>Bases de Componentes</span>
+                <span class="lucide-icon" data-lucide="chevron-down"></span>
+            </h3>
+            <div id="bases-accordion-content" class="p-6 pt-0 hidden">
+                 <div id="bases-section">
+                    <!-- Content generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+
         <!-- Table View Container -->
         <div id="overview-view" class="tab-content">
             <!-- Content will be generated by JavaScript -->
@@ -274,23 +353,35 @@
 <script>
     // --- Data Configuration ---
     const CATEGORY_NAV_LIST = [
-      { key: 'armadasOptions', label: 'Armadas' }, { key: 'towersOptions', label: 'Torres' }, 
-      { key: 'ssdOptions', label: 'SSD' }, { key: 'gpuOptions', label: 'GPU' }, 
-      { key: 'psuOptions', label: 'PSU' }, { key: 'motherboardOptions', label: 'Mother' }, 
-      { key: 'cpuOptions', label: 'CPU' }, { key: 'ramOptions', label: 'RAM' }, 
-      { key: 'comboOptions', label: 'Combos' }, { key: 'monitorOptions', label: 'Monitores' }, 
-      { key: 'mouseOptions', label: 'Mouse' }, { key: 'joystickOptions', label: 'Joysticks' }, 
-      { key: 'keyboardOptions', label: 'Teclados' }, { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado' }, 
-      { key: 'auricularesOptions', label: 'Auris' }, { key: 'parlantesOptions', label: 'Parlantes' }
+      { key: 'bases-section-container', label: 'Bases' }, 
+      { key: 'armadasOptions', label: 'Armadas' }, 
+      { key: 'towersOptions', label: 'Torres' }, 
+      { key: 'comboOptions', label: 'Combos' }, 
+      { key: 'cpuOptions', label: 'CPU' }, 
+      { key: 'motherboardOptions', label: 'Mother' }, 
+      { key: 'ramOptions', label: 'RAM' }, 
+      { key: 'gpuOptions', label: 'GPU' }, 
+      { key: 'ssdOptions', label: 'SSD' }, 
+      { key: 'psuOptions', label: 'PSU' }, 
+      { key: 'monitorOptions', label: 'Monitores' }, 
+      { key: 'mouseOptions', label: 'Mouse' }, 
+      { key: 'joystickOptions', label: 'Joysticks' }, 
+      { key: 'keyboardOptions', label: 'Teclados' }, 
+      { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado' }, 
+      { key: 'auricularesOptions', label: 'Auris' }, 
+      { key: 'parlantesOptions', label: 'Parlantes' }
     ];
 
     const dataMap = {
-        armadasOptions: [], towersOptions: [], ssdOptions: [], gpuOptions: [], psuOptions: [], 
-        motherboardOptions: [], cpuOptions: [], ramOptions: [], comboOptions: [], monitorOptions: [], 
-        mouseOptions: [], joystickOptions: [], keyboardOptions: [], comboMouseTecladoOptions: [], 
-        auricularesOptions: [], parlantesOptions: []
+        baseOptions: [], armadasOptions: [], towersOptions: [], ssdOptions: [], gpuOptions: [], 
+        psuOptions: [], motherboardOptions: [], cpuOptions: [], ramOptions: [], comboOptions: [], 
+        monitorOptions: [], mouseOptions: [], joystickOptions: [], keyboardOptions: [], 
+        comboMouseTecladoOptions: [], auricularesOptions: [], parlantesOptions: []
     };
     
+    let selectedBaseIndex = 0;
+    let draggedBaseComponentIndex = null; // For base component reordering
+
     const CORS_PROXIES = [
         'https://api.allorigins.win/raw?url=',
         'https://corsproxy.io/?'
@@ -300,19 +391,28 @@
     
     function renderCategoryNavbar() {
         const navbar = document.getElementById('category-navbar');
-        navbar.innerHTML = CATEGORY_NAV_LIST.map(cat =>
-            `<button class="cat-nav-btn" data-cat="${cat.key}" onclick="scrollToCategory('${cat.key}')">${cat.label}</button>`
-        ).join('');
+        navbar.innerHTML = CATEGORY_NAV_LIST.map(cat => {
+            const targetId = cat.key.includes('Options') ? `table-container-${cat.key}` : cat.key;
+            return `<button class="cat-nav-btn" data-cat="${targetId}" onclick="scrollToCategory('${targetId}')">${cat.label}</button>`
+        }).join('');
     }
 
-    function scrollToCategory(catKey) {
+    function scrollToCategory(targetId) {
         document.querySelectorAll('.category-navbar .cat-nav-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.cat === catKey);
+            btn.classList.toggle('active', btn.dataset.cat === targetId);
         });
         
-        const categoryDiv = document.getElementById(`table-container-${catKey}`);
+        const categoryDiv = document.getElementById(targetId);
         if(categoryDiv) {
-            categoryDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Adjust for fixed navbar height
+            const navbarHeight = document.getElementById('category-navbar').offsetHeight;
+            const elementPosition = categoryDiv.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20; // 20px extra space
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
     }
 
@@ -321,7 +421,7 @@
     function getComponentName(type) {
         const keyWithoutOptions = type.replace('Options', '');
         const names = {
-            armadas: 'Armada', towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
+            base: 'Base', armadas: 'Armada', towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
             motherboard: 'Motherboard', cpu: 'CPU', ram: 'RAM',
             combo: 'Combo', monitor: 'Monitor', mouse: 'Mouse',
             joystick: 'Joystick', keyboard: 'Teclado',
@@ -351,6 +451,17 @@
         setTimeout(() => msg.remove(), 2500);
     }
 
+    function findComponentById(id) {
+        for (const categoryKey in dataMap) {
+            if (categoryKey === 'baseOptions') continue;
+            const component = dataMap[categoryKey].find(p => p.id == id);
+            if (component) {
+                return { component, categoryKey };
+            }
+        }
+        return null;
+    }
+
     // --- Data Persistence ---
 
     function saveDataToSessionStorage() {
@@ -378,6 +489,7 @@
     function getAllIds() {
         const ids = new Set();
         for (const categoryKey in dataMap) {
+            if (categoryKey === 'baseOptions') continue;
             dataMap[categoryKey].forEach(product => {
                 if (product.id) ids.add(product.id);
             });
@@ -396,6 +508,7 @@
     function assignIdsToMissingProducts() {
         const existingIds = getAllIds();
         for (const categoryKey in dataMap) {
+            if (categoryKey === 'baseOptions') continue;
             dataMap[categoryKey].forEach(product => {
                 if (!product.id) {
                     const newId = generateUniqueId(existingIds);
@@ -427,6 +540,13 @@
     function updateProduct(categoryKey, index, key, value) {
         if (dataMap[categoryKey] && dataMap[categoryKey][index]) {
             dataMap[categoryKey][index][key] = value;
+            
+            // If price is updated, recalculate totals for all bases
+            if (key === 'price') {
+                updateAllBaseTotals();
+                renderBasesSection(); // Re-render bases to show new totals
+            }
+
             saveDataToSessionStorage();
         }
     }
@@ -470,11 +590,307 @@
         document.getElementById('image-preview').classList.add('hidden');
     }
 
+    // --- Bases Section Rendering ---
+    function renderBasesSection() {
+        const container = document.getElementById('bases-section');
+        if (!dataMap.baseOptions) dataMap.baseOptions = [];
+        if (dataMap.baseOptions.length === 0) {
+            dataMap.baseOptions.push({ id: 'base-default', name: 'Nueva Base', description: '', components: [], total: 0 });
+        }
+        
+        container.innerHTML = `
+            <div class="flex flex-col gap-2">
+                <div id="base-list" class="flex flex-col gap-2 mb-4">
+                    ${dataMap.baseOptions.map((base, index) => {
+                        const componentImages = (base.components || [])
+                            .map(compId => {
+                                const found = findComponentById(compId);
+                                return found ? found.component.image_url : null;
+                            })
+                            .filter(Boolean);
+
+                        return `
+                        <div id="base-item-${index}" class="base-list-item ${index === selectedBaseIndex ? 'active' : ''}" onclick="selectBase(${index})">
+                            <div class="flex-grow">
+                                <p class="font-bold truncate">${base.name || 'Sin Nombre'}</p>
+                                <p class="text-xs opacity-75">${base.id || 'Sin ID'}</p>
+                                <p class="font-bold text-lg text-teal-400 mt-1">$${(base.total || 0).toLocaleString('es-AR')}</p>
+                            </div>
+                            <div class="flex-shrink-0 flex items-center gap-1 component-thumbs">
+                                ${componentImages.slice(0, 4).map(imgUrl => `
+                                    <img src="${imgUrl}" onerror="this.style.display='none'" alt="component thumbnail">
+                                `).join('')}
+                            </div>
+                        </div>
+                        `
+                    }).join('')}
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="addBase()" class="btn btn-primary w-full text-sm py-2">
+                        <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir Base
+                    </button>
+                    <button onclick="deleteSelectedBase()" class="btn btn-danger w-auto px-3 py-2" title="Eliminar Base Seleccionada">
+                        <span class="lucide-icon" data-lucide="trash-2"></span>
+                    </button>
+                </div>
+            </div>
+            <div id="base-details" class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <!-- Details of selected base will be rendered here -->
+            </div>
+        `;
+        renderSelectedBaseDetails();
+        lucide.createIcons();
+    }
+
+    function renderSelectedBaseDetails() {
+        const detailsContainer = document.getElementById('base-details');
+        const base = dataMap.baseOptions[selectedBaseIndex];
+
+        if (!base) {
+            detailsContainer.innerHTML = '<p>No hay una base seleccionada.</p>';
+            return;
+        }
+
+        const allComponentsOptions = CATEGORY_NAV_LIST
+            .filter(cat => cat.key.includes('Options') && cat.key !== 'armadasOptions' && cat.key !== 'baseOptions')
+            .map(cat => {
+                const components = dataMap[cat.key];
+                if (!components || components.length === 0) return '';
+                return `
+                    <optgroup label="${cat.label}">
+                        ${components.map(comp => `<option value="${comp.id}">${comp.name} ($${(comp.price || 0).toLocaleString('es-AR')})</option>`).join('')}
+                    </optgroup>
+                `;
+            }).join('');
+
+        detailsContainer.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Nombre de la Base</label>
+                    <input type="text" value="${base.name || ''}" oninput="updateBase('name', this.value)" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">ID (manual)</label>
+                    <input type="text" value="${base.id || ''}" oninput="updateBase('id', this.value)" class="w-full">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-1">Descripción</label>
+                    <textarea oninput="updateBase('description', this.value)" class="w-full" rows="2">${base.description || ''}</textarea>
+                </div>
+                 <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-1">Total de la Base</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
+                        $${(base.total || 0).toLocaleString('es-AR')}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h4 class="font-semibold mb-2">Añadir Componente</h4>
+                <div class="flex gap-2">
+                    <select id="add-component-select" class="w-full">
+                        <option value="">Seleccionar componente...</option>
+                        ${allComponentsOptions}
+                    </select>
+                    <button onclick="addComponentToBase()" class="btn btn-secondary py-2">Añadir</button>
+                </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Componentes en esta Base</h4>
+            <div class="overflow-x-auto">
+                <table class="bases-table w-full text-left text-sm text-gray-400">
+                    <thead class="text-xs text-gray-200 uppercase bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-4 py-3">Categoría</th>
+                            <th scope="col" class="px-6 py-3">Nombre</th>
+                            <th scope="col" class="px-6 py-3">Precio</th>
+                            <th scope="col" class="px-2 py-3">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${(base.components || []).map((compId, index) => {
+                            const found = findComponentById(compId);
+                            if (!found) {
+                                return `<tr class="border-b border-gray-700"><td colspan="4" class="text-red-500 p-2">Componente con ID ${compId} no encontrado.</td></tr>`;
+                            }
+                            const { component, categoryKey } = found;
+                            return `
+                                <tr class="border-b border-gray-700 hover:bg-gray-700/50" 
+                                    ondragover="onBaseComponentDragOver(event)"
+                                    ondrop="onBaseComponentDrop(event, ${index})"
+                                    onmouseenter="showImagePreview('${component.image_url || ''}')"
+                                    onmouseleave="hideImagePreview()">
+                                    <td class="px-4 py-2">${getComponentName(categoryKey)}</td>
+                                    <td class="px-6 py-2 font-medium text-white">${component.name}</td>
+                                    <td class="px-6 py-2">$${(component.price || 0).toLocaleString('es-AR')}</td>
+                                    <td class="px-2 py-2 text-right">
+                                        <div class="flex items-center justify-end">
+                                            <a href="#row-${categoryKey}-${dataMap[categoryKey].indexOf(component)}" onclick="scrollToComponentRow('${categoryKey}', ${dataMap[categoryKey].indexOf(component)})" class="text-blue-400 hover:text-blue-300" title="Ir al componente">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="link"></span>
+                                            </a>
+                                            <button onclick="removeComponentFromBase(${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar de la base">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
+                                            </button>
+                                            <button draggable="true" ondragstart="onBaseComponentDragStart(event, ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                        ${(base.components || []).length === 0 ? '<tr><td colspan="4" class="text-center p-4">Esta base está vacía.</td></tr>' : ''}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        lucide.createIcons();
+    }
+    
+    function scrollToComponentRow(categoryKey, index) {
+        const rowId = `row-${categoryKey}-${index}`;
+        const row = document.getElementById(rowId);
+        if (row) {
+            const navbarHeight = document.getElementById('category-navbar').offsetHeight;
+            const elementPosition = row.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
+
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            
+            // Highlight effect
+            row.style.transition = 'background-color 0.5s ease-in-out';
+            row.style.backgroundColor = 'rgba(99, 102, 241, 0.5)'; // indigo-500 with opacity
+            setTimeout(() => {
+                row.style.backgroundColor = '';
+            }, 2000);
+        }
+    }
+
+
+    // --- Bases Data Operations ---
+    function calculateBaseTotal(base) {
+        if (!base || !base.components) return 0;
+        return base.components.reduce((sum, compId) => {
+            const found = findComponentById(compId);
+            return sum + (found ? (found.component.price || 0) : 0);
+        }, 0);
+    }
+
+    function updateAllBaseTotals() {
+        dataMap.baseOptions.forEach(base => {
+            base.total = calculateBaseTotal(base);
+        });
+    }
+
+    function selectBase(index) {
+        selectedBaseIndex = index;
+        renderBasesSection(); // Re-render to update active state and details
+    }
+
+    function addBase() {
+        dataMap.baseOptions.push({
+            id: `base-${Date.now()}`,
+            name: 'Nueva Base',
+            description: '',
+            components: [],
+            total: 0
+        });
+        selectedBaseIndex = dataMap.baseOptions.length - 1;
+        renderBasesSection();
+        saveDataToSessionStorage();
+    }
+
+    function deleteSelectedBase() {
+        if (dataMap.baseOptions.length <= 1) {
+            showMessage('error-message', 'No se puede eliminar la última base.');
+            return;
+        }
+        dataMap.baseOptions.splice(selectedBaseIndex, 1);
+        if (selectedBaseIndex >= dataMap.baseOptions.length) {
+            selectedBaseIndex = dataMap.baseOptions.length - 1;
+        }
+        renderBasesSection();
+        saveDataToSessionStorage();
+    }
+
+    function updateBase(key, value) {
+        const base = dataMap.baseOptions[selectedBaseIndex];
+        if (base) {
+            base[key] = value;
+            saveDataToSessionStorage();
+            
+            // Manually update the list item instead of re-rendering everything to avoid losing focus
+            if (key === 'name' || key === 'id') {
+                const baseItemDiv = document.getElementById(`base-item-${selectedBaseIndex}`);
+                if (baseItemDiv) {
+                    if (key === 'name') {
+                        baseItemDiv.querySelector('p.font-bold').textContent = value || 'Sin Nombre';
+                    }
+                    if (key === 'id') {
+                        baseItemDiv.querySelector('p.text-xs').textContent = value || 'Sin ID';
+                    }
+                }
+            }
+        }
+    }
+
+    function addComponentToBase() {
+        const select = document.getElementById('add-component-select');
+        const componentId = select.value;
+        if (componentId && dataMap.baseOptions[selectedBaseIndex]) {
+            if (!dataMap.baseOptions[selectedBaseIndex].components) {
+                dataMap.baseOptions[selectedBaseIndex].components = [];
+            }
+            dataMap.baseOptions[selectedBaseIndex].components.push(componentId);
+            updateAllBaseTotals();
+            renderBasesSection(); // Re-render to show new thumbnail and total
+            saveDataToSessionStorage();
+        }
+    }
+
+    function removeComponentFromBase(componentIndex) {
+        if (dataMap.baseOptions[selectedBaseIndex] && dataMap.baseOptions[selectedBaseIndex].components) {
+            dataMap.baseOptions[selectedBaseIndex].components.splice(componentIndex, 1);
+            updateAllBaseTotals();
+            renderBasesSection(); // Re-render to remove thumbnail and update total
+            saveDataToSessionStorage();
+        }
+    }
+
+    // --- Drag and Drop for Base Components ---
+    function onBaseComponentDragStart(event, index) {
+        draggedBaseComponentIndex = index;
+        event.dataTransfer.effectAllowed = 'move';
+    }
+
+    function onBaseComponentDragOver(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+    }
+
+    function onBaseComponentDrop(event, targetIndex) {
+        event.preventDefault();
+        if (draggedBaseComponentIndex !== null && draggedBaseComponentIndex !== targetIndex) {
+            const base = dataMap.baseOptions[selectedBaseIndex];
+            if (base && base.components) {
+                const moved = base.components.splice(draggedBaseComponentIndex, 1)[0];
+                base.components.splice(targetIndex, 0, moved);
+                renderSelectedBaseDetails(); // Only re-render the details panel
+                saveDataToSessionStorage();
+            }
+        }
+        draggedBaseComponentIndex = null;
+    }
+
+
     function renderOverviewTables() {
         const overviewContainer = document.getElementById('overview-view');
         overviewContainer.innerHTML = '';
 
-        for (const categoryKey in dataMap) {
+        CATEGORY_NAV_LIST.forEach(category => {
+            const categoryKey = category.key;
+            if (!categoryKey.includes('Options')) return; // Skip non-component categories like 'Bases'
+
             const categoryData = dataMap[categoryKey];
             const readableCategoryName = getComponentName(categoryKey) + 's';
             const NAME_COL_STATIC_WIDTH = 330;
@@ -511,7 +927,10 @@
                             </td>
                             <td class="px-6 py-4 price-cell">
                                 <div class="price-wrapper">
-                                    <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-gray-400 font-semibold text-lg">$</span>
+                                        <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
+                                    </div>
                                     <div class="indicators-container"></div>
                                 </div>
                             </td>
@@ -561,7 +980,7 @@
             `;
             categoryDiv.appendChild(table);
             overviewContainer.appendChild(categoryDiv);
-        }
+        });
         lucide.createIcons();
     }
 
@@ -735,12 +1154,23 @@
         btnText.textContent = 'Chequeando...';
         btnIcon.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
 
-        for (const categoryKey in dataMap) {
-            for (let i = 0; i < dataMap[categoryKey].length; i++) {
-                const product = dataMap[categoryKey][i];
-                const row = document.getElementById(`row-${categoryKey}-${i}`);
-                await scrapeProductData(product, row);
-                await new Promise(resolve => setTimeout(resolve, 300));
+        // Iterate using the defined order in CATEGORY_NAV_LIST
+        for (const category of CATEGORY_NAV_LIST) {
+            const categoryKey = category.key;
+            // Skip non-component categories
+            if (!categoryKey.includes('Options') || categoryKey === 'baseOptions') {
+                continue;
+            }
+
+            if (dataMap[categoryKey]) {
+                for (let i = 0; i < dataMap[categoryKey].length; i++) {
+                    const product = dataMap[categoryKey][i];
+                    const row = document.getElementById(`row-${categoryKey}-${i}`);
+                    if (row && product.link) { // Check if row and link exist
+                       await scrapeProductData(product, row);
+                       await new Promise(resolve => setTimeout(resolve, 300));
+                    }
+                }
             }
         }
 
@@ -807,6 +1237,7 @@
     // --- Code Export ---
 
     function generateCode() {
+        updateAllBaseTotals(); // Ensure totals are up-to-date before exporting
         function getSlugFromImageUrl(imageUrl) {
             if (!imageUrl) return '';
             const parts = imageUrl.split('/');
@@ -816,6 +1247,16 @@
 
         const exportData = {};
         for (const mapKey in dataMap) {
+             if (mapKey === 'baseOptions') {
+                exportData[mapKey] = dataMap[mapKey].map(b => ({
+                    id: b.id,
+                    name: b.name,
+                    description: b.description,
+                    components: b.components || [],
+                    total: b.total || 0
+                }));
+                continue;
+             }
              exportData[mapKey] = dataMap[mapKey].map(p => {
                 const { id, name, price, description, image_url, link } = p;
                 const orderedProduct = { id, name, price };
@@ -863,6 +1304,8 @@
             }
             
             assignIdsToMissingProducts();
+            updateAllBaseTotals();
+            renderBasesSection();
             renderOverviewTables();
             saveDataToSessionStorage();
             showSuccessMessage('Datos recargados desde products.json');
@@ -901,10 +1344,20 @@
         }
         
         assignIdsToMissingProducts();
+        updateAllBaseTotals();
         renderCategoryNavbar();
+        renderBasesSection();
         renderOverviewTables();
         saveDataToSessionStorage();
         lucide.createIcons();
+
+        // Accordion Logic
+        document.getElementById('bases-accordion-header').addEventListener('click', () => {
+            const content = document.getElementById('bases-accordion-content');
+            const icon = document.querySelector('#bases-accordion-header .lucide-icon');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        });
     });
 
 </script>

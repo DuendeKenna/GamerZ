@@ -941,9 +941,8 @@
             justify-content: space-between;
             /* Push image container to top, controls to bottom */
             align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 2.5rem;
-            /* Reserve space for the bottom controls */
+            margin-bottom: 0.3rem;
+            /*padding-bottom: 2.5rem;*/
         }
 
         #tower-selector-container .flex-grow {
@@ -1339,6 +1338,7 @@
             margin-top: 0.25rem;
             min-height: 4.5rem;
             line-height: 1.5;
+            padding-left: 0.5rem;
         }
 
         /* MODIFIED: CSS-based image transition for loading */
@@ -1401,30 +1401,23 @@
 
         /* Mobile Sticky Price Summary Specific Styles */
         #mobile-price-summary-card {
-            /* Inherits section-card-style */
             padding: 1rem 1.5rem;
             justify-content: center;
             align-items: center;
             position: fixed;
             font-weight: 600;
-            /* Fixed position for sticky effect */
             bottom: -10px;
-            /* Stick to the bottom of the viewport */
+            left: 50%;
+            transform: translateX(-50%);
             gap: 0rem;
-            /* Adjust gap for mobile */
             box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
-            /* Shadow for sticky effect */
             opacity: 0;
-            /* Initially hidden */
             width: fit-content;
-            align-self: center;
             visibility: hidden;
-            /* Initially hidden */
             text-shadow: 2px 2px 3px black;
             padding-left: 1.2rem;
             padding-right: 1.2rem;
             transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-            /* Smooth transition */
         }
 
         #mobile-price-summary-card a {
@@ -1532,6 +1525,20 @@
             text-align: center;
             margin-top: 0.5rem;
             line-height: 1.2;
+        }
+        .component-link {
+            color: #60a5fa; /* A subtle blue */
+            text-decoration: none;
+            font-size: 1rem!important;
+            display: inline-block;
+
+        }
+        .component-link:hover {
+            text-decoration: underline;
+        }
+        .component-link i {
+            margin-left: 0.25rem; /* ml-1 */
+            font-size: 0.75rem; /* text-xs */
         }
     </style>
 </head>
@@ -1758,7 +1765,7 @@
 
             <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
                 <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6 h-full">
-                    <div class="w-full md:w-1/2 flex-shrink-0 h-full flex items-center justify-center">
+                    <div class="w-full md:w-1/2 flex-shrink-0 h-full flex flex-col items-center justify-center">
                         <div id="tower-selector-container"
                             class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
                             <!-- Main content area for the image, takes remaining height after bottom-controls -->
@@ -1777,6 +1784,7 @@
                                 <i id="next-tower" class="fas fa-chevron-right tower-nav-arrow"></i>
                             </div>
                         </div>
+                        <p id="current-tower-price-display" class="text-center  text-lg text-gray-300"></p>
                     </div>
                     <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
                         <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
@@ -1820,42 +1828,42 @@
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="combo-image" src="" alt="Combo Mouse y Teclado" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Combo'">
                         </div>
-                        <p id="combo-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Combo Mouse+Teclado</p>
+                        <p id="combo-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Keyboard Card -->
                     <div id="keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="keyboard-image" src="" alt="Teclado" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado'">
                         </div>
-                        <p id="keyboard-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Teclado</p>
+                        <p id="keyboard-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Mouse Card -->
                     <div id="mouse-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="mouse-image" src="" alt="Mouse" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Mouse'">
                         </div>
-                        <p id="mouse-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Mouse</p>
+                        <p id="mouse-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Monitor Card -->
                     <div id="monitor-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="monitor-image" src="" alt="Monitor" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Monitor'">
                         </div>
-                        <p id="monitor-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Monitor</p>
+                        <p id="monitor-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Auriculares Card -->
                     <div id="auriculares-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="auriculares-image" src="" alt="Auriculares" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Auriculares'">
                         </div>
-                        <p id="auriculares-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Auriculares</p>
+                        <p id="auriculares-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Parlantes Card -->
                     <div id="parlantes-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="parlantes-image" src="" alt="Parlantes" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Parlantes'">
                         </div>
-                        <p id="parlantes-text" class="text-center text-gray-400 text-sm mt-2 h-10 flex items-center justify-center">Parlantes</p>
+                        <p id="parlantes-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                 </div>
             </section>
@@ -1879,17 +1887,17 @@
                                 class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap mt-1 sm:mt-0">
                                 Soporte Técnico</h4>
                         </div>
-                        <div class="space-y-1 text-sm text-gray-300 max-w-xs pl-0">
+                        <div class="space-y-1 text-gray-300 max-w-xs pl-0">
                             <p class="flex items-center justify-start"><i
-                                    class="fas fa-comments blueish fa-fw w-6"></i><span class="ml-2">Contacto Directo</span>
+                                    class="fas fa-comments blueish fa-fw w-6"></i><span class="ml-2">Contacto Directo con @DuendeKenna</span>
                             </p>
                             <p class="flex items-center justify-start"><i class="fas fa-desktop blueish fa-fw w-6"></i><span
-                                    class="ml-2">Asistencia Remota</span></p>
+                                    class="ml-2">Asistencia Remota via Web</span></p>
                             <div class="flex items-center justify-start">
                                 <i class="fas fa-screwdriver blueish fa-fw w-6"></i>
                                 <div class="ml-2">
                                     <p>Servicio a Domicilio</p>
-                                    <p class="text-xs text-gray-400 -mt-1">en todo el Partido de La Costa</p>
+                                    <p class=" text-gray-400 -mt-1">en todo el Partido de La Costa</p>
                                 </div>
                             </div>
                         </div>
@@ -1993,8 +2001,7 @@
             
                             <div class="row-start-1 col-start-2 flex items-center justify-start">
                                 <div>
-                                    <p class="lucas-price text-left ml-4 font-saira">$<span id="total-price">500</span></p>
-                                    <p class="text-2xl md:text-3xl text-cyan-400/70 font-saira text-left ml-4 -mt-2">LUCAS</p>
+                                    <p class="lucas-price text-left ml-4 font-saira"><span id="total-price">$500.000</span></p>
                                 </div>
                             </div>
             
@@ -2006,7 +2013,7 @@
                             </div>
             
                             <div class="row-start-2 col-start-2 flex items-center justify-start pl-4">
-                                <div>
+                                <div class="hidden">
                                     <p id="total-price-usd" class="font-saira text-2xl text-violet-400 hidden cursor-pointer"></p>
                                     <a id="usd-link-bottom" href="#" class="text-xs text-gray-500 hover:underline hidden -mt-1">
                                         <p>Ver Cotizaciones</p>
@@ -2081,12 +2088,11 @@
     <div id="price-summary-card" class="font-saira">
         <div class="price-section ars-price">
             <div class="price-value-row">
-                <span class="currency-value">$<span id="total-price-summary-ars">500</span></span>
-                <span class="currency-text">LUCAS</span>
+                <span class="currency-value" id="total-price-summary-ars">$500.000</span>
             </div>
         </div>
-        <div class="separator"></div>
-        <div class="price-section usd-price" id="usd-price-section">
+        <div class="separator hidden"></div>
+<!--         <div class="price-section usd-price" id="usd-price-section">
             <div class="price-value-row">
                 <span class="currency-value"><span id="total-price-summary-usd"></span></span>
                 <span class="currency-text">USD</span>
@@ -2094,21 +2100,20 @@
             <a id="usd-link-summary" href="#" class="text-xs text-gray-500 hover:underline">
                 <p>Ver cotizaciones</p>
             </a>
-        </div>
+        </div> -->
     </div>
 
 
     <!-- NEW Mobile Sticky Price Summary -->
     <div id="mobile-price-summary-card"
-        class="fixed bottom-0 left-0 right-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
-        <div class="price-section ars-price pr-4">
+        class="fixed bottom-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
+        <div class="price-section ars-price">
             <div class="price-value-row">
-                <span class="currency-value text-cyan-400 font-saira text-right">$<span
-                        id="total-price-summary-ars-mobile">500.000</span></span>
+                <span class="currency-value text-cyan-400 font-saira text-right" id="total-price-summary-ars-mobile">$500.000</span>
             </div>
         </div>
-        <div class="separator w-1 h-8"></div> <!-- Adjust height as needed -->
-        <div class="price-section usd-price pl-4" id="usd-price-section-mobile">
+        <div class="separator w-1 h-8 hidden"></div> <!-- Adjust height as needed -->
+        <div class="price-section usd-price pl-4 hidden" id="usd-price-section-mobile">
 
             <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline">
                 <div class="price-value-row">
@@ -2171,69 +2176,32 @@
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
 
+            // --- GLOBAL APP STATE ---
+            const GAIN_PRICE = 110000;
+            let BASE_PRICE = 0;
+            let allDolarRates = [];
+            let currentTowerIndex = 0;
+
+            // Component Options
+            let baseOptions = [];
+            let armadasOptions = [];
             let towersOptions = [];
             let ssdOptions = [];
             let gpuOptions = [];
             let psuOptions = [];
+            let motherboardOptions = [];
+            let cpuOptions = [];
+            let ramOptions = [];
+            let comboOptions = [];
             let monitorOptions = [];
             let mouseOptions = [];
+            let joystickOptions = [];
             let keyboardOptions = [];
             let comboMouseTecladoOptions = [];
             let auricularesOptions = [];
             let parlantesOptions = [];
 
-            // Cargar los datos desde products.json usando fetch
-            fetch('products.json')
-                .then(response => response.json())
-                .then(data => {
-                    towersOptions = data.towersOptions || [];
-                    ssdOptions = data.ssdOptions || [];
-                    gpuOptions = data.gpuOptions || [];
-                    psuOptions = data.psuOptions || [];
-                    monitorOptions = data.monitorOptions || [];
-                    mouseOptions = data.mouseOptions || [];
-                    keyboardOptions = data.keyboardOptions || [];
-                    comboMouseTecladoOptions = data.comboMouseTecladoOptions || [];
-                    auricularesOptions = data.auricularesOptions || [];
-                    parlantesOptions = data.parlantesOptions || [];
-
-                    // --- POBLAR SELECTS Y ACTUALIZAR UI ---
-                    const ssdSelect = document.getElementById('ssd-select');
-                    if (ssdSelect) {
-                        ssdSelect.innerHTML = ssdOptions.map((option, index) =>
-                            `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
-                        ).join('');
-                    }
-                    const gpuSelect = document.getElementById('gpu-select');
-                    if (gpuSelect) {
-                        gpuSelect.innerHTML = gpuOptions.map((option, index) =>
-                            `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
-                        ).join('');
-                    }
-                    const psuSelect = document.getElementById('psu-select');
-                    if (psuSelect) {
-                        psuSelect.innerHTML = psuOptions.map((option, index) =>
-                            `<option value="${option.price}" ${index === 0 ? 'selected' : ''}>${option.name}</option>`
-                        ).join('');
-                    }
-
-                    // Llamar a las funciones de actualización
-                    updateTowerDisplay();
-                    updateComponentDisplay(ssdSelect, document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions);
-                    updateComponentDisplay(gpuSelect, document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions);
-                    updateComponentDisplay(psuSelect, document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions);
-                    setupPeripheralCards();
-                })
-                .catch(error => {
-                    console.error('Error cargando products.json:', error);
-                });
-
-            // --- PRECIOS Y ESTADO ---
-            const GAIN = 121000;
-            const COMBO_MOTHER_CPU_RAM = 323000;
-            const BASE_PRICE = COMBO_MOTHER_CPU_RAM + GAIN;
-            
-            // Objeto para manejar el estado de los periféricos
+            // Peripheral State
             const peripheralState = {
                 currentMonitorIndex: -1,
                 currentMouseIndex: -1,
@@ -2243,30 +2211,216 @@
                 currentParlantesIndex: -1,
             };
 
-            const totalPriceEl = document.getElementById('total-price');
-            const topTotalPriceEl = document.getElementById('top-total-price');
+            // --- FETCH AND INITIALIZE ---
+            fetch('products.json')
+                .then(response => response.json())
+                .then(data => {
+                    initializeApp(data);
+                })
+                .catch(error => {
+                    console.error('Error loading products.json:', error);
+                });
 
-            const usdPriceTopEl = document.getElementById('usd-price-display-top');
-            const usdPriceBottomEl = document.getElementById('total-price-usd');
-            const usdLinkBottom = document.getElementById('usd-link-bottom');
-            const usdLinkTop = document.getElementById('usd-link-top');
+            async function initializeApp(data) {
+                // Populate component options from JSON data
+                baseOptions = data.baseOptions || [];
+                armadasOptions = data.armadasOptions || [];
+                towersOptions = data.towersOptions || [];
+                ssdOptions = data.ssdOptions || [];
+                gpuOptions = data.gpuOptions || [];
+                psuOptions = data.psuOptions || [];
+                motherboardOptions = data.motherboardOptions || [];
+                cpuOptions = data.cpuOptions || [];
+                ramOptions = data.ramOptions || [];
+                comboOptions = data.comboOptions || [];
+                monitorOptions = data.monitorOptions || [];
+                mouseOptions = data.mouseOptions || [];
+                joystickOptions = data.joystickOptions || [];
+                keyboardOptions = data.keyboardOptions || [];
+                comboMouseTecladoOptions = data.comboMouseTecladoOptions || [];
+                auricularesOptions = data.auricularesOptions || [];
+                parlantesOptions = data.parlantesOptions || [];
 
-            const totalPriceSummaryArsEl = document.getElementById('total-price-summary-ars');
-            const totalPriceSummaryUsdEl = document.getElementById('total-price-summary-usd');
-            const usdLinkSummary = document.getElementById('usd-link-summary');
-            const usdPriceSectionEl = document.getElementById('usd-price-section');
+                // Set BASE_PRICE from the first base option's total plus GAIN_PRICE
+                if (baseOptions.length > 0) {
+                    BASE_PRICE = baseOptions[0].total + GAIN_PRICE;
+                } else {
+                    console.error("No baseOptions found in products.json to set BASE_PRICE.");
+                    BASE_PRICE = GAIN_PRICE; // Fallback
+                }
 
-            const totalPriceSummaryArsMobileEl = document.getElementById('total-price-summary-ars-mobile');
-            const totalPriceSummaryUsdMobileEl = document.getElementById('total-price-summary-usd-mobile');
-            const usdPriceSectionMobileEl = document.getElementById('usd-price-section-mobile');
-            const usdLinkSummaryMobile = document.getElementById('usd-link-summary-mobile');
+                // --- Start dependent initializations ---
+                await fetchDolarRate();
+                populateUI();
+                setupEventListeners();
+                updateAllDisplays();
+            }
+            
+            function populateUI() {
+                // Populate game list
+                const gameListContainer = document.getElementById('game-list');
+                games.forEach(game => {
+                    const imageSrc = `cover/${game.slug}.webp`;
+                    const cardEl = document.createElement('div');
+                    cardEl.className = 'card-game';
+                    cardEl.id = `card-game-${game.slug}`;
+                    cardEl.innerHTML = `
+                        <input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" data-img-src="${imageSrc}" class="hidden">
+                        <label for="game-${game.slug}" class="rounded-xl cursor-pointer transition">
+                            <img src="${imageSrc}" alt="Carátula de ${game.name}" class="rounded-xl w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';">
+                            <div class="game-title-sticker hidden">${game.name}</div>
+                        </label>`;
+                    gameListContainer.appendChild(cardEl);
+                });
 
-            let allDolarRates = [];
-            let currentTowerIndex = 0;
+                // Populate software list
+                const softwareCategories = [
+                    { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.', icon: 'fa-shield-alt' },
+                    { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.', icon: 'fa-photo-film' },
+                    { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.', icon: 'fa-globe' },
+                    { name: 'Creación', description: 'Edición de imágenes, video, diseño y herramientas para creadores.', icon: 'fa-paint-brush' },
+                    { name: 'Desarrollo', description: 'Herramientas para programar, editar código y gestionar proyectos.', icon: 'fa-code' },
+                ];
+                const softwareListContainer = document.getElementById('software-list');
+                softwareListContainer.innerHTML = '';
+                softwareCategories.forEach(category => {
+                    const categoryWrapper = document.createElement('div');
+                    categoryWrapper.className = 'mb-8';
+                    categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2 flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</h3>`;
+                    const descDiv = document.createElement('div');
+                    descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
+                    descDiv.style.transition = 'background 0.2s, color 0.2s';
+                    descDiv.textContent = category.description;
+                    categoryWrapper.appendChild(descDiv);
+                    const itemsWrapper = document.createElement('div');
+                    itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
+                    const programs = softwareData.filter(item => item.category === category.name);
+                    programs.forEach(item => {
+                        const essentialClass = item.disabled ? 'essential-software' : '';
+                        const disabledClass = item.disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer';
+                        const labelColorClass = item.disabled ? 'green-333' : 'text-white';
+                        const softwareItemHTML = document.createElement('div');
+                        softwareItemHTML.className = `relative bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}`;
+                        const customCheckbox = document.createElement('div');
+                        customCheckbox.className = 'custom-software-checkbox';
+                        customCheckbox.dataset.slug = item.slug;
+                        if (item.checked) {
+                            customCheckbox.classList.add('checked');
+                        }
+                        const span = document.createElement('span');
+                        span.className = `ml-3 text-sm font-medium ${labelColorClass}`;
+                        span.textContent = item.name;
+                        softwareItemHTML.appendChild(customCheckbox);
+                        softwareItemHTML.appendChild(span);
+                        softwareItemHTML.addEventListener('mouseenter', () => { descDiv.textContent = `${item.name}: ${item.descripcion}`; });
+                        softwareItemHTML.addEventListener('mouseleave', () => { descDiv.textContent = category.description; });
+                        softwareItemHTML.addEventListener('click', () => {
+                            if (!item.disabled) {
+                                customCheckbox.classList.toggle('checked');
+                            }
+                        });
+                        itemsWrapper.appendChild(softwareItemHTML);
+                    });
+                    categoryWrapper.appendChild(itemsWrapper);
+                    softwareListContainer.appendChild(categoryWrapper);
+                });
 
-            function updatePrices(rate) {
+                // Populate component selects
+                const ssdSelect = document.getElementById('ssd-select');
+                if (ssdSelect) ssdSelect.innerHTML = ssdOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+                
+                const gpuSelect = document.getElementById('gpu-select');
+                if (gpuSelect) gpuSelect.innerHTML = gpuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+
+                const psuSelect = document.getElementById('psu-select');
+                if(psuSelect) psuSelect.innerHTML = psuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+            }
+
+            function setupEventListeners() {
+                 // Component Selects
+                const ssdSelect = document.getElementById('ssd-select');
+                const gpuSelect = document.getElementById('gpu-select');
+                const psuSelect = document.getElementById('psu-select');
+
+                if (ssdSelect) ssdSelect.addEventListener('change', () => updateComponentDisplay(ssdSelect, document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions));
+                if (gpuSelect) gpuSelect.addEventListener('change', () => updateComponentDisplay(gpuSelect, document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions));
+                if (psuSelect) psuSelect.addEventListener('change', () => updateComponentDisplay(psuSelect, document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions));
+                
+                // Tower navigation
+                document.getElementById('prev-tower').addEventListener('click', prevTower);
+                document.getElementById('next-tower').addEventListener('click', nextTower);
+
+                // Peripherals
+                setupPeripheralCards();
+
+                // Games
+                document.querySelectorAll('input[name="game"]').forEach(checkbox => {
+                    checkbox.addEventListener('change', handleGameSelectionChange);
+                });
+                document.getElementById('load-more-games').addEventListener('click', expandGameGrid);
+                document.getElementById('reset-selection-btn').addEventListener('click', resetGameSelection);
+
+                // Form submission
+                document.getElementById('orderForm').addEventListener('submit', handleFormSubmit);
+
+                // Dolar Popup (Listeners are kept in case they are re-enabled later)
+                const dolarTriggers = ['usd-link-top', 'usd-price-display-top', 'usd-link-bottom', 'total-price-usd', 'usd-link-summary', 'total-price-summary-usd', 'usd-link-summary-mobile', 'total-price-summary-usd-mobile'];
+                dolarTriggers.forEach(id => document.getElementById(id)?.addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); }));
+                const dolarPopup = document.getElementById('dolar-popup');
+                dolarPopup.addEventListener('click', (e) => { if (e.target === dolarPopup) dolarPopup.style.display = 'none'; });
+
+                // Image Zoom
+                const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+                fullscreenOverlay.addEventListener('click', () => fullscreenOverlay.classList.remove('active'));
+                ['current-tower-image', 'gpu-image', 'ssd-image', 'psu-image'].forEach(id => {
+                    const imgEl = document.getElementById(id);
+                    imgEl?.addEventListener('click', () => {
+                        document.getElementById('zoomed-image').src = imgEl.src;
+                        fullscreenOverlay.classList.add('active');
+                    });
+                });
+                
+                // Price card visibility observer
+                const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
+                if (priceVisibilityZone) {
+                    const observer = new IntersectionObserver(entries => {
+                        const isIntersecting = entries[0].isIntersecting;
+                        document.getElementById('mobile-price-summary-card').classList.toggle('show-mobile-price', isIntersecting);
+                        document.getElementById('price-summary-card').classList.toggle('visible', isIntersecting);
+                    });
+                    observer.observe(priceVisibilityZone);
+                }
+
+                // Window resize
+                window.addEventListener('resize', () => {
+                    setInitialGridHeight();
+                    positionCroxImages();
+                });
+            }
+
+            function updateAllDisplays() {
+                updateTowerDisplay();
+                updateComponentDisplay(document.getElementById('ssd-select'), document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions);
+                updateComponentDisplay(document.getElementById('gpu-select'), document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions);
+                updateComponentDisplay(document.getElementById('psu-select'), document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions);
+                updatePeripheralStates();
+                updateSelectedGamesList();
+                setInitialGridHeight();
+                positionCroxImages();
+                updatePrices();
+            }
+
+            // --- PRICE CALCULATION ---
+            function updatePrices() {
                 let total = BASE_PRICE;
 
+                // Add prices from selected components
+                total += parseInt(document.getElementById('ssd-select')?.value || 0);
+                total += parseInt(document.getElementById('gpu-select')?.value || 0);
+                total += parseInt(document.getElementById('psu-select')?.value || 0);
+                if (towersOptions.length > 0) total += towersOptions[currentTowerIndex].price;
+
+                // Add prices from selected peripherals
                 if (peripheralState.currentMonitorIndex > -1) total += monitorOptions[peripheralState.currentMonitorIndex].price;
                 if (peripheralState.currentMouseIndex > -1) total += mouseOptions[peripheralState.currentMouseIndex].price;
                 if (peripheralState.currentKeyboardIndex > -1) total += keyboardOptions[peripheralState.currentKeyboardIndex].price;
@@ -2274,409 +2428,78 @@
                 if (peripheralState.currentAuricularesIndex > -1) total += auricularesOptions[peripheralState.currentAuricularesIndex].price;
                 if (peripheralState.currentParlantesIndex > -1) total += parlantesOptions[peripheralState.currentParlantesIndex].price;
 
-                if (towersOptions.length > 0) {
-                    total += towersOptions[currentTowerIndex].price;
-                }
-
-                const ssdSelect = document.getElementById('ssd-select');
-                if (ssdSelect && ssdSelect.value) {
-                    total += parseInt(ssdSelect.value);
-                }
-
-                const gpuSelect = document.getElementById('gpu-select');
-                if (gpuSelect && gpuSelect.value) {
-                    total += parseInt(gpuSelect.value);
-                }
-
-                const psuSelect = document.getElementById('psu-select');
-                if (psuSelect && psuSelect.value) {
-                    total += parseInt(psuSelect.value);
-                }
-
-                const formattedTotal = Math.floor(total / 1000);
-                if (totalPriceEl) totalPriceEl.textContent = `${formattedTotal}`;
-                if (topTotalPriceEl) topTotalPriceEl.textContent = `$${formattedTotal}.000`;
-                if (totalPriceSummaryArsEl) totalPriceSummaryArsEl.textContent = formattedTotal;
-                if (totalPriceSummaryArsMobileEl) totalPriceSummaryArsMobileEl.textContent = `${total.toLocaleString('es-AR')}`;
-
-                let oficial = null;
-                if (allDolarRates && allDolarRates.length) {
-                    oficial = allDolarRates.find(r => r.nombre && r.nombre.toLowerCase().includes('oficial'));
-                }
-                if (!oficial && rate) {
-                    oficial = { venta: rate };
-                }
-
-                if (oficial && oficial.venta) {
-                    const totalUSD = total / oficial.venta;
-                    const usdText = `$${totalUSD.toFixed(0)}`;
-
-                    if (usdPriceTopEl) {
-                        usdPriceTopEl.textContent = `${usdText} USD`;
-                        usdPriceTopEl.classList.remove('hidden');
-                        usdPriceTopEl.parentElement.style.display = '';
-                    }
-                    if (usdPriceBottomEl) {
-                        usdPriceBottomEl.textContent = `${usdText} USD`;
-                        usdPriceBottomEl.classList.remove('hidden');
-                        usdPriceBottomEl.parentElement.style.display = '';
-                    }
-                    if (usdLinkTop) usdLinkTop.classList.remove('hidden');
-                    if (usdLinkBottom) usdLinkBottom.classList.remove('hidden');
-
-                    if (totalPriceSummaryUsdEl) {
-                        totalPriceSummaryUsdEl.textContent = usdText;
-                    }
-                    if (usdLinkSummary) usdLinkSummary.classList.remove('hidden');
-                    if (usdPriceSectionEl) {
-                        usdPriceSectionEl.style.display = 'flex';
-                    }
-
-                    if (totalPriceSummaryUsdMobileEl) {
-                        totalPriceSummaryUsdMobileEl.textContent = usdText;
-                    }
-                    if (usdLinkSummaryMobile) usdLinkSummaryMobile.classList.remove('hidden');
-                    if (usdPriceSectionMobileEl) {
-                        usdPriceSectionMobileEl.style.display = 'flex';
-                    }
-
-                } else {
-                    if (usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
-                    if (usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
-                    if (usdPriceSectionEl) usdPriceSectionEl.style.display = 'none';
-                    if (usdPriceSectionMobileEl) usdPriceSectionMobileEl.style.display = 'none';
-                }
-                updateSelectedComponentsDisplay(); // Update images whenever price changes
+                // Update DOM elements for ARS price
+                const formattedArs = '$' + total.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                document.getElementById('total-price').textContent = formattedArs;
+                document.getElementById('top-total-price').textContent = formattedArs;
+                document.getElementById('total-price-summary-ars').textContent = formattedArs;
+                document.getElementById('total-price-summary-ars-mobile').textContent = formattedArs;
+                
+                updateSelectedComponentsDisplay();
             }
 
             async function fetchDolarRate() {
                 try {
-                    const responseOficial = await fetch('https://dolarapi.com/v1/dolares/oficial');
-                    if (!responseOficial.ok) throw new Error('Network response was not ok for Oficial rate');
-                    const dataOficial = await responseOficial.json();
-
-                    if (dataOficial && dataOficial.venta) {
-                        updatePrices(dataOficial.venta);
-                    }
-
-                    const responseAll = await fetch('https://dolarapi.com/v1/dolares');
-                    if (!responseAll.ok) throw new Error('Network response was not ok for All rates');
-                    allDolarRates = await responseAll.json();
-
+                    const response = await fetch('https://dolarapi.com/v1/dolares');
+                    if (!response.ok) throw new Error('Network response was not ok for Dolar rates');
+                    allDolarRates = await response.json();
                 } catch (error) {
                     console.error("Could not fetch exchange rate:", error);
-                    if (usdPriceTopEl) usdPriceTopEl.parentElement.style.display = 'none';
-                    if (usdPriceBottomEl) usdPriceBottomEl.parentElement.style.display = 'none';
-                    if (usdPriceSectionEl) usdPriceSectionEl.style.display = 'none';
-                    if (usdPriceSectionMobileEl) usdPriceSectionMobileEl.style.display = 'none';
+                    allDolarRates = [];
                 }
             }
 
-            // --- UI POPULATION ---
-            const gameListContainer = document.getElementById('game-list');
-            games.forEach(game => {
-                const imageSrc = `cover/${game.slug}.webp`;
-                const cardEl = document.createElement('div');
-                cardEl.className = 'card-game';
-                cardEl.id = `card-game-${game.slug}`;
-                cardEl.innerHTML = `
-                        <input type="checkbox" id="game-${game.slug}" name="game" value="${game.name}" data-img-src="${imageSrc}" class="hidden">
-                        <label for="game-${game.slug}" class="rounded-xl cursor-pointer transition">
-                            <img src="${imageSrc}" alt="Carátula de ${game.name}" class="rounded-xl w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${game.name.replace(/\s/g, '+')}';">
-                            <div class="game-title-sticker hidden">${game.name}</div>
-                        </label>`;
-                gameListContainer.appendChild(cardEl);
-            });
-
-
-            const softwareCategories = [
-                { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.', icon: 'fa-shield-alt' },
-                { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.', icon: 'fa-photo-film' },
-                { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.', icon: 'fa-globe' },
-                { name: 'Creación', description: 'Edición de imágenes, video, diseño y herramientas para creadores.', icon: 'fa-paint-brush' },
-                { name: 'Desarrollo', description: 'Herramientas para programar, editar código y gestionar proyectos.', icon: 'fa-code' },
-            ];
-
-            const softwareListContainer = document.getElementById('software-list');
-            softwareListContainer.innerHTML = '';
-
-            softwareCategories.forEach(category => {
-                const categoryWrapper = document.createElement('div');
-                categoryWrapper.className = 'mb-8';
-                categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2 flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</h3>`;
-                const descDiv = document.createElement('div');
-                descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
-                descDiv.style.transition = 'background 0.2s, color 0.2s';
-                descDiv.textContent = category.description;
-                categoryWrapper.appendChild(descDiv);
-                const itemsWrapper = document.createElement('div');
-                itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
-                const programs = softwareData.filter(item => item.category === category.name);
-                programs.forEach(item => {
-                    const essentialClass = item.disabled ? 'essential-software' : '';
-                    const disabledClass = item.disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer';
-                    const labelColorClass = item.disabled ? 'green-333' : 'text-white';
-                    const softwareItemHTML = document.createElement('div');
-                    softwareItemHTML.className = `relative bg-gray-800 p-3 rounded-lg flex items-center ${disabledClass} ${essentialClass}`;
-                    const customCheckbox = document.createElement('div');
-                    customCheckbox.className = 'custom-software-checkbox';
-                    customCheckbox.dataset.slug = item.slug;
-                    if (item.checked) {
-                        customCheckbox.classList.add('checked');
-                    }
-                    const span = document.createElement('span');
-                    span.className = `ml-3 text-sm font-medium ${labelColorClass}`;
-                    span.textContent = item.name;
-                    softwareItemHTML.appendChild(customCheckbox);
-                    softwareItemHTML.appendChild(span);
-                    function showProgramDesc() {
-                        descDiv.textContent = `${item.name}: ${item.descripcion}`;
-                    }
-                    function showCategoryDesc() {
-                        descDiv.textContent = category.description;
-                    }
-                    softwareItemHTML.addEventListener('mouseenter', showProgramDesc);
-                    softwareItemHTML.addEventListener('mouseleave', showCategoryDesc);
-                    softwareItemHTML.addEventListener('click', () => {
-                        if (!item.disabled) {
-                            customCheckbox.classList.toggle('checked');
-                        }
-                    });
-                    itemsWrapper.appendChild(softwareItemHTML);
-                });
-                categoryWrapper.appendChild(itemsWrapper);
-                softwareListContainer.appendChild(categoryWrapper);
-            });
-
-            const selectedGamesSection = document.getElementById('selected-games-section');
-            const selectedGamesList = document.getElementById('selected-games-list');
-
-            function updateSelectedGamesList() {
-                const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
-                selectedGamesList.innerHTML = '';
-                if (selectedCheckboxes.length > 0) {
-                    selectedGamesSection.classList.remove('hidden');
-                    selectedCheckboxes.forEach(checkbox => {
-                        const gameName = checkbox.value;
-                        const gameImageSrc = checkbox.dataset.imgSrc;
-                        const gameSlug = toSlug(gameName);
-                        const gameEl = document.createElement('div');
-                        gameEl.className = 'w-1/4 md:w-1/5 p-1';
-                        gameEl.innerHTML = `<a href="#card-game-${gameSlug}"><img src="${gameImageSrc}" alt="Carátula de ${gameName}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${gameName.replace(/\s/g, '+')}';"></a>`;
-                        selectedGamesList.appendChild(gameEl);
-                    });
-                } else {
-                    selectedGamesSection.classList.add('hidden');
+            // --- UI UPDATE FUNCTIONS ---
+            function updateTowerDisplay() {
+                if (towersOptions.length === 0) return;
+                const selectedTower = towersOptions[currentTowerIndex];
+                loadImageWithGrayscale(document.getElementById('current-tower-image'), selectedTower.image_url);
+                document.getElementById('current-tower-name').textContent = selectedTower.name;
+                
+                let towerPriceHTML = '';
+                if (selectedTower.link) {
+                    const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} | ` : '';
+                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
                 }
+                document.getElementById('current-tower-price-display').innerHTML = towerPriceHTML;
+                updatePrices();
             }
 
-            const errorToast = document.getElementById('error-toast');
-            const errorToastMessage = document.getElementById('error-toast-message');
-            const resetSelectionBtn = document.getElementById('reset-selection-btn');
-            let errorToastTimeout;
-            let consecutiveErrorClicks = 0;
-
-            function hideErrorToast() {
-                clearTimeout(errorToastTimeout);
-                errorToast.classList.remove('show');
-                resetSelectionBtn.classList.add('hidden');
-            }
-
-            function showErrorToast(message) {
-                hideErrorToast();
-                setTimeout(() => {
-                    errorToastMessage.textContent = message;
-                    if (consecutiveErrorClicks >= 2) {
-                        resetSelectionBtn.classList.remove('hidden');
+            function updateComponentDisplay(selectEl, descEl, imageEl, options) {
+                if (!selectEl || !descEl || !imageEl || !options) return;
+                const selectedOption = options.find(opt => opt.price == selectEl.value);
+                if (selectedOption) {
+                    let linkHTML = '';
+                    if (selectedOption.link) {
+                        const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} | ` : '';
+                        linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
                     }
-                    errorToast.classList.add('show');
-                    errorToastTimeout = setTimeout(hideErrorToast, 4000);
-                }, 150);
-            }
-
-            function resetGameSelection() {
-                document.querySelectorAll('input[name="game"]:checked').forEach(cb => {
-                    cb.checked = false;
-                    const label = cb.nextElementSibling;
-                    const sticker = label.querySelector('.game-title-sticker');
-                    sticker.classList.add('hidden');
-                });
-                updateSelectedGamesList();
-                hideErrorToast();
-                consecutiveErrorClicks = 0;
-            }
-            resetSelectionBtn.addEventListener('click', resetGameSelection);
-
-            const gameGridWrapper = document.getElementById('game-grid-wrapper');
-            const loadMoreGamesBtn = document.getElementById('load-more-games');
-            const noMoreGamesMsg = document.getElementById('no-more-games');
-            const loadMoreOverlay = document.getElementById('load-more-overlay');
-            const ROWS_TO_SHOW_INITIALLY = 6;
-            let isGridExpanded = false;
-            const allGameCards = Array.from(gameListContainer.children);
-
-            function setInitialGridHeight() {
-                if (isGridExpanded || !allGameCards.length) return;
-                const gridGap = parseInt(window.getComputedStyle(gameListContainer).getPropertyValue('grid-row-gap')) || 24;
-                const cardHeight = allGameCards[0].offsetHeight;
-                if (cardHeight === 0) {
-                    setTimeout(setInitialGridHeight, 100); return;
+                    descEl.innerHTML = selectedOption.description + linkHTML;
+                    loadImageWithGrayscale(imageEl, selectedOption.image_url);
                 }
-                const rowHeight = cardHeight + gridGap;
-                const teaserHeight = rowHeight / 2;
-                const targetHeight = (ROWS_TO_SHOW_INITIALLY * rowHeight) - gridGap + teaserHeight;
-                gameGridWrapper.style.maxHeight = `${targetHeight}px`;
-                const totalRows = Math.ceil(allGameCards.length / getColumnCount());
-                if (ROWS_TO_SHOW_INITIALLY >= totalRows) {
-                    loadMoreGamesBtn.click();
-                }
+                updatePrices();
             }
-
-            function getColumnCount() {
-                const screenWidth = window.innerWidth;
-                if (screenWidth >= 1024) return 5;
-                if (screenWidth >= 768) return 4;
-                if (screenWidth >= 640) return 3;
-                return 2;
-            }
-
-            loadMoreGamesBtn.addEventListener('click', () => {
-                gameGridWrapper.style.maxHeight = `${gameListContainer.scrollHeight}px`;
-                loadMoreGamesBtn.classList.add('hidden');
-                noMoreGamesMsg.classList.remove('hidden');
-                loadMoreOverlay.style.opacity = '0';
-                isGridExpanded = true;
-                loadMoreOverlay.style.pointerEvents = 'none';
-            });
-
-            function positionCroxImages() {
-                const croxA = document.getElementById('home-crox-a');
-                const croxB = document.getElementById('home-crox-b');
-                const hookSection = document.querySelector('.hook-section');
-                const wrapper = document.getElementById('hero-wrapper');
-                if (croxA && croxB && hookSection && wrapper) {
-                    if (window.innerWidth > 639) {
-                        const wrapperRect = wrapper.getBoundingClientRect();
-                        const hookSectionRect = hookSection.getBoundingClientRect();
-                        const topPosition = hookSectionRect.top - wrapperRect.top - (croxA.offsetHeight / 2);
-                        croxA.style.top = `${topPosition}px`;
-                        croxB.style.top = `${topPosition}px`;
-                        const marginRem = -10;
-                        const marginPx = marginRem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-                        const croxALeft = hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx;
-                        croxA.style.left = `${croxALeft + 33}px`;
-                        const croxBRight = wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx;
-                        croxB.style.right = `${croxBRight + 56}px`;
-                        croxB.style.left = 'auto';
-                    }
-                }
-            }
-
-            window.addEventListener('resize', () => {
-                setInitialGridHeight();
-                positionCroxImages();
-            });
-
-            document.querySelectorAll('input[name="game"]').forEach(checkbox => {
-                checkbox.addEventListener('change', (e) => {
-                    if (e.target.checked && document.querySelectorAll('input[name="game"]:checked').length > 3) {
-                        e.target.checked = false;
-                        consecutiveErrorClicks++;
-                        showErrorToast('MAX 3 Juegos Incluidos');
-                        return;
-                    }
-                    consecutiveErrorClicks = 0;
-                    hideErrorToast();
-                    const label = e.target.nextElementSibling;
-                    const sticker = label.querySelector('.game-title-sticker');
-                    if (e.target.checked) {
-                        const randomTop = Math.floor(Math.random() * 50) + 15;
-                        const randomLeft = Math.floor(Math.random() * 40) + 10;
-                        const randomRotate = Math.floor(Math.random() * 20) - 10;
-                        sticker.style.top = `${randomTop}%`;
-                        sticker.style.left = `${randomLeft}%`;
-                        sticker.style.transform = `rotate(${randomRotate}deg)`;
-                        sticker.classList.remove('hidden');
-                    } else {
-                        sticker.classList.add('hidden');
-                    }
-                    updateSelectedGamesList();
-                });
-            });
             
             function setupPeripheralCards() {
                 const peripheralConfig = [
-                    {
-                        id: 'combo-card',
-                        options: comboMouseTecladoOptions,
-                        stateKey: 'currentComboIndex',
-                        defaultText: 'Combo Mouse+Teclado',
-                        onSelect: () => {
-                            peripheralState.currentMouseIndex = -1;
-                            peripheralState.currentKeyboardIndex = -1;
-                            updatePeripheralStates();
-                        }
-                    },
-                    {
-                        id: 'keyboard-card',
-                        options: keyboardOptions,
-                        stateKey: 'currentKeyboardIndex',
-                        defaultText: 'Teclado',
-                        onSelect: () => {
-                            peripheralState.currentComboIndex = -1;
-                            updatePeripheralStates();
-                        }
-                    },
-                    {
-                        id: 'mouse-card',
-                        options: mouseOptions,
-                        stateKey: 'currentMouseIndex',
-                        defaultText: 'Mouse',
-                        onSelect: () => {
-                            peripheralState.currentComboIndex = -1;
-                            updatePeripheralStates();
-                        }
-                    },
-                    {
-                        id: 'monitor-card',
-                        options: monitorOptions,
-                        stateKey: 'currentMonitorIndex',
-                        defaultText: 'Monitor'
-                    },
-                    {
-                        id: 'auriculares-card',
-                        options: auricularesOptions,
-                        stateKey: 'currentAuricularesIndex',
-                        defaultText: 'Auriculares'
-                    },
-                    {
-                        id: 'parlantes-card',
-                        options: parlantesOptions,
-                        stateKey: 'currentParlantesIndex',
-                        defaultText: 'Parlantes'
-                    }
+                    { id: 'combo-card', options: comboMouseTecladoOptions, stateKey: 'currentComboIndex', onSelect: () => { peripheralState.currentMouseIndex = -1; peripheralState.currentKeyboardIndex = -1; updatePeripheralStates(); } },
+                    { id: 'keyboard-card', options: keyboardOptions, stateKey: 'currentKeyboardIndex', onSelect: () => { peripheralState.currentComboIndex = -1; updatePeripheralStates(); } },
+                    { id: 'mouse-card', options: mouseOptions, stateKey: 'currentMouseIndex', onSelect: () => { peripheralState.currentComboIndex = -1; updatePeripheralStates(); } },
+                    { id: 'monitor-card', options: monitorOptions, stateKey: 'currentMonitorIndex' },
+                    { id: 'auriculares-card', options: auricularesOptions, stateKey: 'currentAuricularesIndex' },
+                    { id: 'parlantes-card', options: parlantesOptions, stateKey: 'currentParlantesIndex' }
                 ];
 
-                peripheralConfig.forEach(config => {
-                    const card = document.getElementById(config.id);
-                    if (!card || !config.options || config.options.length === 0) return;
-
+                peripheralConfig.forEach(({ id, options, stateKey, onSelect }) => {
+                    const card = document.getElementById(id);
+                    if (!card) return;
                     card.addEventListener('click', () => {
                         if (card.classList.contains('disabled')) return;
-
-                        let currentIndex = peripheralState[config.stateKey];
-                        currentIndex = (currentIndex + 2) % (config.options.length + 1) - 1;
-                        peripheralState[config.stateKey] = currentIndex;
-                        
-                        if (config.onSelect) {
-                            config.onSelect();
-                        } else {
-                            updatePeripheralStates();
-                        }
+                        const optionsLength = options.length;
+                        peripheralState[stateKey] = (peripheralState[stateKey] + 2) % (optionsLength + 1) - 1;
+                        if (onSelect) onSelect(); else updatePeripheralStates();
                     });
                 });
-                
-                updatePeripheralStates();
             }
 
             function updatePeripheralStates() {
@@ -2688,7 +2511,6 @@
                     { id: 'auriculares-card', options: auricularesOptions, stateKey: 'currentAuricularesIndex', defaultText: 'Auriculares' },
                     { id: 'parlantes-card', options: parlantesOptions, stateKey: 'currentParlantesIndex', defaultText: 'Parlantes' }
                 ];
-
                 const isComboActive = peripheralState.currentComboIndex > -1;
 
                 peripherals.forEach(p => {
@@ -2698,283 +2520,240 @@
                     const text = card.querySelector('p');
                     const currentIndex = peripheralState[p.stateKey];
 
-                    if (isComboActive && (p.id === 'mouse-card' || p.id === 'keyboard-card')) {
-                        card.classList.add('disabled');
-                        card.classList.remove('active');
-                    } else {
-                        card.classList.remove('disabled');
-                    }
-
+                    card.classList.toggle('disabled', isComboActive && (p.id === 'mouse-card' || p.id === 'keyboard-card'));
+                    card.classList.toggle('active', currentIndex > -1);
+                    
                     if (currentIndex > -1) {
                         const selected = p.options[currentIndex];
-                        card.classList.add('active');
-                        image.src = selected.image_url;
-                        image.style.filter = 'grayscale(0%)';
-                        text.innerHTML = `${selected.name}<br>(+$${(selected.price / 1000)}k)`;
+                        if (selected) {
+                            image.src = selected.image_url;
+                            image.style.filter = 'grayscale(0%)';
+                            let linkHTML = '';
+                            if (selected.link) {
+                                const priceFull = selected.price > 0 ? `$${selected.price.toLocaleString('es-AR')} | ` : '';
+                                linkHTML = `<a href="${selected.link}" target="_blank" class="component-link text-xs" onclick="event.stopPropagation()">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                            }
+                            text.innerHTML = `<span>${selected.name}</span>${linkHTML}`;
+                        }
                     } else {
                         card.classList.remove('active');
-                        if (p.options.length > 0) {
+                        if (p.options.length > 0 && p.options[0]) {
                             image.src = p.options[0].image_url;
                         }
                         image.style.filter = 'grayscale(100%)';
                         text.textContent = p.defaultText;
                     }
                 });
-
-                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
+                updatePrices();
             }
 
-            // NEW: Function to update the selected components display
             function updateSelectedComponentsDisplay() {
                 const container = document.getElementById('selected-images-container');
                 if (!container) return;
                 container.innerHTML = '';
-
-                const createSummaryCardHTML = (item, category) => {
+                const createCard = (item, category) => {
                     if (!item || !item.image_url || !item.name) return '';
                     const link = item.link ? `href="${item.link}" target="_blank"` : 'href="#" onclick="event.preventDefault()"';
-                    return `
-                        <a ${link} class="summary-card-link">
-                            <div class="summary-card">
-                                <div class="summary-card-category">${category}</div>
-                                <img src="${item.image_url}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/128x96/ffffff/333333?text=Error'">
-                                <p>${item.name}</p>
-                            </div>
-                        </a>
-                    `;
+                    return `<a ${link} class="summary-card-link"><div class="summary-card"><div class="summary-card-category">${category}</div><img src="${item.image_url}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/128x96/ffffff/333333?text=Error'"><p>${item.name}</p></div></a>`;
                 };
+                
+                const selectedGPU = gpuOptions.find(opt => opt.price == document.getElementById('gpu-select').value);
+                const selectedSSD = ssdOptions.find(opt => opt.price == document.getElementById('ssd-select').value);
+                const selectedPSU = psuOptions.find(opt => opt.price == document.getElementById('psu-select').value);
 
-                // Tower
-                if (towersOptions.length > 0) {
-                    container.innerHTML += createSummaryCardHTML(towersOptions[currentTowerIndex], 'Gabinete');
+                container.innerHTML += createCard(towersOptions[currentTowerIndex], 'Gabinete');
+                container.innerHTML += createCard(selectedGPU, 'Gráfica');
+                container.innerHTML += createCard(selectedSSD, 'Almacenamiento');
+                container.innerHTML += createCard(selectedPSU, 'Fuente');
+
+                if (peripheralState.currentComboIndex > -1) container.innerHTML += createCard(comboMouseTecladoOptions[peripheralState.currentComboIndex], 'Combo');
+                else {
+                    if (peripheralState.currentKeyboardIndex > -1) container.innerHTML += createCard(keyboardOptions[peripheralState.currentKeyboardIndex], 'Teclado');
+                    if (peripheralState.currentMouseIndex > -1) container.innerHTML += createCard(mouseOptions[peripheralState.currentMouseIndex], 'Mouse');
                 }
+                if (peripheralState.currentMonitorIndex > -1) container.innerHTML += createCard(monitorOptions[peripheralState.currentMonitorIndex], 'Monitor');
+                if (peripheralState.currentAuricularesIndex > -1) container.innerHTML += createCard(auricularesOptions[peripheralState.currentAuricularesIndex], 'Auriculares');
+                if (peripheralState.currentParlantesIndex > -1) container.innerHTML += createCard(parlantesOptions[peripheralState.currentParlantesIndex], 'Parlantes');
+            }
 
-                // GPU, SSD, PSU
-                const gpuSelect = document.getElementById('gpu-select');
-                const ssdSelect = document.getElementById('ssd-select');
-                const psuSelect = document.getElementById('psu-select');
+            // --- EVENT HANDLERS & HELPERS ---
+            function prevTower() {
+                currentTowerIndex = (currentTowerIndex - 1 + towersOptions.length) % towersOptions.length;
+                updateTowerDisplay();
+            }
 
-                const selectedGPU = gpuOptions.find(opt => opt.price == gpuSelect.value);
-                const selectedSSD = ssdOptions.find(opt => opt.price == ssdSelect.value);
-                const selectedPSU = psuOptions.find(opt => opt.price == psuSelect.value);
+            function nextTower() {
+                currentTowerIndex = (currentTowerIndex + 1) % towersOptions.length;
+                updateTowerDisplay();
+            }
+            
+            let errorToastTimeout;
+            let consecutiveErrorClicks = 0;
+            function showErrorToast(message) {
+                const errorToast = document.getElementById('error-toast');
+                const errorToastMessage = document.getElementById('error-toast-message');
+                const resetSelectionBtn = document.getElementById('reset-selection-btn');
+                clearTimeout(errorToastTimeout);
+                errorToast.classList.remove('show');
+                setTimeout(() => {
+                    errorToastMessage.textContent = message;
+                    if (consecutiveErrorClicks >= 2) resetSelectionBtn.classList.remove('hidden');
+                    errorToast.classList.add('show');
+                    errorToastTimeout = setTimeout(() => {
+                        errorToast.classList.remove('show');
+                        resetSelectionBtn.classList.add('hidden');
+                    }, 4000);
+                }, 150);
+            }
 
-                container.innerHTML += createSummaryCardHTML(selectedGPU, 'Gráfica');
-                container.innerHTML += createSummaryCardHTML(selectedSSD, 'Almacenamiento');
-                container.innerHTML += createSummaryCardHTML(selectedPSU, 'Fuente');
-
-                // Peripherals
-                if (peripheralState.currentComboIndex > -1) {
-                    container.innerHTML += createSummaryCardHTML(comboMouseTecladoOptions[peripheralState.currentComboIndex], 'Combo');
+            function handleGameSelectionChange(e) {
+                if (e.target.checked && document.querySelectorAll('input[name="game"]:checked').length > 3) {
+                    e.target.checked = false;
+                    consecutiveErrorClicks++;
+                    showErrorToast('MAX 3 Juegos Incluidos');
+                    return;
+                }
+                consecutiveErrorClicks = 0;
+                clearTimeout(errorToastTimeout);
+                document.getElementById('error-toast').classList.remove('show');
+                
+                const sticker = e.target.nextElementSibling.querySelector('.game-title-sticker');
+                if (e.target.checked) {
+                    sticker.style.top = `${Math.floor(Math.random() * 50) + 15}%`;
+                    sticker.style.left = `${Math.floor(Math.random() * 40) + 10}%`;
+                    sticker.style.transform = `rotate(${Math.floor(Math.random() * 20) - 10}deg)`;
+                    sticker.classList.remove('hidden');
                 } else {
-                    if (peripheralState.currentKeyboardIndex > -1) {
-                        container.innerHTML += createSummaryCardHTML(keyboardOptions[peripheralState.currentKeyboardIndex], 'Teclado');
-                    }
-                    if (peripheralState.currentMouseIndex > -1) {
-                        container.innerHTML += createSummaryCardHTML(mouseOptions[peripheralState.currentMouseIndex], 'Mouse');
-                    }
+                    sticker.classList.add('hidden');
                 }
-                if (peripheralState.currentMonitorIndex > -1) {
-                    container.innerHTML += createSummaryCardHTML(monitorOptions[peripheralState.currentMonitorIndex], 'Monitor');
-                }
-                if (peripheralState.currentAuricularesIndex > -1) {
-                    container.innerHTML += createSummaryCardHTML(auricularesOptions[peripheralState.currentAuricularesIndex], 'Auriculares');
-                }
-                if (peripheralState.currentParlantesIndex > -1) {
-                    container.innerHTML += createSummaryCardHTML(parlantesOptions[peripheralState.currentParlantesIndex], 'Parlantes');
+                updateSelectedGamesList();
+            }
+
+            function updateSelectedGamesList() {
+                const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
+                const listEl = document.getElementById('selected-games-list');
+                const sectionEl = document.getElementById('selected-games-section');
+                listEl.innerHTML = '';
+                if (selectedCheckboxes.length > 0) {
+                    sectionEl.classList.remove('hidden');
+                    selectedCheckboxes.forEach(cb => {
+                        listEl.innerHTML += `<div class="w-1/4 md:w-1/5 p-1"><a href="#card-game-${toSlug(cb.value)}"><img src="${cb.dataset.imgSrc}" alt="Carátula de ${cb.value}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${cb.value.replace(/\s/g, '+')}';"></a></div>`;
+                    });
+                } else {
+                    sectionEl.classList.add('hidden');
                 }
             }
 
+            function resetGameSelection() {
+                document.querySelectorAll('input[name="game"]:checked').forEach(cb => {
+                    cb.checked = false;
+                    cb.nextElementSibling.querySelector('.game-title-sticker').classList.add('hidden');
+                });
+                updateSelectedGamesList();
+                document.getElementById('error-toast').classList.remove('show');
+                consecutiveErrorClicks = 0;
+            }
 
-            document.getElementById('orderForm').addEventListener('submit', function (e) {
-                e.preventDefault();
-                const phoneNumber = '5492252513233';
+            let isGridExpanded = false;
+            function expandGameGrid() {
+                document.getElementById('game-grid-wrapper').style.maxHeight = `${document.getElementById('game-list').scrollHeight}px`;
+                document.getElementById('load-more-games').classList.add('hidden');
+                document.getElementById('no-more-games').classList.remove('hidden');
+                const overlay = document.getElementById('load-more-overlay');
+                overlay.style.opacity = '0';
+                overlay.style.pointerEvents = 'none';
+                isGridExpanded = true;
+            }
 
-                const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
-                const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => {
-                    const slug = cb.dataset.slug;
-                    const software = softwareData.find(s => s.slug === slug);
-                    return software ? software.name : '';
-                }).filter(name => name);
-
-                const extraNotes = document.getElementById('extra-notes').value;
-
-                let message = `¡Hola, me interesa esta Nave del Medio!\n\n`;
+            function setInitialGridHeight() {
+                const gameListContainer = document.getElementById('game-list');
+                const allGameCards = Array.from(gameListContainer.children);
+                if (isGridExpanded || !allGameCards.length) return;
+                const cardHeight = allGameCards[0].offsetHeight;
+                if (cardHeight === 0) { setTimeout(setInitialGridHeight, 100); return; }
+                const gridGap = parseInt(window.getComputedStyle(gameListContainer).getPropertyValue('grid-row-gap')) || 24;
+                const rowHeight = cardHeight + gridGap;
+                const teaserHeight = rowHeight / 2;
+                const targetHeight = (6 * rowHeight) - gridGap + teaserHeight;
+                document.getElementById('game-grid-wrapper').style.maxHeight = `${targetHeight}px`;
+            }
+            
+            function positionCroxImages() {
+                const croxA = document.getElementById('home-crox-a');
+                const croxB = document.getElementById('home-crox-b');
+                const hookSection = document.querySelector('.hook-section');
+                const wrapper = document.getElementById('hero-wrapper');
+                if (croxA && croxB && hookSection && wrapper && window.innerWidth > 639) {
+                    const wrapperRect = wrapper.getBoundingClientRect();
+                    const hookSectionRect = hookSection.getBoundingClientRect();
+                    const topPosition = hookSectionRect.top - wrapperRect.top - (croxA.offsetHeight / 2);
+                    croxA.style.top = `${topPosition}px`;
+                    croxB.style.top = `${topPosition}px`;
+                    const marginPx = -10 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+                    croxA.style.left = `${hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx + 33}px`;
+                    croxB.style.right = `${wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx + 56}px`;
+                    croxB.style.left = 'auto';
+                }
+            }
+            
+            function showDolarPopup() {
+                if (allDolarRates.length === 0) return;
+                const dolarRatesList = document.getElementById('dolar-rates-list');
+                dolarRatesList.innerHTML = '';
+                const tiposPermitidos = [{ key: 'oficial', label: 'Oficial' }, { key: 'blue', label: 'Blue' }, { key: 'cripto', label: 'Cripto' }];
+                let total = BASE_PRICE + parseInt(document.getElementById('ssd-select').value) + parseInt(document.getElementById('gpu-select').value) + parseInt(document.getElementById('psu-select').value) + towersOptions[currentTowerIndex].price;
+                // Add peripheral prices to total
                 
-                if (towersOptions.length > 0) {
-                    message += `*Torre Seleccionada:* ${towersOptions[currentTowerIndex].name}\n`;
-                }
+                tiposPermitidos.forEach(tipo => {
+                    const rate = allDolarRates.find(r => r.nombre.toLowerCase().includes(tipo.key));
+                    if (!rate) return;
+                    const precioEnDolar = rate.venta ? (total / rate.venta).toFixed(0) : '-';
+                    dolarRatesList.innerHTML += `<div class="flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2 dolar-rate-item"><span class="font-bold text-gray-300 dolar-name">${tipo.label}</span><div class="text-right"><span class="text-gray-400">Compra: </span><span class="font-mono text-green-400">$${rate.compra}</span><br><span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span></div><div class="font-saira text-violet-400 font-bold text-lg text-center mt-1">serían $${precioEnDolar} USD</div></div>`;
+                });
+                document.getElementById('google-link').href = `https://www.google.com/search?q=${total}+ars+to+usd`;
+                document.getElementById('dolar-popup').style.display = 'flex';
+            }
 
-                const ssdSelect = document.getElementById('ssd-select');
-                if (ssdSelect) {
-                    message += `*Almacenamiento:* ${ssdSelect.options[ssdSelect.selectedIndex].textContent}\n`;
-                }
-
-                const gpuSelect = document.getElementById('gpu-select');
-                if (gpuSelect) {
-                    message += `*Tarjeta Gráfica:* ${gpuSelect.options[gpuSelect.selectedIndex].textContent}\n`;
-                }
-
-                const psuSelect = document.getElementById('psu-select');
-                if (psuSelect) {
-                    message += `*Fuente de Poder:* ${psuSelect.options[psuSelect.selectedIndex].textContent}\n`;
-                }
+            function handleFormSubmit(e) {
+                e.preventDefault();
+                const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
+                const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => softwareData.find(s => s.slug === cb.dataset.slug)?.name).filter(Boolean);
+                const extraNotes = document.getElementById('extra-notes').value;
+                
+                let message = `¡Hola, me interesa esta Nave del Medio!\n\n`;
+                message += `*Torre Seleccionada:* ${towersOptions[currentTowerIndex].name}\n`;
+                message += `*Almacenamiento:* ${document.getElementById('ssd-select').options[document.getElementById('ssd-select').selectedIndex].text}\n`;
+                message += `*Tarjeta Gráfica:* ${document.getElementById('gpu-select').options[document.getElementById('gpu-select').selectedIndex].text}\n`;
+                message += `*Fuente de Poder:* ${document.getElementById('psu-select').options[document.getElementById('psu-select').selectedIndex].text}\n`;
 
                 let peripheralsMessage = '';
-                if (peripheralState.currentComboIndex > -1) {
-                    peripheralsMessage += `Combo: ${comboMouseTecladoOptions[peripheralState.currentComboIndex].name}`;
-                } else {
-                    if (peripheralState.currentMouseIndex > -1) {
-                        peripheralsMessage += `Mouse: ${mouseOptions[peripheralState.currentMouseIndex].name}`;
-                    }
-                    if (peripheralState.currentKeyboardIndex > -1) {
-                        if (peripheralsMessage) peripheralsMessage += ', ';
-                        peripheralsMessage += `Teclado: ${keyboardOptions[peripheralState.currentKeyboardIndex].name}`;
-                    }
+                if (peripheralState.currentComboIndex > -1) peripheralsMessage += `Combo: ${comboMouseTecladoOptions[peripheralState.currentComboIndex].name}`;
+                else {
+                    if (peripheralState.currentMouseIndex > -1) peripheralsMessage += `Mouse: ${mouseOptions[peripheralState.currentMouseIndex].name}`;
+                    if (peripheralState.currentKeyboardIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Teclado: ${keyboardOptions[peripheralState.currentKeyboardIndex].name}`;
                 }
-
-                if (peripheralState.currentMonitorIndex > -1) {
-                    if (peripheralsMessage) peripheralsMessage += ', ';
-                    peripheralsMessage += `Monitor: ${monitorOptions[peripheralState.currentMonitorIndex].name}`;
-                }
-                if (peripheralState.currentAuricularesIndex > -1) {
-                    if (peripheralsMessage) peripheralsMessage += ', ';
-                    peripheralsMessage += `Auriculares: ${auricularesOptions[peripheralState.currentAuricularesIndex].name}`;
-                }
-                if (peripheralState.currentParlantesIndex > -1) {
-                    if (peripheralsMessage) peripheralsMessage += ', ';
-                    peripheralsMessage += `Parlantes: ${parlantesOptions[peripheralState.currentParlantesIndex].name}`;
-                }
-
+                if (peripheralState.currentMonitorIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Monitor: ${monitorOptions[peripheralState.currentMonitorIndex].name}`;
+                if (peripheralState.currentAuricularesIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Auriculares: ${auricularesOptions[peripheralState.currentAuricularesIndex].name}`;
+                if (peripheralState.currentParlantesIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Parlantes: ${parlantesOptions[peripheralState.currentParlantesIndex].name}`;
                 if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
 
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
-
                 if (selectedSoftware.length > 0) {
-                    const catOrder = ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'];
-                    let programasPorCat = {};
-                    catOrder.forEach(cat => programasPorCat[cat] = []);
-
-                    selectedSoftware.forEach(name => {
-                        const prog = softwareData.find(p => p.name === name);
-                        if (prog && programasPorCat[prog.category]) {
-                            programasPorCat[prog.category].push(prog.name);
-                        }
-                    });
-
                     message += `*Programas:*\n`;
-                    catOrder.forEach(cat => {
-                        if (programasPorCat[cat].length > 0) {
-                            message += `- ${cat}: ${programasPorCat[cat].join(', ')}\n`;
-                        }
+                    ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'].forEach(cat => {
+                        const programs = selectedSoftware.filter(name => softwareData.find(p => p.name === name)?.category === cat);
+                        if (programs.length > 0) message += `- ${cat}: ${programs.join(', ')}\n`;
                     });
                 }
-
                 if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
-                message += `\nPrecio Total: ${topTotalPriceEl.textContent}`;
+                message += `\nPrecio Total: ${document.getElementById('top-total-price').textContent}`;
                 message += `\n¡Quedo a la espera de tu respuesta!`;
-                window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
-            });
-
-            const dolarPopup = document.getElementById('dolar-popup');
-            const dolarRatesList = document.getElementById('dolar-rates-list');
-            const googleLink = document.getElementById('google-link');
-
-            dolarPopup.style.display = 'none';
-
-            function showDolarPopup() {
-                if (allDolarRates.length === 0) return;
-                dolarRatesList.innerHTML = '';
-                const tiposPermitidos = [
-                    { key: 'oficial', label: 'Oficial' },
-                    { key: 'blue', label: 'Blue' },
-                    { key: 'cripto', label: 'Cripto' }
-                ];
-                const mapApiKey = (nombre) => {
-                    const n = nombre.toLowerCase();
-                    if (n.includes('oficial')) return 'oficial';
-                    if (n.includes('blue')) return 'blue';
-                    if (n.includes('cripto')) return 'cripto';
-                    return '';
-                };
-                let total = BASE_PRICE;
-                if (peripheralState.currentMonitorIndex > -1) total += monitorOptions[peripheralState.currentMonitorIndex].price;
-                if (peripheralState.currentMouseIndex > -1) total += mouseOptions[peripheralState.currentMouseIndex].price;
-                if (peripheralState.currentKeyboardIndex > -1) total += keyboardOptions[peripheralState.currentKeyboardIndex].price;
-                if (peripheralState.currentComboIndex > -1) total += comboMouseTecladoOptions[peripheralState.currentComboIndex].price;
-                if (peripheralState.currentAuricularesIndex > -1) total += auricularesOptions[peripheralState.currentAuricularesIndex].price;
-                if (peripheralState.currentParlantesIndex > -1) total += parlantesOptions[peripheralState.currentParlantesIndex].price;
-
-                if (towersOptions.length > 0) {
-                    total += towersOptions[currentTowerIndex].price;
-                }
-                const ssdSelect = document.getElementById('ssd-select');
-                if (ssdSelect) {
-                    total += parseInt(ssdSelect.value);
-                }
-                const gpuSelect = document.getElementById('gpu-select');
-                if (gpuSelect) {
-                    total += parseInt(gpuSelect.value);
-                }
-                const psuSelect = document.getElementById('psu-select');
-                if (psuSelect) {
-                    total += parseInt(psuSelect.value);
-                }
-
-                tiposPermitidos.forEach(tipo => {
-                    const rate = allDolarRates.find(r => mapApiKey(r.nombre) === tipo.key);
-                    if (!rate) return;
-                    const precioEnDolar = rate.venta ? (total / rate.venta) : null;
-                    const name = tipo.label;
-                    const rateEl = document.createElement('div');
-                    rateEl.className = 'flex flex-col gap-1 mb-3 border-b border-gray-700/50 pb-2 dolar-rate-item';
-                    rateEl.innerHTML = `
-                            <span class="font-bold text-gray-300 dolar-name">${name}</span>
-                            <div class="text-right">
-                                <span class="text-gray-400">Compra: </span><span class="font-mono text-green-400">$${rate.compra}</span><br>
-                                <span class="text-gray-400">Venta: </span><span class="font-mono text-green-400">$${rate.venta}</span>
-                            </div>
-                            <div class="font-saira text-violet-400 font-bold text-lg text-center mt-1">serían $${precioEnDolar ? precioEnDolar.toFixed(0) : '-'} USD</div>
-                        `;
-                    dolarRatesList.appendChild(rateEl);
-                });
-                googleLink.href = `https://www.google.com/search?q=${total}+ars+to+usd`;
-                dolarPopup.style.display = 'flex';
+                window.open(`https://wa.me/5492252513233?text=${encodeURIComponent(message)}`, '_blank');
             }
 
-            dolarPopup.addEventListener('click', (e) => {
-                if (e.target === dolarPopup) {
-                    dolarPopup.style.display = 'none';
-                }
-            });
-
-            document.getElementById('usd-link-top').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
-            document.getElementById('usd-price-display-top').addEventListener('click', showDolarPopup);
-            document.getElementById('usd-link-bottom').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
-            document.getElementById('total-price-usd').addEventListener('click', showDolarPopup);
-            document.getElementById('usd-link-summary').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
-            document.getElementById('total-price-summary-usd').addEventListener('click', showDolarPopup);
-            document.getElementById('usd-link-summary-mobile').addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); });
-            document.getElementById('total-price-summary-usd-mobile').addEventListener('click', showDolarPopup);
-
-            const towerImageEl = document.getElementById('current-tower-image');
-            const currentTowerNameEl = document.getElementById('current-tower-name');
-            const prevTowerBtn = document.getElementById('prev-tower');
-            const nextTowerBtn = document.getElementById('next-tower');
-
-            const ssdSelect = document.getElementById('ssd-select');
-            const ssdDescriptionEl = document.getElementById('ssd-description');
-            const ssdImageEl = document.getElementById('ssd-image');
-
-            const gpuSelect = document.getElementById('gpu-select');
-            const gpuDescriptionEl = document.getElementById('gpu-description');
-            const gpuImageEl = document.getElementById('gpu-image');
-
-            const psuSelect = document.getElementById('psu-select');
-            const psuDescriptionEl = document.getElementById('psu-description');
-            const psuImageEl = document.getElementById('psu-image');
-
             function loadImageWithGrayscale(imageElement, newSrc) {
+                if (!imageElement) return;
                 imageElement.classList.add('loading');
                 const tempImage = new Image();
                 tempImage.src = newSrc;
@@ -2987,125 +2766,6 @@
                     imageElement.classList.remove('loading');
                 };
             }
-
-            function updateTowerDisplay() {
-                if (towersOptions.length === 0) return;
-                const selectedTower = towersOptions[currentTowerIndex];
-                loadImageWithGrayscale(towerImageEl, selectedTower.image_url);
-                currentTowerNameEl.textContent = selectedTower.name;
-                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
-            }
-            
-            function prevTower() {
-                currentTowerIndex = (currentTowerIndex - 1 + towersOptions.length) % towersOptions.length;
-                updateTowerDisplay();
-            }
-
-            function nextTower() {
-                currentTowerIndex = (currentTowerIndex + 1) % towersOptions.length;
-                updateTowerDisplay();
-            }
-
-            prevTowerBtn.addEventListener('click', prevTower);
-            nextTowerBtn.addEventListener('click', nextTower);
-
-            function updateComponentDisplay(selectEl, descEl, imageEl, options) {
-                const selectedOption = options.find(opt => opt.price == selectEl.value);
-                
-                if (selectedOption) {
-                    descEl.textContent = selectedOption.description;
-                    loadImageWithGrayscale(imageEl, selectedOption.image_url);
-                } else {
-                    descEl.textContent = '';
-                    imageEl.src = '';
-                }
-                updatePrices(allDolarRates.find(rate => rate.nombre && rate.nombre.toLowerCase().includes('oficial'))?.venta);
-            }
-
-            if (ssdSelect) {
-                ssdSelect.addEventListener('change', () => updateComponentDisplay(ssdSelect, ssdDescriptionEl, ssdImageEl, ssdOptions));
-            }
-            if (gpuSelect) {
-                gpuSelect.addEventListener('change', () => updateComponentDisplay(gpuSelect, gpuDescriptionEl, gpuImageEl, gpuOptions));
-            }
-            if (psuSelect) {
-                psuSelect.addEventListener('change', () => updateComponentDisplay(psuSelect, psuDescriptionEl, psuImageEl, psuOptions));
-            }
-
-            const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-            const zoomedImage = document.getElementById('zoomed-image');
-
-            function openFullscreenZoom(imageSrc) {
-                zoomedImage.src = imageSrc;
-                fullscreenOverlay.classList.add('active');
-            }
-
-            function closeFullscreenZoom() {
-                fullscreenOverlay.classList.remove('active');
-                setTimeout(() => { zoomedImage.src = ''; }, 300);
-            }
-
-            fullscreenOverlay.addEventListener('click', closeFullscreenZoom);
-
-            const componentImagesForZoom = [towerImageEl, gpuImageEl, ssdImageEl, psuImageEl];
-            componentImagesForZoom.forEach(imgEl => {
-                imgEl.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    openFullscreenZoom(imgEl.src);
-                });
-            });
-
-            const mobilePriceSummaryCard = document.getElementById('mobile-price-summary-card');
-            const priceSummaryCard = document.getElementById('price-summary-card');
-            const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0
-            };
-
-            const priceCardObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        mobilePriceSummaryCard.classList.add('show-mobile-price');
-                        priceSummaryCard.classList.add('visible');
-                    } else {
-                        mobilePriceSummaryCard.classList.remove('show-mobile-price');
-                        priceSummaryCard.classList.remove('visible');
-                    }
-                });
-            }, observerOptions);
-
-            if (priceVisibilityZone) {
-                priceCardObserver.observe(priceVisibilityZone);
-            }
-
-            // --- Initial calls ---
-            fetchDolarRate();
-            updateSelectedGamesList();
-            setInitialGridHeight();
-            positionCroxImages();
-
-            if (ssdSelect && ssdOptions.length > 0) {
-                ssdSelect.value = ssdOptions[0].price;
-                updateComponentDisplay(ssdSelect, ssdDescriptionEl, ssdImageEl, ssdOptions);
-            }
-            if (gpuSelect && gpuOptions.length > 0) {
-                gpuSelect.value = gpuOptions[0].price;
-                updateComponentDisplay(gpuSelect, gpuDescriptionEl, gpuImageEl, gpuOptions);
-            }
-            if (psuSelect && psuOptions.length > 0) {
-                psuSelect.value = psuOptions[0].price;
-                updateComponentDisplay(psuSelect, psuDescriptionEl, psuImageEl, psuOptions);
-            }
-            
-            updateTowerDisplay();
-
-            window.addEventListener('resize', () => {
-                setInitialGridHeight();
-                positionCroxImages();
-            });
         });
     </script>
 </body>
