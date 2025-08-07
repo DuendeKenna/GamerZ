@@ -889,6 +889,12 @@
                 top: auto;
             }
         }
+        @media (max-width: 767px) {
+            #section-front-features .soporte-tecnico-card .space-y-1 p,
+            #section-front-features .soporte-tecnico-card h4 {
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            }
+        }
 
         /* --- Hero Product Images --- */
         .hero-crox-img {
@@ -1531,7 +1537,7 @@
             text-decoration: none;
             font-size: 1rem!important;
             display: inline-block;
-
+            margin-top: 3px;
         }
         .component-link:hover {
             text-decoration: underline;
@@ -1827,42 +1833,42 @@
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="combo-image" src="" alt="Combo Mouse y Teclado" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Combo'">
                         </div>
-                        <p id="combo-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="combo-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Keyboard Card -->
                     <div id="keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="keyboard-image" src="" alt="Teclado" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado'">
                         </div>
-                        <p id="keyboard-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="keyboard-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Mouse Card -->
                     <div id="mouse-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="mouse-image" src="" alt="Mouse" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Mouse'">
                         </div>
-                        <p id="mouse-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="mouse-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Monitor Card -->
                     <div id="monitor-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="monitor-image" src="" alt="Monitor" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Monitor'">
                         </div>
-                        <p id="monitor-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="monitor-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Auriculares Card -->
                     <div id="auriculares-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="auriculares-image" src="" alt="Auriculares" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Auriculares'">
                         </div>
-                        <p id="auriculares-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="auriculares-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                     <!-- Parlantes Card -->
                     <div id="parlantes-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
                             <img id="parlantes-image" src="" alt="Parlantes" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Parlantes'">
                         </div>
-                        <p id="parlantes-text" class="text-center text-gray-400 mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="parlantes-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
                     </div>
                 </div>
             </section>
@@ -2458,7 +2464,7 @@
                 let towerPriceHTML = '';
                 if (selectedTower.link) {
                     const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} | ` : '';
-                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull}Ver + <i class="fas fa-external-link-alt"></i></a>`;
+                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
                 }
                 document.getElementById('current-tower-price-display').innerHTML = towerPriceHTML;
                 updatePrices();
@@ -2471,7 +2477,7 @@
                     let linkHTML = '';
                     if (selectedOption.link) {
                         const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} | ` : '';
-                        linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Ver + <i class="fas fa-external-link-alt"></i></a>`;
+                        linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
                     }
                     descEl.innerHTML = selectedOption.description + linkHTML;
                     loadImageWithGrayscale(imageEl, selectedOption.image_url);
@@ -2530,7 +2536,7 @@
                             let linkHTML = '';
                             if (selected.link) {
                                 const priceFull = selected.price > 0 ? `$${selected.price.toLocaleString('es-AR')} | ` : '';
-                                linkHTML = `<a href="${selected.link}" target="_blank" class="component-link text-xs" onclick="event.stopPropagation()">${priceFull}Ver + <i class="fas fa-external-link-alt"></i></a>`;
+                                linkHTML = `<a href="${selected.link}" target="_blank" class="component-link text-xs" onclick="event.stopPropagation()">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
                             }
                             text.innerHTML = `<span>${selected.name}</span>${linkHTML}`;
                         }
