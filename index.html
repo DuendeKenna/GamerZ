@@ -735,7 +735,7 @@
         }
 
         #memde_pointLeft {
-            display: none;
+            /*display: none;*/
             /* Hidden by default */
             position: absolute;
             bottom: -20px;
@@ -744,30 +744,10 @@
             width: 40%;
             /* For smaller screens, width can be relative */
             z-index: 0;
-            overflow-x: hidden;
-            right: 0;
-            /* Align to the right edge of its parent */
-            transform: translateX(50%);
-            /* Push half its width outside to the right */
-            /* No specific 'left' property here */
+            overflow-x: hidden;            
+            left: -20px;
         }
 
-        @media (max-width: 767px) {
-
-            /* For mobile specific adjustments */
-            #memde_pointLeft {
-                right: -10%;
-                /* Adjust to keep it within view but slightly off-center */
-                width: 50%;
-                /* Make it responsive */
-                max-width: 120px;
-                /* Limit size on very small screens */
-                transform: translateX(0%);
-                /* Ensure no horizontal translation */
-                bottom: -10px;
-                /* Adjust vertical position for mobile */
-            }
-        }
 
         @media (min-width: 768px) {
 
@@ -776,7 +756,7 @@
                 bottom: -30px;
                 width: auto;
                 /* Let image natural width or max-width: 150px apply */
-                right: 0;
+                left: 0;
                 /* Keep it on the right for desktop */
                 transform: translateX(50%);
                 /* Continue pushing it off the right */
@@ -2131,11 +2111,11 @@
                 <textarea id="extra-notes"
                     class="w-full max-w-xl mx-auto block bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
                     rows="4"
-                    placeholder="🤔¿Dudas?&#10;💾¿Más Soft?&#10;⚙️¿Otro Hard?&#10;¿Alguna otra cuestión? . . ."></textarea>
+                    placeholder="🤔¿Dudas?&#10;💾¿Otro Software?&#10;⚙️¿Reutilizar tu Hardware?&#10;Escribilo acá que te leo :)"></textarea>
             </section>
 
             <div class="text-center">
-                <p id="pre-submit-text" class="text-gray-400 mb-7">Enviame tu Pedido/Consulta</p>
+                <p id="pre-submit-text" class="text-gray-400 mb-7">Enviame tu Pedido/Consulta</br><small>*SIN COMPROMISO*</small></p>
                 <div class="flex flex-col items-center">
                     <button id="submit-button" type="submit"
                         class="cta-button text-white font-bold py-4 px-10 rounded-full text-xl flex items-center justify-center gap-4">
