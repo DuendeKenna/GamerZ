@@ -16,7 +16,7 @@
     {
       "id": 76800,
       "name": "I5 2400 16 Gb 480 Gb Ssd",
-      "price": 233590,
+      "price": 321250,
       "description": "",
       "image_url": "comps/armadas/76800.webp",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956"
@@ -42,7 +42,7 @@
     {
       "id": 47143,
       "name": "Sentey H10",
-      "price": 67796,
+      "price": 69499,
       "slug": "sentey-h10",
       "image_url": "comps/torres/sentey-h10.webp",
       "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385#polycard_client=search-nordic&searchVariation=MLA45231385&wid=MLA2082695088&position=2&search_layout=grid&type=product&tracking_id=f12620c7-491b-4e40-a860-0725a08f6aff&sid=search"
@@ -50,7 +50,7 @@
     {
       "id": 30191,
       "name": "Sentey A8 Micro White",
-      "price": 74399,
+      "price": 74999,
       "slug": "sentey-a8-micro-white",
       "image_url": "comps/torres/sentey-a8-micro-white.webp",
       "link": "https://www.mercadolibre.com.ar/sentey-a8-cube-rgb-gabinete-sentey-a8-vidrio-temp-5-coolers-blanco/p/MLA50547846#polycard_client=search-nordic&searchVariation=MLA50547846&wid=MLA2144326674&position=3&search_layout=stack&type=product&tracking_id=0f8e8620-745d-4136-91b6-f1e1300ed9e9&sid=search"
@@ -60,7 +60,7 @@
     {
       "id": 27876,
       "name": "500 GB - NVMe",
-      "price": 52999,
+      "price": 54199,
       "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
       "image_url": "comps/discos/nvme_hik_500.webp",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261#reviews"
@@ -68,7 +68,7 @@
     {
       "id": 93692,
       "name": "1 TB - NVMe",
-      "price": 94818,
+      "price": 95990,
       "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
       "image_url": "comps/discos/nvme_wd_1.webp",
       "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136#polycard_client=search-nordic&searchVariation=MLA24819136&wid=MLA2009626010&position=5&search_layout=grid&type=product&tracking_id=5ce7b18f-1c41-4395-b84b-ae8b4fe2eb29&sid=search"
@@ -76,7 +76,7 @@
     {
       "id": 86326,
       "name": "240 GB - SATA",
-      "price": 27799,
+      "price": 27699,
       "description": "Opción económica si precisás exprimir el precio y no precisás tanto espacio. SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "image_url": "comps/discos/ssd_hiksemi.webp",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1424032565-disco-solido-ssd-240-gb-sata-hiksemi-wave-color-negro-_JM"
@@ -102,20 +102,28 @@
   ],
   "psuOptions": [
     {
+      "id": 27579,
+      "name": "Certificada Redragon 500W",
+      "price": 70300,
+      "description": "Recomendada para cuidar nuestros componentes.",
+      "image_url": "comps/psus/500redragon.webp",
+      "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-redragon-rpgs-gc-ps001-500w-negra/p/MLA43937355"
+    },
+    {
       "id": 73804,
-      "name": "Certificada Sentey",
-      "price": 92116,
-      "description": "Recomendada para cuidar nuestros componentes. Más cara, pero más segura. 3 Años de Garantía.",
+      "name": "Certificada Sentey 500W",
+      "price": 89999,
+      "description": "Otra buena opción 80 Plus. 3 Años de Garantía.",
       "image_url": "comps/psus/550sentey80.webp",
       "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438#polycard_client=search_best-seller&tracking_id=773e34fd-c7e9-4df8-94d6-2ab5e5326732&wid=MLA1389033851&sid=search"
     },
     {
-      "id": 64506,
-      "name": "Genérica",
-      "price": 25999,
-      "description": "Opción económica. Segunda marca de Sentey.",
-      "image_url": "comps/psus/550sentey.webp",
-      "link": "https://articulo.mercadolibre.com.ar/MLA-1507344437-fuente-para-pc-atx-lnz-fb600-lx-600w-oem-_JM"
+      "id": 28101,
+      "name": "Genérica Noga 600w",
+      "price": 33349,
+      "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO (y riesgo) *ON*",
+      "image_url": "comps/psus/600noga.webp",
+      "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036"
     }
   ],
   "motherboardOptions": [
@@ -148,7 +156,7 @@
     {
       "id": 55990,
       "name": "Ryzen 7 5700G ",
-      "price": 239400,
+      "price": 240000,
       "description": "8 nucleos 4.6ghz Am4",
       "image_url": "comps/cpus/ryzen7_5700g.webp",
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624"
@@ -166,7 +174,7 @@
     {
       "id": 93477,
       "name": "DDR4 8 GB - Hiksemi",
-      "price": 37499,
+      "price": 39541,
       "description": "Descripción de la nueva RAM.",
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493"
@@ -226,7 +234,7 @@
     {
       "id": 19499,
       "name": "Cooler Master 24'' 100hz",
-      "price": 166250,
+      "price": 223299,
       "description": "",
       "image_url": "comps/monitores/cooler-master-24''-100hz.webp",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684#polycard_client=bookmarks&wid=MLA1508091731&sid=bookmarks"
@@ -234,7 +242,7 @@
     {
       "id": 93025,
       "name": "Noblex 25''",
-      "price": 173799,
+      "price": 152599,
       "description": "",
       "image_url": "comps/monitores/noblex-25''.webp",
       "link": "https://www.mercadolibre.com.ar/monitor-noblex-25-pulgadas-nxsm2500-led-fhd/p/MLA45717090#polycard_client=search_best-seller&tracking_id=9b46ecc9-8f43-4093-88a5-a2c3e7da7a0e&wid=MLA1473725571&sid=search"
@@ -242,7 +250,7 @@
     {
       "id": 17689,
       "name": "Gigabyte 27'' 180Hz",
-      "price": 299199,
+      "price": 383761,
       "description": "",
       "image_url": "comps/monitores/gigabyte-27''-180hz.webp",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-gigabyte-gs27fa-27-180hz-panel-ips-1ms-hdr-full-hd/p/MLA48944295#polycard_client=search_best-seller&tracking_id=9b46ecc9-8f43-4093-88a5-a2c3e7da7a0e&wid=MLA2123846624&sid=search"
@@ -252,7 +260,7 @@
     {
       "id": 18066,
       "name": "Redragon Wireless",
-      "price": 26487,
+      "price": 27797,
       "description": "",
       "image_url": "comps/mouses/redragon-wireless.webp",
       "link": "https://www.mercadolibre.com.ar/mouse-y-pad-2-en-1-gamer-redragon-m601wl-ba-negrorojo/p/MLA17588671?pdp_filters=item_id%3AMLA1478243957#polycard_client=wishlist&wid=MLA1478243957&sid=bookmarks"
@@ -280,7 +288,7 @@
     {
       "id": 15740,
       "name": "Shiva K512 Cableado",
-      "price": 50199,
+      "price": 47478,
       "description": "",
       "image_url": "comps/teclados/shiva-k512-cableado.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952#polycard_client=wishlist&wid=MLA917590502&sid=bookmarks"
@@ -296,7 +304,7 @@
     {
       "id": 97647,
       "name": "Inalámbrico Noganet",
-      "price": 26499,
+      "price": 35042,
       "description": "Descripción del nuevo Teclado.",
       "image_url": "comps/teclados/inalambrico-noganet.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565#polycard_client=search_best-seller&tracking_id=a3c920a8-fea8-48c7-8cfb-d1c4964ada0b&wid=MLA1898154462&sid=search"
@@ -316,7 +324,7 @@
     {
       "id": 84174,
       "name": "Kotion Each Cableado",
-      "price": 50000,
+      "price": 48999,
       "description": "Descripción del nuevo Auricular.",
       "image_url": "comps/auriculares/kotion-each-cableado.webp",
       "link": "https://www.mercadolibre.com.ar/auriculares-gamer-kotion-each-g9000-black-y-red-con-luz-led/p/MLA9406416#polycard_client=search-nordic&searchVariation=MLA9406416&wid=MLA1476567335&position=9&search_layout=stack&type=product&tracking_id=c7453b41-a35d-46e6-8996-c17763c6b2d3&sid=search"
