@@ -196,7 +196,7 @@
         .card-peripheral {
             transition: all 0.3s ease-in-out;
         }
-        
+
         .card-peripheral img {
             transition: filter 0.3s ease-in-out;
         }
@@ -889,7 +889,9 @@
                 top: auto;
             }
         }
+
         @media (max-width: 767px) {
+
             #section-front-features .soporte-tecnico-card .space-y-1 p,
             #section-front-features .soporte-tecnico-card h4 {
                 text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
@@ -1089,18 +1091,20 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             z-index: 100;
-            
+
             opacity: 0;
             visibility: hidden;
             transform: translateY(100%);
             transition: opacity 0.4s ease-out, visibility 0.4s ease-out, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            
-            display: none; /* Hidden on mobile by default */
+
+            display: none;
+            /* Hidden on mobile by default */
         }
 
         @media (min-width: 768px) {
             #price-summary-card {
-                display: flex; /* Shown on tablet and up */
+                display: flex;
+                /* Shown on tablet and up */
             }
         }
 
@@ -1155,7 +1159,7 @@
             background-color: rgba(75, 85, 99, 0.5);
             margin: 0 1.5rem;
         }
-        
+
         #total-price-summary-usd-mobile {
             font-size: 2rem;
         }
@@ -1294,18 +1298,26 @@
 
         #component-list li {
             display: flex;
-            flex-direction: column; /* Mobile-first: single column */
-            align-items: flex-start; /* Align content to the left on mobile */
-            gap: 0.5rem; /* Reduced gap for tighter mobile layout */
+            flex-direction: column;
+            /* Mobile-first: single column */
+            align-items: flex-start;
+            /* Align content to the left on mobile */
+            gap: 0.5rem;
+            /* Reduced gap for tighter mobile layout */
             width: 100%;
-            margin-bottom: 2rem; /* Space between items on mobile */
+            margin-bottom: 2rem;
+            /* Space between items on mobile */
         }
 
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) {
+
+            /* md breakpoint */
             #component-list li {
-                flex-direction: row; /* Revert to row layout on desktop */
+                flex-direction: row;
+                /* Revert to row layout on desktop */
                 align-items: center;
-                gap: 1.5rem; /* Adjusted gap for desktop */
+                gap: 1.5rem;
+                /* Adjusted gap for desktop */
                 margin-bottom: 0;
             }
         }
@@ -1313,12 +1325,16 @@
         #component-list li .component-content-wrapper {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Align text to the left */
+            align-items: flex-start;
+            /* Align text to the left */
             width: 100%;
-            text-align: left; /* Align text to the left */
+            text-align: left;
+            /* Align text to the left */
         }
 
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) {
+
+            /* md breakpoint */
             #component-list li .component-content-wrapper {
                 width: auto;
             }
@@ -1360,15 +1376,17 @@
         }
 
         #component-list .component-option-image {
-            width: 100%; 
-            max-width: 20rem; 
+            width: 100%;
+            max-width: 20rem;
             object-fit: contain;
             flex-shrink: 0;
-            margin-top: 0; 
+            margin-top: 0;
             cursor: pointer;
         }
 
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) {
+
+            /* md breakpoint */
             #component-list .component-option-image {
                 width: 180px;
                 max-width: none;
@@ -1391,7 +1409,7 @@
                 transform-origin: right center;
             }
 
-/* #gpu-image:hover,
+            /* #gpu-image:hover,
             #psu-image:hover {
                 transform: scale(1.7);
             } */
@@ -1469,28 +1487,33 @@
             align-self: left;
         }
 
-        #garantia-section{
+        #garantia-section {
             font-size: 1.18rem;
         }
 
         .coneste {
             text-shadow: black 2px 2px 1px;
         }
-        .coneste b{
+
+        .coneste b {
             color: #42d232;
         }
-        
+
         /* NEW: Styles for selected components preview */
         .summary-card-link {
             display: block;
             text-decoration: none;
             color: inherit;
         }
+
         .summary-card {
             background-color: white;
-            color: #1f2937; /* text-gray-800 */
-            border-radius: 0.5rem; /* rounded-lg */
-            padding: 0.75rem; /* p-3 */
+            color: #1f2937;
+            /* text-gray-800 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            padding: 0.75rem;
+            /* p-3 */
             width: 140px;
             height: 180px;
             display: flex;
@@ -1501,50 +1524,65 @@
             overflow: hidden;
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
+
         .summary-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
+
         .summary-card-category {
             position: absolute;
             top: 0;
             left: 0;
-            background-color: #4f46e5; /* bg-indigo-600 */
+            background-color: #4f46e5;
+            /* bg-indigo-600 */
             color: white;
             padding: 0.125rem 0.5rem;
-            font-size: 0.75rem; /* text-xs */
+            font-size: 0.75rem;
+            /* text-xs */
             font-weight: bold;
             border-top-left-radius: 0.5rem;
             border-bottom-right-radius: 0.5rem;
         }
+
         .summary-card img {
-            margin-top: 1.5rem; /* space for category tag */
-            max-height: 96px; /* h-24 */
+            margin-top: 1.5rem;
+            /* space for category tag */
+            max-height: 96px;
+            /* h-24 */
             width: auto;
             max-width: 100%;
             object-fit: contain;
             flex-grow: 1;
         }
+
         .summary-card p {
-            font-size: 0.75rem; /* text-xs */
+            font-size: 0.75rem;
+            /* text-xs */
             font-weight: 600;
             text-align: center;
             margin-top: 0.5rem;
             line-height: 1.2;
         }
+
         .component-link {
-            color: #60a5fa; /* A subtle blue */
+            color: #60a5fa;
+            /* A subtle blue */
             text-decoration: none;
-            font-size: 1rem!important;
+            font-size: 1rem !important;
             display: inline-block;
             margin-top: 3px;
         }
+
         .component-link:hover {
             text-decoration: underline;
         }
+
         .component-link i {
-            margin-left: 0.25rem; /* ml-1 */
-            font-size: 0.75rem; /* text-xs */
+            margin-left: 0.25rem;
+            /* ml-1 */
+            font-size: 0.75rem;
+            /* text-xs */
         }
     </style>
 </head>
@@ -1588,8 +1626,8 @@
                     onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
                 <img src="LaNave_LogoLetras.png" alt="Logo de La Nave del Medio" class="w-96 h-auto mx-auto mb-4"
                     onerror="this.onerror=null;this.src='https://placehold.co/192x64/00000000/ffffff?text=Logo'">
-                <p class="font-vt323 text-6xl green-333 mt-2 tracking-wider"
-                    style="text-shadow: 0 0 8px #42d232;">Gamer/Creator </p>
+                <p class="font-vt323 text-6xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">
+                    Gamer/Creator </p>
                 <p class="green-333 text-2xl font-saira">Tu PC de Gama Media a Medida</small></p>
 
                 <div class="flex items-center justify-center mt-6">
@@ -1608,98 +1646,103 @@
                         class="w-24 h-auto -ml-8 z-10 md:w-32 md:ml-4 hidden"
                         onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=Meme'">
                 </div>
-            <div  class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
-                                <div class="feature-card">
-                    <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3"
-                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
-                    <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
-                </div>
-
-                                <div class="feature-card">
-                    <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
-                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Programas Clave</h4>
-                    <p class="text-s text-gray-300 mt-1">
-                        Instalados para <br><b class="text-green-200">PRENDER</b>
-                        <span id="dynamic-word" class="transition-all duration-700 ease-in-out font-bold text-green-333">USAR</span>
-                    </p>
-                    <script>
-                        // Palabras a rotar
-                        const words = ["USAR", "JUGAR", "CREAR","VOLAR"];
-                        let current = 0;
-                        const el = document.getElementById("dynamic-word");
-                        // Calcular el ancho máximo
-                        const maxLen = Math.max(...words.map(w => w.length));
-                        el.style.width = `${maxLen}ch`;
-                        el.style.display = "inline-block";
-                        el.style.textAlign = "center";
-                        setInterval(() => {
-                            el.style.opacity = "0.2";
-                            setTimeout(() => {
-                                current = (current + 1) % words.length;
-                                el.textContent = words[current];
-                                el.style.opacity = "1";
-                            }, 350);
-                        }, 2300);
-                    </script>
-                    <style>
-                        #dynamic-word {
-                            transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
-                            opacity: 1;
-                            color: #42d232; /* green-333 */
-                            width: 5ch; /* Fallback for 5 characters */
-                            display: inline-block;
-                            text-align: center;
-                        }
-                    </style>
-                </div>
-
-                <div class="feature-card">
-                    <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
-                        onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
-                    <p class="text-s text-gray-300 mt-1">Lo llamo <b class="text-white">WindOS</b><p class="text-xs text-gray-500">FLUYE COMO EL VIENTO ;)</p></p>
-                </div>
-
-
-
-                <div class="feature-card animated-bg-games">
-                    <div class="corner-ribbon-wrapper">
-                        <div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span
-                                class="despegue-text text-violet-700">DESPEGUE</span></div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
+                    <div class="feature-card">
+                        <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3"
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
+                        <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
                     </div>
-                    <div class="text-orange-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
-                    <h4 class="font-saira font-bold text-white text-xl leading-tight">Hasta <p
-                            class="text-orange-400 text-xl">3 Juegos Incluidos</p>
-                    </h4>
-                    <p class="text-s text-gray-300 mt-1">✔ Elegilos</p>
+
+                    <div class="feature-card">
+                        <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Programas Clave</h4>
+                        <p class="text-s text-gray-300 mt-1">
+                            Instalados para <br><b class="text-green-200">PRENDER</b>
+                            <span id="dynamic-word"
+                                class="transition-all duration-700 ease-in-out font-bold text-green-333">USAR</span>
+                        </p>
+                        <script>
+                            // Palabras a rotar
+                            const words = ["USAR", "JUGAR", "CREAR", "VOLAR"];
+                            let current = 0;
+                            const el = document.getElementById("dynamic-word");
+                            // Calcular el ancho máximo
+                            const maxLen = Math.max(...words.map(w => w.length));
+                            el.style.width = `${maxLen}ch`;
+                            el.style.display = "inline-block";
+                            el.style.textAlign = "center";
+                            setInterval(() => {
+                                el.style.opacity = "0.2";
+                                setTimeout(() => {
+                                    current = (current + 1) % words.length;
+                                    el.textContent = words[current];
+                                    el.style.opacity = "1";
+                                }, 350);
+                            }, 2300);
+                        </script>
+                        <style>
+                            #dynamic-word {
+                                transition: opacity 0.7s cubic-bezier(.4, 0, .2, 1);
+                                opacity: 1;
+                                color: #42d232;
+                                /* green-333 */
+                                width: 5ch;
+                                /* Fallback for 5 characters */
+                                display: inline-block;
+                                text-align: center;
+                            }
+                        </style>
+                    </div>
+
+                    <div class="feature-card">
+                        <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
+                        <p class="text-s text-gray-300 mt-1">Lo llamo <b class="text-white">WindOS</b>
+                        <p class="text-xs text-gray-500">FLUYE COMO EL VIENTO ;)</p>
+                        </p>
+                    </div>
+
+
+
+                    <div class="feature-card animated-bg-games">
+                        <div class="corner-ribbon-wrapper">
+                            <div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span
+                                    class="despegue-text text-violet-700">DESPEGUE</span></div>
+                        </div>
+                        <div class="text-orange-400 text-4xl mb-3"><i class="fas fa-gift"></i></div>
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Hasta <p
+                                class="text-orange-400 text-xl">3 Juegos Incluidos</p>
+                        </h4>
+                        <p class="text-s text-gray-300 mt-1">✔ Elegilos</p>
+                    </div>
                 </div>
-            </div>
-                
+
             </header>
 
             <div class="hook-section text-center max-w-4xl mx-auto mt-8 space-y-6 relative z-40">
                 <div>
 
-                <div class="mt-2 text-base text-gray-200 flex items-center justify-center gap-4">
-                    
-                    <p ><i class="fas fa-house-circle-check"></i> Entrega a Domicilio</p>
-                    <p> </i><i class="fas fa-screwdriver-wrench"></i> Asistencia Técnica</p>
-                        <p >en Toda <i class="text-blue-300">🌊La Costa</i></p>
-                </div>
-                                    <!-- <p class="text-4xl font-bold"><strong><i>¿Gama Alta?</i><br class="sm:hidden"> ¡Ni Hace Falta!</strong></p>
+                    <div class="mt-2 text-base text-gray-200 flex items-center justify-center gap-4">
+
+                        <p><i class="fas fa-house-circle-check"></i> Entrega a Domicilio</p>
+                        <p> </i><i class="fas fa-screwdriver-wrench"></i> Asistencia Técnica</p>
+                        <p>en Toda <i class="text-blue-300">🌊La Costa</i></p>
+                    </div>
+                    <!-- <p class="text-4xl font-bold"><strong><i>¿Gama Alta?</i><br class="sm:hidden"> ¡Ni Hace Falta!</strong></p>
                         <p class="text-gray-200 font-saira text-3xl mt-2">con MENO<span class="text-3xl">$</span> de la 1/2 <i class="text-violet-500 text-4xl">VOLÁS⚡</i></p> -->
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
-                        <h1 class="text-2xl">Buscá un Mejor Precio o Potenciala</h1>
-                        <p class=" mb-8 text-3xl text-yellow-300">▼</p>
+                    <h1 class="text-2xl">Buscá un Mejor Precio o Potenciala</h1>
+                    <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
 
             </div>
 
-<!--             <div class="text-center mt-8 md:hidden lg:block">
+            <!--             <div class="text-center mt-8 md:hidden lg:block">
                 <a href="#games-section"
                     class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
                     <div class="flex items-center justify-center gap-5"><i class="fas fa-tasks text-2xl"></i>
@@ -1730,8 +1773,9 @@
         </div>
 
         <div id="price-card-visibility-zone">
-            <section ID="section-hardware" class="my-16 -mt-4 text-center max-w-3xl mx-auto px-4 overflow-hidden md:overflow-visible">
-<!--                 <h2 class="text-5xl font-bold mb-4 text-white">La Base de<p> La Nave</p>
+            <section ID="section-hardware"
+                class="my-16 -mt-4 text-center max-w-3xl mx-auto px-4 overflow-hidden md:overflow-visible">
+                <!--                 <h2 class="text-5xl font-bold mb-4 text-white">La Base de<p> La Nave</p>
                 </h2> -->
                 <p class="text-3xl text-gray-100 font-saira">
                     De <strong class="text-4xl font-vt323">base</strong> usamos:</p>
@@ -1741,17 +1785,39 @@
                     <!-- CPU Row -->
                     <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
                         <div class="md:col-span-5">
-                            <img id="combo_cpu_ram_mother" src="comps/combos/ryzen5600g.png" alt="Ryzen 5 5600g" class="w-3/4 mx-auto md:w-[130%] md:-ml-16 h-auto rounded-xl shadow-lg" onerror="this.onerror=null;this.src='comps/combos/ryzen5600g.webp';">
+                            <img id="combo_cpu_ram_mother" src="comps/combos/ryzen5600g.png" alt="Ryzen 5 5600g"
+                                class="w-3/4 mx-auto md:w-[130%] md:-ml-16 h-auto rounded-xl shadow-lg"
+                                onerror="this.onerror=null;this.src='comps/combos/ryzen5600g.webp';">
                         </div>
                         <div class="md:col-span-7 text-center md:text-left">
-                            <p class="font-saira text-4xl md:text-5xl green-333 coneste"><b>Ryzen 5</b> 5600g</p>
-                            <p class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"><b>16 GB</b>  RAM <small>en DualChannel</small></p>
-                            <p class="font-saira text-2xl md:text-3xl green-333 coneste">Motherboard <small>A520 Asrock</small></p>
-                            <p class="text-lg md:text-xl text-green-200 mt-2 coneste">Con este <b>excelente</b> combo con gráfica integrada <b>¡no te hace falta placa de video!</b></p>
-                            <p class="text-lg md:text-xl text-green-600 text-right mt-1">...pero podemos agregarla si buscás gráficos <i>tope de gama</i></p>
+                            <a href="https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM"
+                                target="_blank">
+                                <p class="font-saira text-4xl md:text-5xl green-333 coneste"><b>Ryzen 5</b> 5600g
+                                    <i class="fas fa-external-link-alt text-sm opacity-75"></i>
+                                </p>
+                            </a>
+                            <a href="https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665"
+                                target="_blank">
+                                <p class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"><b>16 GB</b> RAM
+                                    <small>en DualChannel</small>
+                                    <i class="fas fa-external-link-alt text-sm opacity-75"></i>
+                                </p>
+                            </a>
+                            <a href="https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333"
+                                target="_blank">
+                                <p class="font-saira text-2xl md:text-3xl green-333 coneste">Motherboard <small>
+                                        Asrock B450M</small>
+                                    <i class="fas fa-external-link-alt text-sm opacity-75"></i>
+                                </p>
+                            </a>
+                            <p class="text-lg md:text-xl text-green-200 mt-2 coneste">Con este <b>excelente</b> combo
+                                con gráfica integrada <b>¡no te hace falta placa de video!</b></p>
+                            <p class="text-lg md:text-xl text-green-600 text-right mt-1">...pero podemos agregarla si
+                                buscás gráficos <i>tope de gama</i></p>
                         </div>
-                    </div></div>
-            
+                    </div>
+                </div>
+
                 <h2 class="relative z-40 font-saira font-bold text-center mt-12 text-4xl md:text-2xl lg:text-5xl">
                     <span class="hidden sm:inline"
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
@@ -1799,7 +1865,8 @@
                                     <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="gpu-description" class="description-text"></p>
                                 </div>
-                                <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
+                                <img id="gpu-image" src="" alt="Tarjeta Gráfica"
+                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
@@ -1807,7 +1874,8 @@
                                     <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
-                                <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
+                                <img id="ssd-image" src="" alt="Almacenamiento SSD"
+                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
@@ -1815,7 +1883,8 @@
                                     <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="psu-description" class="description-text"></p>
                                 </div>
-                                <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
+                                <img id="psu-image" src="" alt="Fuente de Poder"
+                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
                         </ul>
                     </div>
@@ -1829,52 +1898,79 @@
                 <p class="text-center text-gray-300 mb-8">Agregá Comodidad al Mando</p>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
                     <!-- Combo Mouse y Teclado Card -->
-                    <div id="combo-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                    <div id="combo-card"
+                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="combo-image" src="" alt="Combo Mouse y Teclado" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Combo'">
+                            <img id="combo-image" src="" alt="Combo Mouse y Teclado"
+                                class="rounded-md w-full h-full object-cover"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Combo'">
                         </div>
-                        <p id="combo-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="combo-text"
+                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
+                        </p>
                     </div>
                     <!-- Keyboard Card -->
-                    <div id="keyboard-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                    <div id="keyboard-card"
+                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="keyboard-image" src="" alt="Teclado" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado'">
+                            <img id="keyboard-image" src="" alt="Teclado" class="rounded-md w-full h-full object-cover"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado'">
                         </div>
-                        <p id="keyboard-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="keyboard-text"
+                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
+                        </p>
                     </div>
                     <!-- Mouse Card -->
-                    <div id="mouse-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                    <div id="mouse-card"
+                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="mouse-image" src="" alt="Mouse" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Mouse'">
+                            <img id="mouse-image" src="" alt="Mouse" class="rounded-md w-full h-full object-cover"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Mouse'">
                         </div>
-                        <p id="mouse-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="mouse-text"
+                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
+                        </p>
                     </div>
                     <!-- Monitor Card -->
-                    <div id="monitor-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                    <div id="monitor-card"
+                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="monitor-image" src="" alt="Monitor" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Monitor'">
+                            <img id="monitor-image" src="" alt="Monitor" class="rounded-md w-full h-full object-cover"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Monitor'">
                         </div>
-                        <p id="monitor-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="monitor-text"
+                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
+                        </p>
                     </div>
                     <!-- Auriculares Card -->
-                    <div id="auriculares-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                    <div id="auriculares-card"
+                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="auriculares-image" src="" alt="Auriculares" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Auriculares'">
+                            <img id="auriculares-image" src="" alt="Auriculares"
+                                class="rounded-md w-full h-full object-cover"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Auriculares'">
                         </div>
-                        <p id="auriculares-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="auriculares-text"
+                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
+                        </p>
                     </div>
                     <!-- Parlantes Card -->
-                    <div id="parlantes-card" class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
+                    <div id="parlantes-card"
+                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
                         <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="parlantes-image" src="" alt="Parlantes" class="rounded-md w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Parlantes'">
+                            <img id="parlantes-image" src="" alt="Parlantes"
+                                class="rounded-md w-full h-full object-cover"
+                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Parlantes'">
                         </div>
-                        <p id="parlantes-text" class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center"></p>
+                        <p id="parlantes-text"
+                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
+                        </p>
                     </div>
                 </div>
             </section>
 
             <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
-           
+
 
                 <div class="feature-card relative lg:col-span-2 soporte-tecnico-card"
                     style="padding: 1rem; overflow: hidden; min-height: 200px;">
@@ -1894,10 +1990,12 @@
                         </div>
                         <div class="space-y-1 text-gray-300 max-w-xs pl-0">
                             <p class="flex items-center justify-start"><i
-                                    class="fas fa-comments blueish fa-fw w-6"></i><span class="ml-2">Contacto Directo con @DuendeKenna</span>
+                                    class="fas fa-comments blueish fa-fw w-6"></i><span class="ml-2">Contacto Directo
+                                    con @DuendeKenna</span>
                             </p>
-                            <p class="flex items-center justify-start"><i class="fas fa-desktop blueish fa-fw w-6"></i><span
-                                    class="ml-2">Asistencia Remota via Web</span></p>
+                            <p class="flex items-center justify-start"><i
+                                    class="fas fa-desktop blueish fa-fw w-6"></i><span class="ml-2">Asistencia Remota
+                                    via Web</span></p>
                             <div class="flex items-center justify-start">
                                 <i class="fas fa-screwdriver blueish fa-fw w-6"></i>
                                 <div class="ml-2">
@@ -1934,7 +2032,8 @@
                                 class="fas fa-recycle text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong>
                                 Podemos <i>reciclar</i> los tuyos para abaratar el precio.</span></li>
                         <li class="flex items-start gap-3"><i
-                                class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía Total:</strong> 12
+                                class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía
+                                    Total:</strong> 12
                                 meses de garantía en todos los componentes.</span></li>
                     </ul>
                     <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
@@ -1964,8 +2063,9 @@
                     <button type="button" id="load-more-games" class="load-more-button font-gamer text-lg">Ver
                         Más</button>
                 </div>
-                    <p id="no-more-games" class="text-gray-500 text-center mt-2 mb-4 hidden">¿No viste el que querés? Pedimelo en Notas?
-                    </p>
+                <p id="no-more-games" class="text-gray-500 text-center mt-2 mb-4 hidden">¿No viste el que querés?
+                    Pedimelo en Notas?
+                </p>
             </section>
 
             <section id="section-software" class="mb-12 section-card-style">
@@ -1985,21 +2085,23 @@
                         <div id="selected-games-list" class="flex justify-center flex-wrap gap-2 mt-2">
                         </div>
                     </div>
-            
+
                     <div class="flex flex-col items-center">
                         <h2 class="text-4xl font-bold mb-2">Selección y Precio Total</h2>
-                        
+
                         <!-- Contenedor para las imágenes de los componentes seleccionados -->
                         <div id="selected-components-preview" class="w-full p-4 border-y border-gray-700 my-6">
-                            <div id="selected-images-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
+                            <div id="selected-images-container"
+                                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
                                 <!-- Las imágenes se insertarán aquí con JS -->
                             </div>
                         </div>
-            
+
                         <div class="w-full max-w-lg mt-4 flex flex-col items-center">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-x-4 w-full">
                                 <div class="md:col-span-2 flex justify-center items-center">
-                                    <p class="lucas-price text-center font-saira"><span id="total-price">$500.000</span></p>
+                                    <p class="lucas-price text-center font-saira"><span id="total-price">$500.000</span>
+                                    </p>
                                 </div>
                                 <div class="md:col-span-2 flex justify-center items-center">
                                     <div class="relative h-24 w-40">
@@ -2009,12 +2111,15 @@
                                 </div>
                                 <div class="md:col-span-2 flex justify-center items-center text-center">
                                     <div>
-                                        <p class="text-sm green-333 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega GRATIS</p>
-                                        <p class="text-base text-white font-bold">🌊 En Toda <strong class="text-white">La Costa</strong></p>
+                                        <p class="text-sm green-333 whitespace-nowrap"><i
+                                                class="fas fa-truck mr-1"></i>Entrega GRATIS</p>
+                                        <p class="text-base text-white font-bold">🌊 En Toda <strong
+                                                class="text-white">La Costa</strong></p>
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-400 text-sm mt-4"><i class="fas fa-credit-card"></i> Consultar opciones en cuotas x MP</p>
+                            <p class="text-gray-400 text-sm mt-4"><i class="fas fa-credit-card"></i> Consultar opciones
+                                en cuotas x MP</p>
                         </div>
                     </div>
                 </div>
@@ -2078,7 +2183,7 @@
             <img id="zoomed-image" src="" alt="Imagen ampliada del componente">
         </div>
     </div>
-    
+
     <!-- Sticky Price Summary Card -->
     <div id="price-summary-card" class="font-saira">
         <div class="price-section ars-price">
@@ -2087,7 +2192,7 @@
             </div>
         </div>
         <div class="separator hidden"></div>
-<!--         <div class="price-section usd-price" id="usd-price-section">
+        <!--         <div class="price-section usd-price" id="usd-price-section">
             <div class="price-value-row">
                 <span class="currency-value"><span id="total-price-summary-usd"></span></span>
                 <span class="currency-text">USD</span>
@@ -2104,7 +2209,8 @@
         class="fixed bottom-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
         <div class="price-section ars-price">
             <div class="price-value-row">
-                <span class="currency-value text-cyan-400 font-saira text-right" id="total-price-summary-ars-mobile">$500.000</span>
+                <span class="currency-value text-cyan-400 font-saira text-right"
+                    id="total-price-summary-ars-mobile">$500.000</span>
             </div>
         </div>
         <div class="separator w-1 h-8 hidden"></div> <!-- Adjust height as needed -->
@@ -2250,7 +2356,7 @@
                 setupEventListeners();
                 updateAllDisplays();
             }
-            
+
             function populateUI() {
                 // Populate game list
                 const gameListContainer = document.getElementById('game-list');
@@ -2323,16 +2429,16 @@
                 // Populate component selects
                 const ssdSelect = document.getElementById('ssd-select');
                 if (ssdSelect) ssdSelect.innerHTML = ssdOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
-                
+
                 const gpuSelect = document.getElementById('gpu-select');
                 if (gpuSelect) gpuSelect.innerHTML = gpuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
 
                 const psuSelect = document.getElementById('psu-select');
-                if(psuSelect) psuSelect.innerHTML = psuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+                if (psuSelect) psuSelect.innerHTML = psuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
             }
 
             function setupEventListeners() {
-                 // Component Selects
+                // Component Selects
                 const ssdSelect = document.getElementById('ssd-select');
                 const gpuSelect = document.getElementById('gpu-select');
                 const psuSelect = document.getElementById('psu-select');
@@ -2340,7 +2446,7 @@
                 if (ssdSelect) ssdSelect.addEventListener('change', () => updateComponentDisplay(ssdSelect, document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions));
                 if (gpuSelect) gpuSelect.addEventListener('change', () => updateComponentDisplay(gpuSelect, document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions));
                 if (psuSelect) psuSelect.addEventListener('change', () => updateComponentDisplay(psuSelect, document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions));
-                
+
                 // Tower navigation
                 document.getElementById('prev-tower').addEventListener('click', prevTower);
                 document.getElementById('next-tower').addEventListener('click', nextTower);
@@ -2374,7 +2480,7 @@
                         fullscreenOverlay.classList.add('active');
                     });
                 });
-                
+
                 // Price card visibility observer
                 const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
                 if (priceVisibilityZone) {
@@ -2429,7 +2535,7 @@
                 document.getElementById('top-total-price').textContent = formattedArs;
                 document.getElementById('total-price-summary-ars').textContent = formattedArs;
                 document.getElementById('total-price-summary-ars-mobile').textContent = formattedArs;
-                
+
                 updateSelectedComponentsDisplay();
             }
 
@@ -2450,7 +2556,7 @@
                 const selectedTower = towersOptions[currentTowerIndex];
                 loadImageWithGrayscale(document.getElementById('current-tower-image'), selectedTower.image_url);
                 document.getElementById('current-tower-name').textContent = selectedTower.name;
-                
+
                 let towerPriceHTML = '';
                 if (selectedTower.link) {
                     const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} | ` : '';
@@ -2474,7 +2580,7 @@
                 }
                 updatePrices();
             }
-            
+
             function setupPeripheralCards() {
                 const peripheralConfig = [
                     { id: 'combo-card', options: comboMouseTecladoOptions, stateKey: 'currentComboIndex', onSelect: () => { peripheralState.currentMouseIndex = -1; peripheralState.currentKeyboardIndex = -1; updatePeripheralStates(); } },
@@ -2517,7 +2623,7 @@
 
                     card.classList.toggle('disabled', isComboActive && (p.id === 'mouse-card' || p.id === 'keyboard-card'));
                     card.classList.toggle('active', currentIndex > -1);
-                    
+
                     if (currentIndex > -1) {
                         const selected = p.options[currentIndex];
                         if (selected) {
@@ -2551,7 +2657,7 @@
                     const link = item.link ? `href="${item.link}" target="_blank"` : 'href="#" onclick="event.preventDefault()"';
                     return `<a ${link} class="summary-card-link"><div class="summary-card"><div class="summary-card-category">${category}</div><img src="${item.image_url}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/128x96/ffffff/333333?text=Error'"><p>${item.name}</p></div></a>`;
                 };
-                
+
                 const selectedGPU = gpuOptions.find(opt => opt.price == document.getElementById('gpu-select').value);
                 const selectedSSD = ssdOptions.find(opt => opt.price == document.getElementById('ssd-select').value);
                 const selectedPSU = psuOptions.find(opt => opt.price == document.getElementById('psu-select').value);
@@ -2581,7 +2687,7 @@
                 currentTowerIndex = (currentTowerIndex + 1) % towersOptions.length;
                 updateTowerDisplay();
             }
-            
+
             let errorToastTimeout;
             let consecutiveErrorClicks = 0;
             function showErrorToast(message) {
@@ -2611,7 +2717,7 @@
                 consecutiveErrorClicks = 0;
                 clearTimeout(errorToastTimeout);
                 document.getElementById('error-toast').classList.remove('show');
-                
+
                 const sticker = e.target.nextElementSibling.querySelector('.game-title-sticker');
                 if (e.target.checked) {
                     sticker.style.top = `${Math.floor(Math.random() * 50) + 15}%`;
@@ -2672,7 +2778,7 @@
                 const targetHeight = (6 * rowHeight) - gridGap + teaserHeight;
                 document.getElementById('game-grid-wrapper').style.maxHeight = `${targetHeight}px`;
             }
-            
+
             function positionCroxImages() {
                 const croxA = document.getElementById('home-crox-a');
                 const croxB = document.getElementById('home-crox-b');
@@ -2690,7 +2796,7 @@
                     croxB.style.left = 'auto';
                 }
             }
-            
+
             function showDolarPopup() {
                 if (allDolarRates.length === 0) return;
                 const dolarRatesList = document.getElementById('dolar-rates-list');
@@ -2698,7 +2804,7 @@
                 const tiposPermitidos = [{ key: 'oficial', label: 'Oficial' }, { key: 'blue', label: 'Blue' }, { key: 'cripto', label: 'Cripto' }];
                 let total = BASE_PRICE + parseInt(document.getElementById('ssd-select').value) + parseInt(document.getElementById('gpu-select').value) + parseInt(document.getElementById('psu-select').value) + towersOptions[currentTowerIndex].price;
                 // Add peripheral prices to total
-                
+
                 tiposPermitidos.forEach(tipo => {
                     const rate = allDolarRates.find(r => r.nombre.toLowerCase().includes(tipo.key));
                     if (!rate) return;
@@ -2714,7 +2820,7 @@
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
                 const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => softwareData.find(s => s.slug === cb.dataset.slug)?.name).filter(Boolean);
                 const extraNotes = document.getElementById('extra-notes').value;
-                
+
                 let message = `¡Hola, me interesa esta Nave del Medio!\n\n`;
                 message += `*Torre:* ${towersOptions[currentTowerIndex].name}\n`;
                 message += `*Almacenamiento:* ${document.getElementById('ssd-select').options[document.getElementById('ssd-select').selectedIndex].text}\n`;

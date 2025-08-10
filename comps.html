@@ -353,23 +353,23 @@
 <script>
     // --- Data Configuration ---
     const CATEGORY_NAV_LIST = [
-      { key: 'bases-section-container', label: 'Bases' }, 
-      { key: 'armadasOptions', label: 'Armadas' }, 
-      { key: 'towersOptions', label: 'Torres' }, 
-      { key: 'comboOptions', label: 'Combos' }, 
-      { key: 'cpuOptions', label: 'CPU' }, 
-      { key: 'motherboardOptions', label: 'Mother' }, 
-      { key: 'ramOptions', label: 'RAM' }, 
-      { key: 'gpuOptions', label: 'GPU' }, 
-      { key: 'ssdOptions', label: 'SSD' }, 
-      { key: 'psuOptions', label: 'PSU' }, 
-      { key: 'monitorOptions', label: 'Monitores' }, 
-      { key: 'mouseOptions', label: 'Mouse' }, 
-      { key: 'joystickOptions', label: 'Joysticks' }, 
-      { key: 'keyboardOptions', label: 'Teclados' }, 
-      { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado' }, 
-      { key: 'auricularesOptions', label: 'Auris' }, 
-      { key: 'parlantesOptions', label: 'Parlantes' }
+      { key: 'bases-section-container', label: 'Bases', folder: 'bases' }, 
+      { key: 'armadasOptions', label: 'Armadas', folder: 'armadas' }, 
+      { key: 'towersOptions', label: 'Torres', folder: 'torres' }, 
+      { key: 'comboOptions', label: 'Combos', folder: 'combos' }, 
+      { key: 'cpuOptions', label: 'CPU', folder: 'cpus' }, 
+      { key: 'motherboardOptions', label: 'Mother', folder: 'moms' }, 
+      { key: 'ramOptions', label: 'RAM', folder: 'rams' }, 
+      { key: 'gpuOptions', label: 'GPU', folder: 'gpus' }, 
+      { key: 'ssdOptions', label: 'SSD', folder: 'discos' }, 
+      { key: 'psuOptions', label: 'PSU', folder: 'psus' }, 
+      { key: 'monitorOptions', label: 'Monitores', folder: 'monitores' }, 
+      { key: 'mouseOptions', label: 'Mouse', folder: 'mouses' }, 
+      { key: 'joystickOptions', label: 'Joysticks', folder: 'joysticks' }, 
+      { key: 'keyboardOptions', label: 'Teclados', folder: 'teclados' }, 
+      { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado', folder: 'combo-mouse-teclado' }, 
+      { key: 'auricularesOptions', label: 'Auris', folder: 'auriculares' }, 
+      { key: 'parlantesOptions', label: 'Parlantes', folder: 'parlantes' }
     ];
 
     const dataMap = {
@@ -431,6 +431,18 @@
         return names[keyWithoutOptions] || 'Componente';
     }
     
+    function autofillImagePath(input, categoryKey, index) {
+        if (input.value.trim() === '') {
+            const categoryInfo = CATEGORY_NAV_LIST.find(cat => cat.key === categoryKey);
+            const product = dataMap[categoryKey][index];
+            if (categoryInfo && categoryInfo.folder && product && product.id) {
+                const newPath = `comps/${categoryInfo.folder}/${product.id}.webp`;
+                input.value = newPath;
+                updateProduct(categoryKey, index, 'image_url', newPath);
+            }
+        }
+    }
+
     function showMessage(elementId, message, duration = 4000) {
         const messageElement = document.getElementById(elementId);
         if (messageElement) {
@@ -892,7 +904,7 @@
             if (!categoryKey.includes('Options')) return; // Skip non-component categories like 'Bases'
 
             const categoryData = dataMap[categoryKey];
-            const readableCategoryName = getComponentName(categoryKey) + 's';
+            const readableCategoryName = category.label;
             const NAME_COL_STATIC_WIDTH = 330;
 
             const categoryDiv = document.createElement('div');
@@ -939,7 +951,7 @@
                                 <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
                             </td>` : ''}
                             <td class="px-6 py-4">
-                                <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" class="w-full text-xs">
+                                <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" onclick="autofillImagePath(this, '${categoryKey}', ${index})" class="w-full text-xs">
                             </td>
                             <td class="px-1 py-4">
                                 <div class="flex items-center gap-1 h-full">
@@ -1211,14 +1223,21 @@
             const priceText = priceElement.textContent;
             const price = parseInt(priceText.replace(/\./g, ''), 10);
             
-            const imageElement = doc.querySelector('.ui-pdp-gallery__figure img');
-            const imageUrl = imageElement ? imageElement.getAttribute('src') : '';
+            // Generate ID and image URL here, ignoring the scraped one
+            const existingIds = getAllIds();
+            const newId = generateUniqueId(existingIds);
+            const categoryInfo = CATEGORY_NAV_LIST.find(cat => cat.key === categoryKey);
+            let imageUrl = ''; // Default empty
+            if (categoryInfo && categoryInfo.folder) {
+                imageUrl = `comps/${categoryInfo.folder}/${newId}.webp`;
+            }
 
             const newProduct = {
+                id: newId,
                 name: name,
                 price: isNaN(price) ? 0 : price,
                 description: '',
-                image_url: imageUrl,
+                image_url: imageUrl, // Use the generated URL
                 link: link
             };
 
