@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Mercado Gamer: Partido de La Costa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #003459;
+            color: #F4F4F4;
+        }
+        .card {
+            background-color: #007EA7;
+            border: 1px solid #00A8E8;
+        }
+        .highlight-blue {
+            color: #00A8E8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight mb-2">Análisis del Mercado Gamer</h1>
+            <h2 class="text-2xl md:text-4xl font-bold highlight-blue">Partido de La Costa</h2>
+            <p class="text-lg mt-4 max-w-3xl mx-auto">Una mirada profunda a la viabilidad de vender PCs de gama media a Millennials y Generación Z en una de las zonas de mayor crecimiento de Argentina.</p>
+        </header>
+
+        <section id="demografia" class="mb-16 md:mb-24">
+            <h3 class="text-3xl font-bold text-center mb-10">La Oportunidad Demográfica: Un Mercado Joven y en Expansión</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="card rounded-xl shadow-lg p-6 flex flex-col justify-center items-center">
+                    <span class="text-6xl font-black highlight-blue">44.6%</span>
+                    <p class="mt-2 font-semibold text-lg">Crecimiento Poblacional</p>
+                    <p class="text-sm">(2010-2022)</p>
+                </div>
+                <div class="card rounded-xl shadow-lg p-6 flex flex-col justify-center items-center">
+                    <span class="text-6xl font-black highlight-blue">100.689</span>
+                    <p class="mt-2 font-semibold text-lg">Habitantes</p>
+                    <p class="text-sm">(Censo 2022)</p>
+                </div>
+                <div class="card rounded-xl shadow-lg p-6 flex flex-col justify-center items-center">
+                    <span class="text-6xl font-black highlight-blue">34</span>
+                    <p class="mt-2 font-semibold text-lg">Años</p>
+                    <p class="text-sm">(Edad Mediana)</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 items-center">
+                <div class="card rounded-xl shadow-lg p-6">
+                    <h4 class="text-xl font-bold text-center mb-4">Crecimiento Explosivo</h4>
+                    <p class="text-center text-sm mb-4">El Partido de La Costa supera ampliamente la media nacional, creando un mercado de consumo en plena expansión.</p>
+                    <div class="chart-container h-64 md:h-80">
+                        <canvas id="crecimientoPoblacionalChart"></canvas>
+                    </div>
+                </div>
+                <div class="card rounded-xl shadow-lg p-6">
+                    <h4 class="text-xl font-bold text-center mb-4">El Corazón del Mercado Objetivo</h4>
+                    <p class="text-center text-sm mb-4">Casi la mitad de la población pertenece a las generaciones Millennial y Z, el público principal para PCs gamer.</p>
+                    <div class="chart-container h-64 md:h-80">
+                        <canvas id="generacionesChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="economia" class="mb-16 md:mb-24">
+            <h3 class="text-3xl font-bold text-center mb-10">El Desafío Económico: El Poder Adquisitivo Local</h3>
+            <p class="text-center max-w-3xl mx-auto mb-10">La economía local, basada en el turismo y la construcción, presenta salarios promedio que dificultan la compra de bienes de alto valor, haciendo crucial la identificación de nichos con mayor capacidad económica.</p>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <div class="md:col-span-2 card rounded-xl shadow-lg p-6">
+                    <h4 class="text-xl font-bold mb-4 text-center">La Barrera del Precio</h4>
+                    <p class="text-sm text-center mb-4">Una PC gamer de gama media puede representar varios meses de salario para un trabajador promedio local.</p>
+                    <div class="chart-container h-64">
+                        <canvas id="precioVsSalarioChart"></canvas>
+                    </div>
+                </div>
+                <div class="md:col-span-3 card rounded-xl shadow-lg p-6">
+                    <h4 class="text-xl font-bold mb-4 text-center">Matriz de Asequibilidad por Hogar</h4>
+                    <p class="text-sm text-center mb-4">La viabilidad de la compra depende críticamente del perfil económico del hogar.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-blue-900/50">
+                                <tr>
+                                    <th scope="col" class="px-4 py-3">Segmento del Hogar</th>
+                                    <th scope="col" class="px-4 py-3 text-center">Índice de Asequibilidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-blue-800">
+                                    <td class="px-4 py-2 font-medium">Empleado Público / Municipal</td>
+                                    <td class="px-4 py-2 text-center"><span class="font-bold text-red-400">Muy Bajo</span></td>
+                                </tr>
+                                <tr class="border-b border-blue-800">
+                                    <td class="px-4 py-2 font-medium">Empleado Servicios / Comercio (Estacional)</td>
+                                    <td class="px-4 py-2 text-center"><span class="font-bold text-orange-400">Bajo</span></td>
+                                </tr>
+                                <tr class="border-b border-blue-800">
+                                    <td class="px-4 py-2 font-medium">Pequeño Emprendedor Local</td>
+                                    <td class="px-4 py-2 text-center"><span class="font-bold text-yellow-400">Bajo a Medio</span></td>
+                                </tr>
+                                <tr class="border-b border-blue-800">
+                                    <td class="px-4 py-2 font-medium">Propietario de Negocio Establecido</td>
+                                    <td class="px-4 py-2 text-center"><span class="font-bold text-green-400">Alto</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2 font-medium">Profesional / Trabajador Remoto (Nuevo Residente)</td>
+                                    <td class="px-4 py-2 text-center"><span class="font-bold text-green-400">Alto</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="segmentos" class="mb-16 md:mb-24">
+            <h3 class="text-3xl font-bold text-center mb-10">Dos Tribus, Un Partido: Conociendo a los Clientes</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <div class="card rounded-xl shadow-lg p-8 flex flex-col">
+                    <h4 class="text-2xl font-black text-center">MILLENNIALS</h4>
+                    <p class="text-center font-semibold highlight-blue text-lg mb-6">El Retro-Gamer Nostálgico</p>
+                    <div class="text-center mb-6">
+                        <span class="text-5xl">🎮</span>
+                        <p class="font-bold text-xl mt-2">Motor de Compra: LA NOSTALGIA</p>
+                        <p class="text-sm">Buscan revivir la experiencia de su juventud con juegos de los 90s y 2000s.</p>
+                    </div>
+                    <div class="bg-blue-900/50 rounded-lg p-4 flex-grow">
+                        <h5 class="font-bold text-center">Producto Ideal: "La Caja de Nostalgia"</h5>
+                        <ul class="mt-2 text-sm list-disc list-inside space-y-1">
+                            <li>Experiencia "Plug & Play" lista para usar.</li>
+                            <li>Software de emulación pre-configurado.</li>
+                            <li>Gabinete con estética retro.</li>
+                            <li>Precio enfocado en el rango bajo-medio (ARS 600k-750k).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card rounded-xl shadow-lg p-8 flex flex-col">
+                    <h4 class="text-2xl font-black text-center">GENERACIÓN Z</h4>
+                    <p class="text-center font-semibold highlight-blue text-lg mb-6">El Gamer Moderno y Competitivo</p>
+                    <div class="text-center mb-6">
+                        <span class="text-5xl">🏆</span>
+                        <p class="font-bold text-xl mt-2">Motor de Compra: EL RENDIMIENTO</p>
+                        <p class="text-sm">Necesitan una máquina para jugar títulos actuales (Fortnite, CS2) y socializar.</p>
+                    </div>
+                    <div class="bg-blue-900/50 rounded-lg p-4 flex-grow">
+                        <h5 class="font-bold text-center">Producto Ideal: "Equipo Esports-Ready"</h5>
+                        <ul class="mt-2 text-sm list-disc list-inside space-y-1">
+                            <li>Rendimiento sólido y fiable en 1080p.</li>
+                            <li>Garantía y soporte técnico local.</li>
+                            <li>Potencial para streaming y creación de contenido.</li>
+                            <li>La compra es una inversión familiar (decisión de los padres).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="estrategia" class="mb-16 md:mb-24">
+            <h3 class="text-3xl font-bold text-center mb-10">Estrategia para Ganar: El Vacío del Especialista</h3>
+            <p class="text-center max-w-3xl mx-auto mb-10">La competencia local es generalista, y la online carece de soporte presencial. Esto crea una oportunidad única para posicionarse como el experto local en gaming.</p>
+
+            <div class="card rounded-xl shadow-lg p-8">
+                <h4 class="text-xl font-bold text-center mb-6">Camino al Éxito: Un Plan en 3 Fases</h4>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-0">
+                    <div class="text-center p-4 max-w-xs">
+                        <div class="mx-auto bg-blue-900/50 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-black highlight-blue mb-3">1</div>
+                        <h5 class="font-bold">Fundación Digital</h5>
+                        <p class="text-sm">Crear un e-commerce y usar publicidad hiperlocal para llegar al público del partido.</p>
+                    </div>
+                    <div class="hidden md:block text-5xl font-thin highlight-blue mx-4">→</div>
+                     <div class="md:hidden text-4xl font-thin highlight-blue my-2">↓</div>
+                    <div class="text-center p-4 max-w-xs">
+                        <div class="mx-auto bg-blue-900/50 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-black highlight-blue mb-3">2</div>
+                        <h5 class="font-bold">Construir Confianza</h5>
+                        <p class="text-sm">Participar en comunidades, ofrecer contenido de valor y patrocinar eventos locales.</p>
+                    </div>
+                    <div class="hidden md:block text-5xl font-thin highlight-blue mx-4">→</div>
+                    <div class="md:hidden text-4xl font-thin highlight-blue my-2">↓</div>
+                    <div class="text-center p-4 max-w-xs">
+                        <div class="mx-auto bg-blue-900/50 w-20 h-20 rounded-full flex items-center justify-center text-3xl font-black highlight-blue mb-3">3</div>
+                        <h5 class="font-bold">Presencia Física</h5>
+                        <p class="text-sm">Abrir un showroom boutique para consultas, servicio técnico y generar confianza.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center border-t border-blue-800 pt-8 mt-12">
+            <p class="text-sm">Veredicto: Una operación de nicho viable pero de alto riesgo. El éxito depende de enfocarse en el servicio, la experiencia y la confianza para capturar al segmento de la población con mayor poder adquisitivo.</p>
+            <p class="text-xs text-gray-400 mt-4">Infografía generada a partir del "Estudio de Viabilidad de Mercado: PCs Gamer de Gama Media en el Partido de La Costa".</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        };
+        
+        const chartColors = {
+            blue: '#00A8E8',
+            darkBlue: '#007EA7',
+            navy: '#003459',
+            white: '#FFFFFF',
+            gridColor: 'rgba(244, 244, 244, 0.2)'
+        };
+
+        const defaultChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: chartColors.white,
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { 
+                        color: chartColors.white,
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    },
+                    grid: { color: chartColors.gridColor }
+                },
+                x: {
+                    ticks: { 
+                        color: chartColors.white,
+                        font: {
+                            family: "'Inter', sans-serif"
+                        }
+                    },
+                    grid: { color: chartColors.gridColor }
+                }
+            }
+        };
+
+        const crecimientoData = {
+            labels: ['Crecimiento Partido de La Costa', 'Crecimiento Promedio Argentina'],
+            datasets: [{
+                label: '% Crecimiento Poblacional (2010-2022)',
+                data: [44.6, 14.39],
+                backgroundColor: [chartColors.blue, chartColors.darkBlue],
+                borderColor: [chartColors.blue, chartColors.darkBlue],
+                borderWidth: 1
+            }]
+        };
+        new Chart(document.getElementById('crecimientoPoblacionalChart'), {
+            type: 'bar',
+            data: crecimientoData,
+            options: { ...defaultChartOptions, indexAxis: 'y' }
+        });
+
+        const generacionesData = {
+            labels: ['Millennials y Gen Z', 'Resto de la Población'],
+            datasets: [{
+                label: 'Distribución por Generación',
+                data: [49, 51],
+                backgroundColor: [chartColors.blue, chartColors.navy],
+                borderColor: chartColors.darkBlue,
+                hoverOffset: 4
+            }]
+        };
+        new Chart(document.getElementById('generacionesChart'), {
+            type: 'doughnut',
+            data: generacionesData,
+            options: {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: chartColors.white, font: { family: "'Inter', sans-serif" } }
+                    },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        const originalLabels = ['PC Gamer Gama Media (Precio Promedio)', 'Salario Municipal Promedio (Ref.)'];
+        const precioVsSalarioData = {
+            labels: originalLabels.map(wrapLabel),
+            datasets: [{
+                label: 'Monto en ARS',
+                data: [800000, 250000],
+                backgroundColor: [chartColors.blue, chartColors.darkBlue],
+                borderWidth: 1
+            }]
+        };
+        new Chart(document.getElementById('precioVsSalarioChart'), {
+            type: 'bar',
+            data: precioVsSalarioData,
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        ticks: {
+                            color: chartColors.white,
+                            callback: function(value) {
+                                return '$' + new Intl.NumberFormat('es-AR').format(value);
+                            }
+                        },
+                        grid: { color: chartColors.gridColor }
+                    },
+                    y: {
+                        ticks: { color: chartColors.white },
+                        grid: { color: chartColors.gridColor }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.x !== null) {
+                                    label += new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(context.parsed.x);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

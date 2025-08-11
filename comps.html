@@ -118,13 +118,14 @@
         /* Table Styles */
         .overview-table th, .overview-table td,
         .bases-table th, .bases-table td {
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem;
             vertical-align: middle;
         }
         .price-wrapper {
             display: flex;
             flex-direction: column;
             min-height: 50px; /* Ensure space for indicators */
+            justify-content: center;
         }
         .indicators-container {
             display: flex;
@@ -474,6 +475,22 @@
         return null;
     }
 
+    function ensureBestPriceOffer(urlString) {
+        if (!urlString || !urlString.includes('mercadolibre.com')) {
+            return urlString;
+        }
+        try {
+            const url = new URL(urlString);
+            if (!url.searchParams.has('offer_type')) {
+                url.searchParams.set('offer_type', 'BEST_PRICE');
+            }
+            return url.toString();
+        } catch (e) {
+            console.error("Invalid URL for modification:", urlString, e);
+            return urlString; // Return original if URL is malformed
+        }
+    }
+
     // --- Data Persistence ---
 
     function saveDataToSessionStorage() {
@@ -527,15 +544,26 @@
                     product.id = newId;
                     existingIds.add(newId);
                 }
+                if (product.visible === undefined) {
+                    product.visible = 1;
+                }
             });
         }
+        dataMap.baseOptions.forEach(base => {
+            if (base.visible === undefined) {
+                base.visible = 1;
+            }
+        });
     }
 
     function addProduct(categoryKey, productData) {
         const existingIds = getAllIds();
-        const newProduct = productData || { name: '', price: 0, description: '', image_url: '', link: '' };
+        const newProduct = productData || { name: '', price: 0, description: '', image_url: '', link: '', visible: 1 };
         if (!newProduct.id) {
             newProduct.id = generateUniqueId(existingIds);
+        }
+        if (newProduct.visible === undefined) {
+            newProduct.visible = 1;
         }
         dataMap[categoryKey].push(newProduct);
         renderOverviewTables();
@@ -573,12 +601,13 @@
     
     async function replaceLink(categoryKey, index) {
         try {
-            const text = await navigator.clipboard.readText();
+            let text = await navigator.clipboard.readText();
             if (typeof text !== 'string' || !text.trim().startsWith('http')) {
                 showMessage('error-message', 'El portapapeles no contiene un link válido.');
                 return;
             }
-            dataMap[categoryKey][index].link = text.trim();
+            text = ensureBestPriceOffer(text.trim());
+            dataMap[categoryKey][index].link = text;
             saveDataToSessionStorage();
             renderOverviewTables();
             showSuccessMessage('Link reemplazado con éxito.');
@@ -607,7 +636,7 @@
         const container = document.getElementById('bases-section');
         if (!dataMap.baseOptions) dataMap.baseOptions = [];
         if (dataMap.baseOptions.length === 0) {
-            dataMap.baseOptions.push({ id: 'base-default', name: 'Nueva Base', description: '', components: [], total: 0 });
+            dataMap.baseOptions.push({ id: 'base-default', name: 'Nueva Base', description: '', components: [], total: 0, visible: 1 });
         }
         
         container.innerHTML = `
@@ -689,11 +718,17 @@
                     <label class="block text-sm font-medium mb-1">Descripción</label>
                     <textarea oninput="updateBase('description', this.value)" class="w-full" rows="2">${base.description || ''}</textarea>
                 </div>
-                 <div class="md:col-span-2">
+                 <div class="md:col-span-1">
                     <label class="block text-sm font-medium mb-1">Total de la Base</label>
                     <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
                         $${(base.total || 0).toLocaleString('es-AR')}
                     </div>
+                </div>
+                <div class="md:col-span-1 flex items-center justify-center">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" ${base.visible ? 'checked' : ''} onchange="updateBase('visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
+                        <span class="font-medium">Visible</span>
+                    </label>
                 </div>
             </div>
             
@@ -805,7 +840,8 @@
             name: 'Nueva Base',
             description: '',
             components: [],
-            total: 0
+            total: 0,
+            visible: 1
         });
         selectedBaseIndex = dataMap.baseOptions.length - 1;
         renderBasesSection();
@@ -905,8 +941,7 @@
 
             const categoryData = dataMap[categoryKey];
             const readableCategoryName = category.label;
-            const NAME_COL_STATIC_WIDTH = 330;
-
+            
             const categoryDiv = document.createElement('div');
             categoryDiv.className = 'mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700 category-table-container';
             categoryDiv.id = `table-container-${categoryKey}`;
@@ -917,29 +952,30 @@
             table.innerHTML = `
                 <thead class="text-xs text-gray-200 uppercase bg-gray-700">
                     <tr>
-                        <th scope="col" class="px-4 py-3" style="width: 1%;">ID</th>
-                        <th scope="col" class="px-6 py-3" style="width: ${NAME_COL_STATIC_WIDTH}px;">Nombre</th>
-                        <th scope="col" class="px-6 py-3" style="width: 120px; text-align: left;">Precio</th>
-                        ${categoryKey !== 'towersOptions' ? '<th scope="col" class="px-6 py-3">Descripción</th>' : ''}
-                        <th scope="col" class="px-6 py-3">URL Imagen</th>
+                        <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
+                        <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
+                        <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
+                        ${categoryKey !== 'towersOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th>' : ''}
+                        <th scope="col" class="px-2 py-3" style="width: 200px;">URL Imagen</th>
+                        <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
                         <th scope="col" class="px-1 py-3" style="width:1%;min-width:70px;">Link</th>
-                        <th scope="col" class="px-2 py-3" style="width:1%;min-width:70px;"></th>
+                        <th scope="col" class="px-1 py-3" style="width:1%;min-width:70px;"></th>
                     </tr>
                 </thead>
                 <tbody>
                     ${(categoryData || []).map((product, index) => `
-                        <tr id="row-${categoryKey}-${index}" class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-200" 
+                        <tr id="row-${categoryKey}-${index}" class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-200 ${product.price_status ? 'price-' + product.price_status : ''}" 
                             ondragover="onRowDragOver(event)" 
                             ondrop="onRowDrop(event, '${categoryKey}', ${index})"
                             onmouseenter="showImagePreview('${product.image_url || ''}')"
                             onmouseleave="hideImagePreview()">
-                            <td class="px-4 py-4 text-center text-xs text-gray-400 font-mono">${product.id || ''}</td>
-                            <td class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono">${product.id || ''}</td>
+                            <td class="px-2 py-2 font-medium text-white whitespace-nowrap">
                                 <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
                             </td>
-                            <td class="px-6 py-4 price-cell">
+                            <td class="px-2 py-2 price-cell">
                                 <div class="price-wrapper">
-                                    <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1">
                                         <span class="text-gray-400 font-semibold text-lg">$</span>
                                         <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
                                     </div>
@@ -947,13 +983,16 @@
                                 </div>
                             </td>
                             ${categoryKey !== 'towersOptions' ? `
-                            <td class="px-6 py-4">
+                            <td class="px-2 py-2">
                                 <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
                             </td>` : ''}
-                            <td class="px-6 py-4">
+                            <td class="px-2 py-2">
                                 <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" onclick="autofillImagePath(this, '${categoryKey}', ${index})" class="w-full text-xs">
                             </td>
-                            <td class="px-1 py-4">
+                            <td class="px-2 py-2 text-center">
+                                <input type="checkbox" ${product.visible ? 'checked' : ''} onchange="updateProduct('${categoryKey}', ${index}, 'visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
+                            </td>
+                            <td class="px-1 py-2">
                                 <div class="flex items-center gap-1 h-full">
                                     <a href="${product.link || '#'}" target="_blank" class="btn btn-secondary min-w-0 h-full flex items-center justify-center text-xs py-1 px-1">
                                         <span class="lucide-icon mr-1" data-lucide="external-link" style="margin-right:2px;"></span>Visitar
@@ -963,21 +1002,23 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="px-2 py-4 text-right">
-                                <button id="scrape-btn-${categoryKey}-${index}" onclick="checkSingleProduct('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-200" title="Chequear este producto">
-                                    <span class="lucide-icon w-4 h-4" data-lucide="scan-line"></span>
-                                </button>
-                                <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar">
-                                    <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
-                                </button>
-                                <button draggable="true" ondragstart="onRowDragStart(event, '${categoryKey}', ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
-                                    <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
-                                </button>
+                            <td class="px-1 py-2 text-right">
+                                <div class="flex items-center">
+                                    <button id="scrape-btn-${categoryKey}-${index}" onclick="checkSingleProduct('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-200" title="Chequear este producto">
+                                        <span class="lucide-icon w-4 h-4" data-lucide="scan-line"></span>
+                                    </button>
+                                    <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar">
+                                        <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
+                                    </button>
+                                    <button draggable="true" ondragstart="onRowDragStart(event, '${categoryKey}', ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
+                                        <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     `).join('')}
                     <tr>
-                        <td colspan="8" class="add-row-button-cell">
+                        <td colspan="${categoryKey !== 'towersOptions' ? '8' : '7'}" class="add-row-button-cell">
                             <div class="flex justify-center items-center gap-4">
                                 <button onclick="addProduct('${categoryKey}')" class="add-row-button">
                                     <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir ${getComponentName(categoryKey)}
@@ -1041,6 +1082,7 @@
     async function scrapeProductData(product, row) {
         const localPrice = product.price;
         row.className = 'border-b border-gray-700 transition-colors duration-200 price-scraping';
+        product.price_status = 'scraping'; // Intermediate status
         row.scrollIntoView({ behavior: 'smooth', block: 'center' });
         showImagePreview(product.image_url);
         
@@ -1117,20 +1159,24 @@
                     }
                 }
             }
-
+            
             row.classList.remove('price-scraping');
             if (onlinePrice < localPrice) {
                 row.classList.add('price-lower');
+                product.price_status = 'lower';
             } else if (onlinePrice > localPrice) {
                 row.classList.add('price-higher');
+                product.price_status = 'higher';
             } else {
                 row.classList.add('price-same');
+                product.price_status = 'same';
             }
 
         } catch (error) {
             console.error(`Error checking price for ${product.name}:`, error);
             row.classList.remove('price-scraping');
             row.classList.add('price-error');
+            product.price_status = 'error';
 
             if (error.message === 'Producto no disponible') {
                 const statusSpan = document.createElement('span');
@@ -1203,10 +1249,11 @@
         btn.disabled = true;
 
         try {
-            const link = await navigator.clipboard.readText();
+            let link = await navigator.clipboard.readText();
             if (!link || !link.includes('mercadolibre.com')) {
                 throw new Error('El portapapeles no contiene un link válido de Mercado Libre.');
             }
+            link = ensureBestPriceOffer(link.trim());
 
             const response = await fetchWithProxyFallback(link);
             const html = await response.text();
@@ -1238,7 +1285,8 @@
                 price: isNaN(price) ? 0 : price,
                 description: '',
                 image_url: imageUrl, // Use the generated URL
-                link: link
+                link: link,
+                visible: 1
             };
 
             addProduct(categoryKey, newProduct);
@@ -1272,12 +1320,13 @@
                     name: b.name,
                     description: b.description,
                     components: b.components || [],
-                    total: b.total || 0
+                    total: b.total || 0,
+                    visible: b.visible !== undefined ? b.visible : 1
                 }));
                 continue;
              }
              exportData[mapKey] = dataMap[mapKey].map(p => {
-                const { id, name, price, description, image_url, link } = p;
+                const { id, name, price, description, image_url, link, visible } = p;
                 const orderedProduct = { id, name, price };
 
                 if (mapKey === 'towersOptions') {
@@ -1290,6 +1339,7 @@
 
                 orderedProduct.image_url = image_url;
                 orderedProduct.link = link;
+                orderedProduct.visible = visible !== undefined ? visible : 1;
                 
                 return orderedProduct;
             });

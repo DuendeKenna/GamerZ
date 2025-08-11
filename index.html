@@ -2305,23 +2305,23 @@
 
             async function initializeApp(data) {
                 // Populate component options from JSON data
-                baseOptions = data.baseOptions || [];
-                armadasOptions = data.armadasOptions || [];
-                towersOptions = data.towersOptions || [];
-                ssdOptions = data.ssdOptions || [];
-                gpuOptions = data.gpuOptions || [];
-                psuOptions = data.psuOptions || [];
-                motherboardOptions = data.motherboardOptions || [];
-                cpuOptions = data.cpuOptions || [];
-                ramOptions = data.ramOptions || [];
-                comboOptions = data.comboOptions || [];
-                monitorOptions = data.monitorOptions || [];
-                mouseOptions = data.mouseOptions || [];
-                joystickOptions = data.joystickOptions || [];
-                keyboardOptions = data.keyboardOptions || [];
-                comboMouseTecladoOptions = data.comboMouseTecladoOptions || [];
-                auricularesOptions = data.auricularesOptions || [];
-                parlantesOptions = data.parlantesOptions || [];
+                baseOptions = (data.baseOptions || []).filter(opt => opt.visible !== 0);
+                armadasOptions = (data.armadasOptions || []).filter(opt => opt.visible !== 0);
+                towersOptions = (data.towersOptions || []).filter(opt => opt.visible !== 0);
+                ssdOptions = (data.ssdOptions || []).filter(opt => opt.visible !== 0);
+                gpuOptions = (data.gpuOptions || []).filter(opt => opt.visible !== 0);
+                psuOptions = (data.psuOptions || []).filter(opt => opt.visible !== 0);
+                motherboardOptions = (data.motherboardOptions || []).filter(opt => opt.visible !== 0);
+                cpuOptions = (data.cpuOptions || []).filter(opt => opt.visible !== 0);
+                ramOptions = (data.ramOptions || []).filter(opt => opt.visible !== 0);
+                comboOptions = (data.comboOptions || []).filter(opt => opt.visible !== 0);
+                monitorOptions = (data.monitorOptions || []).filter(opt => opt.visible !== 0);
+                mouseOptions = (data.mouseOptions || []).filter(opt => opt.visible !== 0);
+                joystickOptions = (data.joystickOptions || []).filter(opt => opt.visible !== 0);
+                keyboardOptions = (data.keyboardOptions || []).filter(opt => opt.visible !== 0);
+                comboMouseTecladoOptions = (data.comboMouseTecladoOptions || []).filter(opt => opt.visible !== 0);
+                auricularesOptions = (data.auricularesOptions || []).filter(opt => opt.visible !== 0);
+                parlantesOptions = (data.parlantesOptions || []).filter(opt => opt.visible !== 0);
 
                 // Set BASE_PRICE from the first base option's total plus GAIN_PRICE
                 if (baseOptions.length > 0) {

@@ -1,0 +1,292 @@
+import React, { useState } from 'react';
+
+// --- Data for Marketing Ideas ---
+// This data is derived from the market study provided.
+const marketingIdeas = {
+  millennial: {
+    digital: [
+      {
+        title: "Campaña 'Recordás Esto?' en Facebook/Instagram",
+        description: "Crear anuncios de video cortos mostrando el arranque de Windows XP, o gameplays de juegos icónicos (Doom, Age of Empires II, The Sims). El objetivo es evocar una fuerte respuesta emocional.",
+        target: "Millennials (28-40 años)",
+        rationale: "Capitaliza el principal motor de compra de este segmento: la nostalgia pura y la conexión emocional con su juventud."
+      },
+      {
+        title: "Contenido de Blog: 'Cómo Revivir los Clásicos'",
+        description: "Escribir guías detalladas sobre cómo la 'Caja de Nostalgia' viene pre-configurada para jugar clásicos sin complicaciones técnicas, ahorrándoles tiempo a usuarios con responsabilidades familiares.",
+        target: "Millennials con poco tiempo libre",
+        rationale: "Ataca el punto de dolor de la complejidad técnica y resalta el valor 'plug-and-play' del producto."
+      },
+      {
+        title: "Publicidad Geolocalizada en Marketplace",
+        description: "Crear listados atractivos en Facebook Marketplace, apuntando específicamente a usuarios dentro del Partido de La Costa, destacando la entrega y configuración a domicilio.",
+        target: "Compradores locales que buscan conveniencia",
+        rationale: "Utiliza una plataforma de compra-venta popular localmente y ofrece un servicio que los competidores online no tienen."
+      }
+    ],
+    events: [
+      {
+        title: "Noche de Gaming Retro en un Bar Local",
+        description: "Asociarse con un bar o cervecería artesanal para organizar un evento donde se instalen varias 'Cajas de Nostalgia' para que la gente juegue gratis a clásicos como Street Fighter II o Mortal Kombat.",
+        target: "Millennials sociales",
+        rationale: "Genera una experiencia de marca memorable y demuestra el producto en un entorno social relajado, creando comunidad."
+      },
+      {
+        title: "Mini-Torneo de Clásicos en un Evento Comunitario",
+        description: "Montar un pequeño stand en ferias locales o eventos municipales, organizando un mini-torneo de un juego popular de los 90 (ej. Tetris, Pac-Man) con un pequeño premio de un comercio local.",
+        target: "Familias y curiosos",
+        rationale: "Aumenta la visibilidad de la marca a bajo costo y la posiciona como un actor activo en la comunidad local."
+      },
+      {
+        title: "Showroom por Cita: 'Viaje en el Tiempo'",
+        description: "Ofrecer demos personalizadas en el showroom, permitiendo a los potenciales clientes sentarse y experimentar la PC, con su música y juegos preferidos de la época.",
+        target: "Compradores serios que valoran la experiencia",
+        rationale: "Crea una experiencia de venta premium y consultiva que genera confianza y justifica el precio."
+      }
+    ],
+    content: [
+      {
+        title: "Serie de Videos: 'Unboxing de la Nostalgia'",
+        description: "Producir videos cortos y bien editados para redes sociales que muestren el unboxing de la PC, destacando el gabinete de estilo retro y la facilidad de uso 'out-of-the-box'.",
+        target: "Audiencia visual en Instagram/TikTok",
+        rationale: "El atractivo visual del hardware retro es un gancho poderoso para captar la atención rápidamente."
+      },
+      {
+        title: "Crear Playlists de Spotify de los 90s/2000s",
+        description: "Curar y compartir playlists temáticas ('Rock de los 90s para Jugar', 'Pop 2000s Hits') para asociar la marca con la cultura de la época, no solo con los juegos.",
+        target: "Millennials culturalmente activos",
+        rationale: "Construye una conexión de marca más profunda y sutil, más allá de la simple venta de un producto."
+      },
+      {
+        title: "Testimonios de Clientes Locales",
+        description: "Grabar videos cortos con clientes locales satisfechos del Partido de La Costa, contando qué sienten al volver a jugar los juegos de su infancia.",
+        target: "Potenciales clientes que buscan prueba social",
+        rationale: "La prueba social de un vecino o conocido es extremadamente poderosa en una comunidad pequeña y genera confianza."
+      }
+    ],
+    promotions: [
+      {
+        title: "Bundle 'Fin de Semana Retro'",
+        description: "Ofrecer un paquete que incluya la PC, un joystick USB de estilo retro y un pack de snacks o bebidas de marcas populares en los 90s/2000s.",
+        target: "Compradores que buscan un 'regalo' o experiencia completa",
+        rationale: "Aumenta el valor percibido y convierte la compra en un evento o experiencia, no solo en un producto."
+      },
+      {
+        title: "Plan Canje: 'Tu Consola Vieja Vale'",
+        description: "Ofrecer un pequeño descuento en la 'Caja de Nostalgia' a quienes entreguen una consola antigua (ej. Sega Genesis, PlayStation 1), aunque no funcione. El valor está en el acto simbólico.",
+        target: "Coleccionistas y nostálgicos",
+        rationale: "Crea una narrativa de marketing atractiva y un incentivo para actuar, aunque el valor económico del canje sea bajo."
+      },
+      {
+        title: "Financiación Especial 'Cuotas sin Interés'",
+        description: "Gestionar acuerdos para ofrecer cuotas sin interés con bancos locales o tarjetas específicas, haciendo el desembolso inicial más manejable para un lujo discrecional.",
+        target: "Hogares Millennial con presupuesto ajustado",
+        rationale: "Reduce la principal barrera de entrada: el precio total, dividiéndolo en pagos más pequeños y asumibles."
+      }
+    ]
+  },
+  gen_z: {
+    digital: [
+      {
+        title: "Campaña de Benchmarks en TikTok/Instagram Reels",
+        description: "Crear videos cortos y dinámicos mostrando el rendimiento (FPS) de 'La Nave del Medio' en juegos populares como Fortnite, CS2, y Valorant, con música en tendencia.",
+        target: "Generación Z (14-22 años)",
+        rationale: "Comunica el principal motor de compra (rendimiento) en el formato y plataforma que ellos consumen."
+      },
+      {
+        title: "Guía para Padres: 'Por Qué una PC es una Inversión'",
+        description: "Crear una página en el sitio web o un PDF descargable dirigido a los padres, explicando cómo la PC no es solo para jugar, sino también para estudiar, editar video y desarrollar habilidades digitales.",
+        target: "Padres (Millennials) que toman la decisión de compra",
+        rationale: "Aborda directamente la dinámica de compra familiar, dando a los padres argumentos racionales para justificar la inversión."
+      },
+      {
+        title: "Colaboración con un Micro-Influencer Local",
+        description: "Identificar a un joven streamer o creador de contenido del Partido de La Costa y prestarle una 'Nave del Medio' para que la use en sus transmisiones y la recomiende a su audiencia.",
+        target: "Audiencia local de Gen Z",
+        rationale: "Aprovecha la autenticidad y el alcance de un creador de contenido local para generar confianza y deseo en el grupo de pares."
+      }
+    ],
+    events: [
+      {
+        title: "Torneo Local de Fortnite/Valorant",
+        description: "Patrocinar u organizar un pequeño torneo presencial en un salón o escuela, con 'La Nave del Medio' como plataforma de juego. La inscripción puede ser un alimento no perecedero.",
+        target: "Comunidad gamer competitiva local",
+        rationale: "Posiciona la marca en el centro de la escena competitiva local y demuestra la capacidad del hardware en un entorno real."
+      },
+      {
+        title: "Taller Gratuito: 'Armá tu Primera PC'",
+        description: "Organizar un taller práctico en el showroom donde los jóvenes puedan aprender los conceptos básicos del ensamblaje de una PC, usando los componentes de 'La Nave del Medio'.",
+        target: "Jóvenes interesados en la tecnología y sus padres",
+        rationale: "Educa al mercado, genera confianza en la expertise técnica de la marca y crea una relación con potenciales clientes."
+      },
+      {
+        title: "Demo Day para Padres e Hijos",
+        description: "Invitar a las familias al showroom para una demo donde el hijo prueba los juegos y el padre puede hacer preguntas sobre garantía, servicio técnico y usos educativos.",
+        target: "Unidad familiar compradora",
+        rationale: "Facilita el proceso de venta al reunir a ambos tomadores de decisión (usuario y pagador) en un mismo lugar y momento."
+      }
+    ],
+    content: [
+      {
+        title: "Videos 'Setup Tours' de Clientes",
+        description: "Incentivar a los clientes que compraron 'La Nave del Medio' a enviar videos de sus setups de gaming. Repostear los mejores en las redes sociales de la marca.",
+        target: "Comunidad Gen Z",
+        rationale: "Fomenta el sentido de comunidad y pertenencia, y utiliza el contenido generado por el usuario como prueba social auténtica."
+      },
+      {
+        title: "Guías de Optimización de Juegos",
+        description: "Crear contenido de video o blog explicando cómo configurar los gráficos en juegos populares para obtener el máximo rendimiento en 'La Nave del Medio'.",
+        target: "Gamers que buscan una ventaja competitiva",
+        rationale: "Aporta valor real y posiciona a la marca como un experto que ayuda a sus clientes a sacar el máximo provecho de su compra."
+      },
+      {
+        title: "Comparativas de Rendimiento vs. Consolas",
+        description: "Crear infografías o videos simples comparando los FPS y la versatilidad de 'La Nave del Medio' frente a las consolas de última generación, destacando las ventajas de la PC.",
+        target: "Padres e hijos evaluando opciones",
+        rationale: "Proporciona argumentos claros y basados en datos para justificar la elección de una PC sobre una consola, que puede ser vista como una opción más simple."
+      }
+    ],
+    promotions: [
+      {
+        title: "Bundle 'Listo para Stream'",
+        description: "Ofrecer un paquete que incluya 'La Nave del Medio', una webcam básica y un micrófono de escritorio con un pequeño descuento sobre el precio por separado.",
+        target: "Jóvenes aspirantes a creadores de contenido",
+        rationale: "Satisface una aspiración clave de este segmento y aumenta significativamente el valor del ticket de venta."
+      },
+      {
+        title: "Plan de Actualización Futura",
+        description: "Garantizar la recompra de la tarjeta gráfica o el procesador a un precio pre-acordado después de 2 años, para una futura actualización en la misma tienda.",
+        target: "Padres que buscan proteger su inversión",
+        rationale: "Reduce el miedo a la obsolescencia y fomenta la lealtad del cliente a largo plazo, asegurando ventas futuras."
+      },
+      {
+        title: "Descuento por Rendimiento Académico",
+        description: "Ofrecer un pequeño descuento o un periférico de regalo a los estudiantes que presenten un boletín con buenas calificaciones. Una promoción ideal para comunicar a los padres.",
+        target: "Padres que necesitan justificar la compra",
+        rationale: "Conecta la compra de la PC con un resultado positivo (el estudio), convirtiéndola en un 'premio' y una herramienta, no solo un gasto."
+      }
+    ]
+  }
+};
+
+
+// --- Components ---
+
+const Header = () => (
+  <header className="text-center p-4 md:p-6">
+    <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white">Generador de Estrategias</h1>
+    <h2 className="text-xl md:text-2xl font-bold text-[#00A8E8]">Marketing Gamer: Partido de La Costa</h2>
+  </header>
+);
+
+const ProductSelector = ({ selectedProduct, setSelectedProduct }) => (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-4 md:px-0">
+    <div 
+      className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 transform hover:scale-105 border-4 ${selectedProduct === 'millennial' ? 'border-[#00A8E8] bg-[#007EA7]' : 'border-transparent bg-[#005f80]'}`}
+      onClick={() => setSelectedProduct('millennial')}
+    >
+      <h3 className="text-2xl font-bold text-white text-center">La Caja de Nostalgia</h3>
+      <p className="text-center text-sm text-gray-200 mt-1">Para el Gamer Millennial</p>
+    </div>
+    <div 
+      className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 transform hover:scale-105 border-4 ${selectedProduct === 'gen_z' ? 'border-[#00A8E8] bg-[#007EA7]' : 'border-transparent bg-[#005f80]'}`}
+      onClick={() => setSelectedProduct('gen_z')}
+    >
+      <h3 className="text-2xl font-bold text-white text-center">La Nave del Medio</h3>
+      <p className="text-center text-sm text-gray-200 mt-1">Para el Gamer Gen Z</p>
+    </div>
+  </div>
+);
+
+const CategorySelector = ({ selectedCategory, setSelectedCategory, productSelected }) => {
+  if (!productSelected) return null;
+
+  const categories = [
+    { id: 'digital', name: 'Marketing Digital' },
+    { id: 'events', name: 'Eventos y Comunidad' },
+    { id: 'content', name: 'Contenido y Marca' },
+    { id: 'promotions', name: 'Promociones y Ventas' }
+  ];
+
+  return (
+    <div className="my-8">
+      <h3 className="text-lg font-semibold text-center text-white mb-4">2. Seleccioná una categoría de marketing</h3>
+      <div className="flex flex-wrap justify-center gap-3 px-4">
+        {categories.map(cat => (
+          <button 
+            key={cat.id}
+            onClick={() => setSelectedCategory(cat.id)}
+            className={`px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300 ${selectedCategory === cat.id ? 'bg-[#00A8E8] text-[#003459]' : 'bg-[#007EA7] text-white hover:bg-[#0099cc]'}`}
+          >
+            {cat.name}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const IdeaCard = ({ idea }) => (
+  <div className="bg-[#007EA7] rounded-xl shadow-lg p-6 border border-[#00A8E8]/50 flex flex-col">
+    <h4 className="text-xl font-bold text-white">{idea.title}</h4>
+    <p className="text-gray-200 mt-2 text-sm flex-grow">{idea.description}</p>
+    <div className="mt-4 pt-4 border-t border-[#00A8E8]/30 text-xs">
+        <p className="font-semibold text-white">Público Objetivo: <span className="font-normal text-gray-300">{idea.target}</span></p>
+        <p className="font-semibold text-white mt-1">Justificación del Estudio: <span className="font-normal text-gray-300">{idea.rationale}</span></p>
+    </div>
+  </div>
+);
+
+
+const App = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleProductSelection = (product) => {
+    setSelectedProduct(product);
+    setSelectedCategory(null); // Reset category when product changes
+  };
+
+  const ideasToShow = selectedProduct && selectedCategory ? marketingIdeas[selectedProduct][selectedCategory] : [];
+
+  return (
+    <div className="bg-[#003459] min-h-screen font-sans antialiased">
+      <div className="container mx-auto max-w-5xl py-8 px-4">
+        <Header />
+        
+        <div className="mt-8 md:mt-12">
+            <h3 className="text-lg font-semibold text-center text-white mb-4">1. Elegí el producto para el cual necesitás ideas</h3>
+            <ProductSelector selectedProduct={selectedProduct} setSelectedProduct={handleProductSelection} />
+        </div>
+
+        <CategorySelector 
+          selectedCategory={selectedCategory} 
+          setSelectedCategory={setSelectedCategory} 
+          productSelected={!!selectedProduct}
+        />
+
+        {ideasToShow.length > 0 && (
+          <div className="mt-10">
+            <h3 className="text-2xl font-bold text-center text-white mb-6">Ideas de Marketing Generadas</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ideasToShow.map((idea, index) => (
+                <IdeaCard key={index} idea={idea} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {!selectedProduct && (
+            <div className="text-center mt-16 text-gray-300">
+                <p>Comenzá seleccionando un producto para ver las estrategias de marketing disponibles.</p>
+            </div>
+        )}
+      </div>
+       <footer className="text-center text-xs text-gray-400 py-6">
+            <p>Basado en el "Estudio de Viabilidad de Mercado: PCs Gamer de Gama Media en el Partido de La Costa".</p>
+        </footer>
+    </div>
+  );
+};
+
+export default App;
