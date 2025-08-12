@@ -1144,6 +1144,10 @@
             font-size: 2rem;
         }
 
+        .currency-value {
+            animation: price-glow 3s ease-in-out infinite;
+        }
+
         /* Select Styling */
         #ssd-select,
         #psu-select,
@@ -1546,7 +1550,7 @@
         }
 
         .component-link {
-            color: #60a5fa;
+            color: var(--color-principal);
             /* A subtle blue */
             text-decoration: none;
             font-size: 1rem !important;
@@ -1563,6 +1567,11 @@
             /* ml-1 */
             font-size: 0.75rem;
             /* text-xs */
+        }
+
+        :root {
+            --color-principal: #60a5fa;
+            /* azul brillante */
         }
     </style>
 </head>
@@ -1715,7 +1724,10 @@
                         <p class="text-gray-200 font-saira text-3xl mt-2">con MENO<span class="text-3xl">$</span> de la 1/2 <i class="text-violet-500 text-4xl">VOLÁS⚡</i></p> -->
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
-                    <h1 class="text-2xl">Buscá un Mejor Precio o Potenciala</h1>
+                    <h1 class="text-2xl">Te doy las que considero Mejores Opciones del momento</br> con <span class="links"
+                            style="color: var(--color-principal);">links<i
+                                class="fas fa-external-link-alt text-sm "></i></span>  a Mercado Libre, para ver sus
+                        detalles o las comprés por tu cuenta.</h1>
                     <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
@@ -1773,21 +1785,24 @@
                             <a href="https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM"
                                 target="_blank">
                                 <p class="font-saira text-4xl md:text-5xl green-333 coneste"><b>Ryzen 5</b> 5600g
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"></i>
+                                    <i class="fas fa-external-link-alt text-sm opacity-75"
+                                        style="color: var(--color-principal);"></i>
                                 </p>
                             </a>
                             <a href="https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665"
                                 target="_blank">
                                 <p class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"><b>16 GB</b> RAM
                                     <small>en DualChannel</small>
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"></i>
+                                    <i class="fas fa-external-link-alt text-sm opacity-75"
+                                        style="color: var(--color-principal);"></i>
                                 </p>
                             </a>
                             <a href="https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333"
                                 target="_blank">
                                 <p class="font-saira text-2xl md:text-3xl green-333 coneste">Motherboard <small>
                                         Asrock B450M</small>
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"></i>
+                                    <i class="fas fa-external-link-alt text-sm opacity-75"
+                                        style="color: var(--color-principal);"></i>
                                 </p>
                             </a>
                             <p class="text-lg md:text-xl text-green-200 mt-2 coneste">Con este <b>excelente</b> combo
@@ -2083,7 +2098,7 @@
                                     <p class="lucas-price text-center font-saira"><span id="total-price">$500.000</span>
                                     </p>
                                 </div>
-<!--                                 <div class="md:col-span-2 flex justify-center items-center">
+                                <!--                                 <div class="md:col-span-2 flex justify-center items-center">
                                     <div class="relative h-24 w-40">
                                         <span class="offer-banner-contado font-saira">al contado</span>
                                         <span class="offer-banner-main font-saira">¡OFERTA ÚNICA!</span>
@@ -2091,10 +2106,10 @@
                                 </div> -->
                                 <div class="md:col-span-2 flex justify-center items-center text-center">
                                     <div>
-                                        <p class=" green-333 whitespace-nowrap"><i
-                                                class="fas fa-truck mr-1"></i>Entrega Personal a Domicilio</p>
-                                        <p class="text-xl text-white font-bold">en Toda <strong
-                                                class="text-white">La Costa 🌊</strong></p>
+                                        <p class=" green-333 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega
+                                            Personal a Domicilio</p>
+                                        <p class="text-xl text-white font-bold">en Toda <strong class="text-white">La
+                                                Costa 🌊</strong></p>
                                     </div>
                                 </div>
                             </div>
