@@ -46,7 +46,7 @@
     {
       "id": 47143,
       "name": "Sentey H10",
-      "price": 69999,
+      "price": 69499,
       "slug": "sentey-h10",
       "image_url": "comps/torres/sentey-h10.webp",
       "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385?offer_type=BEST_PRICE",
@@ -55,7 +55,7 @@
     {
       "id": 30191,
       "name": "Sentey A8 Micro White",
-      "price": 74999,
+      "price": 70300,
       "slug": "sentey-a8-micro-white",
       "image_url": "comps/torres/sentey-a8-micro-white.webp",
       "link": "https://www.mercadolibre.com.ar/sentey-a8-cube-rgb-gabinete-sentey-a8-vidrio-temp-5-coolers-blanco/p/MLA50547846?offer_type=BEST_PRICE",
@@ -66,7 +66,7 @@
     {
       "id": 27876,
       "name": "500 GB - NVMe",
-      "price": 54199,
+      "price": 51895,
       "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
       "image_url": "comps/discos/nvme_hik_500.webp",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE",
@@ -75,7 +75,7 @@
     {
       "id": 93692,
       "name": "1 TB - NVMe",
-      "price": 91511,
+      "price": 94799,
       "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
       "image_url": "comps/discos/nvme_wd_1.webp",
       "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136?offer_type=BEST_PRICE",
@@ -174,6 +174,15 @@
       "image_url": "comps/psus/600noga.webp",
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
       "visible": 1
+    },
+    {
+      "id": 45939,
+      "name": "Genérica Sentey 550w",
+      "price": 38758,
+      "description": "",
+      "image_url": "comps/psus/550sentey.webp",
+      "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-xs550-ps-550w-negra/p/MLA43933347?offer_type=BEST_PRICE",
+      "visible": 0
     }
   ],
   "motherboardOptions": [
@@ -209,7 +218,7 @@
     {
       "id": 55990,
       "name": "Ryzen 7 5700G ",
-      "price": 238999,
+      "price": 238450,
       "description": "8 nucleos 4.6ghz Am4",
       "image_url": "comps/cpus/ryzen7_5700g.webp",
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
@@ -229,7 +238,7 @@
     {
       "id": 93477,
       "name": "DDR4 8 GB - Hiksemi",
-      "price": 39541,
+      "price": 38769,
       "description": "Descripción de la nueva RAM.",
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
@@ -289,7 +298,7 @@
       "name": "Cooler Master 24'' 100hz",
       "price": 166190,
       "description": "",
-      "image_url": "comps/monitores/cooler-master-24''-100hz.webp",
+      "image_url": "comps/monitores/cooler-master-24-100hz.webp",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684?offer_type=BEST_PRICE",
       "visible": 1
     },
@@ -298,16 +307,16 @@
       "name": "Noblex 25''",
       "price": 179999,
       "description": "",
-      "image_url": "comps/monitores/noblex-25''.webp",
+      "image_url": "comps/monitores/noblex-25.webp",
       "link": "https://www.mercadolibre.com.ar/monitor-noblex-25-pulgadas-nxsm2500-led-fhd/p/MLA45717090?offer_type=BEST_PRICE",
       "visible": 1
     },
     {
       "id": 17689,
       "name": "Gigabyte 27'' 180Hz",
-      "price": 296399,
+      "price": 294499,
       "description": "",
-      "image_url": "comps/monitores/gigabyte-27''-180hz.webp",
+      "image_url": "comps/monitores/gigabyte-27-180hz.webp",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-gigabyte-gs27fa-27-180hz-panel-ips-1ms-hdr-full-hd/p/MLA48944295?offer_type=BEST_PRICE",
       "visible": 1
     }
@@ -347,7 +356,7 @@
     {
       "id": 15740,
       "name": "Shiva K512 Cableado",
-      "price": 47478,
+      "price": 46075,
       "description": "",
       "image_url": "comps/teclados/shiva-k512-cableado.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
@@ -365,7 +374,7 @@
     {
       "id": 97647,
       "name": "Inalámbrico Noganet",
-      "price": 35042,
+      "price": 34280,
       "description": "Descripción del nuevo Teclado.",
       "image_url": "comps/teclados/inalambrico-noganet.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
