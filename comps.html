@@ -43,9 +43,8 @@
         .overview-table input[type="text"],
         .overview-table input[type="number"],
         .overview-table textarea,
-        #base-details input,
-        #base-details textarea,
-        #base-details select {
+        #base-details input, #base-details textarea, #base-details select,
+        #bundle-details input, #bundle-details textarea, #bundle-details select {
             background-color: #1f2937; /* bg-gray-800 */
             border: 1px solid #374151; /* border-gray-700 */
             border-radius: 0.375rem;
@@ -58,9 +57,8 @@
         .overview-table input[type="text"]:focus,
         .overview-table input[type="number"]:focus,
         .overview-table textarea:focus,
-        #base-details input:focus,
-        #base-details textarea:focus,
-        #base-details select:focus {
+        #base-details input:focus, #base-details textarea:focus, #base-details select:focus,
+        #bundle-details input:focus, #bundle-details textarea:focus, #bundle-details select:focus {
             border-color: #6366f1; /* indigo-500 */
             box-shadow: 0 0 0 2px #4f46e5;
         }
@@ -117,7 +115,7 @@
 
         /* Table Styles */
         .overview-table th, .overview-table td,
-        .bases-table th, .bases-table td {
+        .bundles-table th, .bundles-table td {
             padding: 0.5rem;
             vertical-align: middle;
         }
@@ -202,11 +200,11 @@
             background: linear-gradient(to right, #1f2937 80%, #6366f1 100%);
             border-bottom: 2px solid #6366f1;
             box-shadow: 0 2px 8px 0 rgba(0,0,0,0.25);
-            padding: 0.5rem 0;
+            padding: 0.5rem 1rem;
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            overflow-x: auto;
+            flex-wrap: wrap;
+            gap: 0.25rem 0.5rem;
             transition: top 0.2s;
         }
         .category-navbar.hidden { display: none; }
@@ -215,29 +213,39 @@
             border: none;
             color: #e5e7eb;
             font-weight: 600;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.75rem;
             border-radius: 0.375rem;
             transition: background 0.15s, color 0.15s;
             cursor: pointer;
             white-space: nowrap;
+            position: relative;
         }
+        .category-navbar .cat-nav-btn:not(:last-child)::after {
+            content: '|';
+            position: absolute;
+            right: -0.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4b5563;
+        }
+
         .category-navbar .cat-nav-btn.active, .category-navbar .cat-nav-btn:hover {
             background: #6366f1;
             color: #fff;
         }
         .category-navbar-spacer {
-            height: 3.2rem;
             width: 100%;
+            transition: height 0.2s;
         }
         
-        /* Bases Section Styles */
-        .bases-section {
+        /* Bases & Bundles Section Styles */
+        .management-section {
             display: grid;
             grid-template-columns: 350px 1fr;
             gap: 1.5rem;
         }
-        .base-list-item {
+        .list-item {
             cursor: pointer;
             padding: 0.5rem 0.75rem;
             border-radius: 0.5rem;
@@ -249,15 +257,15 @@
             gap: 0.75rem;
             min-height: 64px;
         }
-        .base-list-item.active {
+        .list-item.active {
             background-color: #6366f1;
             color: white;
             border-color: #4f46e5;
         }
-        .base-list-item:not(.active):hover {
+        .list-item:not(.active):hover {
             background-color: #374151;
         }
-        .base-list-item .component-thumbs img {
+        .list-item .component-thumbs img {
             height: 48px;
             width: 48px;
             object-fit: cover;
@@ -265,26 +273,35 @@
         }
         
         /* Accordion Styles */
-        #bases-accordion-header .lucide-icon {
+        .accordion-header .lucide-icon {
             transition: transform 0.3s ease-in-out;
         }
-        #bases-accordion-header .rotate-180 {
+        .accordion-header .rotate-180 {
             transform: rotate(180deg);
         }
-        #bases-accordion-content {
+        .accordion-content {
             transition: max-height 0.3s ease-in-out;
             overflow: hidden;
+        }
+        
+        .ram-qty-btn {
+            background-color: #374151;
+            border: 1px solid #4b5563;
+        }
+        .ram-qty-btn.active {
+            background-color: #6366f1;
+            border-color: #4f46e5;
+            color: white;
         }
 
 
         @media (max-width: 1024px) {
-            .bases-section {
+            .management-section {
                 grid-template-columns: 1fr;
             }
         }
         @media (max-width: 640px) {
             .category-navbar { font-size: 0.95rem; }
-            .category-navbar-spacer { height: 3.5rem; }
         }
     </style>
 </head>
@@ -296,7 +313,7 @@
 
     <!-- Sticky category navigation bar -->
     <div id="category-navbar" class="category-navbar"></div>
-    <div class="category-navbar-spacer"></div>
+    <div id="category-navbar-spacer" class="category-navbar-spacer"></div>
 
     <!-- Main container -->
     <div class="mx-auto bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700" style="width:95%;max-width:1800px;">
@@ -307,6 +324,9 @@
              <button onclick="reloadDataFromJson()" class="btn btn-secondary">
                 <span class="lucide-icon mr-2" data-lucide="refresh-ccw"></span> Recargar de Archivo
             </button>
+            <button onclick="resetSessionAndReload()" class="btn btn-secondary border-amber-500/50 hover:bg-amber-600">
+                <span class="lucide-icon mr-2" data-lucide="eraser"></span> Restablecer Sesión
+            </button>
             <button id="check-prices-btn" onclick="checkAllPrices()" class="btn btn-primary bg-teal-500 hover:bg-teal-600">
                 <span id="check-prices-icon" class="lucide-icon mr-2" data-lucide="scan-line"></span>
                 <span id="check-prices-text">Chequear Precios</span>
@@ -315,12 +335,25 @@
 
         <!-- Bases Section (Accordion) -->
         <div id="bases-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h3 id="bases-accordion-header" class="flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
-                <span>Bases de Componentes</span>
+            <h3 id="bases-accordion-header" class="accordion-header flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
+                <span>Bases (CPU + Mother + RAM)</span>
                 <span class="lucide-icon" data-lucide="chevron-down"></span>
             </h3>
-            <div id="bases-accordion-content" class="p-6 pt-0 hidden">
-                 <div id="bases-section">
+            <div id="bases-accordion-content" class="accordion-content p-6 pt-0 hidden">
+                 <div id="bases-section" class="management-section">
+                    <!-- Content generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bundles Section (Accordion) -->
+        <div id="bundles-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h3 id="bundles-accordion-header" class="accordion-header flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
+                <span>Bundles (Componentes Múltiples)</span>
+                <span class="lucide-icon" data-lucide="chevron-down"></span>
+            </h3>
+            <div id="bundles-accordion-content" class="accordion-content p-6 pt-0 hidden">
+                 <div id="bundles-section" class="management-section">
                     <!-- Content generated by JavaScript -->
                 </div>
             </div>
@@ -344,18 +377,17 @@
                     <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código
                 </button>
             </div>
-            <p id="copy-message" class="text-center text-sm text-green-500 mt-2 hidden">¡Código copiado al portapapeles!</p>
-            <p id="error-message" class="text-center text-sm text-red-500 mt-2 hidden"></p>
-            <p id="warning-message" class="text-center text-sm text-amber-400 mt-2 hidden"></p>
-            <div id="success-message-container"></div>
+            <div id="message-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-50"></div>
         </section>
     </div>
 
 <script>
     // --- Data Configuration ---
     const CATEGORY_NAV_LIST = [
-      { key: 'bases-section-container', label: 'Bases', folder: 'bases' }, 
-      { key: 'armadasOptions', label: 'Armadas', folder: 'armadas' }, 
+      { key: 'bases-section-container', label: 'Bases' }, 
+      { key: 'bundles-section-container', label: 'Bundles' }, 
+      { key: 'armadasOptions', label: 'Armadas', folder: 'armadas' },
+      { key: 'miniPcOptions', label: 'MiniPCs', folder: 'minipc' },
       { key: 'towersOptions', label: 'Torres', folder: 'torres' }, 
       { key: 'comboOptions', label: 'Combos', folder: 'combos' }, 
       { key: 'cpuOptions', label: 'CPU', folder: 'cpus' }, 
@@ -368,20 +400,29 @@
       { key: 'mouseOptions', label: 'Mouse', folder: 'mouses' }, 
       { key: 'joystickOptions', label: 'Joysticks', folder: 'joysticks' }, 
       { key: 'keyboardOptions', label: 'Teclados', folder: 'teclados' }, 
-      { key: 'comboMouseTecladoOptions', label: 'Mouse+Teclado', folder: 'combo-mouse-teclado' }, 
+      { key: 'comboMouseTecladoOptions', label: 'M+T', folder: 'combo-mouse-teclado' }, 
       { key: 'auricularesOptions', label: 'Auris', folder: 'auriculares' }, 
-      { key: 'parlantesOptions', label: 'Parlantes', folder: 'parlantes' }
+      { key: 'parlantesOptions', label: 'Parlantes', folder: 'parlantes' },
+      { key: 'webcamOptions', label: 'Webcams', folder: 'webcams' },
+      { key: 'microfonosOptions', label: 'Mics', folder: 'mics' },
+      { key: 'wifiOptions', label: 'WiFi', folder: 'wifi' },
+      { key: 'arosDeLuzOptions', label: 'Luz', folder: 'luz' }
     ];
 
     const dataMap = {
-        baseOptions: [], armadasOptions: [], towersOptions: [], ssdOptions: [], gpuOptions: [], 
+        baseOptions: [],
+        bundleOptions: [], 
+        armadasOptions: [], towersOptions: [], ssdOptions: [], gpuOptions: [], 
         psuOptions: [], motherboardOptions: [], cpuOptions: [], ramOptions: [], comboOptions: [], 
         monitorOptions: [], mouseOptions: [], joystickOptions: [], keyboardOptions: [], 
-        comboMouseTecladoOptions: [], auricularesOptions: [], parlantesOptions: []
+        comboMouseTecladoOptions: [], auricularesOptions: [], parlantesOptions: [],
+        webcamOptions: [], microfonosOptions: [], wifiOptions: [], arosDeLuzOptions: [],
+        miniPcOptions: []
     };
     
     let selectedBaseIndex = 0;
-    let draggedBaseComponentIndex = null; // For base component reordering
+    let selectedBundleIndex = 0;
+    let draggedBundleComponentIndex = null;
 
     const CORS_PROXIES = [
         'https://api.allorigins.win/raw?url=',
@@ -396,6 +437,15 @@
             const targetId = cat.key.includes('Options') ? `table-container-${cat.key}` : cat.key;
             return `<button class="cat-nav-btn" data-cat="${targetId}" onclick="scrollToCategory('${targetId}')">${cat.label}</button>`
         }).join('');
+        updateNavbarSpacer();
+    }
+    
+    function updateNavbarSpacer() {
+        const navbar = document.getElementById('category-navbar');
+        const spacer = document.getElementById('category-navbar-spacer');
+        if (navbar && spacer) {
+            spacer.style.height = `${navbar.offsetHeight}px`;
+        }
     }
 
     function scrollToCategory(targetId) {
@@ -422,12 +472,12 @@
     function getComponentName(type) {
         const keyWithoutOptions = type.replace('Options', '');
         const names = {
-            base: 'Base', armadas: 'Armada', towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
+            base: 'Base', bundle: 'Bundle', armadas: 'Armada', towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
             motherboard: 'Motherboard', cpu: 'CPU', ram: 'RAM',
             combo: 'Combo', monitor: 'Monitor', mouse: 'Mouse',
             joystick: 'Joystick', keyboard: 'Teclado',
             comboMouseTeclado: 'Combo Mouse y Teclado', auriculares: 'Auricular',
-            parlantes: 'Parlante'
+            parlantes: 'Parlante', webcam: 'Webcam', microfonos: 'Mic', wifi: 'WiFi', arosDeLuz: 'Luz', miniPc: 'MiniPC'
         };
         return names[keyWithoutOptions] || 'Componente';
     }
@@ -444,51 +494,57 @@
         }
     }
 
-    function showMessage(elementId, message, duration = 4000) {
-        const messageElement = document.getElementById(elementId);
-        if (messageElement) {
-            messageElement.innerHTML = message;
-            messageElement.classList.remove('hidden');
-            setTimeout(() => {
-                messageElement.classList.add('hidden');
-            }, duration);
-        }
-    }
-    
-    function showSuccessMessage(message) {
-        let container = document.getElementById('success-message-container');
-        const msg = document.createElement('div');
-        msg.style.cssText = `position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #22c55e; color: #fff; padding: 12px 24px; border-radius: 8px; z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.25);`;
-        msg.innerHTML = message;
-        container.appendChild(msg);
-        setTimeout(() => msg.remove(), 2500);
+    function showToast(message, type = 'success') {
+        const container = document.getElementById('message-container');
+        const toast = document.createElement('div');
+        const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+        toast.className = `px-4 py-2 rounded-md text-white font-semibold shadow-lg ${bgColor}`;
+        toast.textContent = message;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.remove();
+        }, 3000);
     }
 
     function findComponentById(id) {
+        // Search in regular components first
         for (const categoryKey in dataMap) {
-            if (categoryKey === 'baseOptions') continue;
+            if (categoryKey === 'baseOptions' || categoryKey === 'bundleOptions') continue;
             const component = dataMap[categoryKey].find(p => p.id == id);
             if (component) {
                 return { component, categoryKey };
             }
         }
+        // If not found, search in bases
+        const base = dataMap.baseOptions.find(b => b.id == id);
+        if (base) {
+            return { component: base, categoryKey: 'baseOptions' };
+        }
         return null;
     }
 
-    function ensureBestPriceOffer(urlString) {
+    function modifyMercadoLibreLink(urlString) {
         if (!urlString || !urlString.includes('mercadolibre.com')) {
             return urlString;
         }
         try {
             const url = new URL(urlString);
-            if (!url.searchParams.has('offer_type')) {
-                url.searchParams.set('offer_type', 'BEST_PRICE');
-            }
+            url.searchParams.set('offer_type', 'OFFICIAL_STORE');
             return url.toString();
         } catch (e) {
             console.error("Invalid URL for modification:", urlString, e);
             return urlString; // Return original if URL is malformed
         }
+    }
+    
+    function copyToClipboard(text) {
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(function() {
+            showToast(`ID "${text}" copiado.`);
+        }, function(err) {
+            showToast('No se pudo copiar el ID.', 'error');
+            console.error('Could not copy text: ', err);
+        });
     }
 
     // --- Data Persistence ---
@@ -498,7 +554,7 @@
             sessionStorage.setItem('productAdminData', JSON.stringify(dataMap));
         } catch (e) {
             console.error("Error saving to sessionStorage:", e);
-            showMessage('error-message', 'Error al guardar datos en la sesión.');
+            showToast('Error al guardar datos en la sesión.', 'error');
         }
     }
 
@@ -517,10 +573,9 @@
 
     function getAllIds() {
         const ids = new Set();
-        for (const categoryKey in dataMap) {
-            if (categoryKey === 'baseOptions') continue;
-            dataMap[categoryKey].forEach(product => {
-                if (product.id) ids.add(product.id);
+        for (const key in dataMap) {
+            dataMap[key].forEach(item => {
+                if (item.id) ids.add(item.id);
             });
         }
         return ids;
@@ -534,33 +589,61 @@
         return newId;
     }
 
-    function assignIdsToMissingProducts() {
+    function sanitizeAndAssignDefaults() {
         const existingIds = getAllIds();
         for (const categoryKey in dataMap) {
-            if (categoryKey === 'baseOptions') continue;
-            dataMap[categoryKey].forEach(product => {
-                if (!product.id) {
+            if (!Array.isArray(dataMap[categoryKey])) {
+                dataMap[categoryKey] = []; // Ensure it's an array if it's not
+            }
+            dataMap[categoryKey].forEach(item => {
+                if (!item.id || item.id.toString().includes('-default')) {
                     const newId = generateUniqueId(existingIds);
-                    product.id = newId;
+                    item.id = newId;
                     existingIds.add(newId);
                 }
-                if (product.visible === undefined) {
-                    product.visible = 1;
+                if (item.visible === undefined) {
+                    item.visible = 1;
+                }
+                // Specific defaults
+                if (categoryKey === 'baseOptions') {
+                    if (item.description === undefined) item.description = '';
+                    if (item.totalram === undefined) item.totalram = 0;
+                }
+                if (categoryKey === 'bundleOptions') {
+                    if (item.description === undefined) item.description = '';
+                }
+                if (categoryKey === 'miniPcOptions') {
+                    if (item.cpu === undefined) item.cpu = '';
+                    if (item.ram === undefined) item.ram = '';
+                    if (item.ssd === undefined) item.ssd = '';
+                }
+                if (categoryKey === 'ramOptions') {
+                    if (item.total === undefined) item.total = 0;
                 }
             });
         }
-        dataMap.baseOptions.forEach(base => {
-            if (base.visible === undefined) {
-                base.visible = 1;
-            }
-        });
     }
 
     function addProduct(categoryKey, productData) {
-        const existingIds = getAllIds();
-        const newProduct = productData || { name: '', price: 0, description: '', image_url: '', link: '', visible: 1 };
+        let newProduct;
+        if (productData) {
+            newProduct = productData;
+        } else {
+            newProduct = { name: '', price: 0, image_url: '', link: '', visible: 1 };
+            if (categoryKey === 'miniPcOptions') {
+                newProduct.cpu = '';
+                newProduct.ram = '';
+                newProduct.ssd = '';
+            } else if (categoryKey === 'ramOptions') {
+                newProduct.total = 0;
+                newProduct.description = '';
+            } else {
+                newProduct.description = '';
+            }
+        }
+        
         if (!newProduct.id) {
-            newProduct.id = generateUniqueId(existingIds);
+            newProduct.id = generateUniqueId(getAllIds());
         }
         if (newProduct.visible === undefined) {
             newProduct.visible = 1;
@@ -581,10 +664,11 @@
         if (dataMap[categoryKey] && dataMap[categoryKey][index]) {
             dataMap[categoryKey][index][key] = value;
             
-            // If price is updated, recalculate totals for all bases
-            if (key === 'price') {
+            if (key === 'price' || (categoryKey === 'ramOptions' && key === 'total')) {
                 updateAllBaseTotals();
-                renderBasesSection(); // Re-render bases to show new totals
+                updateAllBundleTotals();
+                renderBasesSection();
+                renderBundlesSection();
             }
 
             saveDataToSessionStorage();
@@ -603,16 +687,17 @@
         try {
             let text = await navigator.clipboard.readText();
             if (typeof text !== 'string' || !text.trim().startsWith('http')) {
-                showMessage('error-message', 'El portapapeles no contiene un link válido.');
+                showToast('El portapapeles no contiene un link válido.', 'error');
                 return;
             }
-            text = ensureBestPriceOffer(text.trim());
+            text = modifyMercadoLibreLink(text.trim());
             dataMap[categoryKey][index].link = text;
             saveDataToSessionStorage();
             renderOverviewTables();
-            showSuccessMessage('Link reemplazado con éxito.');
+            showToast('Link reemplazado con éxito.');
         } catch (err) {
-            showMessage('error-message', 'No se pudo acceder al portapapeles.');
+            console.error("Clipboard error:", err);
+            showToast('No se pudo acceder al portapapeles.', 'error');
         }
     }
     
@@ -631,19 +716,19 @@
         document.getElementById('image-preview').classList.add('hidden');
     }
 
-    // --- Bases Section Rendering ---
-    function renderBasesSection() {
-        const container = document.getElementById('bases-section');
-        if (!dataMap.baseOptions) dataMap.baseOptions = [];
-        if (dataMap.baseOptions.length === 0) {
-            dataMap.baseOptions.push({ id: 'base-default', name: 'Nueva Base', description: '', components: [], total: 0, visible: 1 });
+    // --- BUNDLES Section Rendering ---
+    function renderBundlesSection() {
+        const container = document.getElementById('bundles-section');
+        if (!dataMap.bundleOptions) dataMap.bundleOptions = [];
+        if (dataMap.bundleOptions.length === 0) {
+            dataMap.bundleOptions.push({ id: generateUniqueId(getAllIds()), name: 'Nuevo Bundle', description: '', components: [], total: 0, visible: 1 });
         }
         
         container.innerHTML = `
             <div class="flex flex-col gap-2">
-                <div id="base-list" class="flex flex-col gap-2 mb-4">
-                    ${dataMap.baseOptions.map((base, index) => {
-                        const componentImages = (base.components || [])
+                <div id="bundle-list" class="flex flex-col gap-2 mb-4">
+                    ${dataMap.bundleOptions.map((bundle, index) => {
+                        const componentImages = (bundle.components || [])
                             .map(compId => {
                                 const found = findComponentById(compId);
                                 return found ? found.component.image_url : null;
@@ -651,11 +736,11 @@
                             .filter(Boolean);
 
                         return `
-                        <div id="base-item-${index}" class="base-list-item ${index === selectedBaseIndex ? 'active' : ''}" onclick="selectBase(${index})">
+                        <div id="bundle-item-${index}" class="list-item ${index === selectedBundleIndex ? 'active' : ''}" onclick="selectBundle(${index})">
                             <div class="flex-grow">
-                                <p class="font-bold truncate">${base.name || 'Sin Nombre'}</p>
-                                <p class="text-xs opacity-75">${base.id || 'Sin ID'}</p>
-                                <p class="font-bold text-lg text-teal-400 mt-1">$${(base.total || 0).toLocaleString('es-AR')}</p>
+                                <p class="font-bold truncate">${bundle.name || 'Sin Nombre'}</p>
+                                <p class="text-xs opacity-75 truncate">${bundle.id || 'Sin ID'}</p>
+                                <p class="font-bold text-lg text-teal-400 mt-1">$${(bundle.total || 0).toLocaleString('es-AR')}</p>
                             </div>
                             <div class="flex-shrink-0 flex items-center gap-1 component-thumbs">
                                 ${componentImages.slice(0, 4).map(imgUrl => `
@@ -665,6 +750,277 @@
                         </div>
                         `
                     }).join('')}
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="addBundle()" class="btn btn-primary w-full text-sm py-2">
+                        <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir Bundle
+                    </button>
+                    <button onclick="deleteSelectedBundle()" class="btn btn-danger w-auto px-3 py-2" title="Eliminar Bundle Seleccionado">
+                        <span class="lucide-icon" data-lucide="trash-2"></span>
+                    </button>
+                </div>
+            </div>
+            <div id="bundle-details" class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <!-- Details of selected bundle will be rendered here -->
+            </div>
+        `;
+        renderSelectedBundleDetails();
+        lucide.createIcons();
+    }
+
+    function renderSelectedBundleDetails() {
+        const detailsContainer = document.getElementById('bundle-details');
+        const bundle = dataMap.bundleOptions[selectedBundleIndex];
+
+        if (!bundle) {
+            detailsContainer.innerHTML = '<p>No hay un bundle seleccionado.</p>';
+            return;
+        }
+        
+        const baseComponentOptions = `<optgroup label="Bases">
+            ${dataMap.baseOptions.map(base => `<option value="${base.id}">${base.name} ($${(base.total || 0).toLocaleString('es-AR')})</option>`).join('')}
+        </optgroup>`;
+
+        const allComponentsOptions = CATEGORY_NAV_LIST
+            .filter(cat => cat.key.includes('Options') && !['armadasOptions', 'baseOptions', 'bundleOptions'].includes(cat.key))
+            .map(cat => {
+                const components = dataMap[cat.key];
+                if (!components || components.length === 0) return '';
+                return `
+                    <optgroup label="${cat.label}">
+                        ${components.map(comp => `<option value="${comp.id}">${comp.name} ($${(comp.price || 0).toLocaleString('es-AR')})</option>`).join('')}
+                    </optgroup>
+                `;
+            }).join('');
+
+        detailsContainer.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Nombre del Bundle</label>
+                    <input type="text" value="${bundle.name || ''}" oninput="updateBundle('name', this.value)" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">ID</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-xs font-mono text-gray-400 truncate">${bundle.id}</div>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-1">Descripción</label>
+                    <textarea oninput="updateBundle('description', this.value)" class="w-full" rows="2">${bundle.description || ''}</textarea>
+                </div>
+                 <div class="md:col-span-1">
+                    <label class="block text-sm font-medium mb-1">Total del Bundle</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
+                        $${(bundle.total || 0).toLocaleString('es-AR')}
+                    </div>
+                </div>
+                <div class="md:col-span-1 flex items-center justify-center">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" ${bundle.visible ? 'checked' : ''} onchange="updateBundle('visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
+                        <span class="font-medium">Visible</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h4 class="font-semibold mb-2">Añadir Componente</h4>
+                <div class="flex gap-2">
+                    <select id="add-component-select-bundle" class="w-full">
+                        <option value="">Seleccionar componente...</option>
+                        ${baseComponentOptions}
+                        ${allComponentsOptions}
+                    </select>
+                    <button onclick="addComponentToBundle()" class="btn btn-secondary py-2">Añadir</button>
+                </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Componentes en este Bundle</h4>
+            <div class="overflow-x-auto">
+                <table class="bundles-table w-full text-left text-sm text-gray-400">
+                    <thead class="text-xs text-gray-200 uppercase bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-4 py-3">Categoría</th>
+                            <th scope="col" class="px-6 py-3">Nombre</th>
+                            <th scope="col" class="px-6 py-3">Precio</th>
+                            <th scope="col" class="px-2 py-3">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${(bundle.components || []).map((compId, index) => {
+                            const found = findComponentById(compId);
+                            if (!found) {
+                                return `<tr class="border-b border-gray-700"><td colspan="4" class="text-red-500 p-2">Componente con ID ${compId} no encontrado.</td></tr>`;
+                            }
+                            const { component, categoryKey } = found;
+                            const price = categoryKey === 'baseOptions' ? component.total : component.price;
+                            const linkHref = categoryKey === 'baseOptions' ? '#bases-section-container' : `#row-${categoryKey}-${dataMap[categoryKey].indexOf(component)}`;
+                            const linkOnClick = categoryKey === 'baseOptions' ? `scrollToCategory('bases-section-container')` : `scrollToComponentRow('${categoryKey}', ${dataMap[categoryKey].indexOf(component)})`;
+
+                            return `
+                                <tr class="border-b border-gray-700 hover:bg-gray-700/50" 
+                                    ondragover="onBundleComponentDragOver(event)"
+                                    ondrop="onBundleComponentDrop(event, ${index})"
+                                    onmouseenter="showImagePreview('${component.image_url || ''}')"
+                                    onmouseleave="hideImagePreview()">
+                                    <td class="px-4 py-2">${getComponentName(categoryKey)}</td>
+                                    <td class="px-6 py-2 font-medium text-white">${component.name}</td>
+                                    <td class="px-6 py-2">$${(price || 0).toLocaleString('es-AR')}</td>
+                                    <td class="px-2 py-2 text-right">
+                                        <div class="flex items-center justify-end">
+                                            <a href="${linkHref}" onclick="${linkOnClick}" class="text-blue-400 hover:text-blue-300" title="Ir al componente">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="link"></span>
+                                            </a>
+                                            <button onclick="removeComponentFromBundle(${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar de la base">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
+                                            </button>
+                                            <button draggable="true" ondragstart="onBundleComponentDragStart(event, ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                        ${(bundle.components || []).length === 0 ? '<tr><td colspan="4" class="text-center p-4">Este bundle está vacío.</td></tr>' : ''}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        lucide.createIcons();
+    }
+    
+    // --- BUNDLES Data Operations ---
+    function calculateBundleTotal(bundle) {
+        if (!bundle || !bundle.components) return 0;
+        return bundle.components.reduce((sum, compId) => {
+            const found = findComponentById(compId);
+            if (!found) return sum;
+            const priceToAdd = found.component.total !== undefined ? found.component.total : found.component.price;
+            return sum + (priceToAdd || 0);
+        }, 0);
+    }
+
+    function updateAllBundleTotals() {
+        dataMap.bundleOptions.forEach(bundle => {
+            bundle.total = calculateBundleTotal(bundle);
+        });
+    }
+
+    function selectBundle(index) {
+        selectedBundleIndex = index;
+        renderBundlesSection();
+    }
+
+    function addBundle() {
+        dataMap.bundleOptions.push({
+            id: generateUniqueId(getAllIds()),
+            name: 'Nuevo Bundle',
+            description: '',
+            components: [],
+            total: 0,
+            visible: 1
+        });
+        selectedBundleIndex = dataMap.bundleOptions.length - 1;
+        renderBundlesSection();
+        saveDataToSessionStorage();
+    }
+
+    function deleteSelectedBundle() {
+        if (dataMap.bundleOptions.length <= 1) {
+            showToast('No se puede eliminar el último bundle.', 'error');
+            return;
+        }
+        dataMap.bundleOptions.splice(selectedBundleIndex, 1);
+        if (selectedBundleIndex >= dataMap.bundleOptions.length) {
+            selectedBundleIndex = dataMap.bundleOptions.length - 1;
+        }
+        renderBundlesSection();
+        saveDataToSessionStorage();
+    }
+
+    function updateBundle(key, value) {
+        const bundle = dataMap.bundleOptions[selectedBundleIndex];
+        if (bundle) {
+            bundle[key] = value;
+            saveDataToSessionStorage();
+            
+            if (key === 'name' || key === 'id') {
+                const bundleItemDiv = document.getElementById(`bundle-item-${selectedBundleIndex}`);
+                if (bundleItemDiv) {
+                    if (key === 'name') {
+                        bundleItemDiv.querySelector('p.font-bold').textContent = value || 'Sin Nombre';
+                    }
+                }
+            }
+        }
+    }
+
+    function addComponentToBundle() {
+        const select = document.getElementById('add-component-select-bundle');
+        const componentId = select.value;
+        if (componentId && dataMap.bundleOptions[selectedBundleIndex]) {
+            if (!dataMap.bundleOptions[selectedBundleIndex].components) {
+                dataMap.bundleOptions[selectedBundleIndex].components = [];
+            }
+            dataMap.bundleOptions[selectedBundleIndex].components.push(componentId);
+            updateAllBundleTotals();
+            renderBundlesSection();
+            saveDataToSessionStorage();
+        }
+    }
+
+    function removeComponentFromBundle(componentIndex) {
+        if (dataMap.bundleOptions[selectedBundleIndex] && dataMap.bundleOptions[selectedBundleIndex].components) {
+            dataMap.bundleOptions[selectedBundleIndex].components.splice(componentIndex, 1);
+            updateAllBundleTotals();
+            renderBundlesSection();
+            saveDataToSessionStorage();
+        }
+    }
+
+    function onBundleComponentDragStart(event, index) {
+        draggedBundleComponentIndex = index;
+        event.dataTransfer.effectAllowed = 'move';
+    }
+
+    function onBundleComponentDragOver(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+    }
+
+    function onBundleComponentDrop(event, targetIndex) {
+        event.preventDefault();
+        if (draggedBundleComponentIndex !== null && draggedBundleComponentIndex !== targetIndex) {
+            const bundle = dataMap.bundleOptions[selectedBundleIndex];
+            if (bundle && bundle.components) {
+                const moved = bundle.components.splice(draggedBundleComponentIndex, 1)[0];
+                bundle.components.splice(targetIndex, 0, moved);
+                renderSelectedBundleDetails();
+                saveDataToSessionStorage();
+            }
+        }
+        draggedBundleComponentIndex = null;
+    }
+
+    // --- NEW BASES SECTION ---
+    function renderBasesSection() {
+        const container = document.getElementById('bases-section');
+        if (!dataMap.baseOptions) dataMap.baseOptions = [];
+        if (dataMap.baseOptions.length === 0) {
+            dataMap.baseOptions.push({ id: generateUniqueId(getAllIds()), name: 'Nueva Base', cpu: null, mother: null, ram: null, cantRam: 1, total: 0, visible: 1, description: '', totalram: 0 });
+        }
+        
+        container.innerHTML = `
+            <div class="flex flex-col gap-2">
+                <div id="base-list" class="flex flex-col gap-2 mb-4">
+                    ${dataMap.baseOptions.map((base, index) => `
+                        <div id="base-item-${index}" class="list-item ${index === selectedBaseIndex ? 'active' : ''}" onclick="selectBase(${index})">
+                            <div class="flex-grow">
+                                <p class="font-bold truncate">${base.name || 'Sin Nombre'}</p>
+                                <p class="text-xs opacity-75 truncate">${base.id || 'Sin ID'}</p>
+                                <p class="font-bold text-lg text-teal-400 mt-1">$${(base.total || 0).toLocaleString('es-AR')}</p>
+                            </div>
+                        </div>
+                    `).join('')}
                 </div>
                 <div class="flex gap-2">
                     <button onclick="addBase()" class="btn btn-primary w-full text-sm py-2">
@@ -691,157 +1047,143 @@
             detailsContainer.innerHTML = '<p>No hay una base seleccionada.</p>';
             return;
         }
+        
+        const cpuIndex = dataMap.cpuOptions.findIndex(c => c.id == base.cpu);
+        const motherIndex = dataMap.motherboardOptions.findIndex(m => m.id == base.mother);
+        const ramIndex = dataMap.ramOptions.findIndex(r => r.id == base.ram);
 
-        const allComponentsOptions = CATEGORY_NAV_LIST
-            .filter(cat => cat.key.includes('Options') && cat.key !== 'armadasOptions' && cat.key !== 'baseOptions')
-            .map(cat => {
-                const components = dataMap[cat.key];
-                if (!components || components.length === 0) return '';
-                return `
-                    <optgroup label="${cat.label}">
-                        ${components.map(comp => `<option value="${comp.id}">${comp.name} ($${(comp.price || 0).toLocaleString('es-AR')})</option>`).join('')}
-                    </optgroup>
-                `;
-            }).join('');
+        const cpuOptions = dataMap.cpuOptions.map(c => `<option value="${c.id}" ${base.cpu == c.id ? 'selected' : ''}>${c.name} ($${(c.price||0).toLocaleString('es-AR')})</option>`).join('');
+        const motherOptions = dataMap.motherboardOptions.map(m => `<option value="${m.id}" ${base.mother == m.id ? 'selected' : ''}>${m.name} ($${(m.price||0).toLocaleString('es-AR')})</option>`).join('');
+        const ramOptions = dataMap.ramOptions.map(r => `<option value="${r.id}" ${base.ram == r.id ? 'selected' : ''}>${r.name} ($${(r.price||0).toLocaleString('es-AR')})</option>`).join('');
 
         detailsContainer.innerHTML = `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
+                 <div>
                     <label class="block text-sm font-medium mb-1">Nombre de la Base</label>
                     <input type="text" value="${base.name || ''}" oninput="updateBase('name', this.value)" class="w-full">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">ID (manual)</label>
-                    <input type="text" value="${base.id || ''}" oninput="updateBase('id', this.value)" class="w-full">
+                    <label class="block text-sm font-medium mb-1">ID</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-xs font-mono text-gray-400 truncate">${base.id}</div>
                 </div>
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium mb-1">Descripción</label>
                     <textarea oninput="updateBase('description', this.value)" class="w-full" rows="2">${base.description || ''}</textarea>
                 </div>
+            </div>
+            <div class="space-y-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">CPU</label>
+                    <div class="flex items-center gap-2">
+                        <select onchange="updateBase('cpu', this.value)" class="flex-grow">
+                            <option value="">Seleccionar CPU...</option>
+                            ${cpuOptions}
+                        </select>
+                        <a href="#row-cpuOptions-${cpuIndex}" onclick="scrollToComponentRow('cpuOptions', ${cpuIndex})" class="${cpuIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                             <span class="lucide-icon" data-lucide="link"></span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Motherboard</label>
+                     <div class="flex items-center gap-2">
+                        <select onchange="updateBase('mother', this.value)" class="flex-grow">
+                            <option value="">Seleccionar Motherboard...</option>
+                            ${motherOptions}
+                        </select>
+                        <a href="#row-motherboardOptions-${motherIndex}" onclick="scrollToComponentRow('motherboardOptions', ${motherIndex})" class="${motherIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                             <span class="lucide-icon" data-lucide="link"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-2">
+                        <label class="block text-sm font-medium mb-1">RAM</label>
+                        <div class="flex items-center gap-2">
+                            <select onchange="updateBase('ram', this.value)" class="flex-grow">
+                                <option value="">Seleccionar RAM...</option>
+                                ${ramOptions}
+                            </select>
+                             <a href="#row-ramOptions-${ramIndex}" onclick="scrollToComponentRow('ramOptions', ${ramIndex})" class="${ramIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                                <span class="lucide-icon" data-lucide="link"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Cantidad</label>
+                        <div class="flex items-center justify-between gap-1">
+                            ${[1, 2, 3, 4].map(n => `<button class="btn ram-qty-btn w-full text-xs py-2 px-0 ${base.cantRam == n ? 'active' : ''}" onclick="updateBase('cantRam', ${n})">${n}</button>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                  <div class="md:col-span-1">
                     <label class="block text-sm font-medium mb-1">Total de la Base</label>
                     <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
                         $${(base.total || 0).toLocaleString('es-AR')}
                     </div>
                 </div>
-                <div class="md:col-span-1 flex items-center justify-center">
+                 <div class="md:col-span-1">
+                    <label class="block text-sm font-medium mb-1">Total RAM (GB)</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
+                        ${base.totalram || 0} GB
+                    </div>
+                </div>
+                <div class="md:col-span-2 flex items-center justify-center pt-2">
                     <label class="flex items-center gap-2 cursor-pointer">
                         <input type="checkbox" ${base.visible ? 'checked' : ''} onchange="updateBase('visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
                         <span class="font-medium">Visible</span>
                     </label>
                 </div>
             </div>
-            
-            <div class="mb-4">
-                <h4 class="font-semibold mb-2">Añadir Componente</h4>
-                <div class="flex gap-2">
-                    <select id="add-component-select" class="w-full">
-                        <option value="">Seleccionar componente...</option>
-                        ${allComponentsOptions}
-                    </select>
-                    <button onclick="addComponentToBase()" class="btn btn-secondary py-2">Añadir</button>
-                </div>
-            </div>
-
-            <h4 class="font-semibold mb-2">Componentes en esta Base</h4>
-            <div class="overflow-x-auto">
-                <table class="bases-table w-full text-left text-sm text-gray-400">
-                    <thead class="text-xs text-gray-200 uppercase bg-gray-700">
-                        <tr>
-                            <th scope="col" class="px-4 py-3">Categoría</th>
-                            <th scope="col" class="px-6 py-3">Nombre</th>
-                            <th scope="col" class="px-6 py-3">Precio</th>
-                            <th scope="col" class="px-2 py-3">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${(base.components || []).map((compId, index) => {
-                            const found = findComponentById(compId);
-                            if (!found) {
-                                return `<tr class="border-b border-gray-700"><td colspan="4" class="text-red-500 p-2">Componente con ID ${compId} no encontrado.</td></tr>`;
-                            }
-                            const { component, categoryKey } = found;
-                            return `
-                                <tr class="border-b border-gray-700 hover:bg-gray-700/50" 
-                                    ondragover="onBaseComponentDragOver(event)"
-                                    ondrop="onBaseComponentDrop(event, ${index})"
-                                    onmouseenter="showImagePreview('${component.image_url || ''}')"
-                                    onmouseleave="hideImagePreview()">
-                                    <td class="px-4 py-2">${getComponentName(categoryKey)}</td>
-                                    <td class="px-6 py-2 font-medium text-white">${component.name}</td>
-                                    <td class="px-6 py-2">$${(component.price || 0).toLocaleString('es-AR')}</td>
-                                    <td class="px-2 py-2 text-right">
-                                        <div class="flex items-center justify-end">
-                                            <a href="#row-${categoryKey}-${dataMap[categoryKey].indexOf(component)}" onclick="scrollToComponentRow('${categoryKey}', ${dataMap[categoryKey].indexOf(component)})" class="text-blue-400 hover:text-blue-300" title="Ir al componente">
-                                                <span class="lucide-icon w-4 h-4" data-lucide="link"></span>
-                                            </a>
-                                            <button onclick="removeComponentFromBase(${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar de la base">
-                                                <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
-                                            </button>
-                                            <button draggable="true" ondragstart="onBaseComponentDragStart(event, ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
-                                                <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            `;
-                        }).join('')}
-                        ${(base.components || []).length === 0 ? '<tr><td colspan="4" class="text-center p-4">Esta base está vacía.</td></tr>' : ''}
-                    </tbody>
-                </table>
-            </div>
         `;
         lucide.createIcons();
     }
-    
-    function scrollToComponentRow(categoryKey, index) {
-        const rowId = `row-${categoryKey}-${index}`;
-        const row = document.getElementById(rowId);
-        if (row) {
-            const navbarHeight = document.getElementById('category-navbar').offsetHeight;
-            const elementPosition = row.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
 
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-            
-            // Highlight effect
-            row.style.transition = 'background-color 0.5s ease-in-out';
-            row.style.backgroundColor = 'rgba(99, 102, 241, 0.5)'; // indigo-500 with opacity
-            setTimeout(() => {
-                row.style.backgroundColor = '';
-            }, 2000);
-        }
+    function calculateBaseTotal(base) {
+        if (!base) return 0;
+        const cpu = dataMap.cpuOptions.find(c => c.id == base.cpu);
+        const mother = dataMap.motherboardOptions.find(m => m.id == base.mother);
+        const ram = dataMap.ramOptions.find(r => r.id == base.ram);
+        const cantRam = base.cantRam || 1;
+
+        const cpuPrice = cpu ? cpu.price || 0 : 0;
+        const motherPrice = mother ? mother.price || 0 : 0;
+        const ramPrice = ram ? ram.price || 0 : 0;
+        
+        return cpuPrice + motherPrice + (ramPrice * cantRam);
     }
 
-
-    // --- Bases Data Operations ---
-    function calculateBaseTotal(base) {
-        if (!base || !base.components) return 0;
-        return base.components.reduce((sum, compId) => {
-            const found = findComponentById(compId);
-            return sum + (found ? (found.component.price || 0) : 0);
-        }, 0);
+    function calculateBaseRamTotal(base) {
+        if (!base || !base.ram) return 0;
+        const ram = dataMap.ramOptions.find(r => r.id == base.ram);
+        const cantRam = base.cantRam || 1;
+        const ramTotal = ram ? ram.total || 0 : 0;
+        return ramTotal * cantRam;
     }
 
     function updateAllBaseTotals() {
         dataMap.baseOptions.forEach(base => {
             base.total = calculateBaseTotal(base);
+            base.totalram = calculateBaseRamTotal(base);
         });
     }
 
     function selectBase(index) {
         selectedBaseIndex = index;
-        renderBasesSection(); // Re-render to update active state and details
+        renderBasesSection();
     }
 
     function addBase() {
         dataMap.baseOptions.push({
-            id: `base-${Date.now()}`,
+            id: generateUniqueId(getAllIds()),
             name: 'Nueva Base',
-            description: '',
-            components: [],
+            cpu: null, mother: null, ram: null, cantRam: 1,
             total: 0,
-            visible: 1
+            visible: 1,
+            description: '',
+            totalram: 0
         });
         selectedBaseIndex = dataMap.baseOptions.length - 1;
         renderBasesSection();
@@ -850,7 +1192,7 @@
 
     function deleteSelectedBase() {
         if (dataMap.baseOptions.length <= 1) {
-            showMessage('error-message', 'No se puede eliminar la última base.');
+            showToast('No se puede eliminar la última base.', 'error');
             return;
         }
         dataMap.baseOptions.splice(selectedBaseIndex, 1);
@@ -865,69 +1207,48 @@
         const base = dataMap.baseOptions[selectedBaseIndex];
         if (base) {
             base[key] = value;
+
+            if (key === 'cpu') {
+                const cpu = dataMap.cpuOptions.find(c => c.id == value);
+                if (cpu) {
+                    base.name = cpu.name;
+                }
+            }
+
+            base.total = calculateBaseTotal(base);
+            base.totalram = calculateBaseRamTotal(base);
             saveDataToSessionStorage();
             
-            // Manually update the list item instead of re-rendering everything to avoid losing focus
-            if (key === 'name' || key === 'id') {
-                const baseItemDiv = document.getElementById(`base-item-${selectedBaseIndex}`);
+            updateAllBundleTotals();
+
+            if (['cpu', 'mother', 'ram', 'cantRam'].includes(key)) {
+                renderBasesSection();
+                renderBundlesSection();
+            } else if (key === 'name') {
+                 const baseItemDiv = document.getElementById(`base-item-${selectedBaseIndex}`);
                 if (baseItemDiv) {
-                    if (key === 'name') {
-                        baseItemDiv.querySelector('p.font-bold').textContent = value || 'Sin Nombre';
-                    }
-                    if (key === 'id') {
-                        baseItemDiv.querySelector('p.text-xs').textContent = value || 'Sin ID';
-                    }
+                    baseItemDiv.querySelector('p.font-bold').textContent = value || 'Sin Nombre';
                 }
             }
         }
     }
 
-    function addComponentToBase() {
-        const select = document.getElementById('add-component-select');
-        const componentId = select.value;
-        if (componentId && dataMap.baseOptions[selectedBaseIndex]) {
-            if (!dataMap.baseOptions[selectedBaseIndex].components) {
-                dataMap.baseOptions[selectedBaseIndex].components = [];
-            }
-            dataMap.baseOptions[selectedBaseIndex].components.push(componentId);
-            updateAllBaseTotals();
-            renderBasesSection(); // Re-render to show new thumbnail and total
-            saveDataToSessionStorage();
+    function scrollToComponentRow(categoryKey, index) {
+        const rowId = `row-${categoryKey}-${index}`;
+        const row = document.getElementById(rowId);
+        if (row) {
+            const navbarHeight = document.getElementById('category-navbar').offsetHeight;
+            const elementPosition = row.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
+
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            
+            row.style.transition = 'background-color 0.5s ease-in-out';
+            row.style.backgroundColor = 'rgba(99, 102, 241, 0.5)';
+            setTimeout(() => {
+                row.style.backgroundColor = '';
+            }, 2000);
         }
-    }
-
-    function removeComponentFromBase(componentIndex) {
-        if (dataMap.baseOptions[selectedBaseIndex] && dataMap.baseOptions[selectedBaseIndex].components) {
-            dataMap.baseOptions[selectedBaseIndex].components.splice(componentIndex, 1);
-            updateAllBaseTotals();
-            renderBasesSection(); // Re-render to remove thumbnail and update total
-            saveDataToSessionStorage();
-        }
-    }
-
-    // --- Drag and Drop for Base Components ---
-    function onBaseComponentDragStart(event, index) {
-        draggedBaseComponentIndex = index;
-        event.dataTransfer.effectAllowed = 'move';
-    }
-
-    function onBaseComponentDragOver(event) {
-        event.preventDefault();
-        event.dataTransfer.dropEffect = 'move';
-    }
-
-    function onBaseComponentDrop(event, targetIndex) {
-        event.preventDefault();
-        if (draggedBaseComponentIndex !== null && draggedBaseComponentIndex !== targetIndex) {
-            const base = dataMap.baseOptions[selectedBaseIndex];
-            if (base && base.components) {
-                const moved = base.components.splice(draggedBaseComponentIndex, 1)[0];
-                base.components.splice(targetIndex, 0, moved);
-                renderSelectedBaseDetails(); // Only re-render the details panel
-                saveDataToSessionStorage();
-            }
-        }
-        draggedBaseComponentIndex = null;
     }
 
 
@@ -937,7 +1258,7 @@
 
         CATEGORY_NAV_LIST.forEach(category => {
             const categoryKey = category.key;
-            if (!categoryKey.includes('Options')) return; // Skip non-component categories like 'Bases'
+            if (!categoryKey.includes('Options')) return;
 
             const categoryData = dataMap[categoryKey];
             const readableCategoryName = category.label;
@@ -949,27 +1270,76 @@
 
             const table = document.createElement('table');
             table.className = 'overview-table w-full text-left text-sm text-gray-400';
+            
+            let headers = `
+                <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
+                <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
+                <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
+                ${categoryKey !== 'towersOptions' && categoryKey !== 'ramOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th>' : ''}
+                ${categoryKey === 'ramOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th><th scope="col" class="px-2 py-3">Total (GB)</th>' : ''}
+                <th scope="col" class="px-2 py-3" style="width: 200px;">URL Imagen</th>
+                <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
+                <th scope="col" class="px-1 py-3" style="width:1%;min-width:150px;">Acciones</th>
+            `;
+            let colspan = 6;
+            if (categoryKey !== 'towersOptions') colspan++;
+            if (categoryKey === 'ramOptions') colspan++;
+
+
+            if (categoryKey === 'miniPcOptions') {
+                headers = `
+                    <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
+                    <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
+                    <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
+                    <th scope="col" class="px-2 py-3">CPU</th>
+                    <th scope="col" class="px-2 py-3">RAM</th>
+                    <th scope="col" class="px-2 py-3">SSD</th>
+                    <th scope="col" class="px-2 py-3" style="width: 200px;">URL Imagen</th>
+                    <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
+                    <th scope="col" class="px-1 py-3" style="width:1%;min-width:150px;">Acciones</th>
+                `;
+                colspan = 9;
+            }
+
+
             table.innerHTML = `
                 <thead class="text-xs text-gray-200 uppercase bg-gray-700">
-                    <tr>
-                        <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
-                        <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
-                        <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
-                        ${categoryKey !== 'towersOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th>' : ''}
-                        <th scope="col" class="px-2 py-3" style="width: 200px;">URL Imagen</th>
-                        <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
-                        <th scope="col" class="px-1 py-3" style="width:1%;min-width:70px;">Link</th>
-                        <th scope="col" class="px-1 py-3" style="width:1%;min-width:70px;"></th>
-                    </tr>
+                    <tr>${headers}</tr>
                 </thead>
                 <tbody>
-                    ${(categoryData || []).map((product, index) => `
+                    ${(categoryData || []).map((product, index) => {
+                        let customColumns;
+                        if (categoryKey === 'miniPcOptions') {
+                            customColumns = `
+                                <td class="px-2 py-2"><input type="text" value="${product.cpu || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'cpu', this.value)" class="w-full"></td>
+                                <td class="px-2 py-2"><input type="text" value="${product.ram || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ram', this.value)" class="w-full"></td>
+                                <td class="px-2 py-2"><input type="text" value="${product.ssd || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ssd', this.value)" class="w-full"></td>
+                            `;
+                        } else if (categoryKey === 'ramOptions') {
+                             customColumns = `
+                                <td class="px-2 py-2">
+                                    <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
+                                </td>
+                                <td class="px-2 py-2">
+                                    <input type="number" value="${product.total || 0}" oninput="updateProduct('${categoryKey}', ${index}, 'total', parseInt(this.value, 10) || 0)" class="w-full">
+                                </td>
+                            `;
+                        } else if (categoryKey !== 'towersOptions') {
+                            customColumns = `
+                            <td class="px-2 py-2">
+                                <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
+                            </td>`;
+                        } else {
+                            customColumns = '';
+                        }
+
+                        return `
                         <tr id="row-${categoryKey}-${index}" class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-200 ${product.price_status ? 'price-' + product.price_status : ''}" 
                             ondragover="onRowDragOver(event)" 
                             ondrop="onRowDrop(event, '${categoryKey}', ${index})"
                             onmouseenter="showImagePreview('${product.image_url || ''}')"
                             onmouseleave="hideImagePreview()">
-                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono">${product.id || ''}</td>
+                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono cursor-pointer hover:text-white" onclick="copyToClipboard('${product.id || ''}')" title="Copiar ID">${product.id || ''}</td>
                             <td class="px-2 py-2 font-medium text-white whitespace-nowrap">
                                 <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
                             </td>
@@ -982,43 +1352,40 @@
                                     <div class="indicators-container"></div>
                                 </div>
                             </td>
-                            ${categoryKey !== 'towersOptions' ? `
-                            <td class="px-2 py-2">
-                                <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
-                            </td>` : ''}
+                            ${customColumns}
                             <td class="px-2 py-2">
                                 <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" onclick="autofillImagePath(this, '${categoryKey}', ${index})" class="w-full text-xs">
                             </td>
                             <td class="px-2 py-2 text-center">
                                 <input type="checkbox" ${product.visible ? 'checked' : ''} onchange="updateProduct('${categoryKey}', ${index}, 'visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
                             </td>
-                            <td class="px-1 py-2">
-                                <div class="flex items-center gap-1 h-full">
-                                    <a href="${product.link || '#'}" target="_blank" class="btn btn-secondary min-w-0 h-full flex items-center justify-center text-xs py-1 px-1">
-                                        <span class="lucide-icon mr-1" data-lucide="external-link" style="margin-right:2px;"></span>Visitar
-                                    </a>
-                                    <button onclick="replaceLink('${categoryKey}', ${index})" class="btn btn-primary text-xs py-1 px-1 ml-1" title="Reemplazar Link desde portapapeles">
-                                        <span class="lucide-icon" data-lucide="edit"></span>
-                                    </button>
-                                </div>
-                            </td>
                             <td class="px-1 py-2 text-right">
-                                <div class="flex items-center">
-                                    <button id="scrape-btn-${categoryKey}-${index}" onclick="checkSingleProduct('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-200" title="Chequear este producto">
-                                        <span class="lucide-icon w-4 h-4" data-lucide="scan-line"></span>
-                                    </button>
-                                    <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar">
-                                        <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
-                                    </button>
-                                    <button draggable="true" ondragstart="onRowDragStart(event, '${categoryKey}', ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
-                                        <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
-                                    </button>
+                                <div class="flex flex-col items-end gap-1">
+                                    <div class="flex items-center">
+                                        <button id="scrape-btn-${categoryKey}-${index}" onclick="checkSingleProduct('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-200" title="Chequear este producto">
+                                            <span class="lucide-icon w-4 h-4" data-lucide="scan-line"></span>
+                                        </button>
+                                        <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar">
+                                            <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
+                                        </button>
+                                        <button draggable="true" ondragstart="onRowDragStart(event, '${categoryKey}', ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
+                                            <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
+                                        </button>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <a href="${product.link || '#'}" target="_blank" class="btn btn-secondary min-w-0 flex items-center justify-center text-xs py-1 px-1">
+                                            <span class="lucide-icon mr-1" data-lucide="external-link" style="margin-right:2px;"></span>Visitar
+                                        </a>
+                                        <button onclick="replaceLink('${categoryKey}', ${index})" class="btn btn-primary text-xs py-1 px-1 ml-1" title="Reemplazar Link desde portapapeles">
+                                            <span class="lucide-icon" data-lucide="edit"></span>
+                                        </button>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
-                    `).join('')}
+                    `}).join('')}
                     <tr>
-                        <td colspan="${categoryKey !== 'towersOptions' ? '8' : '7'}" class="add-row-button-cell">
+                        <td colspan="${colspan}" class="add-row-button-cell">
                             <div class="flex justify-center items-center gap-4">
                                 <button onclick="addProduct('${categoryKey}')" class="add-row-button">
                                     <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir ${getComponentName(categoryKey)}
@@ -1174,6 +1541,7 @@
 
         } catch (error) {
             console.error(`Error checking price for ${product.name}:`, error);
+            showToast(`Error en ${product.name}: ${error.message}`, 'error');
             row.classList.remove('price-scraping');
             row.classList.add('price-error');
             product.price_status = 'error';
@@ -1253,7 +1621,7 @@
             if (!link || !link.includes('mercadolibre.com')) {
                 throw new Error('El portapapeles no contiene un link válido de Mercado Libre.');
             }
-            link = ensureBestPriceOffer(link.trim());
+            link = modifyMercadoLibreLink(link.trim());
 
             const response = await fetchWithProxyFallback(link);
             const html = await response.text();
@@ -1262,19 +1630,23 @@
 
             const nameElement = doc.querySelector('.ui-pdp-title');
             const name = nameElement ? nameElement.textContent.trim() : 'Nombre no encontrado';
-
-            const priceElementContainer = doc.querySelector('.ui-pdp-price__second-line');
-            if (!priceElementContainer) throw new Error('Price container not found.');
-            const priceElement = priceElementContainer.querySelector('.andes-money-amount__fraction');
-            if (!priceElement) throw new Error('Price fraction element not found.');
-            const priceText = priceElement.textContent;
-            const price = parseInt(priceText.replace(/\./g, ''), 10);
             
-            // Generate ID and image URL here, ignoring the scraped one
-            const existingIds = getAllIds();
-            const newId = generateUniqueId(existingIds);
+            let price = 0;
+            try {
+                const priceElementContainer = doc.querySelector('.ui-pdp-price__second-line');
+                if (!priceElementContainer) throw new Error('Price container not found.');
+                const priceElement = priceElementContainer.querySelector('.andes-money-amount__fraction');
+                if (!priceElement) throw new Error('Price fraction element not found.');
+                const priceText = priceElement.textContent;
+                price = parseInt(priceText.replace(/\./g, ''), 10) || 0;
+            } catch (priceError) {
+                console.warn("Could not scrape price, defaulting to 0:", priceError.message);
+                showToast(`No se pudo obtener el precio para ${name}. Se agregó con precio 0.`, 'error');
+            }
+            
+            const newId = generateUniqueId(getAllIds());
             const categoryInfo = CATEGORY_NAV_LIST.find(cat => cat.key === categoryKey);
-            let imageUrl = ''; // Default empty
+            let imageUrl = '';
             if (categoryInfo && categoryInfo.folder) {
                 imageUrl = `comps/${categoryInfo.folder}/${newId}.webp`;
             }
@@ -1282,19 +1654,25 @@
             const newProduct = {
                 id: newId,
                 name: name,
-                price: isNaN(price) ? 0 : price,
-                description: '',
-                image_url: imageUrl, // Use the generated URL
+                price: price,
                 link: link,
                 visible: 1
             };
 
+            if (categoryKey === 'miniPcOptions') {
+                newProduct.cpu = '';
+                newProduct.ram = '';
+                newProduct.ssd = '';
+            } else {
+                newProduct.description = '';
+            }
+
             addProduct(categoryKey, newProduct);
-            showSuccessMessage('Producto añadido desde el link.');
+            showToast('Producto añadido desde el link.');
 
         } catch (error) {
             console.error('Error al añadir desde clipboard:', error);
-            showMessage('error-message', error.message);
+            showToast(error.message, 'error');
         } finally {
             btn.innerHTML = originalContent;
             btn.disabled = false;
@@ -1304,7 +1682,8 @@
     // --- Code Export ---
 
     function generateCode() {
-        updateAllBaseTotals(); // Ensure totals are up-to-date before exporting
+        updateAllBaseTotals(); 
+        updateAllBundleTotals();
         function getSlugFromImageUrl(imageUrl) {
             if (!imageUrl) return '';
             const parts = imageUrl.split('/');
@@ -1319,6 +1698,21 @@
                     id: b.id,
                     name: b.name,
                     description: b.description,
+                    cpu: b.cpu,
+                    mother: b.mother,
+                    ram: b.ram,
+                    cantRam: b.cantRam,
+                    total: b.total || 0,
+                    totalram: b.totalram || 0,
+                    visible: b.visible !== undefined ? b.visible : 1
+                }));
+                continue;
+             }
+             if (mapKey === 'bundleOptions') {
+                exportData[mapKey] = dataMap[mapKey].map(b => ({
+                    id: b.id,
+                    name: b.name,
+                    description: b.description,
                     components: b.components || [],
                     total: b.total || 0,
                     visible: b.visible !== undefined ? b.visible : 1
@@ -1326,15 +1720,20 @@
                 continue;
              }
              exportData[mapKey] = dataMap[mapKey].map(p => {
-                const { id, name, price, description, image_url, link, visible } = p;
-                const orderedProduct = { id, name, price };
+                const { id, name, price, description, image_url, link, visible, cpu, ram, ssd, total } = p;
+                let orderedProduct = { id, name, price };
 
-                if (mapKey === 'towersOptions') {
+                if (mapKey === 'miniPcOptions') {
+                    orderedProduct = { ...orderedProduct, cpu, ram, ssd };
+                } else if (mapKey === 'towersOptions') {
                     orderedProduct.slug = getSlugFromImageUrl(image_url);
-                }
-                
-                if (description !== undefined && mapKey !== 'towersOptions') {
+                } else if (mapKey === 'ramOptions') {
+                    orderedProduct.total = total || 0;
                     orderedProduct.description = description;
+                } else {
+                    if (description !== undefined) {
+                        orderedProduct.description = description;
+                    }
                 }
 
                 orderedProduct.image_url = image_url;
@@ -1355,7 +1754,12 @@
         generateCode();
         outputTextArea.select();
         document.execCommand('copy');
-        showMessage('copy-message', '¡Código copiado al portapapeles!');
+        showToast('¡Código copiado al portapapeles!');
+    }
+
+    function resetSessionAndReload() {
+        sessionStorage.removeItem('productAdminData');
+        location.reload();
     }
 
     async function reloadDataFromJson() {
@@ -1372,16 +1776,18 @@
                 }
             }
             
-            assignIdsToMissingProducts();
+            sanitizeAndAssignDefaults();
             updateAllBaseTotals();
+            updateAllBundleTotals();
             renderBasesSection();
+            renderBundlesSection();
             renderOverviewTables();
             saveDataToSessionStorage();
-            showSuccessMessage('Datos recargados desde products.json');
+            showToast('Datos recargados desde products.json');
 
         } catch (error) {
             console.error("Error reloading from JSON:", error);
-            showMessage('error-message', 'Error al recargar el archivo products.json.');
+            showToast('Error al recargar el archivo products.json.', 'error');
         }
     }
 
@@ -1392,7 +1798,7 @@
 
         if (storedData) {
             dataToLoad = storedData;
-            showMessage('warning-message', '¡Datos restaurados de la sesión anterior!');
+            showToast('¡Datos restaurados de la sesión anterior!', 'success');
         } else {
             try {
                 const response = await fetch('products.json?cache_bust=' + new Date().getTime());
@@ -1400,7 +1806,7 @@
                 dataToLoad = await response.json();
             } catch (error) {
                 console.error('Error loading products.json:', error);
-                showMessage('error-message', 'No se pudo cargar products.json. Se iniciará con datos vacíos.');
+                showToast('No se pudo cargar products.json. Se iniciará con datos vacíos.', 'error');
             }
         }
 
@@ -1412,20 +1818,26 @@
             }
         }
         
-        assignIdsToMissingProducts();
+        sanitizeAndAssignDefaults();
         updateAllBaseTotals();
+        updateAllBundleTotals();
         renderCategoryNavbar();
         renderBasesSection();
+        renderBundlesSection();
         renderOverviewTables();
         saveDataToSessionStorage();
         lucide.createIcons();
+        
+        window.addEventListener('resize', updateNavbarSpacer);
 
         // Accordion Logic
-        document.getElementById('bases-accordion-header').addEventListener('click', () => {
-            const content = document.getElementById('bases-accordion-content');
-            const icon = document.querySelector('#bases-accordion-header .lucide-icon');
-            content.classList.toggle('hidden');
-            icon.classList.toggle('rotate-180');
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.lucide-icon');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
         });
     });
 

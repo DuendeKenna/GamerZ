@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <style>
+        :root {
+            --color-link: #60a5fa;
+            /* azul brillante */
+        }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
@@ -123,25 +130,21 @@
             background: linear-gradient(to right, #fb923c, #b9a333);
         }
 
-        /* --- Card Effects (Games & Peripherals) --- */
+        /* --- Card Effects (Games) --- */
         .card-game {
             position: relative;
         }
 
         .card-game label {
             position: relative;
-            /* Container for the sticker & gloss */
             overflow: hidden;
             display: block;
             border-radius: 0.75rem;
-            /* rounded-xl */
             transition: transform 0.3s ease;
-            /* Apply transition to the container */
             aspect-ratio: 3/4;
         }
 
         .card-game label::after {
-            /* Glossy effect - Adjusted for plastic relief */
             content: '';
             position: absolute;
             top: 0;
@@ -150,28 +153,20 @@
             height: 100%;
             background: linear-gradient(to bottom right,
                     rgba(255, 255, 255, 0.4) 0%,
-                    /* Top-left highlight - more pronounced */
                     rgba(255, 255, 255, 0.15) 50%,
-                    /* Center subtle */
                     rgba(0, 0, 0, 0.15) 50%,
-                    /* Bottom-right shadow */
                     rgba(0, 0, 0, 0.4) 100%
-                    /* Bottom-right darker shadow - more pronounced */
                 );
             border-radius: 0.75rem;
-            /* Match card border-radius */
             pointer-events: none;
             mix-blend-mode: overlay;
-            /* Blends nicely with image */
             transition: opacity 0.3s ease-in-out;
             opacity: 1;
-            /* Base opacity always visible, but subtle */
         }
 
         .card-game label:hover::after,
         .card-game input:checked+label::after {
             opacity: 1;
-            /* Make the effect more notable on hover/checked */
         }
 
         .card-game label img {
@@ -193,30 +188,6 @@
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
         }
 
-        .card-peripheral {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .card-peripheral img {
-            transition: filter 0.3s ease-in-out;
-        }
-
-        .card-peripheral:hover,
-        .card-peripheral.active {
-            transform: scale(1.05);
-        }
-
-        .card-peripheral.active {
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
-            border-color: rgba(139, 92, 246, 0.5);
-        }
-
-        .card-peripheral.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            filter: grayscale(100%);
-        }
-
         /* --- Game Title Sticker --- */
         .game-title-sticker {
             position: absolute;
@@ -225,7 +196,6 @@
             border-radius: 4px;
             font-weight: 700;
             font-size: 0.75rem;
-            /* text-xs */
             color: white;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             text-align: center;
@@ -280,7 +250,6 @@
         /* --- Animated Games Card Background --- */
         .animated-bg-games {
             min-height: 480px;
-            /* Increased height for better effect visibility */
             box-shadow: inset 0 0 12px 4px rgba(0, 0, 0, 0.55);
         }
 
@@ -334,7 +303,6 @@
 
             to {
                 filter: blur(2px);
-                /* Dynamic blur effect */
                 opacity: 0.3;
             }
         }
@@ -379,11 +347,9 @@
         /* --- "Ver más" Neon Button --- */
         .load-more-button {
             background: transparent;
-            /* Changed to transparent */
             color: #42d232;
             opacity: 0.6;
             border: 6px solid #107c10;
-            /* Solid border */
             border-radius: 15px;
             padding: 20px 35px;
             letter-spacing: 5px;
@@ -526,7 +492,6 @@
             transition: all 0.3s ease-in-out;
             position: relative;
             overflow: hidden;
-            /* Changed to hidden for ribbon */
         }
 
         .feature-card:hover {
@@ -593,7 +558,6 @@
 
         #hero-wrapper {
             position: relative;
-            /* Removed overflow-x: hidden to allow child elements to extend beyond its bounds */
         }
 
         #hero-background-in {
@@ -652,8 +616,6 @@
             }
         }
 
-        /* @media (max-width: 767px) { #hero-background { display: none; } } */
-
         @keyframes float-up-down {
 
             0%,
@@ -674,7 +636,6 @@
             filter: hue-rotate(50deg);
             animation: float-up-down 4s ease-in-out infinite, energy-beam 6s ease-in-out infinite;
             z-index: 30;
-            /* Ensure OVNI is above other elements */
         }
 
         @keyframes energy-beam {
@@ -696,21 +657,14 @@
 
         .main-container {
             background-color: #111827;
-            /* Restored to bg-gray-700 */
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
             position: relative;
-            /* Needed for absolute positioning of child */
-            /* Removed overflow-x: hidden to prevent clipping of pop-out images */
             overflow: visible;
-            /* Allow content to overflow without being cut */
         }
 
         #game-grid-container {
             position: relative;
             padding-top: 1.5rem;
-            /* Adjusted padding-top */
-
-            /* Adjusted padding-bottom */
         }
 
         #game-grid-wrapper {
@@ -735,14 +689,10 @@
         }
 
         #memde_pointLeft {
-            /*display: none;*/
-            /* Hidden by default */
             position: absolute;
             bottom: -20px;
             max-width: 150px;
-            /* Max width for general use */
             width: 40%;
-            /* For smaller screens, width can be relative */
             z-index: 0;
             overflow-x: hidden;
             left: -20px;
@@ -750,20 +700,15 @@
 
 
         @media (min-width: 768px) {
-
-            /* Tablet and up */
             #memde_pointLeft {
                 bottom: -30px;
                 width: auto;
-                /* Let image natural width or max-width: 150px apply */
                 left: 0;
-                /* Keep it on the right for desktop */
                 transform: translateX(50%);
-                /* Continue pushing it off the right */
             }
         }
 
-        /* --- Nueva Estilo para la Descripción de Categoría --- */
+        /* --- Software Category Description --- */
         .software-cat-desc {
             background-color: #1a1332;
             border-radius: 1rem;
@@ -890,21 +835,18 @@
             will-change: transform, top, left, right;
         }
 
-        /* Desktop and up */
         @media (min-width: 1024px) {
             .hero-crox-img {
                 height: 420px;
             }
         }
 
-        /* Tablet */
         @media (max-width: 1023px) {
             .hero-crox-img {
                 height: 320px;
             }
         }
 
-        /* Mobile */
         @media (max-width: 767px) {
             .hero-crox-img {
                 display: none;
@@ -914,59 +856,41 @@
         /* --- Tower Selector Styles --- */
         #tower-selector-container {
             position: relative;
-            /* Needed for absolute positioning of children if any, and for overflow */
             width: 100%;
             aspect-ratio: 4/5;
             background-color: #353f4d;
             border-radius: 0.75rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             overflow: visible;
-            /* Key to allow elements to overflow */
             display: flex;
-            /* Changed to flex container */
             flex-direction: column;
-            /* Stack children vertically */
             justify-content: space-between;
-            /* Push image container to top, controls to bottom */
             align-items: center;
             margin-bottom: 0.3rem;
-            /*padding-bottom: 2.5rem;*/
         }
 
         #tower-selector-container .flex-grow {
-            /* This div holds the image and expands to fill available space */
             position: absolute;
-            /* Place it absolutely to allow name/arrows wrapper at bottom */
             top: 0;
             left: 0;
             width: 100%;
             height: calc(100% - 2.5rem);
-            /* Take all height except bottom control height */
             display: flex;
-            /* To center the image within it */
             justify-content: center;
             align-items: center;
             overflow: visible;
-            /* Important for image to overflow its bounds inside this wrapper */
         }
 
         #current-tower-image {
             width: 100%;
-            /* Fill the `flex-grow` container */
             height: 125%;
-            /* Make it taller to overflow upwards */
             object-fit: contain;
-            /* Keep aspect ratio, allow overflow if wider/taller than container */
             cursor: pointer;
-            /* Change cursor to pointer for click interaction */
             transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
             z-index: 1;
-            /* Below bottom controls */
             margin-top: -10%;
-            /* Push the image up to show overflow at the top */
         }
 
-        /* New wrapper for name and arrows */
         #tower-name-and-arrows-wrapper {
             position: absolute;
             bottom: 0;
@@ -984,75 +908,52 @@
         }
 
         #current-tower-name {
-            /* Styles as requested: same as select, plus padding for arrows */
             font-family: 'Saira', sans-serif;
             font-size: 1.125rem;
-            /* text-lg */
             font-weight: 600;
-            /* font-semibold */
             color: #95ef81;
-            /* green-222 */
             text-shadow: 0 0 3px rgba(149, 239, 129, 0.3);
             white-space: nowrap;
             padding: 0.25rem 3rem;
-            /* Increased horizontal padding to make space for arrows */
             background-color: transparent;
-            /* No background here, parent wrapper provides it */
             border-radius: 0.25rem;
             z-index: 11;
-            /* Ensure name is above arrows */
         }
 
         .tower-nav-arrow {
             position: absolute;
-            /* Absolute relative to #tower-name-and-arrows-wrapper */
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(66, 210, 50, 0.7);
-            /* Green-333 with some transparency */
             color: white;
             padding: 0.75rem;
-            /* Increased padding for larger round button */
             border-radius: 50%;
-            /* Make it round */
             cursor: pointer;
             z-index: 10;
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
             border: 2px solid #95ef81;
-            /* Green-222 border */
             box-shadow: 0 0 8px #42d232, inset 0 0 5px rgba(149, 239, 129, 0.3);
-            /* Neon glow */
             display: flex;
-            /* Use flex to center icon */
             align-items: center;
             justify-content: center;
             width: 3rem;
-            /* Fixed width for roundness */
             height: 3rem;
-            /* Fixed height for roundness */
         }
 
         #prev-tower {
             left: 0;
-            /* Align with left edge of wrapper */
             margin-left: -1.5rem;
-            /* Pull half its width out to overlap container border */
         }
 
         #next-tower {
             right: 0;
-            /* Align with right edge of wrapper */
             margin-right: -1.5rem;
-            /* Pull half its width out to overlap container border */
         }
 
         .tower-nav-arrow:hover {
             background-color: rgba(66, 210, 50, 1);
-            /* Solid green-333 on hover */
             color: #95ef81;
-            /* Green-222 on hover */
             box-shadow: 0 0 15px #42d232, inset 0 0 8px rgba(149, 239, 129, 0.5);
-            /* Stronger neon glow on hover */
         }
 
         /* --- Sticky Price Summary Card --- */
@@ -1071,20 +972,16 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             z-index: 100;
-
             opacity: 0;
             visibility: hidden;
             transform: translateY(100%);
             transition: opacity 0.4s ease-out, visibility 0.4s ease-out, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
             display: none;
-            /* Hidden on mobile by default */
         }
 
         @media (min-width: 768px) {
             #price-summary-card {
                 display: flex;
-                /* Shown on tablet and up */
             }
         }
 
@@ -1153,60 +1050,42 @@
         #psu-select,
         #gpu-select {
             background-color: #374151;
-            /* bg-gray-700 */
             border: 1px solid #42d232;
-            /* green-333 border */
             color: #e5e7eb;
-            /* text-gray-200 */
             padding: 0.25rem 0.5rem;
             border-radius: 0.375rem;
-            /* rounded-md */
             font-size: 1rem;
             cursor: pointer;
             outline: none;
-            /* Remove default focus outline */
             -webkit-appearance: none;
-            /* Remove default browser styling for select */
             -moz-appearance: none;
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 0.5rem center;
-            /* Adjusted position to fix overlap */
             background-size: 1em;
             padding-right: 2em;
-            /* Ensure space for the arrow */
             font-family: 'Saira', sans-serif;
-            /* Apply Saira font */
             transition: all 0.2s ease-in-out;
-            /* Add transition for smoothness */
         }
 
         #ssd-select:focus,
         #psu-select:focus,
         #gpu-select:focus {
             border-color: #95ef81;
-            /* green-222 on focus */
             box-shadow: 0 0 5px rgba(66, 210, 50, 0.4);
-            /* Reduced glow intensity */
             background-color: #107c10;
-            /* Darker green background on focus/open state */
         }
 
-        /* Styling for the selected option text within the closed select */
         #component-list select {
             color: #95ef81;
-            /* green-222 for selected text in closed select */
             font-weight: bold;
             text-shadow: 0 0 3px rgba(149, 239, 129, 0.3);
-            /* Reduced text shadow intensity */
         }
 
         /* Dolar Popup Specific Styling */
         #dolar-popup {
-            /* Ensure popup is on top */
             z-index: 1000 !important;
-
         }
 
         #popup-content {
@@ -1221,28 +1100,20 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            /* Align all content to the right */
             gap: 0.5rem;
-            /* Space between name and values */
         }
 
         #dolar-rates-list .dolar-rate-item .dolar-name {
-            /* New class for the dollar type name */
             font-weight: bold;
             color: #e5e7eb;
-            /* Using Tailwind's gray-200 equivalent */
             margin-bottom: 0.5rem;
-            /* Space below the name */
         }
 
         #dolar-rates-list .dolar-rate-item .text-right {
             text-align: right;
-            /* Ensure text within this div aligns right */
             align-self: flex-end;
-            /* Align values to the right within the item */
         }
 
-        /* New animation for slower glow */
         @keyframes price-glow-slow {
 
             0%,
@@ -1258,16 +1129,12 @@
         /* Universal section card style */
         .section-card-style {
             background-color: rgba(31, 41, 55, 0.9);
-            /* Same background as price card */
             border: 1px solid rgba(75, 85, 99, 0.5);
             border-radius: 0.75rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            padding-top: 2.5rem;
-            /* Increased padding top */
-            padding-bottom: 2.5rem;
-            /* Increased padding bottom */
+            padding: 2.5rem 1rem;
         }
 
         /* Component List Custom Styles */
@@ -1275,33 +1142,27 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            /* Distribute items vertically */
             height: 100%;
-            /* Occupy full height of parent column */
         }
 
         #component-list li {
             display: flex;
             flex-direction: column;
-            /* Mobile-first: single column */
             align-items: flex-start;
-            /* Align content to the left on mobile */
             gap: 0.5rem;
-            /* Reduced gap for tighter mobile layout */
             width: 100%;
             margin-bottom: 2rem;
-            /* Space between items on mobile */
+        }
+        
+        #component-list li.gpu-integrated-mobile {
+            margin-bottom: 0.5rem;
         }
 
         @media (min-width: 768px) {
-
-            /* md breakpoint */
             #component-list li {
                 flex-direction: row;
-                /* Revert to row layout on desktop */
                 align-items: center;
                 gap: 1.5rem;
-                /* Adjusted gap for desktop */
                 margin-bottom: 0;
             }
         }
@@ -1310,15 +1171,11 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            /* Align text to the left */
             width: 100%;
             text-align: left;
-            /* Align text to the left */
         }
 
         @media (min-width: 768px) {
-
-            /* md breakpoint */
             #component-list li .component-content-wrapper {
                 width: auto;
             }
@@ -1347,7 +1204,7 @@
             padding-left: 0.5rem;
         }
 
-        /* MODIFIED: CSS-based image transition for loading */
+        /* CSS-based image transition for loading */
         .component-option-image,
         #current-tower-image {
             transition: filter 0.4s ease-in-out, opacity 0.4s ease-in-out;
@@ -1369,8 +1226,6 @@
         }
 
         @media (min-width: 768px) {
-
-            /* md breakpoint */
             #component-list .component-option-image {
                 width: 180px;
                 max-width: none;
@@ -1379,12 +1234,10 @@
             }
         }
 
-        /* Desktop Hover Zoom Effects & New Sizing */
         @media (min-width: 768px) {
             #current-tower-image:hover {
                 transform: scale(1);
                 transform-origin: center center;
-                /* Expand from center */
             }
 
             #gpu-image,
@@ -1392,11 +1245,6 @@
                 transform: scale(1.5);
                 transform-origin: right center;
             }
-
-            /* #gpu-image:hover,
-            #psu-image:hover {
-                transform: scale(1.7);
-            } */
 
             #ssd-image {
                 transform: scale(1);
@@ -1409,7 +1257,7 @@
 
         /* Mobile Sticky Price Summary Specific Styles */
         #mobile-price-summary-card {
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1.5rem;
             justify-content: center;
             align-items: center;
             position: fixed;
@@ -1423,8 +1271,6 @@
             width: fit-content;
             visibility: hidden;
             text-shadow: 2px 2px 3px black;
-            padding-left: 1.2rem;
-            padding-right: 1.2rem;
             transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
         }
 
@@ -1445,26 +1291,21 @@
 
         #mobile-price-summary-card .currency-value {
             font-size: 3rem;
-            /* Larger font size for main value on mobile (text-5xl) */
             line-height: 1;
         }
 
         #mobile-price-summary-card .currency-text {
             font-size: 1.125rem;
-            /* Adjust size for "LUCAS" or "USD" if they were present */
             font-weight: bold;
             line-height: 1;
             margin-left: 0.25rem;
-            /* Smaller margin for mobile */
             white-space: nowrap;
         }
 
         #mobile-price-summary-card .separator {
             width: 1px;
             height: 2.5rem;
-            /* Shorter separator for mobile (h-8) */
             background-color: rgba(75, 85, 99, 0.5);
-            /* Gray-500 equivalent */
         }
 
         #mobile-price-summary-card #usd-link-summary-mobile {
@@ -1483,79 +1324,118 @@
             color: #42d232;
         }
 
-        /* NEW: Styles for selected components preview */
-        .summary-card-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
+        /* --- NEW Summary & Peripheral Card Styles --- */
+        .peripheral-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
         }
 
         .summary-card {
             background-color: white;
             color: #1f2937;
-            /* text-gray-800 */
             border-radius: 0.5rem;
-            /* rounded-lg */
-            padding: 0.75rem;
-            /* p-3 */
-            width: 140px;
-            height: 180px;
+            width: 240px;
+            height: 190px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             position: relative;
             overflow: hidden;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
-
-        .summary-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
+        
         .summary-card-category {
             position: absolute;
-            top: 0;
+            top: -1.5rem; /* Positioned outside */
             left: 0;
+            width: 100%;
             background-color: #4f46e5;
-            /* bg-indigo-600 */
             color: white;
             padding: 0.125rem 0.5rem;
             font-size: 0.75rem;
-            /* text-xs */
             font-weight: bold;
             border-top-left-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
-        }
-
-        .summary-card img {
-            margin-top: 1.5rem;
-            /* space for category tag */
-            max-height: 96px;
-            /* h-24 */
-            width: auto;
-            max-width: 100%;
-            object-fit: contain;
-            flex-grow: 1;
-        }
-
-        .summary-card p {
-            font-size: 0.75rem;
-            /* text-xs */
-            font-weight: 600;
+            border-top-right-radius: 0.5rem;
+            z-index: 2;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
             text-align: center;
-            margin-top: 0.5rem;
+        }
+
+        #peripherals-grid .peripheral-container.selected .summary-card-category {
+            opacity: 1;
+            transform: translateY(1.5rem);
+        }
+
+        #peripherals-grid .peripheral-container:not(.selected) .summary-card-category {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        #selected-components-preview .summary-card-category {
+             top: 0;
+        }
+
+        .summary-card-image-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .summary-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+        }
+        
+        .peripheral-info {
+            text-align: center;
+            width: 100%;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .peripheral-info .peripheral-name {
+            font-size: 0.875rem;
+            font-weight: 600;
             line-height: 1.2;
+            color: white;
+        }
+        
+        .summary-card.unselected .summary-card-image-wrapper img {
+            opacity: 0.4;
+            filter: grayscale(1);
+        }
+
+        .summary-card.unselected .summary-card-image-wrapper::after {
+            font-family: "Font Awesome 6 Free";
+            content: '\f067'; /* fa-plus */
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: #19fb00;
+            text-shadow: 0px 0px 7px #ffffff;
+            z-index: 1;
         }
 
         .component-link {
-            color: var(--color-principal);
-            /* A subtle blue */
+            color: var(--color-link);
             text-decoration: none;
-            font-size: 1rem !important;
+            font-size: 0.875rem !important;
             display: inline-block;
-            margin-top: 3px;
+            margin-top: 4px;
         }
 
         .component-link:hover {
@@ -1564,14 +1444,112 @@
 
         .component-link i {
             margin-left: 0.25rem;
-            /* ml-1 */
             font-size: 0.75rem;
-            /* text-xs */
+        }
+        
+        .price-card-subtitle {
+            font-family: 'Saira', sans-serif;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: -0.25rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
-        :root {
-            --color-principal: #60a5fa;
-            /* azul brillante */
+        .base-level-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .base-level-label {
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .base-level-tabs {
+            display: flex;
+            background-color: rgba(17, 24, 39, 0.5);
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+            position: relative;
+        }
+        
+        #base-level-slider {
+            position: absolute;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            background-color: #42d232; /* green-333 */
+            border-radius: 0.375rem;
+            box-shadow: 0 0 10px rgba(66, 210, 50, 0.5);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+        }
+
+        .base-level-tab {
+            padding: 0.5rem 1.5rem;
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #9ca3af; /* gray-400 */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0.375rem;
+            border: 2px solid transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .base-level-tab.active {
+            color: #111827; /* gray-900 */
+            text-shadow: none;
+        }
+
+        #base-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1;
+            margin: auto;
+        }
+
+        #base-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .accordion-header {
+            cursor: pointer;
+            padding: 1rem;
+            background-color: rgba(55, 65, 81, 0.5);
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: rgba(75, 85, 99, 0.7);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            padding: 0 1rem;
+        }
+        .accordion-content.open {
+            max-height: 1000px;
+            padding: 1rem;
         }
     </style>
 </head>
@@ -1653,11 +1631,9 @@
                                 class="transition-all duration-700 ease-in-out font-bold text-green-333">USAR</span>
                         </p>
                         <script>
-                            // Palabras a rotar
                             const words = ["USAR", "JUGAR", "CREAR", "VOLAR"];
                             let current = 0;
                             const el = document.getElementById("dynamic-word");
-                            // Calcular el ancho máximo
                             const maxLen = Math.max(...words.map(w => w.length));
                             el.style.width = `${maxLen}ch`;
                             el.style.display = "inline-block";
@@ -1676,9 +1652,7 @@
                                 transition: opacity 0.7s cubic-bezier(.4, 0, .2, 1);
                                 opacity: 1;
                                 color: #42d232;
-                                /* green-333 */
                                 width: 5ch;
-                                /* Fallback for 5 characters */
                                 display: inline-block;
                                 text-align: center;
                             }
@@ -1720,113 +1694,52 @@
                         <p> </i><i class="fas fa-screwdriver-wrench"></i> Asistencia Técnica</p>
                         <p>en Toda <i class="text-blue-300">🌊La Costa</i></p>
                     </div>
-                    <!-- <p class="text-4xl font-bold"><strong><i>¿Gama Alta?</i><br class="sm:hidden"> ¡Ni Hace Falta!</strong></p>
-                        <p class="text-gray-200 font-saira text-3xl mt-2">con MENO<span class="text-3xl">$</span> de la 1/2 <i class="text-violet-500 text-4xl">VOLÁS⚡</i></p> -->
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
-                    <h1 class="text-2xl">Te doy las que considero Mejores Opciones del momento</br> con <span class="links"
-                            style="color: var(--color-principal);">links<i
-                                class="fas fa-external-link-alt text-sm "></i></span>  a Mercado Libre, para ver sus
-                        detalles o las comprés por tu cuenta.</h1>
+                    <h1 class="text-2xl">con las Mejores Opciones en Mercado Libre con sus links <span class="links"
+                            style="color: var(--color-link);"><i
+                                class="fas fa-external-link-alt text-sm "></i></span>, para ver sus
+                        detalles o comprarlas por tu cuenta.</h1>
                     <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
 
             </div>
-
-            <!--             <div class="text-center mt-8 md:hidden lg:block">
-                <a href="#games-section"
-                    class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
-                    <div class="flex items-center justify-center gap-5"><i class="fas fa-tasks text-2xl"></i>
-                        <div class="text-left">
-                            <span class="block leading-tight">Usá esta Web Interactiva</span>
-                            <span class="block text-2sm font-sans -mt-2">para simular tu pedido</span>
-                        </div>
-                    </div>
-                </a>
-            </div> -->
-
-            <section class="hidden bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="flex flex-col items-center">
-                        <i class="fas fa-tasks text-4xl text-orange-400 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">1. Checá tu Pedido</h3>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <i class="fab fa-whatsapp text-4xl green-333 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">2. Enviámelo</h3>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <i class="fas fa-comments text-4xl text-cyan-400 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">3. Despejá tus Dudas</h3>
-                    </div>
-                </div>
-            </section>
         </div>
 
         <div id="price-card-visibility-zone">
-            <section ID="section-hardware"
-                class="my-16 -mt-4 text-center max-w-3xl mx-auto px-4 overflow-hidden md:overflow-visible">
-                <!--                 <h2 class="text-5xl font-bold mb-4 text-white">La Base de<p> La Nave</p>
-                </h2> -->
-                <p class="text-3xl text-gray-100 font-saira">
-                    De <strong class="text-4xl font-vt323">base</strong> usamos:</p>
-
-
-                <div class="mt-16 space-y-3">
-                    <!-- CPU Row -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
-                        <div class="md:col-span-5">
-                            <img id="combo_cpu_ram_mother" src="comps/combos/ryzen5600g.png" alt="Ryzen 5 5600g"
-                                class="w-3/4 mx-auto md:w-[130%] md:-ml-16 h-auto rounded-xl shadow-lg"
-                                onerror="this.onerror=null;this.src='comps/combos/ryzen5600g.webp';">
-                        </div>
-                        <div class="md:col-span-7 text-center md:text-left">
-                            <a href="https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM"
-                                target="_blank">
-                                <p class="font-saira text-4xl md:text-5xl green-333 coneste"><b>Ryzen 5</b> 5600g
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"
-                                        style="color: var(--color-principal);"></i>
-                                </p>
-                            </a>
-                            <a href="https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665"
-                                target="_blank">
-                                <p class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"><b>16 GB</b> RAM
-                                    <small>en DualChannel</small>
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"
-                                        style="color: var(--color-principal);"></i>
-                                </p>
-                            </a>
-                            <a href="https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333"
-                                target="_blank">
-                                <p class="font-saira text-2xl md:text-3xl green-333 coneste">Motherboard <small>
-                                        Asrock B450M</small>
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"
-                                        style="color: var(--color-principal);"></i>
-                                </p>
-                            </a>
-                            <p class="text-lg md:text-xl text-green-200 mt-2 coneste">Con este <b>excelente</b> combo
-                                con gráfica integrada <b>¡no te hace falta placa de video!</b></p>
-                            <p class="text-lg md:text-xl text-green-600 text-right mt-1">...pero podemos agregarla si
-                                buscás gráficos <i>tope de gama</i></p>
-                        </div>
+            <section id="section-hardware" class="my-16 -mt-4 text-center max-w-4xl mx-auto px-4 section-card-style">
+                <div class="base-level-container">
+                    <span class="base-level-label">NIVEL DE BASE</span>
+                    <div id="base-level-selector" class="base-level-tabs">
+                        <div id="base-level-slider"></div>
+                        <div class="base-level-tab" data-level="0">I</div>
+                        <div class="base-level-tab active" data-level="1">II</div>
+                        <div class="base-level-tab" data-level="2">III</div>
                     </div>
                 </div>
 
-                <h2 class="relative z-40 font-saira font-bold text-center mt-12 text-4xl md:text-2xl lg:text-5xl">
-                    <span class="hidden sm:inline"
-                        style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                        <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ELEGÍ EL RESTO <span
-                            style="color:rgba(66, 210, 50, 0.7);">▼</span>
-                    </span>
-                    <span class="inline sm:hidden"
-                        style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                        ELEGÍ EL RESTO
-                        <p style="color:rgba(66, 210, 50, 0.7);">▼</p>
-                    </span>
-
-                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
+                    <div class="md:col-span-5">
+                         <div id="base-image-container">
+                            <img id="base-image" src="" alt="Componentes Base">
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 text-center md:text-left">
+                        <p id="base-cpu-text" class="font-saira text-4xl md:text-5xl green-333 coneste"></p>
+                        <p id="base-ram-text" class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"></p>
+                        <p id="base-motherboard-text" class="font-saira text-2xl md:text-3xl green-333 coneste"></p>
+                        <p id="base-description-text" class="text-lg md:text-xl text-green-200 mt-2 coneste"></p>
+                    </div>
+                </div>
             </section>
+            
+            <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+                <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ELEGÍ EL RESTO <span
+                        style="color:rgba(66, 210, 50, 0.7);">▼</span>
+                </span>
+            </h2>
 
 
             <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
@@ -1834,17 +1747,14 @@
                     <div class="w-full md:w-1/2 flex-shrink-0 h-full flex flex-col items-center justify-center">
                         <div id="tower-selector-container"
                             class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
-                            <!-- Main content area for the image, takes remaining height after bottom-controls -->
                             <div class="flex-grow flex items-center justify-center w-full h-full relative">
                                 <img id="current-tower-image" src="" alt="Torre PC Gamer"
                                     class="w-full h-full object-contain"
                                     onerror="this.onerror=null;this.src='https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC'">
                             </div>
 
-                            <!-- This wrapper is positioned at the very bottom -->
                             <div id="tower-name-and-arrows-wrapper"
                                 class="relative z-10 w-full flex justify-between items-center py-2 px-4">
-                                <!-- The actual arrows and name -->
                                 <i id="prev-tower" class="fas fa-chevron-left tower-nav-arrow"></i>
                                 <span id="current-tower-name" class="bg-gray-800/80 px-2 py-1 rounded"></span>
                                 <i id="next-tower" class="fas fa-chevron-right tower-nav-arrow"></i>
@@ -1854,7 +1764,7 @@
                     </div>
                     <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
                         <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                            <li id="gpu-li" class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
                                     <strong class="text-lg font-semibold">Gráfica:</strong>
                                     <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
@@ -1870,7 +1780,7 @@
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
                                 <img id="ssd-image" src="" alt="Almacenamiento SSD"
-                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
+                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0 hidden md:block">
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
@@ -1884,89 +1794,22 @@
                         </ul>
                     </div>
                 </section>
-
             </div>
 
+            <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+                <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> PERIFÉRICOS <span
+                        style="color:rgba(66, 210, 50, 0.7);">▼</span>
+                </span>
+            </h2>
 
-            <section id="section-perifericos" class="mb-12 section-card-style">
-                <h2 class="text-3xl font-bold text-center mb-3">Periféricos Extra</h2>
-                <p class="text-center text-gray-300 mb-8">Agregá Comodidad al Mando</p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <!-- Combo Mouse y Teclado Card -->
-                    <div id="combo-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="combo-image" src="" alt="Combo Mouse y Teclado"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Combo'">
-                        </div>
-                        <p id="combo-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Keyboard Card -->
-                    <div id="keyboard-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="keyboard-image" src="" alt="Teclado" class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado'">
-                        </div>
-                        <p id="keyboard-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Mouse Card -->
-                    <div id="mouse-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="mouse-image" src="" alt="Mouse" class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Mouse'">
-                        </div>
-                        <p id="mouse-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Monitor Card -->
-                    <div id="monitor-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="monitor-image" src="" alt="Monitor" class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Monitor'">
-                        </div>
-                        <p id="monitor-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Auriculares Card -->
-                    <div id="auriculares-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="auriculares-image" src="" alt="Auriculares"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Auriculares'">
-                        </div>
-                        <p id="auriculares-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Parlantes Card -->
-                    <div id="parlantes-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="parlantes-image" src="" alt="Parlantes"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Parlantes'">
-                        </div>
-                        <p id="parlantes-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
+            <section id="section-peripherals" class="mb-12 section-card-style px-4">
+                 <div id="peripherals-grid" class="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
+                    <!-- Las tarjetas de periféricos se insertarán aquí con JS -->
                 </div>
             </section>
 
             <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
-
-
                 <div class="feature-card relative lg:col-span-2 soporte-tecnico-card"
                     style="padding: 1rem; overflow: hidden; min-height: 200px;">
                     <img src="memde_think.png" alt="Soporte técnico personalizado"
@@ -2083,13 +1926,9 @@
 
                     <div class="flex flex-col items-center">
                         <h2 class="text-4xl font-bold mb-2">Selección y Precio Total</h2>
-                        <p class="font-saira text-2xl  green-333 coneste"><b>Ryzen 5</b> 5600g | 16GB de RAM</p>
-                        <!-- Contenedor para las imágenes de los componentes seleccionados -->
-                        <div id="selected-components-preview" class="w-full p-4 border-y border-gray-700 my-6">
-                            <div id="selected-images-container"
-                                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
-                                <!-- Las imágenes se insertarán aquí con JS -->
-                            </div>
+                        <p id="base-summary-text" class="font-saira text-2xl  green-333 coneste"></p>
+                        <div id="selected-components-preview" class="w-full p-4 my-6">
+                            <!-- Summary content will be inserted here by JS -->
                         </div>
 
                         <div class="w-full max-w-lg mt-4 flex flex-col items-center">
@@ -2098,12 +1937,6 @@
                                     <p class="lucas-price text-center font-saira"><span id="total-price">$500.000</span>
                                     </p>
                                 </div>
-                                <!--                                 <div class="md:col-span-2 flex justify-center items-center">
-                                    <div class="relative h-24 w-40">
-                                        <span class="offer-banner-contado font-saira">al contado</span>
-                                        <span class="offer-banner-main font-saira">¡OFERTA ÚNICA!</span>
-                                    </div>
-                                </div> -->
                                 <div class="md:col-span-2 flex justify-center items-center text-center">
                                     <div>
                                         <p class=" green-333 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega
@@ -2181,35 +2014,32 @@
     </div>
 
     <!-- Sticky Price Summary Card -->
-    <div id="price-summary-card" class="font-saira">
-        <div class="price-section ars-price">
-            <div class="price-value-row">
-                <span class="currency-value" id="total-price-summary-ars">$500.000</span>
+    <div id="price-summary-card" class="font-saira items-center justify-center">
+        <div class="flex flex-col items-center">
+            <div class="price-section ars-price">
+                <div class="price-value-row">
+                    <span class="currency-value" id="total-price-summary-ars">$500.000</span>
+                </div>
             </div>
+            <span class="price-card-subtitle">PRECIO FINAL CON SERVICIO</span>
         </div>
         <div class="separator hidden"></div>
-        <!--         <div class="price-section usd-price" id="usd-price-section">
-            <div class="price-value-row">
-                <span class="currency-value"><span id="total-price-summary-usd"></span></span>
-                <span class="currency-text">USD</span>
-            </div>
-            <a id="usd-link-summary" href="#" class="text-xs text-gray-500 hover:underline">
-                <p>Ver cotizaciones</p>
-            </a>
-        </div> -->
     </div>
 
 
     <!-- NEW Mobile Sticky Price Summary -->
     <div id="mobile-price-summary-card"
-        class="fixed bottom-0 z-50 p-4 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
-        <div class="price-section ars-price">
-            <div class="price-value-row">
-                <span class="currency-value text-cyan-400 font-saira text-right"
-                    id="total-price-summary-ars-mobile">$500.000</span>
+        class="fixed bottom-0 z-50 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
+        <div class="flex flex-col items-center">
+            <div class="price-section ars-price">
+                <div class="price-value-row">
+                    <span class="currency-value text-cyan-400 font-saira text-right"
+                        id="total-price-summary-ars-mobile">$500.000</span>
+                </div>
             </div>
+            <span class="price-card-subtitle">PRECIO FINAL CON SERVICIO</span>
         </div>
-        <div class="separator w-1 h-8 hidden"></div> <!-- Adjust height as needed -->
+        <div class="separator w-1 h-8 hidden"></div>
         <div class="price-section usd-price pl-4 hidden" id="usd-price-section-mobile">
 
             <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline">
@@ -2278,80 +2108,64 @@
             let BASE_PRICE = 0;
             let allDolarRates = [];
             let currentTowerIndex = 0;
+            let currentBaseLevel = 1; // Default to Nivel II
 
             // Component Options
-            let baseOptions = [];
-            let armadasOptions = [];
-            let towersOptions = [];
-            let ssdOptions = [];
-            let gpuOptions = [];
-            let psuOptions = [];
-            let motherboardOptions = [];
-            let cpuOptions = [];
-            let ramOptions = [];
-            let comboOptions = [];
-            let monitorOptions = [];
-            let mouseOptions = [];
-            let joystickOptions = [];
-            let keyboardOptions = [];
-            let comboMouseTecladoOptions = [];
-            let auricularesOptions = [];
-            let parlantesOptions = [];
+            let baseOptions = [], cpuOptions = [], ramOptions = [], motherboardOptions = [],
+                towersOptions = [], ssdOptions = [], gpuOptions = [], psuOptions = [],
+                comboMouseTecladoOptions = [], keyboardOptions = [], mouseOptions = [],
+                monitorOptions = [], auricularesOptions = [], parlantesOptions = [],
+                microfonosOptions = [], webcamOptions = [], arosDeLuzOptions = [], wifiOptions = [];
 
-            // Peripheral State
-            const peripheralState = {
-                currentMonitorIndex: -1,
-                currentMouseIndex: -1,
-                currentKeyboardIndex: -1,
-                currentComboIndex: -1,
-                currentAuricularesIndex: -1,
-                currentParlantesIndex: -1,
+            // NEW: State for optional peripherals
+            const selectedPeripherals = {
+                monitor: -1, keyboard: -1, mouse: -1, auriculares: -1,
+                parlantes: -1, microfono: -1, webcam: -1, arodeluz: -1, wifi: -1
             };
 
-            // --- FETCH AND INITIALIZE ---
-            fetch('products.json')
-                .then(response => response.json())
-                .then(data => {
-                    initializeApp(data);
-                })
-                .catch(error => {
-                    console.error('Error loading products.json:', error);
-                });
-
-            async function initializeApp(data) {
-                // Populate component options from JSON data
+            // --- INITIALIZE ---
+            function initializeApp(data) {
                 baseOptions = (data.baseOptions || []).filter(opt => opt.visible !== 0);
-                armadasOptions = (data.armadasOptions || []).filter(opt => opt.visible !== 0);
+                cpuOptions = data.cpuOptions || [];
+                ramOptions = data.ramOptions || [];
+                motherboardOptions = data.motherboardOptions || [];
                 towersOptions = (data.towersOptions || []).filter(opt => opt.visible !== 0);
                 ssdOptions = (data.ssdOptions || []).filter(opt => opt.visible !== 0);
                 gpuOptions = (data.gpuOptions || []).filter(opt => opt.visible !== 0);
                 psuOptions = (data.psuOptions || []).filter(opt => opt.visible !== 0);
-                motherboardOptions = (data.motherboardOptions || []).filter(opt => opt.visible !== 0);
-                cpuOptions = (data.cpuOptions || []).filter(opt => opt.visible !== 0);
-                ramOptions = (data.ramOptions || []).filter(opt => opt.visible !== 0);
-                comboOptions = (data.comboOptions || []).filter(opt => opt.visible !== 0);
-                monitorOptions = (data.monitorOptions || []).filter(opt => opt.visible !== 0);
-                mouseOptions = (data.mouseOptions || []).filter(opt => opt.visible !== 0);
-                joystickOptions = (data.joystickOptions || []).filter(opt => opt.visible !== 0);
                 keyboardOptions = (data.keyboardOptions || []).filter(opt => opt.visible !== 0);
-                comboMouseTecladoOptions = (data.comboMouseTecladoOptions || []).filter(opt => opt.visible !== 0);
+                mouseOptions = (data.mouseOptions || []).filter(opt => opt.visible !== 0);
+                monitorOptions = (data.monitorOptions || []).filter(opt => opt.visible !== 0);
                 auricularesOptions = (data.auricularesOptions || []).filter(opt => opt.visible !== 0);
                 parlantesOptions = (data.parlantesOptions || []).filter(opt => opt.visible !== 0);
+                microfonosOptions = (data.microfonosOptions || []).filter(opt => opt.visible !== 0);
+                webcamOptions = (data.webcamOptions || []).filter(opt => opt.visible !== 0);
+                arosDeLuzOptions = (data.arosDeLuzOptions || []).filter(opt => opt.visible !== 0);
+                wifiOptions = (data.wifiOptions || []).filter(opt => opt.visible !== 0);
 
-                // Set BASE_PRICE from the first base option's total plus GAIN_PRICE
-                if (baseOptions.length > 0) {
-                    BASE_PRICE = baseOptions[0].total + GAIN_PRICE;
-                } else {
-                    console.error("No baseOptions found in products.json to set BASE_PRICE.");
-                    BASE_PRICE = GAIN_PRICE; // Fallback
-                }
-
-                // --- Start dependent initializations ---
-                await fetchDolarRate();
+                updateBasePrice();
+                fetchDolarRate();
                 populateUI();
                 setupEventListeners();
                 updateAllDisplays();
             }
+            
+            fetch('products.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    initializeApp(data);
+                })
+                .catch(error => {
+                    console.error('Failed to load products.json, using fallback data:', error);
+                    const fallbackData = { "baseOptions": [ { "id": 49735, "name": "Ryzen 5 5600g", "cpu": "896", "ram": "81841", "mother": "49131", "cantRam": 1, "total": 351882, "visible": 1 }, { "id": 30077, "name": "Ryzen 7 5700G ", "cpu": "55990", "ram": "81841", "mother": "49131", "cantRam": 1, "total": 376748, "visible": 1 }, { "id": 45319, "name": "Ryzen 7 5700G ", "cpu": "55990", "mother": "23506", "ram": "93477", "cantRam": 4, "total": 487353, "visible": 1 } ], "cpuOptions": [ { "id": "896", "name": "Ryzen 5 5600g", "price": 214534, "description": "6 nucleos 4.4ghz Am4", "image_url": "comps/cpus/ryzen5_5600g.webp", "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE", "visible": 1 }, { "id": "55990", "name": "Ryzen 7 5700G ", "price": 239400, "description": "8 nucleos 4.6ghz Am4", "image_url": "comps/cpus/ryzen7_5700g.webp", "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE", "visible": 1 } ], "ramOptions": [ { "id": "81841", "name": "DDR4 8x2 = 16 GB", "price": 48999, "description": "Descripción de la nueva RAM.", "image_url": "comps/rams/16gb.webp", "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE", "visible": 1 }, { "id": "93477", "name": "DDR4 8 GB - Hiksemi", "price": 38769, "description": "Descripción de la nueva RAM.", "image_url": "comps/rams/8gb.webp", "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE", "visible": 1 } ], "motherboardOptions": [ { "id": "49131", "name": "Asrock B450m-HDV R4.0", "price": 88349, "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.", "image_url": "comps/moms/b450m-asrock.png", "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r4.0-am4-hdmi-ddr4-color-negro/p/MLA22661333?offer_type=BEST_PRICE", "visible": 1 }, { "id": "23506", "name": "Asrock A520m", "price": 92877, "description": "Descripción de la nueva Motherboard.", "image_url": "comps/moms/asrock_a520m.webp", "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE", "visible": 1 } ], "towersOptions": [ { "id": 29026, "name": "LNZ Y11", "price": 59999, "slug": "lnz-y11", "image_url": "comps/torres/lnz-y11.webp", "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE", "visible": 1 }, { "id": 50127, "name": "Antec AX20", "price": 61910, "slug": "antec-ax20", "image_url": "comps/torres/antec-ax20.webp", "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE", "visible": 1 } ], "ssdOptions": [ { "id": 27876, "name": "500 GB - NVMe", "price": 51895, "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.", "image_url": "comps/discos/nvme_hik_500.webp", "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE", "visible": 1 }, { "id": 93692, "name": "1 TB - NVMe", "price": 95989, "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.", "image_url": "comps/discos/nvme_wd_1.webp", "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136?offer_type=BEST_PRICE", "visible": 1 } ], "gpuOptions": [ { "id": 67931, "name": "Integrada", "price": 0, "description": "Viene con el CPU - más que suficiente para arrancar.", "image_url": "comps/gpus/vega.webp", "link": "", "visible": 1 }, { "id": 38532, "name": "RX 7600 - 8GB GDDR6", "price": 369999, "description": "Rendimiento moderno para jugar en 1080p y 1440p (según el juego). Arquitectura RDNA 3, eficiencia energética y potencia. Hoy, a un EXCELENTE precio.", "image_url": "comps/gpus/38532.webp", "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-amd-radeon-rx-7600-powercolor-8gb-gddr6/p/MLA29675752?offer_type=BEST_PRICE#polycard_client=search_best-seller&tracking_id=441f348b-7b07-4062-afc1-4ca4eadfdd88&wid=MLA2148656004&sid=search", "visible": 1 } ], "psuOptions": [ { "id": 27579, "name": "Certificada Redragon 500W", "price": 70300, "description": "Recomendada para cuidar nuestros componentes.", "image_url": "comps/psus/500redragon.webp", "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-redragon-rpgs-gc-ps001-500w-negra/p/MLA43937355?offer_type=BEST_PRICE", "visible": 1 }, { "id": 73804, "name": "Certificada Sentey 500W", "price": 89999, "description": "Otra buena opción 80 Plus. 3 Años de Garantía.", "image_url": "comps/psus/550sentey80.webp", "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE", "visible": 1 } ], "comboMouseTecladoOptions": [ { "id": 67546, "name": "Inalámbricos Solarmax", "price": 16297, "image_url": "comps/combos-mouse-teclado/mouse-y-teclado-inalámbricos-solarmax.webp", "visible": 1 } ], "keyboardOptions": [ { "id": 15740, "name": "Shiva K512 Cableado", "price": 46075, "image_url": "comps/teclados/shiva-k512-cableado.webp", "visible": 1 } ], "mouseOptions": [ { "id": 18066, "name": "Redragon Wireless", "price": 24824, "image_url": "comps/mouses/redragon-wireless.webp", "visible": 1 } ], "monitorOptions": [ { "id": 19499, "name": "Cooler Master 24'' 100hz", "price": 166190, "image_url": "comps/monitores/cooler-master-24-100hz.webp", "visible": 1 } ], "auricularesOptions": [ { "id": 84174, "name": "Kotion Each Cableado", "price": 48999, "image_url": "comps/auriculares/kotion-each-cableado.webp", "visible": 1 } ], "parlantesOptions": [ { "id": 9675, "name": "Genius Madera", "price": 18000, "image_url": "comps/parlantes/genius-madera.webp", "visible": 1 } ], "microfonosOptions": [], "webcamOptions": [], "arosDeLuzOptions": [], "wifiOptions": [] };
+                    initializeApp(fallbackData);
+                });
+
 
             function populateUI() {
                 // Populate game list
@@ -2431,9 +2245,24 @@
 
                 const psuSelect = document.getElementById('psu-select');
                 if (psuSelect) psuSelect.innerHTML = psuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+
+                populateOptionalPeripherals();
             }
 
             function setupEventListeners() {
+                // Base Level Selector
+                document.querySelectorAll('.base-level-tab').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        document.querySelectorAll('.base-level-tab').forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        currentBaseLevel = parseInt(tab.dataset.level);
+                        updateBaseDisplay();
+                        updateBasePrice();
+                        updatePrices();
+                        updateSliderPosition();
+                    });
+                });
+
                 // Component Selects
                 const ssdSelect = document.getElementById('ssd-select');
                 const gpuSelect = document.getElementById('gpu-select');
@@ -2447,8 +2276,12 @@
                 document.getElementById('prev-tower').addEventListener('click', prevTower);
                 document.getElementById('next-tower').addEventListener('click', nextTower);
 
-                // Peripherals
-                setupPeripheralCards();
+                // Peripherals Grid Listener
+                document.getElementById('peripherals-grid').addEventListener('click', handlePeripheralClick);
+                
+                // Summary Section Listener
+                document.getElementById('selected-components-preview').addEventListener('click', handleSummaryCardClick);
+
 
                 // Games
                 document.querySelectorAll('input[name="game"]').forEach(checkbox => {
@@ -2460,7 +2293,7 @@
                 // Form submission
                 document.getElementById('orderForm').addEventListener('submit', handleFormSubmit);
 
-                // Dolar Popup (Listeners are kept in case they are re-enabled later)
+                // Dolar Popup
                 const dolarTriggers = ['usd-link-top', 'usd-price-display-top', 'usd-link-bottom', 'total-price-usd', 'usd-link-summary', 'total-price-summary-usd', 'usd-link-summary-mobile', 'total-price-summary-usd-mobile'];
                 dolarTriggers.forEach(id => document.getElementById(id)?.addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); }));
                 const dolarPopup = document.getElementById('dolar-popup');
@@ -2492,40 +2325,54 @@
                 window.addEventListener('resize', () => {
                     setInitialGridHeight();
                     positionCroxImages();
+                    updateSliderPosition();
                 });
             }
 
             function updateAllDisplays() {
+                updateBaseDisplay();
                 updateTowerDisplay();
                 updateComponentDisplay(document.getElementById('ssd-select'), document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions);
                 updateComponentDisplay(document.getElementById('gpu-select'), document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions);
                 updateComponentDisplay(document.getElementById('psu-select'), document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions);
-                updatePeripheralStates();
                 updateSelectedGamesList();
                 setInitialGridHeight();
                 positionCroxImages();
                 updatePrices();
+                updateSliderPosition();
+            }
+            
+            function updateBasePrice() {
+                if (baseOptions.length > currentBaseLevel) {
+                    BASE_PRICE = baseOptions[currentBaseLevel].total + GAIN_PRICE;
+                } else {
+                    console.error("Selected base level is out of bounds.");
+                    BASE_PRICE = GAIN_PRICE; // Fallback
+                }
             }
 
             // --- PRICE CALCULATION ---
             function updatePrices() {
                 let total = BASE_PRICE;
 
-                // Add prices from selected components
                 total += parseInt(document.getElementById('ssd-select')?.value || 0);
                 total += parseInt(document.getElementById('gpu-select')?.value || 0);
                 total += parseInt(document.getElementById('psu-select')?.value || 0);
                 if (towersOptions.length > 0) total += towersOptions[currentTowerIndex].price;
 
                 // Add prices from selected peripherals
-                if (peripheralState.currentMonitorIndex > -1) total += monitorOptions[peripheralState.currentMonitorIndex].price;
-                if (peripheralState.currentMouseIndex > -1) total += mouseOptions[peripheralState.currentMouseIndex].price;
-                if (peripheralState.currentKeyboardIndex > -1) total += keyboardOptions[peripheralState.currentKeyboardIndex].price;
-                if (peripheralState.currentComboIndex > -1) total += comboMouseTecladoOptions[peripheralState.currentComboIndex].price;
-                if (peripheralState.currentAuricularesIndex > -1) total += auricularesOptions[peripheralState.currentAuricularesIndex].price;
-                if (peripheralState.currentParlantesIndex > -1) total += parlantesOptions[peripheralState.currentParlantesIndex].price;
+                const peripheralCollections = {
+                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions,
+                    auriculares: auricularesOptions, parlantes: parlantesOptions, microfono: microfonosOptions,
+                    webcam: webcamOptions, arodeluz: arosDeLuzOptions, wifi: wifiOptions
+                };
 
-                // Update DOM elements for ARS price
+                for (const key in selectedPeripherals) {
+                    if (selectedPeripherals[key] > -1) {
+                        total += peripheralCollections[key][selectedPeripherals[key]].price;
+                    }
+                }
+
                 const formattedArs = '$' + total.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
                 document.getElementById('total-price').textContent = formattedArs;
                 document.getElementById('top-total-price').textContent = formattedArs;
@@ -2547,12 +2394,36 @@
             }
 
             // --- UI UPDATE FUNCTIONS ---
+        function updateBaseDisplay() {
+            if (typeof baseOptions === 'undefined' || baseOptions.length <= currentBaseLevel) return;
+            const base = baseOptions[currentBaseLevel];
+            const cpu = cpuOptions && cpuOptions.find(c => String(c.id) === String(base.cpu));
+            const ram = ramOptions && ramOptions.find(c => String(c.id) === String(base.ram));
+            const motherboard = motherboardOptions && motherboardOptions.find(c => String(c.id) === String(base.mother));
+
+            if (cpu && ram && motherboard) {
+                // CPU
+                const cpuNameParts = cpu.name.split(' ');
+                document.getElementById('base-cpu-text').innerHTML = `<b>${cpuNameParts.slice(0, 2).join(' ')}</b> ${cpuNameParts.slice(2).join(' ')} <a href="${cpu.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                // RAM: solo muestra la cantidad total de RAM de la base seleccionada
+                document.getElementById('base-ram-text').innerHTML = `<span class="text-green-333"><strong>${base.totalram} GB</strong> de RAM | Dual Channel</span> <a href="${ram.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                // Motherboard
+                document.getElementById('base-motherboard-text').innerHTML = `Mother <small>${motherboard.name}</small> <a href="${motherboard.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                // Descripción desde el JSON
+                document.getElementById('base-description-text').innerHTML = base.description || '';
+                // Imagen
+                const baseImage = document.getElementById('base-image');
+                if(baseImage) baseImage.src = `comps/bases/${base.id}.webp`;
+                updateBaseSummaryText(cpu, ram, base);
+            }
+        }
+
+
             function updateTowerDisplay() {
                 if (towersOptions.length === 0) return;
                 const selectedTower = towersOptions[currentTowerIndex];
                 loadImageWithGrayscale(document.getElementById('current-tower-image'), selectedTower.image_url);
                 document.getElementById('current-tower-name').textContent = selectedTower.name;
-
                 let towerPriceHTML = '';
                 if (selectedTower.link) {
                     const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} | ` : '';
@@ -2563,115 +2434,224 @@
             }
 
             function updateComponentDisplay(selectEl, descEl, imageEl, options) {
-                if (!selectEl || !descEl || !imageEl || !options) return;
+                if (!selectEl || !imageEl || !options) return;
                 const selectedOption = options.find(opt => opt.price == selectEl.value);
                 if (selectedOption) {
-                    let linkHTML = '';
-                    if (selectedOption.link) {
-                        const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} | ` : '';
-                        linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                    if(descEl) {
+                        let linkHTML = '';
+                        if (selectedOption.link) {
+                            const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} | ` : '';
+                            linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                        }
+                        descEl.innerHTML = selectedOption.description + linkHTML;
                     }
-                    descEl.innerHTML = selectedOption.description + linkHTML;
                     loadImageWithGrayscale(imageEl, selectedOption.image_url);
-                }
-                updatePrices();
-            }
-
-            function setupPeripheralCards() {
-                const peripheralConfig = [
-                    { id: 'combo-card', options: comboMouseTecladoOptions, stateKey: 'currentComboIndex', onSelect: () => { peripheralState.currentMouseIndex = -1; peripheralState.currentKeyboardIndex = -1; updatePeripheralStates(); } },
-                    { id: 'keyboard-card', options: keyboardOptions, stateKey: 'currentKeyboardIndex', onSelect: () => { peripheralState.currentComboIndex = -1; updatePeripheralStates(); } },
-                    { id: 'mouse-card', options: mouseOptions, stateKey: 'currentMouseIndex', onSelect: () => { peripheralState.currentComboIndex = -1; updatePeripheralStates(); } },
-                    { id: 'monitor-card', options: monitorOptions, stateKey: 'currentMonitorIndex' },
-                    { id: 'auriculares-card', options: auricularesOptions, stateKey: 'currentAuricularesIndex' },
-                    { id: 'parlantes-card', options: parlantesOptions, stateKey: 'currentParlantesIndex' }
-                ];
-
-                peripheralConfig.forEach(({ id, options, stateKey, onSelect }) => {
-                    const card = document.getElementById(id);
-                    if (!card) return;
-                    card.addEventListener('click', () => {
-                        if (card.classList.contains('disabled')) return;
-                        const optionsLength = options.length;
-                        peripheralState[stateKey] = (peripheralState[stateKey] + 2) % (optionsLength + 1) - 1;
-                        if (onSelect) onSelect(); else updatePeripheralStates();
-                    });
-                });
-            }
-
-            function updatePeripheralStates() {
-                const peripherals = [
-                    { id: 'combo-card', options: comboMouseTecladoOptions, stateKey: 'currentComboIndex', defaultText: 'Combo Mouse+Teclado' },
-                    { id: 'keyboard-card', options: keyboardOptions, stateKey: 'currentKeyboardIndex', defaultText: 'Teclado' },
-                    { id: 'mouse-card', options: mouseOptions, stateKey: 'currentMouseIndex', defaultText: 'Mouse' },
-                    { id: 'monitor-card', options: monitorOptions, stateKey: 'currentMonitorIndex', defaultText: 'Monitor' },
-                    { id: 'auriculares-card', options: auricularesOptions, stateKey: 'currentAuricularesIndex', defaultText: 'Auriculares' },
-                    { id: 'parlantes-card', options: parlantesOptions, stateKey: 'currentParlantesIndex', defaultText: 'Parlantes' }
-                ];
-                const isComboActive = peripheralState.currentComboIndex > -1;
-
-                peripherals.forEach(p => {
-                    const card = document.getElementById(p.id);
-                    if (!card) return;
-                    const image = card.querySelector('img');
-                    const text = card.querySelector('p');
-                    const currentIndex = peripheralState[p.stateKey];
-
-                    card.classList.toggle('disabled', isComboActive && (p.id === 'mouse-card' || p.id === 'keyboard-card'));
-                    card.classList.toggle('active', currentIndex > -1);
-
-                    if (currentIndex > -1) {
-                        const selected = p.options[currentIndex];
-                        if (selected) {
-                            image.src = selected.image_url;
-                            image.style.filter = 'grayscale(0%)';
-                            let linkHTML = '';
-                            if (selected.link) {
-                                const priceFull = selected.price > 0 ? `$${selected.price.toLocaleString('es-AR')} | ` : '';
-                                linkHTML = `<a href="${selected.link}" target="_blank" class="component-link text-xs" onclick="event.stopPropagation()">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
-                            }
-                            text.innerHTML = `<span>${selected.name}</span>${linkHTML}`;
+                     // Logic for mobile visibility
+                    if (selectEl.id === 'gpu-select') {
+                        const gpuLi = document.getElementById('gpu-li');
+                        if (selectEl.selectedIndex === 0) {
+                            imageEl.classList.add('md:block', 'hidden');
+                            gpuLi.classList.add('gpu-integrated-mobile');
+                        } else {
+                            imageEl.classList.remove('md:block', 'hidden');
+                            gpuLi.classList.remove('gpu-integrated-mobile');
                         }
-                    } else {
-                        card.classList.remove('active');
-                        if (p.options.length > 0 && p.options[0]) {
-                            image.src = p.options[0].image_url;
-                        }
-                        image.style.filter = 'grayscale(100%)';
-                        text.textContent = p.defaultText;
                     }
-                });
+                }
                 updatePrices();
             }
 
             function updateSelectedComponentsDisplay() {
-                const container = document.getElementById('selected-images-container');
+                const container = document.getElementById('selected-components-preview');
                 if (!container) return;
-                container.innerHTML = '';
-                const createCard = (item, category) => {
-                    if (!item || !item.image_url || !item.name) return '';
-                    const link = item.link ? `href="${item.link}" target="_blank"` : 'href="#" onclick="event.preventDefault()"';
-                    return `<a ${link} class="summary-card-link"><div class="summary-card"><div class="summary-card-category">${category}</div><img src="${item.image_url}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/128x96/ffffff/333333?text=Error'"><p>${item.name}</p></div></a>`;
+                container.innerHTML = ''; // Clear previous content
+
+                // Create main grid for cabinet and table
+                const summaryGrid = document.createElement('div');
+                summaryGrid.className = 'flex flex-col md:flex-row gap-8 items-start';
+
+                // Left side: Cabinet
+                const cabinetContainer = document.createElement('div');
+                cabinetContainer.className = 'w-full md:w-1/3 flex-shrink-0 flex flex-col items-center -mt-8';
+                const selectedTower = towersOptions[currentTowerIndex];
+                if (selectedTower) {
+                    cabinetContainer.innerHTML = `
+                        <a href="#main-components-container" class="block">
+                            <img src="${selectedTower.image_url}" alt="${selectedTower.name}" style="width: 313px; height: 430px; object-fit: contain;" class="rounded-lg mb-2" onerror="this.onerror=null;this.src='https://placehold.co/313x430/1f2937/ffffff?text=Gabinete'">
+                        </a>
+                        <p class="font-bold text-lg text-white">${selectedTower.name}</p>
+                        <a href="${selectedTower.link}" target="_blank" class="component-link">$${selectedTower.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>
+                    `;
+                }
+                summaryGrid.appendChild(cabinetContainer);
+
+                // Right side: Table
+                const tableContainer = document.createElement('div');
+                tableContainer.className = 'w-full md:w-2/3';
+                const table = document.createElement('table');
+                table.className = 'w-full text-left';
+                const tableBody = document.createElement('tbody');
+                table.appendChild(tableBody);
+                tableContainer.appendChild(table);
+
+                const components = [
+                    { type: 'Gráfica', options: gpuOptions, selected: gpuOptions.find(opt => opt.price == document.getElementById('gpu-select').value), anchor: '#gpu-li' },
+                    { type: 'Almacenamiento', options: ssdOptions, selected: ssdOptions.find(opt => opt.price == document.getElementById('ssd-select').value), anchor: '#ssd-li' },
+                    { type: 'Fuente', options: psuOptions, selected: psuOptions.find(opt => opt.price == document.getElementById('psu-select').value), anchor: '#psu-li' }
+                ];
+
+                const peripheralMap = {
+                    monitor: { options: monitorOptions, name: 'Monitor' }, keyboard: { options: keyboardOptions, name: 'Teclado' },
+                    mouse: { options: mouseOptions, name: 'Mouse' }, auriculares: { options: auricularesOptions, name: 'Auriculares' },
+                    parlantes: { options: parlantesOptions, name: 'Parlantes' }, microfono: { options: microfonosOptions, name: 'Micrófono' },
+                    webcam: { options: webcamOptions, name: 'Webcam' }, arodeluz: { options: arosDeLuzOptions, name: 'Aro de Luz' },
+                    wifi: { options: wifiOptions, name: 'WiFi' }
                 };
 
-                const selectedGPU = gpuOptions.find(opt => opt.price == document.getElementById('gpu-select').value);
-                const selectedSSD = ssdOptions.find(opt => opt.price == document.getElementById('ssd-select').value);
-                const selectedPSU = psuOptions.find(opt => opt.price == document.getElementById('psu-select').value);
-
-                container.innerHTML += createCard(towersOptions[currentTowerIndex], 'Gabinete');
-                container.innerHTML += createCard(selectedGPU, 'Gráfica');
-                container.innerHTML += createCard(selectedSSD, 'Almacenamiento');
-                container.innerHTML += createCard(selectedPSU, 'Fuente');
-
-                if (peripheralState.currentComboIndex > -1) container.innerHTML += createCard(comboMouseTecladoOptions[peripheralState.currentComboIndex], 'Combo');
-                else {
-                    if (peripheralState.currentKeyboardIndex > -1) container.innerHTML += createCard(keyboardOptions[peripheralState.currentKeyboardIndex], 'Teclado');
-                    if (peripheralState.currentMouseIndex > -1) container.innerHTML += createCard(mouseOptions[peripheralState.currentMouseIndex], 'Mouse');
+                for (const key in selectedPeripherals) {
+                    if (selectedPeripherals[key] > -1) {
+                        const item = peripheralMap[key].options[selectedPeripherals[key]];
+                        components.push({ type: peripheralMap[key].name, selected: item, anchor: '#section-peripherals' });
+                    }
                 }
-                if (peripheralState.currentMonitorIndex > -1) container.innerHTML += createCard(monitorOptions[peripheralState.currentMonitorIndex], 'Monitor');
-                if (peripheralState.currentAuricularesIndex > -1) container.innerHTML += createCard(auricularesOptions[peripheralState.currentAuricularesIndex], 'Auriculares');
-                if (peripheralState.currentParlantesIndex > -1) container.innerHTML += createCard(parlantesOptions[peripheralState.currentParlantesIndex], 'Parlantes');
+
+                components.forEach(comp => {
+                    if (comp.selected) {
+                        const row = tableBody.insertRow();
+                        row.className = 'border-b border-gray-700';
+                        const priceHTML = comp.selected.price > 0 ? `$${comp.selected.price.toLocaleString('es-AR')}` : 'Incluida';
+                        const linkHTML = comp.selected.link ? `<a href="${comp.selected.link}" target="_blank" class="component-link">${priceHTML} <i class="fas fa-external-link-alt"></i></a>` : `<span class="text-gray-400">${priceHTML}</span>`;
+                        
+                        row.innerHTML = `
+                            <td class="py-3 px-2 font-bold text-gray-300">${comp.type}</td>
+                            <td class="py-3 px-2 text-white">${comp.selected.name}</td>
+                            <td class="py-3 px-2">${linkHTML}</td>
+                        `;
+                    }
+                });
+
+                summaryGrid.appendChild(tableContainer);
+                container.appendChild(summaryGrid);
             }
+            
+            // --- NEW PERIPHERAL FUNCTIONS ---
+            function populateOptionalPeripherals() {
+                const grid = document.getElementById('peripherals-grid');
+                grid.innerHTML = '';
+                const peripheralCategories = [
+                    { key: 'monitor', name: 'Monitor', options: monitorOptions },
+                    { key: 'keyboard', name: 'Teclado', options: keyboardOptions },
+                    { key: 'mouse', name: 'Mouse', options: mouseOptions },
+                    { key: 'auriculares', name: 'Auriculares', options: auricularesOptions },
+                    { key: 'parlantes', name: 'Parlantes', options: parlantesOptions },
+                    { key: 'microfono', name: 'Micrófono', options: microfonosOptions },
+                    { key: 'webcam', name: 'Webcam', options: webcamOptions },
+                    { key: 'arodeluz', name: 'Aro de Luz', options: arosDeLuzOptions },
+                    { key: 'wifi', name: 'WiFi', options: wifiOptions }
+                ];
+
+                peripheralCategories.forEach(cat => {
+                    if (cat.options.length > 0) {
+                        const container = document.createElement('div');
+                        container.className = 'peripheral-container';
+                        container.dataset.category = cat.key;
+                        container.innerHTML = `
+                            <div class="summary-card unselected" style="opacity:0.5;">
+                                <div class="summary-card-image-wrapper">
+                                   <img src="${cat.options[0].image_url}" alt="${cat.name}" onerror="this.onerror=null;this.src='https://placehold.co/240x190/ffffff/333333?text=${cat.name}'">
+                                </div>
+                            </div>
+                            <div class="peripheral-info">
+                                <p class="peripheral-name text-white">${cat.name}</p>
+                                <div class="peripheral-price-container"><p class="component-link">&nbsp;</p></div>
+                            </div>`;
+                        grid.appendChild(container);
+                    }
+                });
+            }
+
+            function handlePeripheralClick(e) {
+                const container = e.target.closest('.peripheral-container');
+                if (!container || !e.target.closest('.summary-card-image-wrapper')) return;
+
+                const category = container.dataset.category;
+                if (!category) return;
+
+                // If the click is on the summary section, do nothing (handled by <a> tag)
+                if (container.closest('#selected-images-container')) {
+                    return;
+                }
+                
+                const collections = { 
+                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions, auriculares: auricularesOptions, 
+                    parlantes: parlantesOptions, microfono: microfonosOptions, webcam: webcamOptions, arodeluz: arosDeLuzOptions, wifi: wifiOptions
+                };
+                const options = collections[category];
+                
+                let currentIndex = selectedPeripherals[category];
+
+                currentIndex++;
+                if (currentIndex >= options.length) {
+                    currentIndex = -1; // Cycle back to unselected
+                }
+                selectedPeripherals[category] = currentIndex;
+                
+                const mainCardContainer = document.querySelector(`#peripherals-grid .peripheral-container[data-category="${category}"]`);
+                if (mainCardContainer) {
+                    mainCardContainer.classList.toggle('selected', currentIndex > -1);
+                    updatePeripheralCard(mainCardContainer, currentIndex, options);
+                }
+
+                updatePrices();
+            }
+            
+            function handleSummaryCardClick(e) {
+                const link = e.target.closest('a');
+                if (!link) return;
+
+                const container = link.closest('.peripheral-container');
+                if (container && container.dataset.category) {
+                    const itemLink = container.querySelector('.component-link');
+                    if (itemLink && itemLink.href && itemLink.href !== '#') {
+                        window.open(itemLink.href, '_blank');
+                    }
+                } else if (link.href.includes('#')) {
+                    // Internal link, let it scroll
+                } else if (link.href) {
+                     window.open(link.href, '_blank');
+                }
+            }
+
+
+            function updatePeripheralCard(container, index, options) {
+                const card = container.querySelector('.summary-card');
+                const img = container.querySelector('img');
+                const info = container.querySelector('.peripheral-info');
+                const nameEl = info.querySelector('.peripheral-name');
+                const priceContainer = info.querySelector('.peripheral-price-container');
+
+                if (index === -1) {
+                    card.classList.add('unselected');
+                    card.style.opacity = '0.5';
+                    img.src = options[0].image_url;
+                    nameEl.textContent = container.dataset.category.charAt(0).toUpperCase() + container.dataset.category.slice(1);
+                    priceContainer.innerHTML = `<p class="component-link">&nbsp;</p>`;
+                } else {
+                    card.classList.remove('unselected');
+                    card.style.opacity = '1';
+                    const item = options[index];
+                    img.src = item.image_url;
+                    nameEl.textContent = item.name;
+                    let priceHTML = '&nbsp;';
+                    if (item.price > 0 && item.link) {
+                        priceHTML = `<a href="${item.link}" target="_blank" class="component-link" onclick="event.stopPropagation()">$${item.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>`;
+                    } else if (item.price > 0) {
+                        priceHTML = `<span class="component-link" style="color: var(--color-link);">$${item.price.toLocaleString('es-AR')}</span>`;
+                    }
+                    priceContainer.innerHTML = priceHTML;
+                }
+            }
+
 
             // --- EVENT HANDLERS & HELPERS ---
             function prevTower() {
@@ -2798,8 +2778,7 @@
                 const dolarRatesList = document.getElementById('dolar-rates-list');
                 dolarRatesList.innerHTML = '';
                 const tiposPermitidos = [{ key: 'oficial', label: 'Oficial' }, { key: 'blue', label: 'Blue' }, { key: 'cripto', label: 'Cripto' }];
-                let total = BASE_PRICE + parseInt(document.getElementById('ssd-select').value) + parseInt(document.getElementById('gpu-select').value) + parseInt(document.getElementById('psu-select').value) + towersOptions[currentTowerIndex].price;
-                // Add peripheral prices to total
+                let total = parseInt(document.getElementById('total-price').textContent.replace(/\$|\./g, ''));
 
                 tiposPermitidos.forEach(tipo => {
                     const rate = allDolarRates.find(r => r.nombre.toLowerCase().includes(tipo.key));
@@ -2824,15 +2803,24 @@
                 message += `*Fuente:* ${document.getElementById('psu-select').options[document.getElementById('psu-select').selectedIndex].text}\n`;
 
                 let peripheralsMessage = '';
-                if (peripheralState.currentComboIndex > -1) peripheralsMessage += `Combo: ${comboMouseTecladoOptions[peripheralState.currentComboIndex].name}`;
-                else {
-                    if (peripheralState.currentMouseIndex > -1) peripheralsMessage += `Mouse: ${mouseOptions[peripheralState.currentMouseIndex].name}`;
-                    if (peripheralState.currentKeyboardIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Teclado: ${keyboardOptions[peripheralState.currentKeyboardIndex].name}`;
+                const peripheralMap = {
+                    monitor: { options: monitorOptions, name: 'Monitor' },
+                    keyboard: { options: keyboardOptions, name: 'Teclado' },
+                    mouse: { options: mouseOptions, name: 'Mouse' },
+                    auriculares: { options: auricularesOptions, name: 'Auriculares' },
+                    parlantes: { options: parlantesOptions, name: 'Parlantes' },
+                    microfono: { options: microfonosOptions, name: 'Micrófono' },
+                    webcam: { options: webcamOptions, name: 'Webcam' },
+                    arodeluz: { options: arosDeLuzOptions, name: 'Aro de Luz' },
+                    wifi: { options: wifiOptions, name: 'WiFi' }
+                };
+                for (const key in selectedPeripherals) {
+                    if (selectedPeripherals[key] > -1) {
+                        const item = peripheralMap[key].options[selectedPeripherals[key]];
+                        peripheralsMessage += `${peripheralsMessage ? ', ' : ''}${peripheralMap[key].name}: ${item.name}`;
+                    }
                 }
-                if (peripheralState.currentMonitorIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Monitor: ${monitorOptions[peripheralState.currentMonitorIndex].name}`;
-                if (peripheralState.currentAuricularesIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Auriculares: ${auricularesOptions[peripheralState.currentAuricularesIndex].name}`;
-                if (peripheralState.currentParlantesIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Parlantes: ${parlantesOptions[peripheralState.currentParlantesIndex].name}`;
-                if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
+                 if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
 
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
                 if (selectedSoftware.length > 0) {
@@ -2863,7 +2851,27 @@
                     imageElement.classList.remove('loading');
                 };
             }
+
+            function updateSliderPosition() {
+                const slider = document.getElementById('base-level-slider');
+                const activeTab = document.querySelector('.base-level-tab.active');
+                if (slider && activeTab) {
+                    slider.style.width = `${activeTab.offsetWidth}px`;
+                    slider.style.left = `${activeTab.offsetLeft}px`;
+                }
+            }
         });
+        // ...existing code...
+        // Ejemplo: asume que ya tienes baseOptions, ramOptions, cpuOptions, motherboardOptions cargados desde el JSON
+
+
+        function updateBaseSummaryText(cpu, ram, base) {
+            const summaryEl = document.getElementById('base-summary-text');
+            if (summaryEl && base) {
+                summaryEl.textContent = base.name;
+            }
+        }
+        // ...existing code...
     </script>
 </body>
 
