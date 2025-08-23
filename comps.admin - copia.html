@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador de Vectores de Productos v3.2 (Firebase Ready)</title>
+    <title>Administrador de Vectores de Productos</title>
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' x='3' font-family='Arial'%3E%24%3C/text%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,7 +45,7 @@
         .overview-table textarea,
         #base-details input, #base-details textarea, #base-details select,
         #bundle-details input, #bundle-details textarea, #bundle-details select,
-        #api-tools-section input {
+        #scraping-tools-section select {
             background-color: #1f2937; /* bg-gray-800 */
             border: 1px solid #374151; /* border-gray-700 */
             border-radius: 0.375rem;
@@ -60,7 +60,7 @@
         .overview-table textarea:focus,
         #base-details input:focus, #base-details textarea:focus, #base-details select:focus,
         #bundle-details input:focus, #bundle-details textarea:focus, #bundle-details select:focus,
-        #api-tools-section input:focus {
+        #scraping-tools-section select:focus {
             border-color: #6366f1; /* indigo-500 */
             box-shadow: 0 0 0 2px #4f46e5;
         }
@@ -155,7 +155,7 @@
             0%, 100% { box-shadow: 0 0 3px 2px rgba(20, 184, 166, 0.3); }
             50% { box-shadow: 0 0 10px 5px rgba(20, 184, 166, 0); }
         }
-        .price-checking {
+        .price-scraping {
             animation: pulse-glow 1.5s infinite;
         }
         tr.price-lower { background-color: rgba(34, 197, 94, 0.2); } /* Verde */
@@ -323,46 +323,40 @@
         
         <!-- Top Action Buttons -->
         <div id="top-actions" class="flex justify-center items-center gap-4 mb-8">
-             <button onclick="loadDataFromClipboard()" class="btn btn-secondary">
-                <span class="lucide-icon mr-2" data-lucide="clipboard-paste"></span> Pegar JSON
+             <button onclick="reloadDataFromJson()" class="btn btn-secondary">
+                <span class="lucide-icon mr-2" data-lucide="refresh-ccw"></span> Recargar de Archivo
             </button>
             <button onclick="resetSessionAndReload()" class="btn btn-secondary border-amber-500/50 hover:bg-amber-600">
                 <span class="lucide-icon mr-2" data-lucide="eraser"></span> Restablecer Sesión
             </button>
         </div>
 
-        <!-- API Tools Section -->
-        <div id="api-tools-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h3 id="api-accordion-header" class="accordion-header flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
-                <span>Herramientas de API de Mercado Libre</span>
+        <!-- Scraping Tools Section -->
+        <div id="scraping-tools-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+            <h3 id="scraping-accordion-header" class="accordion-header flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
+                <span>Herramientas de Scraping</span>
                 <span class="lucide-icon rotate-180" data-lucide="chevron-down"></span>
             </h3>
-            <div id="api-accordion-content" class="accordion-content p-6 pt-0">
-                 <p class="text-sm text-gray-400 mb-4">
-                    Introduce las credenciales de tu aplicación de Mercado Libre para poder chequear precios y añadir productos desde un link.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div id="scraping-accordion-content" class="accordion-content p-6 pt-0">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-start">
                     <div>
-                        <label for="app-id-input" class="block text-sm font-medium mb-1">App ID</label>
-                        <input type="text" id="app-id-input" placeholder="Tu App ID" class="w-full" value="8288199484690188">
+                        <label for="scraping-api-select" class="block text-sm font-medium mb-1">API de Scrapeo</label>
+                        <select id="scraping-api-select" size="3" class="h-24"></select>
                     </div>
                     <div>
-                        <label for="client-secret-input" class="block text-sm font-medium mb-1">Client Secret</label>
-                        <input type="password" id="client-secret-input" placeholder="Tu Client Secret" class="w-full" value="5zeb9or1l6lzzr7TpNE6580TqlfJggjO">
+                        <label for="cors-proxy-select" class="block text-sm font-medium mb-1">Proxy CORS</label>
+                        <select id="cors-proxy-select" size="3" class="h-24"></select>
                     </div>
-                </div>
-                <div class="flex flex-col items-center pt-2">
-                    <div class="flex gap-4 w-full max-w-2xl">
-                        <button id="check-prices-public-btn" onclick="checkAllPricesPublic()" class="btn btn-primary bg-blue-500 hover:bg-blue-600 w-full">
-                            <span id="check-prices-public-icon" class="lucide-icon mr-2" data-lucide="search"></span>
-                            <span id="check-prices-public-text">Chequeo de Precios Público</span>
-                        </button>
+                    <div class="flex flex-col items-center pt-6">
                         <button id="check-prices-btn" onclick="checkAllPrices()" class="btn btn-primary bg-teal-500 hover:bg-teal-600 w-full">
                             <span id="check-prices-icon" class="lucide-icon mr-2" data-lucide="scan-line"></span>
-                            <span id="check-prices-text">Chequeo Autenticado</span>
+                            <span id="check-prices-text">Chequear Precios</span>
                         </button>
+                        <label class="flex items-center gap-2 cursor-pointer mt-2">
+                            <input type="checkbox" id="check-quantity-toggle" checked class="w-4 h-4 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
+                            <span class="text-xs font-medium">Buscar disponibles</span>
+                        </label>
                     </div>
-                    <p id="token-status" class="text-xs text-gray-400 mt-2">El chequeo público es anónimo. El autenticado requiere credenciales.</p>
                 </div>
             </div>
         </div>
@@ -409,18 +403,6 @@
                 </button>
                 <button onclick="copyCode()" class="btn btn-secondary">
                     <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código
-                </button>
-                <button onclick="checkAllPrices()" class="btn btn-secondary">
-                    <span class="lucide-icon mr-2" data-lucide="refresh-cw"></span> Chequear Precios
-                </button>
-                <button onclick="addProduct()" class="btn btn-primary">
-                    <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir Producto
-                </button>
-                <button onclick="removeProduct()" class="btn btn-danger">
-                    <span class="lucide-icon mr-2" data-lucide="trash-2"></span> Eliminar Producto
-                </button>
-                <button onclick="editProduct()" class="btn btn-secondary">
-                    <span class="lucide-icon mr-2" data-lucide="edit"></span> Editar Producto
                 </button>
             </div>
             <div id="message-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-50"></div>
@@ -469,7 +451,17 @@
     let selectedBaseIndex = 0;
     let selectedBundleIndex = 0;
     let draggedBundleComponentIndex = null;
-    let mlAccessToken = null;
+
+    const SCRAPING_APIS = [
+        { id: 'ml-default', name: 'Mercado Libre - Default' }
+    ];
+
+ const CORS_PROXIES = [
+    { id: 'allorigins', url: 'https://api.allorigins.win/raw?url=' },
+    { id: 'corsproxy-io', url: 'https://corsproxy.io/?' },
+    { id: 'cors-lol', url: 'https://cors.lol/?' },
+];
+
 
     // --- Category Navigation ---
     
@@ -539,7 +531,7 @@
     function showToast(message, type = 'success') {
         const container = document.getElementById('message-container');
         const toast = document.createElement('div');
-        const bgColor = type === 'success' ? 'bg-green-500' : type === 'error' ? 'bg-red-500' : 'bg-blue-500';
+        const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
         toast.className = `px-4 py-2 rounded-md text-white font-semibold shadow-lg ${bgColor}`;
         toast.textContent = message;
         container.appendChild(toast);
@@ -565,28 +557,18 @@
         return null;
     }
 
-    function extractItemId(urlString) {
-        if (!urlString) return null;
-
-        if (urlString.includes('/p/')) {
-            try {
-                const afterP = urlString.split('/p/')[1];
-                const itemId = afterP.split('?')[0].split('#')[0];
-                if (itemId && /^(MLA|MLB|MLC|MCO|MEC|MLM|MLU|MLV|MPE|MPT|MRD)/i.test(itemId)) {
-                    return itemId.toUpperCase().trim();
-                }
-            } catch (e) {
-                console.error("Error al parsear la URL con '/p/':", e);
-            }
+    function modifyMercadoLibreLink(urlString) {
+        if (!urlString || !urlString.includes('mercadolibre.com')) {
+            return urlString;
         }
-        
-        const regex = /(MLA|MLB|MLC|MCO|MEC|MLM|MLU|MLV|MPE|MPT|MRD)-?(\d+)/i;
-        const match = urlString.match(regex);
-        if (match && match[1] && match[2]) {
-            return (match[1] + match[2]).toUpperCase();
+        try {
+            const url = new URL(urlString);
+            url.searchParams.set('offer_type', 'OFFICIAL_STORE');
+            return url.toString();
+        } catch (e) {
+            console.error("Invalid URL for modification:", urlString, e);
+            return urlString; // Return original if URL is malformed
         }
-
-        return null;
     }
     
     function copyToClipboard(text) {
@@ -645,7 +627,7 @@
         const existingIds = getAllIds();
         for (const categoryKey in dataMap) {
             if (!Array.isArray(dataMap[categoryKey])) {
-                dataMap[categoryKey] = [];
+                dataMap[categoryKey] = []; // Ensure it's an array if it's not
             }
             dataMap[categoryKey].forEach(item => {
                 if (!item.id || item.id.toString().includes('-default')) {
@@ -656,9 +638,7 @@
                 if (item.visible === undefined) {
                     item.visible = 1;
                 }
-                if (!item.itemID && item.link) {
-                    item.itemID = extractItemId(item.link);
-                }
+                // Specific defaults
                 if (categoryKey === 'baseOptions') {
                     if (item.description === undefined) item.description = '';
                     if (item.totalram === undefined) item.totalram = 0;
@@ -683,7 +663,7 @@
         if (productData) {
             newProduct = productData;
         } else {
-            newProduct = { name: '', price: 0, image_url: '', link: '', visible: 1, itemID: null };
+            newProduct = { name: '', price: 0, image_url: '', link: '', visible: 1 };
             if (categoryKey === 'miniPcOptions') {
                 newProduct.cpu = '';
                 newProduct.ram = '';
@@ -702,9 +682,6 @@
         if (newProduct.visible === undefined) {
             newProduct.visible = 1;
         }
-        if (newProduct.link && !newProduct.itemID) {
-            newProduct.itemID = extractItemId(newProduct.link);
-        }
         dataMap[categoryKey].push(newProduct);
         renderOverviewTables();
         saveDataToSessionStorage();
@@ -721,11 +698,6 @@
         if (dataMap[categoryKey] && dataMap[categoryKey][index]) {
             dataMap[categoryKey][index][key] = value;
             
-            if (key === 'link') {
-                dataMap[categoryKey][index]['itemID'] = extractItemId(value);
-                renderOverviewTables();
-            }
-
             if (key === 'price' || (categoryKey === 'ramOptions' && key === 'total')) {
                 updateAllBaseTotals();
                 updateAllBundleTotals();
@@ -752,8 +724,10 @@
                 showToast('El portapapeles no contiene un link válido.', 'error');
                 return;
             }
-            const newLink = text.trim();
-            updateProduct(categoryKey, index, 'link', newLink);
+            text = modifyMercadoLibreLink(text.trim());
+            dataMap[categoryKey][index].link = text;
+            saveDataToSessionStorage();
+            renderOverviewTables();
             showToast('Link reemplazado con éxito.');
         } catch (err) {
             console.error("Clipboard error:", err);
@@ -776,32 +750,541 @@
         document.getElementById('image-preview').classList.add('hidden');
     }
 
-    // --- BUNDLES Section Rendering (Omitted for brevity, no changes) ---
-    function renderBundlesSection(){/*...no changes...*/}
-    function renderSelectedBundleDetails(){/*...no changes...*/}
-    function calculateBundleTotal(bundle){/*...no changes...*/}
-    function updateAllBundleTotals(){/*...no changes...*/}
-    function selectBundle(index){/*...no changes...*/}
-    function addBundle(){/*...no changes...*/}
-    function deleteSelectedBundle(){/*...no changes...*/}
-    function updateBundle(key, value){/*...no changes...*/}
-    function addComponentToBundle(){/*...no changes...*/}
-    function removeComponentFromBundle(componentIndex){/*...no changes...*/}
-    function onBundleComponentDragStart(event, index){/*...no changes...*/}
-    function onBundleComponentDragOver(event){/*...no changes...*/}
-    function onBundleComponentDrop(event, targetIndex){/*...no changes...*/}
+    // --- BUNDLES Section Rendering ---
+    function renderBundlesSection() {
+        const container = document.getElementById('bundles-section');
+        if (!dataMap.bundleOptions) dataMap.bundleOptions = [];
+        if (dataMap.bundleOptions.length === 0) {
+            dataMap.bundleOptions.push({ id: generateUniqueId(getAllIds()), name: 'Nuevo Bundle', description: '', components: [], total: 0, visible: 1 });
+        }
+        
+        container.innerHTML = `
+            <div class="flex flex-col gap-2">
+                <div id="bundle-list" class="flex flex-col gap-2 mb-4">
+                    ${dataMap.bundleOptions.map((bundle, index) => {
+                        const componentImages = (bundle.components || [])
+                            .map(compId => {
+                                const found = findComponentById(compId);
+                                return found ? found.component.image_url : null;
+                            })
+                            .filter(Boolean);
 
-    // --- BASES Section Rendering (Omitted for brevity, no changes) ---
-    function renderBasesSection(){/*...no changes...*/}
-    function renderSelectedBaseDetails(){/*...no changes...*/}
-    function calculateBaseTotal(base){/*...no changes...*/}
-    function calculateBaseRamTotal(base){/*...no changes...*/}
-    function updateAllBaseTotals(){/*...no changes...*/}
-    function selectBase(index){/*...no changes...*/}
-    function addBase(){/*...no changes...*/}
-    function deleteSelectedBase(){/*...no changes...*/}
-    function updateBase(key, value){/*...no changes...*/}
-    function scrollToComponentRow(categoryKey, index){/*...no changes...*/}
+                        return `
+                        <div id="bundle-item-${index}" class="list-item ${index === selectedBundleIndex ? 'active' : ''}" onclick="selectBundle(${index})">
+                            <div class="flex-grow">
+                                <p class="font-bold truncate">${bundle.name || 'Sin Nombre'}</p>
+                                <p class="text-xs opacity-75 truncate">${bundle.id || 'Sin ID'}</p>
+                                <p class="font-bold text-lg text-teal-400 mt-1">$${(bundle.total || 0).toLocaleString('es-AR')}</p>
+                            </div>
+                            <div class="flex-shrink-0 flex items-center gap-1 component-thumbs">
+                                ${componentImages.slice(0, 4).map(imgUrl => `
+                                    <img src="${imgUrl}" onerror="this.style.display='none'" alt="component thumbnail">
+                                `).join('')}
+                            </div>
+                        </div>
+                        `
+                    }).join('')}
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="addBundle()" class="btn btn-primary w-full text-sm py-2">
+                        <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir Bundle
+                    </button>
+                    <button onclick="deleteSelectedBundle()" class="btn btn-danger w-auto px-3 py-2" title="Eliminar Bundle Seleccionado">
+                        <span class="lucide-icon" data-lucide="trash-2"></span>
+                    </button>
+                </div>
+            </div>
+            <div id="bundle-details" class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <!-- Details of selected bundle will be rendered here -->
+            </div>
+        `;
+        renderSelectedBundleDetails();
+        lucide.createIcons();
+    }
+
+    function renderSelectedBundleDetails() {
+        const detailsContainer = document.getElementById('bundle-details');
+        const bundle = dataMap.bundleOptions[selectedBundleIndex];
+
+        if (!bundle) {
+            detailsContainer.innerHTML = '<p>No hay un bundle seleccionado.</p>';
+            return;
+        }
+        
+        const baseComponentOptions = `<optgroup label="Bases">
+            ${dataMap.baseOptions.map(base => `<option value="${base.id}">${base.name} ($${(base.total || 0).toLocaleString('es-AR')})</option>`).join('')}
+        </optgroup>`;
+
+        const allComponentsOptions = CATEGORY_NAV_LIST
+            .filter(cat => cat.key.includes('Options') && !['armadasOptions', 'baseOptions', 'bundleOptions'].includes(cat.key))
+            .map(cat => {
+                const components = dataMap[cat.key];
+                if (!components || components.length === 0) return '';
+                return `
+                    <optgroup label="${cat.label}">
+                        ${components.map(comp => `<option value="${comp.id}">${comp.name} ($${(comp.price || 0).toLocaleString('es-AR')})</option>`).join('')}
+                    </optgroup>
+                `;
+            }).join('');
+
+        detailsContainer.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Nombre del Bundle</label>
+                    <input type="text" value="${bundle.name || ''}" oninput="updateBundle('name', this.value)" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">ID</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-xs font-mono text-gray-400 truncate">${bundle.id}</div>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-1">Descripción</label>
+                    <textarea oninput="updateBundle('description', this.value)" class="w-full" rows="2">${bundle.description || ''}</textarea>
+                </div>
+                 <div class="md:col-span-1">
+                    <label class="block text-sm font-medium mb-1">Total del Bundle</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
+                        $${(bundle.total || 0).toLocaleString('es-AR')}
+                    </div>
+                </div>
+                <div class="md:col-span-1 flex items-center justify-center">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" ${bundle.visible ? 'checked' : ''} onchange="updateBundle('visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
+                        <span class="font-medium">Visible</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h4 class="font-semibold mb-2">Añadir Componente</h4>
+                <div class="flex gap-2">
+                    <select id="add-component-select-bundle" class="w-full">
+                        <option value="">Seleccionar componente...</option>
+                        ${baseComponentOptions}
+                        ${allComponentsOptions}
+                    </select>
+                    <button onclick="addComponentToBundle()" class="btn btn-secondary py-2">Añadir</button>
+                </div>
+            </div>
+
+            <h4 class="font-semibold mb-2">Componentes en este Bundle</h4>
+            <div class="overflow-x-auto">
+                <table class="bundles-table w-full text-left text-sm text-gray-400">
+                    <thead class="text-xs text-gray-200 uppercase bg-gray-700">
+                        <tr>
+                            <th scope="col" class="px-4 py-3">Categoría</th>
+                            <th scope="col" class="px-6 py-3">Nombre</th>
+                            <th scope="col" class="px-6 py-3">Precio</th>
+                            <th scope="col" class="px-2 py-3">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${(bundle.components || []).map((compId, index) => {
+                            const found = findComponentById(compId);
+                            if (!found) {
+                                return `<tr class="border-b border-gray-700"><td colspan="4" class="text-red-500 p-2">Componente con ID ${compId} no encontrado.</td></tr>`;
+                            }
+                            const { component, categoryKey } = found;
+                            const price = categoryKey === 'baseOptions' ? component.total : component.price;
+                            const linkHref = categoryKey === 'baseOptions' ? '#bases-section-container' : `#row-${categoryKey}-${dataMap[categoryKey].indexOf(component)}`;
+                            const linkOnClick = categoryKey === 'baseOptions' ? `scrollToCategory('bases-section-container')` : `scrollToComponentRow('${categoryKey}', ${dataMap[categoryKey].indexOf(component)})`;
+
+                            return `
+                                <tr class="border-b border-gray-700 hover:bg-gray-700/50" 
+                                    ondragover="onBundleComponentDragOver(event)"
+                                    ondrop="onBundleComponentDrop(event, ${index})"
+                                    onmouseenter="showImagePreview('${component.image_url || ''}')"
+                                    onmouseleave="hideImagePreview()">
+                                    <td class="px-4 py-2">${getComponentName(categoryKey)}</td>
+                                    <td class="px-6 py-2 font-medium text-white">${component.name}</td>
+                                    <td class="px-6 py-2">$${(price || 0).toLocaleString('es-AR')}</td>
+                                    <td class="px-2 py-2 text-right">
+                                        <div class="flex items-center justify-end">
+                                            <a href="${linkHref}" onclick="${linkOnClick}" class="text-blue-400 hover:text-blue-300" title="Ir al componente">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="link"></span>
+                                            </a>
+                                            <button onclick="removeComponentFromBundle(${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar de la base">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
+                                            </button>
+                                            <button draggable="true" ondragstart="onBundleComponentDragStart(event, ${index})" class="text-gray-400 hover:text-indigo-400 ml-2 cursor-move" title="Arrastrar para reordenar">
+                                                <span class="lucide-icon w-4 h-4" data-lucide="move"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                        ${(bundle.components || []).length === 0 ? '<tr><td colspan="4" class="text-center p-4">Este bundle está vacío.</td></tr>' : ''}
+                    </tbody>
+                </table>
+            </div>
+        `;
+        lucide.createIcons();
+    }
+    
+    // --- BUNDLES Data Operations ---
+    function calculateBundleTotal(bundle) {
+        if (!bundle || !bundle.components) return 0;
+        return bundle.components.reduce((sum, compId) => {
+            const found = findComponentById(compId);
+            if (!found) return sum;
+            const priceToAdd = found.component.total !== undefined ? found.component.total : found.component.price;
+            return sum + (priceToAdd || 0);
+        }, 0);
+    }
+
+    function updateAllBundleTotals() {
+        dataMap.bundleOptions.forEach(bundle => {
+            bundle.total = calculateBundleTotal(bundle);
+        });
+    }
+
+    function selectBundle(index) {
+        selectedBundleIndex = index;
+        renderBundlesSection();
+    }
+
+    function addBundle() {
+        dataMap.bundleOptions.push({
+            id: generateUniqueId(getAllIds()),
+            name: 'Nuevo Bundle',
+            description: '',
+            components: [],
+            total: 0,
+            visible: 1
+        });
+        selectedBundleIndex = dataMap.bundleOptions.length - 1;
+        renderBundlesSection();
+        saveDataToSessionStorage();
+    }
+
+    function deleteSelectedBundle() {
+        if (dataMap.bundleOptions.length <= 1) {
+            showToast('No se puede eliminar el último bundle.', 'error');
+            return;
+        }
+        dataMap.bundleOptions.splice(selectedBundleIndex, 1);
+        if (selectedBundleIndex >= dataMap.bundleOptions.length) {
+            selectedBundleIndex = dataMap.bundleOptions.length - 1;
+        }
+        renderBundlesSection();
+        saveDataToSessionStorage();
+    }
+
+    function updateBundle(key, value) {
+        const bundle = dataMap.bundleOptions[selectedBundleIndex];
+        if (bundle) {
+            bundle[key] = value;
+            saveDataToSessionStorage();
+            
+            if (key === 'name' || key === 'id') {
+                const bundleItemDiv = document.getElementById(`bundle-item-${selectedBundleIndex}`);
+                if (bundleItemDiv) {
+                    if (key === 'name') {
+                        bundleItemDiv.querySelector('p.font-bold').textContent = value || 'Sin Nombre';
+                    }
+                }
+            }
+        }
+    }
+
+    function addComponentToBundle() {
+        const select = document.getElementById('add-component-select-bundle');
+        const componentId = select.value;
+        if (componentId && dataMap.bundleOptions[selectedBundleIndex]) {
+            if (!dataMap.bundleOptions[selectedBundleIndex].components) {
+                dataMap.bundleOptions[selectedBundleIndex].components = [];
+            }
+            dataMap.bundleOptions[selectedBundleIndex].components.push(componentId);
+            updateAllBundleTotals();
+            renderBundlesSection();
+            saveDataToSessionStorage();
+        }
+    }
+
+    function removeComponentFromBundle(componentIndex) {
+        if (dataMap.bundleOptions[selectedBundleIndex] && dataMap.bundleOptions[selectedBundleIndex].components) {
+            dataMap.bundleOptions[selectedBundleIndex].components.splice(componentIndex, 1);
+            updateAllBundleTotals();
+            renderBundlesSection();
+            saveDataToSessionStorage();
+        }
+    }
+
+    function onBundleComponentDragStart(event, index) {
+        draggedBundleComponentIndex = index;
+        event.dataTransfer.effectAllowed = 'move';
+    }
+
+    function onBundleComponentDragOver(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+    }
+
+    function onBundleComponentDrop(event, targetIndex) {
+        event.preventDefault();
+        if (draggedBundleComponentIndex !== null && draggedBundleComponentIndex !== targetIndex) {
+            const bundle = dataMap.bundleOptions[selectedBundleIndex];
+            if (bundle && bundle.components) {
+                const moved = bundle.components.splice(draggedBundleComponentIndex, 1)[0];
+                bundle.components.splice(targetIndex, 0, moved);
+                renderSelectedBundleDetails();
+                saveDataToSessionStorage();
+            }
+        }
+        draggedBundleComponentIndex = null;
+    }
+
+    // --- NEW BASES SECTION ---
+    function renderBasesSection() {
+        const container = document.getElementById('bases-section');
+        if (!dataMap.baseOptions) dataMap.baseOptions = [];
+        if (dataMap.baseOptions.length === 0) {
+            dataMap.baseOptions.push({ id: generateUniqueId(getAllIds()), name: 'Nueva Base', cpu: null, mother: null, ram: null, cantRam: 1, total: 0, visible: 1, description: '', totalram: 0 });
+        }
+        
+        container.innerHTML = `
+            <div class="flex flex-col gap-2">
+                <div id="base-list" class="flex flex-col gap-2 mb-4">
+                    ${dataMap.baseOptions.map((base, index) => `
+                        <div id="base-item-${index}" class="list-item ${index === selectedBaseIndex ? 'active' : ''}" onclick="selectBase(${index})">
+                            <div class="flex-grow">
+                                <p class="font-bold truncate">${base.name || 'Sin Nombre'}</p>
+                                <p class="text-xs opacity-75 truncate">${base.id || 'Sin ID'}</p>
+                                <p class="font-bold text-lg text-teal-400 mt-1">$${(base.total || 0).toLocaleString('es-AR')}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="addBase()" class="btn btn-primary w-full text-sm py-2">
+                        <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir Base
+                    </button>
+                    <button onclick="deleteSelectedBase()" class="btn btn-danger w-auto px-3 py-2" title="Eliminar Base Seleccionada">
+                        <span class="lucide-icon" data-lucide="trash-2"></span>
+                    </button>
+                </div>
+            </div>
+            <div id="base-details" class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <!-- Details of selected base will be rendered here -->
+            </div>
+        `;
+        renderSelectedBaseDetails();
+        lucide.createIcons();
+    }
+
+    function renderSelectedBaseDetails() {
+        const detailsContainer = document.getElementById('base-details');
+        const base = dataMap.baseOptions[selectedBaseIndex];
+
+        if (!base) {
+            detailsContainer.innerHTML = '<p>No hay una base seleccionada.</p>';
+            return;
+        }
+        
+        const cpuIndex = dataMap.cpuOptions.findIndex(c => c.id == base.cpu);
+        const motherIndex = dataMap.motherboardOptions.findIndex(m => m.id == base.mother);
+        const ramIndex = dataMap.ramOptions.findIndex(r => r.id == base.ram);
+
+        const cpuOptions = dataMap.cpuOptions.map(c => `<option value="${c.id}" ${base.cpu == c.id ? 'selected' : ''}>${c.name} ($${(c.price||0).toLocaleString('es-AR')})</option>`).join('');
+        const motherOptions = dataMap.motherboardOptions.map(m => `<option value="${m.id}" ${base.mother == m.id ? 'selected' : ''}>${m.name} ($${(m.price||0).toLocaleString('es-AR')})</option>`).join('');
+        const ramOptions = dataMap.ramOptions.map(r => `<option value="${r.id}" ${base.ram == r.id ? 'selected' : ''}>${r.name} ($${(r.price||0).toLocaleString('es-AR')})</option>`).join('');
+
+        detailsContainer.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                 <div>
+                    <label class="block text-sm font-medium mb-1">Nombre de la Base</label>
+                    <input type="text" value="${base.name || ''}" oninput="updateBase('name', this.value)" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">ID</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-xs font-mono text-gray-400 truncate">${base.id}</div>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-1">Descripción</label>
+                    <textarea oninput="updateBase('description', this.value)" class="w-full" rows="2">${base.description || ''}</textarea>
+                </div>
+            </div>
+            <div class="space-y-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">CPU</label>
+                    <div class="flex items-center gap-2">
+                        <select onchange="updateBase('cpu', this.value)" class="flex-grow">
+                            <option value="">Seleccionar CPU...</option>
+                            ${cpuOptions}
+                        </select>
+                        <a href="#row-cpuOptions-${cpuIndex}" onclick="scrollToComponentRow('cpuOptions', ${cpuIndex})" class="${cpuIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                             <span class="lucide-icon" data-lucide="link"></span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Motherboard</label>
+                     <div class="flex items-center gap-2">
+                        <select onchange="updateBase('mother', this.value)" class="flex-grow">
+                            <option value="">Seleccionar Motherboard...</option>
+                            ${motherOptions}
+                        </select>
+                        <a href="#row-motherboardOptions-${motherIndex}" onclick="scrollToComponentRow('motherboardOptions', ${motherIndex})" class="${motherIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                             <span class="lucide-icon" data-lucide="link"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-2">
+                        <label class="block text-sm font-medium mb-1">RAM</label>
+                        <div class="flex items-center gap-2">
+                            <select onchange="updateBase('ram', this.value)" class="flex-grow">
+                                <option value="">Seleccionar RAM...</option>
+                                ${ramOptions}
+                            </select>
+                             <a href="#row-ramOptions-${ramIndex}" onclick="scrollToComponentRow('ramOptions', ${ramIndex})" class="${ramIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                                <span class="lucide-icon" data-lucide="link"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Cantidad</label>
+                        <div class="flex items-center justify-between gap-1">
+                            ${[1, 2, 3, 4].map(n => `<button class="btn ram-qty-btn w-full text-xs py-2 px-0 ${base.cantRam == n ? 'active' : ''}" onclick="updateBase('cantRam', ${n})">${n}</button>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                 <div class="md:col-span-1">
+                    <label class="block text-sm font-medium mb-1">Total de la Base</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
+                        $${(base.total || 0).toLocaleString('es-AR')}
+                    </div>
+                </div>
+                 <div class="md:col-span-1">
+                    <label class="block text-sm font-medium mb-1">Total RAM (GB)</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
+                        ${base.totalram || 0} GB
+                    </div>
+                </div>
+                <div class="md:col-span-2 flex items-center justify-center pt-2">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" ${base.visible ? 'checked' : ''} onchange="updateBase('visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
+                        <span class="font-medium">Visible</span>
+                    </label>
+                </div>
+            </div>
+        `;
+        lucide.createIcons();
+    }
+
+    function calculateBaseTotal(base) {
+        if (!base) return 0;
+        const cpu = dataMap.cpuOptions.find(c => c.id == base.cpu);
+        const mother = dataMap.motherboardOptions.find(m => m.id == base.mother);
+        const ram = dataMap.ramOptions.find(r => r.id == base.ram);
+        const cantRam = base.cantRam || 1;
+
+        const cpuPrice = cpu ? cpu.price || 0 : 0;
+        const motherPrice = mother ? mother.price || 0 : 0;
+        const ramPrice = ram ? ram.price || 0 : 0;
+        
+        return cpuPrice + motherPrice + (ramPrice * cantRam);
+    }
+
+    function calculateBaseRamTotal(base) {
+        if (!base || !base.ram) return 0;
+        const ram = dataMap.ramOptions.find(r => r.id == base.ram);
+        const cantRam = base.cantRam || 1;
+        const ramTotal = ram ? ram.total || 0 : 0;
+        return ramTotal * cantRam;
+    }
+
+    function updateAllBaseTotals() {
+        dataMap.baseOptions.forEach(base => {
+            base.total = calculateBaseTotal(base);
+            base.totalram = calculateBaseRamTotal(base);
+        });
+    }
+
+    function selectBase(index) {
+        selectedBaseIndex = index;
+        renderBasesSection();
+    }
+
+    function addBase() {
+        dataMap.baseOptions.push({
+            id: generateUniqueId(getAllIds()),
+            name: 'Nueva Base',
+            cpu: null, mother: null, ram: null, cantRam: 1,
+            total: 0,
+            visible: 1,
+            description: '',
+            totalram: 0
+        });
+        selectedBaseIndex = dataMap.baseOptions.length - 1;
+        renderBasesSection();
+        saveDataToSessionStorage();
+    }
+
+    function deleteSelectedBase() {
+        if (dataMap.baseOptions.length <= 1) {
+            showToast('No se puede eliminar la última base.', 'error');
+            return;
+        }
+        dataMap.baseOptions.splice(selectedBaseIndex, 1);
+        if (selectedBaseIndex >= dataMap.baseOptions.length) {
+            selectedBaseIndex = dataMap.baseOptions.length - 1;
+        }
+        renderBasesSection();
+        saveDataToSessionStorage();
+    }
+
+    function updateBase(key, value) {
+        const base = dataMap.baseOptions[selectedBaseIndex];
+        if (base) {
+            base[key] = value;
+
+            if (key === 'cpu') {
+                const cpu = dataMap.cpuOptions.find(c => c.id == value);
+                if (cpu) {
+                    base.name = cpu.name;
+                }
+            }
+
+            base.total = calculateBaseTotal(base);
+            base.totalram = calculateBaseRamTotal(base);
+            saveDataToSessionStorage();
+            
+            updateAllBundleTotals();
+
+            if (['cpu', 'mother', 'ram', 'cantRam'].includes(key)) {
+                renderBasesSection();
+                renderBundlesSection();
+            } else if (key === 'name') {
+                 const baseItemDiv = document.getElementById(`base-item-${selectedBaseIndex}`);
+                if (baseItemDiv) {
+                    baseItemDiv.querySelector('p.font-bold').textContent = value || 'Sin Nombre';
+                }
+            }
+        }
+    }
+
+    function scrollToComponentRow(categoryKey, index) {
+        const rowId = `row-${categoryKey}-${index}`;
+        const row = document.getElementById(rowId);
+        if (row) {
+            const navbarHeight = document.getElementById('category-navbar').offsetHeight;
+            const elementPosition = row.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
+
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            
+            row.style.transition = 'background-color 0.5s ease-in-out';
+            row.style.backgroundColor = 'rgba(99, 102, 241, 0.5)';
+            setTimeout(() => {
+                row.style.backgroundColor = '';
+            }, 2000);
+        }
+    }
+
 
     function renderOverviewTables() {
         const overviewContainer = document.getElementById('overview-view');
@@ -824,7 +1307,6 @@
             
             let headers = `
                 <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
-                <th scope="col" class="px-2 py-3" style="width: 100px;">ItemID (ML)</th>
                 <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
                 <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
                 ${categoryKey !== 'towersOptions' && categoryKey !== 'ramOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th>' : ''}
@@ -833,7 +1315,7 @@
                 <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
                 <th scope="col" class="px-1 py-3" style="width:1%;min-width:150px;">Acciones</th>
             `;
-            let colspan = 7;
+            let colspan = 6;
             if (categoryKey !== 'towersOptions') colspan++;
             if (categoryKey === 'ramOptions') colspan++;
 
@@ -841,7 +1323,6 @@
             if (categoryKey === 'miniPcOptions') {
                 headers = `
                     <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
-                    <th scope="col" class="px-2 py-3" style="width: 100px;">ItemID (ML)</th>
                     <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
                     <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
                     <th scope="col" class="px-2 py-3">CPU</th>
@@ -851,7 +1332,7 @@
                     <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
                     <th scope="col" class="px-1 py-3" style="width:1%;min-width:150px;">Acciones</th>
                 `;
-                colspan = 10;
+                colspan = 9;
             }
 
 
@@ -893,7 +1374,6 @@
                             onmouseenter="showImagePreview('${product.image_url || ''}')"
                             onmouseleave="hideImagePreview()">
                             <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono cursor-pointer hover:text-white" onclick="copyToClipboard('${product.id || ''}')" title="Copiar ID">${product.id || ''}</td>
-                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono">${product.itemID || 'N/A'}</td>
                             <td class="px-2 py-2 font-medium text-white whitespace-nowrap">
                                 <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
                             </td>
@@ -916,8 +1396,8 @@
                             <td class="px-1 py-2 text-right">
                                 <div class="flex flex-col items-end gap-1">
                                     <div class="flex items-center">
-                                        <button id="check-btn-${categoryKey}-${index}" onclick="checkSingleProductPublic('${categoryKey}', ${index})" class="text-blue-400 hover:text-blue-200" title="Chequear este producto (Público)">
-                                            <span class="lucide-icon w-4 h-4" data-lucide="search"></span>
+                                        <button id="scrape-btn-${categoryKey}-${index}" onclick="checkSingleProduct('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-200" title="Chequear este producto">
+                                            <span class="lucide-icon w-4 h-4" data-lucide="scan-line"></span>
                                         </button>
                                         <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar">
                                             <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
@@ -984,338 +1464,178 @@
         dragSrcCategory = null;
     }
 
-    // --- Price Checking with Mercado Libre API ---
+    // --- Price Checking & Scraping ---
+    
+async function fetchWithProxyFallback(url) {
+    const proxySelect = document.getElementById('cors-proxy-select');
+    const selectedProxyId = proxySelect.value;
+    const selectedProxy = CORS_PROXIES.find(p => p.id === selectedProxyId);
+    
+    if (!selectedProxy) throw new Error("Por favor, selecciona un Proxy CORS.");
 
-    async function fetchProductDataFromAPI_Public(product, row) {
+    const proxyUrl = `${selectedProxy.url}${encodeURIComponent(url)}`;
+    const response = await fetch(proxyUrl);
+
+    if (!response.ok) throw new Error(`Proxy ${selectedProxy.id} falló con estado: ${response.status}`);
+    return response;
+}
+
+
+    async function scrapeProductData(product, row) {
         const localPrice = product.price;
-        row.className = 'border-b border-gray-700 transition-colors duration-200 price-checking';
-        product.price_status = 'checking';
+        row.className = 'border-b border-gray-700 transition-colors duration-200 price-scraping';
+        product.price_status = 'scraping'; // Intermediate status
         row.scrollIntoView({ behavior: 'smooth', block: 'center' });
         showImagePreview(product.image_url);
         
         const indicatorsContainer = row.querySelector('.indicators-container');
         indicatorsContainer.innerHTML = '';
 
-        const itemID = product.itemID || extractItemId(product.link);
-        if (!itemID) {
-            throw new Error('No se pudo encontrar el ItemID en el link.');
-        }
-        if (!product.itemID) {
-            updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'itemID', itemID);
-        }
-
-    const apiUrl = `/api/chequear-precio?itemId=${itemID}`;
-
         try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.error || `Error de API: ${response.status}`);
+            const response = await fetchWithProxyFallback(product.link);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            const buyButton = Array.from(doc.querySelectorAll('.andes-button__content')).find(el => el.textContent.trim() === 'Comprar ahora');
+            if (!buyButton) {
+                throw new Error('Producto no disponible');
             }
             
-            const onlinePrice = Math.round(data.price);
-            const availableQuantity = data.available_quantity;
-            const status = data.status;
+            const priceElementContainer = doc.querySelector('.ui-pdp-price__second-line');
+            if (!priceElementContainer) throw new Error('Price container not found.');
+            
+            const priceElement = priceElementContainer.querySelector('.andes-money-amount__fraction');
+            if (!priceElement) throw new Error('Price fraction element not found.');
 
-            if (isNaN(onlinePrice)) throw new Error('No se pudo obtener el precio de la API.');
+            const priceText = priceElement.textContent;
+            const onlinePrice = parseInt(priceText.replace(/\./g, ''), 10);
+
+            if (isNaN(onlinePrice)) throw new Error('Could not parse price.');
 
             updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'price', onlinePrice);
             const priceInput = row.querySelector('input[oninput*="formatAndUpdatePrice"]');
-            if (priceInput) priceInput.value = onlinePrice.toLocaleString('es-AR');
+            if (priceInput) {
+                priceInput.value = onlinePrice.toLocaleString('es-AR');
+            }
             
             const diff = onlinePrice - localPrice;
             if (diff !== 0) {
                 const diffSpan = document.createElement('span');
                 diffSpan.className = 'indicator-badge';
-                diffSpan.classList.add(diff > 0 ? 'positive' : 'negative');
-                diffSpan.textContent = `${diff > 0 ? '+' : ''}${diff.toLocaleString('es-AR')}`;
+                if (diff > 0) {
+                    diffSpan.classList.add('positive');
+                    diffSpan.textContent = `+${diff.toLocaleString('es-AR')}`;
+                } else {
+                    diffSpan.classList.add('negative');
+                    diffSpan.textContent = `${diff.toLocaleString('es-AR')}`;
+                }
                 indicatorsContainer.appendChild(diffSpan);
             }
 
-            const quantitySpan = document.createElement('span');
-            quantitySpan.className = 'indicator-badge quantity';
-            quantitySpan.textContent = `${availableQuantity} disp.`;
-            if (availableQuantity === 0) {
-                 quantitySpan.style.backgroundColor = `hsl(0, 85%, 55%)`;
-                 quantitySpan.textContent = 'Sin stock';
-            }
-            indicatorsContainer.appendChild(quantitySpan);
-
-            if (status !== 'active') {
-                const statusSpan = document.createElement('span');
-                statusSpan.className = 'indicator-badge status';
-                statusSpan.textContent = status;
-                indicatorsContainer.appendChild(statusSpan);
-            }
-            
-            row.classList.remove('price-checking');
-            if (onlinePrice < localPrice) {
-                row.classList.add('price-lower'); product.price_status = 'lower';
-            } else if (onlinePrice > localPrice) {
-                row.classList.add('price-higher'); product.price_status = 'higher';
-            } else {
-                row.classList.add('price-same'); product.price_status = 'same';
-            }
-
-        } catch (error) {
-            console.error(`Error chequeando ${product.name}:`, error);
-            showToast(`Error en ${product.name}: ${error.message}`, 'error');
-            row.classList.remove('price-checking');
-            row.classList.add('price-error');
-            product.price_status = 'error';
-
-            const statusSpan = document.createElement('span');
-            statusSpan.className = 'indicator-badge status';
-            statusSpan.textContent = 'Error API';
-            indicatorsContainer.appendChild(statusSpan);
-        }
-    }
-
-    async function checkSingleProductPublic(categoryKey, index) {
-        const product = dataMap[categoryKey][index];
-        const row = document.getElementById(`row-${categoryKey}-${index}`);
-        const checkBtn = document.getElementById(`check-btn-${categoryKey}-${index}`);
-        const originalIconHTML = checkBtn.innerHTML;
-        
-        checkBtn.innerHTML = `<svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        checkBtn.disabled = true;
-
-        await fetchProductDataFromAPI_Public(product, row);
-        hideImagePreview();
-
-        checkBtn.disabled = false;
-        checkBtn.innerHTML = originalIconHTML;
-    }
-
-    async function checkAllPricesPublic() {
-        const btn = document.getElementById('check-prices-public-btn');
-        const btnText = document.getElementById('check-prices-public-text');
-        const btnIcon = document.getElementById('check-prices-public-icon');
-        const originalIcon = btnIcon.innerHTML;
-        const spinner = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        
-        btn.disabled = true;
-        btnText.textContent = 'Chequeando...';
-        btnIcon.innerHTML = spinner;
-
-        for (const category of CATEGORY_NAV_LIST) {
-            const categoryKey = category.key;
-            if (!categoryKey.includes('Options') || ['baseOptions', 'bundleOptions'].includes(categoryKey)) continue;
-
-            if (dataMap[categoryKey]) {
-                for (let i = 0; i < dataMap[categoryKey].length; i++) {
-                    const product = dataMap[categoryKey][i];
-                    const row = document.getElementById(`row-${categoryKey}-${i}`);
-                    if (row && (product.link || product.itemID)) {
-                       await fetchProductDataFromAPI_Public(product, row);
-                       await new Promise(resolve => setTimeout(resolve, 100)); // Rate limit to avoid overwhelming the API
+            const checkQuantity = document.getElementById('check-quantity-toggle').checked;
+            if (checkQuantity) {
+                const quantitySelectors = ['.ui-pdp-buybox__quantity__available', '.ui-pdp-stock-information__available-quantity-message'];
+                let quantityText = '';
+                for (const selector of quantitySelectors) {
+                    const quantityElement = doc.querySelector(selector);
+                    if (quantityElement) {
+                        quantityText = quantityElement.textContent.trim();
+                        break;
                     }
                 }
-            }
-        }
 
-        hideImagePreview();
-        btn.disabled = false;
-        btnText.textContent = 'Chequeo de Precios Público';
-        btnIcon.innerHTML = originalIcon;
-        lucide.createIcons();
-        showToast('¡Chequeo de precios completado!', 'success');
-    }
+                if (quantityText) {
+                    const quantitySpan = document.createElement('span');
+                    quantitySpan.className = 'indicator-badge quantity';
+                    quantitySpan.textContent = quantityText.replace(/[()]/g, '');
 
-    async function getAccessToken() {
-        const appId = document.getElementById('app-id-input').value;
-        const clientSecret = document.getElementById('client-secret-input').value;
-        const tokenStatus = document.getElementById('token-status');
-
-        if (!appId || !clientSecret) {
-            showToast('Por favor, ingresa tu App ID y Client Secret.', 'error');
-            return false;
-        }
-
-        tokenStatus.textContent = 'Obteniendo token de acceso...';
-        tokenStatus.style.color = '#e5e7eb'; // default color
-        
-        const proxyUrl = 'https://corsproxy.io/?';
-        const tokenUrl = 'https://api.mercadolibre.com/oauth/token';
-
-        try {
-            const response = await fetch(proxyUrl + encodeURIComponent(tokenUrl), {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
-                body: new URLSearchParams({
-                    'grant_type': 'client_credentials',
-                    'client_id': appId,
-                    'client_secret': clientSecret
-                })
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || 'Error de autenticación');
-            }
-
-            mlAccessToken = data.access_token;
-            tokenStatus.textContent = 'Token obtenido con éxito. ¡Listo para chequear!';
-            tokenStatus.style.color = '#42d232'; // green
-            showToast('Autenticación exitosa.', 'info');
-            return true;
-
-        } catch (error) {
-            console.error('Error al obtener token:', error);
-            showToast(`Error de autenticación: ${error.message}`, 'error');
-            tokenStatus.textContent = `Error: ${error.message}`;
-            tokenStatus.style.color = '#ef4444'; // red
-            mlAccessToken = null;
-            return false;
-        }
-    }
-    
-    async function fetchProductDataFromAPI(product, row) {
-        if (!mlAccessToken) {
-            throw new Error('Token de acceso no válido o expirado.');
-        }
-
-        const localPrice = product.price;
-        row.className = 'border-b border-gray-700 transition-colors duration-200 price-checking';
-        product.price_status = 'checking';
-        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        showImagePreview(product.image_url);
-        
-        const indicatorsContainer = row.querySelector('.indicators-container');
-        indicatorsContainer.innerHTML = '';
-
-        const itemID = product.itemID || extractItemId(product.link);
-        if (!itemID) {
-            throw new Error('No se pudo encontrar el ItemID en el link.');
-        }
-        if (!product.itemID) {
-            updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'itemID', itemID);
-        }
-
-        const apiUrl = `https://api.mercadolibre.com/items/${itemID}`;
-
-        try {
-            const response = await fetch(apiUrl, {
-                headers: { 'Authorization': `Bearer ${mlAccessToken}` }
-            });
-            const data = await response.json();
-
-            if (!response.ok) {
-                if (response.status === 401 || response.status === 403) {
-                     mlAccessToken = null;
-                     document.getElementById('token-status').textContent = 'Token inválido o expirado. Se necesita uno nuevo.';
-                     document.getElementById('token-status').style.color = '#f59e0b';
+                    const isLastAvailable = quantityText.toLowerCase().includes('¡últim');
+                    if (isLastAvailable) {
+                         quantitySpan.style.backgroundColor = `hsl(0, 85%, 55%)`; // Red
+                    } else if (!quantityText.includes('+') && !quantityText.toLowerCase().includes('más de')) {
+                         const availableQuantityMatch = quantityText.match(/(\d+)/);
+                         if(availableQuantityMatch && availableQuantityMatch[1]){
+                            const availableQuantity = parseInt(availableQuantityMatch[1], 10);
+                            if (availableQuantity < 10) {
+                                const normalized = (availableQuantity - 1) / 8; // 0 for 1, 1 for 9
+                                const hue = 30 - (normalized * 30); // 30 for orange, 0 for red
+                                quantitySpan.style.backgroundColor = `hsl(${hue}, 85%, 55%)`;
+                            }
+                         }
+                    }
+                    indicatorsContainer.appendChild(quantitySpan);
                 }
-                throw new Error(data.message || `Error de API: ${response.status}`);
             }
             
-            const onlinePrice = Math.round(data.price);
-            const availableQuantity = data.available_quantity;
-
-            if (isNaN(onlinePrice)) throw new Error('No se pudo obtener el precio de la API.');
-
-            updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'price', onlinePrice);
-            const priceInput = row.querySelector('input[oninput*="formatAndUpdatePrice"]');
-            if (priceInput) priceInput.value = onlinePrice.toLocaleString('es-AR');
-            
-            const diff = onlinePrice - localPrice;
-            if (diff !== 0) {
-                const diffSpan = document.createElement('span');
-                diffSpan.className = 'indicator-badge';
-                diffSpan.classList.add(diff > 0 ? 'positive' : 'negative');
-                diffSpan.textContent = `${diff > 0 ? '+' : ''}${diff.toLocaleString('es-AR')}`;
-                indicatorsContainer.appendChild(diffSpan);
-            }
-
-            const quantitySpan = document.createElement('span');
-            quantitySpan.className = 'indicator-badge quantity';
-            quantitySpan.textContent = `${availableQuantity} disp.`;
-            if (availableQuantity === 0) {
-                 quantitySpan.style.backgroundColor = `hsl(0, 85%, 55%)`;
-                 quantitySpan.textContent = 'Sin stock';
-            }
-            indicatorsContainer.appendChild(quantitySpan);
-            
-            row.classList.remove('price-checking');
+            row.classList.remove('price-scraping');
             if (onlinePrice < localPrice) {
-                row.classList.add('price-lower'); product.price_status = 'lower';
+                row.classList.add('price-lower');
+                product.price_status = 'lower';
             } else if (onlinePrice > localPrice) {
-                row.classList.add('price-higher'); product.price_status = 'higher';
+                row.classList.add('price-higher');
+                product.price_status = 'higher';
             } else {
-                row.classList.add('price-same'); product.price_status = 'same';
+                row.classList.add('price-same');
+                product.price_status = 'same';
             }
 
         } catch (error) {
-            console.error(`Error chequeando ${product.name}:`, error);
+            console.error(`Error checking price for ${product.name}:`, error);
             showToast(`Error en ${product.name}: ${error.message}`, 'error');
-            row.classList.remove('price-checking');
+            row.classList.remove('price-scraping');
             row.classList.add('price-error');
             product.price_status = 'error';
 
-            const statusSpan = document.createElement('span');
-            statusSpan.className = 'indicator-badge status';
-            statusSpan.textContent = 'Error API';
-            indicatorsContainer.appendChild(statusSpan);
+            if (error.message === 'Producto no disponible') {
+                const statusSpan = document.createElement('span');
+                statusSpan.className = 'indicator-badge status';
+                statusSpan.textContent = 'No disponible';
+                indicatorsContainer.appendChild(statusSpan);
+            }
         }
     }
 
     async function checkSingleProduct(categoryKey, index) {
-        if (!mlAccessToken) {
-            const success = await getAccessToken();
-            if (!success) return;
-        }
-
         const product = dataMap[categoryKey][index];
         const row = document.getElementById(`row-${categoryKey}-${index}`);
-        const checkBtn = document.getElementById(`check-btn-${categoryKey}-${index}`);
-        const originalIconHTML = checkBtn.innerHTML;
+        const scrapeBtn = document.getElementById(`scrape-btn-${categoryKey}-${index}`);
+        const originalIcon = scrapeBtn.innerHTML;
         
-        checkBtn.innerHTML = `<svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        checkBtn.disabled = true;
+        scrapeBtn.innerHTML = `<svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
+        scrapeBtn.disabled = true;
 
-        await fetchProductDataFromAPI(product, row);
+        await scrapeProductData(product, row);
         hideImagePreview();
 
-        checkBtn.disabled = false;
-        checkBtn.innerHTML = originalIconHTML;
+        scrapeBtn.disabled = false;
+        scrapeBtn.innerHTML = originalIcon;
     }
 
     async function checkAllPrices() {
         const btn = document.getElementById('check-prices-btn');
         const btnText = document.getElementById('check-prices-text');
         const btnIcon = document.getElementById('check-prices-icon');
-        const spinner = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
         
         btn.disabled = true;
-        btnText.textContent = 'Autenticando...';
-        btnIcon.innerHTML = spinner;
-
-        if (!mlAccessToken) {
-            const isAuthenticated = await getAccessToken();
-            if (!isAuthenticated) {
-                btn.disabled = false;
-                btnText.textContent = 'Chequear Precios (Autenticado)';
-                btnIcon.dataset.lucide = 'scan-line';
-                lucide.createIcons();
-                return;
-            }
-        }
-
         btnText.textContent = 'Chequeando...';
+        btnIcon.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
 
+        // Iterate using the defined order in CATEGORY_NAV_LIST
         for (const category of CATEGORY_NAV_LIST) {
             const categoryKey = category.key;
-            if (!categoryKey.includes('Options') || ['baseOptions', 'bundleOptions'].includes(categoryKey)) continue;
+            // Skip non-component categories
+            if (!categoryKey.includes('Options') || categoryKey === 'baseOptions') {
+                continue;
+            }
 
             if (dataMap[categoryKey]) {
                 for (let i = 0; i < dataMap[categoryKey].length; i++) {
                     const product = dataMap[categoryKey][i];
                     const row = document.getElementById(`row-${categoryKey}-${i}`);
-                    if (row && (product.link || product.itemID)) {
-                       await fetchProductDataFromAPI(product, row);
-                       await new Promise(resolve => setTimeout(resolve, 100)); 
+                    if (row && product.link) { // Check if row and link exist
+                       await scrapeProductData(product, row);
+                       await new Promise(resolve => setTimeout(resolve, 300));
                     }
                 }
             }
@@ -1323,63 +1643,73 @@
 
         hideImagePreview();
         btn.disabled = false;
-        btnText.textContent = 'Chequear Precios (Autenticado)';
-        btnIcon.dataset.lucide = 'scan-line';
-        lucide.createIcons();
-        showToast('¡Chequeo de precios completado!', 'success');
+        btnText.textContent = 'Chequear Precios';
+        btnIcon.innerHTML = '';
+        lucide.createIcons({
+            nodes: [btnIcon],
+            attrs: { 'data-lucide': 'scan-line' }
+        });
     }
 
     async function addProductFromClipboard(categoryKey) {
-        if (!mlAccessToken) {
-            const success = await getAccessToken();
-            if (!success) {
-                showToast('Autentica primero para añadir desde un link.', 'error');
-                return;
-            }
-        }
-
         const btn = document.getElementById(`add-from-clipboard-${categoryKey}`);
         const originalContent = btn.innerHTML;
-        const spinner = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        btn.innerHTML = spinner;
+        btn.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
         btn.disabled = true;
 
         try {
-            const link = await navigator.clipboard.readText();
-            const itemID = extractItemId(link);
-
-            if (!itemID) {
-                throw new Error('El portapapeles no contiene un link de ML con un ItemID válido.');
+            let link = await navigator.clipboard.readText();
+            if (!link || !link.includes('mercadolibre.com')) {
+                throw new Error('El portapapeles no contiene un link válido de Mercado Libre.');
             }
+            link = modifyMercadoLibreLink(link.trim());
+
+            const response = await fetchWithProxyFallback(link);
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            const nameElement = doc.querySelector('.ui-pdp-title');
+            const name = nameElement ? nameElement.textContent.trim() : 'Nombre no encontrado';
             
-            const apiUrl = `https://api.mercadolibre.com/items/${itemID}`;
-            const response = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${mlAccessToken}` }});
-            if (!response.ok) throw new Error('No se pudo obtener datos del producto desde la API de ML.');
-            const data = await response.json();
+            let price = 0;
+            try {
+                const priceElementContainer = doc.querySelector('.ui-pdp-price__second-line');
+                if (!priceElementContainer) throw new Error('Price container not found.');
+                const priceElement = priceElementContainer.querySelector('.andes-money-amount__fraction');
+                if (!priceElement) throw new Error('Price fraction element not found.');
+                const priceText = priceElement.textContent;
+                price = parseInt(priceText.replace(/\./g, ''), 10) || 0;
+            } catch (priceError) {
+                console.warn("Could not scrape price, defaulting to 0:", priceError.message);
+                showToast(`No se pudo obtener el precio para ${name}. Se agregó con precio 0.`, 'error');
+            }
             
             const newId = generateUniqueId(getAllIds());
             const categoryInfo = CATEGORY_NAV_LIST.find(cat => cat.key === categoryKey);
-            let imageUrl = data.thumbnail || '';
-            if (!imageUrl && categoryInfo && categoryInfo.folder) {
+            let imageUrl = '';
+            if (categoryInfo && categoryInfo.folder) {
                 imageUrl = `comps/${categoryInfo.folder}/${newId}.webp`;
             }
 
             const newProduct = {
                 id: newId,
-                name: data.title || 'Nombre no encontrado',
-                price: Math.round(data.price) || 0,
+                name: name,
+                price: price,
                 link: link,
-                itemID: itemID,
-                visible: 1,
-                image_url: imageUrl,
-                description: ''
+                visible: 1
             };
+
             if (categoryKey === 'miniPcOptions') {
-                newProduct.cpu = ''; newProduct.ram = ''; newProduct.ssd = '';
+                newProduct.cpu = '';
+                newProduct.ram = '';
+                newProduct.ssd = '';
+            } else {
+                newProduct.description = '';
             }
 
             addProduct(categoryKey, newProduct);
-            showToast('Producto añadido desde el link vía API.', 'success');
+            showToast('Producto añadido desde el link.');
 
         } catch (error) {
             console.error('Error al añadir desde clipboard:', error);
@@ -1431,7 +1761,7 @@
                 continue;
              }
              exportData[mapKey] = dataMap[mapKey].map(p => {
-                const { id, name, price, description, image_url, link, visible, cpu, ram, ssd, total, itemID } = p;
+                const { id, name, price, description, image_url, link, visible, cpu, ram, ssd, total } = p;
                 let orderedProduct = { id, name, price };
 
                 if (mapKey === 'miniPcOptions') {
@@ -1449,8 +1779,7 @@
 
                 orderedProduct.image_url = image_url;
                 orderedProduct.link = link;
-                orderedProduct.itemID = itemID || null;
-                orderedProduct.visible = visible !== undefined ? p.visible : 1;
+                orderedProduct.visible = visible !== undefined ? visible : 1;
                 
                 return orderedProduct;
             });
@@ -1474,14 +1803,15 @@
         location.reload();
     }
 
-    async function loadDataFromClipboard() {
+    async function reloadDataFromJson() {
         try {
-            const text = await navigator.clipboard.readText();
-            const dataToLoad = JSON.parse(text);
+            const response = await fetch('products.json?cache_bust=' + new Date().getTime());
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const dataToLoad = await response.json();
             
             for (const key in dataMap) {
                 if (dataToLoad.hasOwnProperty(key)) {
-                    dataMap[key] = dataToLoad[key];
+                    dataToLoad[key] = dataToLoad[key];
                 } else {
                     dataMap[key] = [];
                 }
@@ -1494,14 +1824,28 @@
             renderBundlesSection();
             renderOverviewTables();
             saveDataToSessionStorage();
-            showToast('Datos cargados desde el portapapeles.');
+            showToast('Datos recargados desde products.json');
 
         } catch (error) {
-            console.error("Error al cargar desde el portapapeles:", error);
-            showToast('Error: El contenido del portapapeles no es un JSON válido.', 'error');
+            console.error("Error reloading from JSON:", error);
+            showToast('Error al recargar el archivo products.json.', 'error');
         }
     }
     
+    function renderScrapingTools() {
+        const apiSelect = document.getElementById('scraping-api-select');
+        const proxySelect = document.getElementById('cors-proxy-select');
+
+        apiSelect.innerHTML = SCRAPING_APIS.map(api => `<option value="${api.id}">${api.name}</option>`).join('');
+        proxySelect.innerHTML = CORS_PROXIES.map(proxy => `<option value="${proxy.id}">${proxy.id}</option>`).join('');
+
+        const lastProxy = sessionStorage.getItem('lastSuccessfulProxy');
+        const lastProxyId = CORS_PROXIES.find(p => p.url === lastProxy)?.id;
+        if (lastProxyId) {
+            proxySelect.value = lastProxyId;
+        }
+    }
+
     // --- Page Initialization ---
     document.addEventListener('DOMContentLoaded', async () => {
         let dataToLoad = null;
@@ -1511,9 +1855,14 @@
             dataToLoad = storedData;
             showToast('¡Datos restaurados de la sesión anterior!', 'success');
         } else {
-            // Carga inicial vacía si no hay sesión. 
-            // La carga de datos ahora es manual con el botón "Pegar JSON".
-            console.log("Iniciando con datos vacíos. Usa 'Pegar JSON' para cargar datos.");
+            try {
+                const response = await fetch('products.json?cache_bust=' + new Date().getTime());
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                dataToLoad = await response.json();
+            } catch (error) {
+                console.error('Error loading products.json:', error);
+                showToast('No se pudo cargar products.json. Se iniciará con datos vacíos.', 'error');
+            }
         }
 
         if (dataToLoad) {
@@ -1531,6 +1880,7 @@
         renderBasesSection();
         renderBundlesSection();
         renderOverviewTables();
+        renderScrapingTools();
         saveDataToSessionStorage();
         lucide.createIcons();
         

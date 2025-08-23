@@ -1699,7 +1699,7 @@
                     <h1 class="text-2xl">con las Mejores Opciones en Mercado Libre con sus links <span class="links"
                             style="color: var(--color-link);"><i
                                 class="fas fa-external-link-alt text-sm "></i></span>, para ver sus
-                        detalles o comprarlas por tu cuenta.</h1>
+                        detalles</h1><h1>Si sabés del tema, ¡usalos para comprar y armar por tu cuenta!</h1>
                     <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
@@ -2406,7 +2406,7 @@
                 const cpuNameParts = cpu.name.split(' ');
                 document.getElementById('base-cpu-text').innerHTML = `<b>${cpuNameParts.slice(0, 2).join(' ')}</b> ${cpuNameParts.slice(2).join(' ')} <a href="${cpu.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
                 // RAM: solo muestra la cantidad total de RAM de la base seleccionada
-                document.getElementById('base-ram-text').innerHTML = `<span class="text-green-333"><strong>${base.totalram} GB</strong> de RAM | Dual Channel</span> <a href="${ram.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                document.getElementById('base-ram-text').innerHTML = `<span class="text-green-333"><strong>${base.totalram} GB</strong> de RAM</span> <a href="${ram.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
                 // Motherboard
                 document.getElementById('base-motherboard-text').innerHTML = `Mother <small>${motherboard.name}</small> <a href="${motherboard.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
                 // Descripción desde el JSON
