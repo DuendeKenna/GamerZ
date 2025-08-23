@@ -7,6 +7,7 @@
     <title>La Nave del Medio</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    <!-- El uso del CDN de Tailwind es adecuado para desarrollo y prototipado. Para producción, se recomienda instalarlo como un plugin de PostCSS. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1425,8 +1426,8 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 4rem;
-            color: #19fb00;
-            text-shadow: 0px 0px 7px #ffffff;
+            color: #42d232; /* green-333 */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             z-index: 1;
         }
 
@@ -1550,6 +1551,65 @@
         .accordion-content.open {
             max-height: 1000px;
             padding: 1rem;
+        }
+
+        /* --- NEW AI Section Styles --- */
+        #ai-section {
+            /* Using styles from Manual de Marca */
+            background-color: rgba(31, 41, 55, 0.9); /* .section-card-style bg */
+            border: 1px solid rgba(75, 85, 99, 0.5); /* .section-card-style border */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 2.5rem 1.5rem;
+            margin-top: 3rem;
+        }
+        #ai-input {
+            background-color: #111827;
+            border: 2px solid #374151;
+            color: #e5e7eb;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        #ai-input:focus {
+            outline: none;
+            border-color: #6366f1; /* Gradiente Principal */
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+        #ai-button {
+            background: linear-gradient(to right, #6366f1, #a855f7); /* Gradiente Principal */
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        #ai-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+        }
+        #ai-button:disabled {
+            background: #4b5563;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        #ai-result-container {
+            background-color: rgba(17, 24, 39, 0.7);
+            border: 1px solid #374151;
+            min-height: 150px;
+        }
+        /* Loading spinner animation */
+        .loader {
+            border: 4px solid #374151;
+            border-top: 4px solid #6366f1;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1795,6 +1855,30 @@
                     </div>
                 </section>
             </div>
+
+            <!-- ================== NEW AI SECTION START ================== -->
+            <section id="ai-section" class="max-w-5xl mx-auto">
+                <div class="text-center">
+                    <h2 class="font-saira-black text-4xl md:text-5xl brand-gradient-text mb-2">Análisis de Rendimiento por IA</h2>
+                    <p class="font-vt323 text-2xl text-cyan-300 mb-6">¿Cómo correrá tu juego favorito en esta Nave?</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <input type="text" id="ai-input" class="w-full px-4 py-3 rounded-lg text-lg" placeholder="Escribí el nombre de un juego, ej: Fortnite">
+                        <button id="ai-button" class="w-full sm:w-auto px-6 py-3 rounded-lg text-white text-lg flex items-center justify-center gap-2">
+                            <i class="fas fa-rocket"></i>
+                            <span>Analizar</span>
+                        </button>
+                    </div>
+                    <div id="ai-result-container" class="mt-6 p-6 rounded-lg text-lg text-gray-300">
+                        <p id="ai-placeholder" class="text-center text-gray-500">El análisis de la IA aparecerá aquí...</p>
+                        <div id="ai-loader" class="hidden mx-auto loader"></div>
+                        <div id="ai-result" class="prose prose-invert max-w-none"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- ================== NEW AI SECTION END ================== -->
+
 
             <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
                 <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
@@ -2110,6 +2194,13 @@
             let currentTowerIndex = 0;
             let currentBaseLevel = 1; // Default to Nivel II
 
+            // --- NEW: Centralized state for selected component indices ---
+            let selectedComponentIndices = {
+                gpu: 0,
+                ssd: 0,
+                psu: 0
+            };
+
             // Component Options
             let baseOptions = [], cpuOptions = [], ramOptions = [], motherboardOptions = [],
                 towersOptions = [], ssdOptions = [], gpuOptions = [], psuOptions = [],
@@ -2236,15 +2327,15 @@
                     softwareListContainer.appendChild(categoryWrapper);
                 });
 
-                // Populate component selects
+                // --- REFACTORED: Populate component selects using index as value ---
                 const ssdSelect = document.getElementById('ssd-select');
-                if (ssdSelect) ssdSelect.innerHTML = ssdOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+                if (ssdSelect) ssdSelect.innerHTML = ssdOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
 
                 const gpuSelect = document.getElementById('gpu-select');
-                if (gpuSelect) gpuSelect.innerHTML = gpuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+                if (gpuSelect) gpuSelect.innerHTML = gpuOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
 
                 const psuSelect = document.getElementById('psu-select');
-                if (psuSelect) psuSelect.innerHTML = psuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+                if (psuSelect) psuSelect.innerHTML = psuOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
 
                 populateOptionalPeripherals();
             }
@@ -2263,14 +2354,19 @@
                     });
                 });
 
-                // Component Selects
-                const ssdSelect = document.getElementById('ssd-select');
-                const gpuSelect = document.getElementById('gpu-select');
-                const psuSelect = document.getElementById('psu-select');
-
-                if (ssdSelect) ssdSelect.addEventListener('change', () => updateComponentDisplay(ssdSelect, document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions));
-                if (gpuSelect) gpuSelect.addEventListener('change', () => updateComponentDisplay(gpuSelect, document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions));
-                if (psuSelect) psuSelect.addEventListener('change', () => updateComponentDisplay(psuSelect, document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions));
+                // --- REFACTORED: Component Selects event listeners ---
+                document.getElementById('gpu-select')?.addEventListener('change', (e) => {
+                    selectedComponentIndices.gpu = parseInt(e.target.value);
+                    updateComponentDisplay('gpu');
+                });
+                document.getElementById('ssd-select')?.addEventListener('change', (e) => {
+                    selectedComponentIndices.ssd = parseInt(e.target.value);
+                    updateComponentDisplay('ssd');
+                });
+                document.getElementById('psu-select')?.addEventListener('change', (e) => {
+                    selectedComponentIndices.psu = parseInt(e.target.value);
+                    updateComponentDisplay('psu');
+                });
 
                 // Tower navigation
                 document.getElementById('prev-tower').addEventListener('click', prevTower);
@@ -2327,14 +2423,16 @@
                     positionCroxImages();
                     updateSliderPosition();
                 });
+                 // AI Section Listener
+                document.getElementById('ai-button').addEventListener('click', checkGameCompatibility);
             }
 
             function updateAllDisplays() {
                 updateBaseDisplay();
                 updateTowerDisplay();
-                updateComponentDisplay(document.getElementById('ssd-select'), document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions);
-                updateComponentDisplay(document.getElementById('gpu-select'), document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions);
-                updateComponentDisplay(document.getElementById('psu-select'), document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions);
+                updateComponentDisplay('gpu');
+                updateComponentDisplay('ssd');
+                updateComponentDisplay('psu');
                 updateSelectedGamesList();
                 setInitialGridHeight();
                 positionCroxImages();
@@ -2355,9 +2453,10 @@
             function updatePrices() {
                 let total = BASE_PRICE;
 
-                total += parseInt(document.getElementById('ssd-select')?.value || 0);
-                total += parseInt(document.getElementById('gpu-select')?.value || 0);
-                total += parseInt(document.getElementById('psu-select')?.value || 0);
+                // --- REFACTORED: Get prices from selected indices ---
+                total += gpuOptions[selectedComponentIndices.gpu]?.price || 0;
+                total += ssdOptions[selectedComponentIndices.ssd]?.price || 0;
+                total += psuOptions[selectedComponentIndices.psu]?.price || 0;
                 if (towersOptions.length > 0) total += towersOptions[currentTowerIndex].price;
 
                 // Add prices from selected peripherals
@@ -2432,12 +2531,21 @@
                 document.getElementById('current-tower-price-display').innerHTML = towerPriceHTML;
                 updatePrices();
             }
+            
+            // --- REFACTORED: Single function to update component display ---
+            function updateComponentDisplay(componentKey) {
+                const config = {
+                    gpu: { selectEl: document.getElementById('gpu-select'), descEl: document.getElementById('gpu-description'), imageEl: document.getElementById('gpu-image'), options: gpuOptions },
+                    ssd: { selectEl: document.getElementById('ssd-select'), descEl: document.getElementById('ssd-description'), imageEl: document.getElementById('ssd-image'), options: ssdOptions },
+                    psu: { selectEl: document.getElementById('psu-select'), descEl: document.getElementById('psu-description'), imageEl: document.getElementById('psu-image'), options: psuOptions }
+                };
 
-            function updateComponentDisplay(selectEl, descEl, imageEl, options) {
-                if (!selectEl || !imageEl || !options) return;
-                const selectedOption = options.find(opt => opt.price == selectEl.value);
+                const { descEl, imageEl, options } = config[componentKey];
+                const selectedIndex = selectedComponentIndices[componentKey];
+                const selectedOption = options[selectedIndex];
+
                 if (selectedOption) {
-                    if(descEl) {
+                    if (descEl) {
                         let linkHTML = '';
                         if (selectedOption.link) {
                             const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} | ` : '';
@@ -2445,11 +2553,11 @@
                         }
                         descEl.innerHTML = selectedOption.description + linkHTML;
                     }
-                    loadImageWithGrayscale(imageEl, selectedOption.image_url);
-                     // Logic for mobile visibility
-                    if (selectEl.id === 'gpu-select') {
+                    if (imageEl) loadImageWithGrayscale(imageEl, selectedOption.image_url);
+                    
+                    if (componentKey === 'gpu') {
                         const gpuLi = document.getElementById('gpu-li');
-                        if (selectEl.selectedIndex === 0) {
+                        if (selectedIndex === 0) { // Assuming "Integrada" is always the first option
                             imageEl.classList.add('md:block', 'hidden');
                             gpuLi.classList.add('gpu-integrated-mobile');
                         } else {
@@ -2460,6 +2568,7 @@
                 }
                 updatePrices();
             }
+
 
             function updateSelectedComponentsDisplay() {
                 const container = document.getElementById('selected-components-preview');
@@ -2495,9 +2604,9 @@
                 tableContainer.appendChild(table);
 
                 const components = [
-                    { type: 'Gráfica', options: gpuOptions, selected: gpuOptions.find(opt => opt.price == document.getElementById('gpu-select').value), anchor: '#gpu-li' },
-                    { type: 'Almacenamiento', options: ssdOptions, selected: ssdOptions.find(opt => opt.price == document.getElementById('ssd-select').value), anchor: '#ssd-li' },
-                    { type: 'Fuente', options: psuOptions, selected: psuOptions.find(opt => opt.price == document.getElementById('psu-select').value), anchor: '#psu-li' }
+                    { type: 'Gráfica', selected: gpuOptions[selectedComponentIndices.gpu] },
+                    { type: 'Almacenamiento', selected: ssdOptions[selectedComponentIndices.ssd] },
+                    { type: 'Fuente', selected: psuOptions[selectedComponentIndices.psu] }
                 ];
 
                 const peripheralMap = {
@@ -2511,7 +2620,7 @@
                 for (const key in selectedPeripherals) {
                     if (selectedPeripherals[key] > -1) {
                         const item = peripheralMap[key].options[selectedPeripherals[key]];
-                        components.push({ type: peripheralMap[key].name, selected: item, anchor: '#section-peripherals' });
+                        components.push({ type: peripheralMap[key].name, selected: item });
                     }
                 }
 
@@ -2556,7 +2665,7 @@
                         container.className = 'peripheral-container';
                         container.dataset.category = cat.key;
                         container.innerHTML = `
-                            <div class="summary-card unselected" style="opacity:0.5;">
+                            <div class="summary-card unselected">
                                 <div class="summary-card-image-wrapper">
                                    <img src="${cat.options[0].image_url}" alt="${cat.name}" onerror="this.onerror=null;this.src='https://placehold.co/240x190/ffffff/333333?text=${cat.name}'">
                                 </div>
@@ -2632,13 +2741,11 @@
 
                 if (index === -1) {
                     card.classList.add('unselected');
-                    card.style.opacity = '0.5';
                     img.src = options[0].image_url;
                     nameEl.textContent = container.dataset.category.charAt(0).toUpperCase() + container.dataset.category.slice(1);
                     priceContainer.innerHTML = `<p class="component-link">&nbsp;</p>`;
                 } else {
                     card.classList.remove('unselected');
-                    card.style.opacity = '1';
                     const item = options[index];
                     img.src = item.image_url;
                     nameEl.textContent = item.name;
@@ -2789,18 +2896,110 @@
                 document.getElementById('google-link').href = `https://www.google.com/search?q=${total}+ars+to+usd`;
                 document.getElementById('dolar-popup').style.display = 'flex';
             }
+            
+            // ================== NEW AI FUNCTION (CORRECTED) ==================
+            async function checkGameCompatibility() {
+                const gameName = document.getElementById('ai-input').value.trim();
+                const button = document.getElementById('ai-button');
+                const resultContainer = document.getElementById('ai-result');
+                const placeholder = document.getElementById('ai-placeholder');
+                const loader = document.getElementById('ai-loader');
+
+                if (!gameName) {
+                    alert("Por favor, ingresá el nombre de un juego.");
+                    return;
+                }
+
+                // --- 1. Gather component data (now using indices) ---
+                const baseConfig = baseOptions[currentBaseLevel];
+                const cpu = cpuOptions.find(c => String(c.id) === String(baseConfig.cpu));
+                const totalRam = baseConfig.totalram;
+                const selectedGpu = gpuOptions[selectedComponentIndices.gpu];
+                const selectedSsd = ssdOptions[selectedComponentIndices.ssd];
+                
+                // --- 2. Show loading state ---
+                button.disabled = true;
+                button.querySelector('span').textContent = 'Analizando...';
+                placeholder.classList.add('hidden');
+                resultContainer.innerHTML = ''; // Clear previous results
+                loader.classList.remove('hidden');
+
+                // --- 3. Build the prompt ---
+                const prompt = `
+                    Actuá como un experto en hardware de PC y gaming que habla de forma casual y directa, como en la jerga gamer argentina.
+                    Analizá el rendimiento esperado para el juego "${gameName}" con la siguiente configuración de PC:
+                    - CPU: ${cpu.name}
+                    - RAM: ${totalRam} GB
+                    - Tarjeta Gráfica (GPU): ${selectedGpu.name}
+                    - Almacenamiento: ${selectedSsd.name}
+
+                    Tu respuesta debe ser concisa y en formato Markdown, estructurada de la siguiente manera:
+                    1.  **Veredicto Rápido:** Una o dos frases directas sobre si la PC se la banca para este juego y qué se puede esperar en general.
+                    2.  **Rendimiento Estimado (1080p):** Da una estimación de FPS (fotogramas por segundo) en resolución 1080p. Sé realista. Especifica una calidad gráfica aproximada (Baja, Media, Alta, Ultra). Por ejemplo: "En 1080p con gráficos en Medio, podés esperar unos 60-75 FPS bastante estables."
+                    3.  **Análisis y Recomendaciones:** Explica brevemente por qué das esa estimación. Si hay un cuello de botella (por ejemplo, la gráfica integrada para un juego muy exigente), mencionalo. Si la configuración es ideal, decilo también. Ofrecé una recomendación clave si es necesaria para mejorar la experiencia en ESE juego (ej: "Para este título, la posta sería saltar a la gráfica dedicada para no sufrir tirones").
+                `;
+
+                // --- 4. Call Gemini API (with corrected URL) ---
+                const apiKey = "AIzaSyAQknlg0cIz1cmMOPwnSu3UabG5L7-vLmU"; // Your API Key
+                const model = "gemini-pro"; // <-- CORRECTED MODEL NAME
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: prompt }] }]
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const errorBody = await response.json();
+                        console.error("API Error Response:", errorBody);
+                        throw new Error(`Error de API: ${response.status} ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+                    const text = data.candidates[0].content.parts[0].text;
+                    
+                    // --- 5. Display the result ---
+                    // A simple regex-based conversion for basic Markdown
+                    let htmlResult = text
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')     // Italic
+                        .replace(/(\d+\.)/g, '<br><strong>$1</strong>') // Numbered list items
+                        .replace(/\n/g, '<br>');
+
+                    resultContainer.innerHTML = htmlResult;
+
+                } catch (error) {
+                    console.error("Error al llamar a la API de Gemini:", error);
+                    resultContainer.innerHTML = `<p class="text-red-400">¡Ups! Hubo un error al contactar a la IA. Verificá la consola (F12) para más detalles y asegurate que la API Key sea correcta y esté habilitada.</p>`;
+                } finally {
+                    // --- 6. Reset UI ---
+                    loader.classList.add('hidden');
+                    button.disabled = false;
+                    button.querySelector('span').textContent = 'Analizar';
+                }
+            }
+
 
             function handleFormSubmit(e) {
                 e.preventDefault();
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
                 const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => softwareData.find(s => s.slug === cb.dataset.slug)?.name).filter(Boolean);
                 const extraNotes = document.getElementById('extra-notes').value;
+                
+                // --- REFACTORED: Get component names from selected indices ---
+                const selectedGpuName = gpuOptions[selectedComponentIndices.gpu].name;
+                const selectedSsdName = ssdOptions[selectedComponentIndices.ssd].name;
+                const selectedPsuName = psuOptions[selectedComponentIndices.psu].name;
 
                 let message = `¡Hola, me interesa esta Nave del Medio!\n\n`;
                 message += `*Torre:* ${towersOptions[currentTowerIndex].name}\n`;
-                message += `*Almacenamiento:* ${document.getElementById('ssd-select').options[document.getElementById('ssd-select').selectedIndex].text}\n`;
-                message += `*Gráfica:* ${document.getElementById('gpu-select').options[document.getElementById('gpu-select').selectedIndex].text}\n`;
-                message += `*Fuente:* ${document.getElementById('psu-select').options[document.getElementById('psu-select').selectedIndex].text}\n`;
+                message += `*Almacenamiento:* ${selectedSsdName}\n`;
+                message += `*Gráfica:* ${selectedGpuName}\n`;
+                message += `*Fuente:* ${selectedPsuName}\n`;
 
                 let peripheralsMessage = '';
                 const peripheralMap = {
