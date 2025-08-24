@@ -30,51 +30,39 @@ export default async function handler(req, res) {
         .filter(gpu => gpu.price > 0) // Filtra solo las GPUs dedicadas
         .map(gpu => `- ${gpu.name}`)
         .join('\n');
-    
-    const cpuOptionsText = availableCpus
-        .map(cpu => `- ${cpu.name} (ID: ${cpu.id})`)
-        .join('\n');
 
     // Inicializa la IA generativa de Google con la clase correcta
     const genAI = new GoogleGenerativeAI(apiKey);
-    // Usa el modelo "gemini-1.5-flash", más rápido y con límites más generosos
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     // Construye el prompt para la IA con los datos y las nuevas instrucciones
     const prompt = `
-        Actuá como un experto en hardware de PC y gaming realista y bien informado, que habla de forma casual, directa y sin lenguaje ofensivo, como en la jerga gamer argentina.
-        
-        **Contexto:** Estás asistiendo a un cliente que está configurando una PC de gama media para comprarla. Tu objetivo es dar una estimación precisa y útil para ayudarlo a decidir. Diferenciá claramente entre juegos e-sports/livianos y juegos AAA exigentes.
+        Actuá como un experto en hardware de PC gamer en Argentina. Sos un asesor honesto y tu objetivo es darle al cliente la información justa y necesaria. Usá jerga gamer casual.
 
-        **Configuración de PC seleccionada:**
+        **TAREA:** Analizá si la PC que está armando el cliente es buena para el juego "${gameName}".
+
+        **PC ARMADA:**
         - CPU: ${components.cpu.name}
         - RAM: ${components.totalRam} GB (siempre en Dual Channel)
-        - Tarjeta Gráfica (GPU) actual: ${components.selectedGpu.name}
-        - Almacenamiento: ${components.selectedSsd.name}
+        - GPU Actual: ${components.selectedGpu.name}
 
-        **Juego a analizar:** "${gameName}"
-
-        **Hardware disponible para recomendar (si es necesario):**
-        CPUs con gráficos integrados (APUs):
-        ${cpuOptionsText}
-        GPUs dedicadas:
+        **GPUs Dedicadas Disponibles (para recomendar SOLO si es necesario):**
         ${gpuOptionsText}
 
-        **Instrucciones para tu respuesta:**
-        - No incluyas un título.
-        - Tu respuesta debe tener únicamente los siguientes 3 puntos, en formato Markdown.
-        - El objetivo es una experiencia jugable (al menos 50-60 FPS estables). No apuntamos a Ultra, sino a un buen balance de calidad/rendimiento.
-        - La RAM siempre está en Dual Channel, tenelo muy en cuenta para el rendimiento de los gráficos integrados.
-        
-        **Lógica de recomendación obligatoria:**
-        1. Evalúa el rendimiento con la **configuración actual**.
-        2. Si el rendimiento es bajo y la GPU actual es integrada, **primero** revisa si otro CPU de la lista de APUs disponibles ofrece una mejora suficiente para jugar decentemente.
-        3. **SOLO si ninguna APU de la lista es suficiente**, recomendá la GPU dedicada más económica y lógica de la lista.
+        **INSTRUCCIONES CLAVE Y OBLIGATORIAS:**
+        - NO uses títulos.
+        - Sé realista: un Ryzen 7 5700G con RAM Dual Channel corre juegos como League of Legends a más de 120 FPS en calidad Alta.
+        - El objetivo del cliente es 60 FPS estables en 1080p, no necesita jugar en Ultra.
 
-        **Formato de respuesta requerido:**
-        1.  **Veredicto Rápido:** Una o dos frases directas sobre si la PC se la banca para este juego.
-        2.  **Rendimiento Estimado (1080p):** Da una estimación de FPS realista en resolución 1080p con la **configuración actual**. Especifica una calidad gráfica (Baja, Media, Alta).
-        3.  **Análisis y Opciones de Mejora:** Si la configuración actual es suficiente, decilo. Si no lo es, seguí la lógica de recomendación. Luego, si hay GPUs dedicadas disponibles, explicá de forma concisa qué mejora de rendimiento (FPS aproximados) podría esperar el cliente al agregar cada una de las GPUs dedicadas de la lista.
+        **FORMATO OBLIGATORIO (SOLO 3 PUNTOS):**
+
+        1.  **Veredicto Rápido:** ¿Sirve o no sirve la PC actual para este juego? Sé directo y claro.
+
+        2.  **Rendimiento con la PC Actual:** Estimación realista de FPS y calidad gráfica (Baja/Media/Alta) en 1080p.
+
+        3.  **Análisis y Recomendación:**
+            - **SI LA PC ACTUAL RINDE BIEN (60+ FPS estables):** Decilo con seguridad y afirmá que no necesita ninguna mejora. Tu respuesta DEBE terminar acá. Ejemplo: "Para LoL, esta configuración es perfecta. Vas a jugar de 10 y no necesitás gastar un peso más. ¡A disfrutar!".
+            - **SI LA PC ACTUAL NO RINDE BIEN (<60 FPS):** Indicalo y recomendá UNA SOLA GPU dedicada de la lista (la más lógica y económica) para alcanzar los 60 FPS.
     `;
 
     // Genera el contenido usando el modelo de IA
