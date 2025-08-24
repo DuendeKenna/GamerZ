@@ -8,7 +8,7 @@
       "mother": "49131",
       "ram": "74792",
       "cantRam": 2,
-      "total": 171334,
+      "total": 362800,
       "totalram": 16,
       "visible": 1
     },
@@ -51,11 +51,11 @@
     {
       "id": 76800,
       "name": "I5 2400 16 Gb 480 Gb Ssd",
-      "price": 229000,
+      "price": 229900,
       "description": "",
       "image_url": "comps/armadas/76800.webp",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T18:48:05.833Z",
+      "lastUpd": "2025-08-23T18:43:01.625Z",
       "visible": 1
     }
   ],
@@ -67,7 +67,7 @@
       "slug": "lnz-y11",
       "image_url": "comps/torres/lnz-y11.webp",
       "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:26:45.805Z",
+      "lastUpd": "2025-08-23T18:42:43.957Z",
       "visible": 1
     },
     {
@@ -146,10 +146,11 @@
     {
       "id": 2597,
       "name": "RX 550 - 2GB GDDR5",
-      "price": 86301,
+      "price": 92000,
       "description": "",
       "image_url": "comps/gpus/2597.webp",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-amd-asrock-phantom-gaming-radeon-series-rx-550-phantom-g-r-rx550-2gb-gddr5/p/MLA15239150?offer_type=BEST_PRICE",
+      "lastUpd": "2025-08-23T18:41:18.532Z",
       "visible": 0
     },
     {
@@ -235,7 +236,7 @@
   "motherboardOptions": [
     {
       "id": 49131,
-      "name": "Asrock B450m-HDV R4.0",
+      "name": "Asrock B450m",
       "price": 93000,
       "description": "",
       "image_url": "comps/moms/b450m-asrock.png",
@@ -258,11 +259,11 @@
     {
       "id": 896,
       "name": "Ryzen 5 5600g",
-      "price": 21534,
+      "price": 213000,
       "description": "6 nucleos 4.4ghz Am4",
       "image_url": "comps/cpus/ryzen5_5600g.webp",
       "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:26:34.165Z",
+      "lastUpd": "2025-08-23T23:04:17.108Z",
       "visible": 1
     },
     {

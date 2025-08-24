@@ -9,6 +9,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    console.log("Recibida petición en /api/analyze");
     // Obtiene los datos enviados desde la página (frontend)
     const { gameName, components } = req.body;
 
