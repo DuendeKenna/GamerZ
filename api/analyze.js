@@ -1,4 +1,4 @@
-// Importa el SDK de Google Generative AI
+// Importa el SDK oficial de Google Generative AI
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Exporta la función handler que Vercel ejecutará
@@ -9,13 +9,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log("Recibida petición en /api/analyze");
     // Obtiene los datos enviados desde la página (frontend)
-    const { gameName, components } = req.body;
+    const { gameName, components, availableGpus, availableCpus } = req.body;
 
     // Valida que los datos necesarios estén presentes
-    if (!gameName || !components) {
-      return res.status(400).json({ error: 'Faltan datos del juego o componentes.' });
+    if (!gameName || !components || !availableGpus || !availableCpus) {
+      return res.status(400).json({ error: 'Faltan datos del juego, componentes o listas de hardware.' });
     }
 
     // Obtiene la API Key de las variables de entorno de Vercel (¡más seguro!)
@@ -26,23 +25,56 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Error de configuración del servidor.' });
     }
     
-    // Inicializa la IA generativa de Google
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    // Formatea las listas de hardware disponible para el prompt
+    const gpuOptionsText = availableGpus
+        .filter(gpu => gpu.price > 0) // Filtra solo las GPUs dedicadas
+        .map(gpu => `- ${gpu.name}`)
+        .join('\n');
+    
+    const cpuOptionsText = availableCpus
+        .map(cpu => `- ${cpu.name} (ID: ${cpu.id})`)
+        .join('\n');
 
-    // Construye el prompt para la IA con los datos recibidos
+    // Inicializa la IA generativa de Google con la clase correcta
+    const genAI = new GoogleGenerativeAI(apiKey);
+    // Usa el modelo "gemini-1.5-flash", más rápido y con límites más generosos
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    // Construye el prompt para la IA con los datos y las nuevas instrucciones
     const prompt = `
-        Actuá como un experto en hardware de PC y gaming que habla de forma casual y directa, como en la jerga gamer argentina.
-        Analizá el rendimiento esperado para el juego "${gameName}" con la siguiente configuración de PC:
+        Actuá como un experto en hardware de PC y gaming realista y bien informado, que habla de forma casual, directa y sin lenguaje ofensivo, como en la jerga gamer argentina.
+        
+        **Contexto:** Estás asistiendo a un cliente que está configurando una PC de gama media para comprarla. Tu objetivo es dar una estimación precisa y útil para ayudarlo a decidir. Diferenciá claramente entre juegos e-sports/livianos y juegos AAA exigentes.
+
+        **Configuración de PC seleccionada:**
         - CPU: ${components.cpu.name}
-        - RAM: ${components.totalRam} GB
-        - Tarjeta Gráfica (GPU): ${components.selectedGpu.name}
+        - RAM: ${components.totalRam} GB (siempre en Dual Channel)
+        - Tarjeta Gráfica (GPU) actual: ${components.selectedGpu.name}
         - Almacenamiento: ${components.selectedSsd.name}
 
-        Tu respuesta debe ser concisa y en formato Markdown, estructurada de la siguiente manera:
-        1.  **Veredicto Rápido:** Una o dos frases directas sobre si la PC se la banca para este juego y qué se puede esperar en general.
-        2.  **Rendimiento Estimado (1080p):** Da una estimación de FPS (fotogramas por segundo) en resolución 1080p. Sé realista. Especifica una calidad gráfica aproximada (Baja, Media, Alta, Ultra). Por ejemplo: "En 1080p con gráficos en Medio, podés esperar unos 60-75 FPS bastante estables."
-        3.  **Análisis y Recomendaciones:** Explica brevemente por qué das esa estimación. Si hay un cuello de botella (por ejemplo, la gráfica integrada para un juego muy exigente), mencionalo. Si la configuración es ideal, decilo también. Ofrecé una recomendación clave si es necesaria para mejorar la experiencia en ESE juego (ej: "Para este título, la posta sería saltar a la gráfica dedicada para no sufrir tirones").
+        **Juego a analizar:** "${gameName}"
+
+        **Hardware disponible para recomendar (si es necesario):**
+        CPUs con gráficos integrados (APUs):
+        ${cpuOptionsText}
+        GPUs dedicadas:
+        ${gpuOptionsText}
+
+        **Instrucciones para tu respuesta:**
+        - No incluyas un título.
+        - Tu respuesta debe tener únicamente los siguientes 3 puntos, en formato Markdown.
+        - El objetivo es una experiencia jugable (al menos 50-60 FPS estables). No apuntamos a Ultra, sino a un buen balance de calidad/rendimiento.
+        - La RAM siempre está en Dual Channel, tenelo muy en cuenta para el rendimiento de los gráficos integrados.
+        
+        **Lógica de recomendación obligatoria:**
+        1. Evalúa el rendimiento con la **configuración actual**.
+        2. Si el rendimiento es bajo y la GPU actual es integrada, **primero** revisa si otro CPU de la lista de APUs disponibles ofrece una mejora suficiente para jugar decentemente.
+        3. **SOLO si ninguna APU de la lista es suficiente**, recomendá la GPU dedicada más económica y lógica de la lista.
+
+        **Formato de respuesta requerido:**
+        1.  **Veredicto Rápido:** Una o dos frases directas sobre si la PC se la banca para este juego.
+        2.  **Rendimiento Estimado (1080p):** Da una estimación de FPS realista en resolución 1080p con la **configuración actual**. Especifica una calidad gráfica (Baja, Media, Alta).
+        3.  **Análisis y Opciones de Mejora:** Si la configuración actual es suficiente, decilo. Si no lo es, seguí la lógica de recomendación. Luego, si hay GPUs dedicadas disponibles, explicá de forma concisa qué mejora de rendimiento (FPS aproximados) podría esperar el cliente al agregar cada una de las GPUs dedicadas de la lista.
     `;
 
     // Genera el contenido usando el modelo de IA

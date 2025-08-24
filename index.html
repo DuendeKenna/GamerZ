@@ -1824,12 +1824,12 @@
                 </div>
             </section>
 
-            <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+            <!-- <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
                 <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ELEGÍ EL RESTO <span
+                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> COMPONENTES <span
                         style="color:rgba(66, 210, 50, 0.7);">▼</span>
                 </span>
-            </h2>
+            </h2> -->
 
 
             <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
@@ -1892,7 +1892,7 @@
                 <div class="text-center">
                     <h2 class="font-saira-black text-4xl md:text-5xl brand-gradient-text mb-2">Análisis de Rendimiento
                         por IA</h2>
-                    <p class="font-vt323 text-2xl text-cyan-300 mb-6">¿Cómo correrá tu juego favorito en esta Nave?</p>
+                    <p class="font-vt323 text-4xl green-333 mb0 mb-6">¿Cómo correrá tu juego favorito en esta Nave?</p>
                 </div>
                 <div class="max-w-2xl mx-auto">
                     <div class="flex flex-col sm:flex-row items-center gap-4">
@@ -2005,7 +2005,7 @@
 
 
         <form id="orderForm">
-            <section id="games-section" class="mb-12 section-card-style">
+            <section id="games-section" class="mb-12 section-card-style hidden">
                 <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Viajan👌</h2>
                 <p class="text-center green-333 -mt-4 mb-4 font-gamer">👇Seleccioná hasta 3</p>
                 <p class="text-center text-violet-600 -mt-4 mb-8 font-gamer">Van Instalados!💾</p>
@@ -2462,6 +2462,13 @@
                 });
                 // AI Section Listener
                 document.getElementById('ai-button').addEventListener('click', checkGameCompatibility);
+                // Permitir Enter en el input para analizar
+                document.getElementById('ai-input').addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        document.getElementById('ai-button').click();
+                    }
+                });
             }
 
             function updateAllDisplays() {
@@ -2915,28 +2922,28 @@
             }
 
             function updateSelectedGamesList() {
-                const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
-                const listEl = document.getElementById('selected-games-list');
-                const sectionEl = document.getElementById('selected-games-section');
-                listEl.innerHTML = '';
-                if (selectedCheckboxes.length > 0) {
-                    sectionEl.classList.remove('hidden');
-                    selectedCheckboxes.forEach(cb => {
-                        listEl.innerHTML += `<div class="w-1/4 md:w-1/5 p-1"><a href="#card-game-${toSlug(cb.value)}"><img src="${cb.dataset.imgSrc}" alt="Carátula de ${cb.value}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${cb.value.replace(/\s/g, '+')}';"></a></div>`;
-                    });
-                } else {
-                    sectionEl.classList.add('hidden');
-                }
+                // const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
+                // const listEl = document.getElementById('selected-games-list');
+                // const sectionEl = document.getElementById('selected-games-section');
+                // listEl.innerHTML = '';
+                // if (selectedCheckboxes.length > 0) {
+                //     sectionEl.classList.remove('hidden');
+                //     selectedCheckboxes.forEach(cb => {
+                //         listEl.innerHTML += `<div class="w-1/4 md:w-1/5 p-1"><a href="#card-game-${toSlug(cb.value)}"><img src="${cb.dataset.imgSrc}" alt="Carátula de ${cb.value}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${cb.value.replace(/\s/g, '+')}';"></a></div>`;
+                //     });
+                // } else {
+                //     sectionEl.classList.add('hidden');
+                // }
             }
 
             function resetGameSelection() {
-                document.querySelectorAll('input[name="game"]:checked').forEach(cb => {
-                    cb.checked = false;
-                    cb.nextElementSibling.querySelector('.game-title-sticker').classList.add('hidden');
-                });
-                updateSelectedGamesList();
-                document.getElementById('error-toast').classList.remove('show');
-                consecutiveErrorClicks = 0;
+                // document.querySelectorAll('input[name="game"]:checked').forEach(cb => {
+                //     cb.checked = false;
+                //     cb.nextElementSibling.querySelector('.game-title-sticker').classList.add('hidden');
+                // });
+                // updateSelectedGamesList();
+                // document.getElementById('error-toast').classList.remove('show');
+                // consecutiveErrorClicks = 0;
             }
 
             let isGridExpanded = false;
@@ -3037,7 +3044,9 @@
                                 totalRam,
                                 selectedGpu,
                                 selectedSsd
-                            }
+                            },
+                            availableGpus: gpuOptions,
+                            availableCpus: cpuOptions 
                         })
                     });
 
@@ -3049,14 +3058,95 @@
 
                     const data = await response.json();
                     let text = data.result || '';
-
+                    // Limpieza de saltos de línea extra
+                    text = text.trim(); // quita saltos al inicio y final
+                    // Elimina cualquier salto de línea antes del primer punto numerado
+                    text = text.replace(/^\s*\n*(\d+\.)/, '$1');
+                    // Reemplaza 2 o más saltos de línea seguidos por solo uno
+                    text = text.replace(/\n{2,}/g, '\n');
+                    // Opcional: elimina saltos de línea antes/después de los puntos numerados
+                    text = text.replace(/\n+(\d+\.)/g, '\n$1');
                     // --- 4. Display the result ---
+                    // Highlight CPU and GPU names with green rounded span and link
                     let htmlResult = text
                         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
                         .replace(/\*(.*?)\*/g, '<em>$1</em>')     // Italic
                         .replace(/(\d+\.)/g, '<br><strong>$1</strong>') // Numbered list items
                         .replace(/\n/g, '<br>');
 
+                    // Get current CPU and GPU names
+                    const cpuName = cpuOptions[selectedComponentIndices.cpu]?.name || cpuOptions.find(c => String(c.id) === String(baseOptions[currentBaseLevel].cpu))?.name;
+                    const gpuName = gpuOptions[selectedComponentIndices.gpu]?.name;
+
+                    // Replace CPU name with highlighted span and selection logic
+                    if (cpuName) {
+                        const cpuRegex = new RegExp(cpuName.replace(/[.*+?^${}()|[\]\\]/g, '\$&'), 'gi');
+                        htmlResult = htmlResult.replace(cpuRegex, `<span class='green-333 font-saira px-2 py-1 rounded-lg cursor-pointer inline-block' style='background:#18122b;' data-component-type='cpu' data-component-name='${cpuName}'>${cpuName}</span>`);
+                    }
+                    // Highlight all GPU names from the collection that appear in the AI response
+                    if (gpuOptions && gpuOptions.length > 0) {
+                        let alreadyHighlighted = new Set();
+                        // Helper para normalizar nombres
+                        function normalize(str) {
+                            return str.toLowerCase().replace(/\s|\-|_/g, '');
+                        }
+                        // Construir lista de keywords únicas
+                        let allKeywords = [];
+                        gpuOptions.forEach(gpu => {
+                            allKeywords.push(gpu.name);
+                            if (gpu.name.includes('-')) {
+                                allKeywords.push(gpu.name.split('-')[0].trim());
+                            }
+                        });
+                        // Eliminar duplicados
+                        allKeywords = Array.from(new Set(allKeywords.filter(k => k.length > 2)));
+                        // Reemplazo global con regex que permite espacios, guiones y números
+                        allKeywords.forEach(keyword => {
+                            // Escapar correctamente y permitir coincidencias completas
+                            const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                            // Coincidencia: palabra completa, no parte de otra palabra
+                            const regex = new RegExp(`(?<![\w\d])${escaped}(?![\w\d])`, 'gi');
+                            htmlResult = htmlResult.replace(regex, match => {
+                                const norm = normalize(match);
+                                if (!alreadyHighlighted.has(norm)) {
+                                    alreadyHighlighted.add(norm);
+                                    // Buscar el objeto GPU original para el nombre
+                                    const gpuObj = gpuOptions.find(g => normalize(g.name) === norm || normalize(g.name.split('-')[0]) === norm);
+                                    const gpuNameForSpan = gpuObj ? gpuObj.name : match;
+                                    return `<span class='green-333 font-saira px-2 py-1 rounded-lg cursor-pointer inline-block' style='background:#18122b;' data-component-type='gpu' data-component-name='${gpuNameForSpan}'>${match}</span>`;
+                                }
+                                return match;
+                            });
+                        });
+                    }
+
+                    // Add event listeners to highlighted spans for selection and scroll
+                    setTimeout(() => {
+                        document.querySelectorAll('#ai-result span[data-component-type]').forEach(span => {
+                            span.onclick = function () {
+                                const type = span.getAttribute('data-component-type');
+                                const name = span.getAttribute('data-component-name');
+                                if (type === 'gpu') {
+                                    const select = document.getElementById('gpu-select');
+                                    if (select) {
+                                        for (let i = 0; i < select.options.length; i++) {
+                                            if (select.options[i].textContent.trim().toLowerCase().includes(name.trim().toLowerCase())) {
+                                                select.selectedIndex = i;
+                                                select.dispatchEvent(new Event('change'));
+                                                break;
+                                            }
+                                        }
+                                        document.getElementById('component-list').scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                } else if (type === 'cpu') {
+                                    document.getElementById('section-bases').scrollIntoView({ behavior: 'smooth' });
+                                    // Opcional: si tienes un select de CPU, puedes agregar lógica similar aquí
+                                }
+                            };
+                        });
+                    }, 100);
+                    // Elimina el primer <br> si existe
+                    htmlResult = htmlResult.replace(/^<br\s*\/?>/, '');
                     resultContainer.innerHTML = htmlResult;
 
                 } catch (error) {
@@ -3157,7 +3247,7 @@
                 summaryEl.innerHTML = `<span class='font-saira green-333' style='font-size:1.6rem;'>${base.name}</span>`;
                 const basePriceEl = document.getElementById('base-price-text');
                 if (basePriceEl) {
-                    basePriceEl.innerHTML = `<a href='#section-bases' class='component-link text-blue-400 font-bold' style='font-size:1.15rem;display:inline-flex;align-items:center;text-decoration:none;' onclick="event.preventDefault();document.getElementById('main-components-container').scrollIntoView({behavior:'smooth'});">$${base.total.toLocaleString('es-AR')} <i class='fas text-sm fa-external-link-alt ml-1'></i></a>`;
+                    basePriceEl.innerHTML = `<a href='#section-bases' class='component-link text-blue-400 font-bold' style='font-size:1.15rem;display:inline-flex;align-items:center;text-decoration:none;' onclick="event.preventDefault();document.getElementById('section-bases').scrollIntoView({behavior:'smooth'});">$${base.total.toLocaleString('es-AR')} <i class='fas text-sm fa-external-link-alt ml-1'></i></a>`;
                 }
             }
         }
