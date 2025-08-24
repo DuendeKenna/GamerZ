@@ -1757,9 +1757,15 @@
                         </p>
                     </div>
 
+                    <div class="feature-card">
+                        <img src="soporteTarjeta.webp" alt="Soporte" class="w-24 h-24 mb-3"
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Soporte Técnico</h4>
+                        <p class="text-s text-gray-300 mt-1">Personalizado en todo el <b>Partido de La Costa</b>
+                        </p>
+                    </div>
 
-
-                    <div class="feature-card animated-bg-games">
+                    <!-- <div class="feature-card animated-bg-games">
                         <div class="corner-ribbon-wrapper">
                             <div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span
                                     class="despegue-text text-violet-700">DESPEGUE</span></div>
@@ -1769,19 +1775,17 @@
                                 class="text-orange-400 text-xl">3 Juegos Incluidos</p>
                         </h4>
                         <p class="text-s text-gray-300 mt-1">✔ Elegilos</p>
-                    </div>
+                    </div> -->
                 </div>
 
             </header>
 
-            <div class="hook-section text-center max-w-4xl mx-auto mt-8 space-y-6 relative z-40">
+            <div class="hook-section text-center max-w-4xl mx-auto mt-2 space-y-6 relative z-40">
                 <div>
 
                     <div class="mt-2 text-base text-gray-200 flex items-center justify-center gap-4">
 
-                        <p><i class="fas fa-house-circle-check"></i> Entrega a Domicilio</p>
-                        <p> </i><i class="fas fa-screwdriver-wrench"></i> Asistencia Técnica</p>
-                        <p>en Toda <i class="text-blue-300">🌊La Costa</i></p>
+                        <p><i class="fas fa-house-circle-check"></i> Entrega e Instalación a Domicilio en <i class="text-blue-300">🌊La Costa</i></p>
                     </div>
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
@@ -2045,9 +2049,7 @@
                     </div>
 
                     <div class="flex flex-col items-center">
-                        <h2 class="text-4xl font-bold mb-2">Selección y Precio Total</h2>
-                        <p id="base-summary-text" class="font-saira text-2xl  green-333 coneste"></p>
-                        <p id="base-price-text" class="font-saira .component-link text-lg"></p>
+                        <h2 class="text-4xl font-bold mb-2">Resumen Pedido</h2>
                         <div id="selected-components-preview" class="w-full p-4 my-6">
                             <!-- Summary content will be inserted here by JS -->
                         </div>
@@ -2675,7 +2677,11 @@
                 const cardRowsContainer = document.createElement('div');
                 cardRowsContainer.className = 'flex flex-col gap-2 w-full';
 
-                const components = [
+                // Add base as the first item in the summary
+                const base = baseOptions[currentBaseLevel];
+                const baseSummary = { type: 'Base', selected: base };
+
+                const components = [baseSummary,
                     { type: 'Gráfica', selected: gpuOptions[selectedComponentIndices.gpu] },
                     { type: 'Almacenamiento', selected: ssdOptions[selectedComponentIndices.ssd] },
                     { type: 'Fuente', selected: psuOptions[selectedComponentIndices.psu] }
@@ -2718,7 +2724,8 @@
                     if (!isService && selected?.name) {
                         // Map type to section id
                         let sectionId = null;
-                        if (type === 'Gráfica') sectionId = 'gpu-select';
+                        if (type === 'Base') sectionId = 'section-bases';
+                        else if (type === 'Gráfica') sectionId = 'gpu-select';
                         else if (type === 'Almacenamiento') sectionId = 'ssd-select';
                         else if (type === 'Fuente') sectionId = 'psu-select';
                         // For peripherals, scroll to #section-peripherals
@@ -2744,7 +2751,10 @@
                     if (isService) {
                         priceEl.textContent = `$${GAIN_PRICE.toLocaleString('es-AR')}`;
                     } else {
-                        if (selected?.price > 0) {
+                        // For base, always show price and make it clickable to scroll to #section-bases
+                        if (type === 'Base' && selected?.total > 0) {
+                            priceEl.innerHTML = `<a href="#section-bases" class="component-link" style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;" onclick="event.preventDefault();document.getElementById('section-bases').scrollIntoView({behavior:'smooth'});">$${selected.total.toLocaleString('es-AR')}</a>`;
+                        } else if (selected?.price > 0) {
                             if (selected?.link) {
                                 priceEl.innerHTML = `<a href="${selected.link}" target="_blank" class="component-link" style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;">$${selected.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>`;
                             } else {

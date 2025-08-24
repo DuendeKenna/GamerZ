@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
         **INSTRUCCIONES CLAVE Y OBLIGATORIAS:**
         - NO uses títulos.
-        - Sé realista: un Ryzen 7 5700G con RAM Dual Channel corre juegos como League of Legends a más de 120 FPS en calidad Alta y eso no necesita ninguna mejor.
+        - Sé realista: un Ryzen 5 5600G con RAM Dual Channel corre juegos como League of Legends a más de 120 FPS en calidad Alta y eso no necesita ninguna mejor. Si ves que un mejor procesador de la lista con una mejor gráfica integrada puede mejorar bastante, propone eso antes de una GPU dedicada.
         - El objetivo del cliente es 60 FPS estables en 1080p, no necesita jugar en Ultra.
 
         **FORMATO OBLIGATORIO (SOLO 3 PUNTOS):**
@@ -64,6 +64,7 @@ export default async function handler(req, res) {
             - **SI LA PC ACTUAL RINDE BIEN (60+ FPS estables):** Decilo con seguridad y afirmá que no necesita ninguna mejora. Tu respuesta DEBE terminar acá. Ejemplo: "Para LoL, esta configuración es perfecta. Vas a jugar de 10 y no necesitás gastar un peso más. ¡A disfrutar!".
             - **SI LA PC ACTUAL NO RINDE BIEN (<60 FPS):** Indicalo y recomendá UNA SOLA GPU dedicada de la lista (la más lógica y económica) para alcanzar los 60 FPS.
     `;
+
 
     // Genera el contenido usando el modelo de IA
     const result = await model.generateContent(prompt);
