@@ -2322,17 +2322,23 @@
                 ];
                 const softwareListContainer = document.getElementById('software-list');
                 softwareListContainer.innerHTML = '';
-                softwareCategories.forEach(category => {
+                softwareCategories.forEach((category, idx) => {
                     const categoryWrapper = document.createElement('div');
-                    categoryWrapper.className = 'mb-8';
-                    categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2 flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</h3>`;
+                    categoryWrapper.className = 'mb-4 border border-violet-700 rounded-lg overflow-hidden';
+                    // Header clickable
+                    const header = document.createElement('button');
+                    header.type = 'button';
+                    header.className = 'w-full flex items-center justify-between px-4 py-3 bg-violet-950 hover:bg-violet-900 transition font-bold text-lg text-violet-400 focus:outline-none';
+                    header.innerHTML = `<span class="flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</span><span class="accordion-arrow text-violet-300 transition-transform"><i class="fas fa-chevron-down"></i></span>`;
+                    categoryWrapper.appendChild(header);
+                    // Descripción
                     const descDiv = document.createElement('div');
-                    descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
-                    descDiv.style.transition = 'background 0.2s, color 0.2s';
+                    descDiv.className = 'software-cat-desc px-4 py-2 text-base text-violet-100 bg-[#1a1332]';
                     descDiv.textContent = category.description;
                     categoryWrapper.appendChild(descDiv);
+                    // Items (ocultos por defecto)
                     const itemsWrapper = document.createElement('div');
-                    itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
+                    itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4 px-4 pb-4 hidden';
                     const programs = softwareData.filter(item => item.category === category.name);
                     programs.forEach(item => {
                         const essentialClass = item.disabled ? 'essential-software' : '';
@@ -2361,6 +2367,22 @@
                         itemsWrapper.appendChild(softwareItemHTML);
                     });
                     categoryWrapper.appendChild(itemsWrapper);
+                    // Acordeón: solo uno abierto
+                    header.addEventListener('click', () => {
+                        document.querySelectorAll('#software-list .grid').forEach(el => {
+                            if (el !== itemsWrapper) el.classList.add('hidden');
+                        });
+                        document.querySelectorAll('#software-list .accordion-arrow').forEach(arrow => {
+                            arrow.style.transform = '';
+                        });
+                        if (itemsWrapper.classList.contains('hidden')) {
+                            itemsWrapper.classList.remove('hidden');
+                            header.querySelector('.accordion-arrow').style.transform = 'rotate(180deg)';
+                        } else {
+                            itemsWrapper.classList.add('hidden');
+                            header.querySelector('.accordion-arrow').style.transform = '';
+                        }
+                    });
                     softwareListContainer.appendChild(categoryWrapper);
                 });
 
