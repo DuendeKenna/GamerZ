@@ -174,11 +174,11 @@
     {
       "id": 38532,
       "name": "RX 7600 - 8GB GDDR6",
-      "price": 412650,
+      "price": 370000,
       "description": "Rendimiento moderno para jugar en 1080p y 1440p (según el juego). Arquitectura RDNA 3, eficiencia energética y potencia. Hoy, a un EXCELENTE precio.",
       "image_url": "comps/gpus/38532.webp",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-amd-radeon-rx-7600-powercolor-8gb-gddr6/p/MLA29675752?offer_type=BEST_PRICE#polycard_client=search_best-seller&tracking_id=441f348b-7b07-4062-afc1-4ca4eadfdd88&wid=MLA2148656004&sid=search",
-      "lastUpd": "2025-08-23T04:20:36.665Z",
+      "lastUpd": "2025-08-24T17:17:46.697Z",
       "visible": 1
     },
     {
@@ -320,7 +320,7 @@
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ddr3-4gb-1333mhz-pc310600-hynix-en-blister-nuevas/up/MLAU313860758?offer_type=BEST_PRICE",
       "lastUpd": "2025-08-23T04:34:29.808Z",
-      "visible": 1
+      "visible": 0
     },
     {
       "id": 8502,
@@ -348,11 +348,11 @@
     {
       "id": 61498,
       "name": "Ryzen 5 4500 + A520 + 8 Gb",
-      "price": 23700,
+      "price": 237000,
       "description": "Descripción del nuevo Combo.",
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:17:20.627Z",
+      "lastUpd": "2025-08-24T17:14:38.925Z",
       "visible": 1
     },
     {
@@ -436,31 +436,31 @@
     {
       "id": 97647,
       "name": "Inalámbrico Noganet",
-      "price": 34000,
+      "price": 27000,
       "description": "",
       "image_url": "comps/teclados/inalambrico-noganet.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:35:32.649Z",
+      "lastUpd": "2025-08-24T17:19:03.572Z",
       "visible": 1
     },
     {
       "id": 78296,
       "name": "Mecánico Noganet Cabledo",
-      "price": 34900,
+      "price": 35200,
       "description": "",
       "image_url": "comps/teclados/mecanico-noganet-cabledo.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:35:41.081Z",
+      "lastUpd": "2025-08-24T17:19:12.051Z",
       "visible": 1
     },
     {
       "id": 15740,
       "name": "Shiva K512 Cableado",
-      "price": 47700,
+      "price": 47800,
       "description": "",
       "image_url": "comps/teclados/shiva-k512-cableado.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:35:52.827Z",
+      "lastUpd": "2025-08-24T17:19:19.388Z",
       "visible": 1
     }
   ],
@@ -468,11 +468,11 @@
     {
       "id": 67546,
       "name": "Inalámbricos Solarmax",
-      "price": 16300,
+      "price": 16200,
       "description": "",
       "image_url": "comps/combos-mouse-teclado/mouse-y-teclado-inalámbricos-solarmax.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-y-mouse-combo-inalambrico-solarmax-kb302wmw200-color-negro/p/MLA21805667?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:22:11.131Z",
+      "lastUpd": "2025-08-24T17:19:34.621Z",
       "visible": 1
     }
   ],
@@ -499,11 +499,11 @@
     {
       "id": 92535,
       "name": "Noga Stormer NG-8620",
-      "price": 11980,
+      "price": 12000,
       "description": "",
       "image_url": "comps/auris/92535.webp",
       "link": "https://www.mercadolibre.com.ar/auriculares-gamer-noga-stormer-ng-8620-negro-y-rojo/p/MLA6354312?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=78f0b566-6759-43a3-8568-c4800be17775&wid=MLA1941191004&sid=search",
-      "lastUpd": "2025-08-23T04:22:40.173Z",
+      "lastUpd": "2025-08-24T17:19:47.068Z",
       "visible": 1
     },
     {
@@ -521,21 +521,11 @@
     {
       "id": 9675,
       "name": "Genius Madera",
-      "price": 22000,
+      "price": 18500,
       "description": "",
       "image_url": "comps/parlantes/genius-madera.webp",
       "link": "https://www.mercadolibre.com.ar/parlantes-genius-sp-hf180-madera/p/MLA15840120?offer_type=OFFICIAL_STORE",
-      "lastUpd": "2025-08-23T04:22:55.100Z",
-      "visible": 1
-    },
-    {
-      "id": 33228,
-      "name": "Panter Gamer 2.1",
-      "price": 88000,
-      "description": "",
-      "image_url": "comps/parlantes/panter-gamer-2.1.webp",
-      "link": "https://www.mercadolibre.com.ar/parlante-gamer-21-ultra-iluminacion-rgb-panter-gs302-color-negro/p/MLA20019328?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:23:03.061Z",
+      "lastUpd": "2025-08-24T17:19:59.597Z",
       "visible": 1
     },
     {

@@ -1594,6 +1594,18 @@
         const { categoryKey, index, isFromLoop } = input.dataset;
         const product = dataMap[categoryKey][index];
 
+        // If input is empty, do not modify anything, but if in loop, continue to next item
+        if (!input.value.trim()) {
+            const popup = document.getElementById('price-check-popup');
+            popup.classList.add('hidden');
+            if (isFromLoop === 'true') {
+                currentQueueIndex++;
+                sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                setTimeout(processNextInQueue, 1000);
+            }
+            return;
+        }
+
         const rawValue = input.value.replace(/[^\d]/g, '');
         const newPrice = parseInt(rawValue, 10);
 
@@ -1603,13 +1615,12 @@
         }
 
         const oldPrice = product.price || 0;
-        
         updateProduct(categoryKey, index, 'price', newPrice); 
         
         const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
         // BUG FIX: Manually update the price input in the table to reflect the change
         const priceInputInTable = tableRow.querySelector('.price-cell input');
-        if(priceInputInTable) {
+        if (priceInputInTable) {
             priceInputInTable.value = newPrice.toLocaleString('es-AR');
         }
         
@@ -1632,7 +1643,7 @@
         if (isFromLoop === 'true') {
             currentQueueIndex++;
             sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
-            setTimeout(processNextInQueue, 1000); 
+            setTimeout(processNextInQueue, 1000);
         }
     }
 
