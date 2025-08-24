@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
         **INSTRUCCIONES CLAVE Y OBLIGATORIAS:**
         - NO uses títulos.
-        - Sé realista: un Ryzen 7 5700G con RAM Dual Channel corre juegos como League of Legends a más de 120 FPS en calidad Alta.
+        - Sé realista: un Ryzen 7 5700G con RAM Dual Channel corre juegos como League of Legends a más de 120 FPS en calidad Alta y eso no necesita ninguna mejor.
         - El objetivo del cliente es 60 FPS estables en 1080p, no necesita jugar en Ultra.
 
         **FORMATO OBLIGATORIO (SOLO 3 PUNTOS):**
