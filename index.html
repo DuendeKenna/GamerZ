@@ -21,9 +21,11 @@
             --color-link: #60a5fa;
             /* azul brillante */
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
@@ -156,8 +158,7 @@
                     rgba(255, 255, 255, 0.4) 0%,
                     rgba(255, 255, 255, 0.15) 50%,
                     rgba(0, 0, 0, 0.15) 50%,
-                    rgba(0, 0, 0, 0.4) 100%
-                );
+                    rgba(0, 0, 0, 0.4) 100%);
             border-radius: 0.75rem;
             pointer-events: none;
             mix-blend-mode: overlay;
@@ -1154,7 +1155,7 @@
             width: 100%;
             margin-bottom: 2rem;
         }
-        
+
         #component-list li.gpu-integrated-mobile {
             margin-bottom: 0.5rem;
         }
@@ -1346,10 +1347,11 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .summary-card-category {
             position: absolute;
-            top: -1.5rem; /* Positioned outside */
+            top: -1.5rem;
+            /* Positioned outside */
             left: 0;
             width: 100%;
             background-color: #4f46e5;
@@ -1375,7 +1377,7 @@
         }
 
         #selected-components-preview .summary-card-category {
-             top: 0;
+            top: 0;
         }
 
         .summary-card-image-wrapper {
@@ -1388,14 +1390,14 @@
             cursor: pointer;
             overflow: hidden;
         }
-        
+
         .summary-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
         }
-        
+
         .peripheral-info {
             text-align: center;
             width: 100%;
@@ -1411,7 +1413,7 @@
             line-height: 1.2;
             color: white;
         }
-        
+
         .summary-card.unselected .summary-card-image-wrapper img {
             opacity: 0.4;
             filter: grayscale(1);
@@ -1419,18 +1421,20 @@
 
         .summary-card.unselected .summary-card-image-wrapper::after {
             font-family: "Font Awesome 6 Free";
-            content: '\f067'; /* fa-plus */
+            content: '\f067';
+            /* fa-plus */
             font-weight: 900;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 4rem;
-            color: #42d232; /* green-333 */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            color: #42d232;
+            /* green-333 */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
-        
+
         .price-card-subtitle {
             font-family: 'Saira', sans-serif;
             color: #9ca3af;
@@ -1439,7 +1443,7 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-top: -0.25rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .base-level-container {
@@ -1465,12 +1469,13 @@
             padding: 0.25rem;
             position: relative;
         }
-        
+
         #base-level-slider {
             position: absolute;
             top: 0.25rem;
             bottom: 0.25rem;
-            background-color: #42d232; /* green-333 */
+            background-color: #42d232;
+            /* green-333 */
             border-radius: 0.375rem;
             box-shadow: 0 0 10px rgba(66, 210, 50, 0.5);
             transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1482,7 +1487,8 @@
             font-family: 'Saira', sans-serif;
             font-weight: 700;
             font-size: 1.125rem;
-            color: #9ca3af; /* gray-400 */
+            color: #9ca3af;
+            /* gray-400 */
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 0.375rem;
@@ -1492,7 +1498,8 @@
         }
 
         .base-level-tab.active {
-            color: #111827; /* gray-900 */
+            color: #111827;
+            /* gray-900 */
             text-shadow: none;
         }
 
@@ -1522,15 +1529,18 @@
             margin-top: 1rem;
             transition: background-color 0.3s ease;
         }
+
         .accordion-header:hover {
             background-color: rgba(75, 85, 99, 0.7);
         }
+
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.5s ease-out;
             padding: 0 1rem;
         }
+
         .accordion-content.open {
             max-height: 1000px;
             padding: 1rem;
@@ -1539,8 +1549,10 @@
         /* --- NEW AI Section Styles --- */
         #ai-section {
             /* Using styles from Manual de Marca */
-            background-color: rgba(31, 41, 55, 0.9); /* .section-card-style bg */
-            border: 1px solid rgba(75, 85, 99, 0.5); /* .section-card-style border */
+            background-color: rgba(31, 41, 55, 0.9);
+            /* .section-card-style bg */
+            border: 1px solid rgba(75, 85, 99, 0.5);
+            /* .section-card-style border */
             border-radius: 0.75rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(4px);
@@ -1548,6 +1560,7 @@
             padding: 2.5rem 1.5rem;
             margin-top: 3rem;
         }
+
         #ai-input {
             background-color: #111827;
             border: 2px solid #374151;
@@ -1555,32 +1568,40 @@
             font-family: 'Inter', sans-serif;
             transition: border-color 0.3s, box-shadow 0.3s;
         }
+
         #ai-input:focus {
             outline: none;
-            border-color: #6366f1; /* Gradiente Principal */
+            border-color: #6366f1;
+            /* Gradiente Principal */
             box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
         }
+
         #ai-button {
-            background: linear-gradient(to right, #6366f1, #a855f7); /* Gradiente Principal */
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            /* Gradiente Principal */
             font-family: 'Saira', sans-serif;
             font-weight: 700;
             transition: transform 0.2s, box-shadow 0.2s;
         }
+
         #ai-button:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
         }
+
         #ai-button:disabled {
             background: #4b5563;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
+
         #ai-result-container {
             background-color: rgba(17, 24, 39, 0.7);
             border: 1px solid #374151;
             min-height: 150px;
         }
+
         /* Loading spinner animation */
         .loader {
             border: 4px solid #374151;
@@ -1590,17 +1611,23 @@
             height: 40px;
             animation: spin 1s linear infinite;
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
-        
+
         .component-link {
-            color: var(--color-link)!important;
+            color: var(--color-link) !important;
             text-decoration: none;
             font-size: 1rem !important;
-            font-family: 'Inter'!important;
+            font-family: 'Inter' !important;
             display: inline-block;
             margin-top: 4px;
         }
@@ -1759,9 +1786,10 @@
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
                     <h1 class="text-2xl">con las Mejores Opciones en Mercado Libre con sus links <span class="links"
-                            style="color: var(--color-link);"><i
-                                class="fas fa-external-link-alt text-sm "></i> </span> para ver sus
-                        detalles</h1><h1>Si sabés del tema, usalos para comprar y armar por tu cuenta!</h1>
+                            style="color: var(--color-link);"><i class="fas fa-external-link-alt text-sm "></i> </span>
+                        para ver sus
+                        detalles</h1>
+                    <h1>Si sabés del tema, usalos para comprar y armar por tu cuenta!</h1>
                     <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
@@ -1783,7 +1811,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
                     <div class="md:col-span-5">
-                         <div id="base-image-container">
+                        <div id="base-image-container">
                             <img id="base-image" src="" alt="Componentes Base">
                         </div>
                     </div>
@@ -1795,7 +1823,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
                 <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
                     <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ELEGÍ EL RESTO <span
@@ -1826,7 +1854,8 @@
                     </div>
                     <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
                         <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
-                            <li id="gpu-li" class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                            <li id="gpu-li"
+                                class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
                                     <strong class="text-lg font-semibold">Gráfica:</strong>
                                     <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
@@ -1861,19 +1890,23 @@
             <!-- ================== NEW AI SECTION START ================== -->
             <section id="ai-section" class="max-w-5xl mx-auto">
                 <div class="text-center">
-                    <h2 class="font-saira-black text-4xl md:text-5xl brand-gradient-text mb-2">Análisis de Rendimiento por IA</h2>
+                    <h2 class="font-saira-black text-4xl md:text-5xl brand-gradient-text mb-2">Análisis de Rendimiento
+                        por IA</h2>
                     <p class="font-vt323 text-2xl text-cyan-300 mb-6">¿Cómo correrá tu juego favorito en esta Nave?</p>
                 </div>
                 <div class="max-w-2xl mx-auto">
                     <div class="flex flex-col sm:flex-row items-center gap-4">
-                        <input type="text" id="ai-input" class="w-full px-4 py-3 rounded-lg text-lg" placeholder="Escribí el nombre de un juego, ej: Fortnite">
-                        <button id="ai-button" class="w-full sm:w-auto px-6 py-3 rounded-lg text-white text-lg flex items-center justify-center gap-2">
+                        <input type="text" id="ai-input" class="w-full px-4 py-3 rounded-lg text-lg"
+                            placeholder="Escribí el nombre de un juego, ej: Fortnite">
+                        <button id="ai-button"
+                            class="w-full sm:w-auto px-6 py-3 rounded-lg text-white text-lg flex items-center justify-center gap-2">
                             <i class="fas fa-rocket"></i>
                             <span>Analizar</span>
                         </button>
                     </div>
                     <div id="ai-result-container" class="mt-6 p-6 rounded-lg text-lg text-gray-300">
-                        <p id="ai-placeholder" class="text-center text-gray-500">El análisis de la IA aparecerá aquí...</p>
+                        <p id="ai-placeholder" class="text-center text-gray-500">El análisis de la IA aparecerá aquí...
+                        </p>
                         <div id="ai-loader" class="hidden mx-auto loader"></div>
                         <div id="ai-result" class="prose prose-invert max-w-none"></div>
                     </div>
@@ -1890,7 +1923,8 @@
             </h2>
 
             <section id="section-peripherals" class="mb-12 section-card-style px-4">
-                 <div id="peripherals-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
+                <div id="peripherals-grid"
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
                     <!-- Las tarjetas de periféricos se insertarán aquí con JS -->
                 </div>
             </section>
@@ -2013,7 +2047,7 @@
                     <div class="flex flex-col items-center">
                         <h2 class="text-4xl font-bold mb-2">Selección y Precio Total</h2>
                         <p id="base-summary-text" class="font-saira text-2xl  green-333 coneste"></p>
-                    <p id="base-price-text" class="font-saira .component-link text-lg"></p>
+                        <p id="base-price-text" class="font-saira .component-link text-lg"></p>
                         <div id="selected-components-preview" class="w-full p-4 my-6">
                             <!-- Summary content will be inserted here by JS -->
                         </div>
@@ -2243,7 +2277,7 @@
                 setupEventListeners();
                 updateAllDisplays();
             }
-            
+
             fetch('products.json')
                 .then(response => {
                     if (!response.ok) {
@@ -2256,7 +2290,7 @@
                 })
                 .catch(error => {
                     console.error('Failed to load products.json, using fallback data:', error);
-                    const fallbackData = { "baseOptions": [ { "id": 49735, "name": "Ryzen 5 5600g", "cpu": "896", "ram": "81841", "mother": "49131", "cantRam": 1, "total": 351882, "visible": 1 }, { "id": 30077, "name": "Ryzen 7 5700G ", "cpu": "55990", "ram": "81841", "mother": "49131", "cantRam": 1, "total": 376748, "visible": 1 }, { "id": 45319, "name": "Ryzen 7 5700G ", "cpu": "55990", "mother": "23506", "ram": "93477", "cantRam": 4, "total": 487353, "visible": 1 } ], "cpuOptions": [ { "id": "896", "name": "Ryzen 5 5600g", "price": 214534, "description": "6 nucleos 4.4ghz Am4", "image_url": "comps/cpus/ryzen5_5600g.webp", "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE", "visible": 1 }, { "id": "55990", "name": "Ryzen 7 5700G ", "price": 239400, "description": "8 nucleos 4.6ghz Am4", "image_url": "comps/cpus/ryzen7_5700g.webp", "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE", "visible": 1 } ], "ramOptions": [ { "id": "81841", "name": "DDR4 8x2 = 16 GB", "price": 48999, "description": "Descripción de la nueva RAM.", "image_url": "comps/rams/16gb.webp", "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE", "visible": 1 }, { "id": "93477", "name": "DDR4 8 GB - Hiksemi", "price": 38769, "description": "Descripción de la nueva RAM.", "image_url": "comps/rams/8gb.webp", "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE", "visible": 1 } ], "motherboardOptions": [ { "id": "49131", "name": "Asrock B450m-HDV R4.0", "price": 88349, "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.", "image_url": "comps/moms/b450m-asrock.png", "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r4.0-am4-hdmi-ddr4-color-negro/p/MLA22661333?offer_type=BEST_PRICE", "visible": 1 }, { "id": "23506", "name": "Asrock A520m", "price": 92877, "description": "Descripción de la nueva Motherboard.", "image_url": "comps/moms/asrock_a520m.webp", "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE", "visible": 1 } ], "towersOptions": [ { "id": 29026, "name": "LNZ Y11", "price": 59999, "slug": "lnz-y11", "image_url": "comps/torres/lnz-y11.webp", "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE", "visible": 1 }, { "id": 50127, "name": "Antec AX20", "price": 61910, "slug": "antec-ax20", "image_url": "comps/torres/antec-ax20.webp", "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE", "visible": 1 } ], "ssdOptions": [ { "id": 27876, "name": "500 GB - NVMe", "price": 51895, "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.", "image_url": "comps/discos/nvme_hik_500.webp", "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE", "visible": 1 }, { "id": 93692, "name": "1 TB - NVMe", "price": 95989, "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.", "image_url": "comps/discos/nvme_wd_1.webp", "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136?offer_type=BEST_PRICE", "visible": 1 } ], "gpuOptions": [ { "id": 67931, "name": "Integrada", "price": 0, "description": "Viene con el CPU - más que suficiente para arrancar.", "image_url": "comps/gpus/vega.webp", "link": "", "visible": 1 }, { "id": 38532, "name": "RX 7600 - 8GB GDDR6", "price": 369999, "description": "Rendimiento moderno para jugar en 1080p y 1440p (según el juego). Arquitectura RDNA 3, eficiencia energética y potencia. Hoy, a un EXCELENTE precio.", "image_url": "comps/gpus/38532.webp", "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-amd-radeon-rx-7600-powercolor-8gb-gddr6/p/MLA29675752?offer_type=BEST_PRICE#polycard_client=search_best-seller&tracking_id=441f348b-7b07-4062-afc1-4ca4eadfdd88&wid=MLA2148656004&sid=search", "visible": 1 } ], "psuOptions": [ { "id": 27579, "name": "Certificada Redragon 500W", "price": 70300, "description": "Recomendada para cuidar nuestros componentes.", "image_url": "comps/psus/500redragon.webp", "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-redragon-rpgs-gc-ps001-500w-negra/p/MLA43937355?offer_type=BEST_PRICE", "visible": 1 }, { "id": 73804, "name": "Certificada Sentey 500W", "price": 89999, "description": "Otra buena opción 80 Plus. 3 Años de Garantía.", "image_url": "comps/psus/550sentey80.webp", "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE", "visible": 1 } ], "comboMouseTecladoOptions": [ { "id": 67546, "name": "Inalámbricos Solarmax", "price": 16297, "image_url": "comps/combos-mouse-teclado/mouse-y-teclado-inalámbricos-solarmax.webp", "visible": 1 } ], "keyboardOptions": [ { "id": 15740, "name": "Shiva K512 Cableado", "price": 46075, "image_url": "comps/teclados/shiva-k512-cableado.webp", "visible": 1 } ], "mouseOptions": [ { "id": 18066, "name": "Redragon Wireless", "price": 24824, "image_url": "comps/mouses/redragon-wireless.webp", "visible": 1 } ], "monitorOptions": [ { "id": 19499, "name": "Cooler Master 24'' 100hz", "price": 166190, "image_url": "comps/monitores/cooler-master-24-100hz.webp", "visible": 1 } ], "auricularesOptions": [ { "id": 84174, "name": "Kotion Each Cableado", "price": 48999, "image_url": "comps/auriculares/kotion-each-cableado.webp", "visible": 1 } ], "parlantesOptions": [ { "id": 9675, "name": "Genius Madera", "price": 18000, "image_url": "comps/parlantes/genius-madera.webp", "visible": 1 } ], "microfonosOptions": [], "webcamOptions": [], "arosDeLuzOptions": [], "wifiOptions": [] };
+                    const fallbackData = { "baseOptions": [{ "id": 49735, "name": "Ryzen 5 5600g", "cpu": "896", "ram": "81841", "mother": "49131", "cantRam": 1, "total": 351882, "visible": 1 }, { "id": 30077, "name": "Ryzen 7 5700G ", "cpu": "55990", "ram": "81841", "mother": "49131", "cantRam": 1, "total": 376748, "visible": 1 }, { "id": 45319, "name": "Ryzen 7 5700G ", "cpu": "55990", "mother": "23506", "ram": "93477", "cantRam": 4, "total": 487353, "visible": 1 }], "cpuOptions": [{ "id": "896", "name": "Ryzen 5 5600g", "price": 214534, "description": "6 nucleos 4.4ghz Am4", "image_url": "comps/cpus/ryzen5_5600g.webp", "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE", "visible": 1 }, { "id": "55990", "name": "Ryzen 7 5700G ", "price": 239400, "description": "8 nucleos 4.6ghz Am4", "image_url": "comps/cpus/ryzen7_5700g.webp", "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE", "visible": 1 }], "ramOptions": [{ "id": "81841", "name": "DDR4 8x2 = 16 GB", "price": 48999, "description": "Descripción de la nueva RAM.", "image_url": "comps/rams/16gb.webp", "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE", "visible": 1 }, { "id": "93477", "name": "DDR4 8 GB - Hiksemi", "price": 38769, "description": "Descripción de la nueva RAM.", "image_url": "comps/rams/8gb.webp", "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE", "visible": 1 }], "motherboardOptions": [{ "id": "49131", "name": "Asrock B450m-HDV R4.0", "price": 88349, "description": "Placa madre básica para Intel de 10ma Gen. Ideal para setups económicos.", "image_url": "comps/moms/b450m-asrock.png", "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r4.0-am4-hdmi-ddr4-color-negro/p/MLA22661333?offer_type=BEST_PRICE", "visible": 1 }, { "id": "23506", "name": "Asrock A520m", "price": 92877, "description": "Descripción de la nueva Motherboard.", "image_url": "comps/moms/asrock_a520m.webp", "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE", "visible": 1 }], "towersOptions": [{ "id": 29026, "name": "LNZ Y11", "price": 59999, "slug": "lnz-y11", "image_url": "comps/torres/lnz-y11.webp", "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE", "visible": 1 }, { "id": 50127, "name": "Antec AX20", "price": 61910, "slug": "antec-ax20", "image_url": "comps/torres/antec-ax20.webp", "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE", "visible": 1 }], "ssdOptions": [{ "id": 27876, "name": "500 GB - NVMe", "price": 51895, "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.", "image_url": "comps/discos/nvme_hik_500.webp", "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE", "visible": 1 }, { "id": 93692, "name": "1 TB - NVMe", "price": 95989, "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.", "image_url": "comps/discos/nvme_wd_1.webp", "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136?offer_type=BEST_PRICE", "visible": 1 }], "gpuOptions": [{ "id": 67931, "name": "Integrada", "price": 0, "description": "Viene con el CPU - más que suficiente para arrancar.", "image_url": "comps/gpus/vega.webp", "link": "", "visible": 1 }, { "id": 38532, "name": "RX 7600 - 8GB GDDR6", "price": 369999, "description": "Rendimiento moderno para jugar en 1080p y 1440p (según el juego). Arquitectura RDNA 3, eficiencia energética y potencia. Hoy, a un EXCELENTE precio.", "image_url": "comps/gpus/38532.webp", "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-amd-radeon-rx-7600-powercolor-8gb-gddr6/p/MLA29675752?offer_type=BEST_PRICE#polycard_client=search_best-seller&tracking_id=441f348b-7b07-4062-afc1-4ca4eadfdd88&wid=MLA2148656004&sid=search", "visible": 1 }], "psuOptions": [{ "id": 27579, "name": "Certificada Redragon 500W", "price": 70300, "description": "Recomendada para cuidar nuestros componentes.", "image_url": "comps/psus/500redragon.webp", "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-redragon-rpgs-gc-ps001-500w-negra/p/MLA43937355?offer_type=BEST_PRICE", "visible": 1 }, { "id": 73804, "name": "Certificada Sentey 500W", "price": 89999, "description": "Otra buena opción 80 Plus. 3 Años de Garantía.", "image_url": "comps/psus/550sentey80.webp", "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE", "visible": 1 }], "comboMouseTecladoOptions": [{ "id": 67546, "name": "Inalámbricos Solarmax", "price": 16297, "image_url": "comps/combos-mouse-teclado/mouse-y-teclado-inalámbricos-solarmax.webp", "visible": 1 }], "keyboardOptions": [{ "id": 15740, "name": "Shiva K512 Cableado", "price": 46075, "image_url": "comps/teclados/shiva-k512-cableado.webp", "visible": 1 }], "mouseOptions": [{ "id": 18066, "name": "Redragon Wireless", "price": 24824, "image_url": "comps/mouses/redragon-wireless.webp", "visible": 1 }], "monitorOptions": [{ "id": 19499, "name": "Cooler Master 24'' 100hz", "price": 166190, "image_url": "comps/monitores/cooler-master-24-100hz.webp", "visible": 1 }], "auricularesOptions": [{ "id": 84174, "name": "Kotion Each Cableado", "price": 48999, "image_url": "comps/auriculares/kotion-each-cableado.webp", "visible": 1 }], "parlantesOptions": [{ "id": 9675, "name": "Genius Madera", "price": 18000, "image_url": "comps/parlantes/genius-madera.webp", "visible": 1 }], "microfonosOptions": [], "webcamOptions": [], "arosDeLuzOptions": [], "wifiOptions": [] };
                     initializeApp(fallbackData);
                 });
 
@@ -2377,7 +2411,7 @@
 
                 // Peripherals Grid Listener
                 document.getElementById('peripherals-grid').addEventListener('click', handlePeripheralClick);
-                
+
                 // Summary Section Listener
                 document.getElementById('selected-components-preview').addEventListener('click', handleSummaryCardClick);
 
@@ -2426,7 +2460,7 @@
                     positionCroxImages();
                     updateSliderPosition();
                 });
-                 // AI Section Listener
+                // AI Section Listener
                 document.getElementById('ai-button').addEventListener('click', checkGameCompatibility);
             }
 
@@ -2442,7 +2476,7 @@
                 updatePrices();
                 updateSliderPosition();
             }
-            
+
             function updateBasePrice() {
                 if (baseOptions.length > currentBaseLevel) {
                     BASE_PRICE = baseOptions[currentBaseLevel].total + GAIN_PRICE;
@@ -2496,29 +2530,29 @@
             }
 
             // --- UI UPDATE FUNCTIONS ---
-        function updateBaseDisplay() {
-            if (typeof baseOptions === 'undefined' || baseOptions.length <= currentBaseLevel) return;
-            const base = baseOptions[currentBaseLevel];
-            const cpu = cpuOptions && cpuOptions.find(c => String(c.id) === String(base.cpu));
-            const ram = ramOptions && ramOptions.find(c => String(c.id) === String(base.ram));
-            const motherboard = motherboardOptions && motherboardOptions.find(c => String(c.id) === String(base.mother));
+            function updateBaseDisplay() {
+                if (typeof baseOptions === 'undefined' || baseOptions.length <= currentBaseLevel) return;
+                const base = baseOptions[currentBaseLevel];
+                const cpu = cpuOptions && cpuOptions.find(c => String(c.id) === String(base.cpu));
+                const ram = ramOptions && ramOptions.find(c => String(c.id) === String(base.ram));
+                const motherboard = motherboardOptions && motherboardOptions.find(c => String(c.id) === String(base.mother));
 
-            if (cpu && ram && motherboard) {
-                // CPU
-                const cpuNameParts = cpu.name.split(' ');
-                document.getElementById('base-cpu-text').innerHTML = `<b>${cpuNameParts.slice(0, 2).join(' ')}</b> ${cpuNameParts.slice(2).join(' ')} <a href="${cpu.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
-                // RAM: solo muestra la cantidad total de RAM de la base seleccionada
-                document.getElementById('base-ram-text').innerHTML = `<span class="text-green-333"><strong>${base.totalram} GB</strong> de RAM</span> <a href="${ram.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
-                // Motherboard
-                document.getElementById('base-motherboard-text').innerHTML = `Mother <small>${motherboard.name}</small> <a href="${motherboard.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
-                // Descripción desde el JSON
-                document.getElementById('base-description-text').innerHTML = base.description || '';
-                // Imagen
-                const baseImage = document.getElementById('base-image');
-                if(baseImage) baseImage.src = `comps/bases/${base.id}.webp`;
-                updateBaseSummaryText(cpu, ram, base);
+                if (cpu && ram && motherboard) {
+                    // CPU
+                    const cpuNameParts = cpu.name.split(' ');
+                    document.getElementById('base-cpu-text').innerHTML = `<b>${cpuNameParts.slice(0, 2).join(' ')}</b> ${cpuNameParts.slice(2).join(' ')} <a href="${cpu.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                    // RAM: solo muestra la cantidad total de RAM de la base seleccionada
+                    document.getElementById('base-ram-text').innerHTML = `<span class="text-green-333"><strong>${base.totalram} GB</strong> de RAM</span> <a href="${ram.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                    // Motherboard
+                    document.getElementById('base-motherboard-text').innerHTML = `Mother <small>${motherboard.name}</small> <a href="${motherboard.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                    // Descripción desde el JSON
+                    document.getElementById('base-description-text').innerHTML = base.description || '';
+                    // Imagen
+                    const baseImage = document.getElementById('base-image');
+                    if (baseImage) baseImage.src = `comps/bases/${base.id}.webp`;
+                    updateBaseSummaryText(cpu, ram, base);
+                }
             }
-        }
 
 
             function updateTowerDisplay() {
@@ -2534,7 +2568,7 @@
                 document.getElementById('current-tower-price-display').innerHTML = towerPriceHTML;
                 updatePrices();
             }
-            
+
             // --- REFACTORED: Single function to update component display ---
             function updateComponentDisplay(componentKey) {
                 const config = {
@@ -2557,7 +2591,7 @@
                         descEl.innerHTML = selectedOption.description + linkHTML;
                     }
                     if (imageEl) loadImageWithGrayscale(imageEl, selectedOption.image_url);
-                    
+
                     if (componentKey === 'gpu') {
                         const gpuLi = document.getElementById('gpu-li');
                         if (selectedIndex === 0) { // Assuming "Integrada" is always the first option
@@ -2589,10 +2623,10 @@
                 cabinetContainer.style.marginTop = '-2rem'; // default for mobile
                 cabinetContainer.classList.add('cabinet-summary-responsive');
                 // Will be overridden by media query for md screens
-    // Add this style block for responsive negative margin
-    const style = document.createElement('style');
-    style.innerHTML = `@media (min-width: 768px) { .cabinet-summary-responsive { margin-top: -8.5rem !important; } }`;
-    document.head.appendChild(style);
+                // Add this style block for responsive negative margin
+                const style = document.createElement('style');
+                style.innerHTML = `@media (min-width: 768px) { .cabinet-summary-responsive { margin-top: -8.5rem !important; } }`;
+                document.head.appendChild(style);
                 const selectedTower = towersOptions[currentTowerIndex];
                 if (selectedTower) {
                     cabinetContainer.innerHTML = `
@@ -2660,7 +2694,7 @@
                         else if (type === 'Fuente') sectionId = 'psu-select';
                         // For peripherals, scroll to #section-peripherals
                         else if ([
-                            'Monitor','Teclado','Mouse','Auriculares','Parlantes','Micrófono','Webcam','Aro de Luz','WiFi'
+                            'Monitor', 'Teclado', 'Mouse', 'Auriculares', 'Parlantes', 'Micrófono', 'Webcam', 'Aro de Luz', 'WiFi'
                         ].includes(type)) sectionId = 'section-peripherals';
                         if (sectionId) {
                             nameEl.innerHTML = `<a href="#${sectionId}" class="component-link" style="font-size:1rem;color:white !important;font-family:Inter,sans-serif !important;" onclick="event.preventDefault();document.getElementById('${sectionId}').scrollIntoView({behavior:'smooth'});">${selected.name}</a>`;
@@ -2673,28 +2707,28 @@
                         nameEl.textContent = isService ? 'Garantía + Soporte Técnico x 1 Año' : (selected?.name || '');
                         nameEl.style.fontFamily = 'Inter, sans-serif';
                     }
-                        const priceEl = document.createElement('span');
-                        // All prices use --color-link and Inter font
-                        priceEl.style.color = 'var(--color-link)';
-                        priceEl.style.fontFamily = 'Inter, sans-serif';
-                        priceEl.style.fontWeight = 'bold';
-                        if (isService) {
-                            priceEl.textContent = `$${GAIN_PRICE.toLocaleString('es-AR')}`;
-                        } else {
-                            if (selected?.price > 0) {
-                                if (selected?.link) {
-                                    priceEl.innerHTML = `<a href="${selected.link}" target="_blank" class="component-link" style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;">$${selected.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>`;
-                                } else {
-                                    priceEl.innerHTML = `<span style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;">$${selected.price.toLocaleString('es-AR')}</span>`;
-                                }
+                    const priceEl = document.createElement('span');
+                    // All prices use --color-link and Inter font
+                    priceEl.style.color = 'var(--color-link)';
+                    priceEl.style.fontFamily = 'Inter, sans-serif';
+                    priceEl.style.fontWeight = 'bold';
+                    if (isService) {
+                        priceEl.textContent = `$${GAIN_PRICE.toLocaleString('es-AR')}`;
+                    } else {
+                        if (selected?.price > 0) {
+                            if (selected?.link) {
+                                priceEl.innerHTML = `<a href="${selected.link}" target="_blank" class="component-link" style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;">$${selected.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>`;
                             } else {
-                                priceEl.textContent = 'Incluida';
+                                priceEl.innerHTML = `<span style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;">$${selected.price.toLocaleString('es-AR')}</span>`;
                             }
+                        } else {
+                            priceEl.textContent = 'Incluida';
                         }
-                        contentRow.appendChild(nameEl);
-                        contentRow.appendChild(priceEl);
-                        row.appendChild(contentRow);
-                        return row;
+                    }
+                    contentRow.appendChild(nameEl);
+                    contentRow.appendChild(priceEl);
+                    row.appendChild(contentRow);
+                    return row;
                 }
 
                 components.forEach(comp => {
@@ -2709,7 +2743,7 @@
                 summaryGrid.appendChild(tableContainer);
                 container.appendChild(summaryGrid);
             }
-            
+
             // --- NEW PERIPHERAL FUNCTIONS ---
             function populateOptionalPeripherals() {
                 const grid = document.getElementById('peripherals-grid');
@@ -2757,13 +2791,13 @@
                 if (container.closest('#selected-images-container')) {
                     return;
                 }
-                
-                const collections = { 
-                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions, auriculares: auricularesOptions, 
+
+                const collections = {
+                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions, auriculares: auricularesOptions,
                     parlantes: parlantesOptions, microfono: microfonosOptions, webcam: webcamOptions, arodeluz: arosDeLuzOptions, wifi: wifiOptions
                 };
                 const options = collections[category];
-                
+
                 let currentIndex = selectedPeripherals[category];
 
                 currentIndex++;
@@ -2771,7 +2805,7 @@
                     currentIndex = -1; // Cycle back to unselected
                 }
                 selectedPeripherals[category] = currentIndex;
-                
+
                 const mainCardContainer = document.querySelector(`#peripherals-grid .peripheral-container[data-category="${category}"]`);
                 if (mainCardContainer) {
                     mainCardContainer.classList.toggle('selected', currentIndex > -1);
@@ -2780,7 +2814,7 @@
 
                 updatePrices();
             }
-            
+
             function handleSummaryCardClick(e) {
                 const link = e.target.closest('a');
                 if (!link) return;
@@ -2794,7 +2828,7 @@
                 } else if (link.href.includes('#')) {
                     // Internal link, let it scroll
                 } else if (link.href) {
-                     window.open(link.href, '_blank');
+                    window.open(link.href, '_blank');
                 }
             }
 
@@ -2963,7 +2997,7 @@
                 document.getElementById('google-link').href = `https://www.google.com/search?q=${total}+ars+to+usd`;
                 document.getElementById('dolar-popup').style.display = 'flex';
             }
-            
+
             // ================== NEW AI FUNCTION (CORRECTED) ==================
             async function checkGameCompatibility() {
                 const gameName = document.getElementById('ai-input').value.trim();
@@ -2983,7 +3017,7 @@
                 const totalRam = baseConfig.totalram;
                 const selectedGpu = gpuOptions[selectedComponentIndices.gpu];
                 const selectedSsd = ssdOptions[selectedComponentIndices.ssd];
-                
+
                 // --- 2. Show loading state ---
                 button.disabled = true;
                 button.querySelector('span').textContent = 'Analizando...';
@@ -2991,32 +3025,19 @@
                 resultContainer.innerHTML = ''; // Clear previous results
                 loader.classList.remove('hidden');
 
-                // --- 3. Build the prompt ---
-                const prompt = `
-                    Actuá como un experto en hardware de PC y gaming que habla de forma casual y directa, como en la jerga gamer argentina.
-                    Analizá el rendimiento esperado para el juego "${gameName}" con la siguiente configuración de PC:
-                    - CPU: ${cpu.name}
-                    - RAM: ${totalRam} GB
-                    - Tarjeta Gráfica (GPU): ${selectedGpu.name}
-                    - Almacenamiento: ${selectedSsd.name}
-
-                    Tu respuesta debe ser concisa y en formato Markdown, estructurada de la siguiente manera:
-                    1.  **Veredicto Rápido:** Una o dos frases directas sobre si la PC se la banca para este juego y qué se puede esperar en general.
-                    2.  **Rendimiento Estimado (1080p):** Da una estimación de FPS (fotogramas por segundo) en resolución 1080p. Sé realista. Especifica una calidad gráfica aproximada (Baja, Media, Alta, Ultra). Por ejemplo: "En 1080p con gráficos en Medio, podés esperar unos 60-75 FPS bastante estables."
-                    3.  **Análisis y Recomendaciones:** Explica brevemente por qué das esa estimación. Si hay un cuello de botella (por ejemplo, la gráfica integrada para un juego muy exigente), mencionalo. Si la configuración es ideal, decilo también. Ofrecé una recomendación clave si es necesaria para mejorar la experiencia en ESE juego (ej: "Para este título, la posta sería saltar a la gráfica dedicada para no sufrir tirones").
-                `;
-
-                // --- 4. Call Gemini API (with corrected URL) ---
-                const apiKey = "AIzaSyAQknlg0cIz1cmMOPwnSu3UabG5L7-vLmU"; // Your API Key
-                const model = "gemini-pro"; // <-- CORRECTED MODEL NAME
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-
+                // --- 3. Call local API route ---
                 try {
-                    const response = await fetch(url, {
+                    const response = await fetch('/api/analyze', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
-                            contents: [{ parts: [{ text: prompt }] }]
+                            gameName,
+                            components: {
+                                cpu,
+                                totalRam,
+                                selectedGpu,
+                                selectedSsd
+                            }
                         })
                     });
 
@@ -3027,10 +3048,9 @@
                     }
 
                     const data = await response.json();
-                    const text = data.candidates[0].content.parts[0].text;
-                    
-                    // --- 5. Display the result ---
-                    // A simple regex-based conversion for basic Markdown
+                    let text = data.result || '';
+
+                    // --- 4. Display the result ---
                     let htmlResult = text
                         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
                         .replace(/\*(.*?)\*/g, '<em>$1</em>')     // Italic
@@ -3040,10 +3060,9 @@
                     resultContainer.innerHTML = htmlResult;
 
                 } catch (error) {
-                    console.error("Error al llamar a la API de Gemini:", error);
-                    resultContainer.innerHTML = `<p class="text-red-400">¡Ups! Hubo un error al contactar a la IA. Verificá la consola (F12) para más detalles y asegurate que la API Key sea correcta y esté habilitada.</p>`;
+                    console.error("Error al llamar a la API local:", error);
+                    resultContainer.innerHTML = `<p class="text-red-400">¡Ups! Hubo un error al contactar a la IA. Verificá la consola (F12) para más detalles.</p>`;
                 } finally {
-                    // --- 6. Reset UI ---
                     loader.classList.add('hidden');
                     button.disabled = false;
                     button.querySelector('span').textContent = 'Analizar';
@@ -3056,7 +3075,7 @@
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
                 const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => softwareData.find(s => s.slug === cb.dataset.slug)?.name).filter(Boolean);
                 const extraNotes = document.getElementById('extra-notes').value;
-                
+
                 // --- REFACTORED: Get component names from selected indices ---
                 const selectedGpuName = gpuOptions[selectedComponentIndices.gpu].name;
                 const selectedSsdName = ssdOptions[selectedComponentIndices.ssd].name;
@@ -3086,7 +3105,7 @@
                         peripheralsMessage += `${peripheralsMessage ? ', ' : ''}${peripheralMap[key].name}: ${item.name}`;
                     }
                 }
-                 if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
+                if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
 
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
                 if (selectedSoftware.length > 0) {

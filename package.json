@@ -13,13 +13,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/DuendeKenna/GamerZ/issues"
   },
   "homepage": "https://github.com/DuendeKenna/GamerZ#readme",
   "dependencies": {
     "@google/genai": "^1.15.0",
+    "@google/generative-ai": "^0.24.1",
     "express": "^5.1.0"
   }
 }
