@@ -6,10 +6,10 @@
       "description": "",
       "cpu": "896",
       "mother": "49131",
-      "ram": "74792",
-      "cantRam": 2,
-      "total": 306000,
-      "totalram": 0,
+      "ram": "81841",
+      "cantRam": 1,
+      "total": 365830,
+      "totalram": 16,
       "visible": 1
     },
     {
@@ -18,10 +18,10 @@
       "description": "",
       "cpu": "55990",
       "mother": "49131",
-      "ram": "74792",
-      "cantRam": 2,
-      "total": 331790,
-      "totalram": 0,
+      "ram": "81841",
+      "cantRam": 1,
+      "total": 391620,
+      "totalram": 16,
       "visible": 1
     },
     {
