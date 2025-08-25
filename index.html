@@ -2593,8 +2593,8 @@
                 document.getElementById('current-tower-name').textContent = selectedTower.name;
                 let towerPriceHTML = '';
                 if (selectedTower.link) {
-                    const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} | ` : '';
-                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                    const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} ` : '';
+                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull} <i class="fas fa-external-link-alt"></i></a>`;
                 }
                 document.getElementById('current-tower-price-display').innerHTML = towerPriceHTML;
                 updatePrices();
@@ -2616,8 +2616,8 @@
                     if (descEl) {
                         let linkHTML = '';
                         if (selectedOption.link) {
-                            const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} | ` : '';
-                            linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                            const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} ` : '';
+                            linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}<i class="fas fa-external-link-alt"></i></a>`;
                         }
                         descEl.innerHTML = selectedOption.description + linkHTML;
                     }
@@ -2865,7 +2865,35 @@
                         window.open(itemLink.href, '_blank');
                     }
                 } else if (link.href.includes('#')) {
-                    // Internal link, let it scroll
+                    // Internal link, custom scroll with margin
+                    const anchor = link.getAttribute('href');
+                    let selectId = null;
+                    let targetId = anchor.replace('#', '');
+                    if (anchor === '#gpu-select') selectId = 'gpu-select';
+                    else if (anchor === '#ssd-select') selectId = 'ssd-select';
+                    else if (anchor === '#psu-select') selectId = 'psu-select';
+                    else if (anchor === '#section-bases') selectId = 'base-level-select';
+                    // Custom scroll: center element with margin
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        const rect = targetEl.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        const windowHeight = window.innerHeight;
+                        const targetY = rect.top + scrollTop - (windowHeight / 2) + (rect.height / 2);
+                        window.scrollTo({ top: targetY, behavior: 'smooth' });
+                    }
+                    // Highlight select after scroll
+                    if (selectId) {
+                        setTimeout(() => {
+                            const select = document.getElementById(selectId);
+                            if (select) {
+                                select.classList.add('select-glow-violet');
+                                setTimeout(() => {
+                                    select.classList.remove('select-glow-violet');
+                                }, 5000);
+                            }
+                        }, 500); // Wait for scroll animation
+                    }
                 } else if (link.href) {
                     window.open(link.href, '_blank');
                 }
@@ -3091,14 +3119,10 @@
                     const data = await response.json();
                     let text = data.result || '';
                     // Limpieza de saltos de línea extra
-                    text = text.trim(); // quita saltos al inicio y final
+                    // text = text.trim(); // quita saltos al inicio y final
                     // Elimina cualquier salto de línea antes del primer punto numerado
                     text = text.replace(/^\s*\n*(\d+\.)/, '$1');
-                    // Reemplaza 2 o más saltos de línea seguidos por solo uno
-                    text = text.replace(/\n{2,}/g, '\n');
-                    // Opcional: elimina saltos de línea antes/después de los puntos numerados
-                    text = text.replace(/\n+(\d+\.)/g, '\n$1');
-                    // --- 4. Display the result ---
+
                     // Highlight CPU and GPU names with green rounded span and link
                     let htmlResult = text
                         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
@@ -3169,6 +3193,11 @@
                                             }
                                         }
                                         document.getElementById('component-list').scrollIntoView({ behavior: 'smooth' });
+                                        // Add glow effect
+                                        select.classList.add('select-glow-violet');
+                                        setTimeout(() => {
+                                            select.classList.remove('select-glow-violet');
+                                        }, 5000);
                                     }
                                 } else if (type === 'cpu') {
                                     document.getElementById('section-bases').scrollIntoView({ behavior: 'smooth' });
@@ -3180,6 +3209,25 @@
                     // Elimina el primer <br> si existe
                     htmlResult = htmlResult.replace(/^<br\s*\/?>/, '');
                     resultContainer.innerHTML = htmlResult;
+
+                    // Add CSS for glow effect if not present
+                    if (!document.getElementById('select-glow-violet-style')) {
+                        const style = document.createElement('style');
+                        style.id = 'select-glow-violet-style';
+                        style.innerHTML = `
+                            @keyframes selectGlowViolet {
+                                0% { box-shadow: 0 0 0 0px #a78bfa, 0 0 0px #7c3aed; border-color: #6366f1; }
+                                10% { box-shadow: 0 0 0 4px #a78bfa, 0 0 16px 8px #7c3aed; border-color: #6366f1; }
+                                80% { box-shadow: 0 0 0 4px #a78bfa, 0 0 16px 8px #7c3aed; border-color: #6366f1; }
+                                100% { box-shadow: 0 0 0 0px #a78bfa, 0 0 0px #7c3aed; border-color: #374151; }
+                            }
+                            .select-glow-violet {
+                                animation: selectGlowViolet 5s cubic-bezier(.4,0,.2,1) forwards;
+                                border-color: #6366f1 !important;
+                            }
+                        `;
+                        document.head.appendChild(style);
+                    }
 
                 } catch (error) {
                     console.error("Error al llamar a la API local:", error);

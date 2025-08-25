@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
     // Inicializa la IA generativa de Google con la clase correcta
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Construye el prompt para la IA con los datos y las nuevas instrucciones
     const prompt = `
@@ -50,13 +50,13 @@ export default async function handler(req, res) {
         ${gpuOptionsText}
 
         **INSTRUCCIONES CLAVE Y OBLIGATORIAS:**
-        - NO uses títulos.
-        - Sé realista: un Ryzen 5 5600G con RAM Dual Channel corre juegos como League of Legends a más de 120 FPS en calidad Alta y eso no necesita ninguna mejor. Si ves que un mejor procesador de la lista con una mejor gráfica integrada puede mejorar bastante, propone eso antes de una GPU dedicada.
-        - El objetivo del cliente es 60 FPS estables en 1080p, no necesita jugar en Ultra.
+        - NO uses títulos, tu respuesta empieza en el punto 1 y sin presentaciones.
+        - Usa un lenguaje neutro en cuanto a género para referirte al cliente porque no sabemos si es hombre o mujer.
+        - El objetivo del cliente es 60 FPS estables en 1080p.
 
         **FORMATO OBLIGATORIO (SOLO 3 PUNTOS):**
 
-        1.  **Veredicto Rápido:** ¿Sirve o no sirve la PC actual para este juego? Sé directo y claro.
+        1.  **Veredicto Rápido:** ¿Sirve o no sirve la PC actual para este juego? Sé directo y claro, si el setup es suficiente para correr el juego a 60 FPS, lo corre. En el siguiente apartado (punto 2) te explayarás sobre la calidad a la que puede correrlo.
 
         2.  **Rendimiento con la PC Actual:** Estimación realista de FPS y calidad gráfica (Baja/Media/Alta) en 1080p.
 
