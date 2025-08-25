@@ -3,7 +3,7 @@
     {
       "id": 49735,
       "name": "Ryzen 5 5600G + 16 de RAM",
-      "description": "",
+      "description": "Buen rendimiento en juegos ligeros a 1080p, multitarea básica y creación de contenido principiante. Con 6 núcleos y gráfica integrada Vega 7, es el más económico y simple, pero más que suficiente si no corrés software pesado.",
       "cpu": "896",
       "mother": "49131",
       "ram": "81841",
@@ -15,19 +15,19 @@
     {
       "id": 30077,
       "name": "Ryzen 7 5700G + 16 de RAM",
-      "description": "",
+      "description": "La nave equilibrada para gamers y creadores. Más potencia con 8 núcleos para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
       "cpu": "55990",
-      "mother": "49131",
+      "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 391620,
+      "total": 391510,
       "totalram": 16,
       "visible": 1
     },
     {
       "id": 45319,
       "name": "Ryzen 7 5700G + 32 de RAM",
-      "description": "",
+      "description": "Potencia extra para creadores. La RAM adicional es clave para <b>Edición de Video avanzada, IA Generativa</b> y <b>Renders 3D complejos</b>. Enfocado en multitarea intensiva vs. los otros niveles, evitando cuelgues en proyectos grandes.",
       "cpu": "55990",
       "mother": "23506",
       "ram": "8502",

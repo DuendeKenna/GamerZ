@@ -1414,6 +1414,10 @@
             color: white;
         }
 
+        .summary-card.unselected {
+            opacity: 0.4;
+        }
+
         .summary-card.unselected .summary-card-image-wrapper img {
             opacity: 0.4;
             filter: grayscale(1);
@@ -1429,10 +1433,10 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 4rem;
-            color: #42d232;
+            color: #23e70e;
             /* green-333 */
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+            z-index: 2;
         }
 
         .price-card-subtitle {
@@ -1457,6 +1461,7 @@
         .base-level-label {
             font-family: 'Saira', sans-serif;
             font-weight: 700;
+            font-size: 1.3rem;
             color: #9ca3af;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
@@ -1749,11 +1754,10 @@
                     </div>
 
                     <div class="feature-card">
-                        <img src="WinUpRound.webp" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
+                        <img src="win11orig.webp" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
                             onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
-                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
-                        <p class="text-s text-gray-300 mt-1">Lo llamo <b class="text-white">WindOS</b>
-                        <p class="text-xs text-gray-500">FLUYE COMO EL VIENTO ;)</p>
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Original</h4>
+                        <p class="text-s text-gray-300 mt-1">con Licencia Pro </br>y <b>Optimizado</b>
                         </p>
                     </div>
 
@@ -1761,7 +1765,8 @@
                         <img src="soporteTarjeta.webp" alt="Soporte" class="w-24 h-24 mb-3"
                             onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
                         <h4 class="font-saira font-bold text-white text-xl leading-tight">Soporte Técnico</h4>
-                        <p class="text-s text-gray-300 mt-1">Personalizado en todo el <b>Partido de La Costa</b>
+                        <p class=" text-gray-300 mt-1">Presencial en todo el <b class="text-blue-300">Partido de La Costa</b>
+                        <p><i class="text-gray-500">via Web en donde sea</i></p>
                         </p>
                     </div>
 
@@ -1783,17 +1788,18 @@
             <div class="hook-section text-center max-w-4xl mx-auto mt-2 space-y-6 relative z-40">
                 <div>
 
-                    <div class="mt-2 text-base text-gray-200 flex items-center justify-center gap-4">
+                    <div class="mt-2 text-base text-gray-200  items-center justify-center gap-4">
 
-                        <p><i class="fas fa-house-circle-check"></i> Entrega e Instalación a Domicilio en <i class="text-blue-300">🌊La Costa</i></p>
+                        <p><i class="fas fa-house-circle-check"></i> Entrega e Instalación a Domicilio</p>
+                        <p class="text-blue-300">desde <b>San Clemente</b> hasta <b>Nueva Atlantis</b></p>
                     </div>
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
-                    <h1 class="text-2xl">con las Mejores Opciones en Mercado Libre con sus links <span class="links"
-                            style="color: var(--color-link);"><i class="fas fa-external-link-alt text-sm "></i> </span>
+                    <h1 class="text-2xl">con las Mejores Opciones en <b class="">Mercado Libre</b> + links<span class="links"
+                            style="color: var(--color-link);"><i class="fas fa-external-link-alt text-sm "></i></span>
                         para ver sus
                         detalles</h1>
-                    <h1>Si sabés del tema, usalos para comprar y armar por tu cuenta!</h1>
+                    <h1>...si sabés del tema, usalos para comprar y armarla por tu cuenta ;)</h1>
                     <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
