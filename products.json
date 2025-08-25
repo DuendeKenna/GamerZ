@@ -8,8 +8,8 @@
       "mother": "49131",
       "ram": "74792",
       "cantRam": 2,
-      "total": 362800,
-      "totalram": 16,
+      "total": 306000,
+      "totalram": 0,
       "visible": 1
     },
     {
@@ -20,8 +20,8 @@
       "mother": "49131",
       "ram": "74792",
       "cantRam": 2,
-      "total": 388590,
-      "totalram": 16,
+      "total": 331790,
+      "totalram": 0,
       "visible": 1
     },
     {
@@ -51,11 +51,11 @@
     {
       "id": 76800,
       "name": "I5 2400 16 Gb 480 Gb Ssd",
-      "price": 229900,
+      "price": 232500,
       "description": "",
       "image_url": "comps/armadas/76800.webp",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T18:43:01.625Z",
+      "lastUpd": "2025-08-25T13:03:33.650Z",
       "visible": 1
     }
   ],
@@ -216,11 +216,11 @@
     {
       "id": 28101,
       "name": "Genérica Noga 600w",
-      "price": 39000,
+      "price": 38700,
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "image_url": "comps/psus/600noga.webp",
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:34:54.024Z",
+      "lastUpd": "2025-08-25T13:11:07.944Z",
       "visible": 1
     },
     {
@@ -281,46 +281,24 @@
     {
       "id": 81841,
       "name": "DDR4 8x2 = 16 GB",
-      "price": 59840,
+      "price": 59830,
       "total": 16,
       "description": "",
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:33:57.423Z",
+      "lastUpd": "2025-08-25T13:06:50.312Z",
       "visible": 1
     },
     {
       "id": 93477,
       "name": "DDR4 8 GB - Hiksemi",
-      "price": 39540,
+      "price": 39500,
       "total": 8,
       "description": "",
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:34:08.271Z",
+      "lastUpd": "2025-08-25T13:07:00.552Z",
       "visible": 1
-    },
-    {
-      "id": 74792,
-      "name": "DDR4 8 GB - Patriot OEM",
-      "price": 28400,
-      "total": 8,
-      "description": "",
-      "image_url": "",
-      "link": "https://www.mercadolibre.com.ar/memoria-ram-patriot-signature-8gb-3200mhz-dimm-negra/p/MLA37810612?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:34:20.840Z",
-      "visible": 1
-    },
-    {
-      "id": 10020,
-      "name": "DDR3 4GB",
-      "price": 14500,
-      "total": 4,
-      "description": "",
-      "image_url": "",
-      "link": "https://www.mercadolibre.com.ar/memoria-ddr3-4gb-1333mhz-pc310600-hynix-en-blister-nuevas/up/MLAU313860758?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:34:29.808Z",
-      "visible": 0
     },
     {
       "id": 8502,
@@ -331,6 +309,17 @@
       "image_url": "comps/rams/8502.webp",
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
       "lastUpd": "2025-08-23T04:20:24.825Z",
+      "visible": 1
+    },
+    {
+      "id": 769,
+      "name": "DDR3 8GB - 1600 Hynix",
+      "price": 18000,
+      "total": 8,
+      "description": "",
+      "image_url": "comps/rams/769.webp",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1420730281?offer_type=OFFICIAL_STORE",
+      "lastUpd": "2025-08-25T13:10:07.718Z",
       "visible": 1
     }
   ],
@@ -436,31 +425,31 @@
     {
       "id": 97647,
       "name": "Inalámbrico Noganet",
-      "price": 27000,
+      "price": 34280,
       "description": "",
       "image_url": "comps/teclados/inalambrico-noganet.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-24T17:19:03.572Z",
+      "lastUpd": "2025-08-25T13:12:56.057Z",
       "visible": 1
     },
     {
       "id": 78296,
       "name": "Mecánico Noganet Cabledo",
-      "price": 35200,
+      "price": 34900,
       "description": "",
       "image_url": "comps/teclados/mecanico-noganet-cabledo.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-24T17:19:12.051Z",
+      "lastUpd": "2025-08-25T13:13:18.122Z",
       "visible": 1
     },
     {
       "id": 15740,
       "name": "Shiva K512 Cableado",
-      "price": 47800,
+      "price": 43900,
       "description": "",
       "image_url": "comps/teclados/shiva-k512-cableado.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-24T17:19:19.388Z",
+      "lastUpd": "2025-08-25T13:13:27.074Z",
       "visible": 1
     }
   ],
@@ -521,11 +510,11 @@
     {
       "id": 9675,
       "name": "Genius Madera",
-      "price": 18500,
+      "price": 28900,
       "description": "",
       "image_url": "comps/parlantes/genius-madera.webp",
       "link": "https://www.mercadolibre.com.ar/parlantes-genius-sp-hf180-madera/p/MLA15840120?offer_type=OFFICIAL_STORE",
-      "lastUpd": "2025-08-24T17:19:59.597Z",
+      "lastUpd": "2025-08-25T13:14:08.899Z",
       "visible": 1
     },
     {
@@ -536,7 +525,7 @@
       "image_url": "comps/parlantes/96602.webp",
       "link": "https://www.mercadolibre.com.ar/barra-de-sonido-redragon-gs570-darknets-led-rgb-bt-aux-full/p/MLA19709300?pdp_filters=seller_id%3A177485344&offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-seller_items-above&reco_backend=ranker-retsys-same-seller&reco_model=rk_entity_sameseller&reco_client=pdp-seller_items-above&reco_item_pos=0&reco_backend_type=low_level&reco_id=2024fd87-1d63-4eff-8a66-313a79850108&wid=MLA1216641525&sid=recos",
       "lastUpd": "2025-08-23T04:23:39.542Z",
-      "visible": 1
+      "visible": 0
     }
   ],
   "webcamOptions": [
@@ -558,7 +547,7 @@
       "image_url": "comps/webcams/50224.webp",
       "link": "https://www.mercadolibre.com.ar/camara-web-gadnic-full-hd-1080p-con-microfono-30-fps-color-negro/p/MLA49194509?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=8d00de1d-bf36-45e6-9a5b-aa958b56af3c&wid=MLA1135709610&sid=search",
       "lastUpd": "2025-08-23T04:23:56.119Z",
-      "visible": 1
+      "visible": 0
     }
   ],
   "microfonosOptions": [
@@ -569,7 +558,7 @@
       "description": "",
       "image_url": "comps/mics/43732.webp",
       "link": "https://www.mercadolibre.com.ar/microfono-condenser-cartoide-usb-pc-estudio-streaming-podcast-tripod-profesional-bm900-vt-power/p/MLA25045936?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:24:03.607Z",
+      "lastUpd": "2025-08-25T13:18:50.795Z",
       "visible": 1
     }
   ],
@@ -589,11 +578,11 @@
     {
       "id": 32988,
       "name": "Led 26 Cm Con Trípode y Soprte Celular",
-      "price": 16000,
+      "price": 16400,
       "description": "",
       "image_url": "comps/luz/32988.webp",
       "link": "https://www.mercadolibre.com.ar/aro-de-luz-led-26-cm-con-tripode-2-metros-soprte-celular/p/MLA44508125?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:24:17.254Z",
+      "lastUpd": "2025-08-25T13:19:15.148Z",
       "visible": 1
     }
   ],
