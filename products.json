@@ -15,7 +15,7 @@
     {
       "id": 30077,
       "name": "Ryzen 7 5700G + 16 de RAM",
-      "description": "La nave equilibrada para gamers y creadores. Más potencia con 8 núcleos y gráfica Vega 8 para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
+      "description": "La nave equilibrada para gamers y creadores. 8 núcleos/16 hilos y gráfica Vega 8 para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
       "cpu": "55990",
       "mother": "23506",
       "ram": "81841",
@@ -174,11 +174,11 @@
     {
       "id": 38532,
       "name": "RX 7600 - 8GB GDDR6",
-      "price": 436880,
-      "description": "Rendimiento moderno para jugar en 1080p y 1440p (según el juego). Arquitectura RDNA 3, eficiencia energética y potencia. Hoy, a un EXCELENTE precio.",
+      "price": 370000,
+      "description": "Rendimiento moderno para jugar en 1080p y 1440p (según el juego). Arquitectura RDNA 3, eficiencia energética y potencia.",
       "image_url": "comps/gpus/38532.webp",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-amd-radeon-rx-7600-powercolor-8gb-gddr6/p/MLA29675752?offer_type=BEST_PRICE#polycard_client=search_best-seller&tracking_id=441f348b-7b07-4062-afc1-4ca4eadfdd88&wid=MLA2148656004&sid=search",
-      "lastUpd": "2025-08-24T17:17:46.697Z",
+      "lastUpd": "2025-08-26T00:34:29.475Z",
       "visible": 1
     },
     {
