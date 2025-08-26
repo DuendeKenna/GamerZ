@@ -8,7 +8,7 @@
       "mother": "49131",
       "ram": "81841",
       "cantRam": 1,
-      "total": 365830,
+      "total": 385330,
       "totalram": 16,
       "visible": 1
     },
@@ -51,11 +51,11 @@
     {
       "id": 76800,
       "name": "I5 2400 16 Gb 480 Gb Ssd",
-      "price": 232500,
+      "price": 228000,
       "description": "",
       "image_url": "comps/armadas/76800.webp",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-25T13:03:33.650Z",
+      "lastUpd": "2025-08-26T16:13:31.663Z",
       "visible": 1
     }
   ],
@@ -73,11 +73,11 @@
     {
       "id": 50127,
       "name": "Antec AX20",
-      "price": 62890,
+      "price": 62190,
       "slug": "antec-ax20",
       "image_url": "comps/torres/antec-ax20.webp",
       "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:16:41.219Z",
+      "lastUpd": "2025-08-26T16:13:45.951Z",
       "visible": 1
     },
     {
@@ -87,7 +87,7 @@
       "slug": "sentey-h10",
       "image_url": "comps/torres/sentey-h10.webp",
       "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:16:53.708Z",
+      "lastUpd": "2025-08-26T16:13:54.632Z",
       "visible": 1
     },
     {
@@ -125,11 +125,11 @@
     {
       "id": 86326,
       "name": "240 GB - SATA",
-      "price": 28400,
+      "price": 30000,
       "description": "Opción económica si precisás exprimir el precio y no precisás tanto espacio. SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "image_url": "comps/discos/ssd_hiksemi.webp",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1424032565-disco-solido-ssd-240-gb-sata-hiksemi-wave-color-negro-_JM?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:37:20.070Z",
+      "lastUpd": "2025-08-26T16:17:20.621Z",
       "visible": 1
     }
   ],
@@ -174,21 +174,21 @@
     {
       "id": 38532,
       "name": "RX 7600 - 8GB GDDR6",
-      "price": 370000,
+      "price": 407600,
       "description": "Rendimiento moderno para jugar en 1080p y 1440p (según el juego). Arquitectura RDNA 3, eficiencia energética y potencia.",
       "image_url": "comps/gpus/38532.webp",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-amd-radeon-rx-7600-powercolor-8gb-gddr6/p/MLA29675752?offer_type=BEST_PRICE#polycard_client=search_best-seller&tracking_id=441f348b-7b07-4062-afc1-4ca4eadfdd88&wid=MLA2148656004&sid=search",
-      "lastUpd": "2025-08-26T00:34:29.475Z",
+      "lastUpd": "2025-08-26T16:16:51.613Z",
       "visible": 1
     },
     {
       "id": 64501,
       "name": "RTX 3060 VENTUS 2X  - 12GB GDDR6",
-      "price": 540500,
+      "price": 535000,
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugar, editar, streamear…todo al mango.",
       "image_url": "comps/gpus/64501.webp",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:20:43.337Z",
+      "lastUpd": "2025-08-26T16:17:00.556Z",
       "visible": 1
     }
   ],
@@ -216,11 +216,11 @@
     {
       "id": 28101,
       "name": "Genérica Noga 600w",
-      "price": 38700,
+      "price": 38400,
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "image_url": "comps/psus/600noga.webp",
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-25T13:11:07.944Z",
+      "lastUpd": "2025-08-26T16:17:38.950Z",
       "visible": 1
     },
     {
@@ -259,11 +259,11 @@
     {
       "id": 896,
       "name": "Ryzen 5 5600g",
-      "price": 213000,
+      "price": 232500,
       "description": "6 nucleos 4.4ghz Am4",
       "image_url": "comps/cpus/ryzen5_5600g.webp",
       "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T23:04:17.108Z",
+      "lastUpd": "2025-08-26T16:14:58.153Z",
       "visible": 1
     },
     {
@@ -292,12 +292,12 @@
     {
       "id": 93477,
       "name": "DDR4 8 GB - Hiksemi",
-      "price": 39500,
+      "price": 40891,
       "total": 8,
       "description": "",
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-25T13:07:00.552Z",
+      "lastUpd": "2025-08-26T16:15:50.491Z",
       "visible": 1
     },
     {
@@ -327,21 +327,21 @@
     {
       "id": 9976,
       "name": "5 5600g + A520 Asrock",
-      "price": 317230,
+      "price": 324000,
       "description": "Descripción del nuevo Combo.",
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-ddr4-ryzen-5-5600g-a520m-am4-color-negro/p/MLA43499795?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:17:08.869Z",
+      "lastUpd": "2025-08-26T16:14:19.096Z",
       "visible": 1
     },
     {
       "id": 61498,
       "name": "Ryzen 5 4500 + A520 + 8 Gb",
-      "price": 237000,
+      "price": 236000,
       "description": "Descripción del nuevo Combo.",
       "image_url": "",
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-24T17:14:38.925Z",
+      "lastUpd": "2025-08-26T16:14:36.056Z",
       "visible": 1
     },
     {
@@ -369,21 +369,21 @@
     {
       "id": 93025,
       "name": "Noblex 25''",
-      "price": 183000,
+      "price": 202000,
       "description": "",
       "image_url": "comps/monitores/noblex-25.webp",
       "link": "https://www.mercadolibre.com.ar/monitor-noblex-25-pulgadas-nxsm2500-led-fhd/p/MLA45717090?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:21:22.322Z",
+      "lastUpd": "2025-08-26T16:18:05.998Z",
       "visible": 1
     },
     {
       "id": 17689,
       "name": "Gigabyte 27'' 180Hz",
-      "price": 288800,
+      "price": 284000,
       "description": "",
       "image_url": "comps/monitores/gigabyte-27-180hz.webp",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-gigabyte-gs27fa-27-180hz-panel-ips-1ms-hdr-full-hd/p/MLA48944295?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:21:31.258Z",
+      "lastUpd": "2025-08-26T16:18:18.479Z",
       "visible": 1
     }
   ],
@@ -391,11 +391,11 @@
     {
       "id": 18066,
       "name": "Redragon Wireless",
-      "price": 24890,
+      "price": 25600,
       "description": "",
       "image_url": "comps/mouses/redragon-wireless.webp",
       "link": "https://www.mercadolibre.com.ar/mouse-y-pad-2-en-1-gamer-redragon-m601wl-ba-negrorojo/p/MLA17588671?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:21:46.938Z",
+      "lastUpd": "2025-08-26T16:18:26.847Z",
       "visible": 1
     },
     {
@@ -425,21 +425,21 @@
     {
       "id": 97647,
       "name": "Inalámbrico Noganet",
-      "price": 34280,
+      "price": 34000,
       "description": "",
       "image_url": "comps/teclados/inalambrico-noganet.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-25T13:12:56.057Z",
+      "lastUpd": "2025-08-26T16:18:45.488Z",
       "visible": 1
     },
     {
       "id": 78296,
       "name": "Mecánico Noganet Cabledo",
-      "price": 34900,
+      "price": 35200,
       "description": "",
       "image_url": "comps/teclados/mecanico-noganet-cabledo.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-25T13:13:18.122Z",
+      "lastUpd": "2025-08-26T16:18:52.560Z",
       "visible": 1
     },
     {
@@ -457,11 +457,11 @@
     {
       "id": 67546,
       "name": "Inalámbricos Solarmax",
-      "price": 16200,
+      "price": 16300,
       "description": "",
       "image_url": "comps/combos-mouse-teclado/mouse-y-teclado-inalámbricos-solarmax.webp",
       "link": "https://www.mercadolibre.com.ar/teclado-y-mouse-combo-inalambrico-solarmax-kb302wmw200-color-negro/p/MLA21805667?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-24T17:19:34.621Z",
+      "lastUpd": "2025-08-26T16:19:13.424Z",
       "visible": 1
     }
   ],
@@ -478,11 +478,11 @@
     {
       "id": 22627,
       "name": "Nubwo N1 Pro",
-      "price": 33000,
+      "price": 35000,
       "description": "",
       "image_url": "comps/auris/22627.webp",
       "link": "https://www.mercadolibre.com.ar/auriculares-gamer-nubwo-n1-pro-negro-con-luz-led-rgb-para-pc-ps4-xbox/p/MLA18651912?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=78f0b566-6759-43a3-8568-c4800be17775&wid=MLA2071564122&sid=search",
-      "lastUpd": "2025-08-23T04:22:16.075Z",
+      "lastUpd": "2025-08-26T16:19:28.121Z",
       "visible": 1
     },
     {
@@ -510,11 +510,11 @@
     {
       "id": 9675,
       "name": "Genius Madera",
-      "price": 28900,
+      "price": 22000,
       "description": "",
       "image_url": "comps/parlantes/genius-madera.webp",
       "link": "https://www.mercadolibre.com.ar/parlantes-genius-sp-hf180-madera/p/MLA15840120?offer_type=OFFICIAL_STORE",
-      "lastUpd": "2025-08-25T13:14:08.899Z",
+      "lastUpd": "2025-08-26T16:28:07.055Z",
       "visible": 1
     },
     {
@@ -532,11 +532,11 @@
     {
       "id": 18249,
       "name": "Redragon Hitman Full HD",
-      "price": 84280,
+      "price": 85000,
       "description": "",
       "image_url": "comps/webcams/18249.webp",
       "link": "https://www.mercadolibre.com.ar/camara-web-redragon-hitman-full-hd-30fps-color-negro/p/MLA18362781?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:23:50.814Z",
+      "lastUpd": "2025-08-26T16:28:15.968Z",
       "visible": 1
     },
     {
@@ -566,11 +566,11 @@
     {
       "id": 82541,
       "name": "Receptor Amitosai Pro Antena 600mbps 5.8Ghz",
-      "price": 32670,
+      "price": 32700,
       "description": "",
       "image_url": "comps/wifi/82541.webp",
       "link": "https://www.mercadolibre.com.ar/receptor-wifi-amitosai-pro-antena-3dbi-600mbps-58ghz-k2-jc0/p/MLA23210091?offer_type=BEST_PRICE",
-      "lastUpd": "2025-08-23T04:24:36.151Z",
+      "lastUpd": "2025-08-26T16:28:30.719Z",
       "visible": 1
     }
   ],

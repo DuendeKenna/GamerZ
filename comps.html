@@ -1628,12 +1628,12 @@
         if (newPrice < oldPrice) {
             highlightColor = 'rgba(34, 197, 94, 0.3)';
         } else if (newPrice > oldPrice) {
-            highlightColor = 'rgba(239, 68, 68, 0.3)';
+            highlightColor = 'rgb(195 68 239 / 30%)';
         }
         
         tableRow.style.transition = 'background-color 0.5s ease-in-out';
         tableRow.style.backgroundColor = highlightColor;
-        setTimeout(() => { tableRow.style.backgroundColor = ''; }, 3000);
+        // setTimeout(() => { tableRow.style.backgroundColor = ''; }, 3000);
 
         showToast(`Precio de "${product.name}" actualizado a $${newPrice.toLocaleString('es-AR')}.`);
         
