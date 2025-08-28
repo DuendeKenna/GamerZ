@@ -84,8 +84,6 @@
         .btn-danger:hover { background-color: #dc2626; }
         .btn-success { background-color: #22c55e; color: #ffffff; } 
         .btn-success:hover { background-color: #16a34a; } 
-        .btn-info { background-color: #3b82f6; color: #ffffff; }
-        .btn-info:hover { background-color: #2563eb; }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         
         /* Icon and Title Styles */
@@ -309,64 +307,6 @@
             box-shadow: 0 0 0 2px #4f46e5;
         }
 
-        /* NEW: Tooltip Styles */
-        .price-wrapper {
-            position: relative;
-        }
-        .price-history-tooltip {
-            visibility: hidden;
-            width: 220px;
-            background-color: #111827;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -110px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            border: 1px solid #374151;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .price-wrapper:hover .price-history-tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-        .tooltip-table {
-            width: 100%;
-            font-size: 0.8rem;
-        }
-        .tooltip-table th, .tooltip-table td {
-            padding: 4px 8px;
-            text-align: left;
-        }
-        .tooltip-table th {
-            border-bottom: 1px solid #374151;
-        }
-        .tooltip-table tr:nth-child(even) {
-            background-color: #1f2937;
-        }
-
-        /* NEW: Previous price indicator in table */
-        .previous-price-indicator {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: white;
-            white-space: nowrap;
-            margin-bottom: 4px;
-            z-index: 5;
-        }
-
-
         @media (max-width: 1024px) {
             .management-section {
                 grid-template-columns: 1fr;
@@ -441,19 +381,12 @@
         <section class="mt-10 p-6 bg-gray-900 rounded-lg shadow-inner border border-gray-700">
             <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar y Copiar Código de Vectores</h2>
             <textarea id="output-code" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-800 text-green-400 font-mono text-sm resize-y" readonly></textarea>
-            <!-- MODIFIED: Added buttons for history -->
             <div class="flex flex-wrap justify-center items-center mt-4 gap-4">
                 <button onclick="generateCode()" class="btn btn-primary">
-                    <span class="lucide-icon mr-2" data-lucide="code"></span> Generar Código Actual
+                    <span class="lucide-icon mr-2" data-lucide="code"></span> Generar Código
                 </button>
                 <button onclick="copyCode()" class="btn btn-secondary">
-                    <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código Actual
-                </button>
-                <button onclick="generateHistoryCode()" class="btn btn-info">
-                    <span class="lucide-icon mr-2" data-lucide="history"></span> Generar Historial
-                </button>
-                <button onclick="copyHistoryCode()" class="btn btn-secondary">
-                    <span class="lucide-icon mr-2" data-lucide="copy-check"></span> Copiar Historial
+                    <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código
                 </button>
             </div>
             <div id="message-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-50"></div>
@@ -572,13 +505,12 @@
 
     // --- Helper & Utility Functions ---
 
-    // MODIFIED: formatTimestamp to use 24-hour format
     function formatTimestamp(isoString) {
         if (!isoString) return 'Nunca actualizado';
         try {
             const date = new Date(isoString);
             const options = {
-                year: '2-digit', month: '2-digit', day: '2-digit',
+                year: 'numeric', month: '2-digit', day: '2-digit',
                 hour: '2-digit', minute: '2-digit',
                 hour12: false
             };
@@ -653,7 +585,7 @@
             return urlString;
         }
     }
-    
+
     function copyToClipboard(text) {
         if (!text) return;
         navigator.clipboard.writeText(text).then(function() {
@@ -706,7 +638,6 @@
         return newId;
     }
 
-    // MODIFIED: Sanitize and handle price history
     function sanitizeAndAssignDefaults() {
         const existingIds = getAllIds();
         for (const categoryKey in dataMap) {
@@ -722,22 +653,6 @@
                 if (item.visible === undefined) {
                     item.visible = 1;
                 }
-
-                // --- Price History Logic ---
-                if (item.prices && Array.isArray(item.prices) && item.prices.length > 0) {
-                    item.price = item.prices[0].value;
-                    item.lastUpd = item.prices[0].date;
-                } else if (typeof item.price === 'number') {
-                    item.prices = [{
-                        value: item.price,
-                        date: item.lastUpd || new Date(0).toISOString()
-                    }];
-                } else {
-                    item.price = 0;
-                    item.prices = [];
-                }
-                // --- End Price History Logic ---
-
                 if (categoryKey === 'baseOptions') {
                     if (item.description === undefined) item.description = '';
                     if (item.totalram === undefined) item.totalram = 0;
@@ -752,10 +667,6 @@
                 }
                 if (categoryKey === 'ramOptions') {
                     if (item.total === undefined) item.total = 0;
-                }
-                // NEW: Ensure towers have a description field
-                if (categoryKey === 'towersOptions' && item.description === undefined) {
-                    item.description = '';
                 }
             });
         }
@@ -785,10 +696,6 @@
         if (newProduct.visible === undefined) {
             newProduct.visible = 1;
         }
-        // Initialize price history for new products
-        newProduct.prices = [{ value: newProduct.price, date: new Date().toISOString() }];
-        newProduct.lastUpd = newProduct.prices[0].date;
-
         dataMap[categoryKey].push(newProduct);
         renderOverviewTables();
         saveDataToSessionStorage();
@@ -801,33 +708,22 @@
         saveDataToSessionStorage();
     }
 
-    // MODIFIED: updateProduct to handle price history
+    // --- MODIFIED: updateProduct to prevent focus loss ---
     function updateProduct(categoryKey, index, key, value) {
         if (dataMap[categoryKey] && dataMap[categoryKey][index]) {
-            const product = dataMap[categoryKey][index];
-            
+            dataMap[categoryKey][index][key] = value;
             if (key === 'price') {
                 const newTimestamp = new Date().toISOString();
-                const newPrice = value;
-
-                product.price = newPrice;
-                product.lastUpd = newTimestamp;
-
-                if (!Array.isArray(product.prices)) {
-                    product.prices = [];
+                dataMap[categoryKey][index]['lastUpd'] = newTimestamp;
+                // --- NEW: Add to price_history array ---
+                if (!Array.isArray(dataMap[categoryKey][index].price_history)) {
+                    dataMap[categoryKey][index].price_history = [];
                 }
-                product.prices.unshift({ value: newPrice, date: newTimestamp });
-                
-                // Update tooltip dynamically
-                const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
-                if (tableRow) {
-                    const tooltip = tableRow.querySelector('.price-history-tooltip');
-                    if (tooltip) {
-                        tooltip.innerHTML = generateTooltipTable(product.prices);
-                    }
+                dataMap[categoryKey][index].price_history.push({ date: newTimestamp, price: value });
+                // Keep only last 30 entries
+                if (dataMap[categoryKey][index].price_history.length > 30) {
+                    dataMap[categoryKey][index].price_history = dataMap[categoryKey][index].price_history.slice(-30);
                 }
-            } else {
-                product[key] = value;
             }
             
             if (key === 'price' || (categoryKey === 'ramOptions' && key === 'total')) {
@@ -1417,19 +1313,6 @@
         }
     }
 
-    // NEW: Function to generate the HTML for the tooltip table
-    function generateTooltipTable(prices) {
-        if (!prices || prices.length === 0) {
-            return '<span>Sin historial de precios.</span>';
-        }
-        const recentPrices = prices.slice(0, 7);
-        let tableHTML = '<table class="tooltip-table"><thead><tr><th>Fecha</th><th>Precio</th></tr></thead><tbody>';
-        recentPrices.forEach(p => {
-            tableHTML += `<tr><td>${formatTimestamp(p.date)}</td><td>$${p.value.toLocaleString('es-AR')}</td></tr>`;
-        });
-        tableHTML += '</tbody></table>';
-        return tableHTML;
-    }
 
     function renderOverviewTables() {
         const overviewContainer = document.getElementById('overview-view');
@@ -1451,34 +1334,33 @@
             table.className = 'overview-table w-full text-left text-sm text-gray-400';
             
             let headers = `
-                <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">ID</th>
-                <th scope="col" class="px-2 py-3" style="width: 210px;">Nombre</th>
-                <th scope="col" class="px-2 py-3 text-left" style="width: 120px;">Precio</th>
-                <th scope="col" class="px-2 py-3 hidden md:table-cell">Descripción</th>
-                <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">Visible</th>
-                <th scope="col" class="px-1 py-3 hidden md:table-cell" style="width:1%;min-width:150px;">Acciones</th>
+                <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
+                <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
+                <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
+                ${categoryKey !== 'towersOptions' && categoryKey !== 'ramOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th>' : ''}
+                ${categoryKey === 'ramOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th><th scope="col" class="px-2 py-3">Total (GB)</th>' : ''}
+                <th scope="col" class="px-2 py-3" style="width: 200px;">URL Imagen</th>
+                <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
+                <th scope="col" class="px-1 py-3" style="width:1%;min-width:150px;">Acciones</th>
             `;
-            if (categoryKey === 'ramOptions') {
+            let colspan = 6;
+            if (categoryKey !== 'towersOptions') colspan++;
+            if (categoryKey === 'ramOptions') colspan++;
+
+
+            if (categoryKey === 'miniPcOptions') {
                 headers = `
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">ID</th>
-                    <th scope="col" class="px-2 py-3" style="width: 210px;">Nombre</th>
-                    <th scope="col" class="px-2 py-3 text-left" style="width: 120px;">Precio</th>
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell">Descripción</th>
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell">Total (GB)</th>
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">Visible</th>
-                    <th scope="col" class="px-1 py-3 hidden md:table-cell" style="width:1%;min-width:150px;">Acciones</th>
+                    <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
+                    <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
+                    <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
+                    <th scope="col" class="px-2 py-3">CPU</th>
+                    <th scope="col" class="px-2 py-3">RAM</th>
+                    <th scope="col" class="px-2 py-3">SSD</th>
+                    <th scope="col" class="px-2 py-3" style="width: 200px;">URL Imagen</th>
+                    <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
+                    <th scope="col" class="px-1 py-3" style="width:1%;min-width:150px;">Acciones</th>
                 `;
-            } else if (categoryKey === 'miniPcOptions') {
-                headers = `
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">ID</th>
-                    <th scope="col" class="px-2 py-3" style="width: 210px;">Nombre</th>
-                    <th scope="col" class="px-2 py-3 text-left" style="width: 120px;">Precio</th>
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell">CPU</th>
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell">RAM</th>
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell">SSD</th>
-                    <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">Visible</th>
-                    <th scope="col" class="px-1 py-3 hidden md:table-cell" style="width:1%;min-width:150px;">Acciones</th>
-                `;
+                colspan = 9;
             }
 
 
@@ -1491,24 +1373,26 @@
                         let customColumns;
                         if (categoryKey === 'miniPcOptions') {
                             customColumns = `
-                                <td class="px-2 py-2 hidden md:table-cell"><input type="text" value="${product.cpu || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'cpu', this.value)" class="w-full"></td>
-                                <td class="px-2 py-2 hidden md:table-cell"><input type="text" value="${product.ram || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ram', this.value)" class="w-full"></td>
-                                <td class="px-2 py-2 hidden md:table-cell"><input type="text" value="${product.ssd || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ssd', this.value)" class="w-full"></td>
+                                <td class="px-2 py-2"><input type="text" value="${product.cpu || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'cpu', this.value)" class="w-full"></td>
+                                <td class="px-2 py-2"><input type="text" value="${product.ram || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ram', this.value)" class="w-full"></td>
+                                <td class="px-2 py-2"><input type="text" value="${product.ssd || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ssd', this.value)" class="w-full"></td>
                             `;
                         } else if (categoryKey === 'ramOptions') {
                              customColumns = `
-                                <td class="px-2 py-2 hidden md:table-cell">
+                                <td class="px-2 py-2">
                                     <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
                                 </td>
-                                <td class="px-2 py-2 hidden md:table-cell">
+                                <td class="px-2 py-2">
                                     <input type="number" value="${product.total || 0}" oninput="updateProduct('${categoryKey}', ${index}, 'total', parseInt(this.value, 10) || 0)" class="w-full">
                                 </td>
                             `;
-                        } else {
+                        } else if (categoryKey !== 'towersOptions') {
                             customColumns = `
-                            <td class="px-2 py-2 hidden md:table-cell">
+                            <td class="px-2 py-2">
                                 <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
                             </td>`;
+                        } else {
+                            customColumns = '';
                         }
 
                         const priceCheckButton = product.link ? `
@@ -1517,7 +1401,7 @@
                             </button>
                         ` : '';
                         
-                        const tooltipTableHTML = generateTooltipTable(product.prices);
+                        const lastUpdFormatted = formatTimestamp(product.lastUpd);
 
                         return `
                         <tr id="row-${categoryKey}-${index}" class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-200" 
@@ -1525,24 +1409,26 @@
                             ondrop="onRowDrop(event, '${categoryKey}', ${index})"
                             onmouseenter="showImagePreview('${product.image_url || ''}')"
                             onmouseleave="hideImagePreview()">
-                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono cursor-pointer hover:text-white hidden md:table-cell" onclick="copyToClipboard('${product.id || ''}')" title="Copiar ID">${product.id || ''}</td>
+                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono cursor-pointer hover:text-white" onclick="copyToClipboard('${product.id || ''}')" title="Copiar ID">${product.id || ''}</td>
                             <td class="px-2 py-2 font-medium text-white whitespace-nowrap">
                                 <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
                             </td>
                             <td class="px-2 py-2 price-cell">
-                                <div class="price-wrapper">
+                                <div class="price-wrapper" title="Última actualización: ${lastUpdFormatted}">
                                     <div class="flex items-center gap-1">
                                         <span class="text-gray-400 font-semibold text-lg">$</span>
                                         <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
                                     </div>
-                                    <div class="price-history-tooltip">${tooltipTableHTML}</div>
                                 </div>
                             </td>
                             ${customColumns}
-                            <td class="px-2 py-2 text-center hidden md:table-cell">
+                            <td class="px-2 py-2">
+                                <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" onclick="autofillImagePath(this, '${categoryKey}', ${index})" class="w-full text-xs">
+                            </td>
+                            <td class="px-2 py-2 text-center">
                                 <input type="checkbox" ${product.visible ? 'checked' : ''} onchange="updateProduct('${categoryKey}', ${index}, 'visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
                             </td>
-                            <td class="px-1 py-2 text-right hidden md:table-cell">
+                            <td class="px-1 py-2 text-right">
                                 <div class="flex flex-col items-end gap-1">
                                     <div class="flex items-center">
                                         ${priceCheckButton}
@@ -1566,13 +1452,13 @@
                         </tr>
                     `}).join('')}
                     <tr>
-                        <td colspan="3" class="add-row-button-cell">
-                            <div class="flex justify-end items-center gap-4">
+                        <td colspan="${colspan}" class="add-row-button-cell">
+                            <div class="flex justify-center items-center gap-4">
                                 <button onclick="addProduct('${categoryKey}')" class="add-row-button">
-                                    <span class="lucide-icon mr-2" data-lucide="plus"></span>Añadir
+                                    <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir ${getComponentName(categoryKey)}
                                 </button>
                                 <button id="add-from-clipboard-${categoryKey}" onclick="addProductFromClipboard('${categoryKey}')" class="add-row-button bg-sky-600 hover:bg-sky-700">
-                                    <span class="lucide-icon mr-2" data-lucide="clipboard-plus"></span>Añadir Link
+                                    <span class="lucide-icon mr-2" data-lucide="clipboard-plus"></span> Añadir desde Link
                                 </button>
                             </div>
                         </td>
@@ -1583,88 +1469,108 @@
             overviewContainer.appendChild(categoryDiv);
         });
         lucide.createIcons();
+        // Also update tab tables
+        renderSinglePriceTable();
+        renderPriceHistoryTable();
     }
 
-    // --- Drag and Drop for Table Rows ---
-    let dragSrcIndex = null;
-    let dragSrcCategory = null;
+    // --- TAB UI LOGIC ---
+function setupTabs() {
+    const tabSingle = document.getElementById('tab-single-price');
+    const tabHistory = document.getElementById('tab-price-history');
+    const contentSingle = document.getElementById('tab-content-single-price');
+    const contentHistory = document.getElementById('tab-content-price-history');
+    tabSingle.addEventListener('click', () => {
+        tabSingle.classList.add('btn-primary');
+        tabSingle.classList.remove('btn-secondary');
+        tabHistory.classList.remove('btn-primary');
+        tabHistory.classList.add('btn-secondary');
+        contentSingle.classList.remove('hidden');
+        contentHistory.classList.add('hidden');
+    });
+    tabHistory.addEventListener('click', () => {
+        tabHistory.classList.add('btn-primary');
+        tabHistory.classList.remove('btn-secondary');
+        tabSingle.classList.remove('btn-primary');
+        tabSingle.classList.add('btn-secondary');
+        contentSingle.classList.add('hidden');
+        contentHistory.classList.remove('hidden');
+    });
+}
 
-    function onRowDragStart(event, categoryKey, index) {
-        dragSrcIndex = index;
-        dragSrcCategory = categoryKey;
-        event.dataTransfer.effectAllowed = 'move';
+// --- RENDER SINGLE PRICE TABLE ---
+function renderSinglePriceTable() {
+    const container = document.getElementById('tab-content-single-price');
+    container.innerHTML = '';
+    CATEGORY_NAV_LIST.forEach(category => {
+        const categoryKey = category.key;
+        if (!categoryKey.includes('Options')) return;
+        const categoryData = dataMap[categoryKey];
+        const readableCategoryName = category.label;
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700 category-table-container';
+        categoryDiv.id = `table-container-single-${categoryKey}`;
+        categoryDiv.innerHTML = `<h3 class=\"text-xl font-semibold text-gray-100 mb-4\">${readableCategoryName}</h3>`;
+        const table = document.createElement('table');
+        table.className = 'overview-table w-full text-left text-sm text-gray-400';
+        let headers = `<th>Nombre</th><th>Precio</th>`;
+        table.innerHTML = `<thead><tr>${headers}</tr></thead><tbody>` +
+            categoryData.map((item, idx) => `<tr><td>${item.name || ''}</td><td>$${(item.price || 0).toLocaleString('es-AR')}</td></tr>`).join('') +
+            `</tbody>`;
+        categoryDiv.appendChild(table);
+        container.appendChild(categoryDiv);
+    });
+}
+
+// --- RENDER PRICE HISTORY TABLE ---
+function renderPriceHistoryTable() {
+    const container = document.getElementById('tab-content-price-history');
+    container.innerHTML = '';
+    CATEGORY_NAV_LIST.forEach(category => {
+        const categoryKey = category.key;
+        if (!categoryKey.includes('Options')) return;
+        const categoryData = dataMap[categoryKey];
+        const readableCategoryName = category.label;
+        const categoryDiv = document.createElement('div');
+        categoryDiv.className = 'mb-8 p-6 bg-gray-900 rounded-lg shadow-sm border border-gray-700 category-table-container';
+        categoryDiv.id = `table-container-history-${categoryKey}`;
+        categoryDiv.innerHTML = `<h3 class=\"text-xl font-semibold text-gray-100 mb-4\">${readableCategoryName}</h3>`;
+        const table = document.createElement('table');
+        table.className = 'overview-table w-full text-left text-sm text-gray-400';
+        let headers = `<th>Nombre</th><th>Fecha</th><th>Precio</th>`;
+        table.innerHTML = `<thead><tr>${headers}</tr></thead><tbody>` +
+            categoryData.map((item, idx) => {
+                if (!item.price_history || !Array.isArray(item.price_history)) return `<tr><td>${item.name || ''}</td><td colspan=\"2\">Sin historial</td></tr>`;
+                return item.price_history.map(hist => `<tr><td>${item.name || ''}</td><td>${formatTimestamp(hist.date)}</td><td>$${(hist.price || 0).toLocaleString('es-AR')}</td></tr>`).join('');
+            }).join('') +
+            `</tbody>`;
+        categoryDiv.appendChild(table);
+        container.appendChild(categoryDiv);
+    });
+}
+
+// --- NEW: Export price history JSON ---
+function generatePriceHistoryCode() {
+    const exportData = {};
+    for (const mapKey in dataMap) {
+        exportData[mapKey] = dataMap[mapKey].map(p => {
+            const out = { id: p.id, name: p.name };
+            if (Array.isArray(p.price_history)) out.price_history = p.price_history;
+            return out;
+        });
     }
-    function onRowDragOver(event) {
-        event.preventDefault();
-        event.dataTransfer.dropEffect = 'move';
-    }
-    function onRowDrop(event, categoryKey, index) {
-        event.preventDefault();
-        if (dragSrcCategory === categoryKey && dragSrcIndex !== null && dragSrcIndex !== index) {
-            const arr = dataMap[categoryKey];
-            const moved = arr.splice(dragSrcIndex, 1)[0];
-            arr.splice(index, 0, moved);
-            renderOverviewTables();
-            saveDataToSessionStorage();
-        }
-        dragSrcIndex = null;
-        dragSrcCategory = null;
-    }
+    return JSON.stringify(exportData, null, 2);
+}
 
-    // --- Add Product from Clipboard (Modified) ---
-    async function addProductFromClipboard(categoryKey) {
-        const btn = document.getElementById(`add-from-clipboard-${categoryKey}`);
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        btn.disabled = true;
+// --- NEW: Copy price history JSON ---
+function copyPriceHistoryCode() {
+    const code = generatePriceHistoryCode();
+    navigator.clipboard.writeText(code).then(() => {
+        showToast('¡Historial de precios copiado al portapapeles!');
+    });
+}
 
-        try {
-            let link = await navigator.clipboard.readText();
-            if (!link || !link.trim().startsWith('http')) {
-                throw new Error('El portapapeles no contiene un link válido.');
-            }
-            link = modifyMercadoLibreLink(link.trim());
-            
-            const newId = generateUniqueId(getAllIds());
-            const categoryInfo = CATEGORY_NAV_LIST.find(cat => cat.key === categoryKey);
-            let imageUrl = '';
-            if (categoryInfo && categoryInfo.folder) {
-                imageUrl = `comps/${categoryInfo.folder}/${newId}.webp`;
-            }
-
-            const newProduct = {
-                id: newId,
-                name: 'Nuevo Producto desde Link',
-                price: 0,
-                link: link,
-                visible: 1,
-                image_url: imageUrl
-            };
-
-            if (categoryKey === 'miniPcOptions') {
-                newProduct.cpu = '';
-                newProduct.ram = '';
-                newProduct.ssd = '';
-            } else {
-                newProduct.description = '';
-            }
-
-            addProduct(categoryKey, newProduct);
-            showToast('Producto añadido desde el link.');
-
-        } catch (error) {
-            console.error('Error al añadir desde clipboard:', error);
-            showToast(error.message, 'error');
-        } finally {
-            btn.innerHTML = originalContent;
-            btn.disabled = false;
-            lucide.createIcons({
-                nodes: [btn.querySelector('.lucide-icon')],
-            });
-        }
-    }
-
-    // --- MODIFIED: Price Check Popup & Loop Logic (No iframe) ---
+// --- MODIFIED: Price Check Popup & Loop Logic (No iframe) ---
 
     function openPriceCheckPopup(categoryKey, index, isFromLoop = false) {
         const product = dataMap[categoryKey][index];
@@ -1677,7 +1583,7 @@
         const title = document.getElementById('popup-title');
         const currentPriceEl = document.getElementById('popup-current-price');
         const newPriceInput = document.getElementById('popup-new-price');
-        
+
         title.textContent = `Chequeando: ${product.name}`;
         currentPriceEl.textContent = `$${(product.price || 0).toLocaleString('es-AR')}`;
         
@@ -1698,63 +1604,54 @@
         popup.classList.add('hidden');
     }
 
-    // --- MODIFIED: handleManualPriceCheck to show previous price ---
+    // --- MODIFIED: handleManualPriceCheck to fix bug ---
     function handleManualPriceCheck(event) {
         if (event.key !== 'Enter') return;
 
         const input = event.target;
         const { categoryKey, index, isFromLoop } = input.dataset;
         const product = dataMap[categoryKey][index];
-        const oldPrice = product.price || 0;
-        let newPrice;
 
+        // If input is empty, do not modify anything, but if in loop, continue to next item
         if (!input.value.trim()) {
-            newPrice = oldPrice; // If empty, price is unchanged
-        } else {
-            const rawValue = input.value.replace(/[^\d]/g, '');
-            newPrice = parseInt(rawValue, 10);
+            const popup = document.getElementById('price-check-popup');
+            popup.classList.add('hidden');
+            if (isFromLoop === 'true') {
+                currentQueueIndex++;
+                sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                setTimeout(processNextInQueue, 1000);
+            }
+            return;
         }
+
+        const rawValue = input.value.replace(/[^\d]/g, '');
+        const newPrice = parseInt(rawValue, 10);
 
         if (isNaN(newPrice) || !product) {
             showToast('Por favor, ingrese un precio válido.', 'error');
             return;
         }
 
+        const oldPrice = product.price || 0;
         updateProduct(categoryKey, index, 'price', newPrice); 
         
         const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
+        // BUG FIX: Manually update the price input in the table to reflect the change
         const priceInputInTable = tableRow.querySelector('.price-cell input');
-        if(priceInputInTable) {
+        if (priceInputInTable) {
             priceInputInTable.value = newPrice.toLocaleString('es-AR');
         }
         
-        let highlightColor = 'rgba(2, 132, 199, 0.3)'; // Blue
+        let highlightColor = 'rgba(2, 132, 199, 0.3)';
         if (newPrice < oldPrice) {
-            highlightColor = 'rgba(34, 197, 94, 0.3)'; // Green
+            highlightColor = 'rgba(34, 197, 94, 0.3)';
         } else if (newPrice > oldPrice) {
-            highlightColor = 'rgba(249, 115, 22, 0.3)'; // Orange
-        }
-
-        // NEW LOGIC TO SHOW PREVIOUS PRICE in table
-        const priceWrapper = tableRow.querySelector('.price-wrapper');
-        if (priceWrapper) {
-            const existingIndicator = priceWrapper.querySelector('.previous-price-indicator');
-            if (existingIndicator) existingIndicator.remove();
-
-            if (newPrice !== oldPrice) { // Only show indicator if price changed
-                const prevPriceSpan = document.createElement('span');
-                prevPriceSpan.className = 'previous-price-indicator';
-                prevPriceSpan.style.backgroundColor = highlightColor;
-                prevPriceSpan.textContent = `$${oldPrice.toLocaleString('es-AR')}`; // MODIFIED: Removed "Anterior:"
-                priceWrapper.appendChild(prevPriceSpan);
-
-                // MODIFIED: Removed timeout to make indicator persistent
-            }
+            highlightColor = 'rgb(195 68 239 / 30%)';
         }
         
         tableRow.style.transition = 'background-color 0.5s ease-in-out';
         tableRow.style.backgroundColor = highlightColor;
-        // REMOVED TIMEOUT for row highlight to make it persistent
+        // setTimeout(() => { tableRow.style.backgroundColor = ''; }, 3000);
 
         showToast(`Precio de "${product.name}" actualizado a $${newPrice.toLocaleString('es-AR')}.`);
         
@@ -1764,7 +1661,7 @@
         if (isFromLoop === 'true') {
             currentQueueIndex++;
             sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
-            setTimeout(processNextInQueue, 1000); 
+            setTimeout(processNextInQueue, 1000);
         }
     }
 
@@ -1871,16 +1768,69 @@
     // --- Code Export ---
 
     function generateCode() {
-        const exportData = JSON.parse(JSON.stringify(dataMap));
-        for (const mapKey in exportData) {
-            if (mapKey.includes('Options')) {
-                exportData[mapKey].forEach(p => {
-                    // Set the price to the most recent one
-                    p.price = p.prices && p.prices.length > 0 ? p.prices[0].value : 0;
-                    // Remove the prices array for the current price JSON
-                    delete p.prices;
-                });
-            }
+        updateAllBaseTotals(); 
+        updateAllBundleTotals();
+        function getSlugFromImageUrl(imageUrl) {
+            if (!imageUrl) return '';
+            const parts = imageUrl.split('/');
+            const filename = parts[parts.length - 1] || '';
+            return filename.replace(/\.(webp|png|jpg|jpeg|gif)$/i, '');
+        }
+
+        const exportData = {};
+        for (const mapKey in dataMap) {
+             if (mapKey === 'baseOptions') {
+                exportData[mapKey] = dataMap[mapKey].map(b => ({
+                    id: b.id,
+                    name: b.name,
+                    description: b.description,
+                    cpu: b.cpu,
+                    mother: b.mother,
+                    ram: b.ram,
+                    cantRam: b.cantRam,
+                    total: b.total || 0,
+                    totalram: b.totalram || 0,
+                    visible: b.visible !== undefined ? b.visible : 1
+                }));
+                continue;
+             }
+             if (mapKey === 'bundleOptions') {
+                exportData[mapKey] = dataMap[mapKey].map(b => ({
+                    id: b.id,
+                    name: b.name,
+                    description: b.description,
+                    components: b.components || [],
+                    total: b.total || 0,
+                    visible: b.visible !== undefined ? b.visible : 1
+                }));
+                continue;
+             }
+             exportData[mapKey] = dataMap[mapKey].map(p => {
+                const { id, name, price, description, image_url, link, visible, cpu, ram, ssd, total, lastUpd } = p;
+                let orderedProduct = { id, name, price };
+
+                if (mapKey === 'miniPcOptions') {
+                    orderedProduct = { ...orderedProduct, cpu, ram, ssd };
+                } else if (mapKey === 'towersOptions') {
+                    orderedProduct.slug = getSlugFromImageUrl(image_url);
+                } else if (mapKey === 'ramOptions') {
+                    orderedProduct.total = total || 0;
+                    orderedProduct.description = description;
+                } else {
+                    if (description !== undefined) {
+                        orderedProduct.description = description;
+                    }
+                }
+
+                orderedProduct.image_url = image_url;
+                orderedProduct.link = link;
+                if (lastUpd) {
+                    orderedProduct.lastUpd = lastUpd;
+                }
+                orderedProduct.visible = visible !== undefined ? visible : 1;
+                
+                return orderedProduct;
+            });
         }
         
         const code = JSON.stringify(exportData, null, 2);
@@ -1893,36 +1843,8 @@
         generateCode();
         outputTextArea.select();
         document.execCommand('copy');
-        showToast('¡Código Actual copiado al portapapeles!');
+        showToast('¡Código copiado al portapapeles!');
     }
-
-    // NEW: Function to generate JSON with price history
-    function generateHistoryCode() {
-        const exportData = JSON.parse(JSON.stringify(dataMap));
-        for (const mapKey in exportData) {
-             if (mapKey.includes('Options')) {
-                exportData[mapKey].forEach(p => {
-                    // Remove the transient 'price' property, keeping the 'prices' array
-                    delete p.price;
-                    delete p.lastUpd; // Also remove transient lastUpd
-                });
-            }
-        }
-
-        const code = JSON.stringify(exportData, null, 2);
-        document.getElementById('output-code').value = code;
-        return code;
-    }
-
-    // NEW: Function to copy the history JSON
-    function copyHistoryCode() {
-        const outputTextArea = document.getElementById('output-code');
-        generateHistoryCode();
-        outputTextArea.select();
-        document.execCommand('copy');
-        showToast('¡Historial de precios copiado al portapapeles!');
-    }
-
 
     function resetSessionAndReload() {
         sessionStorage.removeItem('productAdminData');
@@ -1930,10 +1852,9 @@
         location.reload();
     }
 
-    // MODIFIED: Load from productsH.json
     async function reloadDataFromJson() {
         try {
-            const response = await fetch('productsH.json?cache_bust=' + new Date().getTime());
+            const response = await fetch('products.json?cache_bust=' + new Date().getTime());
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const dataToLoad = await response.json();
             
@@ -1952,11 +1873,11 @@
             renderBundlesSection();
             renderOverviewTables();
             saveDataToSessionStorage();
-            showToast('Datos recargados desde productsH.json');
+            showToast('Datos recargados desde products.json');
 
         } catch (error) {
             console.error("Error reloading from JSON:", error);
-            showToast('Error al recargar el archivo productsH.json.', 'error');
+            showToast('Error al recargar el archivo products.json.', 'error');
         }
     }
     
@@ -1976,13 +1897,12 @@
             showToast('¡Datos restaurados de la sesión anterior!', 'success');
         } else {
             try {
-                // MODIFIED: Load from productsH.json by default
-                const response = await fetch('productsH.json?cache_bust=' + new Date().getTime());
+                const response = await fetch('products.json?cache_bust=' + new Date().getTime());
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 dataToLoad = await response.json();
             } catch (error) {
-                console.error('Error loading productsH.json:', error);
-                showToast('No se pudo cargar productsH.json. Se iniciará con datos vacíos.', 'error');
+                console.error('Error loading products.json:', error);
+                showToast('No se pudo cargar products.json. Se iniciará con datos vacíos.', 'error');
             }
         }
 
@@ -2021,6 +1941,8 @@
                 icon.classList.toggle('rotate-180');
             });
         });
+
+        setupTabs();
     });
 
 </script>
