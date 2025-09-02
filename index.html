@@ -2594,10 +2594,20 @@
             function updateTowerDisplay() {
                 if (towersOptions.length === 0) return;
                 const selectedTower = towersOptions[currentTowerIndex];
-                loadImageWithGrayscale(document.getElementById('current-tower-image'), selectedTower.image_url);
+                // Mostrar imagen siempre, incluso si el precio es 0
+                const towerImgEl = document.getElementById('current-tower-image');
+                if (selectedTower.image_url) {
+                    loadImageWithGrayscale(towerImgEl, selectedTower.image_url);
+                } else {
+                    // Si no tiene imagen, mostrar placeholder
+                    towerImgEl.src = 'https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC';
+                }
                 document.getElementById('current-tower-name').textContent = selectedTower.name;
                 let towerPriceHTML = '';
-                if (selectedTower.link) {
+                if (selectedTower.price === 0) {
+                    // Sin link, solo precio $0
+                    towerPriceHTML = `<span class="component-link" style="color: var(--color-link);">$0</span>`;
+                } else if (selectedTower.link) {
                     const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} ` : '';
                     towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull} <i class="fas fa-external-link-alt"></i></a>`;
                 }

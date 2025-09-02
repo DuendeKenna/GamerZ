@@ -350,20 +350,24 @@
             background-color: #1f2937;
         }
 
-        /* NEW: Previous price indicator in table */
+        /* MODIFIED: Previous price indicator styles */
         .previous-price-indicator {
             position: absolute;
             bottom: 100%;
             left: 50%;
             transform: translateX(-50%);
+            white-space: nowrap;
+            margin-bottom: 4px;
+            z-index: 5;
+            display: flex;
+            gap: 4px;
+        }
+        .old-price-span, .diff-span {
             padding: 2px 6px;
             border-radius: 4px;
             font-size: 0.75rem;
             font-weight: 600;
             color: white;
-            white-space: nowrap;
-            margin-bottom: 4px;
-            z-index: 5;
         }
 
 
@@ -847,12 +851,69 @@
         }
     }
 
-    function formatAndUpdatePrice(input, categoryKey, index) {
+    // BUG FIX: Separated formatting from data update logic
+    function formatPriceInput(input) {
+        // This function will only format the display value without saving anything.
         let raw = input.value.replace(/[^\d]/g, '');
-        if (raw.length > 9) raw = raw.slice(0,9);
-        let num = parseInt(raw, 10) || 0;
-        input.value = num ? num.toLocaleString('es-AR') : '';
-        updateProduct(categoryKey, index, 'price', num);
+        let num = parseInt(raw, 10);
+        input.value = isNaN(num) ? '' : num.toLocaleString('es-AR');
+    }
+    
+    // NEW HELPER: Centralized logic for applying visual feedback on price change
+    function applyPriceChangeVisuals(tableRow, oldPrice, newPrice) {
+        const diff = newPrice - oldPrice;
+        let highlightColor = 'rgba(2, 132, 199, 0.3)'; // Blue for no change
+        let diffColor = '';
+
+        if (diff < 0) {
+            highlightColor = 'rgba(34, 197, 94, 0.3)'; // Green
+            diffColor = 'rgba(34, 197, 94, 1)';
+        } else if (diff > 0) {
+            highlightColor = 'rgba(139, 92, 246, 0.3)'; // Violet
+            diffColor = 'rgba(139, 92, 246, 1)';
+        }
+
+        tableRow.style.backgroundColor = highlightColor;
+
+        const priceWrapper = tableRow.querySelector('.price-wrapper');
+        if (priceWrapper) {
+            const existingIndicator = priceWrapper.querySelector('.previous-price-indicator');
+            if (existingIndicator) existingIndicator.remove();
+
+            if (diff !== 0) {
+                const indicatorContainer = document.createElement('div');
+                indicatorContainer.className = 'previous-price-indicator';
+
+                const oldPriceSpan = document.createElement('span');
+                oldPriceSpan.className = 'old-price-span';
+                oldPriceSpan.style.backgroundColor = '#4b5563'; // Gray-600
+                oldPriceSpan.textContent = `$${oldPrice.toLocaleString('es-AR')}`;
+
+                const diffSpan = document.createElement('span');
+                diffSpan.className = 'diff-span';
+                diffSpan.style.backgroundColor = diffColor;
+                const diffAmount = Math.round(diff / 1000);
+                diffSpan.textContent = diffAmount > 0 ? `+${diffAmount}k` : `${diffAmount}k`;
+                
+                indicatorContainer.appendChild(oldPriceSpan);
+                indicatorContainer.appendChild(diffSpan);
+                priceWrapper.appendChild(indicatorContainer);
+            }
+        }
+    }
+
+    function updatePriceFromInput(input, categoryKey, index) {
+        // This function commits the final value to the data model.
+        let raw = input.value.replace(/[^\d]/g, '');
+        let newPrice = parseInt(raw, 10) || 0;
+        const product = dataMap[categoryKey][index];
+        const oldPrice = product.price;
+
+        if (oldPrice !== newPrice) {
+            updateProduct(categoryKey, index, 'price', newPrice);
+            const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
+            applyPriceChangeVisuals(tableRow, oldPrice, newPrice);
+        }
     }
     
     async function replaceLink(categoryKey, index) {
@@ -1546,7 +1607,11 @@
                                 <div class="price-wrapper">
                                     <div class="flex items-center gap-1">
                                         <span class="text-gray-400 font-semibold text-lg">$</span>
-                                        <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
+                                        <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" 
+                                            oninput="formatPriceInput(this)"
+                                            onchange="updatePriceFromInput(this, '${categoryKey}', ${index})"
+                                            onkeydown="if(event.key === 'Enter'){ event.preventDefault(); this.blur(); }"
+                                            class="text-left" style="width: 100px;">
                                     </div>
                                     <div class="price-history-tooltip">${tooltipTableHTML}</div>
                                 </div>
@@ -1741,33 +1806,7 @@
             priceInputInTable.value = newPrice.toLocaleString('es-AR');
         }
         
-        let highlightColor = 'rgba(2, 132, 199, 0.3)'; // Blue
-        if (newPrice < oldPrice) {
-            highlightColor = 'rgba(34, 197, 94, 0.3)'; // Green
-        } else if (newPrice > oldPrice) {
-            highlightColor = 'rgba(249, 115, 22, 0.3)'; // Orange
-        }
-
-        // NEW LOGIC TO SHOW PREVIOUS PRICE in table
-        const priceWrapper = tableRow.querySelector('.price-wrapper');
-        if (priceWrapper) {
-            const existingIndicator = priceWrapper.querySelector('.previous-price-indicator');
-            if (existingIndicator) existingIndicator.remove();
-
-            if (newPrice !== oldPrice) { // Only show indicator if price changed
-                const prevPriceSpan = document.createElement('span');
-                prevPriceSpan.className = 'previous-price-indicator';
-                prevPriceSpan.style.backgroundColor = highlightColor;
-                prevPriceSpan.textContent = `$${oldPrice.toLocaleString('es-AR')}`; // MODIFIED: Removed "Anterior:"
-                priceWrapper.appendChild(prevPriceSpan);
-
-                // MODIFIED: Removed timeout to make indicator persistent
-            }
-        }
-        
-        tableRow.style.transition = 'background-color 0.5s ease-in-out';
-        tableRow.style.backgroundColor = highlightColor;
-        // REMOVED TIMEOUT for row highlight to make it persistent
+        applyPriceChangeVisuals(tableRow, oldPrice, newPrice); // REPLACED LOGIC
 
         showToast(`Precio de "${product.name}" actualizado a $${newPrice.toLocaleString('es-AR')}.`);
         

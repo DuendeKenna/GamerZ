@@ -111,6 +111,27 @@
       "description": "",
       "price": 75300,
       "lastUpd": "2025-09-02T02:23:57.478Z"
+    },
+    {
+      "id": 24451,
+      "name": "XYZ Portal 100",
+      "price": 70000,
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1481619353-gabinete-gamer-xyz-portal-100-a-rgb-gamer-vidrio-templado-_JM?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "image_url": "comps/torres/24451.webp",
+      "description": "",
+      "lastUpd": "2025-09-02T14:48:13.482Z"
+    },
+    {
+      "name": "Reciclado",
+      "price": 0,
+      "image_url": "",
+      "link": "",
+      "visible": 1,
+      "image_url": "comps/torres/63462.webp",
+      "description": "",
+      "id": 63462,
+      "lastUpd": "2025-09-02T14:58:18.993Z"
     }
   ],
   "ssdOptions": [
@@ -345,10 +366,10 @@
       "name": "5 5600g + A520 Asrock",
       "description": "Descripción del nuevo Combo.",
       "image_url": "",
-      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-ddr4-ryzen-5-5600g-a520m-am4-color-negro/p/MLA43499795?offer_type=BEST_PRICE",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1106736374-combo-actualizacion-pc-amd-ryzen-5600g-mother-16-gb-_JM?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 310000,
-      "lastUpd": "2025-09-02T02:24:09.950Z"
+      "price": 377000,
+      "lastUpd": "2025-09-02T14:34:51.289Z"
     },
     {
       "id": 61498,
