@@ -713,9 +713,8 @@
         /* --- Software Category Description --- */
         .software-cat-desc {
             background-color: #1a1332;
-            border-radius: 1rem;
             padding: 0.5rem 1rem;
-            margin-bottom: 1rem;
+            
             transition: background 0.3s, color 0.3s;
         }
 
@@ -1433,7 +1432,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 4rem;
-            color: #00ddff;
+            color: #b3e16b;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
             z-index: 2;
         }
@@ -1909,7 +1908,7 @@
                             placeholder="Escribí el nombre de un juego, ej: Fortnite">
                         <button id="ai-button"
                             class="w-full sm:w-auto px-6 py-3 rounded-lg text-white text-lg flex items-center justify-center gap-2">
-                            <i class="fas fa-rocket"></i>
+                            <i class="fas fa-robot"></i>
                             <span>Analizar</span>
                         </button>
                     </div>
@@ -2035,9 +2034,9 @@
                 </p>
             </section>
 
-            <section id="section-software" class="mb-12 section-card-style hidden">
+            <section id="section-software" class="mb-12 section-card-style">
                 <h2 class="text-5xl font-bold text-center mb-8">Programas Clave</h2>
-                <p class="text-center font-saira text-xl mb-1">Te marco lo que Recomiendo👍</p>
+                <p class="text-center font-saira text-xl mb-1">Te marco lo Básico👍</p>
                 <p class="text-center text-gray-100 mb-1 text-xl">✅¡Hacé TU Selección!</p>
                 <p class="text-center text-gray-400 mb-6">Podés modificarla luego...</p>
                 <div id="software-list" class="max-w-2xl mx-auto space-y-4">
@@ -2069,7 +2068,7 @@
                                     <div>
                                         <p class=" green-333 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega
                                             Personal a Domicilio</p>
-                                        <p class="text-xl text-white font-bold">en Toda <strong class="text-white">La
+                                        <p class="text-xl text-white font-bold">en toda <strong class="text-white">La
                                                 Costa 🌊</strong></p>
                                     </div>
                                 </div>
@@ -2185,48 +2184,49 @@
             const gameNames = ['GTA V', 'LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered', 'Need for Speed: Underground HD', 'Half Life: Black Mesa', 'Half Life 2 HD', 'Abe´s Oddysey Remake', 'WoW Classic: en TurtleWoW', 'Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster', 'BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3', 'Fallout: New Vegas', 'Batman: Arkham Asylum', 'Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD', 'Need for Speed: Most Wanted HD', 'Blur', 'GRID 2', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones', 'Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops', 'Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.', 'Mortal Kombat 11 Komplete Edition', 'Ultra Street Fighter IV', 'Ultimate Marvel vs. Capcom 3', 'The King of Fighters XIII', 'Injustice Gods Among Us', 'Heroes of Might & Magic HD V', 'Reckoning: Kingdoms of Amalur', 'Divinity Original Sin', 'Age of Empires II Definitive Edition', 'The Elder Scrolls V: Skyrim', 'The Elder Scrolls IV: Oblivion & AddOns HD'];
             const softwareData = [
                 // SISTEMA
-                { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
-                { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
-                { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
-                { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
+                // { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
+                // { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
+                // { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
+                { name: 'PeaZip', slug: 'pea', checked: true, disabled: false, category: 'Sistema', descripcion: 'El mejor des/compresor de archivos.' },
+                { name: 'MalwareBytes', slug: 'malwarebytes', checked: false, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
                 { name: 'Firewall App Blocker', slug: 'firewall_app_blcoker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
-                { name: 'Fraps', slug: 'fraps', checked: true, disabled: false, category: 'Sistema', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
-                { name: 'HW Monitor', slug: 'hw_monitor', checked: true, disabled: false, category: 'Sistema', descripcion: 'Monitorea temperatura y voltajes.' },
-                { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
-                { name: 'Space Sniffer', slug: 'space_sniffer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza uso de espacio en disco. Ideal para hacer lugar.' },
-                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: true, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
-                { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
-                { name: 'Wise Registry Cleaner', slug: 'wise_registry_cleaner', checked: false, disabled: false, category: 'Sistema', descripcion: 'Limpia el registro de Windows.' },
+                { name: 'Fraps', slug: 'fraps', checked: false, disabled: false, category: 'Sistema', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
+                { name: 'AnyDesk', slug: 'anydesk', checked: true, disabled: false, category: 'Sistema', descripcion: 'Para manejar la PC remotamente - así soluciono problemas a distancia ;)' },
+                // { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
+                { name: 'Lightshot', slug: 'lightshot', checked: false, disabled: false, category: 'Sistema', descripcion: 'Toma capturas de pantalla prolijas. Fundamental si sos creador.' },
+                { name: 'WinDirStat', slug: 'windirstat', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza uso de espacio en disco, para que sepas qué está ocupandote lugar.' },
+                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: false, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
+                { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: false, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
                 // MULTIMEDIA
                 { name: 'Hear', slug: 'hear', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Mejora el audio del sistema. Alta configuración.' },
-                { name: 'PotPlayer', slug: 'potplayer', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Reproductor de video avanzado.' },
-                { name: 'VLC Player', slug: 'vlc_player', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Reproduce cualquier formato de video.' },
-                { name: 'WinAmp', slug: 'winamp', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Clásico reproductor de música, renovado por la comunidad.' },
+                { name: 'VLC Player', slug: 'vlc_player', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Reproduce cualquier formato de video.' },
+                { name: 'WinAmp', slug: 'winamp', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Clásico reproductor de música, renovado por la comunidad.' },
                 { name: 'YouTube', slug: 'youtube', checked: true, disabled: false, category: 'Multimedia', descripcion: 'YouTube *sin publicidad*.' },
-                { name: 'Spotify', slug: 'spotify', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Música en streaming.' },
-                { name: 'Stremio', slug: 'stremio', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Películas y series online.' },
+                { name: 'Spotify', slug: 'spotify', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Música en streaming.' },
+                { name: 'Stremio', slug: 'stremio', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Películas y series (p1r4tas) online.' },
                 // WEB
                 { name: 'Brave', slug: 'brave', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador rápido y seguro basado en Chrome. Bloquea publicidad.' },
-                { name: 'Opera GX', slug: 'opera_gx', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador gamer personalizable. Bloquea publicidad.' },
+                { name: 'Opera GX', slug: 'opera_gx', checked: false, disabled: false, category: 'Web', descripcion: 'Navegador gamer personalizable. Bloquea publicidad.' },
                 { name: 'Google Chrome', slug: 'google_chrome', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador web popular.' },
                 { name: 'WhatsApp', slug: 'whatsapp', checked: true, disabled: false, category: 'Web', descripcion: 'Mensajería instantánea.' },
                 { name: 'Discord', slug: 'discord', checked: false, disabled: false, category: 'Web', descripcion: 'Chat de voz y texto para comunidades.' },
                 { name: 'Zoom', slug: 'zoom', checked: false, disabled: false, category: 'Web', descripcion: 'Videollamadas y reuniones online.' },
-                { name: 'Free Download Manager', slug: 'freedownloadmanager', checked: true, disabled: false, category: 'Web', descripcion: 'Gestor de descargas y torrents eficiente.' },
+                { name: 'Free Download Manager', slug: 'freedownloadmanager', checked: false, disabled: false, category: 'Web', descripcion: 'Gestor de descargas y torrents eficiente.' },
                 { name: 'JDownloader 2', slug: 'jdownloader_2', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
                 { name: 'qBitTorrent', slug: 'qbittorrent', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
                 // CREACIÓN
                 { name: 'Inkscape', slug: 'inkscape', checked: false, disabled: false, category: 'Creación', descripcion: 'Gráficos vectoriales. Ideal para diseñar logos profesionales.' },
                 { name: 'Krita', slug: 'krita', checked: false, disabled: false, category: 'Creación', descripcion: 'Pintura y arte digital.' },
-                { name: 'Photopea', slug: 'photopea', checked: true, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
+                { name: 'Photopea', slug: 'photopea', checked: false, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
                 { name: 'Canva', slug: 'canva', checked: true, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
-                { name: 'GIMP', slug: 'gimp', checked: false, disabled: false, category: 'Creación', descripcion: 'Editor de imágenes avanzado.' },
-                { name: 'XnConvert', slug: 'xnconvert', checked: true, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
-                { name: 'CapCut', slug: 'capcut', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video sencilla.' },
-                { name: 'DaVinci Resolve', slug: 'davinci_resolve', checked: true, disabled: false, category: 'Creación', descripcion: 'Edición de video profesional.' },
-                { name: 'OBS Studio', slug: 'obs_studio', checked: true, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
+                { name: 'XnConvert', slug: 'xnconvert', checked: false, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
+                { name: 'CapCut', slug: 'capcut', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video sencilla. OJO! Sin premium es muy limitado.' },
+                { name: 'DaVinci Resolve', slug: 'davinci_resolve', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video profesional.' },
+                { name: 'OBS Studio', slug: 'obs_studio', checked: false, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
+                { name: 'StreamLabs', slug: 'slabs', checked: false, disabled: false, category: 'Creación', descripcion: 'Basado en OBS con facilidad de uso para streamear.' },
                 { name: 'GitHub Desktop', slug: 'github_desktop', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Cliente visual para Git.' },
                 { name: 'Visual Studio Code', slug: 'visual_studio_code', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Editor de código moderno.' },
+                { name: 'n8n', slug: 'n8n', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Agentes de IA en local para automatizar lo-que-sea.' },
             ];
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
@@ -2345,7 +2345,7 @@
                     categoryWrapper.appendChild(descDiv);
                     // Items (ocultos por defecto)
                     const itemsWrapper = document.createElement('div');
-                    itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4 px-4 pb-4 hidden';
+                    itemsWrapper.className = 'grid grid-cols-2 mt-3 md:grid-cols-3 gap-4 px-4 pb-4 hidden';
                     const programs = softwareData.filter(item => item.category === category.name);
                     programs.forEach(item => {
                         const essentialClass = item.disabled ? 'essential-software' : '';
@@ -2600,7 +2600,7 @@
                     loadImageWithGrayscale(towerImgEl, selectedTower.image_url);
                 } else {
                     // Si no tiene imagen, mostrar placeholder
-                    towerImgEl.src = 'https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC';
+                    towerImgEl.src = 'comps/torres/reciclada.webp';
                 }
                 document.getElementById('current-tower-name').textContent = selectedTower.name;
                 let towerPriceHTML = '';
@@ -2677,7 +2677,7 @@
                 if (selectedTower) {
                     cabinetContainer.innerHTML = `
                         <a href="#main-components-container" class="block">
-                            <img src="${selectedTower.image_url}" alt="${selectedTower.name}" style="width: 313px; height: 430px; object-fit: contain;" class="rounded-lg mb-2" onerror="this.onerror=null;this.src='https://placehold.co/313x430/1f2937/ffffff?text=Gabinete'">
+                            <img src="${selectedTower.image_url}" alt="${selectedTower.name}" style="width: 313px; height: 430px; object-fit: contain;" class="rounded-lg mb-2" onerror="this.onerror=null;this.src='comps/torres/reciclada.webp'">
                         </a>
                         <p class="font-bold text-lg text-white">${selectedTower.name}</p>
                         <a href="${selectedTower.link}" target="_blank" class="component-link">$${selectedTower.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>
@@ -2815,8 +2815,8 @@
                     { key: 'parlantes', name: 'Parlantes', options: parlantesOptions },
                     { key: 'microfono', name: 'Micrófono', options: microfonosOptions },
                     { key: 'webcam', name: 'Webcam', options: webcamOptions },
-                    { key: 'arodeluz', name: 'Aro de Luz', options: arosDeLuzOptions },
-                    { key: 'wifi', name: 'WiFi', options: wifiOptions }
+                    { key: 'arodeluz', name: 'Luces', options: arosDeLuzOptions },
+                    { key: 'wifi', name: 'Wireless', options: wifiOptions }
                 ];
 
                 peripheralCategories.forEach(cat => {
