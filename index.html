@@ -1433,8 +1433,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 4rem;
-            color: #23e70e;
-            /* green-333 */
+            color: #00ddff;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
             z-index: 2;
         }
@@ -2006,7 +2005,7 @@
                     </ul>
                     <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
                         <i class="fas fa-headset text-2xl"></i>
-                        <span class="text-xl font-bold text-gray-200">Servicio Postventa | </span>
+                        <span class="text-xl font-bold text-gray-200">Servicio Postventa <span class="hidden sm:inline"> |</span></span>
                         <span class="font-gamer text-xs">¿Algún Problema?<br>¡Lo Arreglo!</span>
                     </div>
                 </div>
@@ -2036,7 +2035,7 @@
                 </p>
             </section>
 
-            <section id="section-software" class="mb-12 section-card-style">
+            <section id="section-software" class="mb-12 section-card-style hidden">
                 <h2 class="text-5xl font-bold text-center mb-8">Programas Clave</h2>
                 <p class="text-center font-saira text-xl mb-1">Te marco lo que Recomiendo👍</p>
                 <p class="text-center text-gray-100 mb-1 text-xl">✅¡Hacé TU Selección!</p>
@@ -2746,7 +2745,7 @@
                             nameEl.textContent = selected.name;
                         }
                     } else {
-                        nameEl.textContent = isService ? 'Garantía + Soporte Técnico x 1 Año' : (selected?.name || '');
+                        nameEl.textContent = isService ? 'Instalación y Soporte Técnico' : (selected?.name || '');
                         nameEl.style.fontFamily = 'Inter, sans-serif';
                     }
                     const priceEl = document.createElement('span');
@@ -2782,11 +2781,16 @@
                     }
                 });
                 // Armado y Servicio
-                cardRowsContainer.appendChild(createCardRow('Instalación y Servicio', null, true));
+                cardRowsContainer.appendChild(createCardRow('Mi Servicio', null, true));
 
                 tableContainer.appendChild(cardRowsContainer);
                 summaryGrid.appendChild(tableContainer);
                 container.appendChild(summaryGrid);
+                // Agregar span de licencia Windows 11 Original
+                const licenciaSpan = document.createElement('span');
+                licenciaSpan.className = 'flex items-center justify-end w-full mt-2 text-blue-400 text-sm font-semibold';
+                licenciaSpan.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' class='inline-block mr-2' width='20' height='20' fill='currentColor' viewBox='0 0 24 24'><rect x='3' y='3' width='7' height='7' rx='1.5'/><rect x='14' y='3' width='7' height='7' rx='1.5'/><rect x='14' y='14' width='7' height='7' rx='1.5'/><rect x='3' y='14' width='7' height='7' rx='1.5'/></svg>Incluye Licencia Windows 11`;
+                container.appendChild(licenciaSpan);
             }
 
             // --- NEW PERIPHERAL FUNCTIONS ---
@@ -3147,21 +3151,19 @@
                     }
                     // Highlight all GPU names from the collection that appear in the AI response
                     if (gpuOptions && gpuOptions.length > 0) {
-                        let alreadyHighlighted = new Set();
                         // Helper para normalizar nombres
                         function normalize(str) {
                             return str.toLowerCase().replace(/\s|\-|_/g, '');
                         }
-                        // Construir lista de keywords únicas
+                        // Construir lista de keywords (sin deduplicar), excluyendo 'integrada'
                         let allKeywords = [];
                         gpuOptions.forEach(gpu => {
+                            if (normalize(gpu.name) === 'integrada') return; // No resaltar 'integrada'
                             allKeywords.push(gpu.name);
                             if (gpu.name.includes('-')) {
                                 allKeywords.push(gpu.name.split('-')[0].trim());
                             }
                         });
-                        // Eliminar duplicados
-                        allKeywords = Array.from(new Set(allKeywords.filter(k => k.length > 2)));
                         // Reemplazo global con regex que permite espacios, guiones y números
                         allKeywords.forEach(keyword => {
                             // Escapar correctamente y permitir coincidencias completas
@@ -3169,15 +3171,11 @@
                             // Coincidencia: palabra completa, no parte de otra palabra
                             const regex = new RegExp(`(?<![\w\d])${escaped}(?![\w\d])`, 'gi');
                             htmlResult = htmlResult.replace(regex, match => {
+                                // Buscar el objeto GPU original para el nombre
                                 const norm = normalize(match);
-                                if (!alreadyHighlighted.has(norm)) {
-                                    alreadyHighlighted.add(norm);
-                                    // Buscar el objeto GPU original para el nombre
-                                    const gpuObj = gpuOptions.find(g => normalize(g.name) === norm || normalize(g.name.split('-')[0]) === norm);
-                                    const gpuNameForSpan = gpuObj ? gpuObj.name : match;
-                                    return `<span class='green-333 font-saira px-2 py-1 rounded-lg cursor-pointer inline-block' style='background:#18122b;' data-component-type='gpu' data-component-name='${gpuNameForSpan}'>${match}</span>`;
-                                }
-                                return match;
+                                const gpuObj = gpuOptions.find(g => normalize(g.name) === norm || normalize(g.name.split('-')[0]) === norm);
+                                const gpuNameForSpan = gpuObj ? gpuObj.name : match;
+                                return `<span class='green-333 font-saira px-2 py-1 rounded-lg cursor-pointer inline-block' style='background:#18122b;' data-component-type='gpu' data-component-name='${gpuNameForSpan}'>${match}</span>`;
                             });
                         });
                     }
