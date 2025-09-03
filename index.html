@@ -95,6 +95,33 @@
             transform: translate(-50%, -50%);
         }
 
+        @keyframes selectGlowViolet {
+            0% {
+                box-shadow: 0 0 0 0px #a78bfa, 0 0 0px #7c3aed;
+                border-color: #6366f1;
+            }
+
+            10% {
+                box-shadow: 0 0 0 4px #a78bfa, 0 0 16px 8px #7c3aed;
+                border-color: #6366f1;
+            }
+
+            80% {
+                box-shadow: 0 0 0 4px #a78bfa, 0 0 16px 8px #7c3aed;
+                border-color: #6366f1;
+            }
+
+            100% {
+                box-shadow: 0 0 0 0px #a78bfa, 0 0 0px #7c3aed;
+                border-color: #374151;
+            }
+        }
+
+        .select-glow-violet {
+            animation: selectGlowViolet 5s cubic-bezier(.4, 0, .2, 1) forwards;
+            border-color: #6366f1 !important;
+        }
+
         /* --- Font Families --- */
         .font-gamer {
             font-family: 'Press Start 2P', cursive;
@@ -1320,7 +1347,7 @@
             opacity: 1;
             transform: translateY(1.5rem);
         }
-        
+
         #peripherals-grid .peripheral-container:not(.selected) .summary-card-category,
         #accessories-grid .peripheral-container:not(.selected) .summary-card-category {
             opacity: 0;
@@ -1623,7 +1650,7 @@
 
     <div class="container main-container mx-auto p-4 md:p-8 max-w-5xl">
         <div id="hero-wrapper" class="relative">
-            <div id="hero-background"style="left: -1px; top: 1px;pointer-events:none;">
+            <div id="hero-background" style="left: -1px; top: 1px;pointer-events:none;">
                 <div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div>
             </div>
 
@@ -1710,7 +1737,8 @@
                         <img src="soporteTarjeta.webp" alt="Soporte" class="w-24 h-24 mb-3"
                             onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
                         <h4 class="font-saira font-bold text-white text-xl leading-tight">Soporte Técnico</h4>
-                        <p class=" text-gray-300 mt-1">Presencial en todo el <b class="text-blue-300">Partido de La Costa</b>
+                        <p class=" text-gray-300 mt-1">Presencial en todo el <b class="text-blue-300">Partido de La
+                                Costa</b>
                         <p><i class="text-gray-500">via Web en donde sea</i></p>
                         </p>
                     </div>
@@ -1740,8 +1768,9 @@
                     </div>
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
-                    <h1 class="text-2xl">con las Mejores Opciones en <b class="">Mercado Libre</b> + links<span class="links"
-                            style="color: var(--color-link);"><i class="fas fa-external-link-alt text-sm "></i></span>
+                    <h1 class="text-2xl">con las Mejores Opciones en <b class="">Mercado Libre</b> + links<span
+                            class="links" style="color: var(--color-link);"><i
+                                class="fas fa-external-link-alt text-sm "></i></span>
                         para ver sus
                         detalles</h1>
                     <h1>...si sabés del tema, usalos para comprar y armarla por tu cuenta ;)</h1>
@@ -1964,7 +1993,8 @@
                     </ul>
                     <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
                         <i class="fas fa-headset text-2xl"></i>
-                        <span class="text-xl font-bold text-gray-200">Servicio Postventa <span class="hidden sm:inline"> |</span></span>
+                        <span class="text-xl font-bold text-gray-200">Servicio Postventa <span class="hidden sm:inline">
+                                |</span></span>
                         <span class="font-gamer text-xs">¿Algún Problema?<br>¡Lo Arreglo!</span>
                     </div>
                 </div>
@@ -2269,7 +2299,7 @@
                 })
                 .catch(error => {
                     console.error('Failed to load products.json, using fallback data:', error);
-                    
+
                     initializeApp(fallbackData);
                 });
 
@@ -2347,7 +2377,7 @@
                         itemsWrapper.appendChild(softwareItemHTML);
                     });
                     categoryWrapper.appendChild(itemsWrapper);
-                    
+
                     const toggleAccordion = () => {
                         const isOpen = !itemsWrapper.classList.contains('hidden');
 
@@ -2375,7 +2405,7 @@
 
                     header.addEventListener('click', toggleAccordion);
                     descDiv.addEventListener('click', toggleAccordion);
-                    
+
                     softwareListContainer.appendChild(categoryWrapper);
                 });
 
@@ -2480,7 +2510,7 @@
                 // AI Section Listener
                 document.getElementById('ai-button').addEventListener('click', checkGameCompatibility);
                 // Permitir Enter en el input para analizar
-                document.getElementById('ai-input').addEventListener('keydown', function(e) {
+                document.getElementById('ai-input').addEventListener('keydown', function (e) {
                     if (e.key === 'Enter') {
                         e.preventDefault();
                         document.getElementById('ai-button').click();
@@ -2701,7 +2731,7 @@
 
                 const peripheralMap = {
                     monitor: { options: monitorOptions, name: 'Monitor' }, keyboard: { options: keyboardOptions, name: 'Teclado' },
-                    mouse: { options: mouseOptions, name: 'Mouse' }, joystick: { options: joystickOptions, name: 'Joystick' }, 
+                    mouse: { options: mouseOptions, name: 'Mouse' }, joystick: { options: joystickOptions, name: 'Joystick' },
                     auriculares: { options: auricularesOptions, name: 'Auriculares' },
                     parlantes: { options: parlantesOptions, name: 'Parlantes' }, microfono: { options: microfonosOptions, name: 'Micrófono' },
                     webcam: { options: webcamOptions, name: 'Webcam' }, wifi: { options: wifiOptions, name: 'WiFi' }
@@ -2754,7 +2784,7 @@
                         else if (type === 'Fuente') sectionId = 'psu-select';
                         else if (Object.values(peripheralMap).some(p => p.name === type)) sectionId = 'section-peripherals';
                         else if (Object.values(accessoryMap).some(a => a.name === type)) sectionId = 'section-accessories';
-                        
+
                         if (sectionId) {
                             nameEl.innerHTML = `<a href="#${sectionId}" class="component-link" style="font-size:1rem;color:white !important;font-family:Inter,sans-serif !important;" onclick="event.preventDefault();document.getElementById('${sectionId}').scrollIntoView({behavior:'smooth'});">${selected.name}</a>`;
                         } else {
@@ -2851,7 +2881,7 @@
                 const grid = document.getElementById('accessories-grid');
                 grid.innerHTML = '';
                 const accessoryCategories = [
-                     { key: 'arodeluz', name: 'Luces', options: arosDeLuzOptions }
+                    { key: 'arodeluz', name: 'Luces', options: arosDeLuzOptions }
                 ];
 
                 accessoryCategories.forEach(cat => {
@@ -3168,7 +3198,7 @@
                                 selectedSsd
                             },
                             availableGpus: gpuOptions,
-                            availableCpus: cpuOptions 
+                            availableCpus: cpuOptions
                         })
                     });
 
@@ -3266,25 +3296,6 @@
                     htmlResult = htmlResult.replace(/^<br\s*\/?>/, '');
                     resultContainer.innerHTML = htmlResult;
 
-                    // Add CSS for glow effect if not present
-                    if (!document.getElementById('select-glow-violet-style')) {
-                        const style = document.createElement('style');
-                        style.id = 'select-glow-violet-style';
-                        style.innerHTML = `
-                            @keyframes selectGlowViolet {
-                                0% { box-shadow: 0 0 0 0px #a78bfa, 0 0 0px #7c3aed; border-color: #6366f1; }
-                                10% { box-shadow: 0 0 0 4px #a78bfa, 0 0 16px 8px #7c3aed; border-color: #6366f1; }
-                                80% { box-shadow: 0 0 0 4px #a78bfa, 0 0 16px 8px #7c3aed; border-color: #6366f1; }
-                                100% { box-shadow: 0 0 0 0px #a78bfa, 0 0 0px #7c3aed; border-color: #374151; }
-                            }
-                            .select-glow-violet {
-                                animation: selectGlowViolet 5s cubic-bezier(.4,0,.2,1) forwards;
-                                border-color: #6366f1 !important;
-                            }
-                        `;
-                        document.head.appendChild(style);
-                    }
-
                 } catch (error) {
                     console.error("Error al llamar a la API local:", error);
                     resultContainer.innerHTML = `<p class="text-red-400">¡Ups! Hubo un error al contactar a la IA. Verificá la consola (F12) para más detalles.</p>`;
@@ -3294,7 +3305,7 @@
                     button.querySelector('span').textContent = 'Analizar';
                 }
             }
-            
+
             function handleFormSubmit(e) {
                 e.preventDefault();
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
@@ -3404,7 +3415,3 @@
 </body>
 
 </html>
-
-
-
-
