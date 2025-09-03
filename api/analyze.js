@@ -62,6 +62,8 @@ export default async function handler(req, res) {
         3.  **Análisis y Recomendación:**
             - **SI EL OBJETIVO ES ALCANZABLE (incluso con optimizaciones):** Confirmalo con seguridad. Afirmá que no necesita ninguna mejora de hardware y dale consejos finales para que disfrute su juego. Tu respuesta DEBE terminar acá. Ejemplo: "Con esta PC y toqueteando un par de ajustes como te mencioné, vas a andar joya a 60 FPS. No necesitás gastar un peso más. ¡A viciar!".
             - **SI EL OBJETIVO NO ES ALCANZABLE (ni siquiera con todo en bajo y FSR en "Rendimiento"):** Solo en este caso, indicalo claramente y recomendá UNA SOLA GPU dedicada de la lista (la más lógica y económica) para lograr el objetivo.
+        4.  **Opción de Mejora:**
+            - Si recomendás una mejora, explicá brevemente por qué esa GPU en particular es la mejor opción considerando el presupuesto y el objetivo.
 
         Las respuestas deben ser cortas y consisas, no más de 200 palabras en total.
     `;

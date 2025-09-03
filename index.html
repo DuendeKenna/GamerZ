@@ -36,6 +36,8 @@
             background-attachment: fixed;
         }
 
+
+
         h1,
         h2 {
             font-family: 'Saira', sans-serif;
@@ -247,32 +249,6 @@
                 right: -42px;
                 transform: rotate(6deg);
             }
-        }
-
-        /* --- Animated Games Card Background --- */
-        .animated-bg-games {
-            min-height: 480px;
-            box-shadow: inset 0 0 12px 4px rgba(0, 0, 0, 0.55);
-        }
-
-        .animated-bg-games::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            background-image: url('wall_covers_sm.jpeg');
-            background-size: 250%;
-            animation:
-                ping-pong-path 45s ease-in-out infinite,
-                blur-and-fade 10s ease-in-out infinite alternate;
-            z-index: 0;
-        }
-
-        .animated-bg-games>* {
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes ping-pong-path {
@@ -501,10 +477,6 @@
             background-color: rgba(55, 65, 81, 0.7);
             border-color: rgba(34, 211, 238, 0.5);
             box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
-        }
-
-        .animated-bg-games:hover {
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.15), inset 0 0 12px 4px rgba(0, 0, 0, 0.55);
         }
 
         /* --- Corner Ribbon Badge --- */
@@ -1225,11 +1197,12 @@
             }
 
             #ssd-image {
-                transform: scale(1);
+                transform: scale(1.5);
+                transform-origin: right center;
             }
 
             #ssd-image:hover {
-                transform: scale(1);
+                transform: scale(1.5);
             }
         }
 
@@ -1342,12 +1315,14 @@
             text-align: center;
         }
 
-        #peripherals-grid .peripheral-container.selected .summary-card-category {
+        #peripherals-grid .peripheral-container.selected .summary-card-category,
+        #accessories-grid .peripheral-container.selected .summary-card-category {
             opacity: 1;
             transform: translateY(1.5rem);
         }
-
-        #peripherals-grid .peripheral-container:not(.selected) .summary-card-category {
+        
+        #peripherals-grid .peripheral-container:not(.selected) .summary-card-category,
+        #accessories-grid .peripheral-container:not(.selected) .summary-card-category {
             opacity: 0;
             transform: translateY(0);
         }
@@ -1851,7 +1826,7 @@
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
                                 <img id="ssd-image" src="" alt="Almacenamiento SSD"
-                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0 hidden md:block">
+                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
@@ -1894,7 +1869,6 @@
             </section>
             <!-- ================== NEW AI SECTION END ================== -->
 
-
             <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
                 <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
                     <span style="color:rgba(66, 210, 50, 0.7);">▼</span> PERIFÉRICOS <span
@@ -1906,6 +1880,20 @@
                 <div id="peripherals-grid"
                     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
                     <!-- Las tarjetas de periféricos se insertarán aquí con JS -->
+                </div>
+            </section>
+
+            <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+                <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ACCESORIOS <span
+                        style="color:rgba(66, 210, 50, 0.7);">▼</span>
+                </span>
+            </h2>
+
+            <section id="section-accessories" class="mb-12 section-card-style px-4">
+                <div id="accessories-grid"
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
+                    <!-- Las tarjetas de accesorios se insertarán aquí con JS -->
                 </div>
             </section>
 
@@ -2156,11 +2144,11 @@
             const gameNames = ['GTA V', 'LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered', 'Need for Speed: Underground HD', 'Half Life: Black Mesa', 'Half Life 2 HD', 'Abe´s Oddysey Remake', 'WoW Classic: en TurtleWoW', 'Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster', 'BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3', 'Fallout: New Vegas', 'Batman: Arkham Asylum', 'Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD', 'Need for Speed: Most Wanted HD', 'Blur', 'GRID 2', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones', 'Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops', 'Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.', 'Mortal Kombat 11 Komplete Edition', 'Ultra Street Fighter IV', 'Ultimate Marvel vs. Capcom 3', 'The King of Fighters XIII', 'Injustice Gods Among Us', 'Heroes of Might & Magic HD V', 'Reckoning: Kingdoms of Amalur', 'Divinity Original Sin', 'Age of Empires II Definitive Edition', 'The Elder Scrolls V: Skyrim', 'The Elder Scrolls IV: Oblivion & AddOns HD'];
             const softwareData = [
                 // SISTEMA
-                { name: 'Windows Defender', slug: 'defender', checked: true, disabled: true, category: 'Sistema', descripcion: 'Antivirus oficial, gratuito y eficaz.' },
-                { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
-                { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
+                // { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
+                // { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
+                // { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
                 { name: 'PeaZip', slug: 'pea', checked: true, disabled: false, category: 'Sistema', descripcion: 'El mejor des/compresor de archivos.' },
-                { name: 'PowerToys', slug: 'powertoys', checked: false, disabled: false, category: 'Sistema', descripcion: 'Suite de herramientas variadas que expanden Windows.' },
+                { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
                 { name: 'Firewall App Blocker', slug: 'firewall_app_blcoker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
                 { name: 'Fraps', slug: 'fraps', checked: false, disabled: false, category: 'Juegos', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
                 { name: 'AnyDesk', slug: 'anydesk', checked: true, disabled: false, category: 'Sistema', descripcion: 'Para manejar la PC remotamente - así soluciono problemas a distancia ;)' },
@@ -2228,12 +2216,17 @@
                 towersOptions = [], ssdOptions = [], gpuOptions = [], psuOptions = [],
                 comboMouseTecladoOptions = [], keyboardOptions = [], mouseOptions = [],
                 monitorOptions = [], auricularesOptions = [], parlantesOptions = [],
-                microfonosOptions = [], webcamOptions = [], arosDeLuzOptions = [], wifiOptions = [];
+                microfonosOptions = [], webcamOptions = [], arosDeLuzOptions = [], wifiOptions = [],
+                joystickOptions = [];
 
             // NEW: State for optional peripherals
             const selectedPeripherals = {
-                monitor: -1, keyboard: -1, mouse: -1, auriculares: -1,
-                parlantes: -1, microfono: -1, webcam: -1, arodeluz: -1, wifi: -1
+                monitor: -1, keyboard: -1, mouse: -1, joystick: -1, auriculares: -1,
+                parlantes: -1, microfono: -1, webcam: -1, wifi: -1
+            };
+
+            const selectedAccessories = {
+                arodeluz: -1
             };
 
             // --- INITIALIZE ---
@@ -2248,6 +2241,7 @@
                 psuOptions = (data.psuOptions || []).filter(opt => opt.visible !== 0);
                 keyboardOptions = (data.keyboardOptions || []).filter(opt => opt.visible !== 0);
                 mouseOptions = (data.mouseOptions || []).filter(opt => opt.visible !== 0);
+                joystickOptions = (data.joystickOptions || []).filter(opt => opt.visible !== 0);
                 monitorOptions = (data.monitorOptions || []).filter(opt => opt.visible !== 0);
                 auricularesOptions = (data.auricularesOptions || []).filter(opt => opt.visible !== 0);
                 parlantesOptions = (data.parlantesOptions || []).filter(opt => opt.visible !== 0);
@@ -2396,6 +2390,7 @@
                 if (psuSelect) psuSelect.innerHTML = psuOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
 
                 populateOptionalPeripherals();
+                populateOptionalAccessories();
             }
 
             function setupEventListeners() {
@@ -2430,8 +2425,10 @@
                 document.getElementById('prev-tower').addEventListener('click', prevTower);
                 document.getElementById('next-tower').addEventListener('click', nextTower);
 
-                // Peripherals Grid Listener
+                // Peripherals and Accessories Grid Listeners
                 document.getElementById('peripherals-grid').addEventListener('click', handlePeripheralClick);
+                document.getElementById('accessories-grid').addEventListener('click', handleAccessoryClick);
+
 
                 // Summary Section Listener
                 document.getElementById('selected-components-preview').addEventListener('click', handleSummaryCardClick);
@@ -2524,14 +2521,24 @@
 
                 // Add prices from selected peripherals
                 const peripheralCollections = {
-                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions,
+                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions, joystick: joystickOptions,
                     auriculares: auricularesOptions, parlantes: parlantesOptions, microfono: microfonosOptions,
-                    webcam: webcamOptions, arodeluz: arosDeLuzOptions, wifi: wifiOptions
+                    webcam: webcamOptions, wifi: wifiOptions
                 };
 
                 for (const key in selectedPeripherals) {
                     if (selectedPeripherals[key] > -1) {
                         total += peripheralCollections[key][selectedPeripherals[key]].price;
+                    }
+                }
+
+                const accessoryCollections = {
+                    arodeluz: arosDeLuzOptions
+                };
+
+                for (const key in selectedAccessories) {
+                    if (selectedAccessories[key] > -1) {
+                        total += accessoryCollections[key][selectedAccessories[key]].price;
                     }
                 }
 
@@ -2694,10 +2701,10 @@
 
                 const peripheralMap = {
                     monitor: { options: monitorOptions, name: 'Monitor' }, keyboard: { options: keyboardOptions, name: 'Teclado' },
-                    mouse: { options: mouseOptions, name: 'Mouse' }, auriculares: { options: auricularesOptions, name: 'Auriculares' },
+                    mouse: { options: mouseOptions, name: 'Mouse' }, joystick: { options: joystickOptions, name: 'Joystick' }, 
+                    auriculares: { options: auricularesOptions, name: 'Auriculares' },
                     parlantes: { options: parlantesOptions, name: 'Parlantes' }, microfono: { options: microfonosOptions, name: 'Micrófono' },
-                    webcam: { options: webcamOptions, name: 'Webcam' }, arodeluz: { options: arosDeLuzOptions, name: 'Aro de Luz' },
-                    wifi: { options: wifiOptions, name: 'WiFi' }
+                    webcam: { options: webcamOptions, name: 'Webcam' }, wifi: { options: wifiOptions, name: 'WiFi' }
                 };
 
                 for (const key in selectedPeripherals) {
@@ -2706,6 +2713,18 @@
                         components.push({ type: peripheralMap[key].name, selected: item });
                     }
                 }
+
+                const accessoryMap = {
+                    arodeluz: { options: arosDeLuzOptions, name: 'Aro de Luz' }
+                };
+
+                for (const key in selectedAccessories) {
+                    if (selectedAccessories[key] > -1) {
+                        const item = accessoryMap[key].options[selectedAccessories[key]];
+                        components.push({ type: accessoryMap[key].name, selected: item });
+                    }
+                }
+
 
                 function createCardRow(type, selected, isService = false) {
                     const row = document.createElement('div');
@@ -2733,10 +2752,9 @@
                         else if (type === 'Gráfica') sectionId = 'gpu-select';
                         else if (type === 'Almacenamiento') sectionId = 'ssd-select';
                         else if (type === 'Fuente') sectionId = 'psu-select';
-                        // For peripherals, scroll to #section-peripherals
-                        else if ([
-                            'Monitor', 'Teclado', 'Mouse', 'Auriculares', 'Parlantes', 'Micrófono', 'Webcam', 'Aro de Luz', 'WiFi'
-                        ].includes(type)) sectionId = 'section-peripherals';
+                        else if (Object.values(peripheralMap).some(p => p.name === type)) sectionId = 'section-peripherals';
+                        else if (Object.values(accessoryMap).some(a => a.name === type)) sectionId = 'section-accessories';
+                        
                         if (sectionId) {
                             nameEl.innerHTML = `<a href="#${sectionId}" class="component-link" style="font-size:1rem;color:white !important;font-family:Inter,sans-serif !important;" onclick="event.preventDefault();document.getElementById('${sectionId}').scrollIntoView({behavior:'smooth'});">${selected.name}</a>`;
                         } else {
@@ -2801,15 +2819,42 @@
                     { key: 'monitor', name: 'Monitor', options: monitorOptions },
                     { key: 'keyboard', name: 'Teclado', options: keyboardOptions },
                     { key: 'mouse', name: 'Mouse', options: mouseOptions },
+                    { key: 'joystick', name: 'Joystick', options: joystickOptions },
                     { key: 'auriculares', name: 'Auriculares', options: auricularesOptions },
                     { key: 'parlantes', name: 'Parlantes', options: parlantesOptions },
                     { key: 'microfono', name: 'Micrófono', options: microfonosOptions },
                     { key: 'webcam', name: 'Webcam', options: webcamOptions },
-                    { key: 'arodeluz', name: 'Luces', options: arosDeLuzOptions },
                     { key: 'wifi', name: 'Wireless', options: wifiOptions }
                 ];
 
                 peripheralCategories.forEach(cat => {
+                    if (cat.options.length > 0) {
+                        const container = document.createElement('div');
+                        container.className = 'peripheral-container';
+                        container.dataset.category = cat.key;
+                        container.innerHTML = `
+                            <div class="summary-card unselected">
+                                <div class="summary-card-image-wrapper">
+                                   <img src="${cat.options[0].image_url}" alt="${cat.name}" onerror="this.onerror=null;this.src='https://placehold.co/240x190/ffffff/333333?text=${cat.name}'">
+                                </div>
+                            </div>
+                            <div class="peripheral-info">
+                                <p class="peripheral-name text-white">${cat.name}</p>
+                                <div class="peripheral-price-container"><p class="component-link">&nbsp;</p></div>
+                            </div>`;
+                        grid.appendChild(container);
+                    }
+                });
+            }
+
+            function populateOptionalAccessories() {
+                const grid = document.getElementById('accessories-grid');
+                grid.innerHTML = '';
+                const accessoryCategories = [
+                     { key: 'arodeluz', name: 'Luces', options: arosDeLuzOptions }
+                ];
+
+                accessoryCategories.forEach(cat => {
                     if (cat.options.length > 0) {
                         const container = document.createElement('div');
                         container.className = 'peripheral-container';
@@ -2836,14 +2881,10 @@
                 const category = container.dataset.category;
                 if (!category) return;
 
-                // If the click is on the summary section, do nothing (handled by <a> tag)
-                if (container.closest('#selected-images-container')) {
-                    return;
-                }
-
                 const collections = {
-                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions, auriculares: auricularesOptions,
-                    parlantes: parlantesOptions, microfono: microfonosOptions, webcam: webcamOptions, arodeluz: arosDeLuzOptions, wifi: wifiOptions
+                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions, joystick: joystickOptions,
+                    auriculares: auricularesOptions, parlantes: parlantesOptions, microfono: microfonosOptions,
+                    webcam: webcamOptions, wifi: wifiOptions
                 };
                 const options = collections[category];
 
@@ -2856,6 +2897,35 @@
                 selectedPeripherals[category] = currentIndex;
 
                 const mainCardContainer = document.querySelector(`#peripherals-grid .peripheral-container[data-category="${category}"]`);
+                if (mainCardContainer) {
+                    mainCardContainer.classList.toggle('selected', currentIndex > -1);
+                    updatePeripheralCard(mainCardContainer, currentIndex, options);
+                }
+
+                updatePrices();
+            }
+
+            function handleAccessoryClick(e) {
+                const container = e.target.closest('.peripheral-container');
+                if (!container || !e.target.closest('.summary-card-image-wrapper')) return;
+
+                const category = container.dataset.category;
+                if (!category) return;
+
+                const collections = {
+                    arodeluz: arosDeLuzOptions
+                };
+                const options = collections[category];
+
+                let currentIndex = selectedAccessories[category];
+
+                currentIndex++;
+                if (currentIndex >= options.length) {
+                    currentIndex = -1; // Cycle back to unselected
+                }
+                selectedAccessories[category] = currentIndex;
+
+                const mainCardContainer = document.querySelector(`#accessories-grid .peripheral-container[data-category="${category}"]`);
                 if (mainCardContainer) {
                     mainCardContainer.classList.toggle('selected', currentIndex > -1);
                     updatePeripheralCard(mainCardContainer, currentIndex, options);
@@ -3224,8 +3294,7 @@
                     button.querySelector('span').textContent = 'Analizar';
                 }
             }
-
-
+            
             function handleFormSubmit(e) {
                 e.preventDefault();
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
@@ -3248,20 +3317,33 @@
                     monitor: { options: monitorOptions, name: 'Monitor' },
                     keyboard: { options: keyboardOptions, name: 'Teclado' },
                     mouse: { options: mouseOptions, name: 'Mouse' },
+                    joystick: { options: joystickOptions, name: 'Joystick' },
                     auriculares: { options: auricularesOptions, name: 'Auriculares' },
                     parlantes: { options: parlantesOptions, name: 'Parlantes' },
                     microfono: { options: microfonosOptions, name: 'Micrófono' },
                     webcam: { options: webcamOptions, name: 'Webcam' },
-                    arodeluz: { options: arosDeLuzOptions, name: 'Aro de Luz' },
                     wifi: { options: wifiOptions, name: 'WiFi' }
                 };
                 for (const key in selectedPeripherals) {
                     if (selectedPeripherals[key] > -1) {
                         const item = peripheralMap[key].options[selectedPeripherals[key]];
-                        peripheralsMessage += `${peripheralsMessage ? ', ' : ''}${peripheralMap[key].name}: ${item.name}`;
+                        peripheralsMessage += `${peripheralsMessage ? ', ' : ''}${item.name}`;
                     }
                 }
                 if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
+
+                let accessoriesMessage = '';
+                const accessoryMap = {
+                    arodeluz: { options: arosDeLuzOptions, name: 'Aro de Luz' }
+                };
+                for (const key in selectedAccessories) {
+                    if (selectedAccessories[key] > -1) {
+                        const item = accessoryMap[key].options[selectedAccessories[key]];
+                        accessoriesMessage += `${accessoriesMessage ? ', ' : ''}${item.name}`;
+                    }
+                }
+                if (accessoriesMessage) message += `*Accesorios:* ${accessoriesMessage}\n`;
+
 
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
                 if (selectedSoftware.length > 0) {
@@ -3322,5 +3404,7 @@
 </body>
 
 </html>
+
+
 
 
