@@ -2156,11 +2156,11 @@
             const gameNames = ['GTA V', 'LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered', 'Need for Speed: Underground HD', 'Half Life: Black Mesa', 'Half Life 2 HD', 'Abe´s Oddysey Remake', 'WoW Classic: en TurtleWoW', 'Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster', 'BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3', 'Fallout: New Vegas', 'Batman: Arkham Asylum', 'Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD', 'Need for Speed: Most Wanted HD', 'Blur', 'GRID 2', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones', 'Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops', 'Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.', 'Mortal Kombat 11 Komplete Edition', 'Ultra Street Fighter IV', 'Ultimate Marvel vs. Capcom 3', 'The King of Fighters XIII', 'Injustice Gods Among Us', 'Heroes of Might & Magic HD V', 'Reckoning: Kingdoms of Amalur', 'Divinity Original Sin', 'Age of Empires II Definitive Edition', 'The Elder Scrolls V: Skyrim', 'The Elder Scrolls IV: Oblivion & AddOns HD'];
             const softwareData = [
                 // SISTEMA
-                // { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
-                // { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
-                // { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
+                { name: 'Windows Defender', slug: 'defender', checked: true, disabled: true, category: 'Sistema', descripcion: 'Antivirus oficial, gratuito y eficaz.' },
+                { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
+                { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
                 { name: 'PeaZip', slug: 'pea', checked: true, disabled: false, category: 'Sistema', descripcion: 'El mejor des/compresor de archivos.' },
-                { name: 'MalwareBytes', slug: 'malwarebytes', checked: false, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
+                { name: 'PowerToys', slug: 'powertoys', checked: false, disabled: false, category: 'Sistema', descripcion: 'Suite de herramientas variadas que expanden Windows.' },
                 { name: 'Firewall App Blocker', slug: 'firewall_app_blcoker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
                 { name: 'Fraps', slug: 'fraps', checked: false, disabled: false, category: 'Juegos', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
                 { name: 'AnyDesk', slug: 'anydesk', checked: true, disabled: false, category: 'Sistema', descripcion: 'Para manejar la PC remotamente - así soluciono problemas a distancia ;)' },
@@ -2184,7 +2184,7 @@
                 { name: 'Discord', slug: 'discord', checked: false, disabled: false, category: 'Web', descripcion: 'Chat de voz y texto para comunidades.' },
                 { name: 'Zoom', slug: 'zoom', checked: false, disabled: false, category: 'Web', descripcion: 'Videollamadas y reuniones online.' },
                 { name: 'Free Download Manager', slug: 'freedownloadmanager', checked: false, disabled: false, category: 'Web', descripcion: 'Gestor de descargas y torrents eficiente.' },
-                { name: 'JDownloader 2', slug: 'jdownloader_2', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
+                { name: 'JDownloader', slug: 'jdownloader_2', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
                 { name: 'qBitTorrent', slug: 'qbittorrent', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
                 // CREACIÓN
                 { name: 'Inkscape', slug: 'inkscape', checked: false, disabled: false, category: 'Creación', descripcion: 'Gráficos vectoriales. Ideal para diseñar logos profesionales.' },
