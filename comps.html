@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&family=Saira:wght@400;900;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- NEW: Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* General Styles */
         html { scroll-behavior: smooth; }
@@ -254,7 +256,7 @@
         }
 
         /* MODIFIED: Price Check Popup Styles */
-        #price-check-popup {
+        #price-check-popup, #price-chart-popup {
             position: fixed;
             top: 0;
             left: 0;
@@ -267,7 +269,7 @@
             z-index: 100;
             backdrop-filter: blur(5px);
         }
-        #price-check-popup.hidden {
+        #price-check-popup.hidden, #price-chart-popup.hidden {
             display: none;
         }
         .popup-content {
@@ -277,6 +279,18 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             width: 90%;
             max-width: 450px; /* Smaller width */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        /* NEW: Styles for chart popup */
+        .popup-content-chart {
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 800px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -291,6 +305,10 @@
         }
         .popup-body {
              padding: 1.5rem;
+        }
+        .popup-body-chart {
+            padding: 1.5rem;
+            height: 400px; /* Fixed height for the chart */
         }
         /* NEW: Styles for popup input */
         .popup-body input {
@@ -470,7 +488,7 @@
         </section>
     </div>
 
-    <!-- MODIFIED: Price Check Popup HTML (No iframe) -->
+    <!-- Price Check Popup -->
     <div id="price-check-popup" class="hidden">
         <div class="popup-content">
             <div class="popup-header">
@@ -494,6 +512,22 @@
             </div>
         </div>
     </div>
+    
+    <!-- NEW: Price Chart Popup -->
+    <div id="price-chart-popup" class="hidden">
+        <div class="popup-content-chart">
+            <div class="popup-header">
+                <h3 id="chart-popup-title" class="text-lg font-bold text-white">Historial de Precios</h3>
+                <button onclick="closePriceChartPopup()" class="text-gray-400 hover:text-white">
+                    <span class="lucide-icon w-6 h-6" data-lucide="x"></span>
+                </button>
+            </div>
+            <div class="popup-body-chart">
+                <canvas id="price-chart-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+
 
 <script>
     // --- Data Configuration ---
@@ -542,6 +576,9 @@
     let priceCheckQueue = [];
     let currentQueueIndex = 0;
     let isLoopRunning = false;
+    
+    // NEW: Chart instance variable
+    let priceChartInstance = null;
 
     // --- Category Navigation ---
     
@@ -1592,6 +1629,13 @@
                         ` : '';
                         
                         const tooltipTableHTML = generateTooltipTable(product.prices);
+                        
+                        // NEW: Chart button
+                        const chartButton = (product.prices && product.prices.length > 1) ? `
+                            <button onclick="openPriceChartPopup('${categoryKey}', ${index})" class="text-indigo-400 hover:text-indigo-300 ml-2" title="Ver Historial de Precios">
+                                <span class="lucide-icon w-4 h-4" data-lucide="line-chart"></span>
+                            </button>
+                        ` : '';
 
                         return `
                         <tr id="row-${categoryKey}-${index}" class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-200 ${!product.visible ? 'mobile-hidden-if-not-visible' : ''}" 
@@ -1624,6 +1668,7 @@
                                 <div class="flex flex-col items-end gap-1">
                                     <div class="flex items-center">
                                         ${priceCheckButton}
+                                        ${chartButton}
                                         <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar">
                                             <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
                                         </button>
@@ -1820,6 +1865,89 @@
         }
     }
 
+    // --- NEW: Price Chart Popup Logic ---
+    function openPriceChartPopup(categoryKey, index) {
+        const product = dataMap[categoryKey][index];
+        if (!product || !product.prices || product.prices.length === 0) {
+            showToast('No hay historial de precios para este producto.', 'error');
+            return;
+        }
+
+        const popup = document.getElementById('price-chart-popup');
+        const title = document.getElementById('chart-popup-title');
+        title.textContent = `Historial de: ${product.name}`;
+
+        const historicalData = [...product.prices]
+            .filter(p => p.value > 0)
+            .reverse();
+
+        const labels = historicalData.map(p => formatTimestamp(p.date).split(',')[0]);
+        const data = historicalData.map(p => p.value);
+
+        popup.classList.remove('hidden');
+        lucide.createIcons();
+
+        const ctx = document.getElementById('price-chart-canvas').getContext('2d');
+        
+        if (priceChartInstance) {
+            priceChartInstance.destroy();
+        }
+
+        priceChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Precio',
+                    data: data,
+                    borderColor: 'rgba(139, 92, 246, 1)',
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.1,
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        ticks: { color: '#e5e7eb' },
+                        grid: { color: 'rgba(55, 65, 81, 0.5)' }
+                    },
+                    x: {
+                         ticks: { color: '#e5e7eb' },
+                         grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = 'Precio: ';
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function closePriceChartPopup() {
+        const popup = document.getElementById('price-chart-popup');
+        popup.classList.add('hidden');
+        if (priceChartInstance) {
+            priceChartInstance.destroy();
+            priceChartInstance = null;
+        }
+    }
+
+
     function buildPriceCheckQueue() {
         priceCheckQueue = [];
         const twoHoursInMs = 2 * 60 * 60 * 1000;
@@ -2015,8 +2143,13 @@
     // --- Page Initialization ---
     document.addEventListener('DOMContentLoaded', async () => {
         document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !document.getElementById('price-check-popup').classList.contains('hidden')) {
-                closePriceCheckPopup();
+            if (event.key === 'Escape') {
+                if (!document.getElementById('price-check-popup').classList.contains('hidden')) {
+                    closePriceCheckPopup();
+                }
+                if (!document.getElementById('price-chart-popup').classList.contains('hidden')) {
+                    closePriceChartPopup();
+                }
             }
         });
 

@@ -7,6 +7,7 @@
     <title>La Nave del Medio</title>
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    <!-- El uso del CDN de Tailwind es adecuado para desarrollo y prototipado. Para producción, se recomienda instalarlo como un plugin de PostCSS. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +17,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <style>
+        :root {
+            --color-link: #60a5fa;
+            /* azul brillante */
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
@@ -123,25 +133,21 @@
             background: linear-gradient(to right, #fb923c, #b9a333);
         }
 
-        /* --- Card Effects (Games & Peripherals) --- */
+        /* --- Card Effects (Games) --- */
         .card-game {
             position: relative;
         }
 
         .card-game label {
             position: relative;
-            /* Container for the sticker & gloss */
             overflow: hidden;
             display: block;
             border-radius: 0.75rem;
-            /* rounded-xl */
             transition: transform 0.3s ease;
-            /* Apply transition to the container */
             aspect-ratio: 3/4;
         }
 
         .card-game label::after {
-            /* Glossy effect - Adjusted for plastic relief */
             content: '';
             position: absolute;
             top: 0;
@@ -150,28 +156,19 @@
             height: 100%;
             background: linear-gradient(to bottom right,
                     rgba(255, 255, 255, 0.4) 0%,
-                    /* Top-left highlight - more pronounced */
                     rgba(255, 255, 255, 0.15) 50%,
-                    /* Center subtle */
                     rgba(0, 0, 0, 0.15) 50%,
-                    /* Bottom-right shadow */
-                    rgba(0, 0, 0, 0.4) 100%
-                    /* Bottom-right darker shadow - more pronounced */
-                );
+                    rgba(0, 0, 0, 0.4) 100%);
             border-radius: 0.75rem;
-            /* Match card border-radius */
             pointer-events: none;
             mix-blend-mode: overlay;
-            /* Blends nicely with image */
             transition: opacity 0.3s ease-in-out;
             opacity: 1;
-            /* Base opacity always visible, but subtle */
         }
 
         .card-game label:hover::after,
         .card-game input:checked+label::after {
             opacity: 1;
-            /* Make the effect more notable on hover/checked */
         }
 
         .card-game label img {
@@ -193,30 +190,6 @@
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
         }
 
-        .card-peripheral {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .card-peripheral img {
-            transition: filter 0.3s ease-in-out;
-        }
-
-        .card-peripheral:hover,
-        .card-peripheral.active {
-            transform: scale(1.05);
-        }
-
-        .card-peripheral.active {
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.5);
-            border-color: rgba(139, 92, 246, 0.5);
-        }
-
-        .card-peripheral.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            filter: grayscale(100%);
-        }
-
         /* --- Game Title Sticker --- */
         .game-title-sticker {
             position: absolute;
@@ -225,7 +198,6 @@
             border-radius: 4px;
             font-weight: 700;
             font-size: 0.75rem;
-            /* text-xs */
             color: white;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             text-align: center;
@@ -280,7 +252,6 @@
         /* --- Animated Games Card Background --- */
         .animated-bg-games {
             min-height: 480px;
-            /* Increased height for better effect visibility */
             box-shadow: inset 0 0 12px 4px rgba(0, 0, 0, 0.55);
         }
 
@@ -334,7 +305,6 @@
 
             to {
                 filter: blur(2px);
-                /* Dynamic blur effect */
                 opacity: 0.3;
             }
         }
@@ -379,11 +349,9 @@
         /* --- "Ver más" Neon Button --- */
         .load-more-button {
             background: transparent;
-            /* Changed to transparent */
             color: #42d232;
             opacity: 0.6;
             border: 6px solid #107c10;
-            /* Solid border */
             border-radius: 15px;
             padding: 20px 35px;
             letter-spacing: 5px;
@@ -526,7 +494,6 @@
             transition: all 0.3s ease-in-out;
             position: relative;
             overflow: hidden;
-            /* Changed to hidden for ribbon */
         }
 
         .feature-card:hover {
@@ -593,7 +560,6 @@
 
         #hero-wrapper {
             position: relative;
-            /* Removed overflow-x: hidden to allow child elements to extend beyond its bounds */
         }
 
         #hero-background-in {
@@ -620,6 +586,12 @@
             height: 100%;
             pointer-events: none;
             animation: spin 10s ease-in-out infinite, cosmic-pulse 20s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            #hero-background {
+                display: none;
+            }
         }
 
         @keyframes spin {
@@ -652,8 +624,6 @@
             }
         }
 
-        /* @media (max-width: 767px) { #hero-background { display: none; } } */
-
         @keyframes float-up-down {
 
             0%,
@@ -668,13 +638,12 @@
 
         #ovniUp {
             position: absolute;
-            left: 55%;
-            top: -15px;
+            left: 58%;
+            top: -3px;
             opacity: 0.63;
             filter: hue-rotate(50deg);
             animation: float-up-down 4s ease-in-out infinite, energy-beam 6s ease-in-out infinite;
             z-index: 30;
-            /* Ensure OVNI is above other elements */
         }
 
         @keyframes energy-beam {
@@ -696,21 +665,14 @@
 
         .main-container {
             background-color: #111827;
-            /* Restored to bg-gray-700 */
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
             position: relative;
-            /* Needed for absolute positioning of child */
-            /* Removed overflow-x: hidden to prevent clipping of pop-out images */
             overflow: visible;
-            /* Allow content to overflow without being cut */
         }
 
         #game-grid-container {
             position: relative;
             padding-top: 1.5rem;
-            /* Adjusted padding-top */
-
-            /* Adjusted padding-bottom */
         }
 
         #game-grid-wrapper {
@@ -735,14 +697,10 @@
         }
 
         #memde_pointLeft {
-            /*display: none;*/
-            /* Hidden by default */
             position: absolute;
             bottom: -20px;
             max-width: 150px;
-            /* Max width for general use */
             width: 40%;
-            /* For smaller screens, width can be relative */
             z-index: 0;
             overflow-x: hidden;
             left: -20px;
@@ -750,25 +708,19 @@
 
 
         @media (min-width: 768px) {
-
-            /* Tablet and up */
             #memde_pointLeft {
                 bottom: -30px;
                 width: auto;
-                /* Let image natural width or max-width: 150px apply */
                 left: 0;
-                /* Keep it on the right for desktop */
                 transform: translateX(50%);
-                /* Continue pushing it off the right */
             }
         }
 
-        /* --- Nueva Estilo para la Descripción de Categoría --- */
+        /* --- Software Category Description --- */
         .software-cat-desc {
             background-color: #1a1332;
-            border-radius: 1rem;
             padding: 0.5rem 1rem;
-            margin-bottom: 1rem;
+            cursor: pointer;
             transition: background 0.3s, color 0.3s;
         }
 
@@ -820,12 +772,12 @@
             opacity: 1;
         }
 
-        /* --- Soporte Técnico (memde_think.png) Responsive --- */
+        /* --- Soporte Técnico (memde_think.webp) Responsive --- */
         #section-front-features .feature-card.soporte-tecnico-card {
             overflow: visible !important;
         }
 
-        #section-front-features img[src*="memde_think.png"] {
+        #section-front-features img[src*="memde_think.webp"] {
             opacity: 1;
             position: absolute;
             bottom: 0;
@@ -840,7 +792,7 @@
         }
 
         @media (max-width: 1023px) {
-            #section-front-features img[src*="memde_think.png"] {
+            #section-front-features img[src*="memde_think.webp"] {
                 opacity: 0.8;
                 z-index: 0;
                 height: 80%;
@@ -849,7 +801,7 @@
         }
 
         @media (min-width: 1024px) {
-            #section-front-features img[src*="memde_think.png"] {
+            #section-front-features img[src*="memde_think.webp"] {
                 height: 115%;
                 right: -2.5rem;
                 bottom: 0;
@@ -861,7 +813,7 @@
         }
 
         @media (min-width: 1280px) {
-            #section-front-features img[src*="memde_think.png"] {
+            #section-front-features img[src*="memde_think.webp"] {
                 right: -4rem;
                 height: 115%;
                 bottom: 0;
@@ -878,95 +830,45 @@
             }
         }
 
-        /* --- Hero Product Images --- */
-        .hero-crox-img {
-            position: absolute;
-            margin-top: -133px;
-            top: 55px !important;
-            pointer-events: none;
-            z-index: 20;
-            width: auto;
-            transition: all 0.3s ease-in-out;
-            will-change: transform, top, left, right;
-        }
-
-        /* Desktop and up */
-        @media (min-width: 1024px) {
-            .hero-crox-img {
-                height: 420px;
-            }
-        }
-
-        /* Tablet */
-        @media (max-width: 1023px) {
-            .hero-crox-img {
-                height: 320px;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 767px) {
-            .hero-crox-img {
-                display: none;
-            }
-        }
 
         /* --- Tower Selector Styles --- */
         #tower-selector-container {
             position: relative;
-            /* Needed for absolute positioning of children if any, and for overflow */
             width: 100%;
             aspect-ratio: 4/5;
             background-color: #353f4d;
             border-radius: 0.75rem;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             overflow: visible;
-            /* Key to allow elements to overflow */
             display: flex;
-            /* Changed to flex container */
             flex-direction: column;
-            /* Stack children vertically */
             justify-content: space-between;
-            /* Push image container to top, controls to bottom */
             align-items: center;
             margin-bottom: 0.3rem;
-            /*padding-bottom: 2.5rem;*/
         }
 
         #tower-selector-container .flex-grow {
-            /* This div holds the image and expands to fill available space */
             position: absolute;
-            /* Place it absolutely to allow name/arrows wrapper at bottom */
             top: 0;
             left: 0;
             width: 100%;
             height: calc(100% - 2.5rem);
-            /* Take all height except bottom control height */
             display: flex;
-            /* To center the image within it */
             justify-content: center;
             align-items: center;
             overflow: visible;
-            /* Important for image to overflow its bounds inside this wrapper */
         }
 
         #current-tower-image {
             width: 100%;
-            /* Fill the `flex-grow` container */
             height: 125%;
-            /* Make it taller to overflow upwards */
             object-fit: contain;
-            /* Keep aspect ratio, allow overflow if wider/taller than container */
             cursor: pointer;
-            /* Change cursor to pointer for click interaction */
             transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
             z-index: 1;
-            /* Below bottom controls */
             margin-top: -10%;
-            /* Push the image up to show overflow at the top */
         }
 
-        /* New wrapper for name and arrows */
         #tower-name-and-arrows-wrapper {
             position: absolute;
             bottom: 0;
@@ -984,75 +886,52 @@
         }
 
         #current-tower-name {
-            /* Styles as requested: same as select, plus padding for arrows */
             font-family: 'Saira', sans-serif;
             font-size: 1.125rem;
-            /* text-lg */
             font-weight: 600;
-            /* font-semibold */
             color: #95ef81;
-            /* green-222 */
             text-shadow: 0 0 3px rgba(149, 239, 129, 0.3);
             white-space: nowrap;
             padding: 0.25rem 3rem;
-            /* Increased horizontal padding to make space for arrows */
             background-color: transparent;
-            /* No background here, parent wrapper provides it */
             border-radius: 0.25rem;
             z-index: 11;
-            /* Ensure name is above arrows */
         }
 
         .tower-nav-arrow {
             position: absolute;
-            /* Absolute relative to #tower-name-and-arrows-wrapper */
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(66, 210, 50, 0.7);
-            /* Green-333 with some transparency */
             color: white;
             padding: 0.75rem;
-            /* Increased padding for larger round button */
             border-radius: 50%;
-            /* Make it round */
             cursor: pointer;
             z-index: 10;
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
             border: 2px solid #95ef81;
-            /* Green-222 border */
             box-shadow: 0 0 8px #42d232, inset 0 0 5px rgba(149, 239, 129, 0.3);
-            /* Neon glow */
             display: flex;
-            /* Use flex to center icon */
             align-items: center;
             justify-content: center;
             width: 3rem;
-            /* Fixed width for roundness */
             height: 3rem;
-            /* Fixed height for roundness */
         }
 
         #prev-tower {
             left: 0;
-            /* Align with left edge of wrapper */
             margin-left: -1.5rem;
-            /* Pull half its width out to overlap container border */
         }
 
         #next-tower {
             right: 0;
-            /* Align with right edge of wrapper */
             margin-right: -1.5rem;
-            /* Pull half its width out to overlap container border */
         }
 
         .tower-nav-arrow:hover {
             background-color: rgba(66, 210, 50, 1);
-            /* Solid green-333 on hover */
             color: #95ef81;
-            /* Green-222 on hover */
             box-shadow: 0 0 15px #42d232, inset 0 0 8px rgba(149, 239, 129, 0.5);
-            /* Stronger neon glow on hover */
         }
 
         /* --- Sticky Price Summary Card --- */
@@ -1071,20 +950,16 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             z-index: 100;
-
             opacity: 0;
             visibility: hidden;
             transform: translateY(100%);
             transition: opacity 0.4s ease-out, visibility 0.4s ease-out, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
             display: none;
-            /* Hidden on mobile by default */
         }
 
         @media (min-width: 768px) {
             #price-summary-card {
                 display: flex;
-                /* Shown on tablet and up */
             }
         }
 
@@ -1153,60 +1028,42 @@
         #psu-select,
         #gpu-select {
             background-color: #374151;
-            /* bg-gray-700 */
             border: 1px solid #42d232;
-            /* green-333 border */
             color: #e5e7eb;
-            /* text-gray-200 */
             padding: 0.25rem 0.5rem;
             border-radius: 0.375rem;
-            /* rounded-md */
             font-size: 1rem;
             cursor: pointer;
             outline: none;
-            /* Remove default focus outline */
             -webkit-appearance: none;
-            /* Remove default browser styling for select */
             -moz-appearance: none;
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 0.5rem center;
-            /* Adjusted position to fix overlap */
             background-size: 1em;
             padding-right: 2em;
-            /* Ensure space for the arrow */
             font-family: 'Saira', sans-serif;
-            /* Apply Saira font */
             transition: all 0.2s ease-in-out;
-            /* Add transition for smoothness */
         }
 
         #ssd-select:focus,
         #psu-select:focus,
         #gpu-select:focus {
             border-color: #95ef81;
-            /* green-222 on focus */
             box-shadow: 0 0 5px rgba(66, 210, 50, 0.4);
-            /* Reduced glow intensity */
             background-color: #107c10;
-            /* Darker green background on focus/open state */
         }
 
-        /* Styling for the selected option text within the closed select */
         #component-list select {
             color: #95ef81;
-            /* green-222 for selected text in closed select */
             font-weight: bold;
             text-shadow: 0 0 3px rgba(149, 239, 129, 0.3);
-            /* Reduced text shadow intensity */
         }
 
         /* Dolar Popup Specific Styling */
         #dolar-popup {
-            /* Ensure popup is on top */
             z-index: 1000 !important;
-
         }
 
         #popup-content {
@@ -1221,28 +1078,20 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            /* Align all content to the right */
             gap: 0.5rem;
-            /* Space between name and values */
         }
 
         #dolar-rates-list .dolar-rate-item .dolar-name {
-            /* New class for the dollar type name */
             font-weight: bold;
             color: #e5e7eb;
-            /* Using Tailwind's gray-200 equivalent */
             margin-bottom: 0.5rem;
-            /* Space below the name */
         }
 
         #dolar-rates-list .dolar-rate-item .text-right {
             text-align: right;
-            /* Ensure text within this div aligns right */
             align-self: flex-end;
-            /* Align values to the right within the item */
         }
 
-        /* New animation for slower glow */
         @keyframes price-glow-slow {
 
             0%,
@@ -1258,16 +1107,12 @@
         /* Universal section card style */
         .section-card-style {
             background-color: rgba(31, 41, 55, 0.9);
-            /* Same background as price card */
             border: 1px solid rgba(75, 85, 99, 0.5);
             border-radius: 0.75rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
-            padding-top: 2.5rem;
-            /* Increased padding top */
-            padding-bottom: 2.5rem;
-            /* Increased padding bottom */
+            padding: 2.5rem 1rem;
         }
 
         /* Component List Custom Styles */
@@ -1275,33 +1120,27 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            /* Distribute items vertically */
             height: 100%;
-            /* Occupy full height of parent column */
         }
 
         #component-list li {
             display: flex;
             flex-direction: column;
-            /* Mobile-first: single column */
             align-items: flex-start;
-            /* Align content to the left on mobile */
             gap: 0.5rem;
-            /* Reduced gap for tighter mobile layout */
             width: 100%;
             margin-bottom: 2rem;
-            /* Space between items on mobile */
+        }
+
+        #component-list li.gpu-integrated-mobile {
+            margin-bottom: 0.5rem;
         }
 
         @media (min-width: 768px) {
-
-            /* md breakpoint */
             #component-list li {
                 flex-direction: row;
-                /* Revert to row layout on desktop */
                 align-items: center;
                 gap: 1.5rem;
-                /* Adjusted gap for desktop */
                 margin-bottom: 0;
             }
         }
@@ -1310,15 +1149,11 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            /* Align text to the left */
             width: 100%;
             text-align: left;
-            /* Align text to the left */
         }
 
         @media (min-width: 768px) {
-
-            /* md breakpoint */
             #component-list li .component-content-wrapper {
                 width: auto;
             }
@@ -1347,7 +1182,7 @@
             padding-left: 0.5rem;
         }
 
-        /* MODIFIED: CSS-based image transition for loading */
+        /* CSS-based image transition for loading */
         .component-option-image,
         #current-tower-image {
             transition: filter 0.4s ease-in-out, opacity 0.4s ease-in-out;
@@ -1369,8 +1204,6 @@
         }
 
         @media (min-width: 768px) {
-
-            /* md breakpoint */
             #component-list .component-option-image {
                 width: 180px;
                 max-width: none;
@@ -1379,12 +1212,10 @@
             }
         }
 
-        /* Desktop Hover Zoom Effects & New Sizing */
         @media (min-width: 768px) {
             #current-tower-image:hover {
                 transform: scale(1);
                 transform-origin: center center;
-                /* Expand from center */
             }
 
             #gpu-image,
@@ -1392,11 +1223,6 @@
                 transform: scale(1.5);
                 transform-origin: right center;
             }
-
-            /* #gpu-image:hover,
-            #psu-image:hover {
-                transform: scale(1.7);
-            } */
 
             #ssd-image {
                 transform: scale(1);
@@ -1443,26 +1269,21 @@
 
         #mobile-price-summary-card .currency-value {
             font-size: 3rem;
-            /* Larger font size for main value on mobile (text-5xl) */
             line-height: 1;
         }
 
         #mobile-price-summary-card .currency-text {
             font-size: 1.125rem;
-            /* Adjust size for "LUCAS" or "USD" if they were present */
             font-weight: bold;
             line-height: 1;
             margin-left: 0.25rem;
-            /* Smaller margin for mobile */
             white-space: nowrap;
         }
 
         #mobile-price-summary-card .separator {
             width: 1px;
             height: 2.5rem;
-            /* Shorter separator for mobile (h-8) */
             background-color: rgba(75, 85, 99, 0.5);
-            /* Gray-500 equivalent */
         }
 
         #mobile-price-summary-card #usd-link-summary-mobile {
@@ -1481,79 +1302,361 @@
             color: #42d232;
         }
 
-        /* NEW: Styles for selected components preview */
-        .summary-card-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
+        /* --- NEW Summary & Peripheral Card Styles --- */
+        .peripheral-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
         }
 
         .summary-card {
             background-color: white;
             color: #1f2937;
-            /* text-gray-800 */
             border-radius: 0.5rem;
-            /* rounded-lg */
-            padding: 0.75rem;
-            /* p-3 */
-            width: 140px;
-            height: 180px;
+            width: 240px;
+            height: 190px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             position: relative;
             overflow: hidden;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-
-        .summary-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .summary-card-category {
             position: absolute;
-            top: 0;
+            top: -1.5rem;
+            /* Positioned outside */
             left: 0;
+            width: 100%;
             background-color: #4f46e5;
-            /* bg-indigo-600 */
             color: white;
             padding: 0.125rem 0.5rem;
             font-size: 0.75rem;
-            /* text-xs */
             font-weight: bold;
             border-top-left-radius: 0.5rem;
-            border-bottom-right-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+            z-index: 2;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+            text-align: center;
+        }
+
+        #peripherals-grid .peripheral-container.selected .summary-card-category {
+            opacity: 1;
+            transform: translateY(1.5rem);
+        }
+
+        #peripherals-grid .peripheral-container:not(.selected) .summary-card-category {
+            opacity: 0;
+            transform: translateY(0);
+        }
+
+        #selected-components-preview .summary-card-category {
+            top: 0;
+        }
+
+        .summary-card-image-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
         }
 
         .summary-card img {
-            margin-top: 1.5rem;
-            /* space for category tag */
-            max-height: 96px;
-            /* h-24 */
-            width: auto;
-            max-width: 100%;
-            object-fit: contain;
-            flex-grow: 1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
         }
 
-        .summary-card p {
-            font-size: 0.75rem;
-            /* text-xs */
-            font-weight: 600;
+        .peripheral-info {
             text-align: center;
-            margin-top: 0.5rem;
-            line-height: 1.2;
+            width: 100%;
+            min-height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
+
+        .peripheral-info .peripheral-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .summary-card.unselected {
+            opacity: 0.4;
+        }
+
+        .summary-card.unselected .summary-card-image-wrapper img {
+            opacity: 0.4;
+            filter: grayscale(1);
+        }
+
+        .summary-card.unselected .summary-card-image-wrapper::after {
+            font-family: "Font Awesome 6 Free";
+            content: '\f067';
+            /* fa-plus */
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: #b3e16b;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+            z-index: 2;
+        }
+
+        .price-card-subtitle {
+            font-family: 'Saira', sans-serif;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: -0.25rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .base-level-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .base-level-label {
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #9ca3af;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .base-level-tabs {
+            display: flex;
+            background-color: rgba(17, 24, 39, 0.5);
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+            position: relative;
+        }
+
+        #base-level-slider {
+            position: absolute;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            background-color: #42d232;
+            /* green-333 */
+            border-radius: 0.375rem;
+            box-shadow: 0 0 10px rgba(66, 210, 50, 0.5);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+        }
+
+        .base-level-tab {
+            padding: 0.5rem 1.5rem;
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #9ca3af;
+            /* gray-400 */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0.375rem;
+            border: 2px solid transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .base-level-tab.active {
+            color: #111827;
+            /* gray-900 */
+            text-shadow: none;
+        }
+
+        #base-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1;
+            margin: auto;
+        }
+
+        #base-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .accordion-header {
+            cursor: pointer;
+            padding: 1rem;
+            background-color: rgba(55, 65, 81, 0.5);
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: rgba(75, 85, 99, 0.7);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            padding: 0 1rem;
+        }
+
+        .accordion-content.open {
+            max-height: 1000px;
+            padding: 1rem;
+        }
+
+        /* --- NEW AI Section Styles --- */
+        #ai-section {
+            /* Using styles from Manual de Marca */
+            background-color: rgba(31, 41, 55, 0.9);
+            /* .section-card-style bg */
+            border: 1px solid rgba(75, 85, 99, 0.5);
+            /* .section-card-style border */
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 2.5rem 1.5rem;
+            margin-top: 3rem;
+        }
+
+        #ai-input {
+            background-color: #111827;
+            border: 2px solid #374151;
+            color: #e5e7eb;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        #ai-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            /* Gradiente Principal */
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+
+        #ai-button {
+            background: linear-gradient(to right, #6366f1, #a855f7);
+            /* Gradiente Principal */
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #ai-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+        }
+
+        #ai-button:disabled {
+            background: #4b5563;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #ai-result-container {
+            background-color: rgba(17, 24, 39, 0.7);
+            border: 1px solid #374151;
+            min-height: 150px;
+        }
+
+        /* --- Flyer Generator Styles --- */
+        #flyer-generator-section {
+            margin-top: 3rem;
+        }
+
+        #generate-flyer-button {
+            background: linear-gradient(to right, #f97316, #fb923c); /* Naranja de la marca */
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #generate-flyer-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(251, 146, 60, 0.5);
+        }
+
+        #generate-flyer-button:disabled {
+            background: #4b5563;
+            cursor: not-allowed;
+        }
+
+        #flyer-output .flyer-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        #flyer-output .download-link {
+            position: absolute;
+            bottom: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #flyer-output .flyer-container:hover .download-link {
+            opacity: 1;
+        }
+
+        /* Loading spinner animation */
+        .loader {
+            border: 4px solid #374151;
+            border-top: 4px solid #6366f1;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
 
         .component-link {
-            color: var(--color-principal);
-            /* A subtle blue */
+            color: var(--color-link) !important;
             text-decoration: none;
             font-size: 1rem !important;
+            font-family: 'Inter' !important;
             display: inline-block;
-            margin-top: 3px;
+            margin-top: 4px;
         }
 
         .component-link:hover {
@@ -1562,25 +1665,7 @@
 
         .component-link i {
             margin-left: 0.25rem;
-            /* ml-1 */
             font-size: 0.75rem;
-            /* text-xs */
-        }
-        
-        .price-card-subtitle {
-            font-family: 'Saira', sans-serif;
-            color: #516079; /* text-gray-400 */
-            font-size: 0.875rem; /* text-sm */
-            font-weight: 700; /* font-bold */
-            text-transform: uppercase;
-            letter-spacing: 0.05em; /* tracking-wider */
-            margin-top: -0.25rem; /* Negative margin to pull it up a bit */
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
-
-        :root {
-            --color-principal: #60a5fa;
-            /* azul brillante */
         }
     </style>
 </head>
@@ -1610,19 +1695,14 @@
 
     <div class="container main-container mx-auto p-4 md:p-8 max-w-5xl">
         <div id="hero-wrapper" class="relative">
-            <div id="hero-background" style="left: -1px; top: 66vh;pointer-events:none;">
+            <div id="hero-background"style="left: -1px; top: 1px;pointer-events:none;">
                 <div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div>
             </div>
 
-            <img src="home-crox-A.png" id="home-crox-a" class="hero-crox-img" alt="Gabinete PC Gamer Básico"
-                onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Case'">
-            <img src="home-crox-B.png" id="home-crox-b" class="hero-crox-img" alt="Gabinete PC Gamer con Periféricos"
-                onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Bundle'">
-
             <header class="text-center pt-8 relative">
-                <img id="ovniUp" src="ovni1fade.png" class="w-32 h-auto" alt="OVNI"
+                <img id="ovniUp" src="ovni1fade.webp" class="w-32 h-auto" alt="OVNI"
                     onerror="this.onerror=null;this.src='https://placehold.co/128x128/00000000/ffffff?text=OVNI'">
-                <img src="LaNave_LogoLetras.png" alt="Logo de La Nave del Medio" class="w-96 h-auto mx-auto mb-4"
+                <img src="LaNave_LogoLetras.webp" alt="Logo de La Nave del Medio" class="w-96 h-auto mx-auto mb-4"
                     onerror="this.onerror=null;this.src='https://placehold.co/192x64/00000000/ffffff?text=Logo'">
                 <p class="font-vt323 text-6xl green-333 mt-2 tracking-wider" style="text-shadow: 0 0 8px #42d232;">
                     Gamer/Creator </p>
@@ -1646,14 +1726,14 @@
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 ">
                     <div class="feature-card">
-                        <img src="HardSelect.png" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3"
+                        <img src="HardSelect.webp" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3"
                             onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
                         <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
                         <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
                     </div>
 
                     <div class="feature-card">
-                        <img src="SoftInstalled.png" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
+                        <img src="SoftInstalled.webp" alt="Icono de Software Instalado" class="w-24 h-24 mb-3"
                             onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
                         <h4 class="font-saira font-bold text-white text-xl leading-tight">Programas Clave</h4>
                         <p class="text-s text-gray-300 mt-1">
@@ -1662,11 +1742,9 @@
                                 class="transition-all duration-700 ease-in-out font-bold text-green-333">USAR</span>
                         </p>
                         <script>
-                            // Palabras a rotar
                             const words = ["USAR", "JUGAR", "CREAR", "VOLAR"];
                             let current = 0;
                             const el = document.getElementById("dynamic-word");
-                            // Calcular el ancho máximo
                             const maxLen = Math.max(...words.map(w => w.length));
                             el.style.width = `${maxLen}ch`;
                             el.style.display = "inline-block";
@@ -1685,9 +1763,7 @@
                                 transition: opacity 0.7s cubic-bezier(.4, 0, .2, 1);
                                 opacity: 1;
                                 color: #42d232;
-                                /* green-333 */
                                 width: 5ch;
-                                /* Fallback for 5 characters */
                                 display: inline-block;
                                 text-align: center;
                             }
@@ -1695,17 +1771,23 @@
                     </div>
 
                     <div class="feature-card">
-                        <img src="WinUpRound.png" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
+                        <img src="win11orig.webp" alt="Logo de Windows 11" class="w-24 h-24 mb-3"
                             onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
-                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Optimizado</h4>
-                        <p class="text-s text-gray-300 mt-1">Lo llamo <b class="text-white">WindOS</b>
-                        <p class="text-xs text-gray-500">FLUYE COMO EL VIENTO ;)</p>
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Original</h4>
+                        <p class="text-s text-gray-300 mt-1">con Licencia Pro </br>y <b>Optimizado</b>
                         </p>
                     </div>
 
+                    <div class="feature-card">
+                        <img src="soporteTarjeta.webp" alt="Soporte" class="w-24 h-24 mb-3"
+                            onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Soporte Técnico</h4>
+                        <p class=" text-gray-300 mt-1">Presencial en todo el <b class="text-blue-300">Partido de La Costa</b>
+                        <p><i class="text-gray-500">via Web en donde sea</i></p>
+                        </p>
+                    </div>
 
-
-                    <div class="feature-card animated-bg-games">
+                    <!-- <div class="feature-card animated-bg-games">
                         <div class="corner-ribbon-wrapper">
                             <div class="corner-ribbon"><span class="corner-ribbon-text">OFERTA</span><br><span
                                     class="despegue-text text-violet-700">DESPEGUE</span></div>
@@ -1715,127 +1797,66 @@
                                 class="text-orange-400 text-xl">3 Juegos Incluidos</p>
                         </h4>
                         <p class="text-s text-gray-300 mt-1">✔ Elegilos</p>
-                    </div>
+                    </div> -->
                 </div>
 
             </header>
 
-            <div class="hook-section text-center max-w-4xl mx-auto mt-8 space-y-6 relative z-40">
+            <div class="hook-section text-center max-w-4xl mx-auto mt-2 space-y-6 relative z-40">
                 <div>
 
-                    <div class="mt-2 text-base text-gray-200 flex items-center justify-center gap-4">
+                    <div class="mt-2 text-base text-gray-200  items-center justify-center gap-4">
 
-                        <p><i class="fas fa-house-circle-check"></i> Entrega a Domicilio</p>
-                        <p> </i><i class="fas fa-screwdriver-wrench"></i> Asistencia Técnica</p>
-                        <p>en Toda <i class="text-blue-300">🌊La Costa</i></p>
+                        <p><i class="fas fa-house-circle-check"></i> Entrega e Instalación a Domicilio</p>
+                        <p class="text-blue-300">desde <b>San Clemente</b> hasta <b>Nueva Atlantis</b></p>
                     </div>
-                    <!-- <p class="text-4xl font-bold"><strong><i>¿Gama Alta?</i><br class="sm:hidden"> ¡Ni Hace Falta!</strong></p>
-                        <p class="text-gray-200 font-saira text-3xl mt-2">con MENO<span class="text-3xl">$</span> de la 1/2 <i class="text-violet-500 text-4xl">VOLÁS⚡</i></p> -->
                     <h2 class="relative z-40 font-saira font-bold text-center mt-16 text-4xl lg:text-5xl "
                         style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>
-                    <h1 class="text-2xl">Te doy las que considero Mejores Opciones del momento</br> con <span class="links"
-                            style="color: var(--color-principal);">links<i
-                                class="fas fa-external-link-alt text-sm "></i></span>  a Mercado Libre, para ver sus
-                        detalles o las comprés por tu cuenta.</h1>
+                    <h1 class="text-2xl">con las Mejores Opciones en <b class="">Mercado Libre</b> + links<span class="links"
+                            style="color: var(--color-link);"><i class="fas fa-external-link-alt text-sm "></i></span>
+                        para ver sus
+                        detalles</h1>
+                    <h1>...si sabés del tema, usalos para comprar y armarla por tu cuenta ;)</h1>
                     <p class=" mb-8 text-3xl text-yellow-300">▼</p>
                 </div>
 
 
             </div>
-
-            <!--             <div class="text-center mt-8 md:hidden lg:block">
-                <a href="#games-section"
-                    class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
-                    <div class="flex items-center justify-center gap-5"><i class="fas fa-tasks text-2xl"></i>
-                        <div class="text-left">
-                            <span class="block leading-tight">Usá esta Web Interactiva</span>
-                            <span class="block text-2sm font-sans -mt-2">para simular tu pedido</span>
-                        </div>
-                    </div>
-                </a>
-            </div> -->
-
-            <section class="hidden bg-gray-800/50 border border-gray-700 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="flex flex-col items-center">
-                        <i class="fas fa-tasks text-4xl text-orange-400 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">1. Checá tu Pedido</h3>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <i class="fab fa-whatsapp text-4xl green-333 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">2. Enviámelo</h3>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <i class="fas fa-comments text-4xl text-cyan-400 mb-3"></i>
-                        <h3 class="text-xl font-bold text-gray-200">3. Despejá tus Dudas</h3>
-                    </div>
-                </div>
-            </section>
         </div>
 
         <div id="price-card-visibility-zone">
-            <section ID="section-hardware"
-                class="my-16 -mt-4 text-center max-w-3xl mx-auto px-4 overflow-hidden md:overflow-visible">
-                <!--                 <h2 class="text-5xl font-bold mb-4 text-white">La Base de<p> La Nave</p>
-                </h2> -->
-                <p class="text-3xl text-gray-100 font-saira">
-                    De <strong class="text-4xl font-vt323">base</strong> usamos:</p>
-
-
-                <div class="mt-16 space-y-3">
-                    <!-- CPU Row -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
-                        <div class="md:col-span-5">
-                            <img id="combo_cpu_ram_mother" src="comps/combos/ryzen5600g.png" alt="Ryzen 5 5600g"
-                                class="w-3/4 mx-auto md:w-[130%] md:-ml-16 h-auto rounded-xl shadow-lg"
-                                onerror="this.onerror=null;this.src='comps/combos/ryzen5600g.webp';">
-                        </div>
-                        <div class="md:col-span-7 text-center md:text-left">
-                            <a href="https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM"
-                                target="_blank">
-                                <p class="font-saira text-4xl md:text-5xl green-333 coneste"><b>Ryzen 5</b> 5600g
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"
-                                        style="color: var(--color-principal);"></i>
-                                </p>
-                            </a>
-                            <a href="https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665"
-                                target="_blank">
-                                <p class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"><b>16 GB</b> RAM
-                                    <small>en DualChannel</small>
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"
-                                        style="color: var(--color-principal);"></i>
-                                </p>
-                            </a>
-                            <a href="https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333"
-                                target="_blank">
-                                <p class="font-saira text-2xl md:text-3xl green-333 coneste">Motherboard <small>
-                                        Asrock B450M</small>
-                                    <i class="fas fa-external-link-alt text-sm opacity-75"
-                                        style="color: var(--color-principal);"></i>
-                                </p>
-                            </a>
-                            <p class="text-lg md:text-xl text-green-200 mt-2 coneste">Con este <b>excelente</b> combo
-                                con gráfica integrada <b>¡no te hace falta placa de video!</b></p>
-                            <p class="text-lg md:text-xl text-green-600 text-right mt-1">...pero podemos agregarla si
-                                buscás gráficos <i>tope de gama</i></p>
-                        </div>
+            <section id="section-bases" class="my-16 -mt-4 text-center max-w-4xl mx-auto px-4 section-card-style">
+                <div class="base-level-container">
+                    <span class="base-level-label">NIVEL DE BASE</span>
+                    <div id="base-level-selector" class="base-level-tabs">
+                        <div id="base-level-slider"></div>
+                        <div class="base-level-tab" data-level="0">I</div>
+                        <div class="base-level-tab active" data-level="1">II</div>
+                        <div class="base-level-tab" data-level="2">III</div>
                     </div>
                 </div>
 
-                <h2 class="relative z-40 font-saira font-bold text-center mt-12 text-4xl md:text-2xl lg:text-5xl">
-                    <span class="hidden sm:inline"
-                        style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                        <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ELEGÍ EL RESTO <span
-                            style="color:rgba(66, 210, 50, 0.7);">▼</span>
-                    </span>
-                    <span class="inline sm:hidden"
-                        style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                        ELEGÍ EL RESTO
-                        <p style="color:rgba(66, 210, 50, 0.7);">▼</p>
-                    </span>
-
-                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
+                    <div class="md:col-span-5">
+                        <div id="base-image-container">
+                            <img id="base-image" src="" alt="Componentes Base">
+                        </div>
+                    </div>
+                    <div class="md:col-span-7 text-center md:text-left">
+                        <p id="base-cpu-text" class="font-saira text-4xl md:text-5xl green-333 coneste"></p>
+                        <p id="base-ram-text" class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"></p>
+                        <p id="base-motherboard-text" class="font-saira text-2xl md:text-3xl green-333 coneste"></p>
+                        <p id="base-description-text" class="text-lg md:text-xl text-green-200 mt-2 coneste"></p>
+                    </div>
+                </div>
             </section>
+
+            <!-- <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+                <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> COMPONENTES <span
+                        style="color:rgba(66, 210, 50, 0.7);">▼</span>
+                </span>
+            </h2> -->
 
 
             <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
@@ -1843,17 +1864,14 @@
                     <div class="w-full md:w-1/2 flex-shrink-0 h-full flex flex-col items-center justify-center">
                         <div id="tower-selector-container"
                             class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
-                            <!-- Main content area for the image, takes remaining height after bottom-controls -->
                             <div class="flex-grow flex items-center justify-center w-full h-full relative">
                                 <img id="current-tower-image" src="" alt="Torre PC Gamer"
                                     class="w-full h-full object-contain"
                                     onerror="this.onerror=null;this.src='https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC'">
                             </div>
 
-                            <!-- This wrapper is positioned at the very bottom -->
                             <div id="tower-name-and-arrows-wrapper"
                                 class="relative z-10 w-full flex justify-between items-center py-2 px-4">
-                                <!-- The actual arrows and name -->
                                 <i id="prev-tower" class="fas fa-chevron-left tower-nav-arrow"></i>
                                 <span id="current-tower-name" class="bg-gray-800/80 px-2 py-1 rounded"></span>
                                 <i id="next-tower" class="fas fa-chevron-right tower-nav-arrow"></i>
@@ -1863,7 +1881,8 @@
                     </div>
                     <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
                         <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                            <li id="gpu-li"
+                                class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
                                     <strong class="text-lg font-semibold">Gráfica:</strong>
                                     <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
@@ -1879,7 +1898,7 @@
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
                                 <img id="ssd-image" src="" alt="Almacenamiento SSD"
-                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
+                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0 hidden md:block">
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
@@ -1893,99 +1912,82 @@
                         </ul>
                     </div>
                 </section>
-
             </div>
 
+            <!-- ================== AI SECTION START ================== -->
+            <section id="ai-section" class="max-w-5xl mx-auto">
+                <div class="text-center">
+                    <h2 class="font-saira-black text-4xl md:text-5xl brand-gradient-text mb-2">Análisis de Rendimiento
+                        por IA</h2>
+                    <p class="font-vt323 text-4xl green-333 mb0 mb-6">¿Cómo correrá tu juego favorito en esta Nave?</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <input type="text" id="ai-input" class="w-full px-4 py-3 rounded-lg text-lg"
+                            placeholder="Escribí el nombre de un juego, ej: Fortnite">
+                        <button id="ai-button"
+                            class="w-full sm:w-auto px-6 py-3 rounded-lg text-white text-lg flex items-center justify-center gap-2">
+                            <i class="fas fa-robot"></i>
+                            <span>Analizar</span>
+                        </button>
+                    </div>
+                    <div id="ai-result-container" class="mt-6 p-6 rounded-lg text-lg text-gray-300">
+                        <p id="ai-placeholder" class="text-center text-gray-500">El análisis de la IA aparecerá aquí...
+                        </p>
+                        <div id="ai-loader" class="hidden mx-auto loader"></div>
+                        <div id="ai-result" class="prose prose-invert max-w-none"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- ================== AI SECTION END ================== -->
 
-            <section id="section-perifericos" class="mb-12 section-card-style">
-                <h2 class="text-3xl font-bold text-center mb-3">Periféricos Extra</h2>
-                <p class="text-center text-gray-300 mb-8">Agregá Comodidad al Mando</p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                    <!-- Combo Mouse y Teclado Card -->
-                    <div id="combo-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="combo-image" src="" alt="Combo Mouse y Teclado"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Combo'">
-                        </div>
-                        <p id="combo-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Keyboard Card -->
-                    <div id="keyboard-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="keyboard-image" src="" alt="Teclado" class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Teclado'">
-                        </div>
-                        <p id="keyboard-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Mouse Card -->
-                    <div id="mouse-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="mouse-image" src="" alt="Mouse" class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Mouse'">
-                        </div>
-                        <p id="mouse-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Monitor Card -->
-                    <div id="monitor-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="monitor-image" src="" alt="Monitor" class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Monitor'">
-                        </div>
-                        <p id="monitor-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Auriculares Card -->
-                    <div id="auriculares-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="auriculares-image" src="" alt="Auriculares"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Auriculares'">
-                        </div>
-                        <p id="auriculares-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
-                    <!-- Parlantes Card -->
-                    <div id="parlantes-card"
-                        class="card-peripheral bg-gray-800 p-2 rounded-xl border-2 border-transparent cursor-pointer flex flex-col items-center">
-                        <div class="image-wrapper relative aspect-[4/3] w-full">
-                            <img id="parlantes-image" src="" alt="Parlantes"
-                                class="rounded-md w-full h-full object-cover"
-                                onerror="this.onerror=null;this.src='https://placehold.co/400x300/111827/ffffff?text=Parlantes'">
-                        </div>
-                        <p id="parlantes-text"
-                            class="text-center text-gray-400 text-sm mt-2 h-14 flex flex-col items-center justify-center">
-                        </p>
-                    </div>
+            <!-- ================== FLYER GENERATOR START ================== -->
+            <section id="flyer-generator-section" class="section-card-style max-w-5xl mx-auto">
+                <div class="text-center">
+                    <h2 class="font-saira-black text-4xl md:text-5xl mb-2" style="color: #FFD700; text-shadow: 0 2px 12px #000a;">Generador de Flyers Publicitarios</h2>
+                    <p class="font-vt323 text-4xl text-orange-400 mb-6">¡Creá tus Anuncios para Meta!</p>
+                    <p class="text-gray-300 max-w-2xl mx-auto mb-6">Esta herramienta crea automáticamente 3 imágenes para tu publicación (formato post, historia y reel) usando la configuración de PC seleccionada. ¡Ideal para publicitar en Instagram y Facebook!</p>
+                    <button id="generate-flyer-button" class="w-full sm:w-auto px-8 py-4 rounded-lg text-white text-xl flex items-center justify-center gap-3 mx-auto">
+                        <i class="fas fa-magic"></i>
+                        <span>Generar Flyers</span>
+                    </button>
+                </div>
+                <div id="flyer-loader-container" class="text-center my-6 hidden">
+                    <div class="loader inline-block"></div>
+                    <p class="text-lg text-gray-400 mt-2">Creando magia... Esto puede tardar un momento.</p>
+                </div>
+                <div id="flyer-output" class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Las imágenes generadas aparecerán aquí -->
+                </div>
+            </section>
+            <!-- ================== FLYER GENERATOR END ================== -->
+
+
+            <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+                <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> PERIFÉRICOS <span
+                        style="color:rgba(66, 210, 50, 0.7);">▼</span>
+                </span>
+            </h2>
+
+            <section id="section-peripherals" class="mb-12 section-card-style px-4">
+                <div id="peripherals-grid"
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
+                    <!-- Las tarjetas de periféricos se insertarán aquí con JS -->
                 </div>
             </section>
 
             <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
-
-
                 <div class="feature-card relative lg:col-span-2 soporte-tecnico-card"
                     style="padding: 1rem; overflow: hidden; min-height: 200px;">
-                    <img src="memde_think.png" alt="Soporte técnico personalizado"
+                    <img src="memde_think.webp" alt="Soporte técnico personalizado"
                         class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none" md:z-10
                         md:opacity-100 md:h-[110%] md:-right-4"
                         onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
 
                     <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
                         <div class="flex items-center gap-4 mb-2 mt-1 sm:mb-3 sm:mt-0">
-                            <img src="SoportePersonal.png" alt="Icono de Soporte Técnico"
+                            <img src="SoportePersonal.webp" alt="Icono de Soporte Técnico"
                                 class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0"
                                 onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
                             <h4
@@ -2042,7 +2044,7 @@
                     </ul>
                     <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
                         <i class="fas fa-headset text-2xl"></i>
-                        <span class="text-xl font-bold text-gray-200">Servicio Postventa | </span>
+                        <span class="text-xl font-bold text-gray-200">Servicio Postventa <span class="hidden sm:inline"> |</span></span>
                         <span class="font-gamer text-xs">¿Algún Problema?<br>¡Lo Arreglo!</span>
                     </div>
                 </div>
@@ -2051,7 +2053,7 @@
 
 
         <form id="orderForm">
-            <section id="games-section" class="mb-12 section-card-style">
+            <section id="games-section" class="mb-12 section-card-style hidden">
                 <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Viajan👌</h2>
                 <p class="text-center green-333 -mt-4 mb-4 font-gamer">👇Seleccioná hasta 3</p>
                 <p class="text-center text-violet-600 -mt-4 mb-8 font-gamer">Van Instalados!💾</p>
@@ -2074,7 +2076,7 @@
 
             <section id="section-software" class="mb-12 section-card-style">
                 <h2 class="text-5xl font-bold text-center mb-8">Programas Clave</h2>
-                <p class="text-center font-saira text-xl mb-1">Te marco lo que Recomiendo👍</p>
+                <p class="text-center font-saira text-xl mb-1">Te marco lo Básico👍</p>
                 <p class="text-center text-gray-100 mb-1 text-xl">✅¡Hacé TU Selección!</p>
                 <p class="text-center text-gray-400 mb-6">Podés modificarla luego...</p>
                 <div id="software-list" class="max-w-2xl mx-auto space-y-4">
@@ -2091,14 +2093,9 @@
                     </div>
 
                     <div class="flex flex-col items-center">
-                        <h2 class="text-4xl font-bold mb-2">Selección y Precio Total</h2>
-                        <p class="font-saira text-2xl  green-333 coneste"><b>Ryzen 5</b> 5600g | 16GB de RAM</p>
-                        <!-- Contenedor para las imágenes de los componentes seleccionados -->
-                        <div id="selected-components-preview" class="w-full p-4 border-y border-gray-700 my-6">
-                            <div id="selected-images-container"
-                                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center">
-                                <!-- Las imágenes se insertarán aquí con JS -->
-                            </div>
+                        <h2 class="text-4xl font-bold mb-2">Resumen Pedido</h2>
+                        <div id="selected-components-preview" class="w-full p-4 my-6">
+                            <!-- Summary content will be inserted here by JS -->
                         </div>
 
                         <div class="w-full max-w-lg mt-4 flex flex-col items-center">
@@ -2107,17 +2104,11 @@
                                     <p class="lucas-price text-center font-saira"><span id="total-price">$500.000</span>
                                     </p>
                                 </div>
-                                <!--                                 <div class="md:col-span-2 flex justify-center items-center">
-                                    <div class="relative h-24 w-40">
-                                        <span class="offer-banner-contado font-saira">al contado</span>
-                                        <span class="offer-banner-main font-saira">¡OFERTA ÚNICA!</span>
-                                    </div>
-                                </div> -->
                                 <div class="md:col-span-2 flex justify-center items-center text-center">
                                     <div>
                                         <p class=" green-333 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega
                                             Personal a Domicilio</p>
-                                        <p class="text-xl text-white font-bold">en Toda <strong class="text-white">La
+                                        <p class="text-xl text-white font-bold">en toda <strong class="text-white">La
                                                 Costa 🌊</strong></p>
                                     </div>
                                 </div>
@@ -2162,7 +2153,7 @@
 
         <footer class="text-center mt-16 pt-8 border-t border-gray-700">
             <div class="mb-6">
-                <img src="logo.png" alt="kenna.inf" class="w-80 mx-auto mb-4"
+                <img src="logo.webp" alt="kenna.inf" class="w-80 mx-auto mb-4"
                     onerror="this.onerror=null;this.src='https://placehold.co/320x80/00000000/ffffff?text=Logo'">
                 <a id="service-link" href="https://www.facebook.com/kenna.inf/reviews" target="_blank"
                     class="text-indigo-400 hover:text-indigo-300 transition-colors">
@@ -2176,7 +2167,7 @@
                 <a href="https://www.facebook.com/kenna.inf" target="_blank"
                     class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
             </div>
-            <img id="memde_pointLeft" src="memde_pointLeft.png" alt=""
+            <img id="memde_pointLeft" src="memde_pointLeft.webp" alt=""
                 onerror="this.onerror=null;this.src='https://placehold.co/250x300/00000000/ffffff?text=Yo'">
         </footer>
 
@@ -2200,15 +2191,6 @@
             <span class="price-card-subtitle">PRECIO FINAL CON SERVICIO</span>
         </div>
         <div class="separator hidden"></div>
-        <!--         <div class="price-section usd-price" id="usd-price-section">
-            <div class="price-value-row">
-                <span class="currency-value"><span id="total-price-summary-usd"></span></span>
-                <span class="currency-text">USD</span>
-            </div>
-            <a id="usd-link-summary" href="#" class="text-xs text-gray-500 hover:underline">
-                <p>Ver cotizaciones</p>
-            </a>
-        </div> -->
     </div>
 
 
@@ -2224,7 +2206,7 @@
             </div>
             <span class="price-card-subtitle">PRECIO FINAL CON SERVICIO</span>
         </div>
-        <div class="separator w-1 h-8 hidden"></div> <!-- Adjust height as needed -->
+        <div class="separator w-1 h-8 hidden"></div>
         <div class="price-section usd-price pl-4 hidden" id="usd-price-section-mobile">
 
             <a id="usd-link-summary-mobile" href="#" class="text-xs text-gray-500 hover:underline">
@@ -2242,48 +2224,55 @@
             const gameNames = ['GTA V', 'LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered', 'Need for Speed: Underground HD', 'Half Life: Black Mesa', 'Half Life 2 HD', 'Abe´s Oddysey Remake', 'WoW Classic: en TurtleWoW', 'Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster', 'BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3', 'Fallout: New Vegas', 'Batman: Arkham Asylum', 'Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD', 'Need for Speed: Most Wanted HD', 'Blur', 'GRID 2', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones', 'Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops', 'Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.', 'Mortal Kombat 11 Komplete Edition', 'Ultra Street Fighter IV', 'Ultimate Marvel vs. Capcom 3', 'The King of Fighters XIII', 'Injustice Gods Among Us', 'Heroes of Might & Magic HD V', 'Reckoning: Kingdoms of Amalur', 'Divinity Original Sin', 'Age of Empires II Definitive Edition', 'The Elder Scrolls V: Skyrim', 'The Elder Scrolls IV: Oblivion & AddOns HD'];
             const softwareData = [
                 // SISTEMA
-                { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
-                { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
-                { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
-                { name: 'MalwareBytes', slug: 'malwarebytes', checked: true, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
+                // { name: 'AVG AntiVirus', slug: 'avg_antivirus', checked: true, disabled: false, category: 'Sistema', descripcion: 'Antivirus gratuito y eficaz.' },
+                // { name: 'Avast AntiVirus', slug: 'avast_antivirus', checked: false, disabled: false, category: 'Sistema', descripcion: 'Igual que AVG pero más molesto.' },
+                // { name: 'BitDefender', slug: 'bitdefender', checked: false, disabled: false, category: 'Sistema', descripcion: 'Excelente antivirus. Requiere cuenta gratuita.' },
+                { name: 'PeaZip', slug: 'pea', checked: true, disabled: false, category: 'Sistema', descripcion: 'El mejor des/compresor de archivos.' },
+                { name: 'MalwareBytes', slug: 'malwarebytes', checked: false, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
                 { name: 'Firewall App Blocker', slug: 'firewall_app_blcoker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
-                { name: 'Fraps', slug: 'fraps', checked: true, disabled: false, category: 'Sistema', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
-                { name: 'HW Monitor', slug: 'hw_monitor', checked: true, disabled: false, category: 'Sistema', descripcion: 'Monitorea temperatura y voltajes.' },
-                { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
-                { name: 'Space Sniffer', slug: 'space_sniffer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza uso de espacio en disco. Ideal para hacer lugar.' },
-                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: true, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
-                { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: true, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
-                { name: 'Wise Registry Cleaner', slug: 'wise_registry_cleaner', checked: false, disabled: false, category: 'Sistema', descripcion: 'Limpia el registro de Windows.' },
+                { name: 'Fraps', slug: 'fraps', checked: false, disabled: false, category: 'Juegos', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
+                { name: 'AnyDesk', slug: 'anydesk', checked: true, disabled: false, category: 'Sistema', descripcion: 'Para manejar la PC remotamente - así soluciono problemas a distancia ;)' },
+                // { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
+                { name: 'Lightshot', slug: 'lightshot', checked: false, disabled: false, category: 'Sistema', descripcion: 'Toma capturas de pantalla prolijas. Fundamental si sos creador.' },
+                { name: 'WinDirStat', slug: 'windirstat', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza qué te está ocupando lugar en disco.' },
+                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: false, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
+                { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: false, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
                 // MULTIMEDIA
                 { name: 'Hear', slug: 'hear', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Mejora el audio del sistema. Alta configuración.' },
-                { name: 'PotPlayer', slug: 'potplayer', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Reproductor de video avanzado.' },
-                { name: 'VLC Player', slug: 'vlc_player', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Reproduce cualquier formato de video.' },
-                { name: 'WinAmp', slug: 'winamp', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Clásico reproductor de música, renovado por la comunidad.' },
+                { name: 'VLC Player', slug: 'vlc_player', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Reproduce cualquier formato de video.' },
+                { name: 'WinAmp', slug: 'winamp', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Clásico reproductor de música, renovado por la comunidad.' },
                 { name: 'YouTube', slug: 'youtube', checked: true, disabled: false, category: 'Multimedia', descripcion: 'YouTube *sin publicidad*.' },
-                { name: 'Spotify', slug: 'spotify', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Música en streaming.' },
-                { name: 'Stremio', slug: 'stremio', checked: true, disabled: false, category: 'Multimedia', descripcion: 'Películas y series online.' },
+                { name: 'Spotify', slug: 'spotify', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Música en streaming.' },
+                { name: 'Stremio', slug: 'stremio', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Películas y series (p1r4tas) online.' },
                 // WEB
                 { name: 'Brave', slug: 'brave', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador rápido y seguro basado en Chrome. Bloquea publicidad.' },
-                { name: 'Opera GX', slug: 'opera_gx', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador gamer personalizable. Bloquea publicidad.' },
+                { name: 'Opera GX', slug: 'opera_gx', checked: false, disabled: false, category: 'Web', descripcion: 'Navegador gamer personalizable. Bloquea publicidad.' },
                 { name: 'Google Chrome', slug: 'google_chrome', checked: true, disabled: false, category: 'Web', descripcion: 'Navegador web popular.' },
                 { name: 'WhatsApp', slug: 'whatsapp', checked: true, disabled: false, category: 'Web', descripcion: 'Mensajería instantánea.' },
                 { name: 'Discord', slug: 'discord', checked: false, disabled: false, category: 'Web', descripcion: 'Chat de voz y texto para comunidades.' },
                 { name: 'Zoom', slug: 'zoom', checked: false, disabled: false, category: 'Web', descripcion: 'Videollamadas y reuniones online.' },
-                { name: 'Free Download Manager', slug: 'freedownloadmanager', checked: true, disabled: false, category: 'Web', descripcion: 'Gestor de descargas y torrents eficiente.' },
+                { name: 'Free Download Manager', slug: 'freedownloadmanager', checked: false, disabled: false, category: 'Web', descripcion: 'Gestor de descargas y torrents eficiente.' },
                 { name: 'JDownloader 2', slug: 'jdownloader_2', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
                 { name: 'qBitTorrent', slug: 'qbittorrent', checked: false, disabled: false, category: 'Web', descripcion: 'Descarga archivos de internet.' },
                 // CREACIÓN
                 { name: 'Inkscape', slug: 'inkscape', checked: false, disabled: false, category: 'Creación', descripcion: 'Gráficos vectoriales. Ideal para diseñar logos profesionales.' },
                 { name: 'Krita', slug: 'krita', checked: false, disabled: false, category: 'Creación', descripcion: 'Pintura y arte digital.' },
-                { name: 'Photopea', slug: 'photopea', checked: true, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
+                { name: 'Photopea', slug: 'photopea', checked: false, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
                 { name: 'Canva', slug: 'canva', checked: true, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
-                { name: 'GIMP', slug: 'gimp', checked: false, disabled: false, category: 'Creación', descripcion: 'Editor de imágenes avanzado.' },
-                { name: 'XnConvert', slug: 'xnconvert', checked: true, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
-                { name: 'CapCut', slug: 'capcut', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video sencilla.' },
-                { name: 'DaVinci Resolve', slug: 'davinci_resolve', checked: true, disabled: false, category: 'Creación', descripcion: 'Edición de video profesional.' },
-                { name: 'OBS Studio', slug: 'obs_studio', checked: true, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
+                { name: 'XnConvert', slug: 'xnconvert', checked: false, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
+                { name: 'CapCut', slug: 'capcut', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video sencilla. OJO! Sin premium es muy limitado.' },
+                { name: 'DaVinci Resolve', slug: 'davinci_resolve', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video profesional.' },
+                { name: 'OBS Studio', slug: 'obs_studio', checked: false, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
+                { name: 'StreamLabs', slug: 'slabs', checked: false, disabled: false, category: 'Creación', descripcion: 'Basado en OBS con facilidad de uso para streamear.' },
                 { name: 'GitHub Desktop', slug: 'github_desktop', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Cliente visual para Git.' },
                 { name: 'Visual Studio Code', slug: 'visual_studio_code', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Editor de código moderno.' },
+                { name: 'n8n', slug: 'n8n', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Agentes de IA en local para automatizar lo-que-sea.' },
+                // JUEGOS
+                { name: 'Steam', slug: 'steam', checked: true, disabled: false, category: 'Juegos', descripcion: 'La plataforma de juegos de PC más grande.' },
+                { name: 'Epic Games', slug: 'epic_games', checked: false, disabled: false, category: 'Juegos', descripcion: 'Ofrece juegos gratis cada semana.' },
+                { name: 'EA App', slug: 'ea_app', checked: false, disabled: false, category: 'Juegos', descripcion: 'Lanzador para juegos de Electronic Arts.' },
+                { name: 'Battle.net', slug: 'battlenet', checked: false, disabled: false, category: 'Juegos', descripcion: 'Plataforma para juegos de Blizzard.' },
+                { name: 'GOG Galaxy', slug: 'gog_galaxy', checked: false, disabled: false, category: 'Juegos', descripcion: 'Lanzador para juegos sin DRM.' },
             ];
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
@@ -2293,80 +2282,71 @@
             let BASE_PRICE = 0;
             let allDolarRates = [];
             let currentTowerIndex = 0;
+            let currentBaseLevel = 1; // Default to Nivel II
 
-            // Component Options
-            let baseOptions = [];
-            let armadasOptions = [];
-            let towersOptions = [];
-            let ssdOptions = [];
-            let gpuOptions = [];
-            let psuOptions = [];
-            let motherboardOptions = [];
-            let cpuOptions = [];
-            let ramOptions = [];
-            let comboOptions = [];
-            let monitorOptions = [];
-            let mouseOptions = [];
-            let joystickOptions = [];
-            let keyboardOptions = [];
-            let comboMouseTecladoOptions = [];
-            let auricularesOptions = [];
-            let parlantesOptions = [];
-
-            // Peripheral State
-            const peripheralState = {
-                currentMonitorIndex: -1,
-                currentMouseIndex: -1,
-                currentKeyboardIndex: -1,
-                currentComboIndex: -1,
-                currentAuricularesIndex: -1,
-                currentParlantesIndex: -1,
+            // --- NEW: Centralized state for selected component indices ---
+            let selectedComponentIndices = {
+                gpu: 0,
+                ssd: 0,
+                psu: 0
             };
 
-            // --- FETCH AND INITIALIZE ---
-            fetch('products.json')
-                .then(response => response.json())
-                .then(data => {
-                    initializeApp(data);
-                })
-                .catch(error => {
-                    console.error('Error loading products.json:', error);
-                });
+            // Component Options
+            let baseOptions = [], cpuOptions = [], ramOptions = [], motherboardOptions = [],
+                towersOptions = [], ssdOptions = [], gpuOptions = [], psuOptions = [],
+                comboMouseTecladoOptions = [], keyboardOptions = [], mouseOptions = [],
+                monitorOptions = [], auricularesOptions = [], parlantesOptions = [],
+                microfonosOptions = [], webcamOptions = [], arosDeLuzOptions = [], wifiOptions = [];
 
-            async function initializeApp(data) {
-                // Populate component options from JSON data
+            // NEW: State for optional peripherals
+            const selectedPeripherals = {
+                monitor: -1, keyboard: -1, mouse: -1, auriculares: -1,
+                parlantes: -1, microfono: -1, webcam: -1, arodeluz: -1, wifi: -1
+            };
+
+            // --- INITIALIZE ---
+            function initializeApp(data) {
                 baseOptions = (data.baseOptions || []).filter(opt => opt.visible !== 0);
-                armadasOptions = (data.armadasOptions || []).filter(opt => opt.visible !== 0);
+                cpuOptions = data.cpuOptions || [];
+                ramOptions = data.ramOptions || [];
+                motherboardOptions = data.motherboardOptions || [];
                 towersOptions = (data.towersOptions || []).filter(opt => opt.visible !== 0);
                 ssdOptions = (data.ssdOptions || []).filter(opt => opt.visible !== 0);
                 gpuOptions = (data.gpuOptions || []).filter(opt => opt.visible !== 0);
                 psuOptions = (data.psuOptions || []).filter(opt => opt.visible !== 0);
-                motherboardOptions = (data.motherboardOptions || []).filter(opt => opt.visible !== 0);
-                cpuOptions = (data.cpuOptions || []).filter(opt => opt.visible !== 0);
-                ramOptions = (data.ramOptions || []).filter(opt => opt.visible !== 0);
-                comboOptions = (data.comboOptions || []).filter(opt => opt.visible !== 0);
-                monitorOptions = (data.monitorOptions || []).filter(opt => opt.visible !== 0);
-                mouseOptions = (data.mouseOptions || []).filter(opt => opt.visible !== 0);
-                joystickOptions = (data.joystickOptions || []).filter(opt => opt.visible !== 0);
                 keyboardOptions = (data.keyboardOptions || []).filter(opt => opt.visible !== 0);
-                comboMouseTecladoOptions = (data.comboMouseTecladoOptions || []).filter(opt => opt.visible !== 0);
+                mouseOptions = (data.mouseOptions || []).filter(opt => opt.visible !== 0);
+                monitorOptions = (data.monitorOptions || []).filter(opt => opt.visible !== 0);
                 auricularesOptions = (data.auricularesOptions || []).filter(opt => opt.visible !== 0);
                 parlantesOptions = (data.parlantesOptions || []).filter(opt => opt.visible !== 0);
+                microfonosOptions = (data.microfonosOptions || []).filter(opt => opt.visible !== 0);
+                webcamOptions = (data.webcamOptions || []).filter(opt => opt.visible !== 0);
+                arosDeLuzOptions = (data.arosDeLuzOptions || []).filter(opt => opt.visible !== 0);
+                wifiOptions = (data.wifiOptions || []).filter(opt => opt.visible !== 0);
 
-                // Set BASE_PRICE from the first base option's total plus GAIN_PRICE
-                if (baseOptions.length > 0) {
-                    BASE_PRICE = baseOptions[0].total + GAIN_PRICE;
-                } else {
-                    console.error("No baseOptions found in products.json to set BASE_PRICE.");
-                    BASE_PRICE = GAIN_PRICE; // Fallback
-                }
-
-                // --- Start dependent initializations ---
-                await fetchDolarRate();
+                updateBasePrice();
+                fetchDolarRate();
                 populateUI();
                 setupEventListeners();
                 updateAllDisplays();
             }
+
+            fetch('products.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    initializeApp(data);
+                })
+                .catch(error => {
+                    console.error('Failed to load products.json, using fallback data:', error);
+                    
+                    initializeApp(fallbackData);
+                });
+
 
             function populateUI() {
                 // Populate game list
@@ -2387,6 +2367,7 @@
 
                 // Populate software list
                 const softwareCategories = [
+                    { name: 'Juegos', description: 'Plataformas y lanzadores para acceder a tu biblioteca de juegos.', icon: 'fa-gamepad' },
                     { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.', icon: 'fa-shield-alt' },
                     { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.', icon: 'fa-photo-film' },
                     { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.', icon: 'fa-globe' },
@@ -2395,17 +2376,23 @@
                 ];
                 const softwareListContainer = document.getElementById('software-list');
                 softwareListContainer.innerHTML = '';
-                softwareCategories.forEach(category => {
+                softwareCategories.forEach((category, idx) => {
                     const categoryWrapper = document.createElement('div');
-                    categoryWrapper.className = 'mb-8';
-                    categoryWrapper.innerHTML = `<h3 class="font-bold text-lg text-violet-400 mb-2 flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</h3>`;
+                    categoryWrapper.className = 'mb-4 border border-violet-700 rounded-lg overflow-hidden';
+                    // Header clickable
+                    const header = document.createElement('button');
+                    header.type = 'button';
+                    header.className = 'w-full flex items-center justify-between px-4 py-3 bg-violet-950 hover:bg-violet-900 transition font-bold text-lg text-violet-400 focus:outline-none';
+                    header.innerHTML = `<span class="flex items-center gap-2"><i class="fas ${category.icon} text-violet-300 text-xl"></i> ${category.name}</span><span class="accordion-arrow text-violet-300 transition-transform"><i class="fas fa-chevron-down"></i></span>`;
+                    categoryWrapper.appendChild(header);
+                    // Descripción
                     const descDiv = document.createElement('div');
-                    descDiv.className = 'software-cat-desc mb-4 px-4 py-2 rounded-xl text-base text-violet-100 bg-[#1a1332]';
-                    descDiv.style.transition = 'background 0.2s, color 0.2s';
+                    descDiv.className = 'software-cat-desc px-4 py-2 text-base text-violet-100 bg-[#1a1332]';
                     descDiv.textContent = category.description;
                     categoryWrapper.appendChild(descDiv);
+                    // Items (ocultos por defecto)
                     const itemsWrapper = document.createElement('div');
-                    itemsWrapper.className = 'grid grid-cols-2 md:grid-cols-3 gap-4';
+                    itemsWrapper.className = 'grid grid-cols-2 mt-3 md:grid-cols-3 gap-4 px-4 pb-4 hidden';
                     const programs = softwareData.filter(item => item.category === category.name);
                     programs.forEach(item => {
                         const essentialClass = item.disabled ? 'essential-software' : '';
@@ -2434,36 +2421,89 @@
                         itemsWrapper.appendChild(softwareItemHTML);
                     });
                     categoryWrapper.appendChild(itemsWrapper);
+                    
+                    const toggleAccordion = () => {
+                        const isOpen = !itemsWrapper.classList.contains('hidden');
+
+                        // Close all other accordions first
+                        document.querySelectorAll('#software-list .mb-4').forEach(wrapper => {
+                            const otherItems = wrapper.querySelector('.grid');
+                            if (otherItems && otherItems !== itemsWrapper) {
+                                otherItems.classList.add('hidden');
+                                const otherHeader = wrapper.querySelector('button');
+                                if (otherHeader && otherHeader.querySelector('.accordion-arrow')) {
+                                    otherHeader.querySelector('.accordion-arrow').style.transform = '';
+                                }
+                            }
+                        });
+
+                        // Then toggle the current one
+                        if (isOpen) {
+                            itemsWrapper.classList.add('hidden');
+                            header.querySelector('.accordion-arrow').style.transform = '';
+                        } else {
+                            itemsWrapper.classList.remove('hidden');
+                            header.querySelector('.accordion-arrow').style.transform = 'rotate(180deg)';
+                        }
+                    };
+
+                    header.addEventListener('click', toggleAccordion);
+                    descDiv.addEventListener('click', toggleAccordion);
+                    
                     softwareListContainer.appendChild(categoryWrapper);
                 });
 
-                // Populate component selects
+                // --- REFACTORED: Populate component selects using index as value ---
                 const ssdSelect = document.getElementById('ssd-select');
-                if (ssdSelect) ssdSelect.innerHTML = ssdOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+                if (ssdSelect) ssdSelect.innerHTML = ssdOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
 
                 const gpuSelect = document.getElementById('gpu-select');
-                if (gpuSelect) gpuSelect.innerHTML = gpuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+                if (gpuSelect) gpuSelect.innerHTML = gpuOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
 
                 const psuSelect = document.getElementById('psu-select');
-                if (psuSelect) psuSelect.innerHTML = psuOptions.map(o => `<option value="${o.price}">${o.name}</option>`).join('');
+                if (psuSelect) psuSelect.innerHTML = psuOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
+
+                populateOptionalPeripherals();
             }
 
             function setupEventListeners() {
-                // Component Selects
-                const ssdSelect = document.getElementById('ssd-select');
-                const gpuSelect = document.getElementById('gpu-select');
-                const psuSelect = document.getElementById('psu-select');
+                // Base Level Selector
+                document.querySelectorAll('.base-level-tab').forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        document.querySelectorAll('.base-level-tab').forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+                        currentBaseLevel = parseInt(tab.dataset.level);
+                        updateBaseDisplay();
+                        updateBasePrice();
+                        updatePrices();
+                        updateSliderPosition();
+                    });
+                });
 
-                if (ssdSelect) ssdSelect.addEventListener('change', () => updateComponentDisplay(ssdSelect, document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions));
-                if (gpuSelect) gpuSelect.addEventListener('change', () => updateComponentDisplay(gpuSelect, document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions));
-                if (psuSelect) psuSelect.addEventListener('change', () => updateComponentDisplay(psuSelect, document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions));
+                // --- REFACTORED: Component Selects event listeners ---
+                document.getElementById('gpu-select')?.addEventListener('change', (e) => {
+                    selectedComponentIndices.gpu = parseInt(e.target.value);
+                    updateComponentDisplay('gpu');
+                });
+                document.getElementById('ssd-select')?.addEventListener('change', (e) => {
+                    selectedComponentIndices.ssd = parseInt(e.target.value);
+                    updateComponentDisplay('ssd');
+                });
+                document.getElementById('psu-select')?.addEventListener('change', (e) => {
+                    selectedComponentIndices.psu = parseInt(e.target.value);
+                    updateComponentDisplay('psu');
+                });
 
                 // Tower navigation
                 document.getElementById('prev-tower').addEventListener('click', prevTower);
                 document.getElementById('next-tower').addEventListener('click', nextTower);
 
-                // Peripherals
-                setupPeripheralCards();
+                // Peripherals Grid Listener
+                document.getElementById('peripherals-grid').addEventListener('click', handlePeripheralClick);
+
+                // Summary Section Listener
+                document.getElementById('selected-components-preview').addEventListener('click', handleSummaryCardClick);
+
 
                 // Games
                 document.querySelectorAll('input[name="game"]').forEach(checkbox => {
@@ -2475,7 +2515,7 @@
                 // Form submission
                 document.getElementById('orderForm').addEventListener('submit', handleFormSubmit);
 
-                // Dolar Popup (Listeners are kept in case they are re-enabled later)
+                // Dolar Popup
                 const dolarTriggers = ['usd-link-top', 'usd-price-display-top', 'usd-link-bottom', 'total-price-usd', 'usd-link-summary', 'total-price-summary-usd', 'usd-link-summary-mobile', 'total-price-summary-usd-mobile'];
                 dolarTriggers.forEach(id => document.getElementById(id)?.addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); }));
                 const dolarPopup = document.getElementById('dolar-popup');
@@ -2506,41 +2546,66 @@
                 // Window resize
                 window.addEventListener('resize', () => {
                     setInitialGridHeight();
-                    positionCroxImages();
+                    updateSliderPosition();
                 });
+                // AI Section Listener
+                document.getElementById('ai-button').addEventListener('click', checkGameCompatibility);
+                // Permitir Enter en el input para analizar
+                document.getElementById('ai-input').addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        document.getElementById('ai-button').click();
+                    }
+                });
+
+                // Flyer Generator Listener
+                document.getElementById('generate-flyer-button').addEventListener('click', generateFlyers);
             }
 
             function updateAllDisplays() {
+                updateBaseDisplay();
                 updateTowerDisplay();
-                updateComponentDisplay(document.getElementById('ssd-select'), document.getElementById('ssd-description'), document.getElementById('ssd-image'), ssdOptions);
-                updateComponentDisplay(document.getElementById('gpu-select'), document.getElementById('gpu-description'), document.getElementById('gpu-image'), gpuOptions);
-                updateComponentDisplay(document.getElementById('psu-select'), document.getElementById('psu-description'), document.getElementById('psu-image'), psuOptions);
-                updatePeripheralStates();
+                updateComponentDisplay('gpu');
+                updateComponentDisplay('ssd');
+                updateComponentDisplay('psu');
                 updateSelectedGamesList();
                 setInitialGridHeight();
-                positionCroxImages();
                 updatePrices();
+                updateSliderPosition();
+            }
+
+            function updateBasePrice() {
+                if (baseOptions.length > currentBaseLevel) {
+                    BASE_PRICE = baseOptions[currentBaseLevel].total + GAIN_PRICE;
+                } else {
+                    console.error("Selected base level is out of bounds.");
+                    BASE_PRICE = GAIN_PRICE; // Fallback
+                }
             }
 
             // --- PRICE CALCULATION ---
             function updatePrices() {
                 let total = BASE_PRICE;
 
-                // Add prices from selected components
-                total += parseInt(document.getElementById('ssd-select')?.value || 0);
-                total += parseInt(document.getElementById('gpu-select')?.value || 0);
-                total += parseInt(document.getElementById('psu-select')?.value || 0);
+                // --- REFACTORED: Get prices from selected indices ---
+                total += gpuOptions[selectedComponentIndices.gpu]?.price || 0;
+                total += ssdOptions[selectedComponentIndices.ssd]?.price || 0;
+                total += psuOptions[selectedComponentIndices.psu]?.price || 0;
                 if (towersOptions.length > 0) total += towersOptions[currentTowerIndex].price;
 
                 // Add prices from selected peripherals
-                if (peripheralState.currentMonitorIndex > -1) total += monitorOptions[peripheralState.currentMonitorIndex].price;
-                if (peripheralState.currentMouseIndex > -1) total += mouseOptions[peripheralState.currentMouseIndex].price;
-                if (peripheralState.currentKeyboardIndex > -1) total += keyboardOptions[peripheralState.currentKeyboardIndex].price;
-                if (peripheralState.currentComboIndex > -1) total += comboMouseTecladoOptions[peripheralState.currentComboIndex].price;
-                if (peripheralState.currentAuricularesIndex > -1) total += auricularesOptions[peripheralState.currentAuricularesIndex].price;
-                if (peripheralState.currentParlantesIndex > -1) total += parlantesOptions[peripheralState.currentParlantesIndex].price;
+                const peripheralCollections = {
+                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions,
+                    auriculares: auricularesOptions, parlantes: parlantesOptions, microfono: microfonosOptions,
+                    webcam: webcamOptions, arodeluz: arosDeLuzOptions, wifi: wifiOptions
+                };
 
-                // Update DOM elements for ARS price
+                for (const key in selectedPeripherals) {
+                    if (selectedPeripherals[key] > -1) {
+                        total += peripheralCollections[key][selectedPeripherals[key]].price;
+                    }
+                }
+
                 const formattedArs = '$' + total.toLocaleString('es-AR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
                 document.getElementById('total-price').textContent = formattedArs;
                 document.getElementById('top-total-price').textContent = formattedArs;
@@ -2562,131 +2627,387 @@
             }
 
             // --- UI UPDATE FUNCTIONS ---
+            function updateBaseDisplay() {
+                if (typeof baseOptions === 'undefined' || baseOptions.length <= currentBaseLevel) return;
+                const base = baseOptions[currentBaseLevel];
+                const cpu = cpuOptions && cpuOptions.find(c => String(c.id) === String(base.cpu));
+                const ram = ramOptions && ramOptions.find(c => String(c.id) === String(base.ram));
+                const motherboard = motherboardOptions && motherboardOptions.find(c => String(c.id) === String(base.mother));
+
+                if (cpu && ram && motherboard) {
+                    // CPU
+                    const cpuNameParts = cpu.name.split(' ');
+                    document.getElementById('base-cpu-text').innerHTML = `<b>${cpuNameParts.slice(0, 2).join(' ')}</b> ${cpuNameParts.slice(2).join(' ')} <a href="${cpu.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                    // RAM: solo muestra la cantidad total de RAM de la base seleccionada
+                    document.getElementById('base-ram-text').innerHTML = `<span class="text-green-333"><strong>${base.totalram} GB</strong> de RAM</span> <a href="${ram.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                    // Motherboard
+                    document.getElementById('base-motherboard-text').innerHTML = `Mother <small>${motherboard.name}</small> <a href="${motherboard.link}" target="_blank" style="color: var(--color-link); margin-left:8px;"><i class="fas text-sm fa-external-link-alt"></i></a>`;
+                    // Descripción desde el JSON
+                    document.getElementById('base-description-text').innerHTML = base.description || '';
+                    // Imagen
+                    const baseImage = document.getElementById('base-image');
+                    if (baseImage) baseImage.src = `comps/bases/${base.id}.webp`;
+                    updateBaseSummaryText(cpu, ram, base);
+                }
+            }
+
+
             function updateTowerDisplay() {
                 if (towersOptions.length === 0) return;
                 const selectedTower = towersOptions[currentTowerIndex];
-                loadImageWithGrayscale(document.getElementById('current-tower-image'), selectedTower.image_url);
+                // Mostrar imagen siempre, incluso si el precio es 0
+                const towerImgEl = document.getElementById('current-tower-image');
+                if (selectedTower.image_url) {
+                    loadImageWithGrayscale(towerImgEl, selectedTower.image_url);
+                } else {
+                    // Si no tiene imagen, mostrar placeholder
+                    towerImgEl.src = 'comps/torres/reciclada.webp';
+                }
                 document.getElementById('current-tower-name').textContent = selectedTower.name;
-
                 let towerPriceHTML = '';
-                if (selectedTower.link) {
-                    const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} | ` : '';
-                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
+                if (selectedTower.price === 0) {
+                    // Sin link, solo precio $0
+                    towerPriceHTML = `<span class="component-link" style="color: var(--color-link);">$0</span>`;
+                } else if (selectedTower.link) {
+                    const priceFull = selectedTower.price > 0 ? `$${selectedTower.price.toLocaleString('es-AR')} ` : '';
+                    towerPriceHTML = `<a href="${selectedTower.link}" target="_blank" class="component-link">${priceFull} <i class="fas fa-external-link-alt"></i></a>`;
                 }
                 document.getElementById('current-tower-price-display').innerHTML = towerPriceHTML;
                 updatePrices();
             }
 
-            function updateComponentDisplay(selectEl, descEl, imageEl, options) {
-                if (!selectEl || !descEl || !imageEl || !options) return;
-                const selectedOption = options.find(opt => opt.price == selectEl.value);
-                if (selectedOption) {
-                    let linkHTML = '';
-                    if (selectedOption.link) {
-                        const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} | ` : '';
-                        linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
-                    }
-                    descEl.innerHTML = selectedOption.description + linkHTML;
-                    loadImageWithGrayscale(imageEl, selectedOption.image_url);
-                }
-                updatePrices();
-            }
-
-            function setupPeripheralCards() {
-                const peripheralConfig = [
-                    { id: 'combo-card', options: comboMouseTecladoOptions, stateKey: 'currentComboIndex', onSelect: () => { peripheralState.currentMouseIndex = -1; peripheralState.currentKeyboardIndex = -1; updatePeripheralStates(); } },
-                    { id: 'keyboard-card', options: keyboardOptions, stateKey: 'currentKeyboardIndex', onSelect: () => { peripheralState.currentComboIndex = -1; updatePeripheralStates(); } },
-                    { id: 'mouse-card', options: mouseOptions, stateKey: 'currentMouseIndex', onSelect: () => { peripheralState.currentComboIndex = -1; updatePeripheralStates(); } },
-                    { id: 'monitor-card', options: monitorOptions, stateKey: 'currentMonitorIndex' },
-                    { id: 'auriculares-card', options: auricularesOptions, stateKey: 'currentAuricularesIndex' },
-                    { id: 'parlantes-card', options: parlantesOptions, stateKey: 'currentParlantesIndex' }
-                ];
-
-                peripheralConfig.forEach(({ id, options, stateKey, onSelect }) => {
-                    const card = document.getElementById(id);
-                    if (!card) return;
-                    card.addEventListener('click', () => {
-                        if (card.classList.contains('disabled')) return;
-                        const optionsLength = options.length;
-                        peripheralState[stateKey] = (peripheralState[stateKey] + 2) % (optionsLength + 1) - 1;
-                        if (onSelect) onSelect(); else updatePeripheralStates();
-                    });
-                });
-            }
-
-            function updatePeripheralStates() {
-                const peripherals = [
-                    { id: 'combo-card', options: comboMouseTecladoOptions, stateKey: 'currentComboIndex', defaultText: 'Combo Mouse+Teclado' },
-                    { id: 'keyboard-card', options: keyboardOptions, stateKey: 'currentKeyboardIndex', defaultText: 'Teclado' },
-                    { id: 'mouse-card', options: mouseOptions, stateKey: 'currentMouseIndex', defaultText: 'Mouse' },
-                    { id: 'monitor-card', options: monitorOptions, stateKey: 'currentMonitorIndex', defaultText: 'Monitor' },
-                    { id: 'auriculares-card', options: auricularesOptions, stateKey: 'currentAuricularesIndex', defaultText: 'Auriculares' },
-                    { id: 'parlantes-card', options: parlantesOptions, stateKey: 'currentParlantesIndex', defaultText: 'Parlantes' }
-                ];
-                const isComboActive = peripheralState.currentComboIndex > -1;
-
-                peripherals.forEach(p => {
-                    const card = document.getElementById(p.id);
-                    if (!card) return;
-                    const image = card.querySelector('img');
-                    const text = card.querySelector('p');
-                    const currentIndex = peripheralState[p.stateKey];
-
-                    card.classList.toggle('disabled', isComboActive && (p.id === 'mouse-card' || p.id === 'keyboard-card'));
-                    card.classList.toggle('active', currentIndex > -1);
-
-                    if (currentIndex > -1) {
-                        const selected = p.options[currentIndex];
-                        if (selected) {
-                            image.src = selected.image_url;
-                            image.style.filter = 'grayscale(0%)';
-                            let linkHTML = '';
-                            if (selected.link) {
-                                const priceFull = selected.price > 0 ? `$${selected.price.toLocaleString('es-AR')} | ` : '';
-                                linkHTML = `<a href="${selected.link}" target="_blank" class="component-link text-xs" onclick="event.stopPropagation()">${priceFull}Detalle <i class="fas fa-external-link-alt"></i></a>`;
-                            }
-                            text.innerHTML = `<span>${selected.name}</span>${linkHTML}`;
-                        }
-                    } else {
-                        card.classList.remove('active');
-                        if (p.options.length > 0 && p.options[0]) {
-                            image.src = p.options[0].image_url;
-                        }
-                        image.style.filter = 'grayscale(100%)';
-                        text.textContent = p.defaultText;
-                    }
-                });
-                updatePrices();
-            }
-
-            function updateSelectedComponentsDisplay() {
-                const container = document.getElementById('selected-images-container');
-                if (!container) return;
-                container.innerHTML = '';
-                const createCard = (item, category) => {
-                    if (!item || !item.image_url || !item.name) return '';
-                    const link = item.link ? `href="${item.link}" target="_blank"` : 'href="#" onclick="event.preventDefault()"';
-                    return `<a ${link} class="summary-card-link"><div class="summary-card"><div class="summary-card-category">${category}</div><img src="${item.image_url}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/128x96/ffffff/333333?text=Error'"><p>${item.name}</p></div></a>`;
+            // --- REFACTORED: Single function to update component display ---
+            function updateComponentDisplay(componentKey) {
+                const config = {
+                    gpu: { selectEl: document.getElementById('gpu-select'), descEl: document.getElementById('gpu-description'), imageEl: document.getElementById('gpu-image'), options: gpuOptions },
+                    ssd: { selectEl: document.getElementById('ssd-select'), descEl: document.getElementById('ssd-description'), imageEl: document.getElementById('ssd-image'), options: ssdOptions },
+                    psu: { selectEl: document.getElementById('psu-select'), descEl: document.getElementById('psu-description'), imageEl: document.getElementById('psu-image'), options: psuOptions }
                 };
 
-                const selectedGPU = gpuOptions.find(opt => opt.price == document.getElementById('gpu-select').value);
-                const selectedSSD = ssdOptions.find(opt => opt.price == document.getElementById('ssd-select').value);
-                const selectedPSU = psuOptions.find(opt => opt.price == document.getElementById('psu-select').value);
+                const { descEl, imageEl, options } = config[componentKey];
+                const selectedIndex = selectedComponentIndices[componentKey];
+                const selectedOption = options[selectedIndex];
 
-                container.innerHTML += createCard(towersOptions[currentTowerIndex], 'Gabinete');
-                container.innerHTML += createCard(selectedGPU, 'Gráfica');
-                container.innerHTML += createCard(selectedSSD, 'Almacenamiento');
-                container.innerHTML += createCard(selectedPSU, 'Fuente');
+                if (selectedOption) {
+                    if (descEl) {
+                        let linkHTML = '';
+                        if (selectedOption.link) {
+                            const priceFull = selectedOption.price > 0 ? `$${selectedOption.price.toLocaleString('es-AR')} ` : '';
+                            linkHTML = `<a href="${selectedOption.link}" target="_blank" class="component-link block">${priceFull}<i class="fas fa-external-link-alt"></i></a>`;
+                        }
+                        descEl.innerHTML = selectedOption.description + linkHTML;
+                    }
+                    if (imageEl) loadImageWithGrayscale(imageEl, selectedOption.image_url);
 
-                if (peripheralState.currentComboIndex > -1) container.innerHTML += createCard(comboMouseTecladoOptions[peripheralState.currentComboIndex], 'Combo');
-                else {
-                    if (peripheralState.currentKeyboardIndex > -1) container.innerHTML += createCard(keyboardOptions[peripheralState.currentKeyboardIndex], 'Teclado');
-                    if (peripheralState.currentMouseIndex > -1) container.innerHTML += createCard(mouseOptions[peripheralState.currentMouseIndex], 'Mouse');
+                    if (componentKey === 'gpu') {
+                        const gpuLi = document.getElementById('gpu-li');
+                        if (selectedIndex === 0) { // Assuming "Integrada" is always the first option
+                            imageEl.classList.add('md:block', 'hidden');
+                            gpuLi.classList.add('gpu-integrated-mobile');
+                        } else {
+                            imageEl.classList.remove('md:block', 'hidden');
+                            gpuLi.classList.remove('gpu-integrated-mobile');
+                        }
+                    }
                 }
-                if (peripheralState.currentMonitorIndex > -1) container.innerHTML += createCard(monitorOptions[peripheralState.currentMonitorIndex], 'Monitor');
-                if (peripheralState.currentAuricularesIndex > -1) container.innerHTML += createCard(auricularesOptions[peripheralState.currentAuricularesIndex], 'Auriculares');
-                if (peripheralState.currentParlantesIndex > -1) container.innerHTML += createCard(parlantesOptions[peripheralState.currentParlantesIndex], 'Parlantes');
+                updatePrices();
             }
+
+
+            function updateSelectedComponentsDisplay() {
+                const container = document.getElementById('selected-components-preview');
+                if (!container) return;
+                container.innerHTML = ''; // Clear previous content
+
+                // Create main grid for cabinet and table
+                const summaryGrid = document.createElement('div');
+                summaryGrid.className = 'flex flex-col md:flex-row gap-8 items-start';
+
+                // Left side: Cabinet
+                const cabinetContainer = document.createElement('div');
+                cabinetContainer.className = 'w-full md:w-1/3 flex-shrink-0 flex flex-col items-center -mt-8';
+                // Responsive negative top margin for md and up
+                cabinetContainer.style.marginTop = '-2rem'; // default for mobile
+                cabinetContainer.classList.add('cabinet-summary-responsive');
+                // Will be overridden by media query for md screens
+                // Add this style block for responsive negative margin
+                const style = document.createElement('style');
+                style.innerHTML = `@media (min-width: 768px) { .cabinet-summary-responsive { margin-top: -8.5rem !important; } }`;
+                document.head.appendChild(style);
+                const selectedTower = towersOptions[currentTowerIndex];
+                if (selectedTower) {
+                    cabinetContainer.innerHTML = `
+                        <a href="#main-components-container" class="block">
+                            <img src="${selectedTower.image_url}" alt="${selectedTower.name}" style="width: 313px; height: 430px; object-fit: contain;" class="rounded-lg mb-2" onerror="this.onerror=null;this.src='comps/torres/reciclada.webp'">
+                        </a>
+                        <p class="font-bold text-lg text-white">${selectedTower.name}</p>
+                        <a href="${selectedTower.link}" target="_blank" class="component-link">$${selectedTower.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>
+                    `;
+                }
+                summaryGrid.appendChild(cabinetContainer);
+
+                // Right side: Table
+                const tableContainer = document.createElement('div');
+                tableContainer.className = 'w-full md:w-2/3';
+                // Nuevo: contenedores tipo card-row
+                const cardRowsContainer = document.createElement('div');
+                cardRowsContainer.className = 'flex flex-col gap-2 w-full';
+
+                // Add base as the first item in the summary
+                const base = baseOptions[currentBaseLevel];
+                const baseSummary = { type: 'Base', selected: base };
+
+                const components = [baseSummary,
+                    { type: 'Gráfica', selected: gpuOptions[selectedComponentIndices.gpu] },
+                    { type: 'Almacenamiento', selected: ssdOptions[selectedComponentIndices.ssd] },
+                    { type: 'Fuente', selected: psuOptions[selectedComponentIndices.psu] }
+                ];
+
+                const peripheralMap = {
+                    monitor: { options: monitorOptions, name: 'Monitor' }, keyboard: { options: keyboardOptions, name: 'Teclado' },
+                    mouse: { options: mouseOptions, name: 'Mouse' }, auriculares: { options: auricularesOptions, name: 'Auriculares' },
+                    parlantes: { options: parlantesOptions, name: 'Parlantes' }, microfono: { options: microfonosOptions, name: 'Micrófono' },
+                    webcam: { options: webcamOptions, name: 'Webcam' }, arodeluz: { options: arosDeLuzOptions, name: 'Aro de Luz' },
+                    wifi: { options: wifiOptions, name: 'WiFi' }
+                };
+
+                for (const key in selectedPeripherals) {
+                    if (selectedPeripherals[key] > -1) {
+                        const item = peripheralMap[key].options[selectedPeripherals[key]];
+                        components.push({ type: peripheralMap[key].name, selected: item });
+                    }
+                }
+
+                function createCardRow(type, selected, isService = false) {
+                    const row = document.createElement('div');
+                    row.className = 'card-row flex flex-col gap-1 p-2 rounded-lg bg-gray-800 border-b border-gray-700';
+                    // Título arriba
+                    const title = document.createElement('span');
+                    title.className = 'font-bold text-green-400 px-2 py-1 rounded mb-1';
+                    title.style.background = '#18122b';
+                    title.style.display = 'block';
+                    title.style.textAlign = 'left';
+                    title.style.marginLeft = '-18px';
+                    title.style.fontFamily = 'Inter, sans-serif';
+                    title.textContent = type;
+                    row.appendChild(title);
+                    // Contenido: nombre y precio alineados horizontalmente
+                    const contentRow = document.createElement('div');
+                    contentRow.className = 'flex flex-row items-center justify-between w-full';
+                    contentRow.style.fontFamily = 'Inter, sans-serif';
+                    const nameEl = document.createElement('span');
+                    nameEl.className = '';
+                    if (!isService && selected?.name) {
+                        // Map type to section id
+                        let sectionId = null;
+                        if (type === 'Base') sectionId = 'section-bases';
+                        else if (type === 'Gráfica') sectionId = 'gpu-select';
+                        else if (type === 'Almacenamiento') sectionId = 'ssd-select';
+                        else if (type === 'Fuente') sectionId = 'psu-select';
+                        // For peripherals, scroll to #section-peripherals
+                        else if ([
+                            'Monitor', 'Teclado', 'Mouse', 'Auriculares', 'Parlantes', 'Micrófono', 'Webcam', 'Aro de Luz', 'WiFi'
+                        ].includes(type)) sectionId = 'section-peripherals';
+                        if (sectionId) {
+                            nameEl.innerHTML = `<a href="#${sectionId}" class="component-link" style="font-size:1rem;color:white !important;font-family:Inter,sans-serif !important;" onclick="event.preventDefault();document.getElementById('${sectionId}').scrollIntoView({behavior:'smooth'});">${selected.name}</a>`;
+                        } else {
+                            nameEl.style.color = 'white';
+                            nameEl.style.fontFamily = 'Inter, sans-serif';
+                            nameEl.textContent = selected.name;
+                        }
+                    } else {
+                        nameEl.textContent = isService ? 'Instalación y Soporte Técnico' : (selected?.name || '');
+                        nameEl.style.fontFamily = 'Inter, sans-serif';
+                    }
+                    const priceEl = document.createElement('span');
+                    // All prices use --color-link and Inter font
+                    priceEl.style.color = 'var(--color-link)';
+                    priceEl.style.fontFamily = 'Inter, sans-serif';
+                    priceEl.style.fontWeight = 'bold';
+                    if (isService) {
+                        priceEl.textContent = `$${GAIN_PRICE.toLocaleString('es-AR')}`;
+                    } else {
+                        // For base, always show price and make it clickable to scroll to #section-bases
+                        if (type === 'Base' && selected?.total > 0) {
+                            priceEl.innerHTML = `<a href="#section-bases" class="component-link" style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;" onclick="event.preventDefault();document.getElementById('section-bases').scrollIntoView({behavior:'smooth'});">$${selected.total.toLocaleString('es-AR')}</a>`;
+                        } else if (selected?.price > 0) {
+                            if (selected?.link) {
+                                priceEl.innerHTML = `<a href="${selected.link}" target="_blank" class="component-link" style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;">$${selected.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>`;
+                            } else {
+                                priceEl.innerHTML = `<span style="color:var(--color-link);font-family:Inter,sans-serif;font-weight:bold;">$${selected.price.toLocaleString('es-AR')}</span>`;
+                            }
+                        } else {
+                            priceEl.textContent = 'Incluida';
+                        }
+                    }
+                    contentRow.appendChild(nameEl);
+                    contentRow.appendChild(priceEl);
+                    row.appendChild(contentRow);
+                    return row;
+                }
+
+                components.forEach(comp => {
+                    if (comp.selected) {
+                        cardRowsContainer.appendChild(createCardRow(comp.type, comp.selected));
+                    }
+                });
+                // Armado y Servicio
+                cardRowsContainer.appendChild(createCardRow('Mi Servicio', null, true));
+
+                tableContainer.appendChild(cardRowsContainer);
+                summaryGrid.appendChild(tableContainer);
+                container.appendChild(summaryGrid);
+                // Agregar span de licencia Windows 11 Original
+                const licenciaSpan = document.createElement('span');
+                licenciaSpan.className = 'flex items-center justify-end w-full mt-2 text-blue-400 text-sm font-semibold';
+                licenciaSpan.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' class='inline-block mr-2' width='20' height='20' fill='currentColor' viewBox='0 0 24 24'><rect x='3' y='3' width='7' height='7' rx='1.5'/><rect x='14' y='3' width='7' height='7' rx='1.5'/><rect x='14' y='14' width='7' height='7' rx='1.5'/><rect x='3' y='14' width='7' height='7' rx='1.5'/></svg>Incluye Licencia Windows 11`;
+                container.appendChild(licenciaSpan);
+            }
+
+            // --- NEW PERIPHERAL FUNCTIONS ---
+            function populateOptionalPeripherals() {
+                const grid = document.getElementById('peripherals-grid');
+                grid.innerHTML = '';
+                const peripheralCategories = [
+                    { key: 'monitor', name: 'Monitor', options: monitorOptions },
+                    { key: 'keyboard', name: 'Teclado', options: keyboardOptions },
+                    { key: 'mouse', name: 'Mouse', options: mouseOptions },
+                    { key: 'auriculares', name: 'Auriculares', options: auricularesOptions },
+                    { key: 'parlantes', name: 'Parlantes', options: parlantesOptions },
+                    { key: 'microfono', name: 'Micrófono', options: microfonosOptions },
+                    { key: 'webcam', name: 'Webcam', options: webcamOptions },
+                    { key: 'arodeluz', name: 'Luces', options: arosDeLuzOptions },
+                    { key: 'wifi', name: 'Wireless', options: wifiOptions }
+                ];
+
+                peripheralCategories.forEach(cat => {
+                    if (cat.options.length > 0) {
+                        const container = document.createElement('div');
+                        container.className = 'peripheral-container';
+                        container.dataset.category = cat.key;
+                        container.innerHTML = `
+                            <div class="summary-card unselected">
+                                <div class="summary-card-image-wrapper">
+                                   <img src="${cat.options[0].image_url}" alt="${cat.name}" onerror="this.onerror=null;this.src='https://placehold.co/240x190/ffffff/333333?text=${cat.name}'">
+                                </div>
+                            </div>
+                            <div class="peripheral-info">
+                                <p class="peripheral-name text-white">${cat.name}</p>
+                                <div class="peripheral-price-container"><p class="component-link">&nbsp;</p></div>
+                            </div>`;
+                        grid.appendChild(container);
+                    }
+                });
+            }
+
+            function handlePeripheralClick(e) {
+                const container = e.target.closest('.peripheral-container');
+                if (!container || !e.target.closest('.summary-card-image-wrapper')) return;
+
+                const category = container.dataset.category;
+                if (!category) return;
+
+                // If the click is on the summary section, do nothing (handled by <a> tag)
+                if (container.closest('#selected-images-container')) {
+                    return;
+                }
+
+                const collections = {
+                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions, auriculares: auricularesOptions,
+                    parlantes: parlantesOptions, microfono: microfonosOptions, webcam: webcamOptions, arodeluz: arosDeLuzOptions, wifi: wifiOptions
+                };
+                const options = collections[category];
+
+                let currentIndex = selectedPeripherals[category];
+
+                currentIndex++;
+                if (currentIndex >= options.length) {
+                    currentIndex = -1; // Cycle back to unselected
+                }
+                selectedPeripherals[category] = currentIndex;
+
+                const mainCardContainer = document.querySelector(`#peripherals-grid .peripheral-container[data-category="${category}"]`);
+                if (mainCardContainer) {
+                    mainCardContainer.classList.toggle('selected', currentIndex > -1);
+                    updatePeripheralCard(mainCardContainer, currentIndex, options);
+                }
+
+                updatePrices();
+            }
+
+            function handleSummaryCardClick(e) {
+                const link = e.target.closest('a');
+                if (!link) return;
+
+                const container = link.closest('.peripheral-container');
+                if (container && container.dataset.category) {
+                    const itemLink = container.querySelector('.component-link');
+                    if (itemLink && itemLink.href && itemLink.href !== '#') {
+                        window.open(itemLink.href, '_blank');
+                    }
+                } else if (link.href.includes('#')) {
+                    // Internal link, custom scroll with margin
+                    const anchor = link.getAttribute('href');
+                    let selectId = null;
+                    let targetId = anchor.replace('#', '');
+                    if (anchor === '#gpu-select') selectId = 'gpu-select';
+                    else if (anchor === '#ssd-select') selectId = 'ssd-select';
+                    else if (anchor === '#psu-select') selectId = 'psu-select';
+                    else if (anchor === '#section-bases') selectId = 'base-level-select';
+                    // Custom scroll: center element with margin
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        const rect = targetEl.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        const windowHeight = window.innerHeight;
+                        const targetY = rect.top + scrollTop - (windowHeight / 2) + (rect.height / 2);
+                        window.scrollTo({ top: targetY, behavior: 'smooth' });
+                    }
+                    // Highlight select after scroll
+                    if (selectId) {
+                        setTimeout(() => {
+                            const select = document.getElementById(selectId);
+                            if (select) {
+                                select.classList.add('select-glow-violet');
+                                setTimeout(() => {
+                                    select.classList.remove('select-glow-violet');
+                                }, 5000);
+                            }
+                        }, 500); // Wait for scroll animation
+                    }
+                } else if (link.href) {
+                    window.open(link.href, '_blank');
+                }
+            }
+
+
+            function updatePeripheralCard(container, index, options) {
+                const card = container.querySelector('.summary-card');
+                const img = container.querySelector('img');
+                const info = container.querySelector('.peripheral-info');
+                const nameEl = info.querySelector('.peripheral-name');
+                const priceContainer = info.querySelector('.peripheral-price-container');
+
+                if (index === -1) {
+                    card.classList.add('unselected');
+                    img.src = options[0].image_url;
+                    nameEl.textContent = container.dataset.category.charAt(0).toUpperCase() + container.dataset.category.slice(1);
+                    priceContainer.innerHTML = `<p class="component-link">&nbsp;</p>`;
+                } else {
+                    card.classList.remove('unselected');
+                    const item = options[index];
+                    img.src = item.image_url;
+                    nameEl.textContent = item.name;
+                    let priceHTML = '&nbsp;';
+                    if (item.price > 0 && item.link) {
+                        priceHTML = `<a href="${item.link}" target="_blank" class="component-link" onclick="event.stopPropagation()">$${item.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>`;
+                    } else if (item.price > 0) {
+                        priceHTML = `<span class="component-link" style="color: var(--color-link);">$${item.price.toLocaleString('es-AR')}</span>`;
+                    }
+                    priceContainer.innerHTML = priceHTML;
+                }
+            }
+
 
             // --- EVENT HANDLERS & HELPERS ---
             function prevTower() {
@@ -2742,28 +3063,28 @@
             }
 
             function updateSelectedGamesList() {
-                const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
-                const listEl = document.getElementById('selected-games-list');
-                const sectionEl = document.getElementById('selected-games-section');
-                listEl.innerHTML = '';
-                if (selectedCheckboxes.length > 0) {
-                    sectionEl.classList.remove('hidden');
-                    selectedCheckboxes.forEach(cb => {
-                        listEl.innerHTML += `<div class="w-1/4 md:w-1/5 p-1"><a href="#card-game-${toSlug(cb.value)}"><img src="${cb.dataset.imgSrc}" alt="Carátula de ${cb.value}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${cb.value.replace(/\s/g, '+')}';"></a></div>`;
-                    });
-                } else {
-                    sectionEl.classList.add('hidden');
-                }
+                // const selectedCheckboxes = document.querySelectorAll('input[name="game"]:checked');
+                // const listEl = document.getElementById('selected-games-list');
+                // const sectionEl = document.getElementById('selected-games-section');
+                // listEl.innerHTML = '';
+                // if (selectedCheckboxes.length > 0) {
+                //     sectionEl.classList.remove('hidden');
+                //     selectedCheckboxes.forEach(cb => {
+                //         listEl.innerHTML += `<div class="w-1/4 md:w-1/5 p-1"><a href="#card-game-${toSlug(cb.value)}"><img src="${cb.dataset.imgSrc}" alt="Carátula de ${cb.value}" class="rounded-md shadow-lg w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/300x400/111827/4f46e5?text=${cb.value.replace(/\s/g, '+')}';"></a></div>`;
+                //     });
+                // } else {
+                //     sectionEl.classList.add('hidden');
+                // }
             }
 
             function resetGameSelection() {
-                document.querySelectorAll('input[name="game"]:checked').forEach(cb => {
-                    cb.checked = false;
-                    cb.nextElementSibling.querySelector('.game-title-sticker').classList.add('hidden');
-                });
-                updateSelectedGamesList();
-                document.getElementById('error-toast').classList.remove('show');
-                consecutiveErrorClicks = 0;
+                // document.querySelectorAll('input[name="game"]:checked').forEach(cb => {
+                //     cb.checked = false;
+                //     cb.nextElementSibling.querySelector('.game-title-sticker').classList.add('hidden');
+                // });
+                // updateSelectedGamesList();
+                // document.getElementById('error-toast').classList.remove('show');
+                // consecutiveErrorClicks = 0;
             }
 
             let isGridExpanded = false;
@@ -2790,31 +3111,12 @@
                 document.getElementById('game-grid-wrapper').style.maxHeight = `${targetHeight}px`;
             }
 
-            function positionCroxImages() {
-                const croxA = document.getElementById('home-crox-a');
-                const croxB = document.getElementById('home-crox-b');
-                const hookSection = document.querySelector('.hook-section');
-                const wrapper = document.getElementById('hero-wrapper');
-                if (croxA && croxB && hookSection && wrapper && window.innerWidth > 639) {
-                    const wrapperRect = wrapper.getBoundingClientRect();
-                    const hookSectionRect = hookSection.getBoundingClientRect();
-                    const topPosition = hookSectionRect.top - wrapperRect.top - (croxA.offsetHeight / 2);
-                    croxA.style.top = `${topPosition}px`;
-                    croxB.style.top = `${topPosition}px`;
-                    const marginPx = -10 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-                    croxA.style.left = `${hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx + 33}px`;
-                    croxB.style.right = `${wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx + 56}px`;
-                    croxB.style.left = 'auto';
-                }
-            }
-
             function showDolarPopup() {
                 if (allDolarRates.length === 0) return;
                 const dolarRatesList = document.getElementById('dolar-rates-list');
                 dolarRatesList.innerHTML = '';
                 const tiposPermitidos = [{ key: 'oficial', label: 'Oficial' }, { key: 'blue', label: 'Blue' }, { key: 'cripto', label: 'Cripto' }];
-                let total = BASE_PRICE + parseInt(document.getElementById('ssd-select').value) + parseInt(document.getElementById('gpu-select').value) + parseInt(document.getElementById('psu-select').value) + towersOptions[currentTowerIndex].price;
-                // Add peripheral prices to total
+                let total = parseInt(document.getElementById('total-price').textContent.replace(/\$|\./g, ''));
 
                 tiposPermitidos.forEach(tipo => {
                     const rate = allDolarRates.find(r => r.nombre.toLowerCase().includes(tipo.key));
@@ -2826,33 +3128,337 @@
                 document.getElementById('dolar-popup').style.display = 'flex';
             }
 
+            // ================== AI FUNCTION (CORRECTED) ==================
+            async function checkGameCompatibility() {
+                const gameName = document.getElementById('ai-input').value.trim();
+                const button = document.getElementById('ai-button');
+                const resultContainer = document.getElementById('ai-result');
+                const placeholder = document.getElementById('ai-placeholder');
+                const loader = document.getElementById('ai-loader');
+
+                if (!gameName) {
+                    alert("Por favor, ingresá el nombre de un juego.");
+                    return;
+                }
+
+                // --- 1. Gather component data (now using indices) ---
+                const baseConfig = baseOptions[currentBaseLevel];
+                const cpu = cpuOptions.find(c => String(c.id) === String(baseConfig.cpu));
+                const totalRam = baseConfig.totalram;
+                const selectedGpu = gpuOptions[selectedComponentIndices.gpu];
+                const selectedSsd = ssdOptions[selectedComponentIndices.ssd];
+
+                // --- 2. Show loading state ---
+                button.disabled = true;
+                button.querySelector('span').textContent = 'Analizando...';
+                placeholder.classList.add('hidden');
+                resultContainer.innerHTML = ''; // Clear previous results
+                loader.classList.remove('hidden');
+
+                // --- 3. Call local API route ---
+                try {
+                    const response = await fetch('/api/analyze', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            gameName,
+                            components: {
+                                cpu,
+                                totalRam,
+                                selectedGpu,
+                                selectedSsd
+                            },
+                            availableGpus: gpuOptions,
+                            availableCpus: cpuOptions 
+                        })
+                    });
+
+                    if (!response.ok) {
+                        const errorBody = await response.json();
+                        console.error("API Error Response:", errorBody);
+                        throw new Error(`Error de API: ${response.status} ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+                    let text = data.result || '';
+                    // Limpieza de saltos de línea extra
+                    // text = text.trim(); // quita saltos al inicio y final
+                    // Elimina cualquier salto de línea antes del primer punto numerado
+                    text = text.replace(/^\s*\n*(\d+\.)/, '$1');
+
+                    // Highlight CPU and GPU names with green rounded span and link
+                    let htmlResult = text
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')     // Italic
+                        .replace(/(\d+\.)/g, '<br><strong>$1</strong>') // Numbered list items
+                        .replace(/\n/g, '<br>');
+
+                    // Get current CPU and GPU names
+                    const cpuName = cpuOptions[selectedComponentIndices.cpu]?.name || cpuOptions.find(c => String(c.id) === String(baseOptions[currentBaseLevel].cpu))?.name;
+                    const gpuName = gpuOptions[selectedComponentIndices.gpu]?.name;
+
+                    // Replace CPU name with highlighted span and selection logic
+                    if (cpuName) {
+                        const cpuRegex = new RegExp(cpuName.replace(/[.*+?^${}()|[\]\\]/g, '\$&'), 'gi');
+                        htmlResult = htmlResult.replace(cpuRegex, `<span class='green-333 font-saira px-2 py-1 rounded-lg cursor-pointer inline-block' style='background:#18122b;' data-component-type='cpu' data-component-name='${cpuName}'>${cpuName}</span>`);
+                    }
+                    // Highlight all GPU names from the collection that appear in the AI response
+                    if (gpuOptions && gpuOptions.length > 0) {
+                        // Helper para normalizar nombres
+                        function normalize(str) {
+                            return str.toLowerCase().replace(/\s|\-|_/g, '');
+                        }
+                        // Construir lista de keywords (sin deduplicar), excluyendo 'integrada'
+                        let allKeywords = [];
+                        gpuOptions.forEach(gpu => {
+                            if (normalize(gpu.name) === 'integrada') return; // No resaltar 'integrada'
+                            allKeywords.push(gpu.name);
+                            if (gpu.name.includes('-')) {
+                                allKeywords.push(gpu.name.split('-')[0].trim());
+                            }
+                        });
+                        // Reemplazo global con regex que permite espacios, guiones y números
+                        allKeywords.forEach(keyword => {
+                            // Escapar correctamente y permitir coincidencias completas
+                            const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                            // Coincidencia: palabra completa, no parte de otra palabra
+                            const regex = new RegExp(`(?<![\w\d])${escaped}(?![\w\d])`, 'gi');
+                            htmlResult = htmlResult.replace(regex, match => {
+                                // Buscar el objeto GPU original para el nombre
+                                const norm = normalize(match);
+                                const gpuObj = gpuOptions.find(g => normalize(g.name) === norm || normalize(g.name.split('-')[0]) === norm);
+                                const gpuNameForSpan = gpuObj ? gpuObj.name : match;
+                                return `<span class='green-333 font-saira px-2 py-1 rounded-lg cursor-pointer inline-block' style='background:#18122b;' data-component-type='gpu' data-component-name='${gpuNameForSpan}'>${match}</span>`;
+                            });
+                        });
+                    }
+
+                    // Add event listeners to highlighted spans for selection and scroll
+                    setTimeout(() => {
+                        document.querySelectorAll('#ai-result span[data-component-type]').forEach(span => {
+                            span.onclick = function () {
+                                const type = span.getAttribute('data-component-type');
+                                const name = span.getAttribute('data-component-name');
+                                if (type === 'gpu') {
+                                    const select = document.getElementById('gpu-select');
+                                    if (select) {
+                                        for (let i = 0; i < select.options.length; i++) {
+                                            if (select.options[i].textContent.trim().toLowerCase().includes(name.trim().toLowerCase())) {
+                                                select.selectedIndex = i;
+                                                select.dispatchEvent(new Event('change'));
+                                                break;
+                                            }
+                                        }
+                                        document.getElementById('component-list').scrollIntoView({ behavior: 'smooth' });
+                                        // Add glow effect
+                                        select.classList.add('select-glow-violet');
+                                        setTimeout(() => {
+                                            select.classList.remove('select-glow-violet');
+                                        }, 5000);
+                                    }
+                                } else if (type === 'cpu') {
+                                    document.getElementById('section-bases').scrollIntoView({ behavior: 'smooth' });
+                                    // Opcional: si tienes un select de CPU, puedes agregar lógica similar aquí
+                                }
+                            };
+                        });
+                    }, 100);
+                    // Elimina el primer <br> si existe
+                    htmlResult = htmlResult.replace(/^<br\s*\/?>/, '');
+                    resultContainer.innerHTML = htmlResult;
+
+                    // Add CSS for glow effect if not present
+                    if (!document.getElementById('select-glow-violet-style')) {
+                        const style = document.createElement('style');
+                        style.id = 'select-glow-violet-style';
+                        style.innerHTML = `
+                            @keyframes selectGlowViolet {
+                                0% { box-shadow: 0 0 0 0px #a78bfa, 0 0 0px #7c3aed; border-color: #6366f1; }
+                                10% { box-shadow: 0 0 0 4px #a78bfa, 0 0 16px 8px #7c3aed; border-color: #6366f1; }
+                                80% { box-shadow: 0 0 0 4px #a78bfa, 0 0 16px 8px #7c3aed; border-color: #6366f1; }
+                                100% { box-shadow: 0 0 0 0px #a78bfa, 0 0 0px #7c3aed; border-color: #374151; }
+                            }
+                            .select-glow-violet {
+                                animation: selectGlowViolet 5s cubic-bezier(.4,0,.2,1) forwards;
+                                border-color: #6366f1 !important;
+                            }
+                        `;
+                        document.head.appendChild(style);
+                    }
+
+                } catch (error) {
+                    console.error("Error al llamar a la API local:", error);
+                    resultContainer.innerHTML = `<p class="text-red-400">¡Ups! Hubo un error al contactar a la IA. Verificá la consola (F12) para más detalles.</p>`;
+                } finally {
+                    loader.classList.add('hidden');
+                    button.disabled = false;
+                    button.querySelector('span').textContent = 'Analizar';
+                }
+            }
+            
+            // ================== FLYER GENERATOR FUNCTIONS START ==================
+            async function generateFlyers() {
+                const button = document.getElementById('generate-flyer-button');
+                const loaderContainer = document.getElementById('flyer-loader-container');
+                const outputContainer = document.getElementById('flyer-output');
+
+                button.disabled = true;
+                button.querySelector('span').textContent = 'Generando...';
+                loaderContainer.classList.remove('hidden');
+                outputContainer.innerHTML = '';
+
+                // 1. Gather component data
+                const baseConfig = baseOptions[currentBaseLevel];
+                const cpu = cpuOptions.find(c => String(c.id) === String(baseConfig.cpu));
+                const totalRam = baseConfig.totalram;
+                const selectedGpu = gpuOptions[selectedComponentIndices.gpu];
+                const selectedSsd = ssdOptions[selectedComponentIndices.ssd];
+                const selectedTower = towersOptions[currentTowerIndex];
+                const totalPrice = document.getElementById('total-price').textContent;
+                
+                let peripheralsList = [];
+                const peripheralMap = {
+                    monitor: monitorOptions, keyboard: keyboardOptions, mouse: mouseOptions, 
+                    auriculares: auricularesOptions, parlantes: parlantesOptions, microfono: microfonosOptions, 
+                    webcam: webcamOptions, arodeluz: arosDeLuzOptions, wifi: wifiOptions
+                };
+                for (const key in selectedPeripherals) {
+                    if (selectedPeripherals[key] > -1) {
+                        peripheralsList.push(peripheralMap[key][selectedPeripherals[key]].name);
+                    }
+                }
+                const peripheralsText = peripheralsList.length > 0 ? `Incluye: ${peripheralsList.join(', ')}.` : '';
+
+
+                // 2. Define prompts for each format
+                const prompts = [
+                    {
+                        format: "Post (1:1)",
+                        prompt: `Crea un flyer publicitario cuadrado (1:1) para Instagram sobre una PC gamer de "La Nave del Medio". Estilo: moderno, oscuro, con brillos de neón (verdes o naranjas). Componentes principales: Gabinete ${selectedTower.name}, CPU ${cpu.name}, ${totalRam}GB RAM, GPU ${selectedGpu.name}. Precio final: ${totalPrice} ARS. Call to action: "¡Llevate la tuya!". Incluir logo "La Nave del Medio". ${peripheralsText}`
+                    },
+                    {
+                        format: "Historia (9:16)",
+                        prompt: `Crea un flyer publicitario vertical (9:16) para historias de Instagram sobre una PC gamer de "La Nave del Medio". Estilo: futurista, con fondo cósmico y brillos de neón (azules y violetas). Componentes clave a destacar: CPU ${cpu.name} y GPU ${selectedGpu.name}. Precio grande y visible: ${totalPrice} ARS. Call to action: "Consultá por WhatsApp". Incluir logo "La Nave del Medio". ${peripheralsText}`
+                    },
+                    {
+                        format: "Reel Cover (9:16)",
+                        prompt: `Crea una portada de Reel para Instagram (9:16) anunciando una nueva PC gamer de "La Nave del Medio". Estilo: minimalista, elegante, con el gabinete ${selectedTower.name} como protagonista sobre un fondo oscuro con iluminación dramática. Texto principal: "NUEVA NAVE". Texto secundario: ${cpu.name} / ${selectedGpu.name} / ${totalRam}GB RAM. Precio: ${totalPrice} ARS. Incluir logo "La Nave del Medio". ${peripheralsText}`
+                    }
+                ];
+
+                // 3. Generate images
+                for (const item of prompts) {
+                    try {
+                        const payload = {
+                            contents: [{ parts: [{ text: item.prompt }] }],
+                             generationConfig: {
+                                responseModalities: ['TEXT', 'IMAGE']
+                            },
+                        };
+
+                        const apiKey = "";
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${apiKey}`;
+                        
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error(`API Error: ${response.status}`);
+                        }
+
+                        const result = await response.json();
+                        const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+
+                        if (base64Data) {
+                            const imageUrl = `data:image/png;base64,${base64Data}`;
+                            displayGeneratedImage(imageUrl, item.format);
+                        } else {
+                           throw new Error("No se recibió imagen de la API.");
+                        }
+
+                    } catch (error) {
+                        console.error(`Error generando flyer para ${item.format}:`, error);
+                        displayGenerationError(item.format);
+                    }
+                }
+                
+                loaderContainer.classList.add('hidden');
+                button.disabled = false;
+                button.querySelector('span').textContent = 'Generar de Nuevo';
+            }
+
+            function displayGeneratedImage(imageUrl, format) {
+                const outputContainer = document.getElementById('flyer-output');
+                const imageName = `flyer_${format.replace(' ', '_').toLowerCase()}.png`;
+                const flyerElement = document.createElement('div');
+                flyerElement.className = 'flyer-container';
+                flyerElement.innerHTML = `
+                    <img src="${imageUrl}" alt="Flyer para ${format}" class="w-full h-auto rounded-lg shadow-lg">
+                    <p class="text-center font-bold mt-2 text-lg">${format}</p>
+                    <a href="${imageUrl}" download="${imageName}" class="download-link">
+                        <i class="fas fa-download mr-1"></i> Descargar
+                    </a>
+                `;
+                outputContainer.appendChild(flyerElement);
+            }
+
+            function displayGenerationError(format) {
+                const outputContainer = document.getElementById('flyer-output');
+                 const errorElement = document.createElement('div');
+                errorElement.className = 'flyer-container text-center bg-red-900/50 p-4 rounded-lg';
+                errorElement.innerHTML = `
+                    <p class="text-red-400 font-bold">Error al generar ${format}</p>
+                    <p class="text-sm text-gray-400">Intenta de nuevo o modifica la selección.</p>
+                `;
+                outputContainer.appendChild(errorElement);
+            }
+            // ================== FLYER GENERATOR FUNCTIONS END ==================
+
+
             function handleFormSubmit(e) {
                 e.preventDefault();
                 const selectedGames = Array.from(document.querySelectorAll('input[name="game"]:checked')).map(cb => cb.value);
                 const selectedSoftware = Array.from(document.querySelectorAll('.custom-software-checkbox.checked')).map(cb => softwareData.find(s => s.slug === cb.dataset.slug)?.name).filter(Boolean);
                 const extraNotes = document.getElementById('extra-notes').value;
 
+                // --- REFACTORED: Get component names from selected indices ---
+                const selectedGpuName = gpuOptions[selectedComponentIndices.gpu].name;
+                const selectedSsdName = ssdOptions[selectedComponentIndices.ssd].name;
+                const selectedPsuName = psuOptions[selectedComponentIndices.psu].name;
+
                 let message = `¡Hola, me interesa esta Nave del Medio!\n\n`;
                 message += `*Torre:* ${towersOptions[currentTowerIndex].name}\n`;
-                message += `*Almacenamiento:* ${document.getElementById('ssd-select').options[document.getElementById('ssd-select').selectedIndex].text}\n`;
-                message += `*Gráfica:* ${document.getElementById('gpu-select').options[document.getElementById('gpu-select').selectedIndex].text}\n`;
-                message += `*Fuente:* ${document.getElementById('psu-select').options[document.getElementById('psu-select').selectedIndex].text}\n`;
+                message += `*Almacenamiento:* ${selectedSsdName}\n`;
+                message += `*Gráfica:* ${selectedGpuName}\n`;
+                message += `*Fuente:* ${selectedPsuName}\n`;
 
                 let peripheralsMessage = '';
-                if (peripheralState.currentComboIndex > -1) peripheralsMessage += `Combo: ${comboMouseTecladoOptions[peripheralState.currentComboIndex].name}`;
-                else {
-                    if (peripheralState.currentMouseIndex > -1) peripheralsMessage += `Mouse: ${mouseOptions[peripheralState.currentMouseIndex].name}`;
-                    if (peripheralState.currentKeyboardIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Teclado: ${keyboardOptions[peripheralState.currentKeyboardIndex].name}`;
+                const peripheralMap = {
+                    monitor: { options: monitorOptions, name: 'Monitor' },
+                    keyboard: { options: keyboardOptions, name: 'Teclado' },
+                    mouse: { options: mouseOptions, name: 'Mouse' },
+                    auriculares: { options: auricularesOptions, name: 'Auriculares' },
+                    parlantes: { options: parlantesOptions, name: 'Parlantes' },
+                    microfono: { options: microfonosOptions, name: 'Micrófono' },
+                    webcam: { options: webcamOptions, name: 'Webcam' },
+                    arodeluz: { options: arosDeLuzOptions, name: 'Aro de Luz' },
+                    wifi: { options: wifiOptions, name: 'WiFi' }
+                };
+                for (const key in selectedPeripherals) {
+                    if (selectedPeripherals[key] > -1) {
+                        const item = peripheralMap[key].options[selectedPeripherals[key]];
+                        peripheralsMessage += `${peripheralsMessage ? ', ' : ''}${peripheralMap[key].name}: ${item.name}`;
+                    }
                 }
-                if (peripheralState.currentMonitorIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Monitor: ${monitorOptions[peripheralState.currentMonitorIndex].name}`;
-                if (peripheralState.currentAuricularesIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Auriculares: ${auricularesOptions[peripheralState.currentAuricularesIndex].name}`;
-                if (peripheralState.currentParlantesIndex > -1) peripheralsMessage += `${peripheralsMessage ? ', ' : ''}Parlantes: ${parlantesOptions[peripheralState.currentParlantesIndex].name}`;
                 if (peripheralsMessage) message += `*Periféricos:* ${peripheralsMessage}\n`;
 
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
                 if (selectedSoftware.length > 0) {
                     message += `*Programas:*\n`;
-                    ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'].forEach(cat => {
+                    ['Juegos', 'Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'].forEach(cat => {
                         const programs = selectedSoftware.filter(name => softwareData.find(p => p.name === name)?.category === cat);
                         if (programs.length > 0) message += `- ${cat}: ${programs.join(', ')}\n`;
                     });
@@ -2878,8 +3484,34 @@
                     imageElement.classList.remove('loading');
                 };
             }
+
+            function updateSliderPosition() {
+                const slider = document.getElementById('base-level-slider');
+                const activeTab = document.querySelector('.base-level-tab.active');
+                if (slider && activeTab) {
+                    slider.style.width = `${activeTab.offsetWidth}px`;
+                    slider.style.left = `${activeTab.offsetLeft}px`;
+                }
+            }
         });
+        // ...existing code...
+        // Ejemplo: asume que ya tienes baseOptions, ramOptions, cpuOptions, motherboardOptions cargados desde el JSON
+
+
+        function updateBaseSummaryText(cpu, ram, base) {
+            const summaryEl = document.getElementById('base-summary-text');
+            if (summaryEl && base) {
+                // Use same style as other component names: white, not underlined, font-saira
+                summaryEl.innerHTML = `<span class='font-saira green-333' style='font-size:1.6rem;'>${base.name}</span>`;
+                const basePriceEl = document.getElementById('base-price-text');
+                if (basePriceEl) {
+                    basePriceEl.innerHTML = `<a href='#section-bases' class='component-link text-blue-400 font-bold' style='font-size:1.15rem;display:inline-flex;align-items:center;text-decoration:none;' onclick="event.preventDefault();document.getElementById('section-bases').scrollIntoView({behavior:'smooth'});">$${base.total.toLocaleString('es-AR')} <i class='fas text-sm fa-external-link-alt ml-1'></i></a>`;
+                }
+            }
+        }
+        // ...existing code...
     </script>
 </body>
 
 </html>
+

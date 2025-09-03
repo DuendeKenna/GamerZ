@@ -588,6 +588,12 @@
             animation: spin 10s ease-in-out infinite, cosmic-pulse 20s ease-in-out infinite;
         }
 
+        @media (max-width: 768px) {
+            #hero-background {
+                display: none;
+            }
+        }
+
         @keyframes spin {
             from {
                 transform: rotate(0deg);
@@ -632,8 +638,8 @@
 
         #ovniUp {
             position: absolute;
-            left: 55%;
-            top: -15px;
+            left: 58%;
+            top: -3px;
             opacity: 0.63;
             filter: hue-rotate(50deg);
             animation: float-up-down 4s ease-in-out infinite, energy-beam 6s ease-in-out infinite;
@@ -714,7 +720,7 @@
         .software-cat-desc {
             background-color: #1a1332;
             padding: 0.5rem 1rem;
-            
+            cursor: pointer;
             transition: background 0.3s, color 0.3s;
         }
 
@@ -824,35 +830,6 @@
             }
         }
 
-        /* --- Hero Product Images --- */
-        .hero-crox-img {
-            position: absolute;
-            margin-top: -133px;
-            top: 55px !important;
-            pointer-events: none;
-            z-index: 20;
-            width: auto;
-            transition: all 0.3s ease-in-out;
-            will-change: transform, top, left, right;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-crox-img {
-                height: 420px;
-            }
-        }
-
-        @media (max-width: 1023px) {
-            .hero-crox-img {
-                height: 320px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .hero-crox-img {
-                display: none;
-            }
-        }
 
         /* --- Tower Selector Styles --- */
         #tower-selector-container {
@@ -1671,14 +1648,9 @@
 
     <div class="container main-container mx-auto p-4 md:p-8 max-w-5xl">
         <div id="hero-wrapper" class="relative">
-            <div id="hero-background" style="left: -1px; top: 66vh;pointer-events:none;">
+            <div id="hero-background"style="left: -1px; top: 1px;pointer-events:none;">
                 <div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div>
             </div>
-
-            <img src="home-crox-A.webp" id="home-crox-a" class="hero-crox-img" alt="Gabinete PC Gamer Básico"
-                onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Case'">
-            <img src="home-crox-B.webp" id="home-crox-b" class="hero-crox-img" alt="Gabinete PC Gamer con Periféricos"
-                onerror="this.onerror=null;this.src='https://placehold.co/400x600/00000000/ffffff?text=PC+Bundle'">
 
             <header class="text-center pt-8 relative">
                 <img id="ovniUp" src="ovni1fade.webp" class="w-32 h-auto" alt="OVNI"
@@ -2190,11 +2162,11 @@
                 { name: 'PeaZip', slug: 'pea', checked: true, disabled: false, category: 'Sistema', descripcion: 'El mejor des/compresor de archivos.' },
                 { name: 'MalwareBytes', slug: 'malwarebytes', checked: false, disabled: false, category: 'Sistema', descripcion: 'Elimina malware y spyware. Complementa antivirus.' },
                 { name: 'Firewall App Blocker', slug: 'firewall_app_blcoker', checked: false, disabled: false, category: 'Sistema', descripcion: 'Bloquea el acceso a internet de las aplicaciones elegidas.' },
-                { name: 'Fraps', slug: 'fraps', checked: false, disabled: false, category: 'Sistema', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
+                { name: 'Fraps', slug: 'fraps', checked: false, disabled: false, category: 'Juegos', descripcion: 'Captura pantalla y FPS. Para tunear juegos es fundamental.' },
                 { name: 'AnyDesk', slug: 'anydesk', checked: true, disabled: false, category: 'Sistema', descripcion: 'Para manejar la PC remotamente - así soluciono problemas a distancia ;)' },
                 // { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
                 { name: 'Lightshot', slug: 'lightshot', checked: false, disabled: false, category: 'Sistema', descripcion: 'Toma capturas de pantalla prolijas. Fundamental si sos creador.' },
-                { name: 'WinDirStat', slug: 'windirstat', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza uso de espacio en disco, para que sepas qué está ocupandote lugar.' },
+                { name: 'WinDirStat', slug: 'windirstat', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza qué te está ocupando lugar en disco.' },
                 { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: false, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
                 { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: false, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
                 // MULTIMEDIA
@@ -2227,6 +2199,12 @@
                 { name: 'GitHub Desktop', slug: 'github_desktop', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Cliente visual para Git.' },
                 { name: 'Visual Studio Code', slug: 'visual_studio_code', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Editor de código moderno.' },
                 { name: 'n8n', slug: 'n8n', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Agentes de IA en local para automatizar lo-que-sea.' },
+                // JUEGOS
+                { name: 'Steam', slug: 'steam', checked: true, disabled: false, category: 'Juegos', descripcion: 'La plataforma de juegos de PC más grande.' },
+                { name: 'Epic Games', slug: 'epic_games', checked: false, disabled: false, category: 'Juegos', descripcion: 'Ofrece juegos gratis cada semana.' },
+                { name: 'EA App', slug: 'ea_app', checked: false, disabled: false, category: 'Juegos', descripcion: 'Lanzador para juegos de Electronic Arts.' },
+                { name: 'Battle.net', slug: 'battlenet', checked: false, disabled: false, category: 'Juegos', descripcion: 'Plataforma para juegos de Blizzard.' },
+                { name: 'GOG Galaxy', slug: 'gog_galaxy', checked: false, disabled: false, category: 'Juegos', descripcion: 'Lanzador para juegos sin DRM.' },
             ];
             const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
@@ -2321,6 +2299,7 @@
 
                 // Populate software list
                 const softwareCategories = [
+                    { name: 'Juegos', description: 'Plataformas y lanzadores para acceder a tu biblioteca de juegos.', icon: 'fa-gamepad' },
                     { name: 'Sistema', description: 'Herramientas para mantener, optimizar y proteger tu PC.', icon: 'fa-shield-alt' },
                     { name: 'Multimedia', description: 'Reproductores, audio y apps para disfrutar de música y video.', icon: 'fa-photo-film' },
                     { name: 'Web', description: 'Navegadores, mensajería y gestores de descargas.', icon: 'fa-globe' },
@@ -2374,22 +2353,35 @@
                         itemsWrapper.appendChild(softwareItemHTML);
                     });
                     categoryWrapper.appendChild(itemsWrapper);
-                    // Acordeón: solo uno abierto
-                    header.addEventListener('click', () => {
-                        document.querySelectorAll('#software-list .grid').forEach(el => {
-                            if (el !== itemsWrapper) el.classList.add('hidden');
+                    
+                    const toggleAccordion = () => {
+                        const isOpen = !itemsWrapper.classList.contains('hidden');
+
+                        // Close all other accordions first
+                        document.querySelectorAll('#software-list .mb-4').forEach(wrapper => {
+                            const otherItems = wrapper.querySelector('.grid');
+                            if (otherItems && otherItems !== itemsWrapper) {
+                                otherItems.classList.add('hidden');
+                                const otherHeader = wrapper.querySelector('button');
+                                if (otherHeader && otherHeader.querySelector('.accordion-arrow')) {
+                                    otherHeader.querySelector('.accordion-arrow').style.transform = '';
+                                }
+                            }
                         });
-                        document.querySelectorAll('#software-list .accordion-arrow').forEach(arrow => {
-                            arrow.style.transform = '';
-                        });
-                        if (itemsWrapper.classList.contains('hidden')) {
-                            itemsWrapper.classList.remove('hidden');
-                            header.querySelector('.accordion-arrow').style.transform = 'rotate(180deg)';
-                        } else {
+
+                        // Then toggle the current one
+                        if (isOpen) {
                             itemsWrapper.classList.add('hidden');
                             header.querySelector('.accordion-arrow').style.transform = '';
+                        } else {
+                            itemsWrapper.classList.remove('hidden');
+                            header.querySelector('.accordion-arrow').style.transform = 'rotate(180deg)';
                         }
-                    });
+                    };
+
+                    header.addEventListener('click', toggleAccordion);
+                    descDiv.addEventListener('click', toggleAccordion);
+                    
                     softwareListContainer.appendChild(categoryWrapper);
                 });
 
@@ -2486,7 +2478,6 @@
                 // Window resize
                 window.addEventListener('resize', () => {
                     setInitialGridHeight();
-                    positionCroxImages();
                     updateSliderPosition();
                 });
                 // AI Section Listener
@@ -2508,7 +2499,6 @@
                 updateComponentDisplay('psu');
                 updateSelectedGamesList();
                 setInitialGridHeight();
-                positionCroxImages();
                 updatePrices();
                 updateSliderPosition();
             }
@@ -3050,24 +3040,6 @@
                 document.getElementById('game-grid-wrapper').style.maxHeight = `${targetHeight}px`;
             }
 
-            function positionCroxImages() {
-                const croxA = document.getElementById('home-crox-a');
-                const croxB = document.getElementById('home-crox-b');
-                const hookSection = document.querySelector('.hook-section');
-                const wrapper = document.getElementById('hero-wrapper');
-                if (croxA && croxB && hookSection && wrapper && window.innerWidth > 639) {
-                    const wrapperRect = wrapper.getBoundingClientRect();
-                    const hookSectionRect = hookSection.getBoundingClientRect();
-                    const topPosition = hookSectionRect.top - wrapperRect.top - (croxA.offsetHeight / 2);
-                    croxA.style.top = `${topPosition}px`;
-                    croxB.style.top = `${topPosition}px`;
-                    const marginPx = -10 * parseFloat(getComputedStyle(document.documentElement).fontSize);
-                    croxA.style.left = `${hookSectionRect.left - wrapperRect.left - croxA.offsetWidth - marginPx + 33}px`;
-                    croxB.style.right = `${wrapperRect.right - hookSectionRect.right - croxB.offsetWidth - marginPx + 56}px`;
-                    croxB.style.left = 'auto';
-                }
-            }
-
             function showDolarPopup() {
                 if (allDolarRates.length === 0) return;
                 const dolarRatesList = document.getElementById('dolar-rates-list');
@@ -3294,7 +3266,7 @@
                 if (selectedGames.length > 0) message += `*Juegos:* ${selectedGames.join(', ')}\n`;
                 if (selectedSoftware.length > 0) {
                     message += `*Programas:*\n`;
-                    ['Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'].forEach(cat => {
+                    ['Juegos', 'Sistema', 'Multimedia', 'Web', 'Creación', 'Desarrollo'].forEach(cat => {
                         const programs = selectedSoftware.filter(name => softwareData.find(p => p.name === name)?.category === cat);
                         if (programs.length > 0) message += `- ${cat}: ${programs.join(', ')}\n`;
                     });
@@ -3350,3 +3322,5 @@
 </body>
 
 </html>
+
+
