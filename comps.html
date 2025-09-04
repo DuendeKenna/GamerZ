@@ -1623,14 +1623,13 @@
                         }
 
                         const priceCheckButton = product.link ? `
-                            <button onclick="openPriceCheckPopup('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-300" title="Chequear Precio Manualmente">
+                            <button onclick="startSinglePriceCheckAndContinue('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-300" title="Chequear Precio y Continuar">
                                 <span class="lucide-icon w-4 h-4" data-lucide="dollar-sign"></span>
                             </button>
                         ` : '';
                         
                         const tooltipTableHTML = generateTooltipTable(product.prices);
                         
-                        // NEW: Chart button
                         const chartButton = (product.prices && product.prices.length > 1) ? `
                             <button onclick="openPriceChartPopup('${categoryKey}', ${index})" class="text-indigo-400 hover:text-indigo-300 ml-2" title="Ver Historial de Precios">
                                 <span class="lucide-icon w-4 h-4" data-lucide="line-chart"></span>
@@ -1787,13 +1786,12 @@
         }
     }
 
-    // --- MODIFIED: Price Check Popup & Loop Logic (No iframe) ---
+    // --- Price Check Logic ---
 
     function openPriceCheckPopup(categoryKey, index, isFromLoop = false) {
         const product = dataMap[categoryKey][index];
         if (!product || !product.link) return;
 
-        // Open product link in a new tab
         window.open(product.link, '_blank');
 
         const popup = document.getElementById('price-check-popup');
@@ -1821,7 +1819,6 @@
         popup.classList.add('hidden');
     }
 
-    // --- MODIFIED: handleManualPriceCheck to show previous price ---
     function handleManualPriceCheck(event) {
         if (event.key !== 'Enter') return;
 
@@ -1832,7 +1829,7 @@
         let newPrice;
 
         if (!input.value.trim()) {
-            newPrice = oldPrice; // If empty, price is unchanged
+            newPrice = oldPrice;
         } else {
             const rawValue = input.value.replace(/[^\d]/g, '');
             newPrice = parseInt(rawValue, 10);
@@ -1851,7 +1848,7 @@
             priceInputInTable.value = newPrice.toLocaleString('es-AR');
         }
         
-        applyPriceChangeVisuals(tableRow, oldPrice, newPrice); // REPLACED LOGIC
+        applyPriceChangeVisuals(tableRow, oldPrice, newPrice);
 
         showToast(`Precio de "${product.name}" actualizado a $${newPrice.toLocaleString('es-AR')}.`);
         
@@ -1864,8 +1861,8 @@
             setTimeout(processNextInQueue, 1000); 
         }
     }
-
-    // --- NEW: Price Chart Popup Logic ---
+    
+    // --- Price Chart Popup Logic ---
     function openPriceChartPopup(categoryKey, index) {
         const product = dataMap[categoryKey][index];
         if (!product || !product.prices || product.prices.length === 0) {
@@ -1947,26 +1944,37 @@
         }
     }
 
+    // --- Price Check Loop Logic (REFACTORED) ---
 
-    function buildPriceCheckQueue() {
+    function initializePriceCheckQueue() {
         priceCheckQueue = [];
-        const twoHoursInMs = 2 * 60 * 60 * 1000;
-        const twoHoursAgo = new Date(Date.now() - twoHoursInMs);
-
         CATEGORY_NAV_LIST.forEach(category => {
             const categoryKey = category.key;
             if (!categoryKey.includes('Options')) return;
             
             (dataMap[categoryKey] || []).forEach((product, index) => {
                 if (product.visible && product.link) {
-                    if (!product.lastUpd || new Date(product.lastUpd) < twoHoursAgo) {
-                        priceCheckQueue.push({ categoryKey, index });
-                    }
+                    priceCheckQueue.push({ categoryKey, index, productId: product.id });
                 }
             });
         });
     }
 
+    function startSinglePriceCheckAndContinue(categoryKey, index) {
+        const product = dataMap[categoryKey][index];
+        const startIndex = priceCheckQueue.findIndex(item => item.productId === product.id);
+
+        if (startIndex === -1) {
+            showToast('Este producto no puede iniciar un chequeo en lote (puede no ser visible o no tener link).', 'error');
+            openPriceCheckPopup(categoryKey, index, false); // Open for single check only
+            return;
+        }
+
+        currentQueueIndex = startIndex;
+        isLoopRunning = true;
+        
+        processNextInQueue();
+    }
 
     function togglePriceCheckLoop() {
         if (isLoopRunning) {
@@ -1980,16 +1988,15 @@
         isLoopRunning = true;
         updateLoopButtonUI(true);
 
-        buildPriceCheckQueue(); 
         currentQueueIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
         
-        if(currentQueueIndex >= priceCheckQueue.length) {
+        if (currentQueueIndex >= priceCheckQueue.length) {
             currentQueueIndex = 0;
             sessionStorage.setItem('priceCheckQueueIndex', '0');
         }
         
         if (priceCheckQueue.length === 0) {
-            showToast('No hay productos para chequear (visibles, con link y no actualizados en las últimas 2hs).', 'error');
+            showToast('No hay productos para chequear (visibles y con link).', 'error');
             resetPriceCheckLoop();
             return;
         }
@@ -1999,6 +2006,7 @@
 
     function pausePriceCheckLoop() {
         isLoopRunning = false;
+        sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
         updateLoopButtonUI(false);
         showToast('Chequeo en lote pausado.');
     }
@@ -2008,6 +2016,7 @@
         priceCheckQueue = [];
         currentQueueIndex = 0;
         sessionStorage.removeItem('priceCheckQueueIndex');
+        initializePriceCheckQueue(); // Rebuild the queue on reset
         updateLoopButtonUI(false);
     }
 
@@ -2020,13 +2029,39 @@
             return;
         }
 
-        const item = priceCheckQueue[currentQueueIndex];
-        updateLoopButtonUI(true, `(${currentQueueIndex + 1}/${priceCheckQueue.length})`);
-        scrollToComponentRow(item.categoryKey, item.index);
+        const twoHoursInMs = 2 * 60 * 60 * 1000;
+        const twoHoursAgo = new Date(Date.now() - twoHoursInMs);
         
-        setTimeout(() => {
-            openPriceCheckPopup(item.categoryKey, item.index, true);
-        }, 200);
+        let itemToCheck = null;
+        while (currentQueueIndex < priceCheckQueue.length) {
+            const potentialItem = priceCheckQueue[currentQueueIndex];
+            const product = dataMap[potentialItem.categoryKey][potentialItem.index];
+            
+            if (!product || product.id !== potentialItem.productId) {
+                 currentQueueIndex++;
+                 continue;
+            }
+
+            if (!product.lastUpd || new Date(product.lastUpd) < twoHoursAgo) {
+                itemToCheck = potentialItem;
+                break;
+            }
+            
+            currentQueueIndex++;
+        }
+
+        sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+        updateLoopButtonUI(true, `(${currentQueueIndex}/${priceCheckQueue.length})`);
+
+        if (itemToCheck) {
+            scrollToComponentRow(itemToCheck.categoryKey, itemToCheck.index);
+            setTimeout(() => {
+                openPriceCheckPopup(itemToCheck.categoryKey, itemToCheck.index, true);
+            }, 200);
+        } else {
+            showToast('¡Chequeo en lote completado! (No hay más productos que necesiten revisión)', 'success');
+            resetPriceCheckLoop();
+        }
     }
     
     function updateLoopButtonUI(isRunning, progressText = '') {
@@ -2038,8 +2073,9 @@
             btnText.textContent = `Pausar Chequeo ${progressText}`;
             icon.setAttribute('data-lucide', 'pause-circle');
         } else {
-            if (currentQueueIndex > 0 && currentQueueIndex < priceCheckQueue.length) {
-                 btnText.textContent = `Continuar Chequeo (${currentQueueIndex}/${priceCheckQueue.length})`;
+            const savedIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
+            if (savedIndex > 0 && savedIndex < priceCheckQueue.length) {
+                 btnText.textContent = `Continuar Chequeo (${savedIndex}/${priceCheckQueue.length})`;
             } else {
                  btnText.textContent = 'Chequeo en Lote';
             }
@@ -2132,6 +2168,7 @@
             renderBundlesSection();
             renderOverviewTables();
             saveDataToSessionStorage();
+            initializePriceCheckQueue(); // Re-initialize queue after loading new data
             showToast('Datos recargados desde productsH.json');
 
         } catch (error) {
@@ -2189,9 +2226,10 @@
         saveDataToSessionStorage();
         lucide.createIcons();
         
-        buildPriceCheckQueue(); 
-        currentQueueIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
-        if (currentQueueIndex > 0 && currentQueueIndex < priceCheckQueue.length) {
+        initializePriceCheckQueue();
+        const savedIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
+        if (savedIndex > 0 && savedIndex < priceCheckQueue.length) {
+            currentQueueIndex = savedIndex;
             updateLoopButtonUI(false); 
         }
         

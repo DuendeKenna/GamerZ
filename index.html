@@ -2169,6 +2169,98 @@
     </div>
 
     <script>
+    // --- DRAG & DROP FOR PRICE SUMMARY CARD (HORIZONTAL ONLY) ---
+    document.addEventListener('DOMContentLoaded', function () {
+        const card = document.getElementById('price-summary-card');
+        if (!card) return;
+        let isDragging = false;
+        let startX = 0;
+        let startLeft = 0;
+        let cardWidth = 0;
+        let viewportWidth = 0;
+        let snapMargin = 24; // px from edge to snap
+
+        // Make card visible for drag
+        card.style.transition = 'none';
+        card.style.opacity = '1';
+        card.style.visibility = 'visible';
+        card.style.display = 'flex';
+
+        // Initial position: bottom right
+        function setInitialPosition() {
+            viewportWidth = window.innerWidth;
+            cardWidth = card.offsetWidth;
+            card.style.left = '';
+            card.style.right = '0px';
+            card.style.bottom = '0px';
+            card.style.top = '';
+            // If snapped right, remove top-right radius
+            card.style.borderTopLeftRadius = '0.75rem';
+            card.style.borderTopRightRadius = '0';
+        }
+        setInitialPosition();
+
+        // Drag logic
+        card.addEventListener('mousedown', function (e) {
+            if (e.button !== 0) return;
+            isDragging = true;
+            startX = e.clientX;
+            startLeft = card.getBoundingClientRect().left;
+            cardWidth = card.offsetWidth;
+            viewportWidth = window.innerWidth;
+            document.body.style.userSelect = 'none';
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            let deltaX = e.clientX - startX;
+            let newLeft = startLeft + deltaX;
+            // Clamp within viewport
+            newLeft = Math.max(0, Math.min(newLeft, viewportWidth - cardWidth));
+            card.style.left = newLeft + 'px';
+            card.style.right = '';
+            card.style.bottom = '0px';
+            card.style.top = '';
+            // Border radius: both top corners same unless snapped left/right
+            if (newLeft < snapMargin) {
+                card.style.borderTopLeftRadius = '0';
+                card.style.borderTopRightRadius = '0.75rem';
+            } else if (viewportWidth - (newLeft + cardWidth) < snapMargin) {
+                card.style.borderTopLeftRadius = '0.75rem';
+                card.style.borderTopRightRadius = '0';
+            } else {
+                card.style.borderTopLeftRadius = '0.75rem';
+                card.style.borderTopRightRadius = '0.75rem';
+            }
+        });
+
+        document.addEventListener('mouseup', function (e) {
+            if (!isDragging) return;
+            isDragging = false;
+            document.body.style.userSelect = '';
+            // Snap to left or right if close
+            let left = card.getBoundingClientRect().left;
+            if (left < snapMargin) {
+                card.style.left = '0px';
+                card.style.right = '';
+                card.style.borderTopLeftRadius = '0';
+                card.style.borderTopRightRadius = '0.75rem';
+            } else if (left > viewportWidth - cardWidth - snapMargin) {
+                card.style.left = '';
+                card.style.right = '0px';
+                card.style.borderTopLeftRadius = '0.75rem';
+                card.style.borderTopRightRadius = '0';
+            } else {
+                card.style.borderTopLeftRadius = '0.75rem';
+                card.style.borderTopRightRadius = '0.75rem';
+            }
+            // Always bottom
+            card.style.bottom = '0px';
+            card.style.top = '';
+        });
+
+        window.addEventListener('resize', setInitialPosition);
+    });
         document.addEventListener('DOMContentLoaded', function () {
             // --- DATA ---
             const gameNames = ['GTA V', 'LoL', 'Dota 2', 'Overwatch 2', 'Minecraft', 'Rocket League', 'Need for Speed: Hot Pursuit Remastered', 'Need for Speed: Underground HD', 'Half Life: Black Mesa', 'Half Life 2 HD', 'Abe´s Oddysey Remake', 'WoW Classic: en TurtleWoW', 'Dishonored 2', 'Borderlands 2', 'Portal 1 y 2', 'Left 4 Dead 2', 'BioShock Remaster', 'BioShock 2 Remaster', 'BioShock Infinite', 'Fallout 3', 'Fallout: New Vegas', 'Batman: Arkham Asylum', 'Batman: Arkham City', 'Sleeping Dogs: Definitive Edition', 'Tomb Raider (2013)', 'Mass Effect Legendary Edition', 'Far Cry 3', 'Deus Ex: Human Revolution', 'Serious Sam Classics: Revolution', 'Burnout Paradise', 'DiRT 3 Complete Edition', 'Need for Speed: Underground 2 HD', 'Need for Speed: Most Wanted HD', 'Blur', 'GRID 2', 'GRID Autosport', 'F1 2014', 'FIFA 17', 'PES 2017', 'NBA 2K17', 'FallGuys', 'Sims 4 + Expansiones', 'Spore: Aventuras Galacticas', 'Roblox', 'Call of Duty: Black Ops', 'Call of Duty: Black Ops 2', 'Metro 2033', 'Crysis 2', 'Bulletstorm', 'Dishonored', 'Max Payne 3', 'Singularity', 'F.E.A.R.', 'Mortal Kombat 11 Komplete Edition', 'Ultra Street Fighter IV', 'Ultimate Marvel vs. Capcom 3', 'The King of Fighters XIII', 'Injustice Gods Among Us', 'Heroes of Might & Magic HD V', 'Reckoning: Kingdoms of Amalur', 'Divinity Original Sin', 'Age of Empires II Definitive Edition', 'The Elder Scrolls V: Skyrim', 'The Elder Scrolls IV: Oblivion & AddOns HD'];
