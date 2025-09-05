@@ -857,17 +857,7 @@
             align-items: center;
             overflow: visible;
         }
-
-        #current-tower-image {
-            width: 100%;
-            height: 125%;
-            object-fit: contain;
-            cursor: pointer;
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            z-index: 1;
-            margin-top: -10%;
-        }
-
+        
         #tower-name-and-arrows-wrapper {
             position: absolute;
             bottom: 0;
@@ -1180,57 +1170,47 @@
             line-height: 1.5;
             padding-left: 0.5rem;
         }
-
-        /* CSS-based image transition for loading */
-        .component-option-image,
-        #current-tower-image {
-            transition: filter 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        
+        /* --- NEW: Image Loading Styles --- */
+        #base-image,
+        #current-tower-image,
+        .component-option-image {
+            transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+            cursor: pointer;
         }
-
-        .component-option-image.loading,
-        #current-tower-image.loading {
+        .image-loading-effect {
             filter: grayscale(100%);
-            opacity: 0.8;
         }
-
-        #component-list .component-option-image {
+       
+        .component-option-image {
             width: 100%;
             max-width: 20rem;
+            height: 180px; /* Give a fixed height to prevent layout shift */
             object-fit: contain;
             flex-shrink: 0;
-            margin-top: 0;
-            cursor: pointer;
+            margin: 0 auto;
         }
 
         @media (min-width: 768px) {
-            #component-list .component-option-image {
+            .component-option-image {
                 width: 180px;
                 max-width: none;
                 left: 6rem;
                 position: relative;
             }
-        }
-
-        @media (min-width: 768px) {
-            #current-tower-image:hover {
-                transform: scale(1);
-                transform-origin: center center;
-            }
-
-            #gpu-image,
-            #psu-image {
+             #gpu-image, #psu-image {
                 transform: scale(1.5);
                 transform-origin: right center;
             }
-
             #ssd-image {
                 transform: scale(1.5);
                 transform-origin: right center;
             }
-
-            #ssd-image:hover {
-                transform: scale(1.5);
-            }
+        }
+        
+        #current-tower-image:hover {
+            transform: scale(1);
+            transform-origin: center center;
         }
 
         /* Mobile Sticky Price Summary Specific Styles */
@@ -1493,14 +1473,10 @@
             margin: auto;
         }
 
-        #base-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        #base-image {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.3s ease-in-out;
         }
 
         .accordion-header {
@@ -1622,6 +1598,29 @@
             margin-left: 0.25rem;
             font-size: 0.75rem;
         }
+        /* Back-to-summary floating icon styles (simple fixed bottom-left) */
+        #back-to-summary-btn {
+            position: fixed;
+            left: 0.6rem; /* user requested margin */
+            bottom: 0.6rem; /* user requested margin */
+            width: 64px;
+            height: 64px;
+            border-radius: 9999px;
+            background: linear-gradient(180deg, rgba(79,70,229,0.98), rgba(99,102,241,0.98));
+            box-shadow: 0 12px 28px rgba(2,6,23,0.6);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            z-index: 1300;
+            transition: transform 0.12s ease, opacity 0.12s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Hidden/visible states (no repositioning needed) */
+        #back-to-summary-btn.hidden { opacity: 0; pointer-events: none; transform: translateY(6px) scale(0.92); }
+        #back-to-summary-btn.visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
     </style>
 </head>
 
@@ -1796,7 +1795,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
                     <div class="md:col-span-5">
                         <div id="base-image-container">
-                            <img id="base-image" src="" alt="Componentes Base">
+                           <img id="base-image" src="" alt="Componentes Base">
                         </div>
                     </div>
                     <div class="md:col-span-7 text-center md:text-left">
@@ -1822,8 +1821,7 @@
                         <div id="tower-selector-container"
                             class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
                             <div class="flex-grow flex items-center justify-center w-full h-full relative">
-                                <img id="current-tower-image" src="" alt="Torre PC Gamer"
-                                    class="w-full h-full object-contain"
+                                <img id="current-tower-image" src="" alt="Torre PC Gamer" class="h-full w-full"
                                     onerror="this.onerror=null;this.src='https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC'">
                             </div>
 
@@ -1845,8 +1843,7 @@
                                     <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="gpu-description" class="description-text"></p>
                                 </div>
-                                <img id="gpu-image" src="" alt="Tarjeta Gráfica"
-                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
+                                <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image">
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
@@ -1854,8 +1851,7 @@
                                     <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
-                                <img id="ssd-image" src="" alt="Almacenamiento SSD"
-                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
+                                <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image">
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
@@ -1863,8 +1859,7 @@
                                     <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="psu-description" class="description-text"></p>
                                 </div>
-                                <img id="psu-image" src="" alt="Fuente de Poder"
-                                    class="component-option-image w-full max-w-xs mx-auto md:w-48 md:max-w-none md:mx-0">
+                                <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image">
                             </li>
                         </ul>
                     </div>
@@ -2048,6 +2043,8 @@
                             <!-- Summary content will be inserted here by JS -->
                         </div>
 
+                        <!-- back-to-summary button removed from here and placed near bottom of body to ensure fixed positioning works correctly -->
+
                         <div class="w-full max-w-lg mt-4 flex flex-col items-center">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-x-4 w-full">
                                 <div class="md:col-span-2 flex justify-center items-center">
@@ -2124,11 +2121,14 @@
     </div>
 
     <!-- Fullscreen Overlay for Image Zoom (hidden by default) -->
-    <div id="fullscreen-overlay" class="fullscreen-overlay hidden">
-        <div class="zoomed-content">
-            <img id="zoomed-image" src="" alt="Imagen ampliada del componente">
+    <div id="fullscreen-overlay"
+        class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000] flex items-center justify-center p-4 cursor-pointer">
+        <div class="relative w-full h-full max-w-4xl max-h-[80vh]">
+            <img id="zoomed-image" src="" alt="Imagen ampliada del componente"
+                class="w-full h-full object-contain">
         </div>
     </div>
+
 
     <!-- Sticky Price Summary Card -->
     <div id="price-summary-card" class="font-saira items-center justify-center">
@@ -2302,6 +2302,7 @@
                 { name: 'Photopea', slug: 'photopea', checked: false, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
                 { name: 'Canva', slug: 'canva', checked: true, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
                 { name: 'XnConvert', slug: 'xnconvert', checked: false, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
+                { name: 'Fast Stone Image', slug: 'faststone_image', checked: false, disabled: false, category: 'Creación', descripcion: 'Completísimo visualizador y retocador de imágenes.' },
                 { name: 'CapCut', slug: 'capcut', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video sencilla. OJO! Sin premium es muy limitado.' },
                 { name: 'DaVinci Resolve', slug: 'davinci_resolve', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video profesional.' },
                 { name: 'OBS Studio', slug: 'obs_studio', checked: false, disabled: false, category: 'Creación', descripcion: 'Grabación y streaming.' },
@@ -2574,12 +2575,15 @@
 
                 // Image Zoom
                 const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-                fullscreenOverlay.addEventListener('click', () => fullscreenOverlay.classList.remove('active'));
-                ['current-tower-image', 'gpu-image', 'ssd-image', 'psu-image'].forEach(id => {
+                fullscreenOverlay.addEventListener('click', () => fullscreenOverlay.classList.add('hidden'));
+                ['current-tower-image', 'gpu-image', 'ssd-image', 'psu-image', 'base-image'].forEach(id => {
                     const imgEl = document.getElementById(id);
-                    imgEl?.addEventListener('click', () => {
-                        document.getElementById('zoomed-image').src = imgEl.src;
-                        fullscreenOverlay.classList.add('active');
+                    imgEl?.addEventListener('click', (e) => {
+                         if (e.target.closest('a')) return;
+                        if (imgEl && imgEl.src) {
+                            document.getElementById('zoomed-image').src = imgEl.src;
+                            fullscreenOverlay.classList.remove('hidden');
+                        }
                     });
                 });
 
@@ -2703,8 +2707,7 @@
                     // Descripción desde el JSON
                     document.getElementById('base-description-text').innerHTML = base.description || '';
                     // Imagen
-                    const baseImage = document.getElementById('base-image');
-                    if (baseImage) baseImage.src = `comps/bases/${base.id}.webp`;
+                    loadComponentImage(document.getElementById('base-image'), `comps/${base.id}.webp`);
                     updateBaseSummaryText(cpu, ram, base);
                 }
             }
@@ -2713,14 +2716,9 @@
             function updateTowerDisplay() {
                 if (towersOptions.length === 0) return;
                 const selectedTower = towersOptions[currentTowerIndex];
-                // Mostrar imagen siempre, incluso si el precio es 0
-                const towerImgEl = document.getElementById('current-tower-image');
-                if (selectedTower.image_url) {
-                    loadImageWithGrayscale(towerImgEl, selectedTower.image_url);
-                } else {
-                    // Si no tiene imagen, mostrar placeholder
-                    towerImgEl.src = 'comps/torres/reciclada.webp';
-                }
+                const towerImgPath = selectedTower.id ? `comps/${selectedTower.id}.webp` : 'comps/63462.webp';
+                loadComponentImage(document.getElementById('current-tower-image'), towerImgPath);
+                
                 document.getElementById('current-tower-name').textContent = selectedTower.name;
                 let towerPriceHTML = '';
                 if (selectedTower.price === 0) {
@@ -2735,11 +2733,11 @@
             }
 
             // --- REFACTORED: Single function to update component display ---
-            function updateComponentDisplay(componentKey) {
+           function updateComponentDisplay(componentKey) {
                 const config = {
-                    gpu: { selectEl: document.getElementById('gpu-select'), descEl: document.getElementById('gpu-description'), imageEl: document.getElementById('gpu-image'), options: gpuOptions },
-                    ssd: { selectEl: document.getElementById('ssd-select'), descEl: document.getElementById('ssd-description'), imageEl: document.getElementById('ssd-image'), options: ssdOptions },
-                    psu: { selectEl: document.getElementById('psu-select'), descEl: document.getElementById('psu-description'), imageEl: document.getElementById('psu-image'), options: psuOptions }
+                    gpu: { descEl: document.getElementById('gpu-description'), imageEl: document.getElementById('gpu-image'), options: gpuOptions },
+                    ssd: { descEl: document.getElementById('ssd-description'), imageEl: document.getElementById('ssd-image'), options: ssdOptions },
+                    psu: { descEl: document.getElementById('psu-description'), imageEl: document.getElementById('psu-image'), options: psuOptions }
                 };
 
                 const { descEl, imageEl, options } = config[componentKey];
@@ -2755,7 +2753,9 @@
                         }
                         descEl.innerHTML = selectedOption.description + linkHTML;
                     }
-                    if (imageEl) loadImageWithGrayscale(imageEl, selectedOption.image_url);
+                    if (imageEl) {
+                         loadComponentImage(imageEl, `comps/${selectedOption.id}.webp`);
+                    }
 
                     if (componentKey === 'gpu') {
                         const gpuLi = document.getElementById('gpu-li');
@@ -2794,9 +2794,10 @@
                 document.head.appendChild(style);
                 const selectedTower = towersOptions[currentTowerIndex];
                 if (selectedTower) {
+                    const towerImgPath = selectedTower.id ? `comps/${selectedTower.id}.webp` : 'comps/reciclada.webp';
                     cabinetContainer.innerHTML = `
                         <a href="#main-components-container" class="block">
-                            <img src="${selectedTower.image_url}" alt="${selectedTower.name}" style="width: 313px; height: 430px; object-fit: contain;" class="rounded-lg mb-2" onerror="this.onerror=null;this.src='comps/torres/reciclada.webp'">
+                            <img src="${towerImgPath}" alt="${selectedTower.name}" style="width: 313px; height: 430px; object-fit: contain;" class="rounded-lg mb-2" onerror="this.onerror=null;this.src='comps/reciclada.webp'">
                         </a>
                         <p class="font-bold text-lg text-white">${selectedTower.name}</p>
                         <a href="${selectedTower.link}" target="_blank" class="component-link">$${selectedTower.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>
@@ -2957,7 +2958,7 @@
                         container.innerHTML = `
                             <div class="summary-card unselected">
                                 <div class="summary-card-image-wrapper">
-                                   <img src="${cat.options[0].image_url}" alt="${cat.name}" onerror="this.onerror=null;this.src='https://placehold.co/240x190/ffffff/333333?text=${cat.name}'">
+                                   <img src="comps/${cat.options[0].id}.webp" alt="${cat.name}" onerror="this.onerror=null;this.src='https://placehold.co/240x190/ffffff/333333?text=${cat.name}'">
                                 </div>
                             </div>
                             <div class="peripheral-info">
@@ -2984,7 +2985,7 @@
                         container.innerHTML = `
                             <div class="summary-card unselected">
                                 <div class="summary-card-image-wrapper">
-                                   <img src="${cat.options[0].image_url}" alt="${cat.name}" onerror="this.onerror=null;this.src='https://placehold.co/240x190/ffffff/333333?text=${cat.name}'">
+                                   <img src="comps/${cat.options[0].id}.webp" alt="${cat.name}" onerror="this.onerror=null;this.src='https://placehold.co/240x190/ffffff/333333?text=${cat.name}'">
                                 </div>
                             </div>
                             <div class="peripheral-info">
@@ -3060,15 +3061,11 @@
                 const link = e.target.closest('a');
                 if (!link) return;
 
-                const container = link.closest('.peripheral-container');
-                if (container && container.dataset.category) {
-                    const itemLink = container.querySelector('.component-link');
-                    if (itemLink && itemLink.href && itemLink.href !== '#') {
-                        window.open(itemLink.href, '_blank');
-                    }
-                } else if (link.href.includes('#')) {
-                    // Internal link, custom scroll with margin
-                    const anchor = link.getAttribute('href');
+                const href = link.getAttribute('href') || '';
+                // If it's an internal anchor, prevent default and perform custom scroll/highlight
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const anchor = href;
                     let selectId = null;
                     let targetId = anchor.replace('#', '');
                     if (anchor === '#gpu-select') selectId = 'gpu-select';
@@ -3096,9 +3093,11 @@
                             }
                         }, 500); // Wait for scroll animation
                     }
-                } else if (link.href) {
-                    window.open(link.href, '_blank');
+                    return;
                 }
+
+                // For external links, do nothing: allow the anchor's href/target to open normally.
+                // This ensures links with target="_blank" open once via native browser behavior.
             }
 
 
@@ -3108,25 +3107,38 @@
                 const info = container.querySelector('.peripheral-info');
                 const nameEl = info.querySelector('.peripheral-name');
                 const priceContainer = info.querySelector('.peripheral-price-container');
+                let newImageSrc = '';
 
-                if (index === -1) {
-                    card.classList.add('unselected');
-                    img.src = options[0].image_url;
-                    nameEl.textContent = container.dataset.category.charAt(0).toUpperCase() + container.dataset.category.slice(1);
-                    priceContainer.innerHTML = `<p class="component-link">&nbsp;</p>`;
-                } else {
-                    card.classList.remove('unselected');
-                    const item = options[index];
-                    img.src = item.image_url;
-                    nameEl.textContent = item.name;
-                    let priceHTML = '&nbsp;';
-                    if (item.price > 0 && item.link) {
-                        priceHTML = `<a href="${item.link}" target="_blank" class="component-link" onclick="event.stopPropagation()">$${item.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>`;
-                    } else if (item.price > 0) {
-                        priceHTML = `<span class="component-link" style="color: var(--color-link);">$${item.price.toLocaleString('es-AR')}</span>`;
+                // This function will be called after the new image is loaded and visible
+                const updateTextCallback = () => {
+                    if (index === -1) {
+                        card.classList.add('unselected');
+                        nameEl.textContent = container.dataset.category.charAt(0).toUpperCase() + container.dataset.category.slice(1);
+                        priceContainer.innerHTML = `<p class="component-link">&nbsp;</p>`;
+                    } else {
+                        card.classList.remove('unselected');
+                        const item = options[index];
+                        nameEl.textContent = item.name;
+                        let priceHTML = '&nbsp;';
+                        if (item.price > 0 && item.link) {
+                            priceHTML = `<a href="${item.link}" target="_blank" class="component-link" onclick="event.stopPropagation()">$${item.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>`;
+                        } else if (item.price > 0) {
+                            priceHTML = `<span class="component-link" style="color: var(--color-link);">$${item.price.toLocaleString('es-AR')}</span>`;
+                        }
+                        priceContainer.innerHTML = priceHTML;
                     }
-                    priceContainer.innerHTML = priceHTML;
+                };
+
+                // Determine the new image source before calling the loader
+                if (index === -1) {
+                    newImageSrc = `comps/${options[0].id}.webp`;
+                } else {
+                    const item = options[index];
+                    newImageSrc = `comps/${item.id}.webp`;
                 }
+                
+                // Call the loader with the callback
+                loadComponentImage(img, newImageSrc, updateTextCallback);
             }
 
 
@@ -3463,20 +3475,36 @@
                 window.open(`https://wa.me/5492252513233?text=${encodeURIComponent(message)}`, '_blank');
             }
 
-            function loadImageWithGrayscale(imageElement, newSrc) {
-                if (!imageElement) return;
-                imageElement.classList.add('loading');
+            // --- NEW: Enhanced Image Loader Function ---
+            function loadComponentImage(imageElement, newSrc, onLoadCallback) {
+                if (!imageElement || imageElement.src.includes(newSrc.split('/').pop())) {
+                    if (onLoadCallback) onLoadCallback();
+                    return;
+                }
+
+                imageElement.classList.add('image-loading-effect');
+
                 const tempImage = new Image();
                 tempImage.src = newSrc;
+
                 tempImage.onload = () => {
-                    imageElement.src = newSrc;
-                    imageElement.classList.remove('loading');
+                    imageElement.style.opacity = '0';
+
+                    setTimeout(() => {
+                        imageElement.src = newSrc;
+                        imageElement.classList.remove('image-loading-effect');
+                        imageElement.style.opacity = '1';
+                        if (onLoadCallback) onLoadCallback();
+                    }, 300); // Duration should match CSS transition duration
                 };
+
                 tempImage.onerror = () => {
                     console.error(`Failed to load image: ${newSrc}`);
-                    imageElement.classList.remove('loading');
+                    imageElement.classList.remove('image-loading-effect');
+                    if (onLoadCallback) onLoadCallback();
                 };
             }
+
 
             function updateSliderPosition() {
                 const slider = document.getElementById('base-level-slider');
@@ -3487,10 +3515,7 @@
                 }
             }
         });
-        // ...existing code...
-        // Ejemplo: asume que ya tienes baseOptions, ramOptions, cpuOptions, motherboardOptions cargados desde el JSON
-
-
+        
         function updateBaseSummaryText(cpu, ram, base) {
             const summaryEl = document.getElementById('base-summary-text');
             if (summaryEl && base) {
@@ -3502,8 +3527,63 @@
                 }
             }
         }
-        // ...existing code...
+    </script>
+    <!-- Back-to-summary button placed at body level so CSS fixed positions it relative to viewport -->
+    <button id="back-to-summary-btn" class="hidden" aria-hidden="true" title="Volver al Resumen">
+        <i class="fas fa-caret-down" aria-hidden="true" style="font-size:28px;color:white;"></i>
+    </button>
+
+    <script>
+    // Back-to-summary button behavior
+    document.addEventListener('DOMContentLoaded', function () {
+        const backBtn = document.getElementById('back-to-summary-btn');
+        const summaryEl = document.getElementById('selected-components-preview');
+        if (!backBtn || !summaryEl) return;
+
+        // Utility to show the button (fixed bottom-left via CSS)
+        function showBackBtn() {
+            backBtn.classList.remove('hidden');
+            backBtn.classList.add('visible');
+            backBtn.setAttribute('aria-hidden', 'false');
+        }
+
+        // Utility to hide the button
+        function hideBackBtn() {
+            backBtn.classList.remove('visible');
+            backBtn.classList.add('hidden');
+            backBtn.setAttribute('aria-hidden', 'true');
+        }
+
+        // When an internal anchor inside the summary is clicked, show the back button.
+        summaryEl.addEventListener('click', function (e) {
+            const anchor = e.target.closest('a[href^="#"]');
+            if (!anchor) return;
+            const href = anchor.getAttribute('href');
+            if (!href || href === '#') return;
+            // If it points to an element on the page, show the button so user can return later
+            const targetId = href.slice(1);
+            if (document.getElementById(targetId)) {
+                // small delay so this runs after any smooth scroll handlers
+                setTimeout(showBackBtn, 50);
+            }
+        });
+
+        // Button scrolls smoothly back to the summary and then hides itself (only hides when pressed)
+        backBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            summaryEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // hide after the scroll completes (estimate)
+            setTimeout(hideBackBtn, 700);
+        });
+
+        // NOTE: Intentionally do NOT hide the button on selects/change/hashchange.
+        // The button should remain available after the user changes options so they can
+        // return to the summary at any time. It will only be hidden when pressed.
+
+    // No resize handling required: button is fixed bottom-left via CSS
+    });
     </script>
 </body>
 
 </html>
+
