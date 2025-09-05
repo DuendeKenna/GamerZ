@@ -5,10 +5,10 @@
       "name": "Ryzen 5 5600G + 16 de RAM",
       "description": "Buen rendimiento en juegos ligeros a 1080p, multitarea básica y creación de contenido principiante. Con 6 núcleos y gráfica integrada Vega 7, es el más económico y simple, pero más que suficiente si no corrés software pesado.",
       "cpu": "896",
-      "mother": "49131",
+      "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 371800,
+      "total": 371400,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 403000,
+      "total": 402800,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "8502",
       "cantRam": 2,
-      "total": 455200,
+      "total": 455000,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -66,6 +66,10 @@
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 247000,
+          "date": "2025-09-05T10:47:56.116Z"
+        },
         {
           "value": 248000,
           "date": "2025-09-04T15:02:08.853Z"
@@ -162,6 +166,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 68400,
+          "date": "2025-09-05T10:49:05.950Z"
+        },
+        {
           "value": 65700,
           "date": "2025-09-04T15:02:25.851Z"
         },
@@ -204,6 +212,10 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 67100,
+          "date": "2025-09-05T10:49:18.263Z"
+        },
         {
           "value": 69000,
           "date": "2025-09-04T15:02:35.213Z"
@@ -568,8 +580,12 @@
       "name": "RX 7600 | 8GB",
       "description": "Un caño para jugar en 1080p fluidamente en calidad Alta. Arquitectura RDNA 3, eficiencia energética y potencia moderna.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-xfx-speedster-swft21-amd-rx7600-8gb-hdmi-ddr6/p/MLA28570288?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&wid=MLA1516810373&search_layout=grid&position=2&type=product&tracking_id=b3d0404e-0664-4045-8da3-fb3948bde594&sid=search",
-      "visible": 1,
+      "visible": 0,
       "prices": [
+        {
+          "value": 530000,
+          "date": "2025-09-05T10:54:19.890Z"
+        },
         {
           "value": 460000,
           "date": "2025-09-04T15:41:49.097Z"
@@ -803,6 +819,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 113000,
+          "date": "2025-09-05T10:50:35.402Z"
+        },
+        {
           "value": 93000,
           "date": "2025-09-04T15:03:55.071Z"
         },
@@ -840,6 +860,10 @@
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 92600,
+          "date": "2025-09-05T10:51:09.186Z"
+        },
         {
           "value": 92900,
           "date": "2025-09-04T15:04:03.995Z"
@@ -922,6 +946,10 @@
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 250400,
+          "date": "2025-09-05T10:50:18.346Z"
+        },
         {
           "value": 250300,
           "date": "2025-09-04T15:03:46.002Z"
@@ -1782,6 +1810,10 @@
       "description": "",
       "prices": [
         {
+          "value": 24600,
+          "date": "2025-09-05T11:15:44.346Z"
+        },
+        {
           "value": 37100,
           "date": "2025-09-04T15:53:54.646Z"
         },
@@ -1803,6 +1835,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 54600,
+          "date": "2025-09-05T11:15:54.330Z"
+        },
         {
           "value": 59000,
           "date": "2025-09-04T15:54:06.037Z"
@@ -1888,6 +1924,10 @@
       "description": "",
       "prices": [
         {
+          "value": 42000,
+          "date": "2025-09-05T11:16:30.172Z"
+        },
+        {
           "value": 43600,
           "date": "2025-09-04T15:54:32.979Z"
         },
@@ -1939,6 +1979,10 @@
       "link": "https://www.mercadolibre.com.ar/camara-web-redragon-hitman-full-hd-30fps-color-negro/p/MLA18362781?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 94000,
+          "date": "2025-09-05T11:16:52.211Z"
+        },
         {
           "value": 93500,
           "date": "2025-09-04T15:54:52.779Z"
@@ -2070,6 +2114,10 @@
       "description": "",
       "prices": [
         {
+          "value": 66300,
+          "date": "2025-09-05T11:17:31.197Z"
+        },
+        {
           "value": 65700,
           "date": "2025-09-04T15:55:42.378Z"
         },
@@ -2160,11 +2208,15 @@
     },
     {
       "id": 16848,
-      "name": "Bluetooth 5.3 Amitosai",
-      "link": "https://www.mercadolibre.com.ar/adaptador-receptor-transmisor-bluetooth-53-para-pc-amitosai-mts-btpcpro-con-antena-externa-3dbi-mayor-ganancia-y-senal/p/MLA34968453?offer_type=OFFICIAL_STORE",
+      "name": "Bluetooth TP-Link",
+      "link": "https://www.mercadolibre.com.ar/tplink-receptor-usb-bluetooth-ub500-plus/p/MLA44907785?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 10400,
+          "date": "2025-09-05T11:18:33.278Z"
+        },
         {
           "value": 13900,
           "date": "2025-09-04T15:56:20.017Z"

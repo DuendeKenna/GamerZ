@@ -475,14 +475,14 @@
         </div>
 
         <section class="mt-10 p-6 bg-gray-900 rounded-lg shadow-inner border border-gray-700 hidden md:block">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar y Copiar Código de Vectores</h2>
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar Archivos de Actualización</h2>
             <textarea id="output-code" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-800 text-green-400 font-mono text-sm resize-y" readonly></textarea>
             <div class="flex flex-wrap justify-center items-center mt-4 gap-4">
                 <button onclick="generateCode()" class="btn btn-primary">
-                    <span class="lucide-icon mr-2" data-lucide="code"></span> Generar Código Actual
+                    <span class="lucide-icon mr-2" data-lucide="code"></span> Generar Actualización
                 </button>
                 <button onclick="copyCode()" class="btn btn-secondary">
-                    <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código Actual
+                    <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Actualización
                 </button>
                 <button onclick="generateHistoryCode()" class="btn btn-info">
                     <span class="lucide-icon mr-2" data-lucide="history"></span> Generar Historial
@@ -1684,13 +1684,11 @@
     }
 
     function handleManualPriceCheck(event) {
-        if (event.key !== 'Enter') return;
-
         const input = event.target;
-        const { categoryKey, index, isFromLoop } = input.dataset;
 
-        // NEW: Handle skip case
-        if (input.value.trim() === '-') {
+        if (event.key === 'Backspace' && input.value.trim() === '') {
+            event.preventDefault(); // Prevent browser back navigation
+            const { categoryKey, index, isFromLoop } = input.dataset;
             showToast('Producto omitido.', 'info');
             const popup = document.getElementById('price-check-popup');
             popup.classList.add('hidden');
@@ -1703,6 +1701,9 @@
             return;
         }
 
+        if (event.key !== 'Enter') return;
+
+        const { categoryKey, index, isFromLoop } = input.dataset;
         const product = dataMap[categoryKey][index];
         const oldPrice = product.price || 0;
         let newPrice;
