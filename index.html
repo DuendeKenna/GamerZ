@@ -2803,7 +2803,7 @@
                     const towerImgPath = selectedTower.id ? `comps/${selectedTower.id}.webp` : 'comps/reciclada.webp';
                     cabinetContainer.innerHTML = `
                         <a href="#main-components-container" class="block">
-                            <img src="${towerImgPath}" alt="${selectedTower.name}" style="width: 313px; height: 430px; object-fit: contain;" class="rounded-lg mb-2" onerror="this.onerror=null;this.src='comps/reciclada.webp'">
+                            <img src="${towerImgPath}" alt="${selectedTower.name}" style="width: 313px; height: 430px; object-fit: contain;position:relative;top:20px" class="rounded-lg mb-2" onerror="this.onerror=null;this.src='comps/63462.webp'">
                         </a>
                         <p class="font-bold text-lg text-white">${selectedTower.name}</p>
                         <a href="${selectedTower.link}" target="_blank" class="component-link">$${selectedTower.price.toLocaleString('es-AR')} <i class="fas fa-external-link-alt"></i></a>
