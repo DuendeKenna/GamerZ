@@ -1181,6 +1181,12 @@
         .image-loading-effect {
             filter: grayscale(100%);
         }
+        /* Prevent browser 'broken image' icon showing for imgs that don't have a src yet */
+        img:not([src]),
+        img[src=""] {
+            visibility: hidden;
+        }
+        /* Once a real src is set (non-empty), browser will show the image as normal */
        
         .component-option-image {
             width: 100%;
@@ -3477,7 +3483,13 @@
 
             // --- NEW: Enhanced Image Loader Function ---
             function loadComponentImage(imageElement, newSrc, onLoadCallback) {
-                if (!imageElement || imageElement.src.includes(newSrc.split('/').pop())) {
+                if (!imageElement) return;
+                // If the element has no src yet, keep it hidden until a valid image is set
+                if (!imageElement.getAttribute('src') || imageElement.getAttribute('src') === '') {
+                    imageElement.style.visibility = 'hidden';
+                }
+
+                if (imageElement.src && imageElement.src.includes(newSrc.split('/').pop())) {
                     if (onLoadCallback) onLoadCallback();
                     return;
                 }
@@ -3492,6 +3504,8 @@
 
                     setTimeout(() => {
                         imageElement.src = newSrc;
+                        // ensure the element is visible once a real src is assigned
+                        imageElement.style.visibility = '';
                         imageElement.classList.remove('image-loading-effect');
                         imageElement.style.opacity = '1';
                         if (onLoadCallback) onLoadCallback();
@@ -3501,6 +3515,8 @@
                 tempImage.onerror = () => {
                     console.error(`Failed to load image: ${newSrc}`);
                     imageElement.classList.remove('image-loading-effect');
+                    // keep hidden if image fails to load (avoid broken icon)
+                    imageElement.style.visibility = 'hidden';
                     if (onLoadCallback) onLoadCallback();
                 };
             }
