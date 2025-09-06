@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "8502",
       "cantRam": 2,
-      "total": 455000,
+      "total": 456600,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -165,6 +165,10 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 69800,
+          "date": "2025-09-06T20:46:50.593Z"
+        },
         {
           "value": 68400,
           "date": "2025-09-05T10:49:05.950Z"
@@ -626,8 +630,12 @@
       "name": "RTX 3060 | 12GB",
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
-      "visible": 0,
+      "visible": 1,
       "prices": [
+        {
+          "value": 540000,
+          "date": "2025-09-06T20:49:30.169Z"
+        },
         {
           "value": 551400,
           "date": "2025-09-02T02:27:10.475Z"
@@ -655,7 +663,7 @@
       "id": 76382,
       "name": "RTX 3060 | 12GB",
       "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "prices": [
         {
@@ -1082,6 +1090,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 56800,
+          "date": "2025-09-06T20:48:15.607Z"
+        },
+        {
           "value": 56000,
           "date": "2025-09-04T15:07:50.441Z"
         },
@@ -1501,6 +1513,10 @@
       "description": "",
       "prices": [
         {
+          "value": 50900,
+          "date": "2025-09-06T20:57:39.094Z"
+        },
+        {
           "value": 53000,
           "date": "2025-09-04T15:47:21.009Z"
         },
@@ -1638,6 +1654,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-y-mouse-combo-inalambrico-solarmax-kb302wmw200-color-negro/p/MLA21805667?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 16300,
+          "date": "2025-09-06T20:58:13.170Z"
+        },
         {
           "value": 30500,
           "date": "2025-09-04T15:48:00.581Z"
@@ -1836,6 +1856,10 @@
       "description": "",
       "prices": [
         {
+          "value": 54400,
+          "date": "2025-09-06T21:00:51.142Z"
+        },
+        {
           "value": 54600,
           "date": "2025-09-05T11:15:54.330Z"
         },
@@ -1898,6 +1922,10 @@
       "description": "",
       "prices": [
         {
+          "value": 33700,
+          "date": "2025-09-06T21:01:08.189Z"
+        },
+        {
           "value": 33800,
           "date": "2025-09-04T15:54:25.159Z"
         },
@@ -1923,6 +1951,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 42900,
+          "date": "2025-09-06T21:01:18.385Z"
+        },
         {
           "value": 42000,
           "date": "2025-09-05T11:16:30.172Z"
@@ -2076,6 +2108,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 42900,
+          "date": "2025-09-06T21:14:58.429Z"
+        },
+        {
           "value": 43600,
           "date": "2025-09-04T15:55:28.688Z"
         },
@@ -2187,6 +2223,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 35800,
+          "date": "2025-09-06T21:15:22.901Z"
+        },
         {
           "value": 36000,
           "date": "2025-09-04T15:56:03.027Z"
