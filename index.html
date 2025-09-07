@@ -858,6 +858,15 @@
             overflow: visible;
         }
         
+        #current-tower-image {
+            height: 115%;
+            transform: translateY(-1.25rem); /* bajada 20px */
+            object-fit: contain;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out;
+            z-index: 1;
+        }
+        
         #tower-name-and-arrows-wrapper {
             position: absolute;
             bottom: 0;
@@ -1166,7 +1175,7 @@
             color: #42d232;
             font-size: 1rem;
             margin-top: 0.25rem;
-            min-height: 4.5rem;
+            min-height: 4.5rem; /* Altura mínima para 3 líneas */
             line-height: 1.5;
             padding-left: 0.5rem;
         }
@@ -1215,8 +1224,7 @@
         }
         
         #current-tower-image:hover {
-            transform: scale(1);
-            transform-origin: center center;
+             /* No hover effect */
         }
 
         /* Mobile Sticky Price Summary Specific Styles */
@@ -1604,29 +1612,85 @@
             margin-left: 0.25rem;
             font-size: 0.75rem;
         }
-        /* Back-to-summary floating icon styles (simple fixed bottom-left) */
-        #back-to-summary-btn {
-            position: fixed;
-            left: 0.6rem; /* user requested margin */
-            bottom: 0.6rem; /* user requested margin */
-            width: 64px;
-            height: 64px;
-            border-radius: 9999px;
-            background: linear-gradient(180deg, rgba(79,70,229,0.98), rgba(99,102,241,0.98));
-            box-shadow: 0 12px 28px rgba(2,6,23,0.6);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
-            z-index: 1300;
-            transition: transform 0.12s ease, opacity 0.12s ease;
-            backdrop-filter: blur(4px);
+
+        /* --- NEW: GPU Range Slider Styles --- */
+        .range-slider-container {
+            width: 100%;
+            padding: 0 0.5rem; /* Add some padding */
         }
 
-        /* Hidden/visible states (no repositioning needed) */
-        #back-to-summary-btn.hidden { opacity: 0; pointer-events: none; transform: translateY(6px) scale(0.92); }
-        #back-to-summary-btn.visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #374151; /* Dark track background */
+            border-radius: 5px;
+            outline: none;
+            --thumb-size: 20px;
+            --track-color: #42d232; /* Green fill color */
+            --fill-percent: 0%; /* Will be updated by JS */
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: linear-gradient(to right, var(--track-color) var(--fill-percent), #374151 var(--fill-percent));
+            border-radius: 5px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            height: var(--thumb-size);
+            width: var(--thumb-size);
+            background: #95ef81; /* Lighter green thumb */
+            border-radius: 50%;
+            border: 2px solid #107c10;
+            cursor: pointer;
+            margin-top: calc((var(--thumb-size) - 8px) / -2); /* Center thumb on track */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type=range]:hover::-webkit-slider-thumb {
+            box-shadow: 0 0 10px rgba(149, 239, 129, 0.8);
+        }
+        input[type=range]:active::-webkit-slider-thumb {
+            transform: scale(1.2);
+        }
+
+        /* Firefox styles */
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #374151;
+            border-radius: 5px;
+        }
+
+        input[type=range]::-moz-range-progress {
+            background-color: var(--track-color);
+            height: 8px;
+            border-radius: 5px;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            height: var(--thumb-size);
+            width: var(--thumb-size);
+            background: #95ef81;
+            border-radius: 50%;
+            border: 2px solid #107c10;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        input[type=range]:hover::-moz-range-thumb {
+            box-shadow: 0 0 10px rgba(149, 239, 129, 0.8);
+        }
+        input[type=range]:active::-moz-range-thumb {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 
@@ -1822,7 +1886,7 @@
 
 
             <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
-                <section id="component-section" class="flex flex-col md:flex-row items-center gap-x-8 gap-y-6 h-full">
+                <section id="component-section" class="flex flex-col md:flex-row md:items-start gap-x-8 gap-y-6 h-full">
                     <div class="w-full md:w-1/2 flex-shrink-0 h-full flex flex-col items-center justify-center">
                         <div id="tower-selector-container"
                             class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
@@ -1845,7 +1909,12 @@
                             <li id="gpu-li"
                                 class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
-                                    <strong class="text-lg font-semibold">Gráfica:</strong>
+                                    <div class="gpu-slider-container">
+                                        <strong class="text-lg font-semibold">Gráfica:</strong>
+                                        <div class="range-slider-container">
+                                            <input id="gpu-range-slider" type="range" min="0" max="1" step="1" value="0">
+                                        </div>
+                                    </div>
                                     <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="gpu-description" class="description-text"></p>
                                 </div>
@@ -2126,16 +2195,6 @@
 
     </div>
 
-    <!-- Fullscreen Overlay for Image Zoom (hidden by default) -->
-    <div id="fullscreen-overlay"
-        class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000] flex items-center justify-center p-4 cursor-pointer">
-        <div class="relative w-full h-full max-w-4xl max-h-[80vh]">
-            <img id="zoomed-image" src="" alt="Imagen ampliada del componente"
-                class="w-full h-full object-contain">
-        </div>
-    </div>
-
-
     <!-- Sticky Price Summary Card -->
     <div id="price-summary-card" class="font-saira items-center justify-center">
         <div class="flex flex-col items-center">
@@ -2152,7 +2211,7 @@
 
     <!-- NEW Mobile Sticky Price Summary -->
     <div id="mobile-price-summary-card"
-        class="fixed bottom-0 z-50 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center hidden">
+        class="fixed bottom-0 z-50 section-card-style bg-gray-800/90 flex md:hidden justify-center items-center">
         <div class="flex flex-col items-center">
             <div class="price-section ars-price">
                 <div class="price-value-row">
@@ -2514,7 +2573,7 @@
 
                 const gpuSelect = document.getElementById('gpu-select');
                 if (gpuSelect) gpuSelect.innerHTML = gpuOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
-
+                
                 const psuSelect = document.getElementById('psu-select');
                 if (psuSelect) psuSelect.innerHTML = psuOptions.map((o, i) => `<option value="${i}">${o.name}</option>`).join('');
 
@@ -2538,8 +2597,16 @@
 
                 // --- REFACTORED: Component Selects event listeners ---
                 document.getElementById('gpu-select')?.addEventListener('change', (e) => {
-                    selectedComponentIndices.gpu = parseInt(e.target.value);
+                    const newIndex = parseInt(e.target.value);
+                    selectedComponentIndices.gpu = newIndex;
                     updateComponentDisplay('gpu');
+                    
+                    // NEW: Sync range slider
+                    const gpuRangeSlider = document.getElementById('gpu-range-slider');
+                    if (gpuRangeSlider) {
+                        gpuRangeSlider.value = newIndex;
+                        updateGpuSliderFill(gpuRangeSlider);
+                    }
                 });
                 document.getElementById('ssd-select')?.addEventListener('change', (e) => {
                     selectedComponentIndices.ssd = parseInt(e.target.value);
@@ -2548,6 +2615,19 @@
                 document.getElementById('psu-select')?.addEventListener('change', (e) => {
                     selectedComponentIndices.psu = parseInt(e.target.value);
                     updateComponentDisplay('psu');
+                });
+
+                // NEW: GPU Slider event listener
+                document.getElementById('gpu-range-slider')?.addEventListener('input', (e) => {
+                    const newIndex = parseInt(e.target.value);
+                    const gpuSelect = document.getElementById('gpu-select');
+                    // Update select only if value is different to avoid redundant event triggers
+                    if (gpuSelect.value != newIndex) {
+                        gpuSelect.value = newIndex;
+                        // Manually trigger the 'change' event on the select dropdown
+                        gpuSelect.dispatchEvent(new Event('change'));
+                    }
+                    updateGpuSliderFill(e.target);
                 });
 
                 // Tower navigation
@@ -2579,19 +2659,32 @@
                 const dolarPopup = document.getElementById('dolar-popup');
                 dolarPopup.addEventListener('click', (e) => { if (e.target === dolarPopup) dolarPopup.style.display = 'none'; });
 
-                // Image Zoom
-                const fullscreenOverlay = document.getElementById('fullscreen-overlay');
-                fullscreenOverlay.addEventListener('click', () => fullscreenOverlay.classList.add('hidden'));
-                ['current-tower-image', 'gpu-image', 'ssd-image', 'psu-image', 'base-image'].forEach(id => {
+                // NEW: Image click to open link
+                const imageLinkMap = {
+                    'base-image': () => {
+                        const base = baseOptions[currentBaseLevel];
+                        const cpu = cpuOptions.find(c => String(c.id) === String(base.cpu));
+                        return cpu?.link;
+                    },
+                    'current-tower-image': () => towersOptions[currentTowerIndex]?.link,
+                    'gpu-image': () => gpuOptions[selectedComponentIndices.gpu]?.link,
+                    'ssd-image': () => ssdOptions[selectedComponentIndices.ssd]?.link,
+                    'psu-image': () => psuOptions[selectedComponentIndices.psu]?.link,
+                };
+
+                Object.keys(imageLinkMap).forEach(id => {
                     const imgEl = document.getElementById(id);
                     imgEl?.addEventListener('click', (e) => {
-                         if (e.target.closest('a')) return;
-                        if (imgEl && imgEl.src) {
-                            document.getElementById('zoomed-image').src = imgEl.src;
-                            fullscreenOverlay.classList.remove('hidden');
+                        // Prevent click if user is clicking a link inside the component description
+                        if (e.target.closest('a')) return;
+                        
+                        const link = imageLinkMap[id]();
+                        if (link) {
+                            window.open(link, '_blank');
                         }
                     });
                 });
+
 
                 // Price card visibility observer
                 const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
@@ -2626,6 +2719,15 @@
                 updateComponentDisplay('gpu');
                 updateComponentDisplay('ssd');
                 updateComponentDisplay('psu');
+                
+                // NEW: Update slider on init
+                const gpuRangeSlider = document.getElementById('gpu-range-slider');
+                if (gpuRangeSlider) {
+                    gpuRangeSlider.max = gpuOptions.length > 0 ? gpuOptions.length - 1 : 0;
+                    gpuRangeSlider.value = selectedComponentIndices.gpu;
+                    updateGpuSliderFill(gpuRangeSlider);
+                }
+
                 updateSelectedGamesList();
                 setInitialGridHeight();
                 updatePrices();
@@ -3521,85 +3623,19 @@
                 };
             }
 
+            // --- NEW: Function to update GPU Slider UI ---
+            function updateGpuSliderFill(slider) {
+                if (!slider) return;
+                const min = slider.min ? parseInt(slider.min) : 0;
+                const max = slider.max ? parseInt(slider.max) : 1;
+                const val = slider.value ? parseInt(slider.value) : 0;
+                // Ensure max is not less than min to avoid division by zero or negative percentages
+                const percentage = (max > min) ? ((val - min) * 100) / (max - min) : 0;
+                slider.style.setProperty('--fill-percent', `${percentage}%`);
+            }
+
 
             function updateSliderPosition() {
                 const slider = document.getElementById('base-level-slider');
-                const activeTab = document.querySelector('.base-level-tab.active');
-                if (slider && activeTab) {
-                    slider.style.width = `${activeTab.offsetWidth}px`;
-                    slider.style.left = `${activeTab.offsetLeft}px`;
-                }
-            }
-        });
-        
-        function updateBaseSummaryText(cpu, ram, base) {
-            const summaryEl = document.getElementById('base-summary-text');
-            if (summaryEl && base) {
-                // Use same style as other component names: white, not underlined, font-saira
-                summaryEl.innerHTML = `<span class='font-saira green-333' style='font-size:1.6rem;'>${base.name}</span>`;
-                const basePriceEl = document.getElementById('base-price-text');
-                if (basePriceEl) {
-                    basePriceEl.innerHTML = `<a href='#section-bases' class='component-link text-blue-400 font-bold' style='font-size:1.15rem;display:inline-flex;align-items:center;text-decoration:none;' onclick="event.preventDefault();document.getElementById('section-bases').scrollIntoView({behavior:'smooth'});">$${base.total.toLocaleString('es-AR')} <i class='fas text-sm fa-external-link-alt ml-1'></i></a>`;
-                }
-            }
-        }
-    </script>
-    <!-- Back-to-summary button placed at body level so CSS fixed positions it relative to viewport -->
-    <button id="back-to-summary-btn" class="hidden" aria-hidden="true" title="Volver al Resumen">
-        <i class="fas fa-caret-down" aria-hidden="true" style="font-size:28px;color:white;"></i>
-    </button>
-
-    <script>
-    // Back-to-summary button behavior
-    document.addEventListener('DOMContentLoaded', function () {
-        const backBtn = document.getElementById('back-to-summary-btn');
-        const summaryEl = document.getElementById('selected-components-preview');
-        if (!backBtn || !summaryEl) return;
-
-        // Utility to show the button (fixed bottom-left via CSS)
-        function showBackBtn() {
-            backBtn.classList.remove('hidden');
-            backBtn.classList.add('visible');
-            backBtn.setAttribute('aria-hidden', 'false');
-        }
-
-        // Utility to hide the button
-        function hideBackBtn() {
-            backBtn.classList.remove('visible');
-            backBtn.classList.add('hidden');
-            backBtn.setAttribute('aria-hidden', 'true');
-        }
-
-        // When an internal anchor inside the summary is clicked, show the back button.
-        summaryEl.addEventListener('click', function (e) {
-            const anchor = e.target.closest('a[href^="#"]');
-            if (!anchor) return;
-            const href = anchor.getAttribute('href');
-            if (!href || href === '#') return;
-            // If it points to an element on the page, show the button so user can return later
-            const targetId = href.slice(1);
-            if (document.getElementById(targetId)) {
-                // small delay so this runs after any smooth scroll handlers
-                setTimeout(showBackBtn, 50);
-            }
-        });
-
-        // Button scrolls smoothly back to the summary and then hides itself (only hides when pressed)
-        backBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            summaryEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // hide after the scroll completes (estimate)
-            setTimeout(hideBackBtn, 700);
-        });
-
-        // NOTE: Intentionally do NOT hide the button on selects/change/hashchange.
-        // The button should remain available after the user changes options so they can
-        // return to the summary at any time. It will only be hidden when pressed.
-
-    // No resize handling required: button is fixed bottom-left via CSS
-    });
-    </script>
-</body>
-
-</html>
+// ... existing code ... -->
 
