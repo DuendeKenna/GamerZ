@@ -1614,6 +1614,13 @@
         }
 
         /* --- NEW: GPU Range Slider Styles --- */
+        .gpu-slider-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* 8px */
+            margin-bottom: 0.5rem; /* 8px */
+        }
+        
         .range-slider-container {
             width: 100%;
             padding: 0 0.5rem; /* Add some padding */
@@ -1910,7 +1917,7 @@
                                 class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
                                     <div class="gpu-slider-container">
-                                        <strong class="text-lg font-semibold">Gráfica:</strong>
+                                        <strong class="text-lg font-semibold">Gráfica</strong>
                                         <div class="range-slider-container">
                                             <input id="gpu-range-slider" type="range" min="0" max="1" step="1" value="0">
                                         </div>
@@ -1922,7 +1929,7 @@
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
-                                    <strong class="text-lg font-semibold">Almacenamiento:</strong>
+                                    <strong class="text-lg font-semibold">Almacenamiento</strong>
                                     <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="ssd-description" class="description-text"></p>
                                 </div>
@@ -1930,7 +1937,7 @@
                             </li>
                             <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
                                 <div class="component-content-wrapper text-left md:text-left">
-                                    <strong class="text-lg font-semibold">Fuente:</strong>
+                                    <strong class="text-lg font-semibold">Fuente</strong>
                                     <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
                                     <p id="psu-description" class="description-text"></p>
                                 </div>
@@ -3637,5 +3644,28 @@
 
             function updateSliderPosition() {
                 const slider = document.getElementById('base-level-slider');
-// ... existing code ... -->
+                const activeTab = document.querySelector('.base-level-tab.active');
+                if (slider && activeTab) {
+                    slider.style.width = `${activeTab.offsetWidth}px`;
+                    slider.style.left = `${activeTab.offsetLeft}px`;
+                }
+            }
+        
+        
+            function updateBaseSummaryText(cpu, ram, base) {
+                const summaryEl = document.getElementById('base-summary-text');
+                if (summaryEl && base) {
+                    // Use same style as other component names: white, not underlined, font-saira
+                    summaryEl.innerHTML = `<span class='font-saira green-333' style='font-size:1.6rem;'>${base.name}</span>`;
+                    const basePriceEl = document.getElementById('base-price-text');
+                    if (basePriceEl) {
+                        basePriceEl.innerHTML = `<a href='#section-bases' class='component-link text-blue-400 font-bold' style='font-size:1.15rem;display:inline-flex;align-items:center;text-decoration:none;' onclick="event.preventDefault();document.getElementById('section-bases').scrollIntoView({behavior:'smooth'});">$${base.total.toLocaleString('es-AR')} <i class='fas text-sm fa-external-link-alt ml-1'></i></a>`;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
 

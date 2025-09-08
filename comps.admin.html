@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador de Vectores de Productos v3.2 (Firebase Ready)</title>
+    <title>Administrador de Vectores de Productos</title>
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' x='3' font-family='Arial'%3E%24%3C/text%3E%3C/svg%3E">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400&family=Saira:wght@400;900;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* General Styles */
         html { scroll-behavior: smooth; }
@@ -43,9 +44,7 @@
         .overview-table input[type="text"],
         .overview-table input[type="number"],
         .overview-table textarea,
-        #base-details input, #base-details textarea, #base-details select,
-        #bundle-details input, #bundle-details textarea, #bundle-details select,
-        #api-tools-section input {
+        #base-details input, #base-details textarea, #base-details select {
             background-color: #1f2937; /* bg-gray-800 */
             border: 1px solid #374151; /* border-gray-700 */
             border-radius: 0.375rem;
@@ -58,9 +57,7 @@
         .overview-table input[type="text"]:focus,
         .overview-table input[type="number"]:focus,
         .overview-table textarea:focus,
-        #base-details input:focus, #base-details textarea:focus, #base-details select:focus,
-        #bundle-details input:focus, #bundle-details textarea:focus, #bundle-details select:focus,
-        #api-tools-section input:focus {
+        #base-details input:focus, #base-details textarea:focus, #base-details select:focus {
             border-color: #6366f1; /* indigo-500 */
             box-shadow: 0 0 0 2px #4f46e5;
         }
@@ -84,6 +81,10 @@
         .btn-secondary:hover { background-color: #374151; }
         .btn-danger { background-color: #ef4444; color: #ffffff; }
         .btn-danger:hover { background-color: #dc2626; }
+        .btn-success { background-color: #22c55e; color: #ffffff; } 
+        .btn-success:hover { background-color: #16a34a; } 
+        .btn-info { background-color: #3b82f6; color: #ffffff; }
+        .btn-info:hover { background-color: #2563eb; }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         
         /* Icon and Title Styles */
@@ -111,27 +112,11 @@
             border-color: #374151; /* border-gray-700 */
             color: #42d232; /* green-400 */
         }
-        #copy-message { color: #42d232; }
-        #error-message { color: #ef4444; }
-        #warning-message { color: #f59e0b; }
 
         /* Table Styles */
-        .overview-table th, .overview-table td,
-        .bundles-table th, .bundles-table td {
+        .overview-table th, .overview-table td {
             padding: 0.5rem;
             vertical-align: middle;
-        }
-        .price-wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 50px; /* Ensure space for indicators */
-            justify-content: center;
-        }
-        .indicators-container {
-            display: flex;
-            gap: 0.25rem;
-            margin-top: 0.25rem;
-            height: 18px; /* Give a fixed height to prevent layout shifts */
         }
         
         .add-row-button-cell {
@@ -149,36 +134,6 @@
             transition: background-color 0.2s ease;
         }
         .add-row-button:hover { background-color: #4f46e5; }
-
-        /* Price Check Highlight Styles */
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 3px 2px rgba(20, 184, 166, 0.3); }
-            50% { box-shadow: 0 0 10px 5px rgba(20, 184, 166, 0); }
-        }
-        .price-checking {
-            animation: pulse-glow 1.5s infinite;
-        }
-        tr.price-lower { background-color: rgba(34, 197, 94, 0.2); } /* Verde */
-        tr.price-higher { background-color: rgba(168, 85, 247, 0.2); } /* Violeta */
-        tr.price-same { background-color: rgba(59, 130, 246, 0.15); } /* Azul */
-        tr.price-error { background-color: rgba(239, 68, 68, 0.2); } /* Rojo */
-
-        .indicator-badge {
-            padding: 0.1rem 0.4rem;
-            border-radius: 9999px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: white;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-            white-space: nowrap;
-        }
-        .indicator-badge.positive { background-color: #9333ea; }
-        .indicator-badge.negative { background-color: #16a34a; }
-        .indicator-badge.status { background-color: #dc2626; }
-        .indicator-badge.quantity { background-color: #4b5563; }
-        @keyframes fadeIn { to { opacity: 1; } }
-
 
         /* Image Preview Styles */
         #image-preview {
@@ -203,13 +158,8 @@
             border-bottom: 2px solid #6366f1;
             box-shadow: 0 2px 8px 0 rgba(0,0,0,0.25);
             padding: 0.5rem 1rem;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.25rem 0.5rem;
             transition: top 0.2s;
         }
-        .category-navbar.hidden { display: none; }
         .category-navbar .cat-nav-btn {
             background: none;
             border: none;
@@ -267,12 +217,6 @@
         .list-item:not(.active):hover {
             background-color: #374151;
         }
-        .list-item .component-thumbs img {
-            height: 48px;
-            width: 48px;
-            object-fit: cover;
-            border-radius: 0.375rem; /* rounded-md */
-        }
         
         /* Accordion Styles */
         .accordion-header .lucide-icon {
@@ -296,79 +240,225 @@
             color: white;
         }
 
+        /* Popups Styles */
+        #price-check-popup, #price-chart-popup, #filter-popup, #gemini-analysis-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        #price-check-popup.hidden, #price-chart-popup.hidden, #filter-popup.hidden, #gemini-analysis-popup.hidden {
+            display: none;
+        }
+        .popup-content {
+            background-color: #1f2937; /* bg-gray-800 */
+            border: 1px solid #4b5563; /* border-gray-600 */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 450px; 
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .popup-content-chart {
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background-color: #111827; /* bg-gray-900 */
+            border-bottom: 1px solid #374151; /* border-gray-700 */
+        }
+        .popup-body {
+             padding: 1.5rem;
+        }
+        .popup-body-chart {
+            padding: 1.5rem;
+            height: 400px; /* Fixed height for the chart */
+        }
+        .popup-body input {
+            background-color: #374151;
+            border: 1px solid #4b5563;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: right;
+        }
+        .popup-body input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px #4f46e5;
+        }
+        
+        /* Filter Popup Specific Styles */
+        #filter-popup .popup-content {
+            max-width: 500px;
+        }
+        .filter-checkbox-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.2s;
+        }
+        .filter-checkbox-label:hover {
+            background-color: #374151;
+        }
+        .filter-checkbox-label input {
+            margin-right: 0.75rem;
+            width: 1.15rem;
+            height: 1.15rem;
+        }
+        .color-swatch {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 0.25rem;
+            margin-right: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Tooltip Styles */
+        .price-wrapper {
+            position: relative;
+        }
+        .price-history-tooltip {
+            visibility: hidden;
+            width: 220px;
+            background-color: #111827;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid #374151;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .price-wrapper:hover .price-history-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip-table {
+            width: 100%;
+            font-size: 0.8rem;
+        }
+        .tooltip-table th, .tooltip-table td {
+            padding: 4px 8px;
+            text-align: left;
+        }
+        .tooltip-table th {
+            border-bottom: 1px solid #374151;
+        }
+        .tooltip-table tr:nth-child(even) {
+            background-color: #1f2937;
+        }
+
+        /* Previous price indicator styles */
+        .previous-price-indicator {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            margin-bottom: 4px;
+            z-index: 5;
+            display: flex;
+            gap: 4px;
+        }
+        .old-price-span, .diff-span {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* NEW: Link Manager Styles */
+        .link-manager-container {
+            position: absolute;
+            width: 250px;
+            background-color: #1f2937;
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 10;
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 8px;
+        }
+        
+        #gemini-result strong {
+           color: #a78bfa; /* purple-400 */
+        }
+
 
         @media (max-width: 1024px) {
             .management-section {
                 grid-template-columns: 1fr;
             }
         }
-        @media (max-width: 640px) {
-            .category-navbar { font-size: 0.95rem; }
+        
+        @media (max-width: 639px) {
+            .mobile-hidden-if-not-visible {
+                display: none;
+            }
         }
     </style>
 </head>
 <body class="p-4 md:p-8 bg-gray-900 min-h-screen text-gray-200">
-    <!-- Image preview element -->
+    <!-- RESTORED: Image preview element -->
     <div id="image-preview" class="hidden fixed bottom-4 right-4 bg-gray-800 border border-gray-700 rounded-lg shadow-lg z-50 p-2">
         <img src="" alt="Vista Previa" class="max-w-xs max-h-xs object-contain">
     </div>
 
     <!-- Sticky category navigation bar -->
-    <div id="category-navbar" class="category-navbar"></div>
-    <div id="category-navbar-spacer" class="category-navbar-spacer"></div>
+    <div id="category-navbar" class="category-navbar hidden sm:flex"></div>
+    <div id="category-navbar-spacer" class="category-navbar-spacer hidden sm:block"></div>
 
     <!-- Main container -->
     <div class="mx-auto bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700" style="width:95%;max-width:1800px;">
         <h1 class="text-3xl font-saira-black text-white mb-6 text-center">Administrador de Vectores de Productos</h1>
         
-        <!-- Top Action Buttons -->
-        <div id="top-actions" class="flex justify-center items-center gap-4 mb-8">
-             <button onclick="loadDataFromClipboard()" class="btn btn-secondary">
-                <span class="lucide-icon mr-2" data-lucide="clipboard-paste"></span> Pegar JSON
+        <div id="top-actions" class="hidden md:flex justify-center items-center gap-4 mb-8 flex-wrap">
+             <button onclick="reloadDataFromJson()" class="btn btn-secondary">
+                <span class="lucide-icon mr-2" data-lucide="refresh-ccw"></span> Recargar de Archivo
             </button>
             <button onclick="resetSessionAndReload()" class="btn btn-secondary border-amber-500/50 hover:bg-amber-600">
                 <span class="lucide-icon mr-2" data-lucide="eraser"></span> Restablecer Sesión
             </button>
+            <button id="price-check-loop-btn" onclick="togglePriceCheckLoop()" class="btn btn-success">
+                <span class="lucide-icon mr-2" data-lucide="play-circle"></span>
+                <span id="price-check-loop-btn-text">Chequeo en Lote</span>
+            </button>
         </div>
 
-        <!-- API Tools Section -->
-        <div id="api-tools-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h3 id="api-accordion-header" class="accordion-header flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
-                <span>Herramientas de API de Mercado Libre</span>
-                <span class="lucide-icon rotate-180" data-lucide="chevron-down"></span>
-            </h3>
-            <div id="api-accordion-content" class="accordion-content p-6 pt-0">
-                 <p class="text-sm text-gray-400 mb-4">
-                    Introduce las credenciales de tu aplicación de Mercado Libre para poder chequear precios y añadir productos desde un link.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <label for="app-id-input" class="block text-sm font-medium mb-1">App ID</label>
-                        <input type="text" id="app-id-input" placeholder="Tu App ID" class="w-full" value="8288199484690188">
-                    </div>
-                    <div>
-                        <label for="client-secret-input" class="block text-sm font-medium mb-1">Client Secret</label>
-                        <input type="password" id="client-secret-input" placeholder="Tu Client Secret" class="w-full" value="5zeb9or1l6lzzr7TpNE6580TqlfJggjO">
-                    </div>
-                </div>
-                <div class="flex flex-col items-center pt-2">
-                    <div class="flex gap-4 w-full max-w-2xl">
-                        <button id="check-prices-public-btn" onclick="checkAllPricesPublic()" class="btn btn-primary bg-blue-500 hover:bg-blue-600 w-full">
-                            <span id="check-prices-public-icon" class="lucide-icon mr-2" data-lucide="search"></span>
-                            <span id="check-prices-public-text">Chequeo de Precios Público</span>
-                        </button>
-                        <button id="check-prices-btn" onclick="checkAllPrices()" class="btn btn-primary bg-teal-500 hover:bg-teal-600 w-full">
-                            <span id="check-prices-icon" class="lucide-icon mr-2" data-lucide="scan-line"></span>
-                            <span id="check-prices-text">Chequeo Autenticado</span>
-                        </button>
-                    </div>
-                    <p id="token-status" class="text-xs text-gray-400 mt-2">El chequeo público es anónimo. El autenticado requiere credenciales.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bases Section (Accordion) -->
-        <div id="bases-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
+        <div id="bases-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700 hidden md:block">
             <h3 id="bases-accordion-header" class="accordion-header flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
                 <span>Bases (CPU + Mother + RAM)</span>
                 <span class="lucide-icon" data-lucide="chevron-down"></span>
@@ -380,18 +470,7 @@
             </div>
         </div>
         
-        <!-- Bundles Section (Accordion) -->
-        <div id="bundles-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700">
-            <h3 id="bundles-accordion-header" class="accordion-header flex justify-between items-center text-xl font-semibold text-gray-100 p-6 cursor-pointer">
-                <span>Bundles (Componentes Múltiples)</span>
-                <span class="lucide-icon" data-lucide="chevron-down"></span>
-            </h3>
-            <div id="bundles-accordion-content" class="accordion-content p-6 pt-0 hidden">
-                 <div id="bundles-section" class="management-section">
-                    <!-- Content generated by JavaScript -->
-                </div>
-            </div>
-        </div>
+        <!-- REMOVED: Bundles section is completely removed -->
 
 
         <!-- Table View Container -->
@@ -399,65 +478,155 @@
             <!-- Content will be generated by JavaScript -->
         </div>
 
-        <!-- Code Generation Section -->
-        <section class="mt-10 p-6 bg-gray-900 rounded-lg shadow-inner border border-gray-700">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar y Copiar Código de Vectores</h2>
+        <section class="mt-10 p-6 bg-gray-900 rounded-lg shadow-inner border border-gray-700 hidden md:block">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4 text-center section-title-admin">Generar Archivos de Actualización</h2>
             <textarea id="output-code" rows="15" class="w-full p-4 border border-gray-700 rounded-lg bg-gray-800 text-green-400 font-mono text-sm resize-y" readonly></textarea>
             <div class="flex flex-wrap justify-center items-center mt-4 gap-4">
                 <button onclick="generateCode()" class="btn btn-primary">
-                    <span class="lucide-icon mr-2" data-lucide="code"></span> Generar Código
+                    <span class="lucide-icon mr-2" data-lucide="code"></span> Generar Actualización
                 </button>
                 <button onclick="copyCode()" class="btn btn-secondary">
-                    <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Código
+                    <span class="lucide-icon mr-2" data-lucide="copy"></span> Copiar Actualización
                 </button>
-                <button onclick="checkAllPrices()" class="btn btn-secondary">
-                    <span class="lucide-icon mr-2" data-lucide="refresh-cw"></span> Chequear Precios
+                <button onclick="generateHistoryCode()" class="btn btn-info">
+                    <span class="lucide-icon mr-2" data-lucide="history"></span> Generar Historial
                 </button>
-                <button onclick="addProduct()" class="btn btn-primary">
-                    <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir Producto
-                </button>
-                <button onclick="removeProduct()" class="btn btn-danger">
-                    <span class="lucide-icon mr-2" data-lucide="trash-2"></span> Eliminar Producto
-                </button>
-                <button onclick="editProduct()" class="btn btn-secondary">
-                    <span class="lucide-icon mr-2" data-lucide="edit"></span> Editar Producto
+                <button onclick="copyHistoryCode()" class="btn btn-secondary">
+                    <span class="lucide-icon mr-2" data-lucide="copy-check"></span> Copiar Historial
                 </button>
             </div>
             <div id="message-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-50"></div>
         </section>
     </div>
 
+    <!-- Price Check Popup -->
+    <div id="price-check-popup" class="hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 id="popup-title" class="text-lg font-bold text-white">Chequeo de Precio</h3>
+                <button onclick="closePriceCheckPopup()" class="text-gray-400 hover:text-white">
+                    <span class="lucide-icon w-6 h-6" data-lucide="x"></span>
+                </button>
+            </div>
+            <div class="popup-body">
+                <p class="text-center text-gray-300 mb-4">La página del producto se abrió en una nueva pestaña. Por favor, ingrese el nuevo precio a continuación.</p>
+                <div class="flex justify-between items-center bg-gray-900 p-4 rounded-lg">
+                    <div>
+                        <p class="text-sm text-gray-400">Precio Actual</p>
+                        <p id="popup-current-price" class="text-2xl font-bold text-teal-400">$0</p>
+                    </div>
+                    <div class="flex flex-col items-end">
+                         <label for="popup-new-price" class="text-sm text-gray-400 mb-1">Nuevo Precio (Enter)</label>
+                         <input type="text" id="popup-new-price" placeholder="Ingresar..." oninput="formatPriceInput(this)" onkeydown="handleManualPriceCheck(event)" class="w-40">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Price Chart Popup -->
+    <div id="price-chart-popup" class="hidden">
+        <div class="popup-content-chart">
+            <div class="popup-header">
+                <h3 id="chart-popup-title" class="text-lg font-bold text-white">Historial de Precios</h3>
+                <button onclick="closePriceChartPopup()" class="text-gray-400 hover:text-white">
+                    <span class="lucide-icon w-6 h-6" data-lucide="x"></span>
+                </button>
+            </div>
+            <div class="popup-body-chart">
+                <canvas id="price-chart-canvas"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- NEW: Filter FAB -->
+    <div id="filter-fab" class="fixed bottom-6 left-6 z-40">
+        <button onclick="openFilterPopup()" class="w-14 h-14 bg-indigo-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-indigo-700 transition-transform hover:scale-110">
+            <span class="lucide-icon w-7 h-7" data-lucide="filter"></span>
+        </button>
+    </div>
+
+    <!-- NEW: Filter Popup -->
+    <div id="filter-popup" class="hidden">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3 class="text-lg font-bold text-white">Filtros de Visualización</h3>
+                <button onclick="closeFilterPopup()" class="text-gray-400 hover:text-white">
+                    <span class="lucide-icon w-6 h-6" data-lucide="x"></span>
+                </button>
+            </div>
+            <div class="popup-body space-y-6">
+                <div>
+                    <h4 class="font-semibold text-gray-200 mb-2">Colorear por Cambio de Precio</h4>
+                    <p class="text-sm text-gray-400 mb-3">Compara el precio actual con el anterior en el historial para todas las filas.</p>
+                    <button onclick="colorAllRowsByPriceChange()" class="btn btn-primary w-full">
+                        <span class="lucide-icon mr-2" data-lucide="paintbrush-2"></span>
+                        Aplicar Coloreo a Todo
+                    </button>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-gray-200 mb-2">Mostrar Filas por Color</h4>
+                    <div id="color-filter-options" class="space-y-2">
+                        <!-- Checkboxes will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gemini AI Analysis Popup -->
+    <div id="gemini-analysis-popup" class="hidden">
+        <div class="popup-content" style="max-width: 600px;">
+            <div class="popup-header">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <span class="text-purple-400">✨</span> Análisis de la Base con IA
+                </h3>
+                <button onclick="closeGeminiPopup()" class="text-gray-400 hover:text-white">
+                    <span class="lucide-icon w-6 h-6" data-lucide="x"></span>
+                </button>
+            </div>
+            <div id="gemini-popup-body" class="popup-body">
+                <div id="gemini-loading" class="text-center py-8 hidden">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-purple-400"></div>
+                    <p class="mt-4 text-gray-300">Analizando configuración y buscando recomendaciones...</p>
+                </div>
+                <div id="gemini-result" class="text-gray-300 space-y-4 max-w-none">
+                    <!-- Content will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 <script>
     // --- Data Configuration ---
     const CATEGORY_NAV_LIST = [
       { key: 'bases-section-container', label: 'Bases' }, 
-      { key: 'bundles-section-container', label: 'Bundles' }, 
-      { key: 'armadasOptions', label: 'Armadas', folder: 'armadas' },
-      { key: 'miniPcOptions', label: 'MiniPCs', folder: 'minipc' },
-      { key: 'towersOptions', label: 'Torres', folder: 'torres' }, 
-      { key: 'comboOptions', label: 'Combos', folder: 'combos' }, 
-      { key: 'cpuOptions', label: 'CPU', folder: 'cpus' }, 
-      { key: 'motherboardOptions', label: 'Mother', folder: 'moms' }, 
-      { key: 'ramOptions', label: 'RAM', folder: 'rams' }, 
-      { key: 'gpuOptions', label: 'GPU', folder: 'gpus' }, 
-      { key: 'ssdOptions', label: 'SSD', folder: 'discos' }, 
-      { key: 'psuOptions', label: 'PSU', folder: 'psus' }, 
-      { key: 'monitorOptions', label: 'Monitores', folder: 'monitores' }, 
-      { key: 'mouseOptions', label: 'Mouse', folder: 'mouses' }, 
-      { key: 'joystickOptions', label: 'Joysticks', folder: 'joysticks' }, 
-      { key: 'keyboardOptions', label: 'Teclados', folder: 'teclados' }, 
-      { key: 'comboMouseTecladoOptions', label: 'M+T', folder: 'combo-mouse-teclado' }, 
-      { key: 'auricularesOptions', label: 'Auris', folder: 'auriculares' }, 
-      { key: 'parlantesOptions', label: 'Parlantes', folder: 'parlantes' },
-      { key: 'webcamOptions', label: 'Webcams', folder: 'webcams' },
-      { key: 'microfonosOptions', label: 'Mics', folder: 'mics' },
-      { key: 'wifiOptions', label: 'WiFi', folder: 'wifi' },
-      { key: 'arosDeLuzOptions', label: 'Luz', folder: 'luz' }
+      { key: 'armadasOptions', label: 'Armadas' },
+      { key: 'miniPcOptions', label: 'MiniPCs' },
+      { key: 'towersOptions', label: 'Torres' }, 
+      { key: 'comboOptions', label: 'Combos' }, 
+      { key: 'cpuOptions', label: 'CPU' }, 
+      { key: 'motherboardOptions', label: 'Mother' }, 
+      { key: 'ramOptions', label: 'RAM' }, 
+      { key: 'gpuOptions', label: 'GPU' }, 
+      { key: 'ssdOptions', label: 'SSD' }, 
+      { key: 'psuOptions', label: 'PSU' }, 
+      { key: 'monitorOptions', label: 'Monitores' }, 
+      { key: 'mouseOptions', label: 'Mouse' }, 
+      { key: 'joystickOptions', label: 'Joysticks' }, 
+      { key: 'keyboardOptions', label: 'Teclados' }, 
+      { key: 'comboMouseTecladoOptions', label: 'M+T' }, 
+      { key: 'auricularesOptions', label: 'Auris' }, 
+      { key: 'parlantesOptions', label: 'Parlantes' },
+      { key: 'webcamOptions', label: 'Webcams' },
+      { key: 'microfonosOptions', label: 'Mics' },
+      { key: 'wifiOptions', label: 'WiFi' },
+      { key: 'arosDeLuzOptions', label: 'Luz' }
     ];
 
     const dataMap = {
         baseOptions: [],
-        bundleOptions: [], 
         armadasOptions: [], towersOptions: [], ssdOptions: [], gpuOptions: [], 
         psuOptions: [], motherboardOptions: [], cpuOptions: [], ramOptions: [], comboOptions: [], 
         monitorOptions: [], mouseOptions: [], joystickOptions: [], keyboardOptions: [], 
@@ -467,14 +636,157 @@
     };
     
     let selectedBaseIndex = 0;
-    let selectedBundleIndex = 0;
-    let draggedBundleComponentIndex = null;
-    let mlAccessToken = null;
+
+    // Price Check Loop State
+    let priceCheckQueue = [];
+    let currentQueueIndex = 0;
+    let isLoopRunning = false;
+    
+    let priceChartInstance = null;
+    let openLinkManagerId = null;
+    
+    // NEW: Filter State
+    let filterState = {
+        increased: true,
+        decreased: true,
+        same: true,
+        default: true
+    };
+    
+    // --- Gemini API Functions ---
+    async function callGeminiAPI(prompt) {
+        const apiKey = ""; // Provided by the environment
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        const payload = {
+            contents: [{ parts: [{ text: prompt }] }],
+        };
+
+        let response;
+        let attempts = 0;
+        const maxAttempts = 5;
+        let delay = 1000;
+
+        while (attempts < maxAttempts) {
+            try {
+                response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) {
+                        return text;
+                    } else {
+                        throw new Error('Empty or unexpected API response format.');
+                    }
+                } else if (response.status === 429 || response.status >= 500) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                    attempts++;
+                } else {
+                    const errorResult = await response.json();
+                    throw new Error(`API Error: ${errorResult.error?.message || response.statusText}`);
+                }
+            } catch (error) {
+                if (attempts >= maxAttempts - 1) {
+                    throw error;
+                }
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2;
+                attempts++;
+            }
+        }
+        throw new Error('Could not get a response from the API after several attempts.');
+    }
+
+    function openGeminiPopup() {
+        document.getElementById('gemini-analysis-popup').classList.remove('hidden');
+    }
+
+    function closeGeminiPopup() {
+        document.getElementById('gemini-analysis-popup').classList.add('hidden');
+    }
+
+    async function analyzeSelectedBase() {
+        const base = dataMap.baseOptions[selectedBaseIndex];
+        if (!base) return;
+
+        const cpu = dataMap.cpuOptions.find(c => c.id == base.cpu);
+        const mother = dataMap.motherboardOptions.find(m => m.id == base.mother);
+        const ram = dataMap.ramOptions.find(r => r.id == base.ram);
+
+        if (!cpu || !mother || !ram) {
+            showToast('Por favor, seleccione CPU, Mother y RAM para la base.', 'error');
+            return;
+        }
+        
+        openGeminiPopup();
+        const loadingDiv = document.getElementById('gemini-loading');
+        const resultDiv = document.getElementById('gemini-result');
+        loadingDiv.classList.remove('hidden');
+        resultDiv.classList.add('hidden');
+        resultDiv.innerHTML = '';
+
+        const prompt = `Actúa como un experto en armado de PCs para el mercado argentino. Analiza esta "base" de componentes: CPU: "${cpu.name}", Motherboard: "${mother.name}", RAM: "${ram.name}" (Cantidad: ${base.cantRam}).\n\nResponde en el siguiente formato:\n\n**Análisis de la Base:**\n[Describe en 2-3 frases para qué tipo de usuario y uso es ideal esta configuración (ej: gaming 1080p, edición de video, etc.) y cuáles son sus puntos fuertes.]\n\n**Recomendación de GPU:**\n[Recomienda UNA GPU específica que haga un buen equilibrio con esta base, explicando en una frase por qué es una buena elección.]\n\n**Recomendación de Fuente (PSU):**\n[Recomienda UNA potencia y certificación de fuente (ej: 650W 80+ Bronze) explicando en una frase por qué es adecuada.]`;
+
+        try {
+            const responseText = await callGeminiAPI(prompt);
+            let formattedHtml = responseText
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+            resultDiv.innerHTML = formattedHtml;
+        } catch (error) {
+            console.error('Error analyzing base:', error);
+            resultDiv.innerHTML = `<p class="text-red-400">Hubo un error al contactar a la IA. Por favor, intente de nuevo. Error: ${error.message}</p>`;
+            showToast('Error al analizar la base.', 'error');
+        } finally {
+            loadingDiv.classList.add('hidden');
+            resultDiv.classList.remove('hidden');
+        }
+    }
+    
+    async function generateDescription(categoryKey, index, buttonElement) {
+        const product = dataMap[categoryKey][index];
+        if (!product || !product.name) {
+            showToast('El producto necesita un nombre para generar una descripción.', 'error');
+            return;
+        }
+        
+        const originalIcon = buttonElement.innerHTML;
+        buttonElement.innerHTML = `<div class="w-4 h-4 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></div>`;
+        buttonElement.disabled = true;
+
+        const prompt = `Genera una descripción de producto concisa y atractiva (máximo 2-3 frases) para el siguiente componente de PC: "${product.name}". Enfócate en el público gamer y creador de contenido de Argentina. Destaca su característica principal.`;
+
+        try {
+            const responseText = await callGeminiAPI(prompt);
+            const cleanText = responseText.replace(/[*_]/g, ''); 
+            
+            const textarea = document.querySelector(`#row-${categoryKey}-${index} textarea`);
+            if(textarea) {
+                textarea.value = cleanText;
+                updateProduct(categoryKey, index, 'description', cleanText);
+            }
+            showToast('Descripción generada con IA.');
+        } catch (error) {
+            console.error('Error generating description:', error);
+            showToast('Error al generar la descripción.', 'error');
+        } finally {
+            buttonElement.innerHTML = originalIcon;
+            buttonElement.disabled = false;
+        }
+    }
+
 
     // --- Category Navigation ---
     
     function renderCategoryNavbar() {
         const navbar = document.getElementById('category-navbar');
+        if (!navbar) return;
         navbar.innerHTML = CATEGORY_NAV_LIST.map(cat => {
             const targetId = cat.key.includes('Options') ? `table-container-${cat.key}` : cat.key;
             return `<button class="cat-nav-btn" data-cat="${targetId}" onclick="scrollToCategory('${targetId}')">${cat.label}</button>`
@@ -497,10 +809,9 @@
         
         const categoryDiv = document.getElementById(targetId);
         if(categoryDiv) {
-            // Adjust for fixed navbar height
             const navbarHeight = document.getElementById('category-navbar').offsetHeight;
             const elementPosition = categoryDiv.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20; // 20px extra space
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
 
             window.scrollTo({
                 top: offsetPosition,
@@ -511,10 +822,25 @@
 
     // --- Helper & Utility Functions ---
 
+    function formatTimestamp(isoString) {
+        if (!isoString) return 'Nunca actualizado';
+        try {
+            const date = new Date(isoString);
+            const options = {
+                year: '2-digit', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit',
+                hour12: false
+            };
+            return new Intl.DateTimeFormat('es-AR', options).format(date);
+        } catch (e) {
+            return 'Fecha inválida';
+        }
+    }
+
     function getComponentName(type) {
         const keyWithoutOptions = type.replace('Options', '');
         const names = {
-            base: 'Base', bundle: 'Bundle', armadas: 'Armada', towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
+            base: 'Base', armadas: 'Armada', towers: 'Torre', ssd: 'SSD', gpu: 'GPU', psu: 'PSU',
             motherboard: 'Motherboard', cpu: 'CPU', ram: 'RAM',
             combo: 'Combo', monitor: 'Monitor', mouse: 'Mouse',
             joystick: 'Joystick', keyboard: 'Teclado',
@@ -524,18 +850,6 @@
         return names[keyWithoutOptions] || 'Componente';
     }
     
-    function autofillImagePath(input, categoryKey, index) {
-        if (input.value.trim() === '') {
-            const categoryInfo = CATEGORY_NAV_LIST.find(cat => cat.key === categoryKey);
-            const product = dataMap[categoryKey][index];
-            if (categoryInfo && categoryInfo.folder && product && product.id) {
-                const newPath = `comps/${categoryInfo.folder}/${product.id}.webp`;
-                input.value = newPath;
-                updateProduct(categoryKey, index, 'image_url', newPath);
-            }
-        }
-    }
-
     function showToast(message, type = 'success') {
         const container = document.getElementById('message-container');
         const toast = document.createElement('div');
@@ -549,15 +863,13 @@
     }
 
     function findComponentById(id) {
-        // Search in regular components first
         for (const categoryKey in dataMap) {
-            if (categoryKey === 'baseOptions' || categoryKey === 'bundleOptions') continue;
+            if (categoryKey === 'baseOptions') continue;
             const component = dataMap[categoryKey].find(p => p.id == id);
             if (component) {
                 return { component, categoryKey };
             }
         }
-        // If not found, search in bases
         const base = dataMap.baseOptions.find(b => b.id == id);
         if (base) {
             return { component: base, categoryKey: 'baseOptions' };
@@ -565,28 +877,18 @@
         return null;
     }
 
-    function extractItemId(urlString) {
-        if (!urlString) return null;
-
-        if (urlString.includes('/p/')) {
-            try {
-                const afterP = urlString.split('/p/')[1];
-                const itemId = afterP.split('?')[0].split('#')[0];
-                if (itemId && /^(MLA|MLB|MLC|MCO|MEC|MLM|MLU|MLV|MPE|MPT|MRD)/i.test(itemId)) {
-                    return itemId.toUpperCase().trim();
-                }
-            } catch (e) {
-                console.error("Error al parsear la URL con '/p/':", e);
-            }
+    function modifyMercadoLibreLink(urlString) {
+        if (!urlString || !urlString.includes('mercadolibre.com')) {
+            return urlString;
         }
-        
-        const regex = /(MLA|MLB|MLC|MCO|MEC|MLM|MLU|MLV|MPE|MPT|MRD)-?(\d+)/i;
-        const match = urlString.match(regex);
-        if (match && match[1] && match[2]) {
-            return (match[1] + match[2]).toUpperCase();
+        try {
+            const url = new URL(urlString);
+            url.searchParams.set('offer_type', 'OFFICIAL_STORE');
+            return url.toString();
+        } catch (e) {
+            console.error("Invalid URL for modification:", urlString, e);
+            return urlString;
         }
-
-        return null;
     }
     
     function copyToClipboard(text) {
@@ -656,15 +958,25 @@
                 if (item.visible === undefined) {
                     item.visible = 1;
                 }
-                if (!item.itemID && item.link) {
-                    item.itemID = extractItemId(item.link);
+                delete item.image_url; // REMOVED: No longer needed
+                item.linksAlt = item.linksAlt || []; // NEW: Ensure linksAlt exists
+
+                if (item.prices && Array.isArray(item.prices) && item.prices.length > 0) {
+                    item.price = item.prices[0].value;
+                    item.lastUpd = item.prices[0].date;
+                } else if (typeof item.price === 'number') {
+                    item.prices = [{
+                        value: item.price,
+                        date: item.lastUpd || new Date(0).toISOString()
+                    }];
+                } else {
+                    item.price = 0;
+                    item.prices = [];
                 }
+
                 if (categoryKey === 'baseOptions') {
                     if (item.description === undefined) item.description = '';
                     if (item.totalram === undefined) item.totalram = 0;
-                }
-                if (categoryKey === 'bundleOptions') {
-                    if (item.description === undefined) item.description = '';
                 }
                 if (categoryKey === 'miniPcOptions') {
                     if (item.cpu === undefined) item.cpu = '';
@@ -673,6 +985,9 @@
                 }
                 if (categoryKey === 'ramOptions') {
                     if (item.total === undefined) item.total = 0;
+                }
+                if (categoryKey === 'towersOptions' && item.description === undefined) {
+                    item.description = '';
                 }
             });
         }
@@ -683,7 +998,7 @@
         if (productData) {
             newProduct = productData;
         } else {
-            newProduct = { name: '', price: 0, image_url: '', link: '', visible: 1, itemID: null };
+            newProduct = { name: '', price: 0, link: '', visible: 1 };
             if (categoryKey === 'miniPcOptions') {
                 newProduct.cpu = '';
                 newProduct.ram = '';
@@ -702,9 +1017,10 @@
         if (newProduct.visible === undefined) {
             newProduct.visible = 1;
         }
-        if (newProduct.link && !newProduct.itemID) {
-            newProduct.itemID = extractItemId(newProduct.link);
-        }
+        newProduct.prices = [{ value: newProduct.price, date: new Date().toISOString() }];
+        newProduct.lastUpd = newProduct.prices[0].date;
+        newProduct.linksAlt = []; // Initialize alt links
+
         dataMap[categoryKey].push(newProduct);
         renderOverviewTables();
         saveDataToSessionStorage();
@@ -719,55 +1035,258 @@
 
     function updateProduct(categoryKey, index, key, value) {
         if (dataMap[categoryKey] && dataMap[categoryKey][index]) {
-            dataMap[categoryKey][index][key] = value;
+            const product = dataMap[categoryKey][index];
             
-            if (key === 'link') {
-                dataMap[categoryKey][index]['itemID'] = extractItemId(value);
-                renderOverviewTables();
+            if (key === 'price') {
+                const newTimestamp = new Date().toISOString();
+                const newPrice = value;
+
+                product.price = newPrice;
+                product.lastUpd = newTimestamp;
+
+                if (!Array.isArray(product.prices)) {
+                    product.prices = [];
+                }
+                product.prices.unshift({ value: newPrice, date: newTimestamp });
+                
+                const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
+                if (tableRow) {
+                    const tooltip = tableRow.querySelector('.price-history-tooltip');
+                    if (tooltip) {
+                        tooltip.innerHTML = generateTooltipTable(product.prices);
+                    }
+                }
+            } else {
+                product[key] = value;
+            }
+            
+            if (key === 'visible') {
+                const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
+                if (tableRow) {
+                    tableRow.classList.toggle('opacity-50', !value);
+                }
             }
 
             if (key === 'price' || (categoryKey === 'ramOptions' && key === 'total')) {
                 updateAllBaseTotals();
-                updateAllBundleTotals();
-                renderBasesSection();
-                renderBundlesSection();
             }
 
             saveDataToSessionStorage();
         }
     }
 
-    function formatAndUpdatePrice(input, categoryKey, index) {
-        let raw = input.value.replace(/[^\d]/g, '');
-        if (raw.length > 9) raw = raw.slice(0,9);
-        let num = parseInt(raw, 10) || 0;
-        input.value = num ? num.toLocaleString('es-AR') : '';
-        updateProduct(categoryKey, index, 'price', num);
+    function formatPriceInput(input) {
+        let raw = input.value.replace(/[^\d.]/g, ''); // Allow dots
+        let num = parseInt(raw.replace(/\./g, ''), 10);
+        input.value = isNaN(num) ? '' : num.toLocaleString('es-AR');
     }
     
-    async function replaceLink(categoryKey, index) {
+    function applyPriceChangeVisuals(tableRow, oldPrice, newPrice) {
+        if (oldPrice === 0 && newPrice > 0) {
+            tableRow.style.backgroundColor = '';
+            tableRow.dataset.priceStatus = 'default';
+            const priceWrapper = tableRow.querySelector('.price-wrapper');
+            if (priceWrapper) {
+                 const existingIndicator = priceWrapper.querySelector('.previous-price-indicator');
+                if (existingIndicator) existingIndicator.remove();
+            }
+            return;
+        }
+
+        const diff = newPrice - oldPrice;
+        let highlightColor = 'rgba(2, 132, 199, 0.3)'; // Blue
+        let diffColor = '';
+        let status = 'same';
+
+        if (diff < 0) {
+            highlightColor = 'rgba(34, 197, 94, 0.3)'; // Green
+            diffColor = 'rgba(34, 197, 94, 1)';
+            status = 'decreased';
+        } else if (diff > 0) {
+            highlightColor = 'rgba(139, 92, 246, 0.3)'; // Violet
+            diffColor = 'rgba(139, 92, 246, 1)';
+            status = 'increased';
+        }
+        
+        tableRow.dataset.priceStatus = status;
+        tableRow.style.backgroundColor = highlightColor;
+
+        const priceWrapper = tableRow.querySelector('.price-wrapper');
+        if (priceWrapper) {
+            const existingIndicator = priceWrapper.querySelector('.previous-price-indicator');
+            if (existingIndicator) existingIndicator.remove();
+
+            if (diff !== 0) {
+                const indicatorContainer = document.createElement('div');
+                indicatorContainer.className = 'previous-price-indicator';
+
+                const oldPriceSpan = document.createElement('span');
+                oldPriceSpan.className = 'old-price-span';
+                oldPriceSpan.style.backgroundColor = '#4b5563'; // Gray
+                oldPriceSpan.textContent = `$${oldPrice.toLocaleString('es-AR')}`;
+
+                const diffSpan = document.createElement('span');
+                diffSpan.className = 'diff-span';
+                diffSpan.style.backgroundColor = diffColor;
+                const diffAmount = Math.round(diff / 1000);
+                diffSpan.textContent = diffAmount > 0 ? `+${diffAmount}k` : `${diffAmount}k`;
+                
+                indicatorContainer.appendChild(oldPriceSpan);
+                indicatorContainer.appendChild(diffSpan);
+                priceWrapper.appendChild(indicatorContainer);
+            }
+        }
+    }
+
+    function updatePriceFromInput(input, categoryKey, index) {
+        let raw = input.value.replace(/[^\d]/g, '');
+        let newPrice = parseInt(raw, 10) || 0;
+        const product = dataMap[categoryKey][index];
+        const oldPrice = product.price;
+
+        if (oldPrice !== newPrice) {
+            updateProduct(categoryKey, index, 'price', newPrice);
+            const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
+            applyPriceChangeVisuals(tableRow, oldPrice, newPrice);
+        }
+    }
+    
+    // --- Link Manager Logic (NEW) ---
+
+    async function handleLinkManagement(categoryKey, index, event) {
+        const product = dataMap[categoryKey][index];
+        if (!product.link) {
+             try {
+                let text = await navigator.clipboard.readText();
+                if (typeof text !== 'string' || !text.trim().startsWith('http')) {
+                    showToast('El portapapeles no contiene un link válido.', 'error');
+                    return;
+                }
+                product.link = modifyMercadoLibreLink(text.trim());
+                saveDataToSessionStorage();
+                renderOverviewTables();
+                showToast('Link principal añadido.');
+            } catch (err) {
+                console.error("Clipboard error:", err);
+                showToast('No se pudo acceder al portapapeles.', 'error');
+            }
+        } else {
+            toggleLinkManager(categoryKey, index, event);
+        }
+    }
+    
+    function toggleLinkManager(categoryKey, index, event) {
+        event.stopPropagation();
+        const managerId = `link-manager-${categoryKey}-${index}`;
+
+        if (openLinkManagerId && openLinkManagerId !== managerId) {
+            const oldManager = document.getElementById(openLinkManagerId);
+            if (oldManager) oldManager.classList.add('hidden');
+        }
+
+        const manager = document.getElementById(managerId);
+        if (manager.classList.contains('hidden')) {
+            renderLinkManager(categoryKey, index);
+            manager.classList.remove('hidden');
+            openLinkManagerId = managerId;
+        } else {
+            manager.classList.add('hidden');
+            openLinkManagerId = null;
+        }
+    }
+
+    function renderLinkManager(categoryKey, index) {
+        const managerId = `link-manager-${categoryKey}-${index}`;
+        const container = document.getElementById(managerId);
+        const product = dataMap[categoryKey][index];
+
+        let altLinksHtml = (product.linksAlt || []).map((link, altIndex) => `
+            <div class="flex items-center justify-between p-2 hover:bg-gray-700/50 rounded">
+                <a href="${link}" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 truncate flex-1" title="${link}">${link}</a>
+                <div class="flex-shrink-0 flex items-center">
+                    <button onclick="setMainLink('${categoryKey}', ${index}, ${altIndex})" class="text-green-400 hover:text-green-300" title="Establecer como principal">
+                         <span class="lucide-icon w-4 h-4" data-lucide="arrow-up-circle"></span>
+                    </button>
+                    <button onclick="deleteAltLink('${categoryKey}', ${index}, ${altIndex})" class="text-red-500 hover:text-red-400 ml-2" title="Eliminar link alternativo">
+                        <span class="lucide-icon w-4 h-4" data-lucide="x-circle"></span>
+                    </button>
+                </div>
+            </div>
+        `).join('');
+
+        container.innerHTML = `
+            <div class="p-2 space-y-2">
+                <div class="font-bold text-sm border-b border-gray-600 pb-2 mb-2">Gestionar Links</div>
+                <div class="space-y-1 max-h-40 overflow-y-auto">
+                    ${altLinksHtml || '<div class="text-xs text-gray-500 p-2">No hay links alternativos.</div>'}
+                </div>
+                <button onclick="addAltLinkFromClipboard('${categoryKey}', ${index})" class="w-full text-xs py-1 px-2 btn btn-secondary mt-2">
+                    <span class="lucide-icon mr-1 w-4 h-4" data-lucide="clipboard-plus"></span>
+                    Añadir desde Portapapeles
+                </button>
+            </div>
+        `;
+        lucide.createIcons();
+    }
+
+    async function addAltLinkFromClipboard(categoryKey, index) {
         try {
             let text = await navigator.clipboard.readText();
             if (typeof text !== 'string' || !text.trim().startsWith('http')) {
                 showToast('El portapapeles no contiene un link válido.', 'error');
                 return;
             }
-            const newLink = text.trim();
-            updateProduct(categoryKey, index, 'link', newLink);
-            showToast('Link reemplazado con éxito.');
+            const newLink = modifyMercadoLibreLink(text.trim());
+            const product = dataMap[categoryKey][index];
+            if (!product.linksAlt) {
+                product.linksAlt = [];
+            }
+            product.linksAlt.push(newLink);
+            saveDataToSessionStorage();
+            renderLinkManager(categoryKey, index);
+            showToast('Link alternativo añadido.');
         } catch (err) {
             console.error("Clipboard error:", err);
             showToast('No se pudo acceder al portapapeles.', 'error');
         }
     }
-    
+
+    function deleteAltLink(categoryKey, index, altIndex) {
+        const product = dataMap[categoryKey][index];
+        if (product && product.linksAlt) {
+            product.linksAlt.splice(altIndex, 1);
+            saveDataToSessionStorage();
+            renderLinkManager(categoryKey, index);
+            showToast('Link alternativo eliminado.');
+        }
+    }
+
+    function setMainLink(categoryKey, index, altIndex) {
+        const product = dataMap[categoryKey][index];
+        if (product && product.linksAlt && product.linksAlt[altIndex]) {
+            const oldMainLink = product.link;
+            const newMainLink = product.linksAlt[altIndex];
+
+            product.link = newMainLink;
+            product.linksAlt.splice(altIndex, 1);
+            if(oldMainLink) {
+               product.linksAlt.push(oldMainLink);
+            }
+
+            saveDataToSessionStorage();
+            showToast('Link principal actualizado.');
+            renderOverviewTables(); // Re-render everything to update main link and close manager
+        }
+    }
+
+
     // --- UI Rendering ---
 
-    function showImagePreview(imageUrl) {
+    function showImagePreview(productId) {
         const preview = document.getElementById('image-preview');
         const img = preview.querySelector('img');
-        if (imageUrl) {
-            img.src = imageUrl;
+        if (productId) {
+            img.src = `comps/${productId}.webp`;
             preview.classList.remove('hidden');
         }
     }
@@ -776,32 +1295,273 @@
         document.getElementById('image-preview').classList.add('hidden');
     }
 
-    // --- BUNDLES Section Rendering (Omitted for brevity, no changes) ---
-    function renderBundlesSection(){/*...no changes...*/}
-    function renderSelectedBundleDetails(){/*...no changes...*/}
-    function calculateBundleTotal(bundle){/*...no changes...*/}
-    function updateAllBundleTotals(){/*...no changes...*/}
-    function selectBundle(index){/*...no changes...*/}
-    function addBundle(){/*...no changes...*/}
-    function deleteSelectedBundle(){/*...no changes...*/}
-    function updateBundle(key, value){/*...no changes...*/}
-    function addComponentToBundle(){/*...no changes...*/}
-    function removeComponentFromBundle(componentIndex){/*...no changes...*/}
-    function onBundleComponentDragStart(event, index){/*...no changes...*/}
-    function onBundleComponentDragOver(event){/*...no changes...*/}
-    function onBundleComponentDrop(event, targetIndex){/*...no changes...*/}
+    // --- BASES Section Rendering ---
+    function renderBasesSection() {
+        const container = document.getElementById('bases-section');
+        if (!dataMap.baseOptions) dataMap.baseOptions = [];
+        if (dataMap.baseOptions.length === 0) {
+            dataMap.baseOptions.push({ id: generateUniqueId(getAllIds()), name: 'Nueva Base', cpu: null, mother: null, ram: null, cantRam: 1, total: 0, visible: 1, description: '', totalram: 0 });
+        }
+        
+        container.innerHTML = `
+            <div class="flex flex-col gap-2">
+                <div id="base-list" class="flex flex-col gap-2 mb-4">
+                    ${dataMap.baseOptions.map((base, index) => {
+                        return `
+                        <div id="base-item-${index}" class="list-item ${index === selectedBaseIndex ? 'active' : ''}" onclick="selectBase(${index})">
+                            <div class="flex-grow">
+                                <p class="font-bold truncate">${base.name || 'Sin Nombre'}</p>
+                                <p class="text-xs opacity-75 truncate">${base.id || 'Sin ID'}</p>
+                                <p class="font-bold text-lg text-teal-400 mt-1">$${(base.total || 0).toLocaleString('es-AR')}</p>
+                            </div>
+                        </div>
+                        `
+                    }).join('')}
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="addBase()" class="btn btn-primary w-full text-sm py-2">
+                        <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir Base
+                    </button>
+                    <button onclick="deleteSelectedBase()" class="btn btn-danger w-auto px-3 py-2" title="Eliminar Base Seleccionada">
+                        <span class="lucide-icon" data-lucide="trash-2"></span>
+                    </button>
+                </div>
+            </div>
+            <div id="base-details" class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <!-- Details of selected base will be rendered here -->
+            </div>
+        `;
+        renderSelectedBaseDetails();
+        lucide.createIcons();
+    }
 
-    // --- BASES Section Rendering (Omitted for brevity, no changes) ---
-    function renderBasesSection(){/*...no changes...*/}
-    function renderSelectedBaseDetails(){/*...no changes...*/}
-    function calculateBaseTotal(base){/*...no changes...*/}
-    function calculateBaseRamTotal(base){/*...no changes...*/}
-    function updateAllBaseTotals(){/*...no changes...*/}
-    function selectBase(index){/*...no changes...*/}
-    function addBase(){/*...no changes...*/}
-    function deleteSelectedBase(){/*...no changes...*/}
-    function updateBase(key, value){/*...no changes...*/}
-    function scrollToComponentRow(categoryKey, index){/*...no changes...*/}
+    function renderSelectedBaseDetails() {
+        const detailsContainer = document.getElementById('base-details');
+        const base = dataMap.baseOptions[selectedBaseIndex];
+
+        if (!base) {
+            detailsContainer.innerHTML = '<p>No hay una base seleccionada.</p>';
+            return;
+        }
+        
+        const cpuIndex = dataMap.cpuOptions.findIndex(c => c.id == base.cpu);
+        const motherIndex = dataMap.motherboardOptions.findIndex(m => m.id == base.mother);
+        const ramIndex = dataMap.ramOptions.findIndex(r => r.id == base.ram);
+
+        const cpuOptions = dataMap.cpuOptions.map(c => `<option value="${c.id}" ${base.cpu == c.id ? 'selected' : ''}>${c.name} ($${(c.price||0).toLocaleString('es-AR')})</option>`).join('');
+        const motherOptions = dataMap.motherboardOptions.map(m => `<option value="${m.id}" ${base.mother == m.id ? 'selected' : ''}>${m.name} ($${(m.price||0).toLocaleString('es-AR')})</option>`).join('');
+        const ramOptions = dataMap.ramOptions.map(r => `<option value="${r.id}" ${base.ram == r.id ? 'selected' : ''}>${r.name} ($${(r.price||0).toLocaleString('es-AR')})</option>`).join('');
+
+        detailsContainer.innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                 <div>
+                    <label class="block text-sm font-medium mb-1">Nombre de la Base</label>
+                    <input type="text" value="${base.name || ''}" oninput="updateBase('name', this.value)" class="w-full">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">ID</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-xs font-mono text-gray-400 truncate">${base.id}</div>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-1">Descripción</label>
+                    <textarea oninput="updateBase('description', this.value)" class="w-full" rows="2">${base.description || ''}</textarea>
+                </div>
+            </div>
+            <div class="space-y-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">CPU</label>
+                    <div class="flex items-center gap-2">
+                        <select onchange="updateBase('cpu', this.value)" class="flex-grow">
+                            <option value="">Seleccionar CPU...</option>
+                            ${cpuOptions}
+                        </select>
+                        <a href="#row-cpuOptions-${cpuIndex}" onclick="scrollToComponentRow('cpuOptions', ${cpuIndex})" class="${cpuIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                             <span class="lucide-icon" data-lucide="link"></span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Motherboard</label>
+                     <div class="flex items-center gap-2">
+                        <select onchange="updateBase('mother', this.value)" class="flex-grow">
+                            <option value="">Seleccionar Motherboard...</option>
+                            ${motherOptions}
+                        </select>
+                        <a href="#row-motherboardOptions-${motherIndex}" onclick="scrollToComponentRow('motherboardOptions', ${motherIndex})" class="${motherIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                             <span class="lucide-icon" data-lucide="link"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="col-span-2">
+                        <label class="block text-sm font-medium mb-1">RAM</label>
+                        <div class="flex items-center gap-2">
+                            <select onchange="updateBase('ram', this.value)" class="flex-grow">
+                                <option value="">Seleccionar RAM...</option>
+                                ${ramOptions}
+                            </select>
+                             <a href="#row-ramOptions-${ramIndex}" onclick="scrollToComponentRow('ramOptions', ${ramIndex})" class="${ramIndex > -1 ? 'inline-flex' : 'hidden'} text-blue-400 hover:text-blue-300" title="Ir al componente">
+                                <span class="lucide-icon" data-lucide="link"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Cantidad</label>
+                        <div class="flex items-center justify-between gap-1">
+                            ${[1, 2, 3, 4].map(n => `<button class="btn ram-qty-btn w-full text-xs py-2 px-0 ${base.cantRam == n ? 'active' : ''}" onclick="updateBase('cantRam', ${n})">${n}</button>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                 <div class="md:col-span-1">
+                    <label class="block text-sm font-medium mb-1">Total de la Base</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
+                        $${(base.total || 0).toLocaleString('es-AR')}
+                    </div>
+                </div>
+                 <div class="md:col-span-1">
+                    <label class="block text-sm font-medium mb-1">Total RAM (GB)</label>
+                    <div class="w-full p-2 bg-gray-900 rounded-md text-lg font-bold text-teal-400">
+                        ${base.totalram || 0} GB
+                    </div>
+                </div>
+                <div class="md:col-span-2 flex items-center justify-center pt-2">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" ${base.visible ? 'checked' : ''} onchange="updateBase('visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
+                        <span class="font-medium">Visible</span>
+                    </label>
+                </div>
+            </div>
+            <div class="mt-6">
+                <button onclick="analyzeSelectedBase()" class="btn btn-primary w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700">
+                    <span class="lucide-icon mr-2" data-lucide="sparkles"></span> ✨ Analizar Base con IA
+                </button>
+            </div>
+        `;
+        lucide.createIcons();
+    }
+    
+    // --- BASES Data Operations ---
+    function calculateBaseTotal(base) {
+        if (!base) return 0;
+        const cpu = dataMap.cpuOptions.find(c => c.id == base.cpu);
+        const mother = dataMap.motherboardOptions.find(m => m.id == base.mother);
+        const ram = dataMap.ramOptions.find(r => r.id == base.ram);
+        const cantRam = base.cantRam || 1;
+
+        const cpuPrice = cpu ? cpu.price || 0 : 0;
+        const motherPrice = mother ? mother.price || 0 : 0;
+        const ramPrice = ram ? ram.price || 0 : 0;
+        
+        return cpuPrice + motherPrice + (ramPrice * cantRam);
+    }
+
+    function calculateBaseRamTotal(base) {
+        if (!base || !base.ram) return 0;
+        const ram = dataMap.ramOptions.find(r => r.id == base.ram);
+        const cantRam = base.cantRam || 1;
+        const ramTotal = ram ? ram.total || 0 : 0;
+        return ramTotal * cantRam;
+    }
+
+    function updateAllBaseTotals() {
+        dataMap.baseOptions.forEach(base => {
+            base.total = calculateBaseTotal(base);
+            base.totalram = calculateBaseRamTotal(base);
+        });
+    }
+
+    function selectBase(index) {
+        selectedBaseIndex = index;
+        renderBasesSection();
+    }
+
+    function addBase() {
+        dataMap.baseOptions.push({
+            id: generateUniqueId(getAllIds()),
+            name: 'Nueva Base',
+            cpu: null, mother: null, ram: null, cantRam: 1,
+            total: 0,
+            visible: 1,
+            description: '',
+            totalram: 0
+        });
+        selectedBaseIndex = dataMap.baseOptions.length - 1;
+        renderBasesSection();
+        saveDataToSessionStorage();
+    }
+
+    function deleteSelectedBase() {
+        if (dataMap.baseOptions.length <= 1) {
+            showToast('No se puede eliminar la última base.', 'error');
+            return;
+        }
+        dataMap.baseOptions.splice(selectedBaseIndex, 1);
+        if (selectedBaseIndex >= dataMap.baseOptions.length) {
+            selectedBaseIndex = dataMap.baseOptions.length - 1;
+        }
+        renderBasesSection();
+        saveDataToSessionStorage();
+    }
+
+    function updateBase(key, value) {
+        const base = dataMap.baseOptions[selectedBaseIndex];
+        if (base) {
+            base[key] = value;
+
+            if (key === 'cpu') {
+                const cpu = dataMap.cpuOptions.find(c => c.id == value);
+                if (cpu) {
+                    base.name = cpu.name;
+                }
+            }
+
+            base.total = calculateBaseTotal(base);
+            base.totalram = calculateBaseRamTotal(base);
+            saveDataToSessionStorage();
+            
+            if (['cpu', 'mother', 'ram', 'cantRam'].includes(key)) {
+                renderBasesSection();
+            } else if (key === 'name') {
+                 const baseItemDiv = document.getElementById(`base-item-${selectedBaseIndex}`);
+                if (baseItemDiv) {
+                    baseItemDiv.querySelector('p.font-bold').textContent = value || 'Sin Nombre';
+                }
+            }
+        }
+    }
+
+    function scrollToComponentRow(categoryKey, index) {
+        const rowId = `row-${categoryKey}-${index}`;
+        const row = document.getElementById(rowId);
+        if (row) {
+            const navbarHeight = document.getElementById('category-navbar').offsetHeight;
+            const elementPosition = row.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
+
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            
+            row.style.transition = 'background-color 0.5s ease-in-out';
+            row.style.backgroundColor = 'rgba(99, 102, 241, 0.5)';
+            setTimeout(() => {
+                row.style.backgroundColor = '';
+            }, 2000);
+        }
+    }
+
+    function generateTooltipTable(prices) {
+        if (!prices || prices.length === 0) {
+            return '<span>Sin historial de precios.</span>';
+        }
+        const recentPrices = prices.slice(0, 7);
+        let tableHTML = '<table class="tooltip-table"><thead><tr><th>Fecha</th><th>Precio</th></tr></thead><tbody>';
+        recentPrices.forEach(p => {
+            tableHTML += `<tr><td>${formatTimestamp(p.date)}</td><td>$${p.value.toLocaleString('es-AR')}</td></tr>`;
+        });
+        tableHTML += '</tbody></table>';
+        return tableHTML;
+    }
 
     function renderOverviewTables() {
         const overviewContainer = document.getElementById('overview-view');
@@ -823,35 +1583,41 @@
             table.className = 'overview-table w-full text-left text-sm text-gray-400';
             
             let headers = `
-                <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
-                <th scope="col" class="px-2 py-3" style="width: 100px;">ItemID (ML)</th>
-                <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
-                <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
-                ${categoryKey !== 'towersOptions' && categoryKey !== 'ramOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th>' : ''}
-                ${categoryKey === 'ramOptions' ? '<th scope="col" class="px-2 py-3">Descripción</th><th scope="col" class="px-2 py-3">Total (GB)</th>' : ''}
-                <th scope="col" class="px-2 py-3" style="width: 200px;">URL Imagen</th>
-                <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
-                <th scope="col" class="px-1 py-3" style="width:1%;min-width:150px;">Acciones</th>
+                <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">ID</th>
+                <th scope="col" class="px-2 py-3" style="width: 240px;">Nombre</th>
+                <th scope="col" class="px-2 py-3 text-left" style="width: 120px;">Precio</th>
+                <th scope="col" class="px-2 py-3 hidden md:table-cell">Descripción</th>
+                <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">Visible</th>
+                <th scope="col" class="px-1 py-3 hidden md:table-cell" style="width:1%;min-width:150px;">Acciones</th>
             `;
-            let colspan = 7;
-            if (categoryKey !== 'towersOptions') colspan++;
-            if (categoryKey === 'ramOptions') colspan++;
-
-
-            if (categoryKey === 'miniPcOptions') {
+            if (categoryKey === 'ramOptions') {
                 headers = `
-                    <th scope="col" class="px-2 py-3" style="width: 1%;">ID</th>
-                    <th scope="col" class="px-2 py-3" style="width: 100px;">ItemID (ML)</th>
-                    <th scope="col" class="px-2 py-3" style="width: 220px;">Nombre</th>
-                    <th scope="col" class="px-2 py-3" style="width: 120px; text-align: left;">Precio</th>
-                    <th scope="col" class="px-2 py-3">CPU</th>
-                    <th scope="col" class="px-2 py-3">RAM</th>
-                    <th scope="col" class="px-2 py-3">SSD</th>
-                    <th scope="col" class="px-2 py-3" style="width: 200px;">URL Imagen</th>
-                    <th scope="col" class="px-2 py-3" style="width: 1%;">Visible</th>
-                    <th scope="col" class="px-1 py-3" style="width:1%;min-width:150px;">Acciones</th>
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">ID</th>
+                    <th scope="col" class="px-2 py-3" style="width: 240px;">Nombre</th>
+                    <th scope="col" class="px-2 py-3 text-left" style="width: 120px;">Precio</th>
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell">Descripción</th>
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell">Total (GB)</th>
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">Visible</th>
+                    <th scope="col" class="px-1 py-3 hidden md:table-cell" style="width:1%;min-width:150px;">Acciones</th>
                 `;
-                colspan = 10;
+            } else if (categoryKey === 'miniPcOptions') {
+                headers = `
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">ID</th>
+                    <th scope="col" class="px-2 py-3" style="width: 240px;">Nombre</th>
+                    <th scope="col" class="px-2 py-3 text-left" style="width: 120px;">Precio</th>
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell">CPU</th>
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell">RAM</th>
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell">SSD</th>
+                    <th scope="col" class="px-2 py-3 hidden md:table-cell" style="width: 1%;">Visible</th>
+                    <th scope="col" class="px-1 py-3 hidden md:table-cell" style="width:1%;min-width:150px;">Acciones</th>
+                `;
+            }
+            
+            let colspan = 6;
+            if (categoryKey === 'ramOptions') {
+                colspan = 7;
+            } else if (categoryKey === 'miniPcOptions') {
+                colspan = 8;
             }
 
 
@@ -864,36 +1630,59 @@
                         let customColumns;
                         if (categoryKey === 'miniPcOptions') {
                             customColumns = `
-                                <td class="px-2 py-2"><input type="text" value="${product.cpu || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'cpu', this.value)" class="w-full"></td>
-                                <td class="px-2 py-2"><input type="text" value="${product.ram || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ram', this.value)" class="w-full"></td>
-                                <td class="px-2 py-2"><input type="text" value="${product.ssd || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ssd', this.value)" class="w-full"></td>
+                                <td class="px-2 py-2 hidden md:table-cell"><input type="text" value="${product.cpu || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'cpu', this.value)" class="w-full"></td>
+                                <td class="px-2 py-2 hidden md:table-cell"><input type="text" value="${product.ram || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ram', this.value)" class="w-full"></td>
+                                <td class="px-2 py-2 hidden md:table-cell"><input type="text" value="${product.ssd || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'ssd', this.value)" class="w-full"></td>
                             `;
                         } else if (categoryKey === 'ramOptions') {
                              customColumns = `
-                                <td class="px-2 py-2">
-                                    <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
+                                <td class="px-2 py-2 hidden md:table-cell">
+                                    <div class="relative">
+                                        <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none pr-8">${product.description || ''}</textarea>
+                                        <button onclick="generateDescription('${categoryKey}', ${index}, this)" class="absolute bottom-2 right-2 text-purple-400 hover:text-purple-300 p-1 rounded-full bg-gray-900/50 hover:bg-gray-900" title="✨ Generar descripción con IA">
+                                            <span class="lucide-icon w-4 h-4" data-lucide="sparkles"></span>
+                                        </button>
+                                    </div>
                                 </td>
-                                <td class="px-2 py-2">
+                                <td class="px-2 py-2 hidden md:table-cell">
                                     <input type="number" value="${product.total || 0}" oninput="updateProduct('${categoryKey}', ${index}, 'total', parseInt(this.value, 10) || 0)" class="w-full">
                                 </td>
                             `;
-                        } else if (categoryKey !== 'towersOptions') {
-                            customColumns = `
-                            <td class="px-2 py-2">
-                                <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
-                            </td>`;
                         } else {
-                            customColumns = '';
+                            customColumns = `
+                            <td class="px-2 py-2 hidden md:table-cell">
+                                <div class="relative">
+                                    <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none pr-8">${product.description || ''}</textarea>
+                                    <button onclick="generateDescription('${categoryKey}', ${index}, this)" class="absolute bottom-2 right-2 text-purple-400 hover:text-purple-300 p-1 rounded-full bg-gray-900/50 hover:bg-gray-900" title="✨ Generar descripción con IA">
+                                        <span class="lucide-icon w-4 h-4" data-lucide="sparkles"></span>
+                                    </button>
+                                </div>
+                            </td>`;
                         }
 
+                        const priceCheckButton = product.link ? `
+                            <button onclick="startSinglePriceCheckAndContinue('${categoryKey}', ${index})" class="text-teal-400 hover:text-teal-300" title="Chequear Precio y Continuar">
+                                <span class="lucide-icon w-4 h-4" data-lucide="dollar-sign"></span>
+                            </button>
+                        ` : '';
+                        
+                        const tooltipTableHTML = generateTooltipTable(product.prices);
+                        
+                        const chartButton = (product.prices && product.prices.length > 1) ? `
+                            <button onclick="openPriceChartPopup('${categoryKey}', ${index})" class="text-indigo-400 hover:text-indigo-300 ml-2" title="Ver Historial de Precios">
+                                <span class="lucide-icon w-4 h-4" data-lucide="line-chart"></span>
+                            </button>
+                        ` : '';
+                        
+                        const hasAltLinksClass = (product.linksAlt && product.linksAlt.length > 0) ? 'border-2 border-teal-400' : '';
+
                         return `
-                        <tr id="row-${categoryKey}-${index}" class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-200 ${product.price_status ? 'price-' + product.price_status : ''}" 
+                        <tr id="row-${categoryKey}-${index}" data-price-status="default" class="border-b border-gray-700 hover:bg-gray-700/50 transition-colors duration-200 ${!product.visible ? 'opacity-50 mobile-hidden-if-not-visible' : ''}" 
                             ondragover="onRowDragOver(event)" 
                             ondrop="onRowDrop(event, '${categoryKey}', ${index})"
-                            onmouseenter="showImagePreview('${product.image_url || ''}')"
+                            onmouseenter="showImagePreview('${product.id}')"
                             onmouseleave="hideImagePreview()">
-                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono cursor-pointer hover:text-white" onclick="copyToClipboard('${product.id || ''}')" title="Copiar ID">${product.id || ''}</td>
-                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono">${product.itemID || 'N/A'}</td>
+                            <td class="px-2 py-2 text-center text-xs text-gray-400 font-mono cursor-pointer hover:text-white hidden md:table-cell" onclick="copyToClipboard('${product.id || ''}')" title="Copiar ID">${product.id || ''}</td>
                             <td class="px-2 py-2 font-medium text-white whitespace-nowrap">
                                 <input type="text" value="${product.name || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'name', this.value)" class="w-full">
                             </td>
@@ -901,24 +1690,24 @@
                                 <div class="price-wrapper">
                                     <div class="flex items-center gap-1">
                                         <span class="text-gray-400 font-semibold text-lg">$</span>
-                                        <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" oninput="formatAndUpdatePrice(this, '${categoryKey}', ${index})" class="text-left" style="width: 100px;">
+                                        <input type="text" value="${product.price ? product.price.toLocaleString('es-AR') : ''}" 
+                                            oninput="formatPriceInput(this)"
+                                            onchange="updatePriceFromInput(this, '${categoryKey}', ${index})"
+                                            onkeydown="if(event.key === 'Enter'){ event.preventDefault(); this.blur(); }"
+                                            class="text-left" style="width: 100px;">
                                     </div>
-                                    <div class="indicators-container"></div>
+                                    <div class="price-history-tooltip">${tooltipTableHTML}</div>
                                 </div>
                             </td>
                             ${customColumns}
-                            <td class="px-2 py-2">
-                                <input type="text" value="${product.image_url || ''}" oninput="updateProduct('${categoryKey}', ${index}, 'image_url', this.value)" onclick="autofillImagePath(this, '${categoryKey}', ${index})" class="w-full text-xs">
-                            </td>
-                            <td class="px-2 py-2 text-center">
+                            <td class="px-2 py-2 text-center hidden md:table-cell">
                                 <input type="checkbox" ${product.visible ? 'checked' : ''} onchange="updateProduct('${categoryKey}', ${index}, 'visible', this.checked ? 1 : 0)" class="w-5 h-5 rounded text-indigo-500 bg-gray-700 border-gray-600 focus:ring-indigo-600">
                             </td>
-                            <td class="px-1 py-2 text-right">
+                            <td class="px-1 py-2 text-right hidden md:table-cell relative">
                                 <div class="flex flex-col items-end gap-1">
                                     <div class="flex items-center">
-                                        <button id="check-btn-${categoryKey}-${index}" onclick="checkSingleProductPublic('${categoryKey}', ${index})" class="text-blue-400 hover:text-blue-200" title="Chequear este producto (Público)">
-                                            <span class="lucide-icon w-4 h-4" data-lucide="search"></span>
-                                        </button>
+                                        ${priceCheckButton}
+                                        ${chartButton}
                                         <button onclick="removeProduct('${categoryKey}', ${index})" class="text-red-500 hover:text-red-700 ml-2" title="Eliminar">
                                             <span class="lucide-icon w-4 h-4" data-lucide="trash-2"></span>
                                         </button>
@@ -927,25 +1716,26 @@
                                         </button>
                                     </div>
                                     <div class="flex items-center gap-1">
-                                        <a href="${product.link || '#'}" target="_blank" class="btn btn-secondary min-w-0 flex items-center justify-center text-xs py-1 px-1">
-                                            <span class="lucide-icon mr-1" data-lucide="external-link" style="margin-right:2px;"></span>Visitar
+                                        <a href="${product.link || '#'}" target="_blank" class="btn btn-secondary min-w-0 flex items-center justify-center text-xs py-1 px-2.5" title="Visitar Link">
+                                            <span class="lucide-icon" data-lucide="external-link"></span>
                                         </a>
-                                        <button onclick="replaceLink('${categoryKey}', ${index})" class="btn btn-primary text-xs py-1 px-1 ml-1" title="Reemplazar Link desde portapapeles">
+                                        <button onclick="handleLinkManagement('${categoryKey}', ${index}, event)" class="btn btn-primary text-xs py-1 px-2.5 ml-1 ${hasAltLinksClass}" title="Gestionar Links">
                                             <span class="lucide-icon" data-lucide="edit"></span>
                                         </button>
                                     </div>
                                 </div>
+                                <div id="link-manager-${categoryKey}-${index}" class="link-manager-container hidden"></div>
                             </td>
                         </tr>
                     `}).join('')}
-                    <tr>
+                    <tr class="hidden md:table-row">
                         <td colspan="${colspan}" class="add-row-button-cell">
-                            <div class="flex justify-center items-center gap-4">
+                             <div class="flex justify-end items-center gap-4">
                                 <button onclick="addProduct('${categoryKey}')" class="add-row-button">
-                                    <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir ${getComponentName(categoryKey)}
+                                    <span class="lucide-icon mr-2" data-lucide="plus"></span>Añadir
                                 </button>
                                 <button id="add-from-clipboard-${categoryKey}" onclick="addProductFromClipboard('${categoryKey}')" class="add-row-button bg-sky-600 hover:bg-sky-700">
-                                    <span class="lucide-icon mr-2" data-lucide="clipboard-plus"></span> Añadir desde Link
+                                    <span class="lucide-icon mr-2" data-lucide="clipboard-plus"></span>Añadir Link
                                 </button>
                             </div>
                         </td>
@@ -984,402 +1774,40 @@
         dragSrcCategory = null;
     }
 
-    // --- Price Checking with Mercado Libre API ---
-
-    async function fetchProductDataFromAPI_Public(product, row) {
-        const localPrice = product.price;
-        row.className = 'border-b border-gray-700 transition-colors duration-200 price-checking';
-        product.price_status = 'checking';
-        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        showImagePreview(product.image_url);
-        
-        const indicatorsContainer = row.querySelector('.indicators-container');
-        indicatorsContainer.innerHTML = '';
-
-        const itemID = product.itemID || extractItemId(product.link);
-        if (!itemID) {
-            throw new Error('No se pudo encontrar el ItemID en el link.');
-        }
-        if (!product.itemID) {
-            updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'itemID', itemID);
-        }
-
-    const apiUrl = `/api/chequear-precio?itemId=${itemID}`;
-
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.error || `Error de API: ${response.status}`);
-            }
-            
-            const onlinePrice = Math.round(data.price);
-            const availableQuantity = data.available_quantity;
-            const status = data.status;
-
-            if (isNaN(onlinePrice)) throw new Error('No se pudo obtener el precio de la API.');
-
-            updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'price', onlinePrice);
-            const priceInput = row.querySelector('input[oninput*="formatAndUpdatePrice"]');
-            if (priceInput) priceInput.value = onlinePrice.toLocaleString('es-AR');
-            
-            const diff = onlinePrice - localPrice;
-            if (diff !== 0) {
-                const diffSpan = document.createElement('span');
-                diffSpan.className = 'indicator-badge';
-                diffSpan.classList.add(diff > 0 ? 'positive' : 'negative');
-                diffSpan.textContent = `${diff > 0 ? '+' : ''}${diff.toLocaleString('es-AR')}`;
-                indicatorsContainer.appendChild(diffSpan);
-            }
-
-            const quantitySpan = document.createElement('span');
-            quantitySpan.className = 'indicator-badge quantity';
-            quantitySpan.textContent = `${availableQuantity} disp.`;
-            if (availableQuantity === 0) {
-                 quantitySpan.style.backgroundColor = `hsl(0, 85%, 55%)`;
-                 quantitySpan.textContent = 'Sin stock';
-            }
-            indicatorsContainer.appendChild(quantitySpan);
-
-            if (status !== 'active') {
-                const statusSpan = document.createElement('span');
-                statusSpan.className = 'indicator-badge status';
-                statusSpan.textContent = status;
-                indicatorsContainer.appendChild(statusSpan);
-            }
-            
-            row.classList.remove('price-checking');
-            if (onlinePrice < localPrice) {
-                row.classList.add('price-lower'); product.price_status = 'lower';
-            } else if (onlinePrice > localPrice) {
-                row.classList.add('price-higher'); product.price_status = 'higher';
-            } else {
-                row.classList.add('price-same'); product.price_status = 'same';
-            }
-
-        } catch (error) {
-            console.error(`Error chequeando ${product.name}:`, error);
-            showToast(`Error en ${product.name}: ${error.message}`, 'error');
-            row.classList.remove('price-checking');
-            row.classList.add('price-error');
-            product.price_status = 'error';
-
-            const statusSpan = document.createElement('span');
-            statusSpan.className = 'indicator-badge status';
-            statusSpan.textContent = 'Error API';
-            indicatorsContainer.appendChild(statusSpan);
-        }
-    }
-
-    async function checkSingleProductPublic(categoryKey, index) {
-        const product = dataMap[categoryKey][index];
-        const row = document.getElementById(`row-${categoryKey}-${index}`);
-        const checkBtn = document.getElementById(`check-btn-${categoryKey}-${index}`);
-        const originalIconHTML = checkBtn.innerHTML;
-        
-        checkBtn.innerHTML = `<svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        checkBtn.disabled = true;
-
-        await fetchProductDataFromAPI_Public(product, row);
-        hideImagePreview();
-
-        checkBtn.disabled = false;
-        checkBtn.innerHTML = originalIconHTML;
-    }
-
-    async function checkAllPricesPublic() {
-        const btn = document.getElementById('check-prices-public-btn');
-        const btnText = document.getElementById('check-prices-public-text');
-        const btnIcon = document.getElementById('check-prices-public-icon');
-        const originalIcon = btnIcon.innerHTML;
-        const spinner = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        
-        btn.disabled = true;
-        btnText.textContent = 'Chequeando...';
-        btnIcon.innerHTML = spinner;
-
-        for (const category of CATEGORY_NAV_LIST) {
-            const categoryKey = category.key;
-            if (!categoryKey.includes('Options') || ['baseOptions', 'bundleOptions'].includes(categoryKey)) continue;
-
-            if (dataMap[categoryKey]) {
-                for (let i = 0; i < dataMap[categoryKey].length; i++) {
-                    const product = dataMap[categoryKey][i];
-                    const row = document.getElementById(`row-${categoryKey}-${i}`);
-                    if (row && (product.link || product.itemID)) {
-                       await fetchProductDataFromAPI_Public(product, row);
-                       await new Promise(resolve => setTimeout(resolve, 100)); // Rate limit to avoid overwhelming the API
-                    }
-                }
-            }
-        }
-
-        hideImagePreview();
-        btn.disabled = false;
-        btnText.textContent = 'Chequeo de Precios Público';
-        btnIcon.innerHTML = originalIcon;
-        lucide.createIcons();
-        showToast('¡Chequeo de precios completado!', 'success');
-    }
-
-    async function getAccessToken() {
-        const appId = document.getElementById('app-id-input').value;
-        const clientSecret = document.getElementById('client-secret-input').value;
-        const tokenStatus = document.getElementById('token-status');
-
-        if (!appId || !clientSecret) {
-            showToast('Por favor, ingresa tu App ID y Client Secret.', 'error');
-            return false;
-        }
-
-        tokenStatus.textContent = 'Obteniendo token de acceso...';
-        tokenStatus.style.color = '#e5e7eb'; // default color
-        
-        const proxyUrl = 'https://corsproxy.io/?';
-        const tokenUrl = 'https://api.mercadolibre.com/oauth/token';
-
-        try {
-            const response = await fetch(proxyUrl + encodeURIComponent(tokenUrl), {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
-                body: new URLSearchParams({
-                    'grant_type': 'client_credentials',
-                    'client_id': appId,
-                    'client_secret': clientSecret
-                })
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.message || 'Error de autenticación');
-            }
-
-            mlAccessToken = data.access_token;
-            tokenStatus.textContent = 'Token obtenido con éxito. ¡Listo para chequear!';
-            tokenStatus.style.color = '#42d232'; // green
-            showToast('Autenticación exitosa.', 'info');
-            return true;
-
-        } catch (error) {
-            console.error('Error al obtener token:', error);
-            showToast(`Error de autenticación: ${error.message}`, 'error');
-            tokenStatus.textContent = `Error: ${error.message}`;
-            tokenStatus.style.color = '#ef4444'; // red
-            mlAccessToken = null;
-            return false;
-        }
-    }
-    
-    async function fetchProductDataFromAPI(product, row) {
-        if (!mlAccessToken) {
-            throw new Error('Token de acceso no válido o expirado.');
-        }
-
-        const localPrice = product.price;
-        row.className = 'border-b border-gray-700 transition-colors duration-200 price-checking';
-        product.price_status = 'checking';
-        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        showImagePreview(product.image_url);
-        
-        const indicatorsContainer = row.querySelector('.indicators-container');
-        indicatorsContainer.innerHTML = '';
-
-        const itemID = product.itemID || extractItemId(product.link);
-        if (!itemID) {
-            throw new Error('No se pudo encontrar el ItemID en el link.');
-        }
-        if (!product.itemID) {
-            updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'itemID', itemID);
-        }
-
-        const apiUrl = `https://api.mercadolibre.com/items/${itemID}`;
-
-        try {
-            const response = await fetch(apiUrl, {
-                headers: { 'Authorization': `Bearer ${mlAccessToken}` }
-            });
-            const data = await response.json();
-
-            if (!response.ok) {
-                if (response.status === 401 || response.status === 403) {
-                     mlAccessToken = null;
-                     document.getElementById('token-status').textContent = 'Token inválido o expirado. Se necesita uno nuevo.';
-                     document.getElementById('token-status').style.color = '#f59e0b';
-                }
-                throw new Error(data.message || `Error de API: ${response.status}`);
-            }
-            
-            const onlinePrice = Math.round(data.price);
-            const availableQuantity = data.available_quantity;
-
-            if (isNaN(onlinePrice)) throw new Error('No se pudo obtener el precio de la API.');
-
-            updateProduct(row.id.split('-')[1], parseInt(row.id.split('-')[2]), 'price', onlinePrice);
-            const priceInput = row.querySelector('input[oninput*="formatAndUpdatePrice"]');
-            if (priceInput) priceInput.value = onlinePrice.toLocaleString('es-AR');
-            
-            const diff = onlinePrice - localPrice;
-            if (diff !== 0) {
-                const diffSpan = document.createElement('span');
-                diffSpan.className = 'indicator-badge';
-                diffSpan.classList.add(diff > 0 ? 'positive' : 'negative');
-                diffSpan.textContent = `${diff > 0 ? '+' : ''}${diff.toLocaleString('es-AR')}`;
-                indicatorsContainer.appendChild(diffSpan);
-            }
-
-            const quantitySpan = document.createElement('span');
-            quantitySpan.className = 'indicator-badge quantity';
-            quantitySpan.textContent = `${availableQuantity} disp.`;
-            if (availableQuantity === 0) {
-                 quantitySpan.style.backgroundColor = `hsl(0, 85%, 55%)`;
-                 quantitySpan.textContent = 'Sin stock';
-            }
-            indicatorsContainer.appendChild(quantitySpan);
-            
-            row.classList.remove('price-checking');
-            if (onlinePrice < localPrice) {
-                row.classList.add('price-lower'); product.price_status = 'lower';
-            } else if (onlinePrice > localPrice) {
-                row.classList.add('price-higher'); product.price_status = 'higher';
-            } else {
-                row.classList.add('price-same'); product.price_status = 'same';
-            }
-
-        } catch (error) {
-            console.error(`Error chequeando ${product.name}:`, error);
-            showToast(`Error en ${product.name}: ${error.message}`, 'error');
-            row.classList.remove('price-checking');
-            row.classList.add('price-error');
-            product.price_status = 'error';
-
-            const statusSpan = document.createElement('span');
-            statusSpan.className = 'indicator-badge status';
-            statusSpan.textContent = 'Error API';
-            indicatorsContainer.appendChild(statusSpan);
-        }
-    }
-
-    async function checkSingleProduct(categoryKey, index) {
-        if (!mlAccessToken) {
-            const success = await getAccessToken();
-            if (!success) return;
-        }
-
-        const product = dataMap[categoryKey][index];
-        const row = document.getElementById(`row-${categoryKey}-${index}`);
-        const checkBtn = document.getElementById(`check-btn-${categoryKey}-${index}`);
-        const originalIconHTML = checkBtn.innerHTML;
-        
-        checkBtn.innerHTML = `<svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        checkBtn.disabled = true;
-
-        await fetchProductDataFromAPI(product, row);
-        hideImagePreview();
-
-        checkBtn.disabled = false;
-        checkBtn.innerHTML = originalIconHTML;
-    }
-
-    async function checkAllPrices() {
-        const btn = document.getElementById('check-prices-btn');
-        const btnText = document.getElementById('check-prices-text');
-        const btnIcon = document.getElementById('check-prices-icon');
-        const spinner = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        
-        btn.disabled = true;
-        btnText.textContent = 'Autenticando...';
-        btnIcon.innerHTML = spinner;
-
-        if (!mlAccessToken) {
-            const isAuthenticated = await getAccessToken();
-            if (!isAuthenticated) {
-                btn.disabled = false;
-                btnText.textContent = 'Chequear Precios (Autenticado)';
-                btnIcon.dataset.lucide = 'scan-line';
-                lucide.createIcons();
-                return;
-            }
-        }
-
-        btnText.textContent = 'Chequeando...';
-
-        for (const category of CATEGORY_NAV_LIST) {
-            const categoryKey = category.key;
-            if (!categoryKey.includes('Options') || ['baseOptions', 'bundleOptions'].includes(categoryKey)) continue;
-
-            if (dataMap[categoryKey]) {
-                for (let i = 0; i < dataMap[categoryKey].length; i++) {
-                    const product = dataMap[categoryKey][i];
-                    const row = document.getElementById(`row-${categoryKey}-${i}`);
-                    if (row && (product.link || product.itemID)) {
-                       await fetchProductDataFromAPI(product, row);
-                       await new Promise(resolve => setTimeout(resolve, 100)); 
-                    }
-                }
-            }
-        }
-
-        hideImagePreview();
-        btn.disabled = false;
-        btnText.textContent = 'Chequear Precios (Autenticado)';
-        btnIcon.dataset.lucide = 'scan-line';
-        lucide.createIcons();
-        showToast('¡Chequeo de precios completado!', 'success');
-    }
-
+    // --- Add Product from Clipboard (Modified) ---
     async function addProductFromClipboard(categoryKey) {
-        if (!mlAccessToken) {
-            const success = await getAccessToken();
-            if (!success) {
-                showToast('Autentica primero para añadir desde un link.', 'error');
-                return;
-            }
-        }
-
         const btn = document.getElementById(`add-from-clipboard-${categoryKey}`);
         const originalContent = btn.innerHTML;
-        const spinner = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
-        btn.innerHTML = spinner;
+        btn.innerHTML = `<svg class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>`;
         btn.disabled = true;
 
         try {
-            const link = await navigator.clipboard.readText();
-            const itemID = extractItemId(link);
-
-            if (!itemID) {
-                throw new Error('El portapapeles no contiene un link de ML con un ItemID válido.');
+            let link = await navigator.clipboard.readText();
+            if (!link || !link.trim().startsWith('http')) {
+                throw new Error('El portapapeles no contiene un link válido.');
             }
-            
-            const apiUrl = `https://api.mercadolibre.com/items/${itemID}`;
-            const response = await fetch(apiUrl, { headers: { 'Authorization': `Bearer ${mlAccessToken}` }});
-            if (!response.ok) throw new Error('No se pudo obtener datos del producto desde la API de ML.');
-            const data = await response.json();
+            link = modifyMercadoLibreLink(link.trim());
             
             const newId = generateUniqueId(getAllIds());
-            const categoryInfo = CATEGORY_NAV_LIST.find(cat => cat.key === categoryKey);
-            let imageUrl = data.thumbnail || '';
-            if (!imageUrl && categoryInfo && categoryInfo.folder) {
-                imageUrl = `comps/${categoryInfo.folder}/${newId}.webp`;
-            }
 
             const newProduct = {
                 id: newId,
-                name: data.title || 'Nombre no encontrado',
-                price: Math.round(data.price) || 0,
+                name: 'Nuevo Producto desde Link',
+                price: 0,
                 link: link,
-                itemID: itemID,
-                visible: 1,
-                image_url: imageUrl,
-                description: ''
+                visible: 1
             };
+
             if (categoryKey === 'miniPcOptions') {
-                newProduct.cpu = ''; newProduct.ram = ''; newProduct.ssd = '';
+                newProduct.cpu = '';
+                newProduct.ram = '';
+                newProduct.ssd = '';
+            } else {
+                newProduct.description = '';
             }
 
             addProduct(categoryKey, newProduct);
-            showToast('Producto añadido desde el link vía API.', 'success');
+            showToast('Producto añadido desde el link.');
 
         } catch (error) {
             console.error('Error al añadir desde clipboard:', error);
@@ -1387,73 +1815,409 @@
         } finally {
             btn.innerHTML = originalContent;
             btn.disabled = false;
+            lucide.createIcons({
+                nodes: [btn.querySelector('.lucide-icon')],
+            });
         }
+    }
+
+    // --- Price Check Logic ---
+
+    function openPriceCheckPopup(categoryKey, index, isFromLoop = false) {
+        const product = dataMap[categoryKey][index];
+        if (!product || !product.link) return;
+
+        window.open(product.link, '_blank');
+
+        const popup = document.getElementById('price-check-popup');
+        const title = document.getElementById('popup-title');
+        const currentPriceEl = document.getElementById('popup-current-price');
+        const newPriceInput = document.getElementById('popup-new-price');
+        
+        title.textContent = `Chequeando: ${product.name}`;
+        currentPriceEl.textContent = `$${(product.price || 0).toLocaleString('es-AR')}`;
+        
+        newPriceInput.value = '';
+        newPriceInput.dataset.categoryKey = categoryKey;
+        newPriceInput.dataset.index = index;
+        newPriceInput.dataset.isFromLoop = isFromLoop; 
+
+        popup.classList.remove('hidden');
+        newPriceInput.focus();
+    }
+
+    function closePriceCheckPopup() {
+        if (isLoopRunning) {
+            pausePriceCheckLoop();
+        }
+        const popup = document.getElementById('price-check-popup');
+        popup.classList.add('hidden');
+    }
+
+    function handleManualPriceCheck(event) {
+        const input = event.target;
+
+        if (event.key === 'Backspace' && input.value.trim() === '') {
+            event.preventDefault(); // Prevent browser back navigation
+            const { categoryKey, index, isFromLoop } = input.dataset;
+            showToast('Producto omitido.', 'info');
+            const popup = document.getElementById('price-check-popup');
+            popup.classList.add('hidden');
+
+            if (isFromLoop === 'true') {
+                currentQueueIndex++;
+                sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                setTimeout(processNextInQueue, 1000);
+            }
+            return;
+        }
+
+        if (event.key !== 'Enter') return;
+
+        const { categoryKey, index, isFromLoop } = input.dataset;
+        const product = dataMap[categoryKey][index];
+        const oldPrice = product.price || 0;
+        let newPrice;
+
+        if (!input.value.trim()) {
+            newPrice = oldPrice;
+        } else {
+            const rawValue = input.value.replace(/[^\d]/g, '');
+            newPrice = parseInt(rawValue, 10);
+        }
+
+        if (isNaN(newPrice) || !product) {
+            showToast('Por favor, ingrese un precio válido.', 'error');
+            return;
+        }
+
+        updateProduct(categoryKey, index, 'price', newPrice); 
+        
+        const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
+        const priceInputInTable = tableRow.querySelector('.price-cell input');
+        if(priceInputInTable) {
+            priceInputInTable.value = newPrice.toLocaleString('es-AR');
+        }
+        
+        applyPriceChangeVisuals(tableRow, oldPrice, newPrice);
+
+        showToast(`Precio de "${product.name}" actualizado a $${newPrice.toLocaleString('es-AR')}.`);
+        
+        const popup = document.getElementById('price-check-popup');
+        popup.classList.add('hidden'); 
+
+        if (isFromLoop === 'true') {
+            currentQueueIndex++;
+            sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+            setTimeout(processNextInQueue, 1000); 
+        }
+    }
+    
+    // --- Price Chart Popup Logic ---
+    function openPriceChartPopup(categoryKey, index) {
+        const product = dataMap[categoryKey][index];
+        if (!product || !product.prices || product.prices.length === 0) {
+            showToast('No hay historial de precios para este producto.', 'error');
+            return;
+        }
+
+        const popup = document.getElementById('price-chart-popup');
+        const title = document.getElementById('chart-popup-title');
+        title.textContent = `Historial de: ${product.name}`;
+
+        const historicalData = [...product.prices]
+            .filter(p => p.value > 0)
+            .reverse();
+
+        const labels = historicalData.map(p => formatTimestamp(p.date).split(',')[0]);
+        const data = historicalData.map(p => p.value);
+
+        popup.classList.remove('hidden');
+        lucide.createIcons();
+
+        const ctx = document.getElementById('price-chart-canvas').getContext('2d');
+        
+        if (priceChartInstance) {
+            priceChartInstance.destroy();
+        }
+
+        priceChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Precio',
+                    data: data,
+                    borderColor: 'rgba(139, 92, 246, 1)',
+                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.1,
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        ticks: { color: '#e5e7eb' },
+                        grid: { color: 'rgba(55, 65, 81, 0.5)' }
+                    },
+                    x: {
+                         ticks: { color: '#e5e7eb' },
+                         grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = 'Precio: ';
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function closePriceChartPopup() {
+        const popup = document.getElementById('price-chart-popup');
+        popup.classList.add('hidden');
+        if (priceChartInstance) {
+            priceChartInstance.destroy();
+            priceChartInstance = null;
+        }
+    }
+    
+    // --- Filter Popup Logic ---
+    function openFilterPopup() {
+        document.getElementById('filter-popup').classList.remove('hidden');
+        renderColorFilterOptions();
+        lucide.createIcons();
+    }
+
+    function closeFilterPopup() {
+        document.getElementById('filter-popup').classList.add('hidden');
+    }
+
+    function renderColorFilterOptions() {
+        const container = document.getElementById('color-filter-options');
+        const options = [
+            { key: 'increased', label: 'Precio Subió', color: 'rgba(139, 92, 246, 0.3)' },
+            { key: 'decreased', label: 'Precio Bajó', color: 'rgba(34, 197, 94, 0.3)' },
+            { key: 'same', label: 'Precio Igual (Revisado)', color: 'rgba(2, 132, 199, 0.3)' },
+            { key: 'default', label: 'Sin Cambios', color: 'transparent' }
+        ];
+
+        container.innerHTML = options.map(opt => `
+            <label class="filter-checkbox-label">
+                <input type="checkbox" onchange="toggleColorFilter('${opt.key}')" ${filterState[opt.key] ? 'checked' : ''}>
+                <span class="color-swatch" style="background-color: ${opt.color};"></span>
+                <span class="text-gray-300">${opt.label}</span>
+            </label>
+        `).join('');
+    }
+
+    function toggleColorFilter(key) {
+        filterState[key] = !filterState[key];
+        applyColorFilter();
+    }
+
+    function applyColorFilter() {
+        document.querySelectorAll('tr[id^="row-"]').forEach(row => {
+            const status = row.dataset.priceStatus || 'default';
+            row.style.display = filterState[status] ? '' : 'none';
+        });
+
+        document.querySelectorAll('.category-table-container').forEach(container => {
+            const visibleProductRows = container.querySelectorAll('tbody tr[id^="row-"]:not([style*="display: none"])');
+            container.style.display = visibleProductRows.length === 0 ? 'none' : 'block';
+        });
+    }
+
+    function colorAllRowsByPriceChange() {
+        document.querySelectorAll('tr[id^="row-"]').forEach(row => {
+            const [_, categoryKey, indexStr] = row.id.split('-');
+            const index = parseInt(indexStr, 10);
+            const product = dataMap[categoryKey][index];
+
+            if (product && product.prices && product.prices.length > 1) {
+                const newPrice = product.prices[0].value;
+                const oldPrice = product.prices[1].value;
+                applyPriceChangeVisuals(row, oldPrice, newPrice);
+            } else {
+                row.style.backgroundColor = '';
+                row.dataset.priceStatus = 'default';
+                const priceWrapper = row.querySelector('.price-wrapper');
+                if (priceWrapper) {
+                     const existingIndicator = priceWrapper.querySelector('.previous-price-indicator');
+                    if (existingIndicator) existingIndicator.remove();
+                }
+            }
+        });
+        applyColorFilter();
+        closeFilterPopup();
+        showToast('Coloreado de filas aplicado.', 'success');
+    }
+
+    // --- Price Check Loop Logic (REFACTORED) ---
+
+    function initializePriceCheckQueue() {
+        priceCheckQueue = [];
+        CATEGORY_NAV_LIST.forEach(category => {
+            const categoryKey = category.key;
+            if (!categoryKey.includes('Options')) return;
+            
+            (dataMap[categoryKey] || []).forEach((product, index) => {
+                if (product.visible && product.link) {
+                    priceCheckQueue.push({ categoryKey, index, productId: product.id });
+                }
+            });
+        });
+    }
+
+    function startSinglePriceCheckAndContinue(categoryKey, index) {
+        const product = dataMap[categoryKey][index];
+        const startIndex = priceCheckQueue.findIndex(item => item.productId === product.id);
+
+        if (startIndex === -1) {
+            showToast('Este producto no puede iniciar un chequeo en lote (puede no ser visible o no tener link).', 'error');
+            openPriceCheckPopup(categoryKey, index, false); // Open for single check only
+            return;
+        }
+
+        currentQueueIndex = startIndex;
+        isLoopRunning = true;
+        
+        processNextInQueue();
+    }
+
+    function togglePriceCheckLoop() {
+        if (isLoopRunning) {
+            pausePriceCheckLoop();
+        } else {
+            startPriceCheckLoop();
+        }
+    }
+
+    function startPriceCheckLoop() {
+        isLoopRunning = true;
+        updateLoopButtonUI(true);
+
+        currentQueueIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
+        
+        if (currentQueueIndex >= priceCheckQueue.length) {
+            currentQueueIndex = 0;
+            sessionStorage.setItem('priceCheckQueueIndex', '0');
+        }
+        
+        if (priceCheckQueue.length === 0) {
+            showToast('No hay productos para chequear (visibles y con link).', 'error');
+            resetPriceCheckLoop();
+            return;
+        }
+
+        processNextInQueue();
+    }
+
+    function pausePriceCheckLoop() {
+        isLoopRunning = false;
+        sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+        updateLoopButtonUI(false);
+        showToast('Chequeo en lote pausado.');
+    }
+    
+    function resetPriceCheckLoop() {
+        isLoopRunning = false;
+        priceCheckQueue = [];
+        currentQueueIndex = 0;
+        sessionStorage.removeItem('priceCheckQueueIndex');
+        initializePriceCheckQueue(); // Rebuild the queue on reset
+        updateLoopButtonUI(false);
+    }
+
+    function processNextInQueue() {
+        if (!isLoopRunning) return;
+
+        if (currentQueueIndex >= priceCheckQueue.length) {
+            showToast('¡Chequeo en lote completado!', 'success');
+            resetPriceCheckLoop();
+            return;
+        }
+
+        const twoHoursInMs = 2 * 60 * 60 * 1000;
+        const twoHoursAgo = new Date(Date.now() - twoHoursInMs);
+        
+        let itemToCheck = null;
+        while (currentQueueIndex < priceCheckQueue.length) {
+            const potentialItem = priceCheckQueue[currentQueueIndex];
+            const product = dataMap[potentialItem.categoryKey][potentialItem.index];
+            
+            if (!product || product.id !== potentialItem.productId) {
+                 currentQueueIndex++;
+                 continue;
+            }
+
+            if (!product.lastUpd || new Date(product.lastUpd) < twoHoursAgo) {
+                itemToCheck = potentialItem;
+                break;
+            }
+            
+            currentQueueIndex++;
+        }
+
+        sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+        updateLoopButtonUI(true, `(${currentQueueIndex}/${priceCheckQueue.length})`);
+
+        if (itemToCheck) {
+            scrollToComponentRow(itemToCheck.categoryKey, itemToCheck.index);
+            setTimeout(() => {
+                openPriceCheckPopup(itemToCheck.categoryKey, itemToCheck.index, true);
+            }, 200);
+        } else {
+            showToast('¡Chequeo en lote completado! (No hay más productos que necesiten revisión)', 'success');
+            resetPriceCheckLoop();
+        }
+    }
+    
+    function updateLoopButtonUI(isRunning, progressText = '') {
+        const btn = document.getElementById('price-check-loop-btn');
+        const btnText = document.getElementById('price-check-loop-btn-text');
+        const icon = btn.querySelector('.lucide-icon');
+
+        if (isRunning) {
+            btnText.textContent = `Pausar Chequeo ${progressText}`;
+            icon.setAttribute('data-lucide', 'pause-circle');
+        } else {
+            const savedIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
+            if (savedIndex > 0 && savedIndex < priceCheckQueue.length) {
+                 btnText.textContent = `Continuar Chequeo (${savedIndex}/${priceCheckQueue.length})`;
+            } else {
+                 btnText.textContent = 'Chequeo en Lote';
+            }
+            icon.setAttribute('data-lucide', 'play-circle');
+        }
+        lucide.createIcons({nodes: [icon]});
     }
 
     // --- Code Export ---
 
     function generateCode() {
-        updateAllBaseTotals(); 
-        updateAllBundleTotals();
-        function getSlugFromImageUrl(imageUrl) {
-            if (!imageUrl) return '';
-            const parts = imageUrl.split('/');
-            const filename = parts[parts.length - 1] || '';
-            return filename.replace(/\.(webp|png|jpg|jpeg|gif)$/i, '');
-        }
-
-        const exportData = {};
-        for (const mapKey in dataMap) {
-             if (mapKey === 'baseOptions') {
-                exportData[mapKey] = dataMap[mapKey].map(b => ({
-                    id: b.id,
-                    name: b.name,
-                    description: b.description,
-                    cpu: b.cpu,
-                    mother: b.mother,
-                    ram: b.ram,
-                    cantRam: b.cantRam,
-                    total: b.total || 0,
-                    totalram: b.totalram || 0,
-                    visible: b.visible !== undefined ? b.visible : 1
-                }));
-                continue;
-             }
-             if (mapKey === 'bundleOptions') {
-                exportData[mapKey] = dataMap[mapKey].map(b => ({
-                    id: b.id,
-                    name: b.name,
-                    description: b.description,
-                    components: b.components || [],
-                    total: b.total || 0,
-                    visible: b.visible !== undefined ? b.visible : 1
-                }));
-                continue;
-             }
-             exportData[mapKey] = dataMap[mapKey].map(p => {
-                const { id, name, price, description, image_url, link, visible, cpu, ram, ssd, total, itemID } = p;
-                let orderedProduct = { id, name, price };
-
-                if (mapKey === 'miniPcOptions') {
-                    orderedProduct = { ...orderedProduct, cpu, ram, ssd };
-                } else if (mapKey === 'towersOptions') {
-                    orderedProduct.slug = getSlugFromImageUrl(image_url);
-                } else if (mapKey === 'ramOptions') {
-                    orderedProduct.total = total || 0;
-                    orderedProduct.description = description;
-                } else {
-                    if (description !== undefined) {
-                        orderedProduct.description = description;
-                    }
-                }
-
-                orderedProduct.image_url = image_url;
-                orderedProduct.link = link;
-                orderedProduct.itemID = itemID || null;
-                orderedProduct.visible = visible !== undefined ? p.visible : 1;
-                
-                return orderedProduct;
-            });
+        const exportData = JSON.parse(JSON.stringify(dataMap));
+        for (const mapKey in exportData) {
+            if (mapKey.includes('Options')) {
+                exportData[mapKey].forEach(p => {
+                    p.price = p.prices && p.prices.length > 0 ? p.prices[0].value : 0;
+                    delete p.prices;
+                    delete p.linksAlt;
+                });
+            }
         }
         
         const code = JSON.stringify(exportData, null, 2);
@@ -1466,18 +2230,45 @@
         generateCode();
         outputTextArea.select();
         document.execCommand('copy');
-        showToast('¡Código copiado al portapapeles!');
+        showToast('¡Código Actual copiado al portapapeles!');
     }
+
+    function generateHistoryCode() {
+        const exportData = JSON.parse(JSON.stringify(dataMap));
+        for (const mapKey in exportData) {
+             if (mapKey.includes('Options')) {
+                exportData[mapKey].forEach(p => {
+                    delete p.price;
+                    delete p.lastUpd;
+                });
+            }
+        }
+
+        const code = JSON.stringify(exportData, null, 2);
+        document.getElementById('output-code').value = code;
+        return code;
+    }
+
+    function copyHistoryCode() {
+        const outputTextArea = document.getElementById('output-code');
+        generateHistoryCode();
+        outputTextArea.select();
+        document.execCommand('copy');
+        showToast('¡Historial de precios copiado al portapapeles!');
+    }
+
 
     function resetSessionAndReload() {
         sessionStorage.removeItem('productAdminData');
+        sessionStorage.removeItem('priceCheckQueueIndex'); 
         location.reload();
     }
 
-    async function loadDataFromClipboard() {
+    async function reloadDataFromJson() {
         try {
-            const text = await navigator.clipboard.readText();
-            const dataToLoad = JSON.parse(text);
+            const response = await fetch('productsH.json?cache_bust=' + new Date().getTime());
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const dataToLoad = await response.json();
             
             for (const key in dataMap) {
                 if (dataToLoad.hasOwnProperty(key)) {
@@ -1489,21 +2280,54 @@
             
             sanitizeAndAssignDefaults();
             updateAllBaseTotals();
-            updateAllBundleTotals();
             renderBasesSection();
-            renderBundlesSection();
             renderOverviewTables();
             saveDataToSessionStorage();
-            showToast('Datos cargados desde el portapapeles.');
+            initializePriceCheckQueue();
+            showToast('Datos recargados desde productsH.json');
 
         } catch (error) {
-            console.error("Error al cargar desde el portapapeles:", error);
-            showToast('Error: El contenido del portapapeles no es un JSON válido.', 'error');
+            console.error("Error reloading from JSON:", error);
+            showToast('Error al recargar el archivo productsH.json.', 'error');
         }
     }
     
     // --- Page Initialization ---
     document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('click', (event) => {
+            if (openLinkManagerId) {
+                const manager = document.getElementById(openLinkManagerId);
+                // The event target might not be in the DOM anymore if the table was re-rendered.
+                // A simple check to see if the manager exists is enough.
+                if (manager && !manager.contains(event.target) && !event.target.closest(`button[onclick*="toggleLinkManager"]`)) {
+                    manager.classList.add('hidden');
+                    openLinkManagerId = null;
+                }
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                if (!document.getElementById('price-check-popup').classList.contains('hidden')) {
+                    closePriceCheckPopup();
+                }
+                if (!document.getElementById('price-chart-popup').classList.contains('hidden')) {
+                    closePriceChartPopup();
+                }
+                if (!document.getElementById('filter-popup').classList.contains('hidden')) {
+                    closeFilterPopup();
+                }
+                 if (openLinkManagerId) {
+                    const manager = document.getElementById(openLinkManagerId);
+                    if (manager) manager.classList.add('hidden');
+                    openLinkManagerId = null;
+                }
+                if (!document.getElementById('gemini-analysis-popup').classList.contains('hidden')) {
+                    closeGeminiPopup();
+                }
+            }
+        });
+
         let dataToLoad = null;
         const storedData = loadDataFromSessionStorage();
 
@@ -1511,9 +2335,14 @@
             dataToLoad = storedData;
             showToast('¡Datos restaurados de la sesión anterior!', 'success');
         } else {
-            // Carga inicial vacía si no hay sesión. 
-            // La carga de datos ahora es manual con el botón "Pegar JSON".
-            console.log("Iniciando con datos vacíos. Usa 'Pegar JSON' para cargar datos.");
+            try {
+                const response = await fetch('productsH.json?cache_bust=' + new Date().getTime());
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                dataToLoad = await response.json();
+            } catch (error) {
+                console.error('Error loading productsH.json:', error);
+                showToast('No se pudo cargar productsH.json. Se iniciará con datos vacíos.', 'error');
+            }
         }
 
         if (dataToLoad) {
@@ -1526,17 +2355,21 @@
         
         sanitizeAndAssignDefaults();
         updateAllBaseTotals();
-        updateAllBundleTotals();
         renderCategoryNavbar();
         renderBasesSection();
-        renderBundlesSection();
         renderOverviewTables();
         saveDataToSessionStorage();
         lucide.createIcons();
         
+        initializePriceCheckQueue();
+        const savedIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
+        if (savedIndex > 0 && savedIndex < priceCheckQueue.length) {
+            currentQueueIndex = savedIndex;
+            updateLoopButtonUI(false); 
+        }
+        
         window.addEventListener('resize', updateNavbarSpacer);
 
-        // Accordion Logic
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const content = header.nextElementSibling;
@@ -1550,3 +2383,4 @@
 </script>
 </body>
 </html>
+

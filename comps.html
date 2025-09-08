@@ -513,7 +513,7 @@
                     </div>
                     <div class="flex flex-col items-end">
                          <label for="popup-new-price" class="text-sm text-gray-400 mb-1">Nuevo Precio (Enter)</label>
-                         <input type="text" id="popup-new-price" placeholder="Ingresar..." oninput="formatPriceInput(this)" onkeydown="handleManualPriceCheck(event)" class="w-40">
+                         <input type="text" id="popup-new-price" placeholder="Ingresar..." oninput="formatPriceInput(this)" onkeydown="handleManualPriceCheck(event)" onpaste="handlePastePrice(event)" class="w-40">
                     </div>
                 </div>
             </div>
@@ -565,6 +565,29 @@
                     <div id="color-filter-options" class="space-y-2">
                         <!-- Checkboxes will be generated here -->
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gemini AI Analysis Popup -->
+    <div id="gemini-analysis-popup" class="hidden">
+        <div class="popup-content" style="max-width: 600px;">
+            <div class="popup-header">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <span class="text-purple-400">✨</span> Análisis de la Base con IA
+                </h3>
+                <button onclick="closeGeminiPopup()" class="text-gray-400 hover:text-white">
+                    <span class="lucide-icon w-6 h-6" data-lucide="x"></span>
+                </button>
+            </div>
+            <div id="gemini-popup-body" class="popup-body">
+                <div id="gemini-loading" class="text-center py-8 hidden">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-purple-400"></div>
+                    <p class="mt-4 text-gray-300">Analizando configuración y buscando recomendaciones...</p>
+                </div>
+                <div id="gemini-result" class="text-gray-300 space-y-4 max-w-none">
+                    <!-- Content will be injected here -->
                 </div>
             </div>
         </div>
@@ -625,6 +648,135 @@
         same: true,
         default: true
     };
+    
+    // --- Gemini API Functions ---
+    async function callGeminiAPI(prompt) {
+        const apiKey = ""; // Provided by the environment
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+        const payload = {
+            contents: [{ parts: [{ text: prompt }] }],
+        };
+
+        let response;
+        let attempts = 0;
+        const maxAttempts = 5;
+        let delay = 1000;
+
+        while (attempts < maxAttempts) {
+            try {
+                response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+                    if (text) {
+                        return text;
+                    } else {
+                        throw new Error('Empty or unexpected API response format.');
+                    }
+                } else if (response.status === 429 || response.status >= 500) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    delay *= 2;
+                    attempts++;
+                } else {
+                    const errorResult = await response.json();
+                    throw new Error(`API Error: ${errorResult.error?.message || response.statusText}`);
+                }
+            } catch (error) {
+                if (attempts >= maxAttempts - 1) {
+                    throw error;
+                }
+                await new Promise(resolve => setTimeout(resolve, delay));
+                delay *= 2;
+                attempts++;
+            }
+        }
+        throw new Error('Could not get a response from the API after several attempts.');
+    }
+
+    function openGeminiPopup() {
+        document.getElementById('gemini-analysis-popup').classList.remove('hidden');
+    }
+
+    function closeGeminiPopup() {
+        document.getElementById('gemini-analysis-popup').classList.add('hidden');
+    }
+
+    async function analyzeSelectedBase() {
+        const base = dataMap.baseOptions[selectedBaseIndex];
+        if (!base) return;
+
+        const cpu = dataMap.cpuOptions.find(c => c.id == base.cpu);
+        const mother = dataMap.motherboardOptions.find(m => m.id == base.mother);
+        const ram = dataMap.ramOptions.find(r => r.id == base.ram);
+
+        if (!cpu || !mother || !ram) {
+            showToast('Por favor, seleccione CPU, Mother y RAM para la base.', 'error');
+            return;
+        }
+        
+        openGeminiPopup();
+        const loadingDiv = document.getElementById('gemini-loading');
+        const resultDiv = document.getElementById('gemini-result');
+        loadingDiv.classList.remove('hidden');
+        resultDiv.classList.add('hidden');
+        resultDiv.innerHTML = '';
+
+        const prompt = `Actúa como un experto en armado de PCs para el mercado argentino. Analiza esta "base" de componentes: CPU: "${cpu.name}", Motherboard: "${mother.name}", RAM: "${ram.name}" (Cantidad: ${base.cantRam}).\n\nResponde en el siguiente formato:\n\n**Análisis de la Base:**\n[Describe en 2-3 frases para qué tipo de usuario y uso es ideal esta configuración (ej: gaming 1080p, edición de video, etc.) y cuáles son sus puntos fuertes.]\n\n**Recomendación de GPU:**\n[Recomienda UNA GPU específica que haga un buen equilibrio con esta base, explicando en una frase por qué es una buena elección.]\n\n**Recomendación de Fuente (PSU):**\n[Recomienda UNA potencia y certificación de fuente (ej: 650W 80+ Bronze) explicando en una frase por qué es adecuada.]`;
+
+        try {
+            const responseText = await callGeminiAPI(prompt);
+            let formattedHtml = responseText
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+            resultDiv.innerHTML = formattedHtml;
+        } catch (error) {
+            console.error('Error analyzing base:', error);
+            resultDiv.innerHTML = `<p class="text-red-400">Hubo un error al contactar a la IA. Por favor, intente de nuevo. Error: ${error.message}</p>`;
+            showToast('Error al analizar la base.', 'error');
+        } finally {
+            loadingDiv.classList.add('hidden');
+            resultDiv.classList.remove('hidden');
+        }
+    }
+    
+    async function generateDescription(categoryKey, index, buttonElement) {
+        const product = dataMap[categoryKey][index];
+        if (!product || !product.name) {
+            showToast('El producto necesita un nombre para generar una descripción.', 'error');
+            return;
+        }
+        
+        const originalIcon = buttonElement.innerHTML;
+        buttonElement.innerHTML = `<div class="w-4 h-4 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></div>`;
+        buttonElement.disabled = true;
+
+        const prompt = `Genera una descripción de producto concisa y atractiva (máximo 2-3 frases) para el siguiente componente de PC: "${product.name}". Enfócate en el público gamer y creador de contenido de Argentina. Destaca su característica principal.`;
+
+        try {
+            const responseText = await callGeminiAPI(prompt);
+            const cleanText = responseText.replace(/[*_]/g, ''); 
+            
+            const textarea = document.querySelector(`#row-${categoryKey}-${index} textarea`);
+            if(textarea) {
+                textarea.value = cleanText;
+                updateProduct(categoryKey, index, 'description', cleanText);
+            }
+            showToast('Descripción generada con IA.');
+        } catch (error) {
+            console.error('Error generating description:', error);
+            showToast('Error al generar la descripción.', 'error');
+        } finally {
+            buttonElement.innerHTML = originalIcon;
+            buttonElement.disabled = false;
+        }
+    }
+
 
     // --- Category Navigation ---
     
@@ -1277,6 +1429,11 @@
                     </label>
                 </div>
             </div>
+            <div class="mt-6">
+                <button onclick="analyzeSelectedBase()" class="btn btn-primary w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700">
+                    <span class="lucide-icon mr-2" data-lucide="sparkles"></span> ✨ Analizar Base con IA
+                </button>
+            </div>
         `;
         lucide.createIcons();
     }
@@ -1476,7 +1633,12 @@
                         } else if (categoryKey === 'ramOptions') {
                              customColumns = `
                                 <td class="px-2 py-2 hidden md:table-cell">
-                                    <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
+                                    <div class="relative">
+                                        <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none pr-8">${product.description || ''}</textarea>
+                                        <button onclick="generateDescription('${categoryKey}', ${index}, this)" class="absolute bottom-2 right-2 text-purple-400 hover:text-purple-300 p-1 rounded-full bg-gray-900/50 hover:bg-gray-900" title="✨ Generar descripción con IA">
+                                            <span class="lucide-icon w-4 h-4" data-lucide="sparkles"></span>
+                                        </button>
+                                    </div>
                                 </td>
                                 <td class="px-2 py-2 hidden md:table-cell">
                                     <input type="number" value="${product.total || 0}" oninput="updateProduct('${categoryKey}', ${index}, 'total', parseInt(this.value, 10) || 0)" class="w-full">
@@ -1485,7 +1647,12 @@
                         } else {
                             customColumns = `
                             <td class="px-2 py-2 hidden md:table-cell">
-                                <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
+                                <div class="relative">
+                                    <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none pr-8">${product.description || ''}</textarea>
+                                    <button onclick="generateDescription('${categoryKey}', ${index}, this)" class="absolute bottom-2 right-2 text-purple-400 hover:text-purple-300 p-1 rounded-full bg-gray-900/50 hover:bg-gray-900" title="✨ Generar descripción con IA">
+                                        <span class="lucide-icon w-4 h-4" data-lucide="sparkles"></span>
+                                    </button>
+                                </div>
                             </td>`;
                         }
 
@@ -1696,7 +1863,7 @@
             if (isFromLoop === 'true') {
                 currentQueueIndex++;
                 sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
-                setTimeout(processNextInQueue, 1000);
+                processNextInQueue();
             }
             return;
         }
@@ -1738,7 +1905,24 @@
         if (isFromLoop === 'true') {
             currentQueueIndex++;
             sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
-            setTimeout(processNextInQueue, 1000); 
+            processNextInQueue();
+        }
+    }
+    
+    function handlePastePrice(event) {
+        event.preventDefault();
+        const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+        const numericValue = pastedText.replace(/[^\d]/g, '');
+        
+        if (numericValue) {
+            const input = event.target;
+            input.value = numericValue;
+            
+            const fakeEvent = {
+                key: 'Enter',
+                target: input
+            };
+            handleManualPriceCheck(fakeEvent);
         }
     }
     
@@ -2151,6 +2335,9 @@
                     if (manager) manager.classList.add('hidden');
                     openLinkManagerId = null;
                 }
+                if (!document.getElementById('gemini-analysis-popup').classList.contains('hidden')) {
+                    closeGeminiPopup();
+                }
             }
         });
 
@@ -2210,4 +2397,4 @@
 </body>
 </html>
 
- 
+
