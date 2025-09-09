@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de Flyers Digitales</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Saira:wght@400;700;900&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-link: #60a5fa;
+            --brand-green-333: #42d232;
+            --brand-green-222: #95ef81;
+            --brand-blueish: #0098e9;
+            --brand-orange: #fb923c;
+            --brand-violet: #8b5cf6;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #e5e7eb;
+            overflow: hidden;
+            display: flex;
+        }
+        
+        .font-saira { font-family: 'Saira', sans-serif; }
+        .font-vt323 { font-family: 'VT323', monospace; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+
+        .section-card-style {
+            background-color: rgba(31, 41, 55, 0.9);
+            border: 1px solid rgba(75, 85, 99, 0.5);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 1.5rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(to right, var(--brand-green-333), var(--brand-green-222));
+            border: 2px solid var(--brand-green-333);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(to right, var(--brand-green-222), var(--brand-green-333));
+            transform: scale(1.05);
+        }
+
+        #herramientas {
+            width: 30%;
+            min-width: 350px;
+            max-height: 100vh;
+            overflow-y: auto;
+            padding: 1rem;
+            flex-shrink: 0;
+        }
+
+        #flyer-section-container {
+            flex-grow: 1;
+            max-height: 100vh;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        /* Estilo para las scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #4b5563;
+            border-radius: 4px;
+            border: 2px solid #1f2937;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #6b7280;
+        }
+
+        /* Contenedor estético alrededor del flyer */
+        #flyer-border-wrapper {
+            position: relative;
+            padding: 2rem; /* El "margen" estético */
+            background-color: #1f2937;
+            border-radius: 2rem;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+            transform-origin: top center;
+            transform: scale(0.5);
+            transition: transform 0.2s ease-in-out;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 1080px;
+            height: 1080px;
+        }
+        
+        /* Estilo base para el flyer */
+        #flyer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            background-color: #13161b;
+        }
+        
+        .flyer-template.droppable {
+            border: 2px dashed var(--brand-green-333);
+        }
+
+        .flyer-item {
+            position: absolute;
+            cursor: grab;
+            transition: transform 0.2s ease;
+        }
+        
+        .flyer-item.dragging {
+            cursor: grabbing;
+            z-index: 100;
+        }
+        
+        .flyer-item.active {
+            border: 2px dashed var(--brand-blueish);
+            box-shadow: 0 0 10px rgba(0, 152, 233, 0.5);
+        }
+
+        .flyer-item .item-info {
+            position: absolute;
+            bottom: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            border-radius: 0.25rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .flyer-item:hover .item-info {
+            opacity: 1;
+        }
+
+        /* Estilos de los selectores */
+        .selector-item {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            border-radius: 0.5rem;
+            border: 2px solid transparent;
+        }
+
+        .selector-item.selected {
+            border-color: var(--brand-green-333);
+            background-color: rgba(66, 210, 50, 0.1);
+        }
+        
+        .selector-item:hover {
+            transform: scale(1.05);
+            background-color: rgba(66, 210, 50, 0.05);
+        }
+
+        /* Estilo para la tabla de resumen dentro del flyer */
+        #component-summary-table-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #component-summary-table-container .resize-handle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 152, 233, 0.7);
+            border-radius: 50%;
+            bottom: -10px;
+            right: -10px;
+            cursor: nwse-resize;
+            z-index: 101;
+        }
+        
+        /* Estilo para el bloque de precio final */
+        #final-price-value-container {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #e5e7eb;
+            white-space: nowrap;
+            z-index: 9999;
+        }
+
+        #final-price-info-container {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #e5e7eb;
+            white-space: nowrap;
+            z-index: 9998;
+        }
+
+        /* Estilos para el precio final, replicados de index.html */
+        .lucas-price {
+            font-family: 'Saira', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            font-weight: bold;
+            color: #22d3ee;
+            text-shadow: 2px 2px 55px rgba(0, 0, 0, 0.5), 0 0 20px rgba(118, 18, 143, 0.801), 0 0 55px rgba(34, 211, 238, 0.2), 0 0 25px rgba(34, 211, 238, 0.2);
+            animation: price-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes price-glow {
+            0%, 100% {
+                text-shadow: 2px 2px 55px rgba(0, 0, 0, 0.5), 0 0 20px rgba(118, 18, 143, 0.801), 0 0 55px rgba(34, 211, 238, 0.2), 0 0 25px rgba(34, 211, 238, 0.2);
+            }
+            50% {
+                text-shadow: 2px 2px 55px rgba(0, 0, 0, 0.5), 0 0 12px rgba(34, 211, 238, 0.35), 0 0 25px rgba(34, 211, 238, 0.25);
+            }
+        }
+        
+        /* Estilo para el texto "La Costa" con sombra */
+        .la-costa-shadow {
+            text-shadow: 2px 2px 3px black;
+        }
+        
+        .delivery-info {
+            color: var(--brand-green-333);
+            font-weight: bold;
+            text-shadow: 2px 2px 3px black;
+        }
+
+        .delivery-city {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .payment-info {
+            color: #9ca3af;
+            text-shadow: 2px 2px 3px black;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .custom-select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .custom-select-wrapper::after {
+            content: '\f078'; /* Chevron down icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            pointer-events: none;
+        }
+
+        .custom-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 100%;
+            background-color: #374151;
+            border: 1px solid #4b5563;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        /* Estilos para el Modal de administración */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+
+        .modal-content {
+            background-color: #1f2937;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #4b5563;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .template-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #374151;
+        }
+
+        .template-item:last-child {
+            border-bottom: none;
+        }
+
+        .template-name {
+            cursor: pointer;
+            font-weight: bold;
+            color: #fff;
+            transition: color 0.2s;
+        }
+
+        .template-name:hover {
+            color: #8b5cf6;
+        }
+        
+        .component-label, .component-price {
+            position: absolute;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .component-label {
+            color: white;
+        }
+        
+        .component-price {
+            color: var(--brand-green-333);
+        }
+        
+        .category-row {
+            padding: 0.5rem;
+            background-color: rgba(31, 41, 55, 0.5);
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--brand-violet);
+        }
+
+        .component-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid rgba(75, 85, 99, 0.2);
+        }
+        
+        .accordion-header {
+            cursor: pointer;
+            padding: 1rem;
+            background-color: rgba(55, 65, 81, 0.5);
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: rgba(75, 85, 99, 0.7);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            padding: 0 1rem;
+        }
+
+        .accordion-content.open {
+            max-height: 1000px;
+            padding: 1rem;
+        }
+        
+        /* New styles for size selector */
+        #flyer-size-selector {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: #374151;
+            border: 1px solid #4b5563;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #flyer-size-selector-wrapper {
+            position: relative;
+        }
+        #flyer-size-selector-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mx-auto max-w-7xl flex h-screen">
+        <!-- Columna de Herramientas -->
+        <aside id="herramientas" class="section-card-style p-6 flex-shrink-0">
+            <h2 class="text-3xl font-bold mb-6 text-center text-white font-saira">Herramientas</h2>
+
+            <!-- Selector de Tamaño de Flyer -->
+            <div id="flyer-size-selector-wrapper" class="mb-4">
+                 <select id="flyer-size-selector" class="w-full custom-select">
+                    <option value="1080x1080">1080x1080 (Cuadrado)</option>
+                    <option value="1080x1350">1080x1350 (Vertical)</option>
+                    <option value="1080x1920">1080x1920 (Historia/Reel)</option>
+                </select>
+            </div>
+            
+            <hr class="border-gray-700 my-8">
+
+            <!-- Selector de Categoría de Componentes -->
+            <div id="category-accordion" class="accordion-section">
+                <div class="accordion-header flex justify-between items-center bg-gray-800 rounded-md p-4 mb-2 cursor-pointer open">
+                    <h3 class="text-xl font-bold text-violet-400 font-saira">1. Selecciona Categoría</h3>
+                    <i class="fas fa-chevron-down text-violet-400 transform transition-transform"></i>
+                </div>
+                <div class="accordion-content open">
+                    <div class="custom-select-wrapper">
+                        <select id="category-selector" class="custom-select">
+                            <!-- Options will be populated by JS -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 my-8">
+
+            <!-- Listado de Componentes (Imágenes) -->
+            <div id="drag-drop-accordion" class="accordion-section">
+                <div class="accordion-header flex justify-between items-center bg-gray-800 rounded-md p-4 mb-2 cursor-pointer">
+                    <h3 class="text-xl font-bold text-green-400 font-saira">2. Arrastra Elementos</h3>
+                    <i class="fas fa-chevron-down text-green-400 transform transition-transform"></i>
+                </div>
+                <div class="accordion-content">
+                    <div id="image-selector" class="grid grid-cols-3 gap-4">
+                        <!-- Componentes filtrados se insertarán aquí -->
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-700 my-8">
+
+            <!-- Propiedades de Elemento Seleccionado -->
+            <div id="properties-accordion" class="accordion-section hidden">
+                <div class="accordion-header flex justify-between items-center bg-gray-800 rounded-md p-4 mb-2 cursor-pointer">
+                    <h3 class="text-xl font-bold text-orange-400 font-saira">3. Propiedades</h3>
+                    <i class="fas fa-chevron-down text-orange-400 transform transition-transform"></i>
+                </div>
+                <div id="properties-panel" class="accordion-content p-4">
+                    <div class="space-y-4">
+                         <div>
+                            <label for="element-name" class="block text-sm font-medium">Elemento:</label>
+                            <input type="text" id="element-name" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" disabled>
+                        </div>
+                        <div>
+                            <label for="pos-x" class="block text-sm font-medium">Posición X:</label>
+                            <input type="number" id="pos-x" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
+                        </div>
+                        <div>
+                            <label for="pos-y" class="block text-sm font-medium">Posición Y:</label>
+                            <input type="number" id="pos-y" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
+                        </div>
+                        <div id="scale-container">
+                            <label for="scale" class="block text-sm font-medium">Tamaño (0.1 - 8):</label>
+                            <input type="number" step="0.1" min="0.1" max="8" id="scale" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
+                        </div>
+                         <div id="width-container" class="hidden">
+                            <label for="width" class="block text-sm font-medium">Ancho del Contenedor (%):</label>
+                            <input type="number" step="1" min="10" max="100" id="width" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
+                        </div>
+                        <div>
+                            <label for="z-index" class="block text-sm font-medium">Orden de Capas (Z-Index):</label>
+                            <input type="number" id="z-index" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
+                        </div>
+                        <div class="flex gap-4">
+                            <button id="toggle-visibility-btn" class="w-full py-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition">
+                                <i class="fas fa-eye"></i> Ocultar
+                            </button>
+                            <button id="delete-btn" class="w-full py-2 rounded-md text-white bg-red-600 hover:bg-red-700 transition">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                         <div id="text-options" class="flex flex-col space-y-2">
+                            <h4 class="text-lg font-medium text-gray-300">Opciones de Texto</h4>
+                            <div class="flex gap-2">
+                                <button id="toggle-name-btn" class="flex-1 py-2 rounded-md text-white bg-gray-600 hover:bg-gray-700 transition">
+                                    <i class="fas fa-tag"></i> Nombre
+                                </button>
+                                <button id="toggle-price-btn" class="flex-1 py-2 rounded-md text-white bg-gray-600 hover:bg-gray-700 transition">
+                                    <i class="fas fa-dollar-sign"></i> Precio
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr id="properties-hr" class="border-gray-700 my-8 hidden">
+            
+            <div id="zoom-accordion" class="accordion-section">
+                <div class="accordion-header flex justify-between items-center bg-gray-800 rounded-md p-4 mb-2 cursor-pointer open">
+                    <h3 class="text-xl font-bold text-blue-400 font-saira">Zoom</h3>
+                    <i class="fas fa-chevron-down text-blue-400 transform transition-transform"></i>
+                </div>
+                <div class="accordion-content open">
+                     <input type="range" id="zoom-slider" min="0.1" max="1" step="0.05" value="0.75" class="w-full">
+                </div>
+            </div>
+
+            <div id="templates-accordion" class="accordion-section">
+                 <div class="accordion-header flex justify-between items-center bg-gray-800 rounded-md p-4 mb-2 cursor-pointer open">
+                    <h3 class="text-xl font-bold text-violet-400 font-saira">Plantillas</h3>
+                    <i class="fas fa-chevron-down text-violet-400 transform transition-transform"></i>
+                </div>
+                 <div class="accordion-content open">
+                     <div class="text-center space-y-4">
+                        <button id="save-btn" class="w-full py-3 rounded-md text-white bg-violet-600 hover:bg-violet-700 transition font-bold">
+                            <i class="fas fa-save"></i> Guardar Plantilla
+                        </button>
+                         <button id="load-btn" class="w-full py-3 rounded-md text-white bg-teal-600 hover:bg-teal-700 transition font-bold">
+                            <i class="fas fa-folder-open"></i> Administrar Plantillas
+                        </button>
+                    </div>
+                 </div>
+            </div>
+            
+             <div id="download-accordion" class="accordion-section">
+                 <div class="accordion-header flex justify-between items-center bg-gray-800 rounded-md p-4 mb-2 cursor-pointer open">
+                    <h3 class="text-xl font-bold text-cyan-400 font-saira">¡Descarga!</h3>
+                    <i class="fas fa-chevron-down text-cyan-400 transform transition-transform"></i>
+                </div>
+                 <div class="accordion-content open">
+                     <div class="text-center space-y-4">
+                        <button id="download-btn" class="w-full cta-button text-white font-bold py-4 rounded-md transition">
+                            <i class="fas fa-download"></i> Descargar Imagen
+                        </button>
+                        <p class="text-sm text-gray-500 mt-2">La descarga puede tardar unos segundos.</p>
+                    </div>
+                 </div>
+             </div>
+        </aside>
+
+        <!-- Área de Edición del Flyer -->
+        <section id="flyer-section-container" class="lg:col-span-2 p-6 flex justify-center items-start overflow-y-auto">
+            
+            <!-- El nuevo contenedor con el borde estético -->
+            <div id="flyer-border-wrapper" class="relative">
+                <div id="flyer" class="relative overflow-hidden rounded-lg shadow-2xl bg-[#13161b] cursor-default">
+                    <!-- Los elementos se agregarán aquí -->
+                    <div id="component-summary-table-container" class="flyer-item p-6 rounded-lg bg-gray-800/80 backdrop-blur-md shadow-lg border border-gray-700" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%;">
+                        <h3 id="summary-title" class="text-2xl font-bold mb-4 text-center font-saira cursor-text" contenteditable="true">Resumen de Componentes</h3>
+                        <table class="w-full text-left table-auto">
+                            <thead class="border-b-2 border-gray-600">
+                                <tr>
+                                    <th class="py-2 text-violet-400 font-saira">Componente</th>
+                                    <th class="py-2 text-right text-green-400 font-saira">Precio (ARS)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="component-table-body">
+                                <!-- Filas de componentes se insertarán aquí dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Elemento de precio total -->
+                    <div id="final-price-value-container" class="flyer-item p-6" style="z-index: 9999; top: 25%; left: 50%; transform: translate(-50%, -50%);">
+                        <p class="lucas-price text-center" id="final-price-value">$0</p>
+                    </div>
+
+                    <!-- Elemento de información de entrega -->
+                    <div id="final-price-info-container" class="flyer-item p-6" style="z-index: 9998; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        <p class="delivery-info text-center mt-4 font-inter text-base">
+                            <i class="fas fa-truck mr-1"></i>Entrega Personal a Domicilio
+                        </p>
+                        <p class="delivery-city text-center mt-1 font-inter text-base">
+                            en toda <strong class="text-white la-costa-shadow">La Costa 🌊</strong>
+                        </p>
+                        <p class="payment-info text-center mt-4 font-inter text-xs">
+                            <i class="fas fa-credit-card"></i> Consultar opciones en cuotas x MP
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Placeholder para mensajes de estado -->
+    <div id="status-message" class="fixed bottom-4 left-1/2 -translate-x-1/2 p-4 bg-gray-800 rounded-lg shadow-lg text-white text-center hidden z-50"></div>
+
+    <!-- Modal de Administración de Plantillas -->
+    <div id="template-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-2xl font-bold text-white font-saira">Administrar Plantillas</h3>
+                <button id="close-modal-btn" class="text-gray-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <ul id="template-list" class="modal-body">
+                <!-- Las plantillas se insertarán aquí -->
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const categorySelector = document.getElementById('category-selector');
+            const imageSelector = document.getElementById('image-selector');
+            const flyerBorderWrapper = document.getElementById('flyer-border-wrapper');
+            const flyer = document.getElementById('flyer');
+            const downloadBtn = document.getElementById('download-btn');
+            const statusMessageEl = document.getElementById('status-message');
+            const propertiesPanel = document.getElementById('properties-panel');
+            const propertiesAccordion = document.getElementById('properties-accordion');
+            const propertiesHr = document.getElementById('properties-hr');
+            const posXInput = document.getElementById('pos-x');
+            const posYInput = document.getElementById('pos-y');
+            const scaleInput = document.getElementById('scale');
+            const widthInput = document.getElementById('width');
+            const zIndexInput = document.getElementById('z-index');
+            const toggleVisibilityBtn = document.getElementById('toggle-visibility-btn');
+            const deleteBtn = document.getElementById('delete-btn');
+            const zoomSlider = document.getElementById('zoom-slider');
+            const componentSummaryTable = document.getElementById('component-summary-table-container');
+            const finalPriceValueContainer = document.getElementById('final-price-value-container');
+            const finalPriceInfoContainer = document.getElementById('final-price-info-container');
+            const summaryTitle = document.getElementById('summary-title');
+            const saveBtn = document.getElementById('save-btn');
+            const loadBtn = document.getElementById('load-btn');
+            const templateModal = document.getElementById('template-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const templateListEl = document.getElementById('template-list');
+            const toggleNameBtn = document.getElementById('toggle-name-btn');
+            const togglePriceBtn = document.getElementById('toggle-price-btn');
+            const elementNameInput = document.getElementById('element-name');
+            const scaleContainer = document.getElementById('scale-container');
+            const widthContainer = document.getElementById('width-container');
+            const flyerSizeSelector = document.getElementById('flyer-size-selector');
+            const categoryAccordion = document.getElementById('category-accordion');
+            const dragDropAccordion = document.getElementById('drag-drop-accordion');
+
+
+            let data = null;
+            let addedComponents = [];
+            let selectedFlyerItem = null;
+            const MIN_SCALE = 0.1;
+            const MAX_SCALE = 8;
+            const INITIAL_IMAGE_SCALE = 1.33;
+
+            // --- Funciones para manejar cookies (temporal) ---
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    let date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            }
+            
+            function getCookie(name) {
+                let nameEQ = name + "=";
+                let ca = document.cookie.split(';');
+                for(let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+            
+            function eraseCookie(name) {   
+                document.cookie = name+'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+
+            // Mapping for data and categories
+            const categoryMap = {
+                'towersOptions': { name: 'Gabinetes' },
+                'baseOptions': { name: 'Bases' },
+                'cpuOptions': { name: 'CPUs' },
+                'ramOptions': { name: 'RAM' },
+                'motherboardOptions': { name: 'Motherboards' },
+                'gpuOptions': { name: 'Gráficas' },
+                'ssdOptions': { name: 'Almacenamiento' },
+                'psuOptions': { name: 'Fuentes' },
+                'monitorOptions': { name: 'Monitores' },
+                'keyboardOptions': { name: 'Teclados' },
+                'mouseOptions': { name: 'Mouses' },
+                'joystickOptions': { name: 'Joysticks' },
+                'auricularesOptions': { name: 'Auriculares' },
+                'parlantesOptions': { name: 'Parlantes' },
+                'webcamOptions': { name: 'Webcams' },
+                'microfonosOptions': { name: 'Micrófonos' },
+                'arosDeLuzOptions': { name: 'Aros de Luz' },
+                'wifiOptions': { name: 'WiFi' },
+            };
+
+            // Load data from JSON file
+            try {
+                const response = await fetch('productsH.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                data = await response.json();
+                populateCategorySelector();
+            } catch (error) {
+                console.error("Failed to load data:", error);
+                showMessage("Error al cargar los datos. Revisa la consola.", 4000);
+            }
+            
+            const propertiesAccordionHeader = document.querySelector('#properties-accordion .accordion-header');
+
+
+            function setupAccordions() {
+                const accordionSections = document.querySelectorAll('.accordion-section');
+                accordionSections.forEach(section => {
+                    const header = section.querySelector('.accordion-header');
+                    const content = section.querySelector('.accordion-content');
+                    if (header && content) {
+                         header.addEventListener('click', () => {
+                            const isOpen = content.classList.contains('open');
+                            
+                            // Close other accordions that are not fixed
+                            accordionSections.forEach(otherSection => {
+                                if (otherSection.id !== 'templates-accordion' && otherSection.id !== 'download-accordion' && otherSection.id !== 'zoom-accordion') {
+                                    const otherContent = otherSection.querySelector('.accordion-content');
+                                    const otherHeader = otherSection.querySelector('.accordion-header i');
+                                    if(otherContent) otherContent.classList.remove('open');
+                                    if(otherHeader) otherHeader.style.transform = '';
+                                }
+                            });
+
+                            if (!isOpen) {
+                                content.classList.add('open');
+                                header.querySelector('i').style.transform = 'rotate(180deg)';
+                            }
+                        });
+                    }
+                });
+            }
+            setupAccordions();
+
+            function closeAllAccordions() {
+                document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                document.querySelectorAll('.accordion-header i').forEach(i => i.style.transform = '');
+            }
+
+            function showMessage(message, duration = 3000) {
+                statusMessageEl.textContent = message;
+                statusMessageEl.classList.remove('hidden');
+                if (duration > 0) {
+                     setTimeout(() => {
+                        statusMessageEl.classList.add('hidden');
+                    }, duration);
+                }
+            }
+
+            function getPrice(item) {
+                if (item.total) {
+                    return item.total;
+                }
+                if (item.prices && item.prices.length > 0) {
+                    return item.prices[0].value;
+                }
+                return 0;
+            }
+
+            function populateCategorySelector() {
+                if (!data) return;
+                categorySelector.innerHTML = '';
+                const categories = [{ key: '', name: 'Selecciona una categoría' }];
+                for (const key in categoryMap) {
+                    if (data[key] && data[key].length > 0) {
+                        categories.push({ key: key, name: categoryMap[key].name });
+                    }
+                }
+                
+                categories.forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat.key;
+                    option.textContent = cat.name;
+                    categorySelector.appendChild(option);
+                });
+
+                categorySelector.addEventListener('change', () => {
+                    const selectedCategory = categorySelector.value;
+                    populateImageSelector(selectedCategory);
+                    
+                    // Collapse category accordion and open drag-drop
+                    const categoryAccordionContent = categoryAccordion.querySelector('.accordion-content');
+                    const dragDropAccordionContent = dragDropAccordion.querySelector('.accordion-content');
+                    const categoryAccordionIcon = categoryAccordion.querySelector('.accordion-header i');
+                    const dragDropAccordionIcon = dragDropAccordion.querySelector('.accordion-header i');
+                    
+                    categoryAccordionContent.classList.remove('open');
+                    categoryAccordionIcon.style.transform = '';
+                    
+                    dragDropAccordionContent.classList.add('open');
+                    dragDropAccordionIcon.style.transform = 'rotate(180deg)';
+                });
+            }
+
+            function populateImageSelector(categoryKey) {
+                if (!data || !categoryKey) {
+                    imageSelector.innerHTML = '';
+                    return;
+                }
+                
+                imageSelector.innerHTML = '';
+                const items = data[categoryKey].filter(item => item.visible !== 0);
+                
+                items.forEach(item => {
+                    const imgContainer = document.createElement('div');
+                    imgContainer.className = 'selector-item p-2 text-center flex flex-col items-center justify-center';
+                    imgContainer.draggable = true;
+                    imgContainer.dataset.itemId = item.id;
+                    imgContainer.dataset.itemName = item.name;
+                    imgContainer.dataset.itemPrice = getPrice(item);
+                    imgContainer.dataset.itemType = categoryMap[categoryKey].name;
+                    imgContainer.innerHTML = `
+                        <img src="comps/${item.id}.webp" alt="${item.name}" class="w-16 h-16 object-contain mb-2" onerror="this.onerror=null;this.src='https://placehold.co/64x64/374151/ffffff?text=IMG'">
+                        <span class="text-xs text-gray-400">${item.name}</span>
+                        <span class="text-xs text-green-400 font-bold">$${getPrice(item).toLocaleString('es-AR')}</span>
+                    `;
+                    imageSelector.appendChild(imgContainer);
+
+                    imgContainer.addEventListener('dragstart', (e) => {
+                        e.dataTransfer.setData('text/plain', JSON.stringify({
+                            id: e.target.closest('.selector-item').dataset.itemId,
+                            name: e.target.closest('.selector-item').dataset.itemName,
+                            price: e.target.closest('.selector-item').dataset.itemPrice,
+                            type: e.target.closest('.selector-item').dataset.itemType
+                        }));
+                    });
+                });
+            }
+            
+            // Make summary table and final price container draggable
+            setupDraggableElement(componentSummaryTable);
+            componentSummaryTable.dataset.itemId = "summary-table";
+            componentSummaryTable.dataset.itemName = "Resumen";
+            
+            setupDraggableElement(finalPriceValueContainer);
+            finalPriceValueContainer.dataset.itemId = "final-price-value";
+            finalPriceValueContainer.dataset.itemName = "Precio";
+            
+            setupDraggableElement(finalPriceInfoContainer);
+            finalPriceInfoContainer.dataset.itemId = "final-price-info";
+            finalPriceInfoContainer.dataset.itemName = "Detalles de Precio";
+            
+            // Add drag and drop listeners
+            flyer.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                // Check if the dragged item is the summary table
+                if (e.dataTransfer.types.includes('text/plain')) {
+                    const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+                    if (data.id === 'summary-table' || data.id === 'final-price-value' || data.id === 'final-price-info') return; // Do nothing for special containers
+                }
+                flyer.classList.add('droppable');
+            });
+            flyer.addEventListener('dragleave', () => flyer.classList.remove('droppable'));
+            flyer.addEventListener('drop', (e) => {
+                e.preventDefault();
+                flyer.classList.remove('droppable');
+                try {
+                    const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+                    if (data.id === 'summary-table' || data.id === 'final-price-value' || data.id === 'final-price-info') return; // Do nothing for special containers
+
+                    // Get position relative to the flyer element, not the whole viewport
+                    const rect = flyer.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    createComponentElement(data, x, y);
+                    updateTotalPrice();
+                    
+                    // Collapse drag-drop and open properties
+                    const dragDropAccordionContent = dragDropAccordion.querySelector('.accordion-content');
+                    const dragDropAccordionIcon = dragDropAccordion.querySelector('.accordion-header i');
+                    
+                    dragDropAccordionContent.classList.remove('open');
+                    dragDropAccordionIcon.style.transform = '';
+                    
+                    propertiesAccordion.classList.remove('hidden');
+                    propertiesAccordion.querySelector('.accordion-content').classList.add('open');
+                    propertiesAccordion.querySelector('.accordion-header i').style.transform = 'rotate(180deg)';
+
+                } catch (error) {
+                    console.error('Failed to parse dropped data:', error);
+                }
+            });
+            
+            // Deselect element on click outside
+            flyer.addEventListener('click', (e) => {
+                const target = e.target;
+                if (!target.closest('.flyer-item')) {
+                    if (selectedFlyerItem) {
+                        selectedFlyerItem.classList.remove('active');
+                    }
+                    selectedFlyerItem = null;
+                    updatePropertiesPanel();
+                }
+            });
+
+            // Add wheel event listener for scaling
+            flyer.addEventListener('wheel', (e) => {
+                if (selectedFlyerItem) {
+                    e.preventDefault();
+                    let currentScale = selectedFlyerItem.style.transform ? parseFloat(selectedFlyerItem.style.transform.replace('scale(', '')) : 1;
+                    if (selectedFlyerItem.dataset.itemId === 'summary-table') {
+                        // For summary table, scale on width
+                        const currentWidth = parseFloat(selectedFlyerItem.style.width);
+                        let newWidth = currentWidth + (e.deltaY < 0 ? 20 : -20); // 20px step
+                        newWidth = Math.min(Math.max(newWidth, 200), 1000); // Clamp between 200 and 1000px
+                        selectedFlyerItem.style.width = `${newWidth}px`;
+                        widthInput.value = newWidth;
+                    } else {
+                        // For other elements, scale on transform
+                        let newScale = currentScale + (e.deltaY < 0 ? 0.2 : -0.2);
+                        newScale = Math.min(Math.max(newScale, MIN_SCALE), MAX_SCALE);
+                        selectedFlyerItem.style.transform = `scale(${newScale})`;
+                        scaleInput.value = newScale.toFixed(1);
+                    }
+                }
+            });
+
+            // Prevent text selection on table drag
+            componentSummaryTable.addEventListener('selectstart', (e) => e.preventDefault());
+            finalPriceValueContainer.addEventListener('selectstart', (e) => e.preventDefault());
+            finalPriceInfoContainer.addEventListener('selectstart', (e) => e.preventDefault());
+            
+            summaryTitle.addEventListener('dblclick', (e) => {
+                e.stopPropagation(); // Prevent the click from deselecting the element
+                componentSummaryTable.classList.toggle('show-categories');
+                updateSummaryTable();
+            });
+
+
+            function updateTotalPrice() {
+                const totalServicePrice = addedComponents.reduce((sum, comp) => sum + comp.price, 0) + 110000;
+                document.getElementById('final-price-value').textContent = `$${totalServicePrice.toLocaleString('es-AR')}`;
+                updateSummaryTable();
+            }
+
+            function updateSummaryTable() {
+                const tableBody = document.getElementById('component-table-body');
+                if (!tableBody) return;
+                
+                tableBody.innerHTML = '';
+                
+                const showCategories = componentSummaryTable.classList.contains('show-categories');
+                let currentCategory = '';
+                
+                addedComponents.forEach(comp => {
+                    if (showCategories && comp.type !== currentCategory) {
+                        const categoryRow = document.createElement('tr');
+                        categoryRow.innerHTML = `
+                            <td colspan="2" class="category-row">${comp.type}</td>
+                        `;
+                        tableBody.appendChild(categoryRow);
+                        currentCategory = comp.type;
+                    }
+                    
+                    const row = document.createElement('tr');
+                    row.className = 'border-t border-gray-700/50';
+                    row.innerHTML = `
+                        <td class="py-2 text-white flex flex-col">
+                           <span class="text-base">${comp.name}</span>
+                        </td>
+                        <td class="py-2 text-right text-green-400">$${(comp.price).toLocaleString('es-AR')}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+
+                const serviceRow = document.createElement('tr');
+                serviceRow.className = 'border-t border-gray-700/50';
+                serviceRow.innerHTML = `
+                    <td class="py-2 text-white">
+                        Servicio Técnico
+                        <br>
+                        <span class="text-sm text-gray-400">[Personal y via Web]</span>
+                    </td>
+                    <td class="py-2 text-right text-green-400">$${(110000).toLocaleString('es-AR')}</td>
+                `;
+                tableBody.appendChild(serviceRow);
+            }
+            
+            componentSummaryTable.addEventListener('dblclick', (e) => {
+                e.stopPropagation();
+                componentSummaryTable.classList.toggle('show-categories');
+                updateSummaryTable();
+            });
+
+
+            function createComponentElement(itemData, x, y) {
+                const existingComp = addedComponents.find(c => c.id == itemData.id);
+                if (existingComp) {
+                    showMessage("Este componente ya fue agregado.", 3000);
+                    return;
+                }
+                
+                // Unselect other elements and select the new one
+                document.querySelectorAll('.flyer-item').forEach(item => item.classList.remove('active'));
+
+                const componentId = `comp-${itemData.id}`;
+                
+                const compEl = document.createElement('div');
+                compEl.className = `flyer-item p-2 active`;
+                compEl.id = componentId;
+                compEl.dataset.itemId = itemData.id;
+                compEl.dataset.itemName = itemData.name;
+                compEl.dataset.itemPrice = itemData.price;
+                compEl.dataset.itemType = itemData.type;
+                compEl.style.top = `${y}px`;
+                compEl.style.left = `${x}px`;
+                compEl.style.width = '200px';
+                compEl.style.height = '200px';
+                compEl.style.transform = `scale(${INITIAL_IMAGE_SCALE})`;
+                compEl.style.zIndex = '10'; // Default z-index
+                
+                // Adjust position so the center of the element is at the drop point
+                const initialWidth = 200; // Match default width in style
+                const initialHeight = 200; // Match default height in style
+                compEl.style.left = `${x - (initialWidth * INITIAL_IMAGE_SCALE) / 2}px`;
+                compEl.style.top = `${y - (initialHeight * INITIAL_IMAGE_SCALE) / 2}px`;
+
+                compEl.innerHTML = `
+                    <img src="comps/${itemData.id}.webp" alt="${itemData.name}" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/ffffff?text=${itemData.name.replace(/\s/g, '+')}';">
+                `;
+
+                // Add name and price elements as sub-elements
+                const nameEl = document.createElement('div');
+                nameEl.className = 'flyer-item component-label';
+                nameEl.textContent = itemData.name;
+                nameEl.style.zIndex = '11'; // Inherit z-index but one higher
+                nameEl.style.display = 'none';
+                nameEl.dataset.parent = componentId;
+
+                const priceEl = document.createElement('div');
+                priceEl.className = 'flyer-item component-price';
+                priceEl.textContent = `$${parseFloat(itemData.price).toLocaleString('es-AR')}`;
+                priceEl.style.zIndex = '11'; // Inherit z-index but one higher
+                priceEl.style.display = 'none';
+                priceEl.dataset.parent = componentId;
+
+                flyer.appendChild(compEl);
+                flyer.appendChild(nameEl);
+                flyer.appendChild(priceEl);
+                setupDraggableElement(compEl);
+                setupDraggableElement(nameEl);
+                setupDraggableElement(priceEl);
+                
+                addedComponents.push({
+                    id: itemData.id,
+                    name: itemData.name,
+                    price: parseFloat(itemData.price),
+                    type: itemData.type,
+                    element: compEl,
+                    nameElement: nameEl,
+                    priceElement: priceEl
+                });
+
+                selectedFlyerItem = compEl;
+                updateTotalPrice();
+                updatePropertiesPanel();
+            }
+
+            function setupDraggableElement(element) {
+                let isDragging = false;
+                let startX, startY, startTop, startLeft;
+
+                element.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    // Set active element
+                    document.querySelectorAll('.flyer-item').forEach(item => item.classList.remove('active'));
+                    element.classList.add('active');
+                    selectedFlyerItem = element;
+                    updatePropertiesPanel();
+
+                    isDragging = true;
+                    element.classList.add('dragging');
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    startTop = element.offsetTop;
+                    startLeft = element.offsetLeft;
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    const deltaX = e.clientX - startX;
+                    const deltaY = e.clientY - startY;
+                    element.style.top = `${startTop + deltaY}px`;
+                    element.style.left = `${startLeft + deltaX}px`;
+                    updatePropertiesPanel();
+                });
+
+                document.addEventListener('mouseup', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        element.classList.remove('dragging');
+                        updatePropertiesPanel();
+                    }
+                });
+            }
+            
+            function updatePropertiesPanel() {
+                if (selectedFlyerItem) {
+                    propertiesAccordion.classList.remove('hidden');
+                    elementNameInput.value = selectedFlyerItem.dataset.itemName;
+                    posXInput.value = parseInt(selectedFlyerItem.offsetLeft);
+                    posYInput.value = parseInt(selectedFlyerItem.offsetTop);
+                    const isSummary = selectedFlyerItem.dataset.itemId === 'summary-table';
+                    const isComponentImage = selectedFlyerItem.dataset.itemId && !selectedFlyerItem.dataset.itemName.startsWith('Resumen') && !selectedFlyerItem.dataset.itemName.startsWith('Precio');
+                    
+                    if (isSummary) {
+                        scaleContainer.classList.add('hidden');
+                        widthContainer.classList.remove('hidden');
+                        widthInput.value = parseFloat(selectedFlyerItem.style.width);
+                        document.getElementById('text-options').classList.add('hidden');
+                    } else {
+                        scaleContainer.classList.remove('hidden');
+                        widthContainer.classList.add('hidden');
+                        const scale = selectedFlyerItem.style.transform ? parseFloat(selectedFlyerItem.style.transform.replace('scale(', '')) : 1;
+                        scaleInput.value = scale;
+                         document.getElementById('text-options').classList.remove('hidden');
+                    }
+                    
+                    zIndexInput.value = selectedFlyerItem.style.zIndex || 10;
+                    const isVisible = selectedFlyerItem.style.opacity !== '0';
+                    toggleVisibilityBtn.innerHTML = isVisible ? '<i class="fas fa-eye-slash"></i> Ocultar' : '<i class="fas fa-eye"></i> Mostrar';
+                } else {
+                    propertiesAccordion.classList.add('hidden');
+                }
+            }
+            
+            // Event listeners for properties panel
+            posXInput.addEventListener('input', (e) => {
+                if (selectedFlyerItem) {
+                    selectedFlyerItem.style.left = `${e.target.value}px`;
+                }
+            });
+            posYInput.addEventListener('input', (e) => {
+                if (selectedFlyerItem) {
+                    selectedFlyerItem.style.top = `${e.target.value}px`;
+                }
+            });
+            scaleInput.addEventListener('input', (e) => {
+                if (selectedFlyerItem) {
+                    const scaleValue = Math.max(MIN_SCALE, Math.min(MAX_SCALE, parseFloat(e.target.value)));
+                    selectedFlyerItem.style.transform = `scale(${scaleValue})`;
+                }
+            });
+            widthInput.addEventListener('input', (e) => {
+                if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === 'summary-table') {
+                    const widthValue = Math.max(10, Math.min(100, parseFloat(e.target.value)));
+                    selectedFlyerItem.style.width = `${widthValue}%`;
+                }
+            });
+            zIndexInput.addEventListener('input', (e) => {
+                if (selectedFlyerItem) {
+                    selectedFlyerItem.style.zIndex = e.target.value;
+                }
+            });
+            
+            toggleVisibilityBtn.addEventListener('click', () => {
+                if (selectedFlyerItem) {
+                    const isVisible = selectedFlyerItem.style.opacity !== '0';
+                    selectedFlyerItem.style.opacity = isVisible ? '0' : '1';
+                    toggleVisibilityBtn.innerHTML = isVisible ? '<i class="fas fa-eye"></i> Mostrar' : '<i class="fas fa-eye-slash"></i> Ocultar';
+                }
+            });
+
+            deleteBtn.addEventListener('click', () => {
+                if (selectedFlyerItem) {
+                    if (selectedFlyerItem.dataset.itemId === 'summary-table' || selectedFlyerItem.dataset.itemId === 'final-price-value' || selectedFlyerItem.dataset.itemId === 'final-price-info') {
+                        showMessage("No puedes eliminar este componente.", 3000);
+                        return;
+                    }
+                    // Remove the main element and its associated name/price elements
+                    const componentId = selectedFlyerItem.dataset.itemId;
+                    const component = addedComponents.find(c => c.element.id === selectedFlyerItem.id);
+                     if (component) {
+                        component.element.remove();
+                        if (component.nameElement) component.nameElement.remove();
+                        if (component.priceElement) component.priceElement.remove();
+                        addedComponents = addedComponents.filter(c => c.id !== componentId);
+                    }
+                    selectedFlyerItem = null;
+                    updateTotalPrice();
+                    updatePropertiesPanel();
+                }
+            });
+            
+             // Manejar la visibilidad de los sub-elementos de texto
+            toggleNameBtn.addEventListener('click', () => {
+                if (!selectedFlyerItem || !selectedFlyerItem.id.startsWith('comp-')) return;
+                const component = addedComponents.find(c => c.element.id === selectedFlyerItem.id);
+                if (component && component.nameElement) {
+                    const isVisible = component.nameElement.style.display !== 'none';
+                    if (isVisible) {
+                        component.nameElement.style.display = 'none';
+                    } else {
+                        component.nameElement.style.display = 'block';
+                        centerSubElement(component.nameElement, selectedFlyerItem, true);
+                    }
+                }
+            });
+
+            togglePriceBtn.addEventListener('click', () => {
+                if (!selectedFlyerItem || !selectedFlyerItem.id.startsWith('comp-')) return;
+                const component = addedComponents.find(c => c.element.id === selectedFlyerItem.id);
+                if (component && component.priceElement) {
+                    const isVisible = component.priceElement.style.display !== 'none';
+                    if (isVisible) {
+                         component.priceElement.style.display = 'none';
+                    } else {
+                        component.priceElement.style.display = 'block';
+                        centerSubElement(component.priceElement, selectedFlyerItem, true);
+                    }
+                }
+            });
+            
+             // Centrar sub-elemento relativo a su padre
+            function centerSubElement(subElement, parentElement, force = false) {
+                if (!subElement || !parentElement || (!force && subElement.style.left && subElement.style.top)) return;
+                const parentRect = parentElement.getBoundingClientRect();
+                const subRect = subElement.getBoundingClientRect();
+                const parentScale = parentElement.style.transform ? parseFloat(parentElement.style.transform.replace('scale(', '')) : 1;
+                
+                const parentCenterX = parentRect.left + (parentRect.width / 2);
+                const parentCenterY = parentRect.top + (parentRect.height / 2);
+                
+                subElement.style.left = `${parentCenterX - (subRect.width / 2)}px`;
+                subElement.style.top = `${parentCenterY - (subRect.height / 2)}px`;
+            }
+
+
+            downloadBtn.addEventListener('click', async () => {
+                const flyer = document.getElementById('flyer');
+                if (!flyer) {
+                    showMessage("No hay flyer para descargar.", 3000);
+                    return;
+                }
+                
+                showMessage("Generando y descargando imagen...", 0);
+                
+                try {
+                    // Hide controls during capture
+                    flyer.querySelectorAll('.flyer-item.active').forEach(item => item.classList.remove('active'));
+
+                    const canvas = await html2canvas(flyer, {
+                        scale: 2,
+                        backgroundColor: null,
+                        logging: true,
+                        useCORS: true
+                    });
+                    
+                    const link = document.createElement('a');
+                    link.href = canvas.toDataURL('image/png');
+                    link.download = `flyer_final.png`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Restore controls
+                    if (selectedFlyerItem) selectedFlyerItem.classList.add('active');
+
+                } catch (error) {
+                    console.error('Error al generar la imagen:', error);
+                    showMessage("Error al generar la imagen.", 5000);
+                }
+                
+                showMessage("¡Descarga completada!", 3000);
+            });
+            
+            // Zoom functionality
+            zoomSlider.addEventListener('input', (e) => {
+                flyerBorderWrapper.style.transform = `scale(${e.target.value})`;
+            });
+            
+            // Flyer size selector
+            flyerSizeSelector.addEventListener('change', (e) => {
+                const [width, height] = e.target.value.split('x').map(Number);
+                flyerBorderWrapper.style.width = `${width}px`;
+                flyerBorderWrapper.style.height = `${height}px`;
+                flyer.style.width = `${width}px`;
+                flyer.style.height = `${height}px`;
+            });
+
+
+            // Save functionality
+            saveBtn.addEventListener('click', () => {
+                const templateName = prompt("Ingresa un nombre para tu plantilla:");
+                if (!templateName) return;
+
+                showMessage("Guardando plantilla...", 0);
+
+                const flyerData = {
+                    elements: []
+                };
+
+                const flyerItems = flyer.querySelectorAll('.flyer-item');
+                flyerItems.forEach(item => {
+                     // Solo guardar los elementos principales
+                    if (item.classList.contains('component-label') || item.classList.contains('component-price')) return;
+
+                    const componentId = item.dataset.itemId;
+                    const component = addedComponents.find(c => c.element.id === item.id);
+                    
+                    const itemData = {
+                        id: item.dataset.itemId,
+                        name: item.dataset.itemName,
+                        type: item.dataset.itemType,
+                        price: item.dataset.itemPrice,
+                        summaryTitle: (item.dataset.itemId === "summary-table") ? summaryTitle.textContent : null,
+                        style: {
+                            top: item.style.top,
+                            left: item.style.left,
+                            transform: item.style.transform,
+                            zIndex: item.style.zIndex,
+                            opacity: item.style.opacity
+                        },
+                        // Save name and price text elements state
+                        nameElementState: component?.nameElement?.style.cssText,
+                        priceElementState: component?.priceElement?.style.cssText
+                    };
+                    if (item.dataset.itemId === 'summary-table') {
+                         itemData.style.width = item.style.width;
+                    }
+                    flyerData.elements.push(itemData);
+                });
+
+                try {
+                    setCookie(templateName, JSON.stringify(flyerData), 30); // Guardar por 30 días
+                    showMessage(`Plantilla "${templateName}" guardada con éxito!`);
+                } catch (error) {
+                    console.error("Error al guardar la plantilla:", error);
+                    showMessage("Error al guardar la plantilla.", 5000);
+                }
+            });
+
+            // Load functionality
+            loadBtn.addEventListener('click', () => {
+                const cookies = document.cookie.split(';').map(c => c.trim().split('=')[0]);
+                const templates = cookies.filter(name => name !== '');
+
+                if (templates.length === 0) {
+                    showMessage("No hay plantillas guardadas.");
+                    return;
+                }
+                
+                renderTemplateList(templates);
+                templateModal.style.display = 'flex';
+            });
+            
+            closeModalBtn.addEventListener('click', () => {
+                templateModal.style.display = 'none';
+            });
+
+            templateModal.addEventListener('click', (e) => {
+                if (e.target === templateModal) {
+                    templateModal.style.display = 'none';
+                }
+            });
+
+            function renderTemplateList(templates) {
+                templateListEl.innerHTML = '';
+                templates.forEach(name => {
+                    const li = document.createElement('li');
+                    li.className = 'template-item';
+                    li.innerHTML = `
+                        <span class="template-name" data-template-name="${name}">${name}</span>
+                        <div>
+                            <button class="rename-btn text-blue-400 hover:text-blue-200 mr-2"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn text-red-400 hover:text-red-200"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                    templateListEl.appendChild(li);
+
+                    li.querySelector('.template-name').addEventListener('click', () => {
+                        const templateData = getCookie(name);
+                        if (templateData) {
+                            loadTemplate(JSON.parse(templateData));
+                            templateModal.style.display = 'none';
+                            showMessage(`Plantilla "${name}" cargada con éxito!`);
+                        } else {
+                            showMessage("La plantilla seleccionada no existe.", 3000);
+                        }
+                    });
+
+                    li.querySelector('.rename-btn').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const newName = prompt(`Cambia el nombre de "${name}":`);
+                        if (newName && newName !== name) {
+                            const templateData = getCookie(name);
+                            if (templateData) {
+                                eraseCookie(name);
+                                setCookie(newName, templateData, 30);
+                                renderTemplateList(templates.map(t => t === name ? newName : t));
+                                showMessage(`Plantilla "${name}" renombrada a "${newName}".`);
+                            }
+                        }
+                    });
+
+                    li.querySelector('.delete-btn').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (confirm(`¿Estás seguro de que quieres eliminar la plantilla "${name}"?`)) {
+                            eraseCookie(name);
+                            const updatedTemplates = templates.filter(t => t !== name);
+                            renderTemplateList(updatedTemplates);
+                            showMessage(`Plantilla "${name}" eliminada.`);
+                        }
+                    });
+                });
+            }
+            
+            function loadTemplate(template) {
+                try {
+                    // Clear existing elements
+                    flyer.querySelectorAll('.flyer-item').forEach(item => {
+                        if (item.dataset.itemId !== "summary-table" && item.dataset.itemId !== "final-price-value" && item.dataset.itemId !== "final-price-info") {
+                            item.remove();
+                        }
+                    });
+                    addedComponents = [];
+                    
+                    const elements = template.elements;
+                    elements.forEach(el => {
+                         if (el.id === "summary-table") {
+                            componentSummaryTable.style.cssText = el.style;
+                            summaryTitle.textContent = el.summaryTitle;
+                        } else if (el.id === "final-price-value") {
+                            finalPriceValueContainer.style.cssText = el.style;
+                        } else if (el.id === "final-price-info") {
+                            finalPriceInfoContainer.style.cssText = el.style;
+                        } else {
+                            const compEl = document.createElement('div');
+                            compEl.className = `flyer-item p-2`;
+                            compEl.id = `comp-${el.id}`;
+                            compEl.dataset.itemId = el.id;
+                            compEl.dataset.itemName = el.name;
+                            compEl.dataset.itemPrice = el.price;
+                            compEl.dataset.itemType = el.type;
+                            compEl.style.cssText = `top: ${el.style.top}; left: ${el.style.left}; transform: ${el.style.transform}; z-index: ${el.style.zIndex}; opacity: ${el.style.opacity}; width: 200px; height: 200px;`;
+                            compEl.innerHTML = `
+                                <img src="comps/${el.id}.webp" alt="${el.name}" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/ffffff?text=${el.name.replace(/\s/g, '+')}';">
+                            `;
+                            flyer.appendChild(compEl);
+
+                            const nameEl = document.createElement('div');
+                            nameEl.className = 'flyer-item component-label';
+                            nameEl.textContent = el.name;
+                            nameEl.style.cssText = el.nameElementState;
+                            nameEl.style.zIndex = parseInt(compEl.style.zIndex) + 1; // Correct z-index
+                            nameEl.dataset.parent = compEl.id;
+
+                            const priceEl = document.createElement('div');
+                            priceEl.className = 'flyer-item component-price';
+                            priceEl.textContent = `$${parseFloat(el.price).toLocaleString('es-AR')}`;
+                            priceEl.style.cssText = el.priceElementState;
+                            priceEl.style.zIndex = parseInt(compEl.style.zIndex) + 1; // Correct z-index
+                            priceEl.dataset.parent = compEl.id;
+                            
+                            flyer.appendChild(nameEl);
+                            flyer.appendChild(priceEl);
+                            setupDraggableElement(compEl);
+                            setupDraggableElement(nameEl);
+                            setupDraggableElement(priceEl);
+                            
+                            addedComponents.push({
+                                id: el.id,
+                                name: el.name,
+                                price: parseFloat(el.price),
+                                type: el.type,
+                                element: compEl,
+                                nameElement: nameEl,
+                                priceElement: priceEl
+                            });
+                        }
+                    });
+                    updateTotalPrice();
+                    showMessage(`Plantilla "${name}" cargada con éxito!`);
+                } catch (error) {
+                    console.error("Error al cargar la plantilla:", error);
+                    showMessage("Error al cargar la plantilla.", 5000);
+                }
+            }
+            
+            updateTotalPrice();
+        });
+    </script>
+</body>
+</html>
