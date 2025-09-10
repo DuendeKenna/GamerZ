@@ -1437,3 +1437,143 @@ const words = ["USAR", "JUGAR", "CREAR", "VOLAR"];
                                     el.style.opacity = "1";
                                 }, 350);
                             }, 2300);
+
+
+// === Edit Mode  ===
+(function () {
+  const NS = '__laNaveEditMode_v1';
+  if (window[NS]) return; // evita dobles inclusiones
+  window[NS] = { enabled: false };
+
+  function log(...args) { console.log('[EDIT MODE]', ...args); }
+
+  function removeLinksAndIcons() {
+    // Guardamos hrefs en data-_href por si querés restaurar luego
+    document.querySelectorAll('#selected-components-preview a').forEach(a => {
+      if (a.hasAttribute('href')) {
+        a.dataset._href = a.getAttribute('href');
+        a.removeAttribute('href');
+        a.dataset.onclick = a.getAttribute('onclick') || '';
+        a.removeAttribute('onclick');
+      }
+    });
+    // Quitamos iconos de "external link" visibles
+    document.querySelectorAll('#selected-components-preview i.fa-external-link-alt, #component-list i.fa-external-link-alt, .card-row i.fa-external-link-alt').forEach(i => i.remove());
+  }
+
+  function restoreLinks() {
+    document.querySelectorAll('[data-_href]').forEach(el => {
+      el.setAttribute('href', el.dataset._href);
+      el.setAttribute('onclick', el.dataset._onclick);
+      delete el.dataset._href;
+    });
+    // Notar: los íconos removidos no se recrean automáticamente.
+  }
+
+  function enableEditor() {
+    if (window[NS].enabled) return;
+    window[NS].enabled = true;
+    log('activado');
+    removeLinksAndIcons();
+    document.documentElement.classList.add('la-nave-edit-mode');
+  }
+
+  function disableEditor() {
+    if (!window[NS].enabled) return;
+    window[NS].enabled = false;
+    log('desactivado');
+    restoreLinks();
+    document.documentElement.classList.remove('la-nave-edit-mode');
+  }
+
+  function createFloatingImage(src) {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.position = 'absolute';
+    img.style.width = '200px';
+    img.style.pointerEvents = 'auto'; // para detectar clic derecho en la imagen
+    img.style.zIndex = 9999;
+    img.style.left = '0px';
+    img.style.top = '0px';
+    document.body.appendChild(img);
+
+    const moveHandler = (ev) => {
+      // posiciono la esquina superior izquierda en el cursor (si querés lo centro, ajusto offsets)
+      img.style.left = ev.pageX + 'px';
+      img.style.top = ev.pageY + 'px';
+    };
+    document.addEventListener('mousemove', moveHandler);
+
+    // eliminar con clic derecho
+    img.addEventListener('contextmenu', (ev) => {
+      ev.preventDefault();
+      img.remove();
+      document.removeEventListener('mousemove', moveHandler);
+      log('imagen flotante eliminada');
+    });
+
+    log('imagen flotante creada', src);
+    return img;
+  }
+
+  function setupClickToCreate(containerSelector) {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+
+    container.addEventListener('click', (e) => {
+      if (!window[NS].enabled) return;
+      // buscamos el card/row clickeado (adapta selectores si tu markup cambia)
+      const clickTarget = e.target.closest('li, .card-row, .peripheral-container, .summary-card, .component-content-wrapper, .peripheral-info');
+      if (!clickTarget) return;
+
+      // preferimos una img dentro del elemento; si no, buscamos img dentro del row
+      const imgEl = clickTarget.querySelector('img') || clickTarget.querySelector('picture img') || clickTarget.querySelector('img[onerror]');
+      if (!imgEl || !imgEl.src) return;
+
+      createFloatingImage(imgEl.src);
+    });
+  }
+
+  function init() {
+    const summaryTitle = document.getElementById('summary-title');
+    const componentList = document.getElementById('component-list');
+    const summaryPreview = document.getElementById('selected-components-preview');
+
+    if (summaryTitle) {
+      summaryTitle.addEventListener('dblclick', () => {
+        if (window[NS].enabled) disableEditor(); else enableEditor();
+      });
+    } else {
+      log('warning: #summary-title no encontrado en el DOM en init()');
+    }
+
+    // Registramos clicks en ambos contenedores relevantes (lista de componentes y resumen)
+    setupClickToCreate('#component-list');
+    setupClickToCreate('#selected-components-preview');
+    setupClickToCreate('#peripherals-grid');
+    setupClickToCreate('#accessories-grid');
+
+    // Si el resumen se reconstruye dinámicamente, nos aseguramos de re-aplicar la remoción de links
+    if (summaryPreview) {
+      const mo = new MutationObserver(() => {
+        if (window[NS].enabled) removeLinksAndIcons();
+      });
+      mo.observe(summaryPreview, { childList: true, subtree: true });
+    }
+
+    // Si la URL tiene ?edit activamos el modo editor automáticamente
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('edit')) {
+        enableEditor();
+      }
+    } catch (err) {
+      console.error('[EDIT MODE] error parseando query string', err);
+    }
+
+    log('inicializado (edit mode: ' + (window[NS].enabled ? 'ON' : 'OFF') + ')');
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
