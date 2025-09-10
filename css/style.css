@@ -125,7 +125,6 @@
             position: relative;
             font-weight: 900;
             background: linear-gradient(to right, #6366f1, #a855f7);
-            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             z-index: 1;
         }
@@ -1203,11 +1202,6 @@
                 transform-origin: right center;
             }
         }
-        
-        #current-tower-image:hover {
-             /* No hover effect */
-        }
-
         
 
         #garantia-section {
