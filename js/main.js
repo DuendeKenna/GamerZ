@@ -418,7 +418,7 @@
                 document.getElementById('orderForm').addEventListener('submit', handleFormSubmit);
 
                 // Dolar Popup
-                const dolarTriggers = ['usd-link-top', 'usd-price-display-top', 'usd-link-bottom', 'total-price-usd', 'usd-link-summary', 'total-price-summary-usd', 'usd-link-summary-mobile', 'total-price-summary-usd-mobile'];
+                const dolarTriggers = ['usd-link-top', 'usd-price-display-top', 'usd-link-bottom', 'total-price-usd', 'usd-link-summary', 'total-price-summary-usd'];
                 dolarTriggers.forEach(id => document.getElementById(id)?.addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); }));
                 const dolarPopup = document.getElementById('dolar-popup');
                 dolarPopup.addEventListener('click', (e) => { if (e.target === dolarPopup) dolarPopup.style.display = 'none'; });
@@ -450,12 +450,13 @@
                 });
 
 
-                // Price card visibility observer
+                
+
+                                // Price card visibility observer
                 const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
                 if (priceVisibilityZone) {
                     const observer = new IntersectionObserver(entries => {
                         const isIntersecting = entries[0].isIntersecting;
-                        document.getElementById('mobile-price-summary-card').classList.toggle('show-mobile-price', isIntersecting);
                         document.getElementById('price-summary-card').classList.toggle('visible', isIntersecting);
                     });
                     observer.observe(priceVisibilityZone);
@@ -544,7 +545,6 @@
                 document.getElementById('total-price').textContent = formattedArs;
                 document.getElementById('top-total-price').textContent = formattedArs;
                 document.getElementById('total-price-summary-ars').textContent = formattedArs;
-                document.getElementById('total-price-summary-ars-mobile').textContent = formattedArs;
 
                 updateSelectedComponentsDisplay();
             }

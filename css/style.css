@@ -1208,62 +1208,7 @@
              /* No hover effect */
         }
 
-        /* Mobile Sticky Price Summary Specific Styles */
-        #mobile-price-summary-card {
-            padding: 0.75rem 1.5rem;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            font-weight: 600;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            gap: 0rem;
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.4);
-            opacity: 0;
-            width: fit-content;
-            visibility: hidden;
-            text-shadow: 2px 2px 3px black;
-            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-        }
-
-        #mobile-price-summary-card a {
-            text-decoration: none;
-        }
-
-        #mobile-price-summary-card.show-mobile-price {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #mobile-price-summary-card .price-section {
-            flex-direction: row;
-            align-items: baseline;
-            font-family: 'Saira', sans-serif;
-        }
-
-        #mobile-price-summary-card .currency-value {
-            font-size: 3rem;
-            line-height: 1;
-        }
-
-        #mobile-price-summary-card .currency-text {
-            font-size: 1.125rem;
-            font-weight: bold;
-            line-height: 1;
-            margin-left: 0.25rem;
-            white-space: nowrap;
-        }
-
-        #mobile-price-summary-card .separator {
-            width: 1px;
-            height: 2.5rem;
-            background-color: rgba(75, 85, 99, 0.5);
-        }
-
-        #mobile-price-summary-card #usd-link-summary-mobile {
-            align-self: left;
-        }
+        
 
         #garantia-section {
             font-size: 1.18rem;
