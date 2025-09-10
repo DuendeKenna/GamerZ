@@ -1,0 +1,88 @@
+[
+  {
+    "id": "cuadro-1725916500000",
+    "name": "Cuadro 1",
+    "width": 1080,
+    "height": 1080,
+    "elements": [
+      {
+        "id": "summary-table",
+        "name": "Resumen de Componentes",
+        "type": "base",
+        "summaryTitle": "Resumen de Componentes",
+        "style": {
+          "top": "244px",
+          "left": "59px",
+          "transform": "",
+          "zIndex": "",
+          "opacity": "",
+          "width": "80%",
+          "height": ""
+        }
+      },
+      {
+        "id": "final-price-value",
+        "name": "Precio Final",
+        "type": "base",
+        "summaryTitle": null,
+        "style": {
+          "top": "",
+          "left": "",
+          "transform": "",
+          "zIndex": "",
+          "opacity": "",
+          "width": "",
+          "height": ""
+        }
+      },
+      {
+        "id": "final-price-info",
+        "name": "Información de Entrega",
+        "type": "base",
+        "summaryTitle": null,
+        "style": {
+          "top": "673px",
+          "left": "341px",
+          "transform": "",
+          "zIndex": "",
+          "opacity": "",
+          "width": "",
+          "height": ""
+        }
+      },
+      {
+        "id": "49735",
+        "name": "Ryzen 5 5600G + 16 de RAM",
+        "type": "Bases",
+        "price": 379002,
+        "summaryTitle": null,
+        "style": {
+          "top": "605px",
+          "left": "96px",
+          "transform": "scale(1.33)",
+          "zIndex": "10",
+          "opacity": "",
+          "width": "200px",
+          "height": "200px"
+        },
+        "nameElementState": "z-index: 11; display: none;",
+        "priceElementState": "z-index: 11; display: none;"
+      }
+    ],
+    "toolbarPosition": {
+      "top": "850px",
+      "left": "50%"
+    }
+  },
+  {
+    "id": "cuadro-1757458494116",
+    "name": "Cuadro 2",
+    "width": 1080,
+    "height": 1080,
+    "elements": [],
+    "toolbarPosition": {
+      "top": "850px",
+      "left": "50%"
+    }
+  }
+]
