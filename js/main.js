@@ -42,8 +42,6 @@
 
         document.addEventListener('mousemove', function (e) {
             if (!isDragging) return;
-            e.preventDefault();
-
             let deltaX = e.clientX - startX;
             let newLeft = startLeft + deltaX;
             // Clamp within viewport
@@ -148,7 +146,7 @@
                 { name: 'Battle.net', slug: 'battlenet', checked: false, disabled: false, category: 'Juegos', descripcion: 'Plataforma para juegos de Blizzard.' },
                 { name: 'GOG Galaxy', slug: 'gog_galaxy', checked: false, disabled: false, category: 'Juegos', descripcion: 'Lanzador para juegos sin DRM.' },
             ];
-            const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+            const toSlug = (str) => str.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/[ ​‌‍‎‏﻿  ​‌‍‎‏﻿]+/g, '-').replace(/^-+|-+$/g, '');
             const games = gameNames.map(name => ({ name: name, slug: toSlug(name) }));
 
             // --- GLOBAL APP STATE ---
@@ -175,8 +173,7 @@
 
             // NEW: State for optional peripherals
             const selectedPeripherals = {
-                monitor: -1, keyboard: -1, mouse: -1, joystick: -1,
-                auriculares: -1,
+                monitor: -1, keyboard: -1, mouse: -1, joystick: -1, auriculares: -1,
                 parlantes: -1, microfono: -1, webcam: -1, wifi: -1
             };
 
@@ -421,7 +418,7 @@
                 document.getElementById('orderForm').addEventListener('submit', handleFormSubmit);
 
                 // Dolar Popup
-                const dolarTriggers = ['usd-link-top', 'usd-price-display-top', 'usd-link-bottom', 'total-price-usd', 'usd-link-summary', 'total-price-summary-usd'];
+                const dolarTriggers = ['usd-link-top', 'usd-price-display-top', 'usd-link-bottom', 'total-price-usd', 'usd-link-summary', 'total-price-summary-usd', 'usd-link-summary-mobile', 'total-price-summary-usd-mobile'];
                 dolarTriggers.forEach(id => document.getElementById(id)?.addEventListener('click', (e) => { e.preventDefault(); showDolarPopup(); }));
                 const dolarPopup = document.getElementById('dolar-popup');
                 dolarPopup.addEventListener('click', (e) => { if (e.target === dolarPopup) dolarPopup.style.display = 'none'; });
@@ -458,6 +455,7 @@
                 if (priceVisibilityZone) {
                     const observer = new IntersectionObserver(entries => {
                         const isIntersecting = entries[0].isIntersecting;
+                        document.getElementById('mobile-price-summary-card').classList.toggle('show-mobile-price', isIntersecting);
                         document.getElementById('price-summary-card').classList.toggle('visible', isIntersecting);
                     });
                     observer.observe(priceVisibilityZone);
@@ -546,6 +544,7 @@
                 document.getElementById('total-price').textContent = formattedArs;
                 document.getElementById('top-total-price').textContent = formattedArs;
                 document.getElementById('total-price-summary-ars').textContent = formattedArs;
+                document.getElementById('total-price-summary-ars-mobile').textContent = formattedArs;
 
                 updateSelectedComponentsDisplay();
             }
@@ -1122,7 +1121,7 @@
                 const dolarRatesList = document.getElementById('dolar-rates-list');
                 dolarRatesList.innerHTML = '';
                 const tiposPermitidos = [{ key: 'oficial', label: 'Oficial' }, { key: 'blue', label: 'Blue' }, { key: 'cripto', label: 'Cripto' }];
-                let total = parseInt(document.getElementById('total-price').textContent.replace(/\$|\./g, ''));
+                let total = parseInt(document.getElementById('total-price').textContent.replace(/[$|.]/g, ''));
 
                 tiposPermitidos.forEach(tipo => {
                     const rate = allDolarRates.find(r => r.nombre.toLowerCase().includes(tipo.key));
@@ -1344,10 +1343,8 @@
                 }
                 if (extraNotes.trim() !== '') message += `*Notas:* ${extraNotes}\n`;
 
-                message += `
-Precio Total: ${document.getElementById('top-total-price').textContent}`;
-                message += `
-¡Quedo a la espera de tu respuesta!`;
+                message += `\nPrecio Total: ${document.getElementById('top-total-price').textContent}`;
+                message += `\n¡Quedo a la espera de tu respuesta!`;
                 window.open(`https://wa.me/5492252513233?text=${encodeURIComponent(message)}`, '_blank');
             }
 
@@ -1440,234 +1437,3 @@ const words = ["USAR", "JUGAR", "CREAR", "VOLAR"];
                                     el.style.opacity = "1";
                                 }, 350);
                             }, 2300);
-
-// --- Flyer Designer ---
-document.addEventListener('DOMContentLoaded', function () {
-    const flyerPopup = document.getElementById('flyer-designer-popup');
-    if (!flyerPopup) return;
-
-    const totalPriceEl = document.getElementById('total-price');
-    const closeFlyerBtn = document.getElementById('close-flyer-designer');
-    const canvasWrapper = document.getElementById('flyer-canvas-wrapper');
-    const canvas = document.getElementById('flyer-canvas');
-
-    const dimButtons = {
-        '1080x1080': document.getElementById('dim-1080x1080'),
-        '1080x1350': document.getElementById('dim-1080x1350'),
-        '1080x1920': document.getElementById('dim-1080x1920'),
-    };
-
-    let currentWidth = 1080;
-    let currentHeight = 1080;
-
-    function openFlyerDesigner() {
-        const summaryContainer = document.getElementById('selected-components-preview');
-        if (!summaryContainer) return;
-
-        const wrapper = document.createElement('div');
-        wrapper.classList.add('draggable', 'resizable');
-        wrapper.style.position = 'absolute';
-        wrapper.style.left = '50px';
-        wrapper.style.top = '50px';
-        wrapper.style.width = '400px'; // Give it a width
-
-        // Clone the summary and process it
-        const clonedSummary = summaryContainer.cloneNode(true);
-        clonedSummary.style.color = 'black'; // Set text color for white canvas
-        clonedSummary.querySelectorAll('a').forEach(a => a.outerHTML = a.innerHTML); // Remove links
-        clonedSummary.querySelectorAll('[id]').forEach(el => el.removeAttribute('id')); // Remove IDs
-
-        // Make text editable
-        clonedSummary.querySelectorAll('p, span, strong, h2').forEach(el => {
-            el.setAttribute('contenteditable', 'true');
-            el.style.cursor = 'text';
-        });
-        
-        // Add cabinet image
-        const cabinetContainer = clonedSummary.querySelector('.cabinet-summary-responsive');
-        if(cabinetContainer) {
-            cabinetContainer.style.marginTop = '0';
-        }
-
-        wrapper.appendChild(clonedSummary);
-        makeResizable(wrapper);
-
-        canvas.innerHTML = ''; // Clear previous content
-        canvas.appendChild(wrapper);
-
-        flyerPopup.classList.remove('hidden');
-        adjustCanvasScale();
-    }
-
-    function closeFlyerDesigner() {
-        flyerPopup.classList.add('hidden');
-    }
-
-    function adjustCanvasScale() {
-        if (!canvasWrapper || !canvas) return;
-        const wrapperWidth = canvasWrapper.clientWidth;
-        const wrapperHeight = canvasWrapper.clientHeight;
-
-        const scaleX = wrapperWidth / currentWidth;
-        const scaleY = wrapperHeight / currentHeight;
-        const scale = Math.min(scaleX, scaleY) * 0.95; // 0.95 for some padding
-
-        canvas.style.transform = `scale(${scale})`;
-    }
-
-    function changeCanvasDimensions(width, height) {
-        currentWidth = width;
-        currentHeight = height;
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
-        adjustCanvasScale();
-
-        // Update active button
-        for (const btn in dimButtons) {
-            dimButtons[btn].classList.remove('active');
-        }
-        if (width === 1080 && height === 1080) dimButtons['1080x1080'].classList.add('active');
-        else if (width === 1080 && height === 1350) dimButtons['1080x1350'].classList.add('active');
-        else if (width === 1080 && height === 1920) dimButtons['1080x1920'].classList.add('active');
-    }
-
-    // --- Event Listeners ---
-    totalPriceEl.addEventListener('click', (e) => {
-        if (e.altKey) {
-            e.preventDefault();
-            openFlyerDesigner();
-        }
-    });
-
-    closeFlyerBtn.addEventListener('click', closeFlyerDesigner);
-
-    dimButtons['1080x1080'].addEventListener('click', () => changeCanvasDimensions(1080, 1080));
-    dimButtons['1080x1350'].addEventListener('click', () => changeCanvasDimensions(1080, 1350));
-    dimButtons['1080x1920'].addEventListener('click', () => changeCanvasDimensions(1080, 1920));
-
-    window.addEventListener('resize', adjustCanvasScale);
-
-    // --- Draggable & Resizable Elements Logic ---
-    let activeElement = null;
-    let initialX, initialY, initialLeft, initialTop, initialWidth, initialHeight;
-    let isDragging = false;
-    let isResizing = false;
-
-    function dragStart(e) {
-        const target = e.target.closest('.draggable');
-        if (!target) return;
-
-        if (e.target.classList.contains('resize-handle')) return;
-
-        // Don't drag if editing text
-        if (e.target.isContentEditable) return;
-
-        isDragging = true;
-        activeElement = target;
-        activeElement.classList.add('dragging');
-
-        initialX = e.clientX;
-        initialY = e.clientY;
-        initialLeft = activeElement.offsetLeft;
-        initialTop = activeElement.offsetTop;
-
-        document.addEventListener('mousemove', dragMove);
-        document.addEventListener('mouseup', dragEnd);
-    }
-
-    function dragMove(e) {
-        if (!isDragging || !activeElement) return;
-        e.preventDefault();
-
-        const dx = e.clientX - initialX;
-        const dy = e.clientY - initialY;
-
-        const canvasScale = getCanvasScale();
-
-        activeElement.style.left = `${initialLeft + dx / canvasScale}px`;
-        activeElement.style.top = `${initialTop + dy / canvasScale}px`;
-    }
-
-    function dragEnd() {
-        if (!isDragging || !activeElement) return;
-        isDragging = false;
-        activeElement.classList.remove('dragging');
-        activeElement = null;
-        document.removeEventListener('mousemove', dragMove);
-        document.removeEventListener('mouseup', dragEnd);
-    }
-
-    function resizeStart(e) {
-        e.stopPropagation();
-        isResizing = true;
-        const handle = e.target;
-        activeElement = handle.parentElement;
-
-        initialX = e.clientX;
-        initialY = e.clientY;
-        initialWidth = activeElement.offsetWidth;
-        initialHeight = activeElement.offsetHeight;
-        initialLeft = activeElement.offsetLeft;
-        initialTop = activeElement.offsetTop;
-
-        document.addEventListener('mousemove', resizeMove);
-        document.addEventListener('mouseup', resizeEnd);
-    }
-
-    function resizeMove(e) {
-        if (!isResizing || !activeElement) return;
-        e.preventDefault();
-
-        const dx = e.clientX - initialX;
-        const dy = e.clientY - initialY;
-        const canvasScale = getCanvasScale();
-
-        const handle = e.target;
-
-        if (handle.classList.contains('se')) {
-            activeElement.style.width = `${initialWidth + dx / canvasScale}px`;
-            activeElement.style.height = `${initialHeight + dy / canvasScale}px`;
-        } else if (handle.classList.contains('sw')) {
-            activeElement.style.width = `${initialWidth - dx / canvasScale}px`;
-            activeElement.style.height = `${initialHeight + dy / canvasScale}px`;
-            activeElement.style.left = `${initialLeft + dx / canvasScale}px`;
-        } else if (handle.classList.contains('ne')) {
-            activeElement.style.width = `${initialWidth + dx / canvasScale}px`;
-            activeElement.style.height = `${initialHeight - dy / canvasScale}px`;
-            activeElement.style.top = `${initialTop + dy / canvasScale}px`;
-        } else if (handle.classList.contains('nw')) {
-            activeElement.style.width = `${initialWidth - dx / canvasScale}px`;
-            activeElement.style.height = `${initialHeight - dy / canvasScale}px`;
-            activeElement.style.left = `${initialLeft + dx / canvasScale}px`;
-            activeElement.style.top = `${initialTop + dy / canvasScale}px`;
-        }
-    }
-
-    function resizeEnd() {
-        if (!isResizing) return;
-        isResizing = false;
-        activeElement = null;
-        document.removeEventListener('mousemove', resizeMove);
-        document.removeEventListener('mouseup', resizeEnd);
-    }
-
-    function makeResizable(element) {
-        const handles = ['nw', 'ne', 'sw', 'se'];
-        handles.forEach(handleName => {
-            const handle = document.createElement('div');
-            handle.classList.add('resize-handle', handleName);
-            element.appendChild(handle);
-            handle.addEventListener('mousedown', resizeStart);
-        });
-    }
-
-    function getCanvasScale() {
-        const transform = canvas.style.transform;
-        if (transform && transform.includes('scale')) {
-            return parseFloat(transform.replace(/[^\d.]/g, ''));
-        }
-        return 1;
-    }
-
-    canvas.addEventListener('mousedown', dragStart);
-});
