@@ -98,7 +98,7 @@
         /* Contenedor estético alrededor del flyer */
         #cuadro {
             position: relative;
-            padding: 2rem; /* El "margen" estético */
+            padding: 2rem;
             background-color: #1f2937;
             box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
             transform-origin: top center;
@@ -108,8 +108,8 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            width: 1080px;
-            height: 1080px;
+            
+            /* The dimensions are now set by JavaScript */
         }
         
         /* Estilo base para el flyer */
@@ -400,9 +400,8 @@
         /* Estilos de la barra flotante */
         #flyer-toolbar {
             position: fixed;
-            bottom: 4rem; /* Posición por defecto */
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 1rem;
+            right: 1rem;
             z-index: 50;
             background-color: rgba(31, 41, 55, 0.9);
             border: 1px solid rgba(75, 85, 99, 0.5);
@@ -410,30 +409,14 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             padding: 1rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 0.5rem;
-            cursor: grab;
-        }
-        #flyer-toolbar.dragging {
-            cursor: grabbing;
+            cursor: default;
         }
         
         #flyer-toolbar .drag-handle {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 24px;
-            cursor: grab;
-            display: flex;
-            justify-content: flex-end;
-            padding: 4px;
-            color: #9ca3af;
-            transition: color 0.2s ease;
-        }
-
-        #flyer-toolbar .drag-handle:hover {
-            color: white;
+            display: none;
         }
     </style>
 </head>
@@ -538,11 +521,17 @@
 
             <hr class="border-gray-700 my-8">
 
+            <!-- Sección de Guardar y Cargar actualizada -->
             <div id="save-section" class="text-center space-y-4">
                 <h3 class="text-xl font-bold text-violet-400 font-saira mb-2">Guardar y Cargar</h3>
-                <button id="save-btn" class="w-full py-3 rounded-md text-white bg-violet-600 hover:bg-violet-700 transition font-bold">
-                    <i class="fas fa-code"></i> Guardar JSON
-                </button>
+                <div class="flex gap-2">
+                    <button id="save-btn" class="w-1/2 py-3 rounded-md text-white bg-violet-600 hover:bg-violet-700 transition font-bold">
+                        <i class="fas fa-code"></i> Guardar JSON
+                    </button>
+                    <button id="load-btn" class="w-1/2 py-3 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition font-bold">
+                        <i class="fas fa-clipboard-paste"></i> Cargar JSON
+                    </button>
+                </div>
             </div>
             
             <hr class="border-gray-700 my-8">
@@ -568,7 +557,7 @@
     </div>
 
     <!-- Toolbar flotante y oculta por defecto para cada cuadro -->
-    <div id="flyer-toolbar" class="hidden flex-col items-center p-4" style="height: 280px; width: auto;">
+    <div id="flyer-toolbar" class="flex-col items-center p-4">
         <div class="drag-handle absolute top-0 left-0 w-full h-8 cursor-grab flex justify-end p-2 text-gray-500 hover:text-white transition">
             <i class="fas fa-grip-lines"></i>
         </div>
@@ -601,6 +590,7 @@
 
     <!-- Placeholder para mensajes de estado -->
     <div id="status-message" class="fixed bottom-4 left-1/2 -translate-x-1/2 p-4 bg-gray-800 rounded-lg shadow-lg text-white text-center hidden z-50"></div>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
@@ -621,10 +611,12 @@
             const deleteBtn = document.getElementById('delete-btn');
             const zoomSlider = document.getElementById('zoom-slider');
             const saveBtn = document.getElementById('save-btn');
+            const loadBtn = document.getElementById('load-btn');
             const cuadroSelector = document.getElementById('cuadro-selector');
             const addCuadroBtn = document.getElementById('add-cuadro-btn');
             const deleteCuadroBtn = document.getElementById('delete-cuadro-btn');
             const flyerToolbar = document.getElementById('flyer-toolbar');
+            const cuadroEl = document.getElementById('cuadro');
             
             // Toolbar elements
             const toolbarAddSummaryBtn = document.getElementById('add-summary-btn');
@@ -632,12 +624,15 @@
             const toolbarAddInfoBtn = document.getElementById('add-info-btn');
             const toolbarClearFlyerBtn = document.getElementById('clear-flyer-btn');
             const toolbarSizeSelector = document.getElementById('flyer-size-selector');
+            const toggleNameBtn = document.getElementById('toggle-name-btn');
+            const togglePriceBtn = document.getElementById('toggle-price-btn');
 
             let data = null;
             let currentDesign = null;
             let selectedFlyerItem = null;
             let currentCuadroId = null;
             let allCuadros = [];
+            let addedComponents = []; 
             const MIN_SCALE = 0.1;
             const MAX_SCALE = 8;
             const INITIAL_IMAGE_SCALE = 1.33;
@@ -706,10 +701,14 @@
                     `
                 }
             };
-            
+
             // --- Funciones de Utilidad ---
             function getPrice(item) {
-                return item.total || (item.prices && item.prices.length > 0 ? item.prices[0].value : 0);
+                // FIX: Check for the `total` field first for "Bases", otherwise use the first element of the `prices` array.
+                if (item.total) {
+                    return item.total;
+                }
+                return (item.prices && item.prices.length > 0) ? item.prices[0].value : 0;
             }
             
             function showMessage(message, duration = 3000) {
@@ -764,12 +763,25 @@
                     width: width,
                     height: height,
                     elements: [],
-                    toolbarPosition: { top: null, left: null }
                 };
                 allCuadros.push(newCuadro);
                 renderCuadrosSelector();
                 switchCuadro(id);
                 showMessage(`Nuevo cuadro "${name}" creado.`, 3000);
+            }
+
+            function deleteCurrentCuadro() {
+                if (allCuadros.length <= 1) {
+                    showMessage("No puedes eliminar el último cuadro.", 3000);
+                    return;
+                }
+                const currentCuadroIndex = allCuadros.findIndex(c => c.id === currentCuadroId);
+                if (currentCuadroIndex !== -1) {
+                    allCuadros.splice(currentCuadroIndex, 1);
+                    renderCuadrosSelector();
+                    switchCuadro(allCuadros[0].id);
+                    showMessage(`Cuadro eliminado.`, 3000);
+                }
             }
 
             function renderCuadrosSelector() {
@@ -805,8 +817,14 @@
                 cuadrosContainer.innerHTML = '';
                 const cuadroEl = document.createElement('div');
                 cuadroEl.id = 'cuadro';
-                cuadroEl.style.width = `${cuadro.width}px`;
-                cuadroEl.style.height = `${cuadro.height}px`;
+                
+                // FIX: Set dimensions dynamically based on selected size
+                cuadroEl.style.width = '100%';
+                cuadroEl.style.height = '100%';
+                cuadroEl.style.maxWidth = `${cuadro.width}px`;
+                cuadroEl.style.maxHeight = `${cuadro.height}px`;
+                cuadroEl.style.aspectRatio = `${cuadro.width} / ${cuadro.height}`;
+                
                 cuadroEl.innerHTML = `<div id="flyer" class="relative overflow-hidden rounded-lg shadow-2xl bg-[#13161b] cursor-default" style="width:100%; height:100%;"></div>`;
                 cuadrosContainer.appendChild(cuadroEl);
                 
@@ -817,20 +835,92 @@
                 flyerEl.addEventListener('click', handleDeselect);
                 flyerEl.addEventListener('wheel', handleWheel);
 
-                addedComponents = [];
-                currentDesign.elements.forEach(el => loadElement(el));
+                // --- FIX: Correctly clear and re-populate the addedComponents array ---
+                addedComponents = []; // Reset the list
+                const allProducts = data ? Object.values(data).flat() : [];
+                if (cuadro.elements) {
+                    cuadro.elements.forEach(elData => {
+                        const isBase = Object.keys(baseElementData).includes(elData.id);
+                        if (isBase) {
+                            const compEl = document.createElement('div');
+                            compEl.id = elData.id;
+                            compEl.dataset.itemId = elData.id;
+                            compEl.dataset.itemName = elData.name;
+                            
+                            // FIX: Preserve existing classes and add 'flyer-item'
+                            const tempDiv = document.createElement('div');
+                            tempDiv.innerHTML = baseElementData[elData.id].html;
+                            compEl.className = `flyer-item ${tempDiv.firstChild.className || ''}`;
+
+                            compEl.innerHTML = baseElementData[elData.id].html;
+                            compEl.style.cssText = elData.style;
+                            
+                            if (elData.id === 'summary-table') {
+                                compEl.style.width = elData.style.width;
+                                compEl.querySelector('h3').textContent = elData.summaryTitle;
+                                compEl.addEventListener('selectstart', e => e.preventDefault());
+                                compEl.addEventListener('dblclick', e => { e.stopPropagation(); compEl.classList.toggle('show-categories'); updateBaseElements(); });
+                            }
+                            flyerEl.appendChild(compEl);
+                            setupDraggableElement(compEl);
+                            addedComponents.push({ id: elData.id, name: elData.name, element: compEl, isBaseElement: true });
+                        } else {
+                            const currentProduct = allProducts.find(p => p.id === parseInt(elData.id));
+                            const currentPrice = currentProduct ? getPrice(currentProduct) : parseFloat(elData.price);
+                            const compEl = document.createElement('div');
+                            compEl.className = `flyer-item p-2`;
+                            compEl.id = `comp-${elData.id}`;
+                            compEl.dataset.itemId = elData.id;
+                            compEl.dataset.itemName = elData.name;
+                            compEl.dataset.itemPrice = currentPrice;
+                            compEl.dataset.itemType = elData.type;
+                            compEl.style.cssText = elData.style;
+                            compEl.innerHTML = `<img src="comps/${elData.id}.webp" alt="${elData.name}" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/ffffff?text=${elData.name.replace(/\s/g, '+')}';">`;
+
+                            const nameEl = document.createElement('div');
+                            nameEl.className = 'flyer-item component-label';
+                            nameEl.textContent = elData.name;
+                            nameEl.style.cssText = elData.nameElementState;
+                            nameEl.style.zIndex = parseInt(compEl.style.zIndex) + 1;
+                            nameEl.dataset.parent = compEl.id;
+
+                            const priceEl = document.createElement('div');
+                            priceEl.className = 'flyer-item component-price';
+                            priceEl.textContent = `$${currentPrice.toLocaleString('es-AR')}`;
+                            priceEl.style.cssText = elData.priceElementState;
+                            priceEl.style.zIndex = parseInt(compEl.style.zIndex) + 1;
+                            priceEl.dataset.parent = compEl.id;
+                            
+                            // FIX: Append all created elements to the DOM
+                            flyerEl.appendChild(compEl);
+                            setupDraggableElement(compEl);
+                            flyerEl.appendChild(nameEl);
+                            flyerEl.appendChild(priceEl);
+                            setupDraggableElement(nameEl);
+                            setupDraggableElement(priceEl);
+
+                            addedComponents.push({
+                                id: elData.id,
+                                name: elData.name,
+                                price: currentPrice,
+                                type: elData.type,
+                                element: compEl,
+                                nameElement: nameEl,
+                                priceElement: priceEl
+                            });
+                        }
+                    });
+                }
                 
                 updateBaseElements();
                 
-                if (cuadro.toolbarPosition && cuadro.toolbarPosition.top !== null) {
-                     flyerToolbar.style.top = cuadro.toolbarPosition.top;
-                     flyerToolbar.style.left = cuadro.toolbarPosition.left;
-                     flyerToolbar.style.transform = '';
-                } else {
-                    flyerToolbar.style.top = '850px';
-                    flyerToolbar.style.left = '50%';
-                    flyerToolbar.style.transform = 'translateX(-50%)';
-                }
+                // Set the toolbar position to fixed bottom-right
+                flyerToolbar.style.top = '';
+                flyerToolbar.style.left = '';
+                flyerToolbar.style.bottom = '1rem';
+                flyerToolbar.style.right = '1rem';
+                flyerToolbar.style.transform = '';
+                
                 if (cuadro.width && cuadro.height) {
                     toolbarSizeSelector.value = `${cuadro.width}x${cuadro.height}`;
                 }
@@ -843,7 +933,6 @@
                 currentDesign.elements = [];
                 const flyerItems = document.querySelectorAll('#flyer .flyer-item');
                 flyerItems.forEach(item => {
-                    // Check if the item has an associated entry in addedComponents
                     const component = addedComponents.find(c => c.element === item);
                     if (!component) {
                         return;
@@ -856,22 +945,12 @@
                         type: isBaseElement ? 'base' : item.dataset.itemType,
                         price: component.price, 
                         summaryTitle: (item.dataset.itemId === "summary-table") ? item.querySelector('h3').textContent : null,
-                        style: {
-                            top: item.style.top,
-                            left: item.style.left,
-                            transform: item.style.transform,
-                            zIndex: item.style.zIndex,
-                            opacity: item.style.opacity,
-                            width: item.style.width,
-                            height: item.style.height
-                        },
-                        nameElementState: component.nameElement?.style.cssText,
-                        priceElementState: component.priceElement?.style.cssText
+                        style: item.style.cssText,
+                        nameElementState: component.nameElement ? component.nameElement.style.cssText : null,
+                        priceElementState: component.priceElement ? component.priceElement.style.cssText : null
                     };
                     currentDesign.elements.push(itemData);
                 });
-                currentDesign.toolbarPosition.top = flyerToolbar.style.top;
-                currentDesign.toolbarPosition.left = flyerToolbar.style.left;
                 const cuadroEl = document.getElementById('cuadro');
                 if (cuadroEl) {
                     currentDesign.width = parseInt(cuadroEl.style.width);
@@ -897,7 +976,8 @@
                     } else {
                         document.getElementById('scale-container').classList.remove('hidden');
                         document.getElementById('width-container').classList.add('hidden');
-                        const scale = selectedFlyerItem.style.transform ? parseFloat(selectedFlyerItem.style.transform.replace('scale(', '')) : 1;
+                        const scaleMatch = selectedFlyerItem.style.transform.match(/scale\((.*?)\)/);
+                        const scale = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
                         scaleInput.value = scale;
                         document.getElementById('text-options').classList.remove('hidden');
                     }
@@ -915,6 +995,19 @@
             scaleInput.addEventListener('input', () => { if (selectedFlyerItem) selectedFlyerItem.style.transform = `scale(${Math.max(MIN_SCALE, Math.min(MAX_SCALE, parseFloat(scaleInput.value)))})`; });
             widthInput.addEventListener('input', () => { if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === 'summary-table') selectedFlyerItem.style.width = `${Math.max(10, Math.min(100, parseFloat(widthInput.value)))}%`; });
             zIndexInput.addEventListener('input', () => { if (selectedFlyerItem) selectedFlyerItem.style.zIndex = zIndexInput.value; });
+            
+            toggleNameBtn.addEventListener('click', () => {
+                const component = addedComponents.find(c => c.element === selectedFlyerItem);
+                if (component && component.nameElement) {
+                    component.nameElement.style.display = component.nameElement.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+            togglePriceBtn.addEventListener('click', () => {
+                const component = addedComponents.find(c => c.element === selectedFlyerItem);
+                if (component && component.priceElement) {
+                    component.priceElement.style.display = component.priceElement.style.display === 'none' ? 'block' : 'none';
+                }
+            });
             toggleVisibilityBtn.addEventListener('click', () => {
                 if (selectedFlyerItem) {
                     const isVisible = selectedFlyerItem.style.opacity !== '0';
@@ -1035,14 +1128,21 @@
 
             function loadElement(elData) {
                 const isBase = Object.keys(baseElementData).includes(elData.id);
+                let compEl;
+
                 if (isBase) {
-                     const compEl = document.createElement('div');
+                    compEl = document.createElement('div');
                     compEl.id = elData.id;
                     compEl.dataset.itemId = elData.id;
                     compEl.dataset.itemName = elData.name;
-                    compEl.className = 'flyer-item';
+                    
+                    // FIX: Preserve the default classes by getting them from the base element's HTML.
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = baseElementData[elData.id].html;
+                    compEl.className = `flyer-item ${tempDiv.firstChild.className || ''}`;
+
                     compEl.innerHTML = baseElementData[elData.id].html;
-                    compEl.style.cssText = elData.style.cssText;
+                    compEl.style.cssText = elData.style;
                     
                     if (elData.id === 'summary-table') {
                         compEl.style.width = elData.style.width;
@@ -1050,21 +1150,21 @@
                         compEl.addEventListener('selectstart', e => e.preventDefault());
                         compEl.addEventListener('dblclick', e => { e.stopPropagation(); compEl.classList.toggle('show-categories'); updateBaseElements(); });
                     }
+                    addedComponents.push({ id: elData.id, name: elData.name, element: compEl, isBaseElement: true });
                     document.getElementById('flyer').appendChild(compEl);
                     setupDraggableElement(compEl);
-                    addedComponents.push({ id: elData.id, name: elData.name, element: compEl, isBaseElement: true });
                 } else {
-                    const allProducts = Object.values(data).flat();
+                    const allProducts = data ? Object.values(data).flat() : [];
                     const currentProduct = allProducts.find(p => p.id === parseInt(elData.id));
                     const currentPrice = currentProduct ? getPrice(currentProduct) : parseFloat(elData.price);
-                    const compEl = document.createElement('div');
+                    compEl = document.createElement('div');
                     compEl.className = `flyer-item p-2`;
                     compEl.id = `comp-${elData.id}`;
                     compEl.dataset.itemId = elData.id;
                     compEl.dataset.itemName = elData.name;
                     compEl.dataset.itemPrice = currentPrice;
                     compEl.dataset.itemType = elData.type;
-                    compEl.style.cssText = elData.style.cssText;
+                    compEl.style.cssText = elData.style;
                     compEl.innerHTML = `<img src="comps/${elData.id}.webp" alt="${elData.name}" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/ffffff?text=${elData.name.replace(/\s/g, '+')}';">`;
 
                     const nameEl = document.createElement('div');
@@ -1081,8 +1181,10 @@
                     priceEl.style.zIndex = parseInt(compEl.style.zIndex) + 1;
                     priceEl.dataset.parent = compEl.id;
                     
+                    document.getElementById('flyer').appendChild(compEl);
                     document.getElementById('flyer').appendChild(nameEl);
                     document.getElementById('flyer').appendChild(priceEl);
+                    setupDraggableElement(compEl);
                     setupDraggableElement(nameEl);
                     setupDraggableElement(priceEl);
 
@@ -1096,11 +1198,14 @@
                         priceElement: priceEl
                     });
                 }
+                
+                selectedFlyerItem = compEl;
             }
             
             function updateBaseElements() {
                 const componentsWithoutBase = addedComponents.filter(c => !c.isBaseElement);
-                const totalServicePrice = componentsWithoutBase.reduce((sum, comp) => sum + comp.price, 0) + BASE_SERVICE_PRICE;
+                // FIX: Check if comp.price is a number to prevent NaN from propagating
+                const totalServicePrice = componentsWithoutBase.reduce((sum, comp) => sum + (typeof comp.price === 'number' ? comp.price : 0), 0) + BASE_SERVICE_PRICE;
                 const priceEl = document.querySelector(`#final-price-value`);
                 if (priceEl) {
                     priceEl.textContent = `$${totalServicePrice.toLocaleString('es-AR')}`;
@@ -1181,7 +1286,8 @@
             // --- Carga Inicial de Datos ---
             async function initializeApp() {
                  try {
-                    const productsResponse = await fetch('products.json');
+                    // FIX: Changed the JSON file to 'productsH.json'
+                    const productsResponse = await fetch('productsH.json');
                     data = await productsResponse.json();
                     populateCategorySelector();
                 } catch (error) {
@@ -1207,6 +1313,25 @@
                     createNewCuadro("Cuadro 1");
                 }
             }
+            
+            async function loadDesignsFromJson() {
+                try {
+                    const clipboardText = await navigator.clipboard.readText();
+                    const parsedData = JSON.parse(clipboardText);
+
+                    if (Array.isArray(parsedData) && parsedData.length > 0) {
+                        allCuadros = parsedData;
+                        renderCuadrosSelector();
+                        switchCuadro(allCuadros[0].id);
+                        showMessage("Diseños cargados desde el portapapeles.", 3000);
+                    } else {
+                        showMessage("El JSON del portapapeles no es válido o está vacío.", 5000);
+                    }
+                } catch (e) {
+                    console.error("Error al cargar desde el portapapeles:", e);
+                    showMessage("Error: El contenido del portapapeles no es un JSON válido.", 5000);
+                }
+            }
 
             // --- Event Listeners Globales ---
             addCuadroBtn.addEventListener('click', () => {
@@ -1229,19 +1354,23 @@
                 navigator.clipboard.writeText(jsonString);
                 showMessage("JSON de cuadros copiado al portapapeles. ¡Pégalo en tu archivo flyers.json!", 5000);
             });
+            loadBtn.addEventListener('click', loadDesignsFromJson);
 
             // --- Event Listeners para la Toolbar de Cuadro ---
             toolbarSizeSelector.addEventListener('change', (e) => {
-                const cuadroEl = document.getElementById('cuadro');
-                if (!cuadroEl) return;
                 const [width, height] = e.target.value.split('x').map(Number);
-                cuadroEl.style.width = `${width}px`;
-                cuadroEl.style.height = `${height}px`;
+                cuadroEl.style.maxWidth = `${width}px`;
+                cuadroEl.style.maxHeight = `${height}px`;
+                cuadroEl.style.aspectRatio = `${width} / ${height}`;
+                
+                // Update the current design object with new dimensions
+                currentDesign.width = width;
+                currentDesign.height = height;
             });
 
             toolbarAddSummaryBtn.addEventListener('click', () => {
                 const flyerEl = document.getElementById('flyer');
-                const existingElement = flyerEl.querySelector(`#${baseElementData['summary-table'].id}`);
+                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'summary-table');
                 if (existingElement) {
                     showMessage("El elemento de resumen ya existe.", 3000);
                     return;
@@ -1251,7 +1380,7 @@
             });
             toolbarAddPriceBtn.addEventListener('click', () => {
                 const flyerEl = document.getElementById('flyer');
-                const existingElement = flyerEl.querySelector(`#${baseElementData['final-price-value'].id}`);
+                 const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'final-price-value');
                  if (existingElement) {
                     showMessage("El elemento de precio ya existe.", 3000);
                     return;
@@ -1261,7 +1390,7 @@
             });
             toolbarAddInfoBtn.addEventListener('click', () => {
                 const flyerEl = document.getElementById('flyer');
-                const existingElement = flyerEl.querySelector(`#${baseElementData['final-price-info'].id}`);
+                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'final-price-info');
                 if (existingElement) {
                     showMessage("El elemento de información ya existe.", 3000);
                     return;
