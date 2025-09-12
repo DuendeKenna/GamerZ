@@ -601,6 +601,7 @@
     
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.10.3/dist/html-to-image.umd.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const categorySelector = document.getElementById('category-selector');
@@ -651,6 +652,11 @@
             const MAX_SCALE = 8;
             const INITIAL_IMAGE_SCALE = 1.33;
             const BASE_SERVICE_PRICE = 110000;
+            let memeFilenamesCache = null;
+            // Exact filenames discovered in the workspace `memes/` folder.
+            const MEME_FILES = [
+                'PAS09790_OP.webp','PAS09793_OP.webp','PAS09795_OP.webp','PAS09796_OP.webp','PAS09798_OP.webp','PAS09800_OP.webp','PAS09804_OP.webp','PAS09805_OP.webp','PAS09806_OP.webp','PAS09807_OP.webp','PAS09810_OP.webp','PAS09811_OP.webp','PAS09813_OP.webp','PAS09814_OP.webp','PAS09815_OP.webp','PAS09816_OP.webp','PAS09818_OP.webp','PAS09828_OP.webp','PAS09832_OP.webp','PAS09834_OP.webp','PAS09837_OP.webp','PAS09839_OP.webp','PAS09840_OP.webp','PAS09845_OP.webp','PAS09846_OP.webp','PAS09847_OP.webp','PAS09849_OP.webp','PAS09854_OP.webp','PAS09856_OP.webp','PAS09857_OP.webp','PAS09861_OP.webp','PAS09863_OP.webp','PAS09865_OP.webp','PAS09867_OP.webp','PAS09869_OP.webp','PAS09872_OP.webp','PAS09873_OP.webp','PAS09874_OP.webp','PAS09877_OP.webp','PAS09878_OP.webp','PAS09886_OP.webp','PAS09888_OP.webp','PAS09889_OP.webp','PAS09891_OP.webp','PAS09892_OP.webp','PAS09893_OP.webp','PAS09895_OP.webp','PAS09903_OP.webp','PAS09904_OP.webp','PAS09908_OP.webp','PAS09909_OP.webp','PAS09912_OP.webp','PAS09916_OP.webp','PAS09917_OP.webp','PAS09918_OP.webp','PAS09919_OP.webp','PAS09921_OP.webp','PAS09933_OP.webp','PAS09937_OP.webp','PAS09938_OP.webp','PAS09941_OP.webp','PAS09943_OP.webp','PAS09949_OP.webp','PAS09950_OP.webp','PAS09953_OP.webp','PAS09954_OP.webp','PAS09955_OP.webp','PAS09963_OP.webp','PAS09964_OP.webp','PAS09965_OP.webp','PAS09966_OP.webp','PAS09970_OP.webp','PAS09973_OP.webp','PAS09974_OP.webp','PAS09975_OP.webp','PAS09976_OP.webp','PAS09977_OP.webp','PAS09978_OP.webp','PAS09979_OP.webp','PAS09980_OP.webp','PAS09986_OP.webp','PAS09987_OP.webp','PAS09990_OP.webp','PAS09991_OP.webp','PAS09992_OP.webp','PAS09993_OP.webp','PAS09995_OP.webp'
+            ];
 
             // Collection of base elements used in the editor
             const baseElementData = {
@@ -688,7 +694,7 @@
                     name: 'Información de Entrega',
                     html: `
                         <p class="delivery-info text-center mt-4 font-inter text-base">
-                            <i class="fas fa-truck mr-1"></i>Entrega Personal a Domicilio
+                            <i class="fas fa-car-side mr-1"></i>Entrega Personal a Domicilio
                         </p>
                         <p class="delivery-city text-center mt-1 font-inter text-base">
                             en toda <strong class="text-white la-costa-shadow">La Costa 🌊</strong>
@@ -740,22 +746,9 @@
 
             // Helper: build meme filenames or fetch a manifest if available
             async function getMemeFilenames() {
-                // Try to fetch a manifest file first
-                try {
-                    const resp = await fetch('memes/list.json');
-                    if (resp.ok) {
-                        const list = await resp.json();
-                        if (Array.isArray(list) && list.length) return list;
-                    }
-                } catch (e) {
-                    // manifest not found, fall back to generated names
-                }
-                // Fallback: generate a reasonable range of filenames (1-99)
-                const files = [];
-                for (let i = 1; i <= 99; i++) {
-                    files.push(`PAS097${String(i).padStart(2, '0')}_OP.webp`);
-                }
-                return files;
+                if (memeFilenamesCache && Array.isArray(memeFilenamesCache) && memeFilenamesCache.length) return memeFilenamesCache;
+                memeFilenamesCache = MEME_FILES.slice();
+                return memeFilenamesCache;
             }
 
             // Popup selector for meme images
@@ -768,47 +761,141 @@
                     e.stopPropagation();
                     const filenames = await getMemeFilenames();
 
-                    const popup = document.createElement('div');
-                    popup.className = 'popup-container fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+                    // Modal background
+                    const modal = document.createElement('div');
+                    modal.className = 'fixed inset-0 z-50 flex items-center justify-center';
+                    modal.style.background = 'rgba(0,0,0,0.7)';
 
-                    const popupContent = document.createElement('div');
-                    popupContent.className = 'popup-content bg-white p-4 rounded shadow-lg max-w-3xl w-full';
+                    // Content box matching dark theme
+                    const box = document.createElement('div');
+                    box.style.background = '#111827';
+                    box.style.color = '#e5e7eb';
+                    box.style.border = '1px solid rgba(75,85,99,0.5)';
+                    box.style.borderRadius = '8px';
+                    box.style.padding = '16px';
+                    box.style.maxWidth = '900px';
+                    box.style.width = '95%';
+                    box.style.maxHeight = '80vh';
+                    box.style.overflow = 'hidden';
 
                     const header = document.createElement('div');
-                    header.className = 'flex justify-between items-center mb-3';
-                    const title = document.createElement('h3'); title.textContent = 'Seleccionar Meme';
-                    const closeButton = document.createElement('button');
-                    closeButton.textContent = 'Cerrar';
-                    closeButton.className = 'bg-red-500 text-white px-3 py-1 rounded';
-                    closeButton.addEventListener('click', () => document.body.removeChild(popup));
-                    header.appendChild(title); header.appendChild(closeButton);
+                    header.style.display = 'flex';
+                    header.style.justifyContent = 'space-between';
+                    header.style.alignItems = 'center';
+                    header.style.marginBottom = '8px';
+                    const title = document.createElement('h3');
+                    title.textContent = 'Seleccionar Meme';
+                    title.style.margin = '0';
+                    title.style.fontSize = '1.1rem';
+                    title.style.fontWeight = '700';
+                    const closeBtn = document.createElement('button');
+                    closeBtn.textContent = 'Cerrar';
+                    closeBtn.style.background = 'linear-gradient(to right, #42d232, #95ef81)';
+                    closeBtn.style.border = 'none';
+                    closeBtn.style.color = '#081018';
+                    closeBtn.style.padding = '6px 10px';
+                    closeBtn.style.borderRadius = '6px';
+                    closeBtn.addEventListener('click', () => document.body.removeChild(modal));
+                    header.appendChild(title);
+                    header.appendChild(closeBtn);
 
                     const listWrap = document.createElement('div');
-                    listWrap.style.maxHeight = '60vh';
                     listWrap.style.overflow = 'auto';
+                    listWrap.style.maxHeight = '60vh';
+
+                    // Diagnostics area
+                    const diag = document.createElement('div');
+                    diag.style.display = 'flex';
+                    diag.style.justifyContent = 'space-between';
+                    diag.style.alignItems = 'center';
+                    diag.style.marginBottom = '10px';
+
+                    const diagInfo = document.createElement('div');
+                    diagInfo.style.color = '#9ca3af';
+                    diagInfo.style.fontSize = '13px';
+                    diagInfo.textContent = 'Cargando miniaturas...';
+
+                    const recheckBtn = document.createElement('button');
+                    recheckBtn.textContent = 'Revisar faltantes';
+                    recheckBtn.style.background = 'transparent';
+                    recheckBtn.style.color = '#9be7a6';
+                    recheckBtn.style.border = '1px solid rgba(156,163,175,0.12)';
+                    recheckBtn.style.padding = '6px 8px';
+                    recheckBtn.style.borderRadius = '6px';
+                    recheckBtn.style.cursor = 'pointer';
+
+                    diag.appendChild(diagInfo);
+                    diag.appendChild(recheckBtn);
 
                     const grid = document.createElement('div');
                     grid.style.display = 'grid';
                     grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(140px, 1fr))';
-                    grid.style.gap = '8px';
+                    grid.style.gap = '12px';
+
+                    const failedSet = new Set();
+
+                    // Helper to check a URL quickly
+                    async function checkUrl(url) {
+                        try {
+                            const resp = await fetch(url, { method: 'GET' });
+                            return resp.ok;
+                        } catch (err) {
+                            return false;
+                        }
+                    }
 
                     filenames.forEach(name => {
                         const tile = document.createElement('div');
-                        tile.className = 'meme-tile p-1 cursor-pointer text-center border rounded';
-                        tile.style.background = '#fafafa';
+                        tile.style.background = '#0b1220';
+                        tile.style.border = '1px solid rgba(255,255,255,0.04)';
+                        tile.style.borderRadius = '6px';
+                        tile.style.padding = '8px';
+                        tile.style.cursor = 'pointer';
+                        tile.style.display = 'flex';
+                        tile.style.flexDirection = 'column';
+                        tile.style.alignItems = 'center';
+                        tile.style.justifyContent = 'center';
+
+                        const thumb = document.createElement('div');
+                        thumb.style.width = '100%';
+                        thumb.style.height = '110px';
+                        thumb.style.display = 'flex';
+                        thumb.style.alignItems = 'center';
+                        thumb.style.justifyContent = 'center';
+                        thumb.style.background = '#0f1724';
+                        thumb.style.borderRadius = '4px';
+
                         const img = document.createElement('img');
-                        img.src = `memes/${name}`;
-                        img.alt = name;
-                        img.style.width = '100%';
-                        img.style.height = '100px';
+                        img.style.maxWidth = '100%';
+                        img.style.maxHeight = '100%';
                         img.style.objectFit = 'contain';
-                        img.onerror = () => { img.src = 'https://placehold.co/140x100/374151/ffffff?text=N/A'; };
+                        img.alt = name;
+                        // Preload image and detect failure
+                        const imgUrl = `memes/${name}`;
+                        img.src = imgUrl;
+                        img.onload = () => { /* loaded */ };
+                        img.onerror = () => {
+                            // Show N/A placeholder
+                            img.src = '';
+                            thumb.textContent = 'N/A';
+                            thumb.style.color = '#e5e7eb';
+                            thumb.style.fontWeight = '700';
+                            failedSet.add(name);
+                            diagInfo.textContent = `${failedSet.size} faltantes`; 
+                        };
+
+                        thumb.appendChild(img);
                         const label = document.createElement('div');
                         label.textContent = name;
                         label.style.fontSize = '11px';
+                        label.style.color = '#9ca3af';
+                        label.style.marginTop = '8px';
                         label.style.wordBreak = 'break-all';
-                        tile.appendChild(img);
+                        label.style.textAlign = 'center';
+
+                        tile.appendChild(thumb);
                         tile.appendChild(label);
+
                         tile.addEventListener('click', () => {
                             const memeImage = memeElement.querySelector('.meme-image');
                             if (memeImage) {
@@ -816,18 +903,49 @@
                                 memeImage.src = `memes/${name}`;
                                 memeImage.onerror = () => { memeImage.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
                             }
-                            document.body.removeChild(popup);
-                            // Refresh properties (so the filename input updates)
+                            document.body.removeChild(modal);
                             if (selectedFlyerItem === memeElement) updatePropertiesPanel();
+                            saveCurrentDesign();
                         });
+
                         grid.appendChild(tile);
                     });
 
+                    listWrap.appendChild(diag);
                     listWrap.appendChild(grid);
-                    popupContent.appendChild(header);
-                    popupContent.appendChild(listWrap);
-                    popup.appendChild(popupContent);
-                    document.body.appendChild(popup);
+
+                    // Create missing list area (hidden until needed)
+                    const missingList = document.createElement('div');
+                    missingList.style.color = '#fca5a5';
+                    missingList.style.marginTop = '8px';
+                    missingList.style.display = 'none';
+                    box.appendChild(missingList);
+
+                    // Recheck button handler: verify failed filenames and update list
+                    recheckBtn.addEventListener('click', async () => {
+                        diagInfo.textContent = 'Revisando...';
+                        const failed = [];
+                        // Check each failed or all filenames (prefer failed set)
+                        const namesToCheck = failedSet.size ? Array.from(failedSet) : filenames.slice(0, 99);
+                        for (const n of namesToCheck) {
+                            const ok = await checkUrl(`memes/${n}`);
+                            if (!ok) failed.push(n);
+                        }
+                        if (failed.length) {
+                            missingList.style.display = 'block';
+                            missingList.textContent = `Archivos faltantes (${failed.length}): ` + failed.join(', ');
+                            diagInfo.textContent = `${failed.length} faltantes`;
+                        } else {
+                            missingList.style.display = 'block';
+                            missingList.style.color = '#86efac';
+                            missingList.textContent = 'Todos los archivos existen (OK).';
+                            diagInfo.textContent = 'Todos cargados';
+                        }
+                    });
+                    box.appendChild(header);
+                    box.appendChild(listWrap);
+                    modal.appendChild(box);
+                    document.body.appendChild(modal);
                 });
             }
 
@@ -1068,41 +1186,12 @@
                     document.getElementById('properties-section').classList.add('hidden');
                 }
 
-                // --- New code for Meme image selector ---
-                if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === 'meme') {
-                    // Remove existing inputs for Meme to prevent duplicates
-                    const existingInput = document.getElementById('meme-image-input');
-                    const existingLabel = document.querySelector('label[for="meme-image-input"]');
-                    if (existingInput) existingInput.remove();
-                    if (existingLabel) existingLabel.remove();
-
-                    const imageName = selectedFlyerItem.dataset.imageName || null;
-
-                    const imageInputLabel = document.createElement('label');
-                    imageInputLabel.htmlFor = 'meme-image-input';
-                    imageInputLabel.textContent = 'Nombre de Imagen';
-                    imageInputLabel.className = 'block mt-4 text-sm font-medium';
-
-                    const imageInput = document.createElement('input');
-                    imageInput.type = 'text';
-                    imageInput.id = 'meme-image-input';
-                    imageInput.className = 'block w-full mt-2 p-2 border rounded';
-                    imageInput.value = imageName || '';
-                    imageInput.placeholder = 'doble clic sobre la imagen para seleccionar';
-                    imageInput.addEventListener('change', () => {
-                        const memeImage = selectedFlyerItem.querySelector('.meme-image');
-                        if (!memeImage) return;
-                        selectedFlyerItem.dataset.imageName = imageInput.value;
-                        memeImage.src = `memes/${imageInput.value}`;
-                        memeImage.onerror = () => {
-                            memeImage.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found';
-                        };
-                    });
-
-                    const propertiesSection = document.getElementById('properties-section');
-                    propertiesSection.appendChild(imageInputLabel);
-                    propertiesSection.appendChild(imageInput);
-                }
+                // Meme image is changed with Left/Right arrows or double-click popup
+                // Remove any old meme input remnants if present
+                const existingInput = document.getElementById('meme-image-input');
+                const existingLabel = document.querySelector('label[for="meme-image-input"]');
+                if (existingInput) existingInput.remove();
+                if (existingLabel) existingLabel.remove();
             }
 
             // --- Event Listeners para Propiedades ---
@@ -1309,6 +1398,17 @@
                     addedComponents.push({ id: elData.id, name: elData.name, element: compEl, isBaseElement: true });
                     document.getElementById('flyer').appendChild(compEl);
                     setupDraggableElement(compEl);
+                    // If this base is a meme, restore imageName and handler
+                    if (elData.id === 'meme') {
+                        const memeImage = compEl.querySelector('.meme-image');
+                        if (elData.imageName) {
+                            compEl.dataset.imageName = elData.imageName;
+                            if (memeImage) memeImage.src = `memes/${elData.imageName}`;
+                        }
+                        setupMemePopup(compEl);
+                        const img = compEl.querySelector('.meme-image');
+                        if (img) img.onerror = () => { img.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
+                    }
                 } else {
                     const allProducts = data ? Object.values(data).flat() : [];
                     const currentProduct = allProducts.find(p => p.id === parseInt(elData.id));
@@ -1396,7 +1496,7 @@
                     const serviceRow = document.createElement('tr');
                     serviceRow.className = 'border-t border-gray-700/50';
                     serviceRow.innerHTML = `
-                        <td class="py-2 text-white">Servicio Técnico<br><span class="text-sm text-gray-400">[Personal y via Web]</span></td>
+                        <td class="py-2 text-white">Instalación & Servicio Técnico<br><span class="text-sm text-gray-400">[Personal y via Web]</span></td>
                         <td class="py-2 text-right resumenPrecio">$${(BASE_SERVICE_PRICE).toLocaleString('es-AR')}</td>
                     `;
                     tableBody.appendChild(serviceRow);
@@ -1518,6 +1618,129 @@
                 showMessage("JSON de cuadros copiado al portapapeles. ¡Pégalo en tu archivo flyers.json!", 5000);
             });
             loadBtn.addEventListener('click', loadDesignsFromJson);
+
+            // Export using html-to-image for better fidelity
+            downloadBtn.addEventListener('click', async () => {
+                // Ensure library is available: try global first, then attempt to load local UMD from node_modules
+                async function ensureHtmlToImageLoaded() {
+                    if (typeof htmlToImage !== 'undefined' && htmlToImage) return htmlToImage;
+                    if (window && window.htmlToImage) return window.htmlToImage;
+
+                    // Prefer the local wrapper file which already exists at `js/html-to-image.js`.
+                    const local = 'js/html-to-image.js';
+                    return new Promise((resolve, reject) => {
+                        // If already injected, poll until available
+                        const existing = document.querySelector('script[src="' + local + '"]');
+                        if (existing) {
+                            let waited = 0;
+                            const poll = setInterval(() => {
+                                const lib = (typeof htmlToImage !== 'undefined') ? htmlToImage : (window && window.htmlToImage ? window.htmlToImage : null);
+                                if (lib) { clearInterval(poll); return resolve(lib); }
+                                waited += 50;
+                                if (waited > 3000) { clearInterval(poll); return reject(new Error('html-to-image global not available after waiting')); }
+                            }, 50);
+                            return;
+                        }
+
+                        const s = document.createElement('script');
+                        s.src = local;
+                        s.async = true;
+                        s.onload = () => {
+                            // Wait a short time for the wrapper to attach the global
+                            let waited = 0;
+                            const poll = setInterval(() => {
+                                const lib = (typeof htmlToImage !== 'undefined') ? htmlToImage : (window && window.htmlToImage ? window.htmlToImage : null);
+                                if (lib) { clearInterval(poll); return resolve(lib); }
+                                waited += 50;
+                                if (waited > 3000) { clearInterval(poll); return reject(new Error('html-to-image not available after loading ' + local)); }
+                            }, 50);
+                        };
+                        s.onerror = (e) => reject(new Error('Failed to load local html-to-image script: ' + local));
+                        document.head.appendChild(s);
+                    });
+                }
+
+                const cuadro = document.getElementById('cuadro');
+                if (!cuadro) {
+                    showMessage('No hay cuadro para exportar.', 3000);
+                    return;
+                }
+                showMessage('Generando imagen...', 0);
+
+                // Clone the cuadro to avoid side-effects and to normalize styles
+                const clone = cuadro.cloneNode(true);
+                clone.style.position = 'fixed';
+                clone.style.left = '-9999px';
+                clone.style.top = '-9999px';
+                clone.style.transform = '';
+                clone.style.margin = '0';
+                clone.style.padding = getComputedStyle(cuadro).padding;
+                // Ensure visible for rendering
+                clone.style.opacity = '1';
+
+                // Normalize images inside the clone
+                const imgs = clone.querySelectorAll('img');
+                const loadPromises = [];
+                imgs.forEach(img => {
+                    img.style.objectFit = 'contain';
+                    img.style.maxWidth = '100%';
+                    img.style.maxHeight = '100%';
+                    img.removeAttribute('width');
+                    img.removeAttribute('height');
+                    if (!img.complete) {
+                        loadPromises.push(new Promise(res => { img.onload = res; img.onerror = res; }));
+                    }
+                });
+
+                document.body.appendChild(clone);
+                try {
+                    await Promise.all(loadPromises);
+                    const lib = await ensureHtmlToImageLoaded();
+                    // Temporarily remove cross-origin <link rel="stylesheet"> elements
+                    const removedLinks = [];
+                    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+                        try {
+                            const href = link.getAttribute('href');
+                            if (!href) return;
+                            const url = new URL(href, window.location.href);
+                            if (url.origin !== window.location.origin) {
+                                removedLinks.push({ link, parent: link.parentNode, nextSibling: link.nextSibling });
+                                link.parentNode.removeChild(link);
+                            }
+                        } catch (e) {
+                            // If URL parsing fails, skip removing this link
+                        }
+                    });
+
+                    // Render with fonts skipped to avoid remote font embedding errors
+                    const dataUrl = await lib.toPng(clone, { cacheBust: true, backgroundColor: null, skipFonts: true });
+
+                    // Reinsert removed links
+                    removedLinks.forEach(({ link, parent, nextSibling }) => {
+                        try {
+                            if (!parent) document.head.appendChild(link);
+                            else parent.insertBefore(link, nextSibling);
+                        } catch (e) {
+                            document.head.appendChild(link);
+                        }
+                    });
+                    const link = document.createElement('a');
+                    const filename = (currentDesign && currentDesign.name) ? currentDesign.name.replace(/\s+/g, '_') : 'flyer';
+                    link.href = dataUrl;
+                    link.download = `${filename}.png`;
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                    showMessage('Imagen lista. Descargando...', 3000);
+                } catch (err) {
+                    console.error('Export error:', err);
+                    showMessage('Error al generar la imagen. Revisa la consola.', 5000);
+                } finally {
+                    clone.remove();
+                }
+            });
+
+            // Arrow-key meme navigation removed. Meme selection is via double-click popup.
 
             // --- Event Listeners para la Toolbar de Cuadro ---
             toolbarSizeSelector.addEventListener('change', (e) => {
