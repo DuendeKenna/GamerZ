@@ -418,6 +418,14 @@
         #flyer-toolbar .drag-handle {
             display: none;
         }
+
+        .resumenPrecio {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #7fd9ff;
+            font-family: Saira;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.484);
+        }
     </style>
 </head>
 
@@ -454,7 +462,7 @@
             
             <!-- Listado de Componentes (Imágenes) -->
             <div id="image-selector-section">
-                <h3 class="text-xl font-bold text-green-400 font-saira mb-2">2. Arrastra Elementos</h3>
+                <h3 class="text-xl font-bold resumenPrecio font-saira mb-2">2. Arrastra Elementos</h3>
                 <div id="image-selector" class="grid grid-cols-3 gap-4">
                     <!-- Componentes filtrados se insertarán aquí -->
                 </div>
@@ -627,6 +635,11 @@
             const toolbarSizeSelector = document.getElementById('flyer-size-selector');
             const toggleNameBtn = document.getElementById('toggle-name-btn');
             const togglePriceBtn = document.getElementById('toggle-price-btn');
+            const toolbarAddMemeBtn = document.createElement('button');
+            toolbarAddMemeBtn.id = 'add-meme-btn';
+            toolbarAddMemeBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
+            toolbarAddMemeBtn.title = 'Agregar Meme';
+            toolbarAddMemeBtn.innerHTML = '<i class="fas fa-image"></i>';
 
             let data = null;
             let currentDesign = null;
@@ -638,30 +651,8 @@
             const MAX_SCALE = 8;
             const INITIAL_IMAGE_SCALE = 1.33;
             const BASE_SERVICE_PRICE = 110000;
-            
-            // Mapping for data and categories
-            const categoryMap = {
-                'towersOptions': { name: 'Gabinetes' },
-                'baseOptions': { name: 'Bases' },
-                'cpuOptions': { name: 'CPUs' },
-                'ramOptions': { name: 'RAM' },
-                'motherboardOptions': { name: 'Motherboards' },
-                'gpuOptions': { name: 'Gráficas' },
-                'ssdOptions': { name: 'Almacenamiento' },
-                'psuOptions': { name: 'Fuentes' },
-                'monitorOptions': { name: 'Monitores' },
-                'keyboardOptions': { name: 'Teclados' },
-                'mouseOptions': { name: 'Mouses' },
-                'joystickOptions': { name: 'Joysticks' },
-                'auricularesOptions': { name: 'Auriculares' },
-                'parlantesOptions': { name: 'Parlantes' },
-                'webcamOptions': { name: 'Webcams' },
-                'microfonosOptions': { name: 'Micrófonos' },
-                'arosDeLuzOptions': { name: 'Aros de Luz' },
-                'wifiOptions': { name: 'WiFi' },
-            };
 
-            // Colección de elementos base
+            // Collection of base elements used in the editor
             const baseElementData = {
                 'summary-table': {
                     id: 'summary-table',
@@ -672,7 +663,7 @@
                             <thead class="border-b-2 border-gray-600">
                                 <tr>
                                     <th class="py-2 text-violet-400 font-saira">Componente</th>
-                                    <th class="py-2 text-right text-green-400 font-saira">Precio (ARS)</th>
+                                    <th class="py-2 text-right resumenPrecio font-saira">Precio (ARS)</th>
                                 </tr>
                             </thead>
                             <tbody class="component-table-body">
@@ -706,8 +697,140 @@
                             <i class="fas fa-credit-card"></i> Consultar opciones en cuotas x MP
                         </p>
                     `
+                },
+                'meme': {
+                    id: 'meme',
+                    name: 'Meme',
+                    html: `<div><img src="memes/PAS09795_OP.webp" alt="Meme" class="meme-image w-full h-full object-contain"></div>`,
+                    js: `
+                        const memeElement = document.querySelector('#meme');
+                        if (memeElement) {
+                            memeElement.style.width = '600px';
+                            memeElement.style.height = '600px';
+                        }
+                    `
                 }
             };
+
+            // Map of category keys to readable names used by the selector and dataset.itemType
+            const categoryMap = {
+                baseOptions: { name: 'Bases' },
+                armadasOptions: { name: 'Armadas' },
+                miniPcOptions: { name: 'MiniPCs' },
+                towersOptions: { name: 'Torres' },
+                comboOptions: { name: 'Combos' },
+                cpuOptions: { name: 'CPU' },
+                motherboardOptions: { name: 'Mother' },
+                ramOptions: { name: 'RAM' },
+                gpuOptions: { name: 'GPU' },
+                ssdOptions: { name: 'SSD' },
+                psuOptions: { name: 'PSU' },
+                monitorOptions: { name: 'Monitores' },
+                mouseOptions: { name: 'Mouse' },
+                joystickOptions: { name: 'Joysticks' },
+                keyboardOptions: { name: 'Teclados' },
+                comboMouseTecladoOptions: { name: 'M+T' },
+                auricularesOptions: { name: 'Auris' },
+                parlantesOptions: { name: 'Parlantes' },
+                webcamOptions: { name: 'Webcams' },
+                microfonosOptions: { name: 'Mics' },
+                wifiOptions: { name: 'WiFi' },
+                arosDeLuzOptions: { name: 'Luz' }
+            };
+
+            // Helper: build meme filenames or fetch a manifest if available
+            async function getMemeFilenames() {
+                // Try to fetch a manifest file first
+                try {
+                    const resp = await fetch('memes/list.json');
+                    if (resp.ok) {
+                        const list = await resp.json();
+                        if (Array.isArray(list) && list.length) return list;
+                    }
+                } catch (e) {
+                    // manifest not found, fall back to generated names
+                }
+                // Fallback: generate a reasonable range of filenames (1-99)
+                const files = [];
+                for (let i = 1; i <= 99; i++) {
+                    files.push(`PAS097${String(i).padStart(2, '0')}_OP.webp`);
+                }
+                return files;
+            }
+
+            // Popup selector for meme images
+            async function setupMemePopup(memeElement) {
+                // Avoid attaching multiple listeners
+                if (memeElement._memePopupAttached) return;
+                memeElement._memePopupAttached = true;
+
+                memeElement.addEventListener('dblclick', async (e) => {
+                    e.stopPropagation();
+                    const filenames = await getMemeFilenames();
+
+                    const popup = document.createElement('div');
+                    popup.className = 'popup-container fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+
+                    const popupContent = document.createElement('div');
+                    popupContent.className = 'popup-content bg-white p-4 rounded shadow-lg max-w-3xl w-full';
+
+                    const header = document.createElement('div');
+                    header.className = 'flex justify-between items-center mb-3';
+                    const title = document.createElement('h3'); title.textContent = 'Seleccionar Meme';
+                    const closeButton = document.createElement('button');
+                    closeButton.textContent = 'Cerrar';
+                    closeButton.className = 'bg-red-500 text-white px-3 py-1 rounded';
+                    closeButton.addEventListener('click', () => document.body.removeChild(popup));
+                    header.appendChild(title); header.appendChild(closeButton);
+
+                    const listWrap = document.createElement('div');
+                    listWrap.style.maxHeight = '60vh';
+                    listWrap.style.overflow = 'auto';
+
+                    const grid = document.createElement('div');
+                    grid.style.display = 'grid';
+                    grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(140px, 1fr))';
+                    grid.style.gap = '8px';
+
+                    filenames.forEach(name => {
+                        const tile = document.createElement('div');
+                        tile.className = 'meme-tile p-1 cursor-pointer text-center border rounded';
+                        tile.style.background = '#fafafa';
+                        const img = document.createElement('img');
+                        img.src = `memes/${name}`;
+                        img.alt = name;
+                        img.style.width = '100%';
+                        img.style.height = '100px';
+                        img.style.objectFit = 'contain';
+                        img.onerror = () => { img.src = 'https://placehold.co/140x100/374151/ffffff?text=N/A'; };
+                        const label = document.createElement('div');
+                        label.textContent = name;
+                        label.style.fontSize = '11px';
+                        label.style.wordBreak = 'break-all';
+                        tile.appendChild(img);
+                        tile.appendChild(label);
+                        tile.addEventListener('click', () => {
+                            const memeImage = memeElement.querySelector('.meme-image');
+                            if (memeImage) {
+                                memeElement.dataset.imageName = name;
+                                memeImage.src = `memes/${name}`;
+                                memeImage.onerror = () => { memeImage.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
+                            }
+                            document.body.removeChild(popup);
+                            // Refresh properties (so the filename input updates)
+                            if (selectedFlyerItem === memeElement) updatePropertiesPanel();
+                        });
+                        grid.appendChild(tile);
+                    });
+
+                    listWrap.appendChild(grid);
+                    popupContent.appendChild(header);
+                    popupContent.appendChild(listWrap);
+                    popup.appendChild(popupContent);
+                    document.body.appendChild(popup);
+                });
+            }
+
 
             // --- Funciones de Utilidad ---
             function getPrice(item) {
@@ -870,6 +993,20 @@
                 
                 flyerToolbar.classList.remove('hidden');
             }
+
+            // Execute optional JS snippets defined in `baseElementData[*].js`
+            function executeBaseElementScripts() {
+                Object.keys(baseElementData).forEach(key => {
+                    const js = baseElementData[key].js;
+                    if (!js) return;
+                    try {
+                        const fn = new Function(js);
+                        fn();
+                    } catch (err) {
+                        console.error('Error executing base element script for', key, err);
+                    }
+                });
+            }
             
             function saveCurrentDesign() {
                 if (!currentDesign) return;
@@ -890,7 +1027,8 @@
                         summaryTitle: (item.dataset.itemId === "summary-table") ? item.querySelector('h3').textContent : null,
                         style: item.style.cssText,
                         nameElementState: component.nameElement ? component.nameElement.style.cssText : null,
-                        priceElementState: component.priceElement ? component.priceElement.style.cssText : null
+                        priceElementState: component.priceElement ? component.priceElement.style.cssText : null,
+                        imageName: item.dataset.imageName || null
                     };
                     currentDesign.elements.push(itemData);
                 });
@@ -928,6 +1066,42 @@
                     toggleVisibilityBtn.innerHTML = isVisible ? '<i class="fas fa-eye-slash"></i> Ocultar' : '<i class="fas fa-eye"></i> Mostrar';
                 } else {
                     document.getElementById('properties-section').classList.add('hidden');
+                }
+
+                // --- New code for Meme image selector ---
+                if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === 'meme') {
+                    // Remove existing inputs for Meme to prevent duplicates
+                    const existingInput = document.getElementById('meme-image-input');
+                    const existingLabel = document.querySelector('label[for="meme-image-input"]');
+                    if (existingInput) existingInput.remove();
+                    if (existingLabel) existingLabel.remove();
+
+                    const imageName = selectedFlyerItem.dataset.imageName || null;
+
+                    const imageInputLabel = document.createElement('label');
+                    imageInputLabel.htmlFor = 'meme-image-input';
+                    imageInputLabel.textContent = 'Nombre de Imagen';
+                    imageInputLabel.className = 'block mt-4 text-sm font-medium';
+
+                    const imageInput = document.createElement('input');
+                    imageInput.type = 'text';
+                    imageInput.id = 'meme-image-input';
+                    imageInput.className = 'block w-full mt-2 p-2 border rounded';
+                    imageInput.value = imageName || '';
+                    imageInput.placeholder = 'doble clic sobre la imagen para seleccionar';
+                    imageInput.addEventListener('change', () => {
+                        const memeImage = selectedFlyerItem.querySelector('.meme-image');
+                        if (!memeImage) return;
+                        selectedFlyerItem.dataset.imageName = imageInput.value;
+                        memeImage.src = `memes/${imageInput.value}`;
+                        memeImage.onerror = () => {
+                            memeImage.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found';
+                        };
+                    });
+
+                    const propertiesSection = document.getElementById('properties-section');
+                    propertiesSection.appendChild(imageInputLabel);
+                    propertiesSection.appendChild(imageInput);
                 }
             }
 
@@ -973,7 +1147,7 @@
             });
 
             // --- Lógica de Creación y Actualización ---
-            function createComponentElement(itemData, x, y) {
+            async function createComponentElement(itemData, x, y) {
                 const existingComp = addedComponents.find(c => c.id == itemData.id);
                 if (existingComp) {
                     showMessage("Este componente ya fue agregado.", 3000);
@@ -1011,6 +1185,45 @@
                         compEl.addEventListener('selectstart', e => e.preventDefault());
                         compEl.addEventListener('dblclick', e => { e.stopPropagation(); compEl.classList.toggle('show-categories'); updateBaseElements(); });
                     }
+                } else if (itemData.id === 'meme') {
+                    compEl = document.createElement('div');
+                    compEl.id = itemData.id;
+                    compEl.dataset.itemId = itemData.id;
+                    compEl.dataset.itemName = itemData.name;
+                    compEl.className = 'flyer-item active';
+                    compEl.style.cssText = `
+                        position: absolute;
+                        top: ${y}px;
+                        left: ${x}px;
+                        transform: translate(-50%, -50%);
+                        text-align: center;
+                        color: #e5e7eb;
+                        white-space: nowrap;
+                        z-index: 9999;
+                        width: 600px;
+                        height: 600px;
+                    `;
+
+                    // Use first available filename as default
+                    const defaultName = (await getMemeFilenames())[0] || 'PAS09795_OP.webp';
+                    compEl.dataset.imageName = defaultName;
+                    compEl.innerHTML = `<img src="memes/${defaultName}" alt="Meme" class="meme-image w-full h-full object-contain">`;
+
+                    // Attach popup selector and image fallback
+                    setupMemePopup(compEl);
+
+                    const memeImage = compEl.querySelector('.meme-image');
+                    if (memeImage) {
+                        memeImage.onerror = () => { memeImage.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
+                    }
+
+                    setupDraggableElement(compEl);
+                    addedComponents.push({ id: itemData.id, name: itemData.name, element: compEl, isBaseElement: true });
+                    document.getElementById('flyer').appendChild(compEl);
+                    selectedFlyerItem = compEl;
+                    updateBaseElements();
+                    updatePropertiesPanel();
+                    return;
                 } else {
                     const componentId = `comp-${itemData.id}`;
                     compEl = document.createElement('div');
@@ -1176,7 +1389,7 @@
                         const row = document.createElement('tr');
                         row.className = 'border-t border-gray-700/50';
                         row.innerHTML = `<td class="py-2 text-white flex flex-col"><span class="text-base">${comp.name}</span></td>
-                            <td class="py-2 text-right text-green-400">$${(comp.price).toLocaleString('es-AR')}</td>`;
+                            <td class="py-2 text-right resumenPrecio">$${(comp.price).toLocaleString('es-AR')}</td>`;
                         tableBody.appendChild(row);
                     });
 
@@ -1184,7 +1397,7 @@
                     serviceRow.className = 'border-t border-gray-700/50';
                     serviceRow.innerHTML = `
                         <td class="py-2 text-white">Servicio Técnico<br><span class="text-sm text-gray-400">[Personal y via Web]</span></td>
-                        <td class="py-2 text-right text-green-400">$${(BASE_SERVICE_PRICE).toLocaleString('es-AR')}</td>
+                        <td class="py-2 text-right resumenPrecio">$${(BASE_SERVICE_PRICE).toLocaleString('es-AR')}</td>
                     `;
                     tableBody.appendChild(serviceRow);
                 }
@@ -1219,10 +1432,10 @@
                     e.preventDefault();
                     let currentScale = parseFloat(selectedFlyerItem.style.transform.replace('scale(', '')) || 1;
                     if (selectedFlyerItem.dataset.itemId === 'summary-table') {
-                        let newWidth = parseFloat(selectedFlyerItem.style.width) + (e.deltaY < 0 ? 20 : -20);
+                        let newWidth = parseFloat(selectedFlyerItem.style.width) + (e.deltaY < 0 ? 10 : -10); // Reduced step size for smoother scaling
                         selectedFlyerItem.style.width = `${Math.min(Math.max(newWidth, 200), 1000)}px`;
                     } else {
-                        let newScale = currentScale + (e.deltaY < 0 ? 0.2 : -0.2);
+                        let newScale = currentScale + (e.deltaY < 0 ? 0.05 : -0.05); // Reduced step size for smoother scaling
                         selectedFlyerItem.style.transform = `scale(${Math.min(Math.max(newScale, MIN_SCALE), MAX_SCALE)})`;
                     }
                     updatePropertiesPanel();
@@ -1235,6 +1448,7 @@
                     // FIX: Changed the JSON file to 'productsH.json'
                     const productsResponse = await fetch('productsH.json');
                     data = await productsResponse.json();
+                    console.log('initializeApp: productsH.json loaded, keys=', Object.keys(data || {}));
                     populateCategorySelector();
                 } catch (error) {
                     showMessage("Error al cargar los datos de productos.", 4000);
@@ -1295,6 +1509,8 @@
                 }
             });
             cuadroSelector.addEventListener('change', (e) => switchCuadro(e.target.value));
+            // Register category selector change handler once
+            categorySelector.addEventListener('change', () => populateImageSelector(categorySelector.value));
             saveBtn.addEventListener('click', () => {
                 saveCurrentDesign();
                 const jsonString = JSON.stringify(allCuadros, null, 2);
@@ -1360,9 +1576,22 @@
                 updatePropertiesPanel();
                 showMessage("Cuadro de diseño limpiado.", 3000);
             });
+            toolbarAddMemeBtn.addEventListener('click', () => {
+                const flyerEl = document.getElementById('flyer');
+                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'meme');
+                if (existingElement) {
+                    showMessage("El elemento Meme ya existe.", 3000);
+                    return;
+                }
+                const flyerRect = flyerEl.getBoundingClientRect();
+                createComponentElement(baseElementData['meme'], flyerRect.width / 2, flyerRect.height / 2);
+            });
             
+            document.querySelector('#flyer-toolbar .flex.items-center.space-x-2').appendChild(toolbarAddMemeBtn);
+
             // Lógica de Selectores
             function populateCategorySelector() {
+                console.log('populateCategorySelector called, data=', data ? Object.keys(data) : data);
                 if (!data) return;
                 categorySelector.innerHTML = '';
                 const categories = [{ key: '', name: 'Selecciona una categoría' }];
@@ -1377,7 +1606,18 @@
                     option.textContent = cat.name;
                     categorySelector.appendChild(option);
                 });
-                categorySelector.addEventListener('change', () => populateImageSelector(categorySelector.value));
+                console.log('populateCategorySelector: categories added =', categories);
+                console.log('populateCategorySelector: option count =', categorySelector.options.length);
+                // Ensure selector is enabled and visible
+                categorySelector.disabled = false;
+                categorySelector.style.display = '';
+                // If there's at least one real category, select it and populate images immediately
+                if (categories.length > 1) {
+                    const firstKey = categories[1].key;
+                    categorySelector.value = firstKey;
+                    populateImageSelector(firstKey);
+                }
+                // listener is registered once outside the function to avoid duplicates
             }
 
             function populateImageSelector(categoryKey) {
@@ -1394,7 +1634,7 @@
                     imgContainer.dataset.itemType = categoryMap[categoryKey].name;
                     imgContainer.innerHTML = `<img src="comps/${item.id}.webp" alt="${item.name}" class="w-16 h-16 object-contain mb-2" onerror="this.onerror=null;this.src='https://placehold.co/64x64/374151/ffffff?text=IMG'">
                         <span class="text-xs text-gray-400">${item.name}</span>
-                        <span class="text-xs text-green-400 font-bold">$${getPrice(item).toLocaleString('es-AR')}</span>`;
+                        <span class="text-xs resumenPrecio font-bold">$${getPrice(item).toLocaleString('es-AR')}</span>`;
                     imageSelector.appendChild(imgContainer);
                     imgContainer.addEventListener('dragstart', (e) => { e.dataTransfer.setData('text/plain', JSON.stringify({ id: item.id, name: item.name, price: getPrice(item), type: categoryMap[categoryKey].name })); });
                 });
@@ -1418,18 +1658,8 @@
         };
 
         flyerSizeSelector.addEventListener('change', updateCuadroSize);
-
-        // Initialize the size on page load
-        updateCuadroSize();
-        
       });
-
-      function executeBaseElementScripts() {
-                      const lucas = document.querySelector('#final-price-value');
-                      if (lucas) {
-                        lucas.classList.add('lucas-price');
-                      }
-      }
     </script>
 </body>
+
 </html>
