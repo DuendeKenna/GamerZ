@@ -684,7 +684,13 @@
                 'final-price-value': {
                     id: 'final-price-value',
                     name: 'Precio Final',
-                    html: `<p class="lucas-price text-center">$0</p>`
+                    html: `<div><p class="lucas-price text-center">$0</p></div>`,
+                    js: `
+                      const lucas = document.querySelector('#final-price-value');
+                      if (lucas) {
+                        lucas.classList.add('lucas-price');
+                      }
+                    `
                 },
                 'final-price-info': {
                     id: 'final-price-info',
@@ -1000,6 +1006,7 @@
                     `;
                     compEl.innerHTML = baseElementData[itemData.id].html;
                     
+
                     if (itemData.id === 'summary-table') {
                         compEl.addEventListener('selectstart', e => e.preventDefault());
                         compEl.addEventListener('dblclick', e => { e.stopPropagation(); compEl.classList.toggle('show-categories'); updateBaseElements(); });
@@ -1075,7 +1082,7 @@
                     const innerWrapper = document.createElement('div');
                     innerWrapper.innerHTML = baseElementData[elData.id].html;
                     
-                    compEl.className = `flyer-item`;
+                    compEl.classList.add(`flyer-item`);
                     compEl.innerHTML = innerWrapper.innerHTML;
                     
                     compEl.style.cssText = elData.style;
@@ -1144,7 +1151,10 @@
                 const totalServicePrice = componentsWithoutBase.reduce((sum, comp) => sum + (typeof comp.price === 'number' ? comp.price : 0), 0) + BASE_SERVICE_PRICE;
                 const priceEl = document.querySelector(`#final-price-value`);
                 if (priceEl) {
-                    priceEl.textContent = `$${totalServicePrice.toLocaleString('es-AR')}`;
+                    const priceTextEl = priceEl.querySelector('p');
+                    if (priceTextEl) {
+                        priceTextEl.textContent = `$${totalServicePrice.toLocaleString('es-AR')}`;
+                    }
                 }
 
                 const summaryTableContainer = document.querySelector(`#summary-table`);
@@ -1248,6 +1258,7 @@
                     console.error("Error al cargar flyers.json:", error);
                     createNewCuadro("Cuadro 1");
                 }
+                executeBaseElementScripts();
             }
             
             async function loadDesignsFromJson() {
@@ -1410,7 +1421,15 @@
 
         // Initialize the size on page load
         updateCuadroSize();
+        
       });
+
+      function executeBaseElementScripts() {
+                      const lucas = document.querySelector('#final-price-value');
+                      if (lucas) {
+                        lucas.classList.add('lucas-price');
+                      }
+      }
     </script>
 </body>
 </html>

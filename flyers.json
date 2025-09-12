@@ -97,9 +97,29 @@
         "name": "Precio Final",
         "type": "base",
         "summaryTitle": null,
-        "style": "position: absolute; top: 842px; left: -44px; transform: scale(2); text-align: center; color: rgb(229, 231, 235); white-space: nowrap; z-index: 9999; padding: 1.5rem; width: 80%; max-width: 600px;",
+        "style": "position: absolute; top: 825px; left: 225px; transform: scale(1.9); text-align: center; color: rgb(229, 231, 235); white-space: nowrap; z-index: 9999; padding: 1.5rem; width: 80%; max-width: 600px;",
         "nameElementState": null,
         "priceElementState": null
+      },
+      {
+        "id": "81841",
+        "name": "DDR4 8x2 = 16 GB",
+        "type": "RAM",
+        "price": 16,
+        "summaryTitle": null,
+        "style": "top: 205px; left: 402.4px; width: 200px; height: 200px; transform: scale(1.33); z-index: 10;",
+        "nameElementState": "z-index: 11; display: none;",
+        "priceElementState": "z-index: 11; display: none;"
+      },
+      {
+        "id": "8502",
+        "name": "DDR4 16GB - 3200 Mhz Hiksemi",
+        "type": "RAM",
+        "price": 16,
+        "summaryTitle": null,
+        "style": "top: 447px; left: 44.4px; width: 200px; height: 200px; transform: scale(1.33); z-index: 10;",
+        "nameElementState": "z-index: 11; display: none;",
+        "priceElementState": "z-index: 11; display: none;"
       }
     ]
   }
