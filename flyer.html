@@ -446,6 +446,9 @@
                 <button id="delete-cuadro-btn" class="p-2 rounded-md bg-red-600 hover:bg-red-700 transition" title="Eliminar Cuadro">
                     <i class="fas fa-trash-alt"></i>
                 </button>
+                <button id="rename-cuadro-btn" class="p-2 rounded-md bg-yellow-500 hover:bg-yellow-600 transition" title="Renombrar Cuadro">
+                    <i class="fas fa-i-cursor"></i>
+                </button>
             </div>
             
             <hr class="border-gray-700 my-8">
@@ -498,8 +501,14 @@
                         </div>
                     </div>
                     <div id="h2-properties" class="hidden">
-                        <label for="h2-text" class="block text-sm font-medium">Texto H2 (Shift+Enter inserts &lt;br&gt;):</label>
+                        <label for="h2-text" class="block text-sm font-medium">Texto Amarillo (Shift+Enter inserta &lt;br&gt;):</label>
                         <textarea id="h2-text" rows="3" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" placeholder="¡ARMÁ TU NAVE!"></textarea>
+                        <label for="h2-align" class="block text-sm font-medium mt-2">Alineación:</label>
+                        <select id="h2-align" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
+                            <option value="left">Izquierda</option>
+                            <option value="center">Centrada</option>
+                            <option value="right">Derecha</option>
+                        </select>
                     </div>
                     <div>
                         <label for="pos-x" class="block text-sm font-medium">Posición X:</label>
@@ -798,7 +807,7 @@
                 ,
                 'h2': {
                     id: 'h2',
-                    name: 'H2',
+                    name: 'Amarillo',
                     html: `<h2 class="relative z-40 font-saira font-bold text-center text-4xl lg:text-5xl" style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>`,
                     js: `
                         (function(){
@@ -1251,6 +1260,13 @@
                             itemData.finalInfo1 = itemData.finalInfo2 = itemData.finalInfo3 = null;
                         }
                     }
+                    // Persist H2 alignment
+                    if (item.dataset.itemId === 'h2') {
+                        try {
+                            const h2El = item.querySelector('h2') || item;
+                            itemData.h2Align = h2El ? (h2El.style.textAlign || null) : null;
+                        } catch(e) { itemData.h2Align = null; }
+                    }
                     currentDesign.elements.push(itemData);
                 });
                 const cuadroEl = document.getElementById('cuadro');
@@ -1326,6 +1342,10 @@
                                 const h2Input = document.getElementById('h2-text');
                                 const h2El = selectedFlyerItem.querySelector('h2') || selectedFlyerItem;
                                 h2Input.value = h2El ? h2El.innerHTML : '';
+                                const h2AlignSelect = document.getElementById('h2-align');
+                                if (h2AlignSelect && h2El) {
+                                    h2AlignSelect.value = h2El.style.textAlign || 'center';
+                                }
                             } else {
                                 h2Props.classList.add('hidden');
                             }
@@ -1391,6 +1411,19 @@
                         h2El.innerHTML = html;
                     }
                     // Persist
+                    saveCurrentDesign();
+                });
+            }
+
+            // H2 alignment control
+            const h2AlignSelect = document.getElementById('h2-align');
+            if (h2AlignSelect) {
+                h2AlignSelect.addEventListener('change', () => {
+                    if (!selectedFlyerItem || selectedFlyerItem.dataset.itemId !== 'h2') return;
+                    const h2El = selectedFlyerItem.querySelector('h2') || selectedFlyerItem;
+                    if (h2El) {
+                        h2El.style.textAlign = h2AlignSelect.value;
+                    }
                     saveCurrentDesign();
                 });
             }
@@ -1675,6 +1708,9 @@
                             if (elData.h2Text) {
                                 h2El.innerHTML = elData.h2Text;
                             }
+                            if (elData.h2Align) {
+                                try { h2El.style.textAlign = elData.h2Align; } catch(e){}
+                            }
                         }
                     }
                     // If this base is final-price-info, restore its three paragraph lines
@@ -1876,6 +1912,20 @@
                 const newCuadroName = prompt("Ingresa el nombre del nuevo cuadro:", `Cuadro ${allCuadros.length + 1}`);
                 if (newCuadroName) createNewCuadro(newCuadroName);
             });
+            // Rename selected cuadro
+            const renameBtn = document.getElementById('rename-cuadro-btn');
+            if (renameBtn) {
+                renameBtn.addEventListener('click', () => {
+                    const current = allCuadros.find(c => c.id === currentCuadroId);
+                    if (!current) { showMessage('No hay cuadro seleccionado.', 3000); return; }
+                    const newName = prompt('Nuevo nombre para el cuadro:', current.name || '');
+                    if (newName && newName.trim()) {
+                        current.name = newName.trim();
+                        renderCuadrosSelector();
+                        showMessage(`Cuadro renombrado a "${current.name}"`, 2000);
+                    }
+                });
+            }
             deleteCuadroBtn.addEventListener('click', () => {
                 if (allCuadros.length > 1 && confirm(`¿Estás seguro de que quieres eliminar el cuadro "${currentDesign.name}"?`)) {
                     allCuadros = allCuadros.filter(c => c.id !== currentCuadroId);
@@ -1972,35 +2022,58 @@
                 document.body.appendChild(clone);
                 try {
                     await Promise.all(loadPromises);
-                    const lib = await ensureHtmlToImageLoaded();
-                    // Temporarily remove cross-origin <link rel="stylesheet"> elements
-                    const removedLinks = [];
-                    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-                        try {
-                            const href = link.getAttribute('href');
-                            if (!href) return;
-                            const url = new URL(href, window.location.href);
-                            if (url.origin !== window.location.origin) {
-                                removedLinks.push({ link, parent: link.parentNode, nextSibling: link.nextSibling });
-                                link.parentNode.removeChild(link);
+                        const lib = await ensureHtmlToImageLoaded();
+                        // Temporarily remove cross-origin <link rel="stylesheet"> elements to avoid CORS errors
+                        const removedLinks = [];
+                        document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+                            try {
+                                const href = link.getAttribute('href');
+                                if (!href) return;
+                                const url = new URL(href, window.location.href);
+                                if (url.origin !== window.location.origin) {
+                                    removedLinks.push({ link, parent: link.parentNode, nextSibling: link.nextSibling });
+                                    link.parentNode.removeChild(link);
+                                }
+                            } catch (e) {
+                                // If URL parsing fails, skip removing this link
                             }
-                        } catch (e) {
-                            // If URL parsing fails, skip removing this link
-                        }
-                    });
+                        });
 
-                    // Render with fonts skipped to avoid remote font embedding errors
-                    const dataUrl = await lib.toPng(clone, { cacheBust: true, backgroundColor: null, skipFonts: true });
+                        // Prepare options: use devicePixelRatio and explicit dimensions
+                        const rect = clone.getBoundingClientRect();
+                        const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+                        const options = {
+                            cacheBust: true,
+                            backgroundColor: null,
+                            skipFonts: true,
+                            width: Math.round(rect.width),
+                            height: Math.round(rect.height),
+                            pixelRatio: pixelRatio
+                        };
 
-                    // Reinsert removed links
-                    removedLinks.forEach(({ link, parent, nextSibling }) => {
+                        let dataUrl;
                         try {
-                            if (!parent) document.head.appendChild(link);
-                            else parent.insertBefore(link, nextSibling);
-                        } catch (e) {
-                            document.head.appendChild(link);
+                            dataUrl = await lib.toPng(clone, options);
+                        } catch (err) {
+                            console.warn('html-to-image toPng failed, falling back to canvas method', err);
+                            // Fallback: draw the node onto a temporary canvas using html2canvas
+                            try {
+                                const canvas = await html2canvas(clone, { backgroundColor: null, scale: pixelRatio });
+                                dataUrl = canvas.toDataURL('image/png');
+                            } catch (err2) {
+                                throw err2;
+                            }
                         }
-                    });
+
+                        // Reinsert removed links
+                        removedLinks.forEach(({ link, parent, nextSibling }) => {
+                            try {
+                                if (!parent) document.head.appendChild(link);
+                                else parent.insertBefore(link, nextSibling);
+                            } catch (e) {
+                                document.head.appendChild(link);
+                            }
+                        });
                     const link = document.createElement('a');
                     const filename = (currentDesign && currentDesign.name) ? currentDesign.name.replace(/\s+/g, '_') : 'flyer';
                     link.href = dataUrl;
