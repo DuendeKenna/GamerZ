@@ -486,9 +486,20 @@
                             <button id="apply-markup-btn" class="flex-1 py-2 rounded-md text-white bg-green-600 hover:bg-green-700">Aplicar Markup</button>
                         </div>
                     </div>
+                    <div id="final-price-info-properties" class="hidden">
+                        <label for="final-info-1" class="block text-sm font-medium">Información de Entrega - Línea 1</label>
+                        <input type="text" id="final-info-1" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" />
+                        <label for="final-info-2" class="block text-sm font-medium mt-2">Información de Entrega - Línea 2</label>
+                        <input type="text" id="final-info-2" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" />
+                        <label for="final-info-3" class="block text-sm font-medium mt-2">Información de Entrega - Línea 3</label>
+                        <input type="text" id="final-info-3" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" />
+                        <div class="mt-2 text-right">
+                            <button id="apply-final-info" class="px-3 py-2 bg-green-600 rounded text-white">Aplicar</button>
+                        </div>
+                    </div>
                     <div id="h2-properties" class="hidden">
-                        <label for="h2-text" class="block text-sm font-medium">Texto H2:</label>
-                        <input type="text" id="h2-text" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" placeholder="¡ARMÁ TU NAVE!">
+                        <label for="h2-text" class="block text-sm font-medium">Texto H2 (Shift+Enter inserts &lt;br&gt;):</label>
+                        <textarea id="h2-text" rows="3" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" placeholder="¡ARMÁ TU NAVE!"></textarea>
                     </div>
                     <div>
                         <label for="pos-x" class="block text-sm font-medium">Posición X:</label>
@@ -1229,6 +1240,17 @@
                         markup: item.dataset.markup || null,
                         h2Text: item.dataset.itemId === 'h2' ? (item.querySelector('h2') ? item.querySelector('h2').innerHTML : null) : null
                     };
+                    // Persist the three paragraph texts for final-price-info base element
+                    if (item.dataset.itemId === 'final-price-info') {
+                        try {
+                            const pEls = item.querySelectorAll('p');
+                            itemData.finalInfo1 = pEls[0] ? pEls[0].innerHTML : null;
+                            itemData.finalInfo2 = pEls[1] ? pEls[1].innerHTML : null;
+                            itemData.finalInfo3 = pEls[2] ? pEls[2].innerHTML : null;
+                        } catch (e) {
+                            itemData.finalInfo1 = itemData.finalInfo2 = itemData.finalInfo3 = null;
+                        }
+                    }
                     currentDesign.elements.push(itemData);
                 });
                 const cuadroEl = document.getElementById('cuadro');
@@ -1280,6 +1302,22 @@
                                 markupProps.classList.add('hidden');
                             }
                         }
+                        // Show final-price-info properties
+                        const finalInfoProps = document.getElementById('final-price-info-properties');
+                        if (finalInfoProps) {
+                            if (selectedFlyerItem.dataset.itemId === 'final-price-info') {
+                                finalInfoProps.classList.remove('hidden');
+                                const f1 = document.getElementById('final-info-1');
+                                const f2 = document.getElementById('final-info-2');
+                                const f3 = document.getElementById('final-info-3');
+                                const pEls = selectedFlyerItem.querySelectorAll('p');
+                                f1.value = pEls[0] ? pEls[0].innerHTML : '';
+                                f2.value = pEls[1] ? pEls[1].innerHTML : '';
+                                f3.value = pEls[2] ? pEls[2].innerHTML : '';
+                            } else {
+                                finalInfoProps.classList.add('hidden');
+                            }
+                        }
                         // Show H2 properties
                         const h2Props = document.getElementById('h2-properties');
                         if (h2Props) {
@@ -1325,11 +1363,54 @@
             // H2 text change
             const h2TextInput = document.getElementById('h2-text');
             if (h2TextInput) {
+                // When user presses Shift+Enter, insert a literal <br> at the cursor position
+                h2TextInput.addEventListener('keydown', (ev) => {
+                    if (ev.key === 'Enter' && ev.shiftKey) {
+                        ev.preventDefault();
+                        const el = ev.target;
+                        const start = el.selectionStart;
+                        const end = el.selectionEnd;
+                        const value = el.value;
+                        // Insert a placeholder for <br> which we'll convert when applying
+                        const insertText = '\\n';
+                        el.value = value.slice(0, start) + insertText + value.slice(end);
+                        el.selectionStart = el.selectionEnd = start + insertText.length;
+                        // Trigger input event handler
+                        el.dispatchEvent(new Event('input'));
+                    }
+                });
+
                 h2TextInput.addEventListener('input', () => {
                     if (!selectedFlyerItem || selectedFlyerItem.dataset.itemId !== 'h2') return;
                     const h2El = selectedFlyerItem.querySelector('h2') || selectedFlyerItem;
-                    if (h2El) h2El.innerHTML = h2TextInput.value;
+                    if (h2El) {
+                        // Convert newline placeholders to <br> and preserve other text
+                        // We convert actual newlines as well for safety
+                        const raw = h2TextInput.value || '';
+                        const html = raw.replace(/\r\n|\r|\n/g, '<br>');
+                        h2El.innerHTML = html;
+                    }
                     // Persist
+                    saveCurrentDesign();
+                });
+            }
+
+            // Final-price-info apply handler
+            const applyFinalBtn = document.getElementById('apply-final-info');
+            if (applyFinalBtn) {
+                applyFinalBtn.addEventListener('click', () => {
+                    if (!selectedFlyerItem || selectedFlyerItem.dataset.itemId !== 'final-price-info') return;
+                    const f1 = document.getElementById('final-info-1');
+                    const f2 = document.getElementById('final-info-2');
+                    const f3 = document.getElementById('final-info-3');
+                    const pEls = selectedFlyerItem.querySelectorAll('p');
+                    try {
+                        if (pEls[0]) pEls[0].innerHTML = f1.value;
+                        if (pEls[1]) pEls[1].innerHTML = f2.value;
+                        if (pEls[2]) pEls[2].innerHTML = f3.value;
+                    } catch (e) {
+                        console.error('Failed to apply final-price-info texts', e);
+                    }
                     saveCurrentDesign();
                 });
             }
@@ -1595,6 +1676,15 @@
                                 h2El.innerHTML = elData.h2Text;
                             }
                         }
+                    }
+                    // If this base is final-price-info, restore its three paragraph lines
+                    if (elData.id === 'final-price-info') {
+                        try {
+                            const pEls = compEl.querySelectorAll('p');
+                            if (elData.finalInfo1 && pEls[0]) pEls[0].innerHTML = elData.finalInfo1;
+                            if (elData.finalInfo2 && pEls[1]) pEls[1].innerHTML = elData.finalInfo2;
+                            if (elData.finalInfo3 && pEls[2]) pEls[2].innerHTML = elData.finalInfo3;
+                        } catch (e) { console.error('Failed restoring final-price-info texts', e); }
                     }
                 } else {
                     const allProducts = data ? Object.values(data).flat() : [];

@@ -39,7 +39,10 @@
         "priceElementState": null,
         "imageName": null,
         "markup": null,
-        "h2Text": null
+        "h2Text": null,
+        "finalInfo1": "                            <i class=\"fas fa-car-side mr-1\"></i>Entrega Personal a Casita",
+        "finalInfo2": "                            en toda <strong class=\"text-white la-costa-shadow\">La Costa 🌊</strong>                        ",
+        "finalInfo3": "                            <i class=\"fas fa-credit-card\"></i> Consultar opciones en cuotas x MP                        "
       },
       {
         "id": "29026",
