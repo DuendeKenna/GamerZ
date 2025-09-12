@@ -486,6 +486,10 @@
                             <button id="apply-markup-btn" class="flex-1 py-2 rounded-md text-white bg-green-600 hover:bg-green-700">Aplicar Markup</button>
                         </div>
                     </div>
+                    <div id="h2-properties" class="hidden">
+                        <label for="h2-text" class="block text-sm font-medium">Texto H2:</label>
+                        <input type="text" id="h2-text" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" placeholder="¡ARMÁ TU NAVE!">
+                    </div>
                     <div>
                         <label for="pos-x" class="block text-sm font-medium">Posición X:</label>
                         <input type="number" id="pos-x" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
@@ -649,6 +653,11 @@
             const toolbarSizeSelector = document.getElementById('flyer-size-selector');
             const toggleNameBtn = document.getElementById('toggle-name-btn');
             const togglePriceBtn = document.getElementById('toggle-price-btn');
+            const toolbarAddH2Btn = document.createElement('button');
+            toolbarAddH2Btn.id = 'add-h2-btn';
+            toolbarAddH2Btn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
+            toolbarAddH2Btn.title = 'Agregar H2';
+            toolbarAddH2Btn.innerHTML = '<i class="fas fa-heading"></i>';
             const toolbarAddMemeBtn = document.createElement('button');
             toolbarAddMemeBtn.id = 'add-meme-btn';
             toolbarAddMemeBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
@@ -676,6 +685,9 @@
             const MEME_FILES = [
                 'PAS09790_OP.webp','PAS09793_OP.webp','PAS09795_OP.webp','PAS09796_OP.webp','PAS09798_OP.webp','PAS09800_OP.webp','PAS09804_OP.webp','PAS09805_OP.webp','PAS09806_OP.webp','PAS09807_OP.webp','PAS09810_OP.webp','PAS09811_OP.webp','PAS09813_OP.webp','PAS09814_OP.webp','PAS09815_OP.webp','PAS09816_OP.webp','PAS09818_OP.webp','PAS09828_OP.webp','PAS09832_OP.webp','PAS09834_OP.webp','PAS09837_OP.webp','PAS09839_OP.webp','PAS09840_OP.webp','PAS09845_OP.webp','PAS09846_OP.webp','PAS09847_OP.webp','PAS09849_OP.webp','PAS09854_OP.webp','PAS09856_OP.webp','PAS09857_OP.webp','PAS09861_OP.webp','PAS09863_OP.webp','PAS09865_OP.webp','PAS09867_OP.webp','PAS09869_OP.webp','PAS09872_OP.webp','PAS09873_OP.webp','PAS09874_OP.webp','PAS09877_OP.webp','PAS09878_OP.webp','PAS09886_OP.webp','PAS09888_OP.webp','PAS09889_OP.webp','PAS09891_OP.webp','PAS09892_OP.webp','PAS09893_OP.webp','PAS09895_OP.webp','PAS09903_OP.webp','PAS09904_OP.webp','PAS09908_OP.webp','PAS09909_OP.webp','PAS09912_OP.webp','PAS09916_OP.webp','PAS09917_OP.webp','PAS09918_OP.webp','PAS09919_OP.webp','PAS09921_OP.webp','PAS09933_OP.webp','PAS09937_OP.webp','PAS09938_OP.webp','PAS09941_OP.webp','PAS09943_OP.webp','PAS09949_OP.webp','PAS09950_OP.webp','PAS09953_OP.webp','PAS09954_OP.webp','PAS09955_OP.webp','PAS09963_OP.webp','PAS09964_OP.webp','PAS09965_OP.webp','PAS09966_OP.webp','PAS09970_OP.webp','PAS09973_OP.webp','PAS09974_OP.webp','PAS09975_OP.webp','PAS09976_OP.webp','PAS09977_OP.webp','PAS09978_OP.webp','PAS09979_OP.webp','PAS09980_OP.webp','PAS09986_OP.webp','PAS09987_OP.webp','PAS09990_OP.webp','PAS09991_OP.webp','PAS09992_OP.webp','PAS09993_OP.webp','PAS09995_OP.webp'
             ];
+
+            // Default placeholder for empty markup elements
+            const DEFAULT_MARKUP_PLACEHOLDER = `<p class="markup-placeholder" style="color:#9ca3af;margin:0;">Haz clic en \"Editar Markup\" para agregar contenido.</p>`;
 
             // Collection of base elements used in the editor
             const baseElementData = {
@@ -765,10 +777,21 @@
                 'markup': {
                     id: 'markup',
                     name: 'Markup',
-                    html: `<div class="markup-content" style="width:100%;height:100%;"></div>`,
+                    html: `<div class="markup-content" style="width:100%;height:100%;">${DEFAULT_MARKUP_PLACEHOLDER}</div>`,
                     js: `
                         (function(){
                             // placeholder for markup initialization
+                        })();
+                    `
+                }
+                ,
+                'h2': {
+                    id: 'h2',
+                    name: 'H2',
+                    html: `<h2 class="relative z-40 font-saira font-bold text-center text-4xl lg:text-5xl" style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>`,
+                    js: `
+                        (function(){
+                            // H2 base element initialization if needed
                         })();
                     `
                 }
@@ -1203,7 +1226,8 @@
                         nameElementState: component.nameElement ? component.nameElement.style.cssText : null,
                         priceElementState: component.priceElement ? component.priceElement.style.cssText : null,
                         imageName: item.dataset.imageName || null,
-                        markup: item.dataset.markup || null
+                        markup: item.dataset.markup || null,
+                        h2Text: item.dataset.itemId === 'h2' ? (item.querySelector('h2') ? item.querySelector('h2').innerHTML : null) : null
                     };
                     currentDesign.elements.push(itemData);
                 });
@@ -1256,6 +1280,18 @@
                                 markupProps.classList.add('hidden');
                             }
                         }
+                        // Show H2 properties
+                        const h2Props = document.getElementById('h2-properties');
+                        if (h2Props) {
+                            if (selectedFlyerItem.dataset.itemId === 'h2') {
+                                h2Props.classList.remove('hidden');
+                                const h2Input = document.getElementById('h2-text');
+                                const h2El = selectedFlyerItem.querySelector('h2') || selectedFlyerItem;
+                                h2Input.value = h2El ? h2El.innerHTML : '';
+                            } else {
+                                h2Props.classList.add('hidden');
+                            }
+                        }
                 } else {
                     document.getElementById('properties-section').classList.add('hidden');
                 }
@@ -1286,6 +1322,17 @@
             scaleInput.addEventListener('input', () => { if (selectedFlyerItem) selectedFlyerItem.style.transform = `scale(${Math.max(MIN_SCALE, Math.min(MAX_SCALE, parseFloat(scaleInput.value)))})`; });
             widthInput.addEventListener('input', () => { if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === 'summary-table') selectedFlyerItem.style.width = `${Math.max(10, Math.min(100, parseFloat(widthInput.value)))}%`; });
             zIndexInput.addEventListener('input', () => { if (selectedFlyerItem) selectedFlyerItem.style.zIndex = zIndexInput.value; });
+            // H2 text change
+            const h2TextInput = document.getElementById('h2-text');
+            if (h2TextInput) {
+                h2TextInput.addEventListener('input', () => {
+                    if (!selectedFlyerItem || selectedFlyerItem.dataset.itemId !== 'h2') return;
+                    const h2El = selectedFlyerItem.querySelector('h2') || selectedFlyerItem;
+                    if (h2El) h2El.innerHTML = h2TextInput.value;
+                    // Persist
+                    saveCurrentDesign();
+                });
+            }
             
             toggleNameBtn.addEventListener('click', () => {
                 const component = addedComponents.find(c => c.element === selectedFlyerItem);
@@ -1359,7 +1406,13 @@
                     if (itemData.id === 'markup') {
                         compEl.dataset.markup = itemData.markup || '';
                         const contentEl = compEl.querySelector('.markup-content') || compEl;
-                        try { contentEl.innerHTML = compEl.dataset.markup || ''; } catch(e) { console.error('Failed to set markup innerHTML', e); }
+                        try {
+                            if (!compEl.dataset.markup || compEl.dataset.markup.trim() === '') {
+                                contentEl.innerHTML = DEFAULT_MARKUP_PLACEHOLDER;
+                            } else {
+                                contentEl.innerHTML = compEl.dataset.markup;
+                            }
+                        } catch(e) { console.error('Failed to set markup innerHTML', e); }
                     }
                     
 
@@ -1524,10 +1577,23 @@
                     }
                     // If this base is a markup element, restore stored HTML
                     if (elData.id === 'markup') {
-                        if (elData.markup) {
-                            compEl.dataset.markup = elData.markup;
-                            const contentEl = compEl.querySelector('.markup-content') || compEl;
-                            try { contentEl.innerHTML = elData.markup; } catch(e) { console.error('Failed to set markup innerHTML', e); }
+                        compEl.dataset.markup = elData.markup || '';
+                        const contentEl = compEl.querySelector('.markup-content') || compEl;
+                        try {
+                            if (!compEl.dataset.markup || compEl.dataset.markup.trim() === '') {
+                                contentEl.innerHTML = DEFAULT_MARKUP_PLACEHOLDER;
+                            } else {
+                                contentEl.innerHTML = compEl.dataset.markup;
+                            }
+                        } catch(e) { console.error('Failed to set markup innerHTML', e); }
+                    }
+                    // If this base is an h2 element, restore text
+                    if (elData.id === 'h2') {
+                        const h2El = compEl.querySelector('h2') || compEl;
+                        if (h2El) {
+                            if (elData.h2Text) {
+                                h2El.innerHTML = elData.h2Text;
+                            }
                         }
                     }
                 } else {
@@ -1878,7 +1944,22 @@
                 const flyerEl = document.getElementById('flyer');
                 const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'summary-table');
                 if (existingElement) {
-                    showMessage("El elemento de resumen ya existe.", 3000);
+                    // Toggle visibility instead of showing an alert
+                    const el = existingElement.element;
+                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                    if (isHidden) {
+                        el.style.display = '';
+                        el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity;
+                    } else {
+                        el.style.display = 'none';
+                        // if it was the selected item, deselect
+                        if (selectedFlyerItem === el) {
+                            selectedFlyerItem.classList.remove('active');
+                            selectedFlyerItem = null;
+                            updatePropertiesPanel();
+                        }
+                    }
+                    updateBaseElements();
                     return;
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
@@ -1888,7 +1969,11 @@
                 const flyerEl = document.getElementById('flyer');
                  const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'final-price-value');
                  if (existingElement) {
-                    showMessage("El elemento de precio ya existe.", 3000);
+                    const el = existingElement.element;
+                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                    updateBaseElements();
                     return;
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
@@ -1898,7 +1983,11 @@
                 const flyerEl = document.getElementById('flyer');
                 const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'final-price-info');
                 if (existingElement) {
-                    showMessage("El elemento de información ya existe.", 3000);
+                    const el = existingElement.element;
+                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                    updateBaseElements();
                     return;
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
@@ -1924,7 +2013,11 @@
                 const flyerEl = document.getElementById('flyer');
                 const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'meme');
                 if (existingElement) {
-                    showMessage("El elemento Meme ya existe.", 3000);
+                    const el = existingElement.element;
+                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                    updateBaseElements();
                     return;
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
@@ -1934,7 +2027,11 @@
                 const flyerEl = document.getElementById('flyer');
                 const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'fecha');
                 if (existingElement) {
-                    showMessage("El elemento Fecha ya existe.", 3000);
+                    const el = existingElement.element;
+                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                    updateBaseElements();
                     return;
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
@@ -1942,23 +2039,43 @@
             });
             
             const toolbarContainer = document.querySelector('#flyer-toolbar .flex.items-center.space-x-2');
-            // Add markup button then meme and fecha
+            // Add markup, H2, meme and fecha buttons
             toolbarContainer.appendChild(toolbarAddMarkupBtn);
+            toolbarContainer.appendChild(toolbarAddH2Btn);
             toolbarContainer.appendChild(toolbarAddMemeBtn);
             toolbarContainer.appendChild(toolbarAddFechaBtn);
             // Ensure clear button stays at the end of the toolbar
             toolbarContainer.appendChild(toolbarClearFlyerBtn);
 
-            // Wire markup toolbar button
+            // Wire markup toolbar button (toggle if exists)
             toolbarAddMarkupBtn.addEventListener('click', () => {
                 const flyerEl = document.getElementById('flyer');
                 const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'markup');
                 if (existingElement) {
-                    showMessage("El elemento Markup ya existe.", 3000);
+                    const el = existingElement.element;
+                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                    updateBaseElements();
                     return;
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
                 createComponentElement(baseElementData['markup'], flyerRect.width / 2, flyerRect.height / 2);
+            });
+            // Wire H2 toolbar button
+            toolbarAddH2Btn.addEventListener('click', () => {
+                const flyerEl = document.getElementById('flyer');
+                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'h2');
+                if (existingElement) {
+                    const el = existingElement.element;
+                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                    updateBaseElements();
+                    return;
+                }
+                const flyerRect = flyerEl.getBoundingClientRect();
+                createComponentElement(baseElementData['h2'], flyerRect.width / 2, flyerRect.height / 2);
             });
 
             // Wire apply markup button

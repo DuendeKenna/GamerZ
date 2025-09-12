@@ -14,7 +14,8 @@
         "nameElementState": null,
         "priceElementState": null,
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
         "id": "summary-table",
@@ -25,7 +26,8 @@
         "nameElementState": null,
         "priceElementState": null,
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
         "id": "final-price-info",
@@ -36,7 +38,8 @@
         "nameElementState": null,
         "priceElementState": null,
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
         "id": "29026",
@@ -48,7 +51,8 @@
         "nameElementState": "z-index: 11; display: none; top: 494px; left: 167px;",
         "priceElementState": "z-index: 11; display: none; top: 531px; left: 165px;",
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
         "id": "49735",
@@ -60,7 +64,8 @@
         "nameElementState": "z-index: 11; display: none;",
         "priceElementState": "z-index: 11; display: none;",
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
         "id": "27876",
@@ -72,7 +77,8 @@
         "nameElementState": "z-index: 11; display: block; top: 37px; left: 664px; transform: scale(0.7);",
         "priceElementState": "z-index: 11; display: none; top: 34px; left: 858px;",
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
         "id": "27579",
@@ -84,7 +90,8 @@
         "nameElementState": "z-index: 11; display: none; top: 472px; left: 334px; transform: scale(0.8);",
         "priceElementState": "z-index: 11; display: none;",
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
         "id": "meme",
@@ -95,7 +102,8 @@
         "nameElementState": null,
         "priceElementState": null,
         "imageName": "PAS09856_OP.webp",
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
         "id": "fecha",
@@ -106,18 +114,20 @@
         "nameElementState": null,
         "priceElementState": null,
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": null
       },
       {
-        "id": "markup",
-        "name": "Markup",
+        "id": "h2",
+        "name": "H2",
         "type": "base",
         "summaryTitle": null,
-        "style": "position: absolute; top: 254px; left: 254px; transform: translate(-50%, -50%); text-align: center; color: rgb(229, 231, 235); white-space: nowrap; z-index: 9999; padding: 1.5rem; width: 80%; max-width: 600px;",
+        "style": "position: absolute; top: 592px; left: 436px; transform: translate(-50%, -50%); text-align: center; color: rgb(229, 231, 235); white-space: nowrap; z-index: 9999; padding: 1.5rem; width: 80%; max-width: 600px;",
         "nameElementState": null,
         "priceElementState": null,
         "imageName": null,
-        "markup": null
+        "markup": null,
+        "h2Text": "DALEEE"
       }
     ],
     "toolbarPosition": {
