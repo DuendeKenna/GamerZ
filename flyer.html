@@ -478,6 +478,14 @@
                         <label for="element-name" class="block text-sm font-medium">Elemento:</label>
                         <input type="text" id="element-name" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" disabled>
                     </div>
+                    <div id="markup-properties" class="hidden">
+                        <label for="markup-content" class="block text-sm font-medium">Markup (HTML):</label>
+                        <textarea id="markup-content" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200 h-32" placeholder="Inserta HTML aquí"></textarea>
+                        <div class="flex gap-2 mt-2">
+                            <button id="open-markup-editor-btn" class="flex-1 py-2 rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Editar Markup</button>
+                            <button id="apply-markup-btn" class="flex-1 py-2 rounded-md text-white bg-green-600 hover:bg-green-700">Aplicar Markup</button>
+                        </div>
+                    </div>
                     <div>
                         <label for="pos-x" class="block text-sm font-medium">Posición X:</label>
                         <input type="number" id="pos-x" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
@@ -582,7 +590,7 @@
                 <button id="add-info-btn" class="p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition" title="Agregar Info de Entrega">
                     <i class="fas fa-info-circle"></i>
                 </button>
-                <button id="clear-flyer-btn" class="p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition" title="Limpiar Cuadro">
+                <button id="clear-flyer-btn" class="p-2 rounded-md text-white bg-gray-600 hover:bg-gray-700 transition" title="Limpiar Cuadro">
                     <i class="fas fa-sync-alt"></i>
                 </button>
             </div>
@@ -633,6 +641,11 @@
             const toolbarAddPriceBtn = document.getElementById('add-price-btn');
             const toolbarAddInfoBtn = document.getElementById('add-info-btn');
             const toolbarClearFlyerBtn = document.getElementById('clear-flyer-btn');
+            const toolbarAddMarkupBtn = document.createElement('button');
+            toolbarAddMarkupBtn.id = 'add-markup-btn';
+            toolbarAddMarkupBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
+            toolbarAddMarkupBtn.title = 'Agregar Markup';
+            toolbarAddMarkupBtn.innerHTML = '<i class="fas fa-code"></i>';
             const toolbarSizeSelector = document.getElementById('flyer-size-selector');
             const toggleNameBtn = document.getElementById('toggle-name-btn');
             const togglePriceBtn = document.getElementById('toggle-price-btn');
@@ -641,6 +654,12 @@
             toolbarAddMemeBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
             toolbarAddMemeBtn.title = 'Agregar Meme';
             toolbarAddMemeBtn.innerHTML = '<i class="fas fa-image"></i>';
+
+            const toolbarAddFechaBtn = document.createElement('button');
+            toolbarAddFechaBtn.id = 'add-fecha-btn';
+            toolbarAddFechaBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
+            toolbarAddFechaBtn.title = 'Agregar Fecha';
+            toolbarAddFechaBtn.innerHTML = '<i class="fas fa-calendar-day"></i>';
 
             let data = null;
             let currentDesign = null;
@@ -714,6 +733,43 @@
                             memeElement.style.width = '600px';
                             memeElement.style.height = '600px';
                         }
+                    `
+                }
+                ,
+                'fecha': {
+                    id: 'fecha',
+                    name: 'Fecha',
+                    html: `<div class="fecha-text font-saira" style="font-size:1.25rem;">Fecha</div>`,
+                    js: `
+                        (function(){
+                            const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+                            function setFecha(){
+                                const el = document.querySelector('#fecha');
+                                if (!el) return;
+                                const now = new Date();
+                                const diaNombre = dias[now.getDay()];
+                                const d = now.getDate();
+                                const m = now.getMonth() + 1;
+                                const textEl = el.querySelector('.fecha-text') || el;
+                                // Format: 'Lunes 4/5' (day D/M without leading zeros)
+                                textEl.textContent = diaNombre + ' ' + d + '/' + m;
+                                textEl.style.color = '#ffffff';
+                                el.style.background = 'transparent';
+                                el.style.opacity = '0.5';
+                            }
+                            try { setFecha(); } catch(e){}
+                            document.addEventListener('DOMContentLoaded', setFecha);
+                        })();
+                    `
+                },
+                'markup': {
+                    id: 'markup',
+                    name: 'Markup',
+                    html: `<div class="markup-content" style="width:100%;height:100%;"></div>`,
+                    js: `
+                        (function(){
+                            // placeholder for markup initialization
+                        })();
                     `
                 }
             };
@@ -1146,7 +1202,8 @@
                         style: item.style.cssText,
                         nameElementState: component.nameElement ? component.nameElement.style.cssText : null,
                         priceElementState: component.priceElement ? component.priceElement.style.cssText : null,
-                        imageName: item.dataset.imageName || null
+                        imageName: item.dataset.imageName || null,
+                        markup: item.dataset.markup || null
                     };
                     currentDesign.elements.push(itemData);
                 });
@@ -1167,11 +1224,17 @@
                     
                     const isSummary = selectedFlyerItem.dataset.itemId === 'summary-table';
                     if (isSummary) {
+                        // Enable editing the name for the summary title
+                        elementNameInput.disabled = false;
+                        elementNameInput.value = selectedFlyerItem.querySelector('h3') ? selectedFlyerItem.querySelector('h3').textContent : selectedFlyerItem.dataset.itemName;
+
                         document.getElementById('scale-container').classList.add('hidden');
                         document.getElementById('width-container').classList.remove('hidden');
                         widthInput.value = parseFloat(selectedFlyerItem.style.width);
                         document.getElementById('text-options').classList.add('hidden');
                     } else {
+                        // Non-summary elements: keep name input disabled
+                        elementNameInput.disabled = true;
                         document.getElementById('scale-container').classList.remove('hidden');
                         document.getElementById('width-container').classList.add('hidden');
                         const scaleMatch = selectedFlyerItem.style.transform.match(/scale\((.*?)\)/);
@@ -1182,6 +1245,17 @@
                     zIndexInput.value = selectedFlyerItem.style.zIndex || 10;
                     const isVisible = selectedFlyerItem.style.opacity !== '0';
                     toggleVisibilityBtn.innerHTML = isVisible ? '<i class="fas fa-eye-slash"></i> Ocultar' : '<i class="fas fa-eye"></i> Mostrar';
+                        // Show markup properties when selecting a markup base element
+                        const markupProps = document.getElementById('markup-properties');
+                        if (markupProps) {
+                            if (selectedFlyerItem.dataset.itemId === 'markup') {
+                                markupProps.classList.remove('hidden');
+                                const ta = document.getElementById('markup-content');
+                                ta.value = selectedFlyerItem.dataset.markup || '';
+                            } else {
+                                markupProps.classList.add('hidden');
+                            }
+                        }
                 } else {
                     document.getElementById('properties-section').classList.add('hidden');
                 }
@@ -1192,6 +1266,18 @@
                 const existingLabel = document.querySelector('label[for="meme-image-input"]');
                 if (existingInput) existingInput.remove();
                 if (existingLabel) existingLabel.remove();
+                
+                // Wire elementNameInput change for summary table
+                elementNameInput.removeEventListener('input', elementNameInput._onInputHandler || (()=>{}));
+                elementNameInput._onInputHandler = function () {
+                    if (!selectedFlyerItem) return;
+                    if (selectedFlyerItem.dataset.itemId !== 'summary-table') return;
+                    const h3 = selectedFlyerItem.querySelector('h3');
+                    if (h3) h3.textContent = elementNameInput.value;
+                    // update saved data
+                    saveCurrentDesign();
+                };
+                elementNameInput.addEventListener('input', elementNameInput._onInputHandler);
             }
 
             // --- Event Listeners para Propiedades ---
@@ -1268,6 +1354,13 @@
                         ${itemData.id === 'summary-table' ? 'width: 80%; max-width: 600px; background-color: rgba(31, 41, 55, 0.9); backdrop-filter: blur(4px);' : ''}
                     `;
                     compEl.innerHTML = baseElementData[itemData.id].html;
+
+                    // If markup base, initialize dataset.markup and content
+                    if (itemData.id === 'markup') {
+                        compEl.dataset.markup = itemData.markup || '';
+                        const contentEl = compEl.querySelector('.markup-content') || compEl;
+                        try { contentEl.innerHTML = compEl.dataset.markup || ''; } catch(e) { console.error('Failed to set markup innerHTML', e); }
+                    }
                     
 
                     if (itemData.id === 'summary-table') {
@@ -1363,6 +1456,16 @@
                 
                 document.getElementById('flyer').appendChild(compEl);
                 setupDraggableElement(compEl);
+                // Execute any base element script for this specific element (e.g., fecha sets current date)
+                try {
+                    const js = baseElementData[itemData.id] && baseElementData[itemData.id].js;
+                    if (js) {
+                        const fn = new Function(js);
+                        fn();
+                    }
+                } catch (err) {
+                    console.error('Error executing base element script for', itemData.id, err);
+                }
                 if (isBase) {
                     addedComponents.push({ id: itemData.id, name: itemData.name, element: compEl, isBaseElement: true });
                 }
@@ -1398,6 +1501,16 @@
                     addedComponents.push({ id: elData.id, name: elData.name, element: compEl, isBaseElement: true });
                     document.getElementById('flyer').appendChild(compEl);
                     setupDraggableElement(compEl);
+                    // Execute base element script after loading so dynamic content (e.g., fecha) is initialized
+                    try {
+                        const js = baseElementData[elData.id] && baseElementData[elData.id].js;
+                        if (js) {
+                            const fn = new Function(js);
+                            fn();
+                        }
+                    } catch (err) {
+                        console.error('Error executing base element script for', elData.id, err);
+                    }
                     // If this base is a meme, restore imageName and handler
                     if (elData.id === 'meme') {
                         const memeImage = compEl.querySelector('.meme-image');
@@ -1408,6 +1521,14 @@
                         setupMemePopup(compEl);
                         const img = compEl.querySelector('.meme-image');
                         if (img) img.onerror = () => { img.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
+                    }
+                    // If this base is a markup element, restore stored HTML
+                    if (elData.id === 'markup') {
+                        if (elData.markup) {
+                            compEl.dataset.markup = elData.markup;
+                            const contentEl = compEl.querySelector('.markup-content') || compEl;
+                            try { contentEl.innerHTML = elData.markup; } catch(e) { console.error('Failed to set markup innerHTML', e); }
+                        }
                     }
                 } else {
                     const allProducts = data ? Object.values(data).flat() : [];
@@ -1809,8 +1930,51 @@
                 const flyerRect = flyerEl.getBoundingClientRect();
                 createComponentElement(baseElementData['meme'], flyerRect.width / 2, flyerRect.height / 2);
             });
+            toolbarAddFechaBtn.addEventListener('click', () => {
+                const flyerEl = document.getElementById('flyer');
+                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'fecha');
+                if (existingElement) {
+                    showMessage("El elemento Fecha ya existe.", 3000);
+                    return;
+                }
+                const flyerRect = flyerEl.getBoundingClientRect();
+                createComponentElement(baseElementData['fecha'], flyerRect.width / 2, flyerRect.height / 2);
+            });
             
-            document.querySelector('#flyer-toolbar .flex.items-center.space-x-2').appendChild(toolbarAddMemeBtn);
+            const toolbarContainer = document.querySelector('#flyer-toolbar .flex.items-center.space-x-2');
+            // Add markup button then meme and fecha
+            toolbarContainer.appendChild(toolbarAddMarkupBtn);
+            toolbarContainer.appendChild(toolbarAddMemeBtn);
+            toolbarContainer.appendChild(toolbarAddFechaBtn);
+            // Ensure clear button stays at the end of the toolbar
+            toolbarContainer.appendChild(toolbarClearFlyerBtn);
+
+            // Wire markup toolbar button
+            toolbarAddMarkupBtn.addEventListener('click', () => {
+                const flyerEl = document.getElementById('flyer');
+                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'markup');
+                if (existingElement) {
+                    showMessage("El elemento Markup ya existe.", 3000);
+                    return;
+                }
+                const flyerRect = flyerEl.getBoundingClientRect();
+                createComponentElement(baseElementData['markup'], flyerRect.width / 2, flyerRect.height / 2);
+            });
+
+            // Wire apply markup button
+            const applyMarkupBtn = document.getElementById('apply-markup-btn');
+            if (applyMarkupBtn) {
+                applyMarkupBtn.addEventListener('click', () => {
+                    if (!selectedFlyerItem || selectedFlyerItem.dataset.itemId !== 'markup') return;
+                    const ta = document.getElementById('markup-content');
+                    if (!ta) return;
+                    selectedFlyerItem.dataset.markup = ta.value;
+                    const contentEl = selectedFlyerItem.querySelector('.markup-content') || selectedFlyerItem;
+                    try { contentEl.innerHTML = ta.value; } catch(e) { console.error('Failed to set markup innerHTML', e); }
+                    saveCurrentDesign();
+                    showMessage('Markup aplicado.', 2000);
+                });
+            }
 
             // Lógica de Selectores
             function populateCategorySelector() {
@@ -1882,6 +2046,163 @@
 
         flyerSizeSelector.addEventListener('change', updateCuadroSize);
       });
+    </script>
+    <!-- Markup WYSIWYG Editor Modal -->
+    <div id="markup-editor-modal" class="fixed inset-0 z-60 flex items-center justify-center hidden">
+        <div id="markup-editor-backdrop" class="absolute inset-0 bg-black opacity-60"></div>
+        <div id="markup-editor" class="relative bg-gray-900 text-white rounded shadow-lg" style="width:400px;height:300px;resize:both;overflow:auto;z-index:99999;">
+            <div id="markup-editor-header" class="p-2 flex items-center justify-between border-b border-gray-700">
+                <div class="flex items-center gap-2">
+                    <strong>Editor de Markup</strong>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="markup-editor-close" class="px-2 py-1 bg-red-600 rounded">Cerrar</button>
+                </div>
+            </div>
+            <div id="markup-editor-toolbar" class="p-2 flex flex-wrap gap-2 border-b border-gray-800">
+                <select id="markup-font-select" class="bg-gray-800 text-white p-1 rounded">
+                    <option value="Saira">Saira</option>
+                    <option value="Inter">Inter</option>
+                    <option value="VT323">VT323</option>
+                </select>
+                <select id="markup-fontsize-select" class="bg-gray-800 text-white p-1 rounded">
+                    <option value="12px">12</option>
+                    <option value="14px">14</option>
+                    <option value="16px" selected>16</option>
+                    <option value="18px">18</option>
+                    <option value="24px">24</option>
+                    <option value="32px">32</option>
+                </select>
+                <input id="markup-color-input" type="color" value="#ffffff" class="w-10 h-8 p-0 border-0 rounded" />
+                <button id="markup-bold" class="px-2 py-1 bg-gray-800 rounded">B</button>
+                <button id="markup-italic" class="px-2 py-1 bg-gray-800 rounded">I</button>
+                <button id="markup-underline" class="px-2 py-1 bg-gray-800 rounded">U</button>
+                <button id="markup-align-left" class="px-2 py-1 bg-gray-800 rounded">L</button>
+                <button id="markup-align-center" class="px-2 py-1 bg-gray-800 rounded">C</button>
+                <button id="markup-align-right" class="px-2 py-1 bg-gray-800 rounded">R</button>
+            </div>
+            <div id="markup-editor-body" class="p-2" style="height:calc(100% - 96px); overflow:auto;">
+                <div id="markup-editor-content" contenteditable="true" class="w-full h-full p-2 bg-white text-black" style="min-height:140px; font-family: Inter; font-size:16px;"></div>
+            </div>
+            <div class="p-2 border-t border-gray-800 flex gap-2">
+                <button id="markup-editor-save" class="flex-1 py-2 bg-green-600 rounded">Guardar</button>
+                <button id="markup-editor-cancel" class="flex-1 py-2 bg-gray-700 rounded">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function(){
+            // Editor DOM refs
+            const modal = document.getElementById('markup-editor-modal');
+            const editor = document.getElementById('markup-editor');
+            const content = document.getElementById('markup-editor-content');
+            const openBtn = document.getElementById('open-markup-editor-btn');
+            const closeBtn = document.getElementById('markup-editor-close');
+            const cancelBtn = document.getElementById('markup-editor-cancel');
+            const saveBtn = document.getElementById('markup-editor-save');
+            const fontSelect = document.getElementById('markup-font-select');
+            const sizeSelect = document.getElementById('markup-fontsize-select');
+            const colorInput = document.getElementById('markup-color-input');
+            const boldBtn = document.getElementById('markup-bold');
+            const italicBtn = document.getElementById('markup-italic');
+            const underlineBtn = document.getElementById('markup-underline');
+            const alignLeftBtn = document.getElementById('markup-align-left');
+            const alignCenterBtn = document.getElementById('markup-align-center');
+            const alignRightBtn = document.getElementById('markup-align-right');
+
+            function getSelectedFlyerItem() {
+                // Prefer window-level variable if available, otherwise find active item in DOM
+                if (typeof selectedFlyerItem !== 'undefined' && selectedFlyerItem) return selectedFlyerItem;
+                return document.querySelector('#flyer .flyer-item.active') || document.querySelector('.flyer-item.active');
+            }
+
+            function showMessageLocal(message, duration = 3000) {
+                const el = document.getElementById('status-message');
+                if (!el) return;
+                el.textContent = message;
+                el.classList.remove('hidden');
+                if (duration > 0) setTimeout(() => el.classList.add('hidden'), duration);
+            }
+
+            function openMarkupEditor(initialHtml) {
+                content.innerHTML = initialHtml || '';
+                // set default styles
+                content.style.fontFamily = fontSelect.value;
+                content.style.fontSize = sizeSelect.value;
+                content.style.color = colorInput.value;
+                modal.classList.remove('hidden');
+            }
+
+            function closeMarkupEditor() {
+                modal.classList.add('hidden');
+            }
+
+            // Exec formatting commands
+            boldBtn.addEventListener('click', () => document.execCommand('bold'));
+            italicBtn.addEventListener('click', () => document.execCommand('italic'));
+            underlineBtn.addEventListener('click', () => document.execCommand('underline'));
+            alignLeftBtn.addEventListener('click', () => document.execCommand('justifyLeft'));
+            alignCenterBtn.addEventListener('click', () => document.execCommand('justifyCenter'));
+            alignRightBtn.addEventListener('click', () => document.execCommand('justifyRight'));
+
+            // Apply font and size by wrapping selection or applying to whole content
+            fontSelect.addEventListener('change', () => {
+                content.style.fontFamily = fontSelect.value;
+            });
+            sizeSelect.addEventListener('change', () => {
+                content.style.fontSize = sizeSelect.value;
+            });
+            colorInput.addEventListener('change', () => {
+                document.execCommand('foreColor', false, colorInput.value);
+            });
+
+            // Open modal from properties button
+            if (openBtn) {
+                openBtn.addEventListener('click', () => {
+                    const sel = getSelectedFlyerItem();
+                    if (!sel || sel.dataset.itemId !== 'markup') {
+                        showMessageLocal('Selecciona primero un elemento Markup.', 3000);
+                        return;
+                    }
+                    const initial = sel.dataset.markup || (sel.querySelector('.markup-content') ? sel.querySelector('.markup-content').innerHTML : '');
+                    openMarkupEditor(initial);
+                });
+            }
+
+            // Close handlers
+            if (closeBtn) closeBtn.addEventListener('click', closeMarkupEditor);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeMarkupEditor);
+
+            // Save handler: commit HTML back to selected element and persist
+            if (saveBtn) {
+                saveBtn.addEventListener('click', () => {
+                    const sel = getSelectedFlyerItem();
+                    if (!sel || sel.dataset.itemId !== 'markup') {
+                        closeMarkupEditor();
+                        return;
+                    }
+                    const html = content.innerHTML;
+                    sel.dataset.markup = html;
+                    const contentEl = sel.querySelector('.markup-content') || sel;
+                    try { contentEl.innerHTML = html; } catch(e) { console.error('Failed to set markup innerHTML', e); }
+                    // Try calling saveCurrentDesign if available in outer scope; if not, persist minimal state
+                    try { if (typeof saveCurrentDesign === 'function') saveCurrentDesign(); } catch(e) { /* ignore */ }
+                    closeMarkupEditor();
+                    showMessageLocal('Markup guardado.', 2000);
+                });
+            }
+
+            // Make the modal draggable by header
+            (function makeDraggable() {
+                const header = document.getElementById('markup-editor-header');
+                let isDown = false; let startX=0, startY=0, startLeft=0, startTop=0;
+                header.addEventListener('mousedown', (e)=>{ isDown=true; startX=e.clientX; startY=e.clientY; const rect=editor.getBoundingClientRect(); startLeft=rect.left; startTop=rect.top; document.body.style.userSelect='none'; });
+                document.addEventListener('mousemove',(e)=>{ if(!isDown) return; const dx=e.clientX-startX, dy=e.clientY-startY; editor.style.left=(startLeft+dx)+'px'; editor.style.top=(startTop+dy)+'px'; editor.style.position='fixed'; });
+                document.addEventListener('mouseup',()=>{ if(isDown){ isDown=false; document.body.style.userSelect='auto'; } });
+            })();
+
+            // Ensure fonts in select use page fonts (no-op here, selects list them)
+        })();
     </script>
 </body>
 
