@@ -549,7 +549,7 @@
         <section id="flyer-section-container" class="lg:col-span-2 p-6 flex justify-center items-start overflow-y-auto">
             
             <!-- El contenedor principal de cuadros -->
-            <div id="cuadros-container" class="relative w-full h-full flex justify-center items-start flex-grow">
+            <div id="cuadros-container"></div> 
                 <!-- Los cuadros se renderizarán aquí -->
             </div>
             
@@ -616,7 +616,8 @@
             const addCuadroBtn = document.getElementById('add-cuadro-btn');
             const deleteCuadroBtn = document.getElementById('delete-cuadro-btn');
             const flyerToolbar = document.getElementById('flyer-toolbar');
-            const cuadroEl = document.getElementById('cuadro');
+            let cuadroEl; // Declare cuadroEl here
+
             
             // Toolbar elements
             const toolbarAddSummaryBtn = document.getElementById('add-summary-btn');
@@ -814,102 +815,38 @@
             }
 
             function renderCuadro(cuadro) {
-                cuadrosContainer.innerHTML = '';
-                const cuadroEl = document.createElement('div');
-                cuadroEl.id = 'cuadro';
+                // Update cuadroEl reference
+                cuadroEl = document.getElementById('cuadro');
+                if (!cuadroEl) {
+                    cuadroEl = document.createElement('div');
+                    cuadroEl.id = 'cuadro';
+                    cuadrosContainer.appendChild(cuadroEl);
+                }
                 
-                // FIX: Set dimensions dynamically based on selected size
-                cuadroEl.style.width = '100%';
-                cuadroEl.style.height = '100%';
-                cuadroEl.style.maxWidth = `${cuadro.width}px`;
-                cuadroEl.style.maxHeight = `${cuadro.height}px`;
-                cuadroEl.style.aspectRatio = `${cuadro.width} / ${cuadro.height}`;
+                // Clear previous elements
+                let flyerEl = cuadroEl.querySelector('#flyer');
+                if (flyerEl) {
+                    flyerEl.remove();
+                }
+
+                flyerEl = document.createElement('div');
+                flyerEl.id = 'flyer';
+                flyerEl.className = "relative overflow-hidden rounded-lg shadow-2xl bg-[#13161b] cursor-default";
+                cuadroEl.appendChild(flyerEl);
                 
-                cuadroEl.innerHTML = `<div id="flyer" class="relative overflow-hidden rounded-lg shadow-2xl bg-[#13161b] cursor-default" style="width:100%; height:100%;"></div>`;
-                cuadrosContainer.appendChild(cuadroEl);
-                
-                const flyerEl = cuadroEl.querySelector('#flyer');
+                // Set precise dimensions
+                cuadroEl.style.width = `${cuadro.width}px`;
+                cuadroEl.style.height = `${cuadro.height}px`;
+
                 flyerEl.addEventListener('dragover', handleDragOver);
                 flyerEl.addEventListener('dragleave', handleDragLeave);
                 flyerEl.addEventListener('drop', handleDrop);
                 flyerEl.addEventListener('click', handleDeselect);
                 flyerEl.addEventListener('wheel', handleWheel);
 
-                // --- FIX: Correctly clear and re-populate the addedComponents array ---
-                addedComponents = []; // Reset the list
-                const allProducts = data ? Object.values(data).flat() : [];
+                addedComponents = [];
                 if (cuadro.elements) {
-                    cuadro.elements.forEach(elData => {
-                        const isBase = Object.keys(baseElementData).includes(elData.id);
-                        if (isBase) {
-                            const compEl = document.createElement('div');
-                            compEl.id = elData.id;
-                            compEl.dataset.itemId = elData.id;
-                            compEl.dataset.itemName = elData.name;
-                            
-                            // FIX: Preserve existing classes and add 'flyer-item'
-                            const tempDiv = document.createElement('div');
-                            tempDiv.innerHTML = baseElementData[elData.id].html;
-                            compEl.className = `flyer-item ${tempDiv.firstChild.className || ''}`;
-
-                            compEl.innerHTML = baseElementData[elData.id].html;
-                            compEl.style.cssText = elData.style;
-                            
-                            if (elData.id === 'summary-table') {
-                                compEl.style.width = elData.style.width;
-                                compEl.querySelector('h3').textContent = elData.summaryTitle;
-                                compEl.addEventListener('selectstart', e => e.preventDefault());
-                                compEl.addEventListener('dblclick', e => { e.stopPropagation(); compEl.classList.toggle('show-categories'); updateBaseElements(); });
-                            }
-                            flyerEl.appendChild(compEl);
-                            setupDraggableElement(compEl);
-                            addedComponents.push({ id: elData.id, name: elData.name, element: compEl, isBaseElement: true });
-                        } else {
-                            const currentProduct = allProducts.find(p => p.id === parseInt(elData.id));
-                            const currentPrice = currentProduct ? getPrice(currentProduct) : parseFloat(elData.price);
-                            const compEl = document.createElement('div');
-                            compEl.className = `flyer-item p-2`;
-                            compEl.id = `comp-${elData.id}`;
-                            compEl.dataset.itemId = elData.id;
-                            compEl.dataset.itemName = elData.name;
-                            compEl.dataset.itemPrice = currentPrice;
-                            compEl.dataset.itemType = elData.type;
-                            compEl.style.cssText = elData.style;
-                            compEl.innerHTML = `<img src="comps/${elData.id}.webp" alt="${elData.name}" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/ffffff?text=${elData.name.replace(/\s/g, '+')}';">`;
-
-                            const nameEl = document.createElement('div');
-                            nameEl.className = 'flyer-item component-label';
-                            nameEl.textContent = elData.name;
-                            nameEl.style.cssText = elData.nameElementState;
-                            nameEl.style.zIndex = parseInt(compEl.style.zIndex) + 1;
-                            nameEl.dataset.parent = compEl.id;
-
-                            const priceEl = document.createElement('div');
-                            priceEl.className = 'flyer-item component-price';
-                            priceEl.textContent = `$${currentPrice.toLocaleString('es-AR')}`;
-                            priceEl.style.cssText = elData.priceElementState;
-                            priceEl.style.zIndex = parseInt(compEl.style.zIndex) + 1;
-                            priceEl.dataset.parent = compEl.id;
-                            
-                            // FIX: Append all created elements to the DOM
-                            flyerEl.appendChild(compEl);
-                            setupDraggableElement(compEl);
-                            flyerEl.appendChild(nameEl);
-                            flyerEl.appendChild(priceEl);
-                            setupDraggableElement(nameEl);
-                            setupDraggableElement(priceEl);
-
-                            addedComponents.push({
-                                id: elData.id,
-                                name: elData.name,
-                                price: currentPrice,
-                                type: elData.type,
-                                element: compEl,
-                                nameElement: nameEl,
-                                priceElement: priceEl
-                            });
-                        }
-                    });
+                    cuadro.elements.forEach(elData => loadElement(elData));
                 }
                 
                 updateBaseElements();
@@ -963,7 +900,6 @@
                 if (selectedFlyerItem) {
                     document.getElementById('properties-section').classList.remove('hidden');
                     elementNameInput.value = selectedFlyerItem.dataset.itemName;
-                    // Corregido: interchanged offsetTop and offsetLeft
                     posXInput.value = parseInt(selectedFlyerItem.offsetLeft);
                     posYInput.value = parseInt(selectedFlyerItem.offsetTop);
                     
@@ -1136,12 +1072,12 @@
                     compEl.dataset.itemId = elData.id;
                     compEl.dataset.itemName = elData.name;
                     
-                    // FIX: Preserve the default classes by getting them from the base element's HTML.
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = baseElementData[elData.id].html;
-                    compEl.className = `flyer-item ${tempDiv.firstChild.className || ''}`;
-
-                    compEl.innerHTML = baseElementData[elData.id].html;
+                    const innerWrapper = document.createElement('div');
+                    innerWrapper.innerHTML = baseElementData[elData.id].html;
+                    
+                    compEl.className = `flyer-item`;
+                    compEl.innerHTML = innerWrapper.innerHTML;
+                    
                     compEl.style.cssText = elData.style;
                     
                     if (elData.id === 'summary-table') {
@@ -1359,13 +1295,12 @@
             // --- Event Listeners para la Toolbar de Cuadro ---
             toolbarSizeSelector.addEventListener('change', (e) => {
                 const [width, height] = e.target.value.split('x').map(Number);
-                cuadroEl.style.maxWidth = `${width}px`;
-                cuadroEl.style.maxHeight = `${height}px`;
-                cuadroEl.style.aspectRatio = `${width} / ${height}`;
-                
-                // Update the current design object with new dimensions
-                currentDesign.width = width;
-                currentDesign.height = height;
+                if (cuadroEl) {
+                    cuadroEl.style.width = `${width}px`;
+                    cuadroEl.style.height = `${height}px`;
+                    currentDesign.width = width;
+                    currentDesign.height = height;
+                }
             });
 
             toolbarAddSummaryBtn.addEventListener('click', () => {
@@ -1456,6 +1391,26 @@
 
             initializeApp();
         });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const flyerSizeSelector = document.getElementById('flyer-size-selector');
+        const cuadro = document.getElementById('cuadro');
+
+        const updateCuadroSize = () => {
+          const selectedSize = flyerSizeSelector.value;
+          const [width, height] = selectedSize.split('x').map(Number);
+          if (cuadro) {
+            cuadro.style.width = `${width}px`;
+            cuadro.style.height = `${height}px`;
+          }
+        };
+
+        flyerSizeSelector.addEventListener('change', updateCuadroSize);
+
+        // Initialize the size on page load
+        updateCuadroSize();
+      });
     </script>
 </body>
 </html>
