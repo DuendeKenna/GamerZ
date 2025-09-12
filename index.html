@@ -145,7 +145,7 @@
                         detalles</h1>
                     <h1>...si sabés del tema, usalos para comprar y armarla por tu cuenta ;)</h1>
                     <p class=" mb-8 text-3xl text-yellow-300">▼</p>
-                </div>
+                </div
 
 
             </div>
@@ -405,7 +405,7 @@
                 <p class="text-center text-gray-400 mt-6">¿Falta el tuyo? Pedimelo en Notas?</p>
             </section>
 
-            <section class="mb-12 section-card-style">
+            <section id="resumen" class="mb-12 section-card-style">
                 <div class="text-center max-w-4xl mx-auto">
                     <div id="selected-games-section" class="mb-6 hidden">
                         <p class="text-gray-400 text-lg">Juegos Incluidos</p>
@@ -510,9 +510,19 @@
     </div>
 
 
-    
-
     <script src="js/main.js" defer></script>
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const priceSummaryCard = document.querySelector('#price-summary-card');
+    const resumenSection = document.querySelector('#resumen');
+
+    if (priceSummaryCard && resumenSection) {
+      priceSummaryCard.addEventListener('dblclick', () => {
+        resumenSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  });
+</script>
 </body>
 
 </html>
