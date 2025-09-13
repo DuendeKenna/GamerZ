@@ -1946,18 +1946,18 @@
             });
             loadBtn.addEventListener('click', loadDesignsFromJson);
 
-            // Export using html-to-image for better fidelity
+            // Export using local `js/html-to-image.js` only (minimal flow)
             downloadBtn.addEventListener('click', async () => {
-                // Ensure library is available: try global first, then attempt to load local UMD from node_modules
-                async function ensureHtmlToImageLoaded() {
-                    if (typeof htmlToImage !== 'undefined' && htmlToImage) return htmlToImage;
-                    if (window && window.htmlToImage) return window.htmlToImage;
+                const cuadro = document.getElementById('cuadro');
+                if (!cuadro) { showMessage('No hay cuadro para exportar.', 3000); return; }
+                showMessage('Generando imagen...', 0);
 
-                    // Prefer the local wrapper file which already exists at `js/html-to-image.js`.
-                    const local = 'js/html-to-image.js';
+                async function ensureHtmlToImageLoaded() {
+                    if (typeof htmlToImage !== 'undefined') return htmlToImage;
+                    if (window && window.htmlToImage) return window.htmlToImage;
                     return new Promise((resolve, reject) => {
-                        // If already injected, poll until available
-                        const existing = document.querySelector('script[src="' + local + '"]');
+                        const src = 'js/html-to-image.js';
+                        const existing = document.querySelector('script[src="' + src + '"]');
                         if (existing) {
                             let waited = 0;
                             const poll = setInterval(() => {
@@ -1970,123 +1970,104 @@
                         }
 
                         const s = document.createElement('script');
-                        s.src = local;
+                        s.src = src;
                         s.async = true;
                         s.onload = () => {
-                            // Wait a short time for the wrapper to attach the global
                             let waited = 0;
                             const poll = setInterval(() => {
                                 const lib = (typeof htmlToImage !== 'undefined') ? htmlToImage : (window && window.htmlToImage ? window.htmlToImage : null);
                                 if (lib) { clearInterval(poll); return resolve(lib); }
                                 waited += 50;
-                                if (waited > 3000) { clearInterval(poll); return reject(new Error('html-to-image not available after loading ' + local)); }
+                                if (waited > 3000) { clearInterval(poll); return reject(new Error('html-to-image not available after loading ' + src)); }
                             }, 50);
                         };
-                        s.onerror = (e) => reject(new Error('Failed to load local html-to-image script: ' + local));
+                        s.onerror = () => reject(new Error('Failed to load script: ' + src));
                         document.head.appendChild(s);
                     });
                 }
 
-                const cuadro = document.getElementById('cuadro');
-                if (!cuadro) {
-                    showMessage('No hay cuadro para exportar.', 3000);
-                    return;
-                }
-                showMessage('Generando imagen...', 0);
-
-                // Clone the cuadro to avoid side-effects and to normalize styles
-                const clone = cuadro.cloneNode(true);
-                clone.style.position = 'fixed';
-                clone.style.left = '-9999px';
-                clone.style.top = '-9999px';
-                clone.style.transform = '';
-                clone.style.margin = '0';
-                clone.style.padding = getComputedStyle(cuadro).padding;
-                // Ensure visible for rendering
-                clone.style.opacity = '1';
-
-                // Normalize images inside the clone
-                const imgs = clone.querySelectorAll('img');
-                const loadPromises = [];
-                imgs.forEach(img => {
-                    img.style.objectFit = 'contain';
-                    img.style.maxWidth = '100%';
-                    img.style.maxHeight = '100%';
-                    img.removeAttribute('width');
-                    img.removeAttribute('height');
-                    if (!img.complete) {
-                        loadPromises.push(new Promise(res => { img.onload = res; img.onerror = res; }));
-                    }
-                });
-
-                document.body.appendChild(clone);
                 try {
-                    await Promise.all(loadPromises);
-                        const lib = await ensureHtmlToImageLoaded();
-                        // Temporarily remove cross-origin <link rel="stylesheet"> elements to avoid CORS errors
-                        const removedLinks = [];
-                        document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-                            try {
-                                const href = link.getAttribute('href');
-                                if (!href) return;
-                                const url = new URL(href, window.location.href);
-                                if (url.origin !== window.location.origin) {
-                                    removedLinks.push({ link, parent: link.parentNode, nextSibling: link.nextSibling });
-                                    link.parentNode.removeChild(link);
-                                }
-                            } catch (e) {
-                                // If URL parsing fails, skip removing this link
+                    // Try rasterizeHTML first (local file js/rasterizehtml.js)
+                    async function ensureRasterizeLoaded() {
+                        if (typeof rasterizeHTML !== 'undefined') return rasterizeHTML;
+                        if (window && window.rasterizeHTML) return window.rasterizeHTML;
+                        return new Promise((resolve, reject) => {
+                            const src = 'js/rasterizehtml.js';
+                            const existing = document.querySelector('script[src="' + src + '"]');
+                            if (existing) {
+                                let waited = 0;
+                                const poll = setInterval(() => {
+                                    const lib = (typeof rasterizeHTML !== 'undefined') ? rasterizeHTML : (window && window.rasterizeHTML ? window.rasterizeHTML : null);
+                                    if (lib) { clearInterval(poll); return resolve(lib); }
+                                    waited += 50;
+                                    if (waited > 3000) { clearInterval(poll); return reject(new Error('rasterizeHTML global not available after waiting')); }
+                                }, 50);
+                                return;
                             }
+                            const s = document.createElement('script');
+                            s.src = src;
+                            s.async = true;
+                            s.onload = () => {
+                                let waited = 0;
+                                const poll = setInterval(() => {
+                                    const lib = (typeof rasterizeHTML !== 'undefined') ? rasterizeHTML : (window && window.rasterizeHTML ? window.rasterizeHTML : null);
+                                    if (lib) { clearInterval(poll); return resolve(lib); }
+                                    waited += 50;
+                                    if (waited > 3000) { clearInterval(poll); return reject(new Error('rasterizeHTML not available after loading ' + src)); }
+                                }, 50);
+                            };
+                            s.onerror = () => reject(new Error('Failed to load script: ' + src));
+                            document.head.appendChild(s);
                         });
+                    }
 
-                        // Prepare options: use devicePixelRatio and explicit dimensions
-                        const rect = clone.getBoundingClientRect();
-                        const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
-                        const options = {
-                            cacheBust: true,
-                            backgroundColor: null,
-                            skipFonts: true,
-                            width: Math.round(rect.width),
-                            height: Math.round(rect.height),
-                            pixelRatio: pixelRatio
-                        };
+                    // Determine exact pixel dimensions to render (prefer currentDesign if available)
+                    const desiredWidth = (currentDesign && currentDesign.width) ? parseInt(currentDesign.width, 10) : Math.round(cuadro.getBoundingClientRect().width);
+                    const desiredHeight = (currentDesign && currentDesign.height) ? parseInt(currentDesign.height, 10) : Math.round(cuadro.getBoundingClientRect().height);
 
-                        let dataUrl;
-                        try {
-                            dataUrl = await lib.toPng(clone, options);
-                        } catch (err) {
-                            console.warn('html-to-image toPng failed, falling back to canvas method', err);
-                            // Fallback: draw the node onto a temporary canvas using html2canvas
-                            try {
-                                const canvas = await html2canvas(clone, { backgroundColor: null, scale: pixelRatio });
-                                dataUrl = canvas.toDataURL('image/png');
-                            } catch (err2) {
-                                throw err2;
-                            }
+                    let dataUrl;
+                    try {
+                        const rlib = await ensureRasterizeLoaded();
+                        // Create a canvas with exact dimensions and pass it to rasterizeHTML
+                        const canvas = document.createElement('canvas');
+                        canvas.width = desiredWidth;
+                        canvas.height = desiredHeight;
+
+                        // Pass canvas and options to drawHTML so output matches desired pixels
+                        const result = await rlib.drawHTML(cuadro.outerHTML, canvas, { width: desiredWidth, height: desiredHeight });
+
+                        // Prefer returned image or the canvas we provided
+                        if (result && result.image && result.image.toDataURL) {
+                            dataUrl = result.image.toDataURL('image/png');
+                        } else if (canvas && canvas.toDataURL) {
+                            dataUrl = canvas.toDataURL('image/png');
+                        } else if (result && result.svg) {
+                            // Rasterize SVG fallback to canvas
+                            const blobUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(result.svg);
+                            const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = blobUrl; });
+                            const c = document.createElement('canvas'); c.width = desiredWidth; c.height = desiredHeight; c.getContext('2d').drawImage(img,0,0, desiredWidth, desiredHeight); dataUrl = c.toDataURL('image/png');
                         }
+                    } catch (rerr) {
+                        console.warn('rasterizeHTML failed or not available, falling back to html-to-image', rerr);
+                    }
 
-                        // Reinsert removed links
-                        removedLinks.forEach(({ link, parent, nextSibling }) => {
-                            try {
-                                if (!parent) document.head.appendChild(link);
-                                else parent.insertBefore(link, nextSibling);
-                            } catch (e) {
-                                document.head.appendChild(link);
-                            }
-                        });
-                    const link = document.createElement('a');
+                    if (!dataUrl) {
+                        const lib = await ensureHtmlToImageLoaded();
+                        const options = { width: desiredWidth, height: desiredHeight, pixelRatio: 1, cacheBust: true, backgroundColor: null, skipFonts: true };
+                        dataUrl = await lib.toPng(cuadro, options);
+                    }
+
+                    const a = document.createElement('a');
                     const filename = (currentDesign && currentDesign.name) ? currentDesign.name.replace(/\s+/g, '_') : 'flyer';
-                    link.href = dataUrl;
-                    link.download = `${filename}.png`;
-                    document.body.appendChild(link);
-                    link.click();
-                    link.remove();
+                    a.href = dataUrl;
+                    a.download = `${filename}.png`;
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
                     showMessage('Imagen lista. Descargando...', 3000);
                 } catch (err) {
                     console.error('Export error:', err);
                     showMessage('Error al generar la imagen. Revisa la consola.', 5000);
-                } finally {
-                    clone.remove();
                 }
             });
 

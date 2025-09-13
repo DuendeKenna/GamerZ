@@ -89,7 +89,7 @@
         "type": "Fuentes",
         "price": 84599,
         "summaryTitle": null,
-        "style": "top: 333px; left: 376px; width: 200px; height: 200px; transform: scale(1.98); z-index: 10;",
+        "style": "top: 375px; left: 285px; width: 200px; height: 200px; transform: scale(1.98); z-index: 10;",
         "nameElementState": "z-index: 11; display: none; top: 472px; left: 334px; transform: scale(0.8);",
         "priceElementState": "z-index: 11; display: none;",
         "imageName": null,
@@ -130,7 +130,8 @@
         "priceElementState": null,
         "imageName": null,
         "markup": null,
-        "h2Text": "DALEEE"
+        "h2Text": "DALEEE",
+        "h2Align": null
       }
     ],
     "toolbarPosition": {
