@@ -745,13 +745,13 @@
                     name: 'Información de Entrega',
                     html: `
                         <p class="delivery-info text-center mt-4 font-inter text-base">
-                            <i class="fas fa-car-side mr-1"></i>Entrega Personal a Domicilio
+                            Entrega Personal a Domicilio
                         </p>
                         <p class="delivery-city text-center mt-1 font-inter text-base">
                             en toda <strong class="text-white la-costa-shadow">La Costa 🌊</strong>
                         </p>
                         <p class="payment-info text-center mt-4 font-inter text-xs">
-                            <i class="fas fa-credit-card"></i> Consultar opciones en cuotas x MP
+                            Consultar opciones en cuotas x MP
                         </p>
                     `
                 },
@@ -2025,8 +2025,44 @@
                     const desiredWidth = (currentDesign && currentDesign.width) ? parseInt(currentDesign.width, 10) : Math.round(cuadro.getBoundingClientRect().width);
                     const desiredHeight = (currentDesign && currentDesign.height) ? parseInt(currentDesign.height, 10) : Math.round(cuadro.getBoundingClientRect().height);
 
+                    // Helper: replace FontAwesome <i> tags with inline SVGs for export
+                    function replaceFaWithSvg(root) {
+                        const map = {
+                            'fa-chevron-left': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.63 22.63c9.37 9.37 9.37 24.57 0 33.94L131.21 256l154.24 154.73c9.37 9.37 9.37 24.57 0 33.94l-22.63 22.63c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.56 0-33.94z"></path></svg>',
+                            'fa-chevron-right': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24"><path fill="currentColor" d="M285.48 272.97L91.13 467.31c-9.37 9.37-24.57 9.37-33.94 0L34.56 444.68c-9.37-9.37-9.37-24.57 0-33.94L188.8 256 34.56 101.27c-9.37-9.37-9.37-24.57 0-33.94L57.19 44.7c9.37-9.37 24.57-9.37 33.94 0l194.35 194.34c9.37 9.37 9.37 24.56 0 33.93z"></path></svg>',
+                            'fa-gift': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24"><path fill="currentColor" d="M0 192v192c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V192H0zm224-160c22.09 0 40 17.91 40 40v24h120c13.25 0 24 10.75 24 24v40H40v-40c0-13.25 10.75-24 24-24h120V72c0-22.09 17.91-40 40-40z"></path></svg>',
+                            'fa-house-circle-check': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="24" height="24"><path fill="currentColor" d="M..."/></svg>'
+                        };
+                        const icons = root.querySelectorAll('i[class*=\"fa-\"]');
+                        icons.forEach(i => {
+                            const classes = Array.from(i.classList);
+                            let replaced = false;
+                            for (const c of classes) {
+                                if (map[c]) {
+                                    const span = document.createElement('span');
+                                    span.innerHTML = map[c];
+                                    // preserve font-size/color
+                                    span.style.color = getComputedStyle(i).color || 'inherit';
+                                    span.style.display = 'inline-block';
+                                    span.style.verticalAlign = 'middle';
+                                    i.replaceWith(span);
+                                    replaced = true;
+                                    break;
+                                }
+                            }
+                            if (!replaced) {
+                                // fallback: remove the element to avoid missing glyph boxes
+                                i.remove();
+                            }
+                        });
+                    }
+
                     let dataUrl;
                     try {
+                        // Prepare a cloned node and replace FontAwesome icons with inline SVGs
+                        const cloneForRender = cuadro.cloneNode(true);
+                        replaceFaWithSvg(cloneForRender);
+
                         const rlib = await ensureRasterizeLoaded();
                         // Create a canvas with exact dimensions and pass it to rasterizeHTML
                         const canvas = document.createElement('canvas');
@@ -2034,7 +2070,7 @@
                         canvas.height = desiredHeight;
 
                         // Pass canvas and options to drawHTML so output matches desired pixels
-                        const result = await rlib.drawHTML(cuadro.outerHTML, canvas, { width: desiredWidth, height: desiredHeight });
+                        const result = await rlib.drawHTML(cloneForRender.outerHTML, canvas, { width: desiredWidth, height: desiredHeight });
 
                         // Prefer returned image or the canvas we provided
                         if (result && result.image && result.image.toDataURL) {
@@ -2053,8 +2089,10 @@
 
                     if (!dataUrl) {
                         const lib = await ensureHtmlToImageLoaded();
+                        // Use the cloned node with SVG replacements if available
+                        const renderTarget = (typeof cloneForRender !== 'undefined') ? cloneForRender : cuadro;
                         const options = { width: desiredWidth, height: desiredHeight, pixelRatio: 1, cacheBust: true, backgroundColor: null, skipFonts: true };
-                        dataUrl = await lib.toPng(cuadro, options);
+                        dataUrl = await lib.toPng(renderTarget, options);
                     }
 
                     const a = document.createElement('a');
