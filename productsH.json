@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 399852,
+      "total": 394777,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 422862,
+      "total": 415047,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "8502",
       "cantRam": 2,
-      "total": 457694,
+      "total": 449879,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -66,6 +66,10 @@
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 244299,
+          "date": "2025-09-13T11:40:20.998Z"
+        },
         {
           "value": 244443,
           "date": "2025-09-12T13:24:05.737Z"
@@ -206,6 +210,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 63058,
+          "date": "2025-09-13T11:40:55.191Z"
+        },
+        {
           "value": 65685,
           "date": "2025-09-11T13:45:01.851Z"
         },
@@ -272,6 +280,10 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 67026,
+          "date": "2025-09-13T11:41:10.061Z"
+        },
         {
           "value": 67124,
           "date": "2025-09-11T13:45:09.471Z"
@@ -548,6 +560,10 @@
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-hiksemi-wave-240gb-3d-nand-pc-notebook/p/MLA45759263?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "prices": [
+        {
+          "value": 33233,
+          "date": "2025-09-13T11:45:53.229Z"
+        },
         {
           "value": 32999,
           "date": "2025-09-12T13:26:57.314Z"
@@ -1113,6 +1129,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 98715,
+          "date": "2025-09-13T11:44:08.026Z"
+        },
+        {
           "value": 100999,
           "date": "2025-09-12T13:25:24.826Z"
         },
@@ -1174,6 +1194,10 @@
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 94282,
+          "date": "2025-09-13T11:44:20.178Z"
+        },
         {
           "value": 99357,
           "date": "2025-09-12T13:25:31.991Z"
@@ -1301,6 +1325,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 249999,
+          "date": "2025-09-13T11:43:54.305Z"
+        },
+        {
           "value": 252739,
           "date": "2025-09-12T13:25:18.235Z"
         },
@@ -1373,6 +1401,10 @@
       "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 70766,
+          "date": "2025-09-13T11:44:32.514Z"
+        },
         {
           "value": 70766,
           "date": "2025-09-12T13:25:48.802Z"
@@ -1623,6 +1655,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 399799,
+          "date": "2025-09-13T11:43:06.513Z"
+        },
+        {
           "value": 395199,
           "date": "2025-09-12T13:24:44.449Z"
         },
@@ -1684,6 +1720,10 @@
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 255607,
+          "date": "2025-09-13T11:43:15.835Z"
+        },
         {
           "value": 252233,
           "date": "2025-09-12T13:24:53.356Z"
@@ -1907,6 +1947,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 300000,
+          "date": "2025-09-13T11:47:00.736Z"
+        },
+        {
           "value": 299999,
           "date": "2025-09-12T13:27:39.723Z"
         },
@@ -2013,6 +2057,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 27237,
+          "date": "2025-09-13T11:47:19.577Z"
+        },
+        {
           "value": 26433,
           "date": "2025-09-12T13:27:51.719Z"
         },
@@ -2065,9 +2113,13 @@
       "id": 80115,
       "name": "Xbox 360 - Cableado",
       "description": "Generico Xbox 360 Con Cable",
-      "link": "https://www.mercadolibre.com.ar/joystick--para-microsoft-xbox-360-con-cable-pc-windows/up/MLAU3163397996?offer_type=OFFICIAL_STORE",
+      "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "prices": [
+        {
+          "value": 23150,
+          "date": "2025-09-13T11:51:26.069Z"
+        },
         {
           "value": 29900,
           "date": "2025-09-10T13:04:48.687Z"
@@ -2109,7 +2161,10 @@
           "date": "2025-08-23T04:35:21.832Z"
         }
       ],
-      "linksAlt": []
+      "linksAlt": [
+        "https://www.mercadolibre.com.ar/joystick--para-microsoft-xbox-360-con-cable-pc-windows/up/MLAU3163397996?offer_type=OFFICIAL_STORE",
+        "https://www.mercadolibre.com.ar/seisa-joystick-cable-usb-negro-compatible-con-xbox-360-y-pc-windows-njx301/p/MLA27574823?offer_type=OFFICIAL_STORE"
+      ]
     },
     {
       "id": 80101,
@@ -2118,6 +2173,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 54799,
+          "date": "2025-09-13T11:51:35.358Z"
+        },
         {
           "value": 26433,
           "date": "2025-09-12T13:28:02.746Z"
@@ -2170,6 +2229,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 33344,
+          "date": "2025-09-13T11:51:44.190Z"
+        },
         {
           "value": 33379,
           "date": "2025-09-12T13:28:08.546Z"
@@ -2229,6 +2292,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 39999,
+          "date": "2025-09-13T11:51:51.593Z"
+        },
+        {
           "value": 41400,
           "date": "2025-09-12T13:28:15.813Z"
         },
@@ -2286,6 +2353,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 52498,
+          "date": "2025-09-13T11:51:59.467Z"
+        },
         {
           "value": 52498,
           "date": "2025-09-12T13:28:22.836Z"
@@ -2409,6 +2480,10 @@
       "link": "https://www.mercadolibre.com.ar/auriculares-gamer-noga-stormer-ng-8620-negro-y-rojo/p/MLA6354312?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=78f0b566-6759-43a3-8568-c4800be17775&wid=MLA1941191004&sid=search",
       "visible": 1,
       "prices": [
+        {
+          "value": 12886,
+          "date": "2025-09-13T11:52:15.986Z"
+        },
         {
           "value": 12886,
           "date": "2025-09-12T13:28:41.937Z"
@@ -2670,6 +2745,10 @@
       "description": "",
       "prices": [
         {
+          "value": 57556,
+          "date": "2025-09-13T11:52:51.916Z"
+        },
+        {
           "value": 57812,
           "date": "2025-09-12T13:29:11.469Z"
         },
@@ -2731,6 +2810,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 56487,
+          "date": "2025-09-13T11:52:58.215Z"
+        },
         {
           "value": 58200,
           "date": "2025-09-12T13:29:17.211Z"
