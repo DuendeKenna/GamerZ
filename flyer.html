@@ -102,7 +102,7 @@
             background-color: #1f2937;
             box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
             transform-origin: top center;
-            transform: scale(0.5);
+            /* transform: scale(0.5); */
             transition: transform 0.2s ease-in-out;
             margin: 0;
             display: flex;
@@ -2025,7 +2025,6 @@
                     const desiredWidth = (currentDesign && currentDesign.width) ? parseInt(currentDesign.width, 10) : Math.round(cuadro.getBoundingClientRect().width);
                     const desiredHeight = (currentDesign && currentDesign.height) ? parseInt(currentDesign.height, 10) : Math.round(cuadro.getBoundingClientRect().height);
 
-                    
 
                     let dataUrl;
                     try {
@@ -2036,6 +2035,7 @@
                         // Create a canvas with exact dimensions and pass it to rasterizeHTML
                         const canvas = document.createElement('canvas');
                         canvas.width = desiredWidth;
+                        
                         console.log('canvas.width set to', canvas.width);
                         canvas.height = desiredHeight;
 
