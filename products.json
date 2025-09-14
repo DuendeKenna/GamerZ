@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 394777,
+      "total": 391947,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -22,7 +22,7 @@
       "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 415047,
+      "total": 412217,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -36,7 +36,7 @@
       "mother": "23506",
       "ram": "8502",
       "cantRam": 2,
-      "total": 449879,
+      "total": 447049,
       "totalram": 32,
       "visible": 1,
       "price": 0,
@@ -50,8 +50,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 244299,
-      "lastUpd": "2025-09-13T11:40:20.998Z"
+      "price": 242000,
+      "lastUpd": "2025-09-14T12:41:38.769Z"
     }
   ],
   "towersOptions": [
@@ -63,7 +63,7 @@
       "visible": 1,
       "description": "",
       "price": 62894,
-      "lastUpd": "2025-09-11T13:44:54.405Z"
+      "lastUpd": "2025-09-14T12:41:50.095Z"
     },
     {
       "id": 50127,
@@ -73,7 +73,7 @@
       "visible": 1,
       "description": "",
       "price": 63058,
-      "lastUpd": "2025-09-13T11:40:55.191Z"
+      "lastUpd": "2025-09-14T12:41:56.964Z"
     },
     {
       "id": 47143,
@@ -83,7 +83,7 @@
       "visible": 1,
       "description": "",
       "price": 67026,
-      "lastUpd": "2025-09-13T11:41:10.061Z"
+      "lastUpd": "2025-09-14T12:42:02.173Z"
     },
     {
       "id": 30191,
@@ -102,7 +102,7 @@
       "visible": 1,
       "description": "",
       "price": 69999,
-      "lastUpd": "2025-09-11T13:45:28.785Z"
+      "lastUpd": "2025-09-14T12:42:07.964Z"
     },
     {
       "name": "Reciclado",
@@ -139,8 +139,8 @@
       "description": "Opción económica si precisás exprimir el precio y no precisás tanto espacio. SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-hiksemi-wave-240gb-3d-nand-pc-notebook/p/MLA45759263?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 33233,
-      "lastUpd": "2025-09-13T11:45:53.229Z"
+      "price": 33741,
+      "lastUpd": "2025-09-14T12:59:57.513Z"
     }
   ],
   "gpuOptions": [
@@ -271,8 +271,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 94282,
-      "lastUpd": "2025-09-13T11:44:20.178Z"
+      "price": 91452,
+      "lastUpd": "2025-09-14T12:42:58.504Z"
     }
   ],
   "cpuOptions": [
@@ -373,8 +373,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 164390,
-      "lastUpd": "2025-09-12T13:27:25.441Z"
+      "price": 160271,
+      "lastUpd": "2025-09-14T13:00:44.276Z"
     },
     {
       "id": 93025,
@@ -422,8 +422,8 @@
       "description": "Generico Xbox 360 Con Cable",
       "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 23150,
-      "lastUpd": "2025-09-13T11:51:26.069Z"
+      "price": 22836,
+      "lastUpd": "2025-09-14T13:01:47.012Z"
     },
     {
       "id": 80101,
@@ -432,7 +432,7 @@
       "visible": 1,
       "description": "",
       "price": 54799,
-      "lastUpd": "2025-09-13T11:51:35.358Z"
+      "lastUpd": "2025-09-14T13:01:53.489Z"
     }
   ],
   "keyboardOptions": [
@@ -443,7 +443,7 @@
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
       "visible": 1,
       "price": 33344,
-      "lastUpd": "2025-09-13T11:51:44.190Z"
+      "lastUpd": "2025-09-14T13:02:04.011Z"
     },
     {
       "id": 78296,
@@ -452,7 +452,7 @@
       "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184?offer_type=BEST_PRICE",
       "visible": 1,
       "price": 39999,
-      "lastUpd": "2025-09-13T11:51:51.593Z"
+      "lastUpd": "2025-09-14T13:02:11.845Z"
     },
     {
       "id": 15740,
@@ -461,7 +461,7 @@
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
       "price": 52498,
-      "lastUpd": "2025-09-13T11:51:59.467Z"
+      "lastUpd": "2025-09-14T13:02:18.869Z"
     },
     {
       "id": 67546,
@@ -470,7 +470,7 @@
       "link": "https://www.mercadolibre.com.ar/teclado-y-mouse-combo-inalambrico-solarmax-kb302wmw200-color-negro/p/MLA21805667?offer_type=BEST_PRICE",
       "visible": 1,
       "price": 19990,
-      "lastUpd": "2025-09-12T13:28:29.029Z"
+      "lastUpd": "2025-09-14T13:02:24.651Z"
     }
   ],
   "comboMouseTecladoOptions": [],
@@ -549,7 +549,7 @@
       "visible": 1,
       "description": "",
       "price": 61499,
-      "lastUpd": "2025-09-12T13:29:22.942Z"
+      "lastUpd": "2025-09-14T13:04:39.472Z"
     },
     {
       "id": 40003,
@@ -557,8 +557,8 @@
       "link": "https://www.mercadolibre.com.ar/webcam-c270-logitech-color-negro/p/MLA18931576?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 43600,
-      "lastUpd": "2025-09-12T13:29:28.713Z"
+      "price": 52800,
+      "lastUpd": "2025-09-14T13:04:45.317Z"
     },
     {
       "id": 85797,
@@ -596,7 +596,7 @@
       "visible": 1,
       "description": "",
       "price": 39999,
-      "lastUpd": "2025-09-12T13:30:38.495Z"
+      "lastUpd": "2025-09-14T13:04:57.387Z"
     },
     {
       "id": 43732,
