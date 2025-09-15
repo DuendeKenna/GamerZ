@@ -452,15 +452,19 @@
 
                 
 
-                                // Price card visibility observer
-                const priceVisibilityZone = document.getElementById('price-card-visibility-zone');
-                if (priceVisibilityZone) {
-                    const observer = new IntersectionObserver(entries => {
-                        const isIntersecting = entries[0].isIntersecting;
-                        document.getElementById('price-summary-card').classList.toggle('visible', isIntersecting);
-                    });
-                    observer.observe(priceVisibilityZone);
-                }
+                                // Price card & WhatsApp visibility observer
+                                // Observe the #section-bases so price & whatsapp appear only when the user reaches that section
+                                const basesSection = document.getElementById('section-bases');
+                                const whatsappFloatEl = document.getElementById('whatsapp-float');
+                                if (basesSection) {
+                                    const observer = new IntersectionObserver(entries => {
+                                        const isIntersecting = entries[0].isIntersecting;
+                                        // When #section-bases is visible, show the price summary and whatsapp; otherwise hide them
+                                        document.getElementById('price-summary-card').classList.toggle('visible', isIntersecting);
+                                        if (whatsappFloatEl) whatsappFloatEl.classList.toggle('visible', isIntersecting);
+                                    }, { threshold: 0.1 });
+                                    observer.observe(basesSection);
+                                }
 
                 // Window resize
                 window.addEventListener('resize', () => {

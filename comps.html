@@ -521,13 +521,18 @@
     </div>
     
     <!-- Price Chart Popup -->
-    <div id="price-chart-popup" class="hidden">
+    <div id="price-chart-popup" class="hidden" onclick="if (event.target === this) closePriceChartPopup()">
         <div class="popup-content-chart">
             <div class="popup-header">
                 <h3 id="chart-popup-title" class="text-lg font-bold text-white">Historial de Precios</h3>
-                <button onclick="closePriceChartPopup()" class="text-gray-400 hover:text-white">
-                    <span class="lucide-icon w-6 h-6" data-lucide="x"></span>
+                <button id="toggle-chart-type-btn" onclick="toggleChartType()" class="ml-3 text-gray-300 hover:text-white" title="Cambiar vista (columnas/lineas)">
+                    <span class="lucide-icon w-6 h-6" data-lucide="bar-chart"></span>
                 </button>
+                <div id="price-chart-legend" class="ml-4 flex items-center gap-3 text-sm text-gray-300" style="margin-left:12px;">
+                    <span class="flex items-center gap-2"><span style="width:12px;height:12px;background:rgba(139,92,246,0.95);display:inline-block;border-radius:2px;border:1px solid rgba(139,92,246,1);"></span> Subió</span>
+                    <span class="flex items-center gap-2"><span style="width:12px;height:12px;background:rgba(34,197,94,0.95);display:inline-block;border-radius:2px;border:1px solid rgba(34,197,94,1);"></span> Bajó</span>
+                    <span class="flex items-center gap-2"><span style="width:12px;height:12px;background:rgba(2,132,199,0.95);display:inline-block;border-radius:2px;border:1px solid rgba(2,132,199,1);"></span> Mantuvo</span>
+                </div>
             </div>
             <div class="popup-body-chart">
                 <canvas id="price-chart-canvas"></canvas>
@@ -1954,12 +1959,101 @@
         const title = document.getElementById('chart-popup-title');
         title.textContent = `Historial de: ${product.name}`;
 
-        const historicalData = [...product.prices]
-            .filter(p => p.value > 0)
-            .reverse();
+        // Build a day-by-day filled history: if a day is missing, assume price stayed the same as previous day
+        const rawPrices = [...product.prices].filter(p => p.value > 0);
+        if (rawPrices.length === 0) {
+            showToast('No hay historial de precios para este producto.', 'error');
+            return;
+        }
+        // Sort ascending by date
+        rawPrices.sort((a, b) => new Date(a.date) - new Date(b.date));
 
-        const labels = historicalData.map(p => formatTimestamp(p.date).split(',')[0]);
-        const data = historicalData.map(p => p.value);
+        // Map prices by day (YYYY-MM-DD)
+        const priceByDay = new Map();
+        rawPrices.forEach(p => {
+            const d = new Date(p.date);
+            const key = d.toISOString().slice(0, 10);
+            priceByDay.set(key, p.value);
+        });
+
+        const startDate = new Date(rawPrices[0].date);
+        const endDate = new Date(rawPrices[rawPrices.length - 1].date);
+
+        const filled = [];
+        let cursor = new Date(startDate);
+        let lastValue = priceByDay.get(cursor.toISOString().slice(0, 10));
+        // Ensure lastValue is initialized to the first available price
+        if (lastValue === undefined) {
+            // find first available
+            lastValue = rawPrices[0].value;
+        }
+        while (cursor <= endDate) {
+            const key = cursor.toISOString().slice(0, 10);
+            if (priceByDay.has(key)) {
+                lastValue = priceByDay.get(key);
+            }
+            // store ISO full datetime for compatibility
+            filled.push({ date: key + 'T00:00:00', value: lastValue });
+            cursor.setDate(cursor.getDate() + 1);
+        }
+
+    const historicalData = filled;
+    // Helper: compact number formatting like y-axis (e.g. 30,5k or 1,5M)
+    function formatShortNumber(v) {
+        const abs = Math.abs(v);
+        if (abs >= 1000000) {
+            return (v / 1000000).toFixed(1).replace('.', ',') + 'M';
+        } else if (abs >= 1000) {
+            return (v / 1000).toFixed(1).replace('.', ',') + 'k';
+        }
+        return v.toString();
+    }
+
+    // x-axis labels: day, include "/month" only when the month changes (ej. "1/9")
+    const labels = [];
+    let lastMonth = null;
+    historicalData.forEach(p => {
+        const d = new Date(p.date);
+        const day = d.getDate();
+        const month = d.getMonth() + 1;
+        if (lastMonth === null || month !== lastMonth) {
+            labels.push(`${day}/${month}`);
+            lastMonth = month;
+        } else {
+            labels.push(`${day}`);
+        }
+    });
+    const data = historicalData.map(p => p.value);
+    const latestPrice = data.length ? data[data.length - 1] : null;
+
+    // compute minimum chart bound: start from one-fifth of the lowest positive price
+    const positiveValues = data.filter(v => typeof v === 'number' && isFinite(v) && v > 0);
+    const minPriceVal = positiveValues.length ? Math.min(...positiveValues) : 0;
+    const minChart = minPriceVal ? Math.floor(minPriceVal * 0.8) : 0;
+
+    // compute per-bar colors based on change vs previous day
+    const backgroundColors = [];
+    const borderColors = [];
+    // colors matching the filter options
+    const COLOR_INCREASE = 'rgba(139, 92, 246, 0.95)'; // violet (subió)
+    const COLOR_DECREASE = 'rgba(34, 197, 94, 0.95)'; // green (bajó)
+    const COLOR_SAME = 'rgba(2, 132, 199, 0.95)'; // blue (igual)
+    const COLOR_DEFAULT_BORDER = 'rgba(139, 92, 246, 1)';
+
+    for (let i = 0; i < data.length; i++) {
+        const val = data[i];
+        const prev = i > 0 ? data[i - 1] : val;
+        if (val > prev) {
+            backgroundColors.push(COLOR_INCREASE);
+            borderColors.push(COLOR_DEFAULT_BORDER);
+        } else if (val < prev) {
+            backgroundColors.push(COLOR_DECREASE);
+            borderColors.push('rgba(34, 197, 94, 1)');
+        } else {
+            backgroundColors.push(COLOR_SAME);
+            borderColors.push('rgba(2, 132, 199, 1)');
+        }
+    }
 
         popup.classList.remove('hidden');
         lucide.createIcons();
@@ -1971,17 +2065,19 @@
         }
 
         priceChartInstance = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
                 labels: labels,
                 datasets: [{
                     label: 'Precio',
                     data: data,
-                    borderColor: 'rgba(139, 92, 246, 1)',
-                    backgroundColor: 'rgba(139, 92, 246, 0.2)',
-                    borderWidth: 2,
-                    tension: 0.1,
-                    fill: true,
+                    backgroundColor: backgroundColors,
+                    borderColor: borderColors,
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    barPercentage: 0.9,
+                    categoryPercentage: 0.85,
+                    maxBarThickness: 48
                 }]
             },
             options: {
@@ -1989,30 +2085,126 @@
                 maintainAspectRatio: false,
                 scales: {
                     y: {
-                        ticks: { color: '#e5e7eb' },
-                        grid: { color: 'rgba(55, 65, 81, 0.5)' }
+                        // linear scale starting at half of the minimum price to preserve dynamics
+                        ticks: {
+                            color: '#e5e7eb',
+                            callback: function(value) {
+                                // Short format: 30500 -> "30,5k"; 1500000 -> "1,5M"
+                                const abs = Math.abs(value);
+                                if (abs >= 1000000) {
+                                    return (value / 1000000).toFixed(1).replace('.', ',') + 'M';
+                                } else if (abs >= 1000) {
+                                    return (value / 1000).toFixed(1).replace('.', ',') + 'k';
+                                }
+                                return value.toString();
+                            }
+                        },
+                        grid: { color: 'rgba(55, 65, 81, 0.5)' },
+                        min: minChart
                     },
-                    x: {
-                         ticks: { color: '#e5e7eb' },
-                         grid: { display: false }
-                    }
+                x: {
+                    // show default tick text; plugin will only overdraw month labels (those containing '/') in bold
+                    ticks: { color: '#e5e7eb' },
+                    grid: { display: false }
+                }
                 },
                 plugins: {
                     legend: { display: false },
                     tooltip: {
+                        enabled: true,
                         callbacks: {
+                            title: function(tooltipItems) {
+                                // Show weekday + short date as title (ej. Lunes 4/8)
+                                if (!tooltipItems || !tooltipItems.length) return '';
+                                const idx = tooltipItems[0].dataIndex;
+                                const point = historicalData[idx];
+                                if (!point) return tooltipItems[0].label || '';
+                                const d = new Date(point.date);
+                                const weekday = new Intl.DateTimeFormat('es-AR', { weekday: 'long' }).format(d);
+                                const shortDate = new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'numeric' }).format(d);
+                                return `${weekday.charAt(0).toUpperCase()}${weekday.slice(1)} ${shortDate}`;
+                            },
                             label: function(context) {
-                                let label = 'Precio: ';
-                                if (context.parsed.y !== null) {
-                                    label += new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(context.parsed.y);
+                                const idx = context.dataIndex;
+                                const value = context.dataset.data[idx];
+                                return `Precio: $${formatShortNumber(value)}`;
+                            },
+                            afterLabel: function(context) {
+                                const idx = context.dataIndex;
+                                const point = historicalData[idx];
+                                if (!point) return '';
+                                const pointDate = new Date(point.date);
+                                const now = new Date();
+                                const msPerDay = 1000 * 60 * 60 * 24;
+                                const daysAgo = Math.floor((now - pointDate) / msPerDay);
+                                const pointPrice = point.value;
+
+                                // previous day's price (if exists in filled data)
+                                const prevPoint = idx > 0 ? historicalData[idx - 1] : null;
+                                const prevPrice = prevPoint ? prevPoint.value : null;
+
+                                // delta vs latest (today)
+                                const diffLatest = latestPrice !== null ? (latestPrice - pointPrice) : 0;
+                                const diffLatestSign = diffLatest > 0 ? '+' : (diffLatest < 0 ? '-' : '');
+                                const diffLatestFormatted = formatShortNumber(Math.abs(diffLatest));
+
+                                const lines = [`Hace: ${daysAgo} días`, `Δ vs hoy: ${diffLatestSign}$${diffLatestFormatted}`];
+
+                                // If the price changed vs previous day, also show whether it 'Subió' or 'Bajó' and the difference
+                                if (prevPrice !== null && prevPrice !== pointPrice) {
+                                    const diffPrev = pointPrice - prevPrice;
+                                    const diffPrevSign = diffPrev > 0 ? '+' : (diffPrev < 0 ? '-' : '');
+                                    const diffPrevFormatted = formatShortNumber(Math.abs(diffPrev));
+                                    const verb = diffPrev > 0 ? 'Subió' : 'Bajó';
+                                    lines.push(`${verb}: ${diffPrevSign}$${diffPrevFormatted}`);
                                 }
-                                return label;
+
+                                return lines;
                             }
                         }
                     }
                 }
-            }
+            },
+            // Per-instance plugin: draw bold x-axis labels for labels that include the month (contain '/')
+            plugins: [{
+                id: 'boldMonthLabelsPlugin',
+                afterDraw: function(chart) {
+                    try {
+                        const ctx = chart.ctx;
+                        const meta = chart.getDatasetMeta(0);
+                        if (!meta || !meta.data || !chart.scales || !chart.scales.x) return;
+                        const xScale = chart.scales.x;
+                        ctx.save();
+                        ctx.fillStyle = '#e5e7eb';
+                        const baseFont = '12px Saira, Inter, sans-serif';
+                        const boldFont = '700 12px Saira, Inter, sans-serif';
+                        ctx.textAlign = 'center';
+                        // y position slightly below the axis baseline
+                        const y = xScale.bottom + 12;
+                        meta.data.forEach((bar, i) => {
+                            const label = chart.data.labels[i];
+                            if (!label) return;
+                            // Only overdraw labels that include '/' (those with month)
+                            if (label.toString().includes('/')) {
+                                ctx.font = boldFont;
+                                ctx.fillText(label.toString(), bar.x, y);
+                            }
+                        });
+                        ctx.restore();
+                    } catch (e) {
+                        // silently ignore plugin drawing errors
+                    }
+                }
+            }]
         });
+        // Note: per-user request, on-canvas delta labels removed — deltas shown in tooltip now.
+        // Keep a reference to the bar colors so toggle can reuse them
+        try {
+            priceChartInstance._barColors = { backgroundColors: backgroundColors, borderColors: borderColors };
+            priceChartInstance._currentType = 'bar';
+        } catch (e) {
+            // ignore if Chart instance doesn't accept custom props
+        }
     }
 
     function closePriceChartPopup() {
@@ -2021,6 +2213,51 @@
         if (priceChartInstance) {
             priceChartInstance.destroy();
             priceChartInstance = null;
+        }
+    }
+
+    function toggleChartType() {
+        if (!priceChartInstance) return;
+        const current = priceChartInstance._currentType || priceChartInstance.config.type;
+        const target = current === 'bar' ? 'line' : 'bar';
+
+        // Update config.type
+        priceChartInstance.config.type = target;
+
+        // Adjust dataset visual properties for line vs bar
+        const ds = priceChartInstance.data.datasets[0];
+        if (target === 'line') {
+            // convert bar colors into line styling
+            ds.backgroundColor = 'rgba(75,85,99,0.15)';
+            ds.borderColor = priceChartInstance._barColors ? priceChartInstance._barColors.backgroundColors.map(c => c) : ds.borderColor || 'rgba(99,102,241,1)';
+            ds.borderWidth = 2;
+            ds.fill = false;
+            ds.pointRadius = 4;
+            ds.tension = 0.2;
+        } else {
+            // restore bar properties
+            if (priceChartInstance._barColors) {
+                ds.backgroundColor = priceChartInstance._barColors.backgroundColors;
+                ds.borderColor = priceChartInstance._barColors.borderColors;
+            }
+            ds.borderWidth = 1;
+            ds.borderRadius = 6;
+            ds.barPercentage = 0.9;
+            ds.categoryPercentage = 0.85;
+            ds.maxBarThickness = 48;
+            ds.fill = false;
+            ds.pointRadius = 0;
+            ds.tension = 0;
+        }
+
+        priceChartInstance._currentType = target;
+        priceChartInstance.update();
+
+        // Update toggle button icon
+        const btnIcon = document.querySelector('#toggle-chart-type-btn .lucide-icon');
+        if (btnIcon) {
+            btnIcon.setAttribute('data-lucide', target === 'bar' ? 'bar-chart' : 'line-chart');
+            lucide.createIcons({ nodes: [btnIcon] });
         }
     }
     

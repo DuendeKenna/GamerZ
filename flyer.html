@@ -485,7 +485,13 @@
                         title="Siguiente Cuadro">
                         <i class="fas fa-chevron-right"></i>
                     </button>
-                    <button id="download-btn" class="w-full cta-button text-green-900 font-bold py-2 rounded-md transition">
+                    <button id="toggle-scale-btn"
+                        class="p-2 rounded-md text-white bg-gray-600 hover:bg-gray-700 transition"
+                        title="Alternar escala (0.5/1)">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button id="download-btn"
+                        class="w-full cta-button text-green-900 font-bold py-2 rounded-md transition">
                         <i class="fas fa-download"></i> Descargar Imagen
                     </button>
                 </div>
@@ -654,7 +660,7 @@
         </aside>
 
         <!-- Área de Edición del Flyer -->
-        <section id="flyer-section-container" class="lg:col-span-2 p-6 flex justify-center items-start overflow-y-auto">
+        <section id="flyer-section-container" class="lg:col-span-2 p-6 flex justify-center items-start overflow-hidden">
 
             <!-- El contenedor principal de cuadros -->
             <div id="cuadros-container"></div>
@@ -699,10 +705,6 @@
         <!-- Segunda fila: herramientas de diseño (grises) -->
         <div id="flyer-toolbar-row-design" class="flex items-center space-x-2 mt-2 bg-gray-800 p-2 rounded">
             <!-- dynamically appended design buttons will go here -->
-            <button id="toggle-scale-btn" class="p-2 rounded-md text-white bg-gray-600 hover:bg-gray-700 transition"
-                title="Alternar escala (0.5/1)">
-                <i class="fas fa-expand"></i>
-            </button>
             <button id="clear-flyer-btn" class="p-2 rounded-md text-white bg-gray-600 hover:bg-gray-700 transition"
                 title="Limpiar Cuadro">
                 <i class="fas fa-sync-alt"></i>
@@ -803,7 +805,7 @@
             ];
 
             // Default placeholder for empty markup elements
-            const DEFAULT_MARKUP_PLACEHOLDER = `<p class="markup-placeholder" style="color:#9ca3af;margin:0;">Haz clic en \"Editar Markup\" para agregar contenido.</p>`;
+            const DEFAULT_MARKUP_PLACEHOLDER = `<p class="text-left">Escribe</br></p>`;
 
             // Collection of base elements used in the editor
             const baseElementData = {
@@ -1618,6 +1620,9 @@
                         const contentEl = compEl.querySelector('.markup-content') || compEl;
                         try {
                             if (!compEl.dataset.markup || compEl.dataset.markup.trim() === '') {
+                                // Ensure the dataset holds the placeholder so the properties panel textarea
+                                // receives the same default value when the element is created.
+                                compEl.dataset.markup = DEFAULT_MARKUP_PLACEHOLDER;
                                 contentEl.innerHTML = DEFAULT_MARKUP_PLACEHOLDER;
                             } else {
                                 contentEl.innerHTML = compEl.dataset.markup;
@@ -1791,6 +1796,9 @@
                         const contentEl = compEl.querySelector('.markup-content') || compEl;
                         try {
                             if (!compEl.dataset.markup || compEl.dataset.markup.trim() === '') {
+                                // When loading saved designs ensure the dataset contains the placeholder
+                                // so the properties textarea gets populated consistently.
+                                compEl.dataset.markup = DEFAULT_MARKUP_PLACEHOLDER;
                                 contentEl.innerHTML = DEFAULT_MARKUP_PLACEHOLDER;
                             } else {
                                 contentEl.innerHTML = compEl.dataset.markup;

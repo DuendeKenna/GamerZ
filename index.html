@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    
+    <!-- WhatsApp float styles moved to css/style.css -->
+
 </head>
 
 <body class="bg-gray-900 text-white">
@@ -45,7 +46,7 @@
 
     <div class="container main-container mx-auto p-4 md:p-8 max-w-5xl">
         <div id="hero-wrapper" class="relative">
-            <div id="hero-background" style="left: -1px; top: 1px;pointer-events:none;">
+            <div id="hero-background" style="left: -1px; top: 1px;pointer-events:none;" class="hidden">
                 <div id="hero-background-in" style="pointer-events:none;left: 4px; top: -2px;"></div>
             </div>
 
@@ -91,8 +92,8 @@
                             <span id="dynamic-word"
                                 class="transition-all duration-700 ease-in-out font-bold text-green-333">USAR</span>
                         </p>
-                        
-                        
+
+
                     </div>
 
                     <div class="feature-card">
@@ -145,40 +146,37 @@
                         detalles</h1>
                     <h1>...si sabés del tema, usalos para comprar y armarla por tu cuenta ;)</h1>
                     <p class=" mb-8 text-3xl text-yellow-300">▼</p>
-                </div
-
-
+                </div </div>
             </div>
-        </div>
 
-        <div id="price-card-visibility-zone">
-            <section id="section-bases" class="my-16 -mt-4 text-center max-w-4xl mx-auto px-4 section-card-style">
-                <div class="base-level-container">
-                    <span class="base-level-label">NIVEL DE BASE</span>
-                    <div id="base-level-selector" class="base-level-tabs">
-                        <div id="base-level-slider"></div>
-                        <div class="base-level-tab" data-level="0">I</div>
-                        <div class="base-level-tab active" data-level="1">II</div>
-                        <div class="base-level-tab" data-level="2">III</div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
-                    <div class="md:col-span-5">
-                        <div id="base-image-container">
-                           <img id="base-image" src="" alt="Componentes Base">
+            <div id="price-card-visibility-zone">
+                <section id="section-bases" class="my-16 -mt-4 text-center max-w-4xl mx-auto px-4 section-card-style">
+                    <div class="base-level-container">
+                        <span class="base-level-label">NIVEL DE BASE</span>
+                        <div id="base-level-selector" class="base-level-tabs">
+                            <div id="base-level-slider"></div>
+                            <div class="base-level-tab" data-level="0">I</div>
+                            <div class="base-level-tab active" data-level="1">II</div>
+                            <div class="base-level-tab" data-level="2">III</div>
                         </div>
                     </div>
-                    <div class="md:col-span-7 text-center md:text-left">
-                        <p id="base-cpu-text" class="font-saira text-4xl md:text-5xl green-333 coneste"></p>
-                        <p id="base-ram-text" class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"></p>
-                        <p id="base-motherboard-text" class="font-saira text-2xl md:text-3xl green-333 coneste"></p>
-                        <p id="base-description-text" class="text-lg md:text-xl text-green-200 mt-2 coneste"></p>
-                    </div>
-                </div>
-            </section>
 
-            <!-- <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+                    <div class="grid grid-cols-1 md:grid-cols-12 items-center gap-x-1 gap-y-6">
+                        <div class="md:col-span-5">
+                            <div id="base-image-container">
+                                <img id="base-image" src="" alt="Componentes Base">
+                            </div>
+                        </div>
+                        <div class="md:col-span-7 text-center md:text-left">
+                            <p id="base-cpu-text" class="font-saira text-4xl md:text-5xl green-333 coneste"></p>
+                            <p id="base-ram-text" class="font-saira text-2xl md:text-4xl green-333 mt-2 coneste"></p>
+                            <p id="base-motherboard-text" class="font-saira text-2xl md:text-3xl green-333 coneste"></p>
+                            <p id="base-description-text" class="text-lg md:text-xl text-green-200 mt-2 coneste"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
                 <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
                     <span style="color:rgba(66, 210, 50, 0.7);">▼</span> COMPONENTES <span
                         style="color:rgba(66, 210, 50, 0.7);">▼</span>
@@ -186,344 +184,368 @@
             </h2> -->
 
 
-            <div id="main-components-container" class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
-                <section id="component-section" class="flex flex-col md:flex-row md:items-start gap-x-8 gap-y-6 h-full">
-                    <div class="w-full md:w-1/2 flex-shrink-0 h-full flex flex-col items-center justify-center">
-                        <div id="tower-selector-container"
-                            class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
-                            <div class="flex-grow flex items-center justify-center w-full h-full relative">
-                                <img id="current-tower-image" src="" alt="Torre PC Gamer" class="h-full w-full"
-                                    onerror="this.onerror=null;this.src='https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC'">
-                            </div>
+                <div id="main-components-container"
+                    class="max-w-5xl mx-auto p-6 md:p-8 mb-12 relative section-card-style">
+                    <section id="component-section"
+                        class="flex flex-col md:flex-row md:items-start gap-x-8 gap-y-6 h-full">
+                        <div class="w-full md:w-1/2 flex-shrink-0 h-full flex flex-col items-center justify-center">
+                            <div id="tower-selector-container"
+                                class="relative w-full rounded-xl shadow-lg overflow-visible flex flex-col items-center h-full">
+                                <div class="flex-grow flex items-center justify-center w-full h-full relative">
+                                    <img id="current-tower-image" src="" alt="Torre PC Gamer" class="h-full w-full"
+                                        onerror="this.onerror=null;this.src='https://placehold.co/400x500/1f2937/ffffff?text=Torre+PC'">
+                                </div>
 
-                            <div id="tower-name-and-arrows-wrapper"
-                                class="relative z-10 w-full flex justify-between items-center py-2 px-4">
-                                <i id="prev-tower" class="fas fa-chevron-left tower-nav-arrow"></i>
-                                <span id="current-tower-name" class="bg-gray-800/80 px-2 py-1 rounded"></span>
-                                <i id="next-tower" class="fas fa-chevron-right tower-nav-arrow"></i>
+                                <div id="tower-name-and-arrows-wrapper"
+                                    class="relative z-10 w-full flex justify-between items-center py-2 px-4">
+                                    <i id="prev-tower" class="fas fa-chevron-left tower-nav-arrow"></i>
+                                    <span id="current-tower-name" class="bg-gray-800/80 px-2 py-1 rounded"></span>
+                                    <i id="next-tower" class="fas fa-chevron-right tower-nav-arrow"></i>
+                                </div>
+                            </div>
+                            <p id="current-tower-price-display" class="text-center  text-lg text-gray-300"></p>
+                        </div>
+                        <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
+                            <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
+                                <li id="gpu-li"
+                                    class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                                    <div class="component-content-wrapper text-left md:text-left">
+                                        <div class="gpu-slider-container">
+                                            <strong class="text-lg font-semibold">Gráfica</strong>
+                                            <div class="range-slider-container">
+                                                <input id="gpu-range-slider" type="range" min="0" max="1" step="1"
+                                                    value="0">
+                                            </div>
+                                        </div>
+                                        <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
+                                        <p id="gpu-description" class="description-text"></p>
+                                    </div>
+                                    <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image">
+                                </li>
+                                <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                                    <div class="component-content-wrapper text-left md:text-left">
+                                        <strong class="text-lg font-semibold">Almacenamiento</strong>
+                                        <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
+                                        <p id="ssd-description" class="description-text"></p>
+                                    </div>
+                                    <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image">
+                                </li>
+                                <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
+                                    <div class="component-content-wrapper text-left md:text-left">
+                                        <strong class="text-lg font-semibold">Fuente</strong>
+                                        <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
+                                        <p id="psu-description" class="description-text"></p>
+                                    </div>
+                                    <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image">
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- ================== NEW AI SECTION START ================== -->
+                <section id="ai-section" class="max-w-5xl mx-auto">
+                    <div class="text-center">
+                        <h2 class="font-saira-black text-4xl md:text-5xl brand-gradient-text mb-2">Análisis de
+                            Rendimiento
+                            por IA</h2>
+                        <p class="font-vt323 text-4xl green-333 mb0 mb-6">¿Cómo correrá tu juego favorito en esta Nave?
+                        </p>
+                    </div>
+                    <div class="max-w-2xl mx-auto">
+                        <div class="flex flex-col sm:flex-row items-center gap-4">
+                            <input type="text" id="ai-input" class="w-full px-4 py-3 rounded-lg text-lg"
+                                placeholder="Escribí el nombre de un juego, ej: Fortnite">
+                            <button id="ai-button"
+                                class="w-full sm:w-auto px-6 py-3 rounded-lg text-white text-lg flex items-center justify-center gap-2">
+                                <i class="fas fa-robot"></i>
+                                <span>Analizar</span>
+                            </button>
+                        </div>
+                        <div id="ai-result-container" class="mt-6 p-6 rounded-lg text-lg text-gray-300">
+                            <p id="ai-placeholder" class="text-center text-gray-500">El análisis de la IA aparecerá
+                                aquí...
+                            </p>
+                            <div id="ai-loader" class="hidden mx-auto loader"></div>
+                            <div id="ai-result" class="prose prose-invert max-w-none"></div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ================== NEW AI SECTION END ================== -->
+
+                <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+                    <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                        <span style="color:rgba(66, 210, 50, 0.7);">▼</span> PERIFÉRICOS <span
+                            style="color:rgba(66, 210, 50, 0.7);">▼</span>
+                    </span>
+                </h2>
+
+                <section id="section-peripherals" class="mb-12 section-card-style px-4">
+                    <div id="peripherals-grid"
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
+                        <!-- Las tarjetas de periféricos se insertarán aquí con JS -->
+                    </div>
+                </section>
+
+                <h2 class="hidden relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
+                    <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
+                        <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ACCESORIOS <span
+                            style="color:rgba(66, 210, 50, 0.7);">▼</span>
+                    </span>
+                </h2>
+
+                <section id="section-accessories" class="hidden mb-12 section-card-style px-4">
+                    <div id="accessories-grid"
+                        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
+                        <!-- Las tarjetas de accesorios se insertarán aquí con JS -->
+                    </div>
+                </section>
+
+                <div id="section-front-features"
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
+                    <div class="feature-card relative lg:col-span-2 soporte-tecnico-card"
+                        style="padding: 1rem; overflow: hidden; min-height: 200px;">
+                        <img src="memde_think.webp" alt="Soporte técnico personalizado"
+                            class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none" md:z-10
+                            md:opacity-100 md:h-[110%] md:-right-4"
+                            onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
+
+                        <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
+                            <div class="flex items-center gap-4 mb-2 mt-1 sm:mb-3 sm:mt-0">
+                                <img src="SoportePersonal.webp" alt="Icono de Soporte Técnico"
+                                    class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0"
+                                    onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                                <h4
+                                    class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap mt-1 sm:mt-0">
+                                    Soporte Técnico</h4>
+                            </div>
+                            <div class="space-y-1 text-gray-300 max-w-xs pl-0">
+                                <p class="flex items-center justify-start"><i
+                                        class="fas fa-comments blueish fa-fw w-6"></i><span class="ml-2">Contacto
+                                        Directo
+                                        con @DuendeKenna</span>
+                                </p>
+                                <p class="flex items-center justify-start"><i
+                                        class="fas fa-desktop blueish fa-fw w-6"></i><span class="ml-2">Asistencia
+                                        Remota
+                                        via Web</span></p>
+                                <div class="flex items-center justify-start">
+                                    <i class="fas fa-screwdriver blueish fa-fw w-6"></i>
+                                    <div class="ml-2">
+                                        <p>Servicio a Domicilio</p>
+                                        <p class=" text-gray-400 -mt-1">en todo el Partido de La Costa</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <p id="current-tower-price-display" class="text-center  text-lg text-gray-300"></p>
                     </div>
-                    <div class="w-full md:w-1/2 h-full flex flex-col justify-around">
-                        <ul id="component-list" class="space-y-4 text-gray-300 h-full flex flex-col justify-around">
-                            <li id="gpu-li"
-                                class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
-                                <div class="component-content-wrapper text-left md:text-left">
-                                    <div class="gpu-slider-container">
-                                        <strong class="text-lg font-semibold">Gráfica</strong>
-                                        <div class="range-slider-container">
-                                            <input id="gpu-range-slider" type="range" min="0" max="1" step="1" value="0">
-                                        </div>
-                                    </div>
-                                    <select id="gpu-select" class="ml-0 w-full max-w-[250px]"></select>
-                                    <p id="gpu-description" class="description-text"></p>
+
+                    <div class="hidden md:flex lg:hidden items-center justify-center">
+                        <div
+                            class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
+                            <div class="flex items-center justify-center gap-5">
+                                <i class="fas fa-tasks text-2xl"></i>
+                                <div class="text-left">
+                                    <span class="block leading-tight">Usá esta Web Interactiva</span>
+                                    <span class="block text-2sm font-sans -mt-2">para simular tu pedido</span>
                                 </div>
-                                <img id="gpu-image" src="" alt="Tarjeta Gráfica" class="component-option-image">
-                            </li>
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
-                                <div class="component-content-wrapper text-left md:text-left">
-                                    <strong class="text-lg font-semibold">Almacenamiento</strong>
-                                    <select id="ssd-select" class="ml-0 w-full max-w-[250px]"></select>
-                                    <p id="ssd-description" class="description-text"></p>
-                                </div>
-                                <img id="ssd-image" src="" alt="Almacenamiento SSD" class="component-option-image">
-                            </li>
-                            <li class="flex flex-col md:flex-row items-center md:items-start w-full gap-4 md:gap-6">
-                                <div class="component-content-wrapper text-left md:text-left">
-                                    <strong class="text-lg font-semibold">Fuente</strong>
-                                    <select id="psu-select" class="ml-0 w-full max-w-[250px]"></select>
-                                    <p id="psu-description" class="description-text"></p>
-                                </div>
-                                <img id="psu-image" src="" alt="Fuente de Poder" class="component-option-image">
-                            </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <section id="garantia-section" class="mb-12 section-card-style garantia-lista">
+                    <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
+                    <div class="max-w-3xl mx-auto p-6 md:p-8 space-y-6">
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-start gap-3"><i
+                                    class="fas fa-star green-333 mt-1"></i><span><strong>Componentes Nuevos:</strong>
+                                    Con
+                                    garantía de proveedores de confianza.</span></li>
+                            <li class="flex items-start gap-3"><i
+                                    class="fas fa-recycle text-cyan-400 mt-1"></i><span><strong>Componentes
+                                        Usados:</strong>
+                                    Podemos <i>reciclar</i> los tuyos para abaratar el precio.</span></li>
+                            <li class="flex items-start gap-3"><i
+                                    class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía
+                                        Total:</strong> 12
+                                    meses de garantía en todos los componentes.</span></li>
                         </ul>
+                        <div
+                            class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
+                            <i class="fas fa-headset text-2xl"></i>
+                            <span class="text-xl font-bold text-gray-200">Servicio Postventa <span
+                                    class="hidden sm:inline">
+                                    |</span></span>
+                            <span class="font-gamer text-xs">¿Algún Problema?<br>¡Lo Arreglo!</span>
+                        </div>
                     </div>
                 </section>
             </div>
 
-            <!-- ================== NEW AI SECTION START ================== -->
-            <section id="ai-section" class="max-w-5xl mx-auto">
-                <div class="text-center">
-                    <h2 class="font-saira-black text-4xl md:text-5xl brand-gradient-text mb-2">Análisis de Rendimiento
-                        por IA</h2>
-                    <p class="font-vt323 text-4xl green-333 mb0 mb-6">¿Cómo correrá tu juego favorito en esta Nave?</p>
-                </div>
-                <div class="max-w-2xl mx-auto">
-                    <div class="flex flex-col sm:flex-row items-center gap-4">
-                        <input type="text" id="ai-input" class="w-full px-4 py-3 rounded-lg text-lg"
-                            placeholder="Escribí el nombre de un juego, ej: Fortnite">
-                        <button id="ai-button"
-                            class="w-full sm:w-auto px-6 py-3 rounded-lg text-white text-lg flex items-center justify-center gap-2">
-                            <i class="fas fa-robot"></i>
-                            <span>Analizar</span>
-                        </button>
-                    </div>
-                    <div id="ai-result-container" class="mt-6 p-6 rounded-lg text-lg text-gray-300">
-                        <p id="ai-placeholder" class="text-center text-gray-500">El análisis de la IA aparecerá aquí...
-                        </p>
-                        <div id="ai-loader" class="hidden mx-auto loader"></div>
-                        <div id="ai-result" class="prose prose-invert max-w-none"></div>
-                    </div>
-                </div>
-            </section>
-            <!-- ================== NEW AI SECTION END ================== -->
 
-            <h2 class="relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
-                <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> PERIFÉRICOS <span
-                        style="color:rgba(66, 210, 50, 0.7);">▼</span>
-                </span>
-            </h2>
-
-            <section id="section-peripherals" class="mb-12 section-card-style px-4">
-                <div id="peripherals-grid"
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
-                    <!-- Las tarjetas de periféricos se insertarán aquí con JS -->
-                </div>
-            </section>
-
-            <h2 class="hidden relative z-40 font-saira font-bold text-center my-8 text-4xl md:text-2xl lg:text-5xl">
-                <span style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">
-                    <span style="color:rgba(66, 210, 50, 0.7);">▼</span> ACCESORIOS <span
-                        style="color:rgba(66, 210, 50, 0.7);">▼</span>
-                </span>
-            </h2>
-
-            <section id="section-accessories" class="hidden mb-12 section-card-style px-4">
-                <div id="accessories-grid"
-                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 justify-items-center">
-                    <!-- Las tarjetas de accesorios se insertarán aquí con JS -->
-                </div>
-            </section>
-
-            <div id="section-front-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 md:px-0">
-                <div class="feature-card relative lg:col-span-2 soporte-tecnico-card"
-                    style="padding: 1rem; overflow: hidden; min-height: 200px;">
-                    <img src="memde_think.webp" alt="Soporte técnico personalizado"
-                        class="absolute -z-10 bottom-0 right-0 h-4/5 w-auto opacity-30 pointer-events-none" md:z-10
-                        md:opacity-100 md:h-[110%] md:-right-4"
-                        onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
-
-                    <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
-                        <div class="flex items-center gap-4 mb-2 mt-1 sm:mb-3 sm:mt-0">
-                            <img src="SoportePersonal.webp" alt="Icono de Soporte Técnico"
-                                class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0"
-                                onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
-                            <h4
-                                class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap mt-1 sm:mt-0">
-                                Soporte Técnico</h4>
-                        </div>
-                        <div class="space-y-1 text-gray-300 max-w-xs pl-0">
-                            <p class="flex items-center justify-start"><i
-                                    class="fas fa-comments blueish fa-fw w-6"></i><span class="ml-2">Contacto Directo
-                                    con @DuendeKenna</span>
-                            </p>
-                            <p class="flex items-center justify-start"><i
-                                    class="fas fa-desktop blueish fa-fw w-6"></i><span class="ml-2">Asistencia Remota
-                                    via Web</span></p>
-                            <div class="flex items-center justify-start">
-                                <i class="fas fa-screwdriver blueish fa-fw w-6"></i>
-                                <div class="ml-2">
-                                    <p>Servicio a Domicilio</p>
-                                    <p class=" text-gray-400 -mt-1">en todo el Partido de La Costa</p>
-                                </div>
+            <form id="orderForm">
+                <section id="games-section" class="mb-12 section-card-style hidden">
+                    <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Viajan👌</h2>
+                    <p class="text-center green-333 -mt-4 mb-4 font-gamer">👇Seleccioná hasta 3</p>
+                    <p class="text-center text-violet-600 -mt-4 mb-8 font-gamer">Van Instalados!💾</p>
+                    <div id="game-grid-container" class="px-4 pt-4">
+                        <div id="game-grid-wrapper">
+                            <div id="game-list"
+                                class="pt-2 pb-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                             </div>
                         </div>
+                        <div id="load-more-overlay" style="pointer-events:auto;"></div>
                     </div>
-                </div>
+                    <div class="text-center load-more-container">
+                        <button type="button" id="load-more-games" class="load-more-button font-gamer text-lg">Ver
+                            Más</button>
+                    </div>
+                    <p id="no-more-games" class="text-gray-500 text-center mt-2 mb-4 hidden">¿No viste el que querés?
+                        Pedimelo en Notas?
+                    </p>
+                </section>
 
-                <div class="hidden md:flex lg:hidden items-center justify-center">
-                    <div
-                        class="special-subtitle inline-block text-lg px-6 py-3 transition duration-300 transform hover:scale-105">
-                        <div class="flex items-center justify-center gap-5">
-                            <i class="fas fa-tasks text-2xl"></i>
-                            <div class="text-left">
-                                <span class="block leading-tight">Usá esta Web Interactiva</span>
-                                <span class="block text-2sm font-sans -mt-2">para simular tu pedido</span>
+                <h2 class="relative z-40 font-saira font-bold text-center mt-16 mb-5 text-4xl lg:text-5xl "
+                    style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;"><span style="color:rgba(66, 210, 50, 0.7);">▼</span> Software Instalado<span style="color:rgba(66, 210, 50, 0.7);">▼</span> </h2>
+                <section id="section-software" class="mb-12 section-card-style">
+                    <p class="text-center font-saira text-xl mb-1">Además de <strong>Windows 11 Pro</strong> licenciado,
+                        incluimos programas clave que van a hacer tu experiencia cibernética más placentera y potente.
+                        Si necesitas algo más, me lo pedís ;)</p>
+
+                    <p class="text-center text-gray-100 mb-1 mt-4 text-xl">✅¡Hacé TU Selección!</p>
+                    <p class="text-center text-gray-400 mb-6">Podés modificarla luego...</p>
+                    <div id="software-list" class="max-w-2xl mx-auto space-y-4">
+                    </div>
+                    <p class="text-center text-gray-400 mt-6">¿Falta el tuyo? Pedimelo en Notas 📝</p>
+                </section>
+
+                <section id="resumen" class="mb-12 section-card-style">
+                    <div class="text-center max-w-4xl mx-auto">
+                        <div id="selected-games-section" class="mb-6 hidden">
+                            <p class="text-gray-400 text-lg">Juegos Incluidos</p>
+                            <div id="selected-games-list" class="flex justify-center flex-wrap gap-2 mt-2">
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-            <section id="garantia-section" class="mb-12 section-card-style garantia-lista">
-                <h2 class="text-3xl font-bold text-center mb-8">Condiciones y Garantía</h2>
-                <div class="max-w-3xl mx-auto p-6 md:p-8 space-y-6">
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="flex items-start gap-3"><i
-                                class="fas fa-star green-333 mt-1"></i><span><strong>Componentes Nuevos:</strong> Con
-                                garantía de proveedores de confianza.</span></li>
-                        <li class="flex items-start gap-3"><i
-                                class="fas fa-recycle text-cyan-400 mt-1"></i><span><strong>Componentes Usados:</strong>
-                                Podemos <i>reciclar</i> los tuyos para abaratar el precio.</span></li>
-                        <li class="flex items-start gap-3"><i
-                                class="fas fa-shield-alt text-yellow-400 mt-1"></i><span><strong>Garantía
-                                    Total:</strong> 12
-                                meses de garantía en todos los componentes.</span></li>
-                    </ul>
-                    <div class="neon-green-highlight p-4 rounded-lg flex items-center justify-center gap-3 text-center">
-                        <i class="fas fa-headset text-2xl"></i>
-                        <span class="text-xl font-bold text-gray-200">Servicio Postventa <span class="hidden sm:inline">
-                                |</span></span>
-                        <span class="font-gamer text-xs">¿Algún Problema?<br>¡Lo Arreglo!</span>
-                    </div>
-                </div>
-            </section>
-        </div>
+                        <div ID="summary-section" class="flex flex-col items-center">
+                            <h2 ID="summary-title" class="text-4xl font-bold mb-2">Resumen Selección</h2>
+                            <div id="selected-components-preview" class="w-full p-4 my-6">
+                                <!-- Summary content will be inserted here by JS -->
+                            </div>
 
+                            <!-- back-to-summary button removed from here and placed near bottom of body to ensure fixed positioning works correctly -->
 
-        <form id="orderForm">
-            <section id="games-section" class="mb-12 section-card-style hidden">
-                <h2 class="text-3xl font-bold text-center mb-8">Juegazos que Viajan👌</h2>
-                <p class="text-center green-333 -mt-4 mb-4 font-gamer">👇Seleccioná hasta 3</p>
-                <p class="text-center text-violet-600 -mt-4 mb-8 font-gamer">Van Instalados!💾</p>
-                <div id="game-grid-container" class="px-4 pt-4">
-                    <div id="game-grid-wrapper">
-                        <div id="game-list"
-                            class="pt-2 pb-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        </div>
-                    </div>
-                    <div id="load-more-overlay" style="pointer-events:auto;"></div>
-                </div>
-                <div class="text-center load-more-container">
-                    <button type="button" id="load-more-games" class="load-more-button font-gamer text-lg">Ver
-                        Más</button>
-                </div>
-                <p id="no-more-games" class="text-gray-500 text-center mt-2 mb-4 hidden">¿No viste el que querés?
-                    Pedimelo en Notas?
-                </p>
-            </section>
-
-            <section id="section-software" class="mb-12 section-card-style">
-                <h2 class="text-5xl font-bold text-center mb-8">Programas Clave</h2>
-                <p class="text-center font-saira text-xl mb-1">Te marco lo Básico👍</p>
-                <p class="text-center text-gray-100 mb-1 text-xl">✅¡Hacé TU Selección!</p>
-                <p class="text-center text-gray-400 mb-6">Podés modificarla luego...</p>
-                <div id="software-list" class="max-w-2xl mx-auto space-y-4">
-                </div>
-                <p class="text-center text-gray-400 mt-6">¿Falta el tuyo? Pedimelo en Notas?</p>
-            </section>
-
-            <section id="resumen" class="mb-12 section-card-style">
-                <div class="text-center max-w-4xl mx-auto">
-                    <div id="selected-games-section" class="mb-6 hidden">
-                        <p class="text-gray-400 text-lg">Juegos Incluidos</p>
-                        <div id="selected-games-list" class="flex justify-center flex-wrap gap-2 mt-2">
-                        </div>
-                    </div>
-
-                    <div ID="summary-section" class="flex flex-col items-center">
-                        <h2 ID="summary-title" class="text-4xl font-bold mb-2">Resumen Pedido</h2>
-                        <div id="selected-components-preview" class="w-full p-4 my-6">
-                            <!-- Summary content will be inserted here by JS -->
-                        </div>
-
-                        <!-- back-to-summary button removed from here and placed near bottom of body to ensure fixed positioning works correctly -->
-
-                        <div class="w-full max-w-lg mt-4 flex flex-col items-center">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-x-4 w-full">
-                                <div class="md:col-span-2 flex justify-center items-center">
-                                    <p class="lucas-price text-center font-saira"><span id="total-price">$500.000</span>
-                                    </p>
-                                </div>
-                                <div class="md:col-span-2 flex justify-center items-center text-center">
-                                    <div>
-                                        <p class=" green-333 whitespace-nowrap"><i class="fas fa-truck mr-1"></i>Entrega
-                                            Personal a Domicilio</p>
-                                        <p class="text-xl text-white font-bold">en toda <strong class="text-white">La
-                                                Costa 🌊</strong></p>
+                            <div class="w-full max-w-lg mt-4 flex flex-col items-center">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-x-4 w-full">
+                                    <div class="md:col-span-2 flex justify-center items-center">
+                                        <p class="lucas-price text-center font-saira"><span
+                                                id="total-price">$500.000</span>
+                                        </p>
+                                    </div>
+                                    <div class="md:col-span-2 flex justify-center items-center text-center">
+                                        <div>
+                                            <p class=" green-333 whitespace-nowrap"><i
+                                                    class="fas fa-truck mr-1"></i>Entrega
+                                                Personal a Domicilio</p>
+                                            <p class="text-xl text-white font-bold">en toda <strong
+                                                    class="text-white">La
+                                                    Costa 🌊</strong></p>
+                                        </div>
                                     </div>
                                 </div>
+                                <p class="text-gray-400 text-sm mt-4"><i class="fas fa-credit-card"></i> Consultar
+                                    opciones
+                                    en cuotas x MP</p>
                             </div>
-                            <p class="text-gray-400 text-sm mt-4"><i class="fas fa-credit-card"></i> Consultar opciones
-                                en cuotas x MP</p>
                         </div>
                     </div>
+                </section>
+
+
+                <section id="notes-section" class="mb-12 text-center section-card-style">
+                    <h2 class="text-3xl font-bold text-center mb-8">Notas📝</h2>
+                    <textarea id="extra-notes"
+                        class="w-full max-w-xl mx-auto block bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+                        rows="4"
+                        placeholder="🤔¿Dudas?&#10;💾¿Otro Software?&#10;⚙️¿Reutilizar tu Hardware?&#10;Escribilo acá que te leo :)"></textarea>
+                </section>
+
+                <div class="text-center">
+                    <p id="pre-submit-text" class="text-gray-400 mb-7">Enviame tu Pedido/Consulta</br><small>*SIN
+                            COMPROMISO*</small></p>
+                    <div class="flex flex-col items-center">
+                        <button id="submit-button" type="submit"
+                            class="cta-button text-white font-bold py-4 px-10 rounded-full text-xl flex items-center justify-center gap-4">
+                            <i class="fab fa-whatsapp text-4xl"></i>
+                            <span>¡Vamos a WhatsApp!</span>
+                        </button>
+                    </div>
+                    <div id="confirmation-message"
+                        class="hidden text-center p-6 bg-gray-900/80 border-2 border-green-333 rounded-2xl max-w-md mx-auto mt-4">
+                        <i class="fas fa-check-circle text-5xl green-333 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">¡Pedido enviado!</h3>
+                        <p class="text-gray-300 font-roboto">Gracias por tu consulta. Te responderemos a la brevedad por
+                            WhatsApp.</p>
+                    </div>
                 </div>
-            </section>
-            <br><br>
+            </form>
 
-            <section id="notes-section" class="mb-12 text-center section-card-style">
-                <h2 class="text-3xl font-bold text-center mb-8">Notas📝</h2>
-                <textarea id="extra-notes"
-                    class="w-full max-w-xl mx-auto block bg-gray-800 border border-gray-700 rounded-lg p-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
-                    rows="4"
-                    placeholder="🤔¿Dudas?&#10;💾¿Otro Software?&#10;⚙️¿Reutilizar tu Hardware?&#10;Escribilo acá que te leo :)"></textarea>
-            </section>
 
-            <div class="text-center">
-                <p id="pre-submit-text" class="text-gray-400 mb-7">Enviame tu Pedido/Consulta</br><small>*SIN
-                        COMPROMISO*</small></p>
-                <div class="flex flex-col items-center">
-                    <button id="submit-button" type="submit"
-                        class="cta-button text-white font-bold py-4 px-10 rounded-full text-xl flex items-center justify-center gap-4">
-                        <i class="fab fa-whatsapp text-4xl"></i>
-                        <span>¡Vamos a WhatsApp!</span>
-                    </button>
+
+            <footer class="text-center mt-16 pt-8 border-t border-gray-700">
+                <div class="mb-6">
+                    <img src="logo.webp" alt="kenna.inf" class="w-80 mx-auto mb-4"
+                        onerror="this.onerror=null;this.src='https://placehold.co/320x80/00000000/ffffff?text=Logo'">
+                    <a id="service-link" href="https://www.facebook.com/kenna.inf/reviews" target="_blank"
+                        class="text-indigo-400 hover:text-indigo-300 transition-colors">
+                        <i class="fas fa-star"></i> Clientes Satisfechos<br class="sm:hidden"> con Mi Servicio
+                    </a>
                 </div>
-                <div id="confirmation-message"
-                    class="hidden text-center p-6 bg-gray-900/80 border-2 border-green-333 rounded-2xl max-w-md mx-auto mt-4">
-                    <i class="fas fa-check-circle text-5xl green-333 mb-4"></i>
-                    <h3 class="text-2xl font-bold text-white mb-2">¡Pedido enviado!</h3>
-                    <p class="text-gray-300 font-roboto">Gracias por tu consulta. Te responderemos a la brevedad por
-                        WhatsApp.</p>
+                <p class="text-gray-400 mb-4">Redes Sociales</p>
+                <div class="flex justify-center gap-6 text-2xl">
+                    <a href="https://www.instagram.com/kenna.inf" target="_blank"
+                        class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/kenna.inf" target="_blank"
+                        class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
                 </div>
-            </div>
-        </form>
+                <img id="memde_pointLeft" loading="lazy" decoding="async" src="memde_pointLeft.webp" alt=""
+                    onerror="this.onerror=null;this.src='https://placehold.co/250x300/00000000/ffffff?text=Yo'">
+            </footer>
 
-
-
-        <footer class="text-center mt-16 pt-8 border-t border-gray-700">
-            <div class="mb-6">
-                <img src="logo.webp" alt="kenna.inf" class="w-80 mx-auto mb-4"
-                    onerror="this.onerror=null;this.src='https://placehold.co/320x80/00000000/ffffff?text=Logo'">
-                <a id="service-link" href="https://www.facebook.com/kenna.inf/reviews" target="_blank"
-                    class="text-indigo-400 hover:text-indigo-300 transition-colors">
-                    <i class="fas fa-star"></i> Clientes Satisfechos<br class="sm:hidden"> con Mi Servicio
-                </a>
-            </div>
-            <p class="text-gray-400 mb-4">Redes Sociales</p>
-            <div class="flex justify-center gap-6 text-2xl">
-                <a href="https://www.instagram.com/kenna.inf" target="_blank"
-                    class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/kenna.inf" target="_blank"
-                    class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook"></i></a>
-            </div>
-            <img id="memde_pointLeft" loading="lazy" decoding="async" src="memde_pointLeft.webp" alt=""
-                onerror="this.onerror=null;this.src='https://placehold.co/250x300/00000000/ffffff?text=Yo'">
-        </footer>
-
-    </div>
-
-    <!-- Sticky Price Summary Card -->
-    <div id="price-summary-card" class="font-saira items-center justify-center">
-        <div class="flex flex-col items-center">
-            <div class="price-section ars-price">
-                <div class="price-value-row">
-                    <span class="currency-value" id="total-price-summary-ars">$500.000</span>
-                </div>
-            </div>
-            <span class="price-card-subtitle">PRECIO FINAL CON SERVICIO</span>
         </div>
-        <div class="separator hidden"></div>
-    </div>
+
+        <!-- Sticky Price Summary Card -->
+        <div id="price-summary-card" class="font-saira items-center justify-center">
+            <div class="flex flex-col items-center">
+                <div class="price-section ars-price">
+                    <div class="price-value-row">
+                        <span class="currency-value" id="total-price-summary-ars">$500.000</span>
+                    </div>
+                </div>
+                <span class="price-card-subtitle">PRECIO FINAL CON SERVICIO</span>
+            </div>
+            <div class="separator hidden"></div>
+        </div>
+
+        <!-- Floating WhatsApp quick button (follows price-summary-card visibility) -->
+        <div id="whatsapp-float" aria-hidden="true">
+            <a id="whatsapp-float-link" href="#" target="_blank" rel="noopener noreferrer">
+                <img src="whatsapp.webp" alt="WhatsApp" onerror="this.onerror=null;this.src='https://placehold.co/128x128/25D366/ffffff?text=WA'">
+            </a>
+        </div>
 
 
-    <script src="js/main.js" defer></script>
-    <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const priceSummaryCard = document.querySelector('#price-summary-card');
-    const resumenSection = document.querySelector('#resumen');
-
-    if (priceSummaryCard && resumenSection) {
-      priceSummaryCard.addEventListener('dblclick', () => {
-        resumenSection.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
-  });
-</script>
+        <script src="js/main.js" defer></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const whatsappLink = document.getElementById('whatsapp-float-link');
+                // Prefilled message (Spanish)
+                const waMessage = '¡Hola Kenna! Te hago una consulta...';
+                const waHref = `https://wa.me/5492252513233?text=${encodeURIComponent(waMessage)}`;
+                if (whatsappLink) whatsappLink.href = waHref;
+            });
+        </script>
 </body>
 
 </html>
-
