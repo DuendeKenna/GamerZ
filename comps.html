@@ -637,6 +637,8 @@
     let priceCheckQueue = [];
     let currentQueueIndex = 0;
     let isLoopRunning = false;
+    // Timeout handle for delayed link opening when showing price-check popup
+    let priceCheckOpenTimeout = null;
     
     let priceChartInstance = null;
     let openLinkManagerId = null;
@@ -1822,8 +1824,15 @@
     function openPriceCheckPopup(categoryKey, index, isFromLoop = false) {
         const product = dataMap[categoryKey][index];
         if (!product || !product.link) return;
-
-        window.open(product.link, '_blank');
+        // Delay opening the product link by 1 second so the popup appears first
+        if (priceCheckOpenTimeout) {
+            clearTimeout(priceCheckOpenTimeout);
+            priceCheckOpenTimeout = null;
+        }
+        priceCheckOpenTimeout = setTimeout(() => {
+            try { window.open(product.link, '_blank'); } catch (e) { console.error('Failed to open product link', e); }
+            priceCheckOpenTimeout = null;
+        }, 600);
 
         const popup = document.getElementById('price-check-popup');
         const title = document.getElementById('popup-title');
@@ -1847,6 +1856,11 @@
             pausePriceCheckLoop();
         }
         const popup = document.getElementById('price-check-popup');
+        // If the popup is closed before the delayed open runs, cancel it
+        if (priceCheckOpenTimeout) {
+            clearTimeout(priceCheckOpenTimeout);
+            priceCheckOpenTimeout = null;
+        }
         popup.classList.add('hidden');
     }
 
@@ -1858,6 +1872,7 @@
             const { categoryKey, index, isFromLoop } = input.dataset;
             showToast('Producto omitido.', 'info');
             const popup = document.getElementById('price-check-popup');
+            if (priceCheckOpenTimeout) { clearTimeout(priceCheckOpenTimeout); priceCheckOpenTimeout = null; }
             popup.classList.add('hidden');
 
             if (isFromLoop === 'true') {
@@ -1899,8 +1914,9 @@
 
         showToast(`Precio de "${product.name}" actualizado a $${newPrice.toLocaleString('es-AR')}.`);
         
-        const popup = document.getElementById('price-check-popup');
-        popup.classList.add('hidden'); 
+    const popup = document.getElementById('price-check-popup');
+    if (priceCheckOpenTimeout) { clearTimeout(priceCheckOpenTimeout); priceCheckOpenTimeout = null; }
+    popup.classList.add('hidden'); 
 
         if (isFromLoop === 'true') {
             currentQueueIndex++;

@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "8502",
       "cantRam": 2,
-      "total": 447049,
+      "total": 452251,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -581,6 +581,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 34500,
+          "date": "2025-09-15T12:37:43.636Z"
+        },
+        {
           "value": 33741,
           "date": "2025-09-14T12:59:57.513Z"
         },
@@ -1079,6 +1083,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 37620,
+          "date": "2025-09-15T12:38:10.495Z"
+        },
+        {
           "value": 32348,
           "date": "2025-09-12T13:27:19.204Z"
         },
@@ -1560,6 +1568,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 55400,
+          "date": "2025-09-15T12:36:36.178Z"
+        },
+        {
           "value": 52799,
           "date": "2025-09-11T13:55:25.672Z"
         },
@@ -1866,6 +1878,10 @@
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 164390,
+          "date": "2025-09-15T12:38:18.914Z"
+        },
         {
           "value": 160271,
           "date": "2025-09-14T13:00:44.276Z"
@@ -2210,6 +2226,10 @@
       "description": "",
       "prices": [
         {
+          "value": 55199,
+          "date": "2025-09-15T12:39:10.235Z"
+        },
+        {
           "value": 54799,
           "date": "2025-09-14T13:01:53.489Z"
         },
@@ -2336,6 +2356,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 41400,
+          "date": "2025-09-15T12:39:25.105Z"
+        },
+        {
           "value": 39999,
           "date": "2025-09-14T13:02:11.845Z"
         },
@@ -2401,6 +2425,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 54058,
+          "date": "2025-09-15T12:39:33.614Z"
+        },
         {
           "value": 52498,
           "date": "2025-09-14T13:02:18.869Z"
@@ -2973,6 +3001,10 @@
       "description": "",
       "prices": [
         {
+          "value": 41649,
+          "date": "2025-09-15T12:40:50.689Z"
+        },
+        {
           "value": 52800,
           "date": "2025-09-14T13:04:45.317Z"
         },
@@ -3402,6 +3434,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 10790,
+          "date": "2025-09-15T12:45:25.362Z"
+        },
         {
           "value": 10800,
           "date": "2025-09-11T14:01:33.675Z"
