@@ -452,18 +452,58 @@
 
                 
 
-                                // Price card & WhatsApp visibility observer
-                                // Observe the #section-bases so price & whatsapp appear only when the user reaches that section
+                                // Price card & WhatsApp: robust scroll-based visibility
+                                // Requirement: visible when the viewport is between #section-bases and #section-software
+                                // (i.e., show starting when section-bases enters, keep visible until section-software is reached).
+                                // Use a mid-point check and rAF throttle so visibility reliably reappears when scrolling back up.
                                 const basesSection = document.getElementById('section-bases');
+                                const softwareSection = document.getElementById('section-software');
+                                const resumenSection = document.getElementById('resumen');
                                 const whatsappFloatEl = document.getElementById('whatsapp-float');
-                                if (basesSection) {
-                                    const observer = new IntersectionObserver(entries => {
-                                        const isIntersecting = entries[0].isIntersecting;
-                                        // When #section-bases is visible, show the price summary and whatsapp; otherwise hide them
-                                        document.getElementById('price-summary-card').classList.toggle('visible', isIntersecting);
-                                        if (whatsappFloatEl) whatsappFloatEl.classList.toggle('visible', isIntersecting);
-                                    }, { threshold: 0.1 });
-                                    observer.observe(basesSection);
+                                const priceCardEl = document.getElementById('price-summary-card');
+
+                                function setVisible(state) {
+                                    if (!priceCardEl) return;
+                                    priceCardEl.classList.toggle('visible', state);
+                                    if (whatsappFloatEl) whatsappFloatEl.classList.toggle('visible', state);
+                                }
+
+                                // If any of the required sections are missing, bail
+                                if (basesSection && softwareSection) {
+                                    let ticking = false;
+
+                                    function checkVisibility() {
+                                        ticking = false;
+                                        const vh = window.innerHeight || document.documentElement.clientHeight;
+                                        // Use viewport midpoint as a stable reference
+                                        const midY = window.scrollY + (vh / 2);
+
+                                        const basesRect = basesSection.getBoundingClientRect();
+                                        const basesTop = window.scrollY + basesRect.top;
+                                        const basesBottom = basesTop + basesRect.height;
+
+                                        const softwareRect = softwareSection.getBoundingClientRect();
+                                        const softwareTop = window.scrollY + softwareRect.top;
+                                        // Show when midY is >= basesTop and < softwareTop
+                                        const shouldShow = (midY >= basesTop) && (midY < softwareTop);
+                                        setVisible(shouldShow);
+                                    }
+
+                                    function onScrollOrResize() {
+                                        if (!ticking) {
+                                            ticking = true;
+                                            requestAnimationFrame(checkVisibility);
+                                        }
+                                    }
+
+                                    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+                                    window.addEventListener('resize', onScrollOrResize);
+
+                                    // Run once to initialize state
+                                    checkVisibility();
+                                } else {
+                                    // Fallback: if sections don't exist, ensure price card is visible by default
+                                    setVisible(true);
                                 }
 
                 // Window resize
