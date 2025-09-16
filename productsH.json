@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 391947,
+      "total": 401214,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "81841",
       "cantRam": 1,
-      "total": 412217,
+      "total": 405178,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "8502",
       "cantRam": 2,
-      "total": 452251,
+      "total": 449789,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -581,6 +581,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 36814,
+          "date": "2025-09-16T11:51:28.463Z"
+        },
+        {
           "value": 34500,
           "date": "2025-09-15T12:37:43.636Z"
         },
@@ -787,6 +791,10 @@
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "prices": [
         {
+          "value": 352999,
+          "date": "2025-09-16T11:50:54.072Z"
+        },
+        {
           "value": 343709,
           "date": "2025-09-12T13:26:31.271Z"
         },
@@ -878,6 +886,10 @@
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 621599,
+          "date": "2025-09-16T11:51:03.902Z"
+        },
         {
           "value": 581099,
           "date": "2025-09-12T13:26:38.005Z"
@@ -1083,6 +1095,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 32348,
+          "date": "2025-09-16T11:51:50.820Z"
+        },
+        {
           "value": 37620,
           "date": "2025-09-15T12:38:10.495Z"
         },
@@ -1160,6 +1176,10 @@
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 94199,
+          "date": "2025-09-16T11:49:48.708Z"
+        },
         {
           "value": 98715,
           "date": "2025-09-13T11:44:08.026Z"
@@ -1307,6 +1327,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 248775,
+          "date": "2025-09-16T11:49:28.050Z"
+        },
+        {
           "value": 229729,
           "date": "2025-09-11T13:54:36.538Z"
         },
@@ -1360,6 +1384,10 @@
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 252739,
+          "date": "2025-09-16T11:49:39.585Z"
+        },
         {
           "value": 249999,
           "date": "2025-09-13T11:43:54.305Z"
@@ -1437,6 +1465,10 @@
       "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 60987,
+          "date": "2025-09-16T11:50:06.230Z"
+        },
         {
           "value": 70766,
           "date": "2025-09-13T11:44:32.514Z"
@@ -1568,6 +1600,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 52799,
+          "date": "2025-09-16T11:50:21.980Z"
+        },
+        {
           "value": 55400,
           "date": "2025-09-15T12:36:36.178Z"
         },
@@ -1695,6 +1731,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 403799,
+          "date": "2025-09-16T11:48:36.513Z"
+        },
+        {
           "value": 399799,
           "date": "2025-09-13T11:43:06.513Z"
         },
@@ -1760,6 +1800,10 @@
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 258641,
+          "date": "2025-09-16T11:49:09.801Z"
+        },
         {
           "value": 255607,
           "date": "2025-09-13T11:43:15.835Z"
@@ -1995,6 +2039,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 293944,
+          "date": "2025-09-16T11:52:14.115Z"
+        },
+        {
           "value": 300000,
           "date": "2025-09-13T11:47:00.736Z"
         },
@@ -2165,6 +2213,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 25600,
+          "date": "2025-09-16T11:52:40.220Z"
+        },
+        {
           "value": 22836,
           "date": "2025-09-14T13:01:47.012Z"
         },
@@ -2225,6 +2277,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 54799,
+          "date": "2025-09-16T11:52:53.589Z"
+        },
         {
           "value": 55199,
           "date": "2025-09-15T12:39:10.235Z"
@@ -2356,6 +2412,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 39999,
+          "date": "2025-09-16T11:53:10.801Z"
+        },
+        {
           "value": 41400,
           "date": "2025-09-15T12:39:25.105Z"
         },
@@ -2425,6 +2485,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 57784,
+          "date": "2025-09-16T11:53:19.726Z"
+        },
         {
           "value": 54058,
           "date": "2025-09-15T12:39:33.614Z"
@@ -2499,6 +2563,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-y-mouse-combo-inalambrico-solarmax-kb302wmw200-color-negro/p/MLA21805667?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 30500,
+          "date": "2025-09-16T11:53:27.589Z"
+        },
         {
           "value": 19990,
           "date": "2025-09-14T13:02:24.651Z"
@@ -2684,6 +2752,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 44999,
+          "date": "2025-09-16T11:53:51.004Z"
+        },
         {
           "value": 42974,
           "date": "2025-09-12T13:28:54.229Z"
@@ -2895,6 +2967,10 @@
       "description": "",
       "prices": [
         {
+          "value": 58054,
+          "date": "2025-09-16T11:54:20.176Z"
+        },
+        {
           "value": 56487,
           "date": "2025-09-13T11:52:58.215Z"
         },
@@ -3001,6 +3077,10 @@
       "description": "",
       "prices": [
         {
+          "value": 43600,
+          "date": "2025-09-16T11:54:34.157Z"
+        },
+        {
           "value": 41649,
           "date": "2025-09-15T12:40:50.689Z"
         },
@@ -3062,6 +3142,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 75500,
+          "date": "2025-09-16T11:54:41.891Z"
+        },
         {
           "value": 74000,
           "date": "2025-09-11T14:00:49.400Z"
@@ -3434,6 +3518,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 10800,
+          "date": "2025-09-16T11:55:28.708Z"
+        },
         {
           "value": 10790,
           "date": "2025-09-15T12:45:25.362Z"
