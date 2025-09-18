@@ -1872,7 +1872,7 @@
     function handleManualPriceCheck(event) {
         const input = event.target;
 
-        if (event.key === 'Backspace' && input.value.trim() === '') {
+        if (event.key === 'w' && input.value.trim() === '') {
             event.preventDefault(); // Prevent browser back navigation
             const { categoryKey, index, isFromLoop } = input.dataset;
             showToast('Producto omitido.', 'info');
@@ -1995,6 +1995,28 @@
             // store ISO full datetime for compatibility
             filled.push({ date: key + 'T00:00:00', value: lastValue });
             cursor.setDate(cursor.getDate() + 1);
+        }
+
+        // Ensure the series includes today's price (the current/latest price)
+        try {
+            const todayKey = new Date().toISOString().slice(0, 10);
+            const lastFilledKey = filled.length ? filled[filled.length - 1].date.slice(0, 10) : null;
+            const currentPrice = (product.prices && product.prices.length) ? product.prices[0].value : lastValue;
+
+            if (lastFilledKey !== todayKey) {
+                // Fill intermediate days (if any) with the last known value, and add today's point with currentPrice
+                let cursor2 = filled.length ? new Date(filled[filled.length - 1].date) : new Date(endDate);
+                // move to the next day after last filled
+                cursor2.setDate(cursor2.getDate() + 1);
+                while (cursor2.toISOString().slice(0, 10) <= todayKey) {
+                    const key = cursor2.toISOString().slice(0, 10);
+                    const valueToPush = (key === todayKey) ? currentPrice : lastValue;
+                    filled.push({ date: key + 'T00:00:00', value: valueToPush });
+                    cursor2.setDate(cursor2.getDate() + 1);
+                }
+            }
+        } catch (e) {
+            // If anything goes wrong with augmenting up to today, silently continue with filled as-is
         }
 
     const historicalData = filled;
