@@ -60,10 +60,10 @@ export default async function handler(req, res) {
         1.  **Veredicto y Potencial:** ¿La PC actual tiene el potencial para llegar al objetivo? Sé directo, pero considerá las optimizaciones. En lugar de un "sí/no" rotundo, indicá si es posible y bajo qué condiciones
         2.  **Rendimiento con la PC Actual:** Describe el rendimiento esperado y, lo más importante, explicá CÓMO alcanzarlo. Detallá qué nivel de calidad gráfica se puede esperar (Baja/Media/Alta) y qué ajustes clave o tecnologías (como FSR en modo "Calidad") debería activar para asegurar los 60 FPS.
         3.  **Análisis y Recomendación:**
-            - **SI EL OBJETIVO ES ALCANZABLE (incluso con optimizaciones):** Confirmalo con seguridad. Afirmá que no necesita ninguna mejora de hardware y dale consejos finales para que disfrute su juego. Tu respuesta DEBE terminar acá. Ejemplo: "Con esta PC y toqueteando un par de ajustes como te mencioné, vas a andar joya a 60 FPS. No necesitás gastar un peso más. ¡A viciar!".
-            - **SI EL OBJETIVO NO ES ALCANZABLE (ni siquiera con todo en bajo y FSR en "Rendimiento"):** Solo en este caso, indicalo claramente y recomendá UNA SOLA GPU dedicada de la lista (la más lógica y económica) para lograr el objetivo.
+            - **SI EL OBJETIVO ES ALCANZABLE (incluso con optimizaciones):** Confirmalo con seguridad. Afirmá que no necesita ninguna mejora de hardware y dale consejos finales para que disfrute su juego.
+            - **SI EL OBJETIVO NO ES ALCANZABLE (ni siquiera con todo en bajo y FSR en "Rendimiento"):** Solo en este caso, indicalo claramente y recomendá UNA SOLA GPU dedicada de la lista (la más lógica y económica) para lograr el objetivo. En este caso la respuesta termina aquí.
         4.  **Opción de Mejora:**
-            - Si recomendás una mejora, explicá brevemente por qué esa GPU en particular es la mejor opción considerando el presupuesto y el objetivo.
+            - Solo mostrar si el juego necesita optimizaciones para correr con graficos bajos. Si recomendás una mejora, elegí una sola de la lista disponible y explicá brevemente por qué esa GPU en particular es la mejor opción considerando el presupuesto y el objetivo.
 
         Las respuestas deben ser cortas y consisas, no más de 200 palabras en total.
     `;
