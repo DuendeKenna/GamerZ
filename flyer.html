@@ -15,6 +15,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Saira:wght@400;700;900&family=VT323&display=swap"
         rel="stylesheet">
+    <!-- Project styles (shared with index) -->
+    <!-- NOTE: we removed the global stylesheet link and inlined only the rules
+        required by feature cards to avoid global collisions. Keep the full
+        `css/style.css` for index.html and other pages. -->
     <style>
         :root {
             --color-link: #60a5fa;
@@ -54,6 +58,74 @@
             -webkit-backdrop-filter: blur(4px);
             padding: 1.5rem;
         }
+
+        .feature-selector {
+            position: relative;
+            z-index: 999999999;
+        }
+
+        /* --- Inlined Feature Card Styles (scoped for flyer usage) --- */
+        /* These rules are a minimal subset of css/style.css tailored to
+           reproduce the feature-card look without importing the whole file. */
+        .feature-card {
+            background-color: rgba(31, 41, 55, 0.4);
+            border: 1px solid rgba(75, 85, 99, 0.5);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            /* Default insertion size inside the flyer canvas */
+            width: 213px;
+            /* height: 251px; */
+            box-sizing: border-box;
+        }
+
+        /* Scale and hover effects kept but limited */
+        .feature-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            background-color: rgba(55, 65, 81, 0.65);
+            border-color: rgba(34, 211, 238, 0.35);
+            box-shadow: 0 6px 18px rgba(34, 211, 238, 0.08);
+        }
+
+        .feature-card img {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card h4 {
+            font-family: 'Saira', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            font-size: 1.05rem;
+            line-height: 1.1;
+            text-align: center;
+            margin: 0;
+        }
+
+        .feature-card p {
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 0.4rem;
+        }
+
+        /* Corner ribbon minimal styles (some feature-cards may include it) */
+        .corner-ribbon-wrapper { width: 120px; height: 120px; overflow: hidden; position: absolute; top: -8px; right: -8px; z-index: 1; }
+        .corner-ribbon { position: absolute; top: 28px; right: -28px; transform: rotate(45deg); width: 160px; background: linear-gradient(to right, #f97316, #facc15); font-family: 'Press Start 2P', cursive; font-size: 0.6rem; padding: 4px 0; text-align: center; box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
+        .corner-ribbon-text { color: #422006; }
+
+        /* Small dynamic-word helper used inside some feature card text */
+        #dynamic-word { transition: opacity 0.7s cubic-bezier(.4,0,.2,1); opacity: 1; color: var(--brand-green-333); width: 5ch; display: inline-block; text-align: center; }
 
         .cta-button {
             background: linear-gradient(to right, var(--brand-green-333), var(--brand-green-222));
@@ -614,6 +686,12 @@
                             <i class="fas fa-trash"></i> Eliminar
                         </button>
                     </div>
+                    <div id="meme-flip-control" class="hidden mt-4">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="meme-flip-checkbox" />
+                            <span class="text-sm">Voltear Meme horizontalmente</span>
+                        </label>
+                    </div>
                     <div id="text-options" class="flex flex-col space-y-2">
                         <h4 class="text-lg font-medium text-gray-300">Opciones de Texto</h4>
                         <div class="flex gap-2">
@@ -702,6 +780,11 @@
             </button>
         </div>
 
+        <!-- Nueva fila: elementos repetibles (marcados como repetible) -->
+        <div id="flyer-toolbar-row-repeatable" class="flex items-center space-x-2 mt-2 bg-gray-900 p-2 rounded">
+            <!-- buttons for markup, h2, meme, imagen will be appended here dynamically -->
+        </div>
+
         <!-- Segunda fila: herramientas de diseño (grises) -->
         <div id="flyer-toolbar-row-design" class="flex items-center space-x-2 mt-2 bg-gray-800 p-2 rounded">
             <!-- dynamically appended design buttons will go here -->
@@ -776,13 +859,21 @@
             toolbarAddMemeBtn.id = 'add-meme-btn';
             toolbarAddMemeBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
             toolbarAddMemeBtn.title = 'Agregar Meme';
-            toolbarAddMemeBtn.innerHTML = '<i class="fas fa-image"></i>';
+            // Use person silhouette icon for Meme
+            toolbarAddMemeBtn.innerHTML = '<i class="fas fa-user"></i>';
 
             const toolbarAddFechaBtn = document.createElement('button');
             toolbarAddFechaBtn.id = 'add-fecha-btn';
             toolbarAddFechaBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
             toolbarAddFechaBtn.title = 'Agregar Fecha';
             toolbarAddFechaBtn.innerHTML = '<i class="fas fa-calendar-day"></i>';
+
+            // Button to add feature-cards (opens selector popup)
+            const toolbarAddFeaturesBtn = document.createElement('button');
+            toolbarAddFeaturesBtn.id = 'add-features-btn';
+            toolbarAddFeaturesBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
+            toolbarAddFeaturesBtn.title = 'Agregar Feature';
+            toolbarAddFeaturesBtn.innerHTML = '<i class="fas fa-th-large"></i>';
 
             // New toolbar controls
             const toggleFlyerToolbarBtn = document.getElementById('toggle-flyer-toolbar-btn');
@@ -857,6 +948,7 @@
                     id: 'meme',
                     name: 'Meme',
                     html: `<div><img src="memes/PAS09795_OP.webp" alt="Meme" class="meme-image w-full h-full object-contain"></div>`,
+                    repetible: true,
                     js: `
                         const memeElement = document.querySelector('#meme');
                         if (memeElement) {
@@ -896,6 +988,7 @@
                     id: 'markup',
                     name: 'Markup',
                     html: `<div class="markup-content" style="width:100%;height:100%;">${DEFAULT_MARKUP_PLACEHOLDER}</div>`,
+                    repetible: true,
                     js: `
                         (function(){
                             // placeholder for markup initialization
@@ -907,11 +1000,74 @@
                     id: 'h2',
                     name: 'Amarillo',
                     html: `<h2 class="relative z-40 font-saira font-bold text-center text-4xl lg:text-5xl" style="color: #FFD700; text-shadow: 0 2px 12px #000a; letter-spacing: 1px;">¡ARMÁ TU NAVE!</h2>`,
+                    repetible: true,
                     js: `
                         (function(){
                             // H2 base element initialization if needed
                         })();
                     `
+                }
+                ,
+                'imagen': {
+                    id: 'imagen',
+                    name: 'Imágen',
+                    html: `<div><img src="https://placehold.co/400x300/374151/ffffff?text=Imagen" alt="Imagen" class="generic-image w-full h-full object-contain"></div>`,
+                    repetible: true,
+                    js: `
+                        (function(){
+                            // imagen init placeholder
+                        })();
+                    `
+                }
+                ,
+                // Feature cards from index.html (non-repetible bases)
+                'feature-hardselect': {
+                    id: 'feature-hardselect',
+                    name: 'Icono de Hardware Seleccionado',
+                    html: `
+                    <div class="feature-card">
+                        <img src="HardSelect.webp" alt="Icono de Hardware Seleccionado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Hard'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Hardware Seleccionado</h4>
+                        <p class="text-s text-gray-300 mt-1">Equilibrando Precio/Calidad </p>
+                    </div>
+                    `,
+                    repetible: false
+                },
+                'feature-softinstalled': {
+                    id: 'feature-softinstalled',
+                    name: 'Icono de Software Instalado',
+                    html: `
+                    <div class="feature-card">
+                        <img src="SoftInstalled.webp" alt="Icono de Software Instalado" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soft'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Programas Clave</h4>
+                        <p class="text-s text-gray-300 mt-1">Instalados para <br><b class="text-green-200">PRENDER</b> <span id="dynamic-word" class="transition-all duration-700 ease-in-out font-bold text-green-333">USAR</span></p>
+                    </div>
+                    `,
+                    repetible: false
+                },
+                'feature-win11': {
+                    id: 'feature-win11',
+                    name: 'Logo de Windows 11',
+                    html: `
+                    <div class="feature-card">
+                        <img src="win11orig.webp" alt="Logo de Windows 11" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Win11'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Windows 11 Original</h4>
+                        <p class="text-s text-gray-300 mt-1">con Licencia Pro </br>y <b>Optimizado</b></p>
+                    </div>
+                    `,
+                    repetible: false
+                },
+                'feature-soporte': {
+                    id: 'feature-soporte',
+                    name: 'Soporte',
+                    html: `
+                    <div class="feature-card">
+                        <img src="soporteTarjeta.webp" alt="Soporte" class="w-24 h-24 mb-3" onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
+                        <h4 class="font-saira font-bold text-white text-xl leading-tight">Soporte Técnico</h4>
+                        <p class=" text-gray-300 mt-1">Presencial en todo el <b class="text-blue-300">Partido de La Costa</b><p><i class="text-gray-500">via Web en donde sea</i></p></p>
+                    </div>
+                    `,
+                    repetible: false
                 }
             };
 
@@ -1012,17 +1168,7 @@
                     diagInfo.style.fontSize = '13px';
                     diagInfo.textContent = 'Cargando miniaturas...';
 
-                    const recheckBtn = document.createElement('button');
-                    recheckBtn.textContent = 'Revisar faltantes';
-                    recheckBtn.style.background = 'transparent';
-                    recheckBtn.style.color = '#9be7a6';
-                    recheckBtn.style.border = '1px solid rgba(156,163,175,0.12)';
-                    recheckBtn.style.padding = '6px 8px';
-                    recheckBtn.style.borderRadius = '6px';
-                    recheckBtn.style.cursor = 'pointer';
-
                     diag.appendChild(diagInfo);
-                    diag.appendChild(recheckBtn);
 
                     const grid = document.createElement('div');
                     grid.style.display = 'grid';
@@ -1111,34 +1257,7 @@
                     listWrap.appendChild(diag);
                     listWrap.appendChild(grid);
 
-                    // Create missing list area (hidden until needed)
-                    const missingList = document.createElement('div');
-                    missingList.style.color = '#fca5a5';
-                    missingList.style.marginTop = '8px';
-                    missingList.style.display = 'none';
-                    box.appendChild(missingList);
-
-                    // Recheck button handler: verify failed filenames and update list
-                    recheckBtn.addEventListener('click', async () => {
-                        diagInfo.textContent = 'Revisando...';
-                        const failed = [];
-                        // Check each failed or all filenames (prefer failed set)
-                        const namesToCheck = failedSet.size ? Array.from(failedSet) : filenames.slice(0, 99);
-                        for (const n of namesToCheck) {
-                            const ok = await checkUrl(`memes/${n}`);
-                            if (!ok) failed.push(n);
-                        }
-                        if (failed.length) {
-                            missingList.style.display = 'block';
-                            missingList.textContent = `Archivos faltantes (${failed.length}): ` + failed.join(', ');
-                            diagInfo.textContent = `${failed.length} faltantes`;
-                        } else {
-                            missingList.style.display = 'block';
-                            missingList.style.color = '#86efac';
-                            missingList.textContent = 'Todos los archivos existen (OK).';
-                            diagInfo.textContent = 'Todos cargados';
-                        }
-                    });
+                    // (Removed 'Revisar faltantes' control and handler)
                     box.appendChild(header);
                     box.appendChild(listWrap);
                     modal.appendChild(box);
@@ -1211,6 +1330,10 @@
                 };
                 allCuadros.push(newCuadro);
                 renderCuadrosSelector();
+                // Select the new cuadro in the selector so user doesn't have to do it manually
+                renderCuadrosSelector();
+                const selector = document.getElementById('cuadro-selector');
+                if (selector) selector.value = id;
                 switchCuadro(id);
                 showMessage(`Nuevo cuadro "${name}" creado.`, 3000);
             }
@@ -1347,6 +1470,18 @@
                         markup: item.dataset.markup || null,
                         h2Text: item.dataset.itemId === 'h2' ? (item.querySelector('h2') ? item.querySelector('h2').innerHTML : null) : null
                     };
+                    // Persist image src/name for imagen base elements
+                    if (item.dataset.itemId === 'imagen') {
+                        const src = item.dataset.imageSrc || null;
+                        // Only persist imageSrc if it's a relative path (not blob:, data: or absolute http(s)).
+                        if (src && !/^(blob:|data:|https?:\/\/)/i.test(src)) {
+                            itemData.imageSrc = src;
+                        } else {
+                            itemData.imageSrc = null;
+                        }
+                        // Preserve original filename if available (useful when a file was chosen)
+                        itemData.imageName = item.dataset.imageName || null;
+                    }
                     // Persist the three paragraph texts for final-price-info base element
                     if (item.dataset.itemId === 'final-price-info') {
                         try {
@@ -1364,6 +1499,10 @@
                             const h2El = item.querySelector('h2') || item;
                             itemData.h2Align = h2El ? (h2El.style.textAlign || null) : null;
                         } catch (e) { itemData.h2Align = null; }
+                    }
+                    // Persist meme flip flag
+                    if (item.dataset.itemId === 'meme') {
+                        itemData.memeFlipped = item.dataset.memeFlipped === '1' ? 1 : 0;
                     }
                     currentDesign.elements.push(itemData);
                 });
@@ -1400,7 +1539,13 @@
                         const scaleMatch = selectedFlyerItem.style.transform.match(/scale\((.*?)\)/);
                         const scale = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
                         scaleInput.value = scale;
-                        document.getElementById('text-options').classList.remove('hidden');
+                        // Only show text options for catalog components (non-base elements)
+                        const textOptionsEl = document.getElementById('text-options');
+                        const isComponent = !Object.keys(baseElementData).includes(selectedFlyerItem.dataset.itemId);
+                        if (textOptionsEl) {
+                            if (isComponent) textOptionsEl.classList.remove('hidden');
+                            else textOptionsEl.classList.add('hidden');
+                        }
                     }
                     zIndexInput.value = selectedFlyerItem.style.zIndex || 10;
                     const isVisible = selectedFlyerItem.style.opacity !== '0';
@@ -1414,6 +1559,17 @@
                             ta.value = selectedFlyerItem.dataset.markup || '';
                         } else {
                             markupProps.classList.add('hidden');
+                        }
+                    }
+                    // Meme flip control
+                    const memeFlipControl = document.getElementById('meme-flip-control');
+                    const memeFlipCheckbox = document.getElementById('meme-flip-checkbox');
+                    if (memeFlipControl && memeFlipCheckbox) {
+                        if (selectedFlyerItem.dataset.itemId === 'meme') {
+                            memeFlipControl.classList.remove('hidden');
+                            memeFlipCheckbox.checked = !!(selectedFlyerItem.dataset.memeFlipped === '1');
+                        } else {
+                            memeFlipControl.classList.add('hidden');
                         }
                     }
                     // Show final-price-info properties
@@ -1565,6 +1721,20 @@
                     toggleVisibilityBtn.innerHTML = isVisible ? '<i class="fas fa-eye"></i> Mostrar' : '<i class="fas fa-eye-slash"></i> Ocultar';
                 }
             });
+            // Meme flip checkbox
+            const memeFlipCheckbox = document.getElementById('meme-flip-checkbox');
+            if (memeFlipCheckbox) {
+                memeFlipCheckbox.addEventListener('change', () => {
+                    if (!selectedFlyerItem) return;
+                    if (selectedFlyerItem.dataset.itemId !== 'meme') return;
+                    const img = selectedFlyerItem.querySelector('img') || selectedFlyerItem.querySelector('.meme-image');
+                    if (!img) return;
+                    const flipped = memeFlipCheckbox.checked;
+                    img.style.transform = flipped ? 'scaleX(-1)' : '';
+                    selectedFlyerItem.dataset.memeFlipped = flipped ? '1' : '0';
+                    saveCurrentDesign();
+                });
+            }
             deleteBtn.addEventListener('click', () => {
                 if (!selectedFlyerItem) return;
                 const componentIndex = addedComponents.findIndex(c => c.element === selectedFlyerItem);
@@ -1581,12 +1751,17 @@
             });
 
             // --- Lógica de Creación y Actualización ---
-            async function createComponentElement(itemData, x, y) {
-                const existingComp = addedComponents.find(c => c.id == itemData.id);
-                if (existingComp) {
-                    showMessage("Este componente ya fue agregado.", 3000);
-                    return;
+            async function createComponentElement(itemData, x, y, opts = {}) {
+                // If element is not repetible and already exists, toggle visibility
+                if (!itemData.repetible) {
+                    const existsComp = addedComponents.find(c => c.id == itemData.id && c.isBaseElement);
+                    if (existsComp) {
+                        showMessage("Este componente ya fue agregado.", 2000);
+                        existsComp.element.classList.toggle('hidden');
+                        return existsComp.element;
+                    }
                 }
+
                 document.querySelectorAll('.flyer-item').forEach(item => item.classList.remove('active'));
 
                 let compEl;
@@ -1594,10 +1769,12 @@
 
                 if (isBase) {
                     compEl = document.createElement('div');
-                    compEl.id = itemData.id;
+                    // Use unique id for repetible bases to avoid duplicate DOM ids
+                    compEl.id = itemData.repetible ? `${itemData.id}-${Date.now()}` : itemData.id;
                     compEl.dataset.itemId = itemData.id;
                     compEl.dataset.itemName = itemData.name;
                     compEl.className = 'flyer-item active';
+                    // Base CSS for placement; specific base types override below
                     compEl.style.cssText = `
                         position: absolute;
                         top: ${y}px;
@@ -1605,14 +1782,68 @@
                         transform: translate(-50%, -50%);
                         text-align: center;
                         color: #e5e7eb;
-                        white-space: nowrap;
                         z-index: 9999;
                         padding: 1.5rem;
                         width: 80%;
                         max-width: 600px;
                         ${itemData.id === 'summary-table' ? 'width: 80%; max-width: 600px; background-color: rgba(31, 41, 55, 0.9); backdrop-filter: blur(4px);' : ''}
                     `;
-                    compEl.innerHTML = baseElementData[itemData.id].html;
+
+                    // If this is one of the feature cards, enforce square sizing and allow wrapping text
+                    if (itemData.id && itemData.id.startsWith('feature-')) {
+                        compEl.style.width = '213px';
+                        // compEl.style.height = '251px';
+                        compEl.style.whiteSpace = 'normal';
+                        compEl.style.padding = '0.75rem';
+                        compEl.style.boxSizing = 'border-box';
+                    }
+
+                    // Special handling for imagen and meme
+                    if (itemData.id === 'imagen') {
+                        const img = document.createElement('img');
+                        img.className = 'generic-image w-full h-full object-contain';
+                        const src = itemData._imageSrc || (itemData.src || 'https://placehold.co/400x300/374151/ffffff?text=Imagen');
+                        img.src = src;
+                        img.alt = 'Imagen';
+                        img.onerror = () => { img.src = 'https://placehold.co/400x300/374151/ffffff?text=Imagen+No+Encontrada'; };
+                        compEl.appendChild(img);
+                        if (itemData._imageName) compEl.dataset.imageName = itemData._imageName;
+                        if (itemData._imageSrc) compEl.dataset.imageSrc = itemData._imageSrc;
+                    } else if (itemData.id === 'meme') {
+                        // Use first available filename as default unless provided
+                        const defaultName = (itemData._imageName || (await getMemeFilenames())[0] || 'PAS09795_OP.webp');
+                        compEl.dataset.imageName = defaultName;
+                        const img = document.createElement('img');
+                        img.className = 'meme-image w-full h-full object-contain';
+                        img.src = itemData._imageSrc || `memes/${defaultName}`;
+                        img.alt = 'Meme';
+                        img.onerror = () => { img.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
+                        compEl.appendChild(img);
+                        // Attach meme popup selector
+                        setupMemePopup(compEl);
+                        setupDraggableElement(compEl);
+                        document.getElementById('flyer').appendChild(compEl);
+                        addedComponents.push({ id: itemData.id, name: itemData.name, element: compEl, isBaseElement: true });
+                        selectedFlyerItem = compEl;
+                        updateBaseElements();
+                        updatePropertiesPanel();
+                        return;
+                    } else {
+                        // default: use HTML from baseElementData
+                        compEl.innerHTML = baseElementData[itemData.id].html;
+                        // If caller passed an override image src or name (from popup), apply it
+                        try {
+                            const innerImg = compEl.querySelector('img');
+                            if (innerImg && opts._imageSrc) {
+                                innerImg.src = opts._imageSrc;
+                                // store original src/name if provided
+                                compEl.dataset.imageSrc = opts._imageSrc;
+                            }
+                            if (innerImg && opts.itemName) {
+                                innerImg.alt = opts.itemName;
+                            }
+                        } catch (e) { /* ignore */ }
+                    }
 
                     // If markup base, initialize dataset.markup and content
                     if (itemData.id === 'markup') {
@@ -1620,8 +1851,6 @@
                         const contentEl = compEl.querySelector('.markup-content') || compEl;
                         try {
                             if (!compEl.dataset.markup || compEl.dataset.markup.trim() === '') {
-                                // Ensure the dataset holds the placeholder so the properties panel textarea
-                                // receives the same default value when the element is created.
                                 compEl.dataset.markup = DEFAULT_MARKUP_PLACEHOLDER;
                                 contentEl.innerHTML = DEFAULT_MARKUP_PLACEHOLDER;
                             } else {
@@ -1630,51 +1859,12 @@
                         } catch (e) { console.error('Failed to set markup innerHTML', e); }
                     }
 
-
                     if (itemData.id === 'summary-table') {
                         compEl.addEventListener('selectstart', e => e.preventDefault());
                         compEl.addEventListener('dblclick', e => { e.stopPropagation(); compEl.classList.toggle('show-categories'); updateBaseElements(); });
                     }
-                } else if (itemData.id === 'meme') {
-                    compEl = document.createElement('div');
-                    compEl.id = itemData.id;
-                    compEl.dataset.itemId = itemData.id;
-                    compEl.dataset.itemName = itemData.name;
-                    compEl.className = 'flyer-item active';
-                    compEl.style.cssText = `
-                        position: absolute;
-                        top: ${y}px;
-                        left: ${x}px;
-                        transform: translate(-50%, -50%);
-                        text-align: center;
-                        color: #e5e7eb;
-                        white-space: nowrap;
-                        z-index: 9999;
-                        width: 600px;
-                        height: 600px;
-                    `;
-
-                    // Use first available filename as default
-                    const defaultName = (await getMemeFilenames())[0] || 'PAS09795_OP.webp';
-                    compEl.dataset.imageName = defaultName;
-                    compEl.innerHTML = `<img src="memes/${defaultName}" alt="Meme" class="meme-image w-full h-full object-contain">`;
-
-                    // Attach popup selector and image fallback
-                    setupMemePopup(compEl);
-
-                    const memeImage = compEl.querySelector('.meme-image');
-                    if (memeImage) {
-                        memeImage.onerror = () => { memeImage.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
-                    }
-
-                    setupDraggableElement(compEl);
-                    addedComponents.push({ id: itemData.id, name: itemData.name, element: compEl, isBaseElement: true });
-                    document.getElementById('flyer').appendChild(compEl);
-                    selectedFlyerItem = compEl;
-                    updateBaseElements();
-                    updatePropertiesPanel();
-                    return;
                 } else {
+                    // product/component from catalog
                     const componentId = `comp-${itemData.id}`;
                     compEl = document.createElement('div');
                     compEl.className = `flyer-item p-2 active`;
@@ -1735,7 +1925,11 @@
                     console.error('Error executing base element script for', itemData.id, err);
                 }
                 if (isBase) {
-                    addedComponents.push({ id: itemData.id, name: itemData.name, element: compEl, isBaseElement: true });
+                    // If opts provided an itemName override, use it for the addedComponents record
+                    const nameToUse = opts.itemName || itemData.name;
+                    addedComponents.push({ id: itemData.id, name: nameToUse, element: compEl, isBaseElement: true });
+                    // ensure dataset reflects the name
+                    if (opts.itemName) compEl.dataset.itemName = opts.itemName;
                 }
                 selectedFlyerItem = compEl;
                 updateBaseElements();
@@ -1789,6 +1983,27 @@
                         setupMemePopup(compEl);
                         const img = compEl.querySelector('.meme-image');
                         if (img) img.onerror = () => { img.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
+                        // Restore flipped state
+                        try {
+                            if (elData.memeFlipped && parseInt(elData.memeFlipped) === 1) {
+                                compEl.dataset.memeFlipped = '1';
+                                if (img) img.style.transform = 'scaleX(-1)';
+                            } else {
+                                compEl.dataset.memeFlipped = '0';
+                            }
+                        } catch (e) { compEl.dataset.memeFlipped = '0'; }
+                    }
+                    // If this base is an imagen, restore image src/name if present
+                    if (elData.id === 'imagen') {
+                        const img = compEl.querySelector('img') || compEl.querySelector('.generic-image');
+                        if (elData.imageSrc) {
+                            compEl.dataset.imageSrc = elData.imageSrc;
+                            if (img) img.src = elData.imageSrc;
+                        } else if (elData.imageName) {
+                            compEl.dataset.imageName = elData.imageName;
+                            if (img) img.src = elData.imageName;
+                        }
+                        if (img) img.onerror = () => { img.src = 'https://placehold.co/400x300/374151/ffffff?text=Imagen+No+Encontrada'; };
                     }
                     // If this base is a markup element, restore stored HTML
                     if (elData.id === 'markup') {
@@ -2267,14 +2482,17 @@
             });
             toolbarAddMemeBtn.addEventListener('click', () => {
                 const flyerEl = document.getElementById('flyer');
-                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'meme');
-                if (existingElement) {
-                    const el = existingElement.element;
-                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
-                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
-                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
-                    updateBaseElements();
-                    return;
+                const isRepetible = baseElementData['meme'] && baseElementData['meme'].repetible;
+                if (!isRepetible) {
+                    const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'meme');
+                    if (existingElement) {
+                        const el = existingElement.element;
+                        const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                        if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                        else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                        updateBaseElements();
+                        return;
+                    }
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
                 createComponentElement(baseElementData['meme'], flyerRect.width / 2, flyerRect.height / 2);
@@ -2294,26 +2512,142 @@
                 createComponentElement(baseElementData['fecha'], flyerRect.width / 2, flyerRect.height / 2);
             });
 
-            // append dynamic buttons into the base row (first row of toolbar)
+            // append dynamic buttons into the toolbar
             const toolbarContainer = document.getElementById('flyer-toolbar-row-base');
-            // Add markup, H2, meme and fecha buttons
-            toolbarContainer.appendChild(toolbarAddMarkupBtn);
-            toolbarContainer.appendChild(toolbarAddH2Btn);
-            toolbarContainer.appendChild(toolbarAddMemeBtn);
+            const toolbarRepeatable = document.getElementById('flyer-toolbar-row-repeatable');
+            // Put repetible bases in the repeatable row
+            toolbarRepeatable.appendChild(toolbarAddMarkupBtn);
+            toolbarRepeatable.appendChild(toolbarAddH2Btn);
+            toolbarRepeatable.appendChild(toolbarAddMemeBtn);
+            // create and append imagen button
+            const toolbarAddImagenBtn = document.createElement('button');
+            toolbarAddImagenBtn.id = 'add-imagen-btn';
+            toolbarAddImagenBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
+            toolbarAddImagenBtn.title = 'Agregar Imágen';
+            toolbarAddImagenBtn.innerHTML = '<i class="fas fa-photo-video"></i>';
+            toolbarRepeatable.appendChild(toolbarAddImagenBtn);
+            // non-repetible (fecha) stays in base row
             toolbarContainer.appendChild(toolbarAddFechaBtn);
+            // add features button to base row
+            toolbarContainer.appendChild(toolbarAddFeaturesBtn);
+
+            // imagen button handler: prompt for relative path or pick a local file
+            toolbarAddImagenBtn.addEventListener('click', () => {
+                const flyerEl = document.getElementById('flyer');
+                const flyerRect = flyerEl.getBoundingClientRect();
+                const rel = prompt('Ingresa la ruta relativa de la imagen (ej: comps/12345.webp o memes/mi.webp)\nDejar vacío para seleccionar archivo local:', 'comps/');
+                if (rel && rel.trim()) {
+                    const itemData = Object.assign({}, baseElementData['imagen']);
+                    itemData._imageSrc = rel.trim();
+                    createComponentElement(itemData, flyerRect.width / 2, flyerRect.height / 2);
+                    return;
+                }
+                // fallback: file picker (will use object URL, filename saved)
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.addEventListener('change', (ev) => {
+                    const file = ev.target.files && ev.target.files[0];
+                    if (!file) return;
+                    const url = URL.createObjectURL(file);
+                    const itemData = Object.assign({}, baseElementData['imagen']);
+                    itemData._imageSrc = url;
+                    itemData._imageName = file.name;
+                    createComponentElement(itemData, flyerRect.width / 2, flyerRect.height / 2);
+                });
+                input.click();
+            });
+            // Features selector popup handler
+            toolbarAddFeaturesBtn.addEventListener('click', () => {
+                // build modal with feature cards
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 flex items-center justify-center';
+                modal.style.background = 'rgba(0,0,0,0.7)';
+                modal.style.zIndex = '999999999';
+                const box = document.createElement('div');
+                box.className = 'bg-gray-900 text-white rounded p-4 feature-selector';
+                box.style.position = 'relative';
+                box.style.zIndex = '1000000000';
+                box.style.maxWidth = '800px';
+                box.style.width = '95%';
+                box.style.maxHeight = '80vh';
+                box.style.overflow = 'auto';
+
+                const header = document.createElement('div');
+                header.className = 'flex items-center justify-between mb-3';
+                const title = document.createElement('h3');
+                title.textContent = 'Seleccionar Feature';
+                title.className = 'text-lg font-bold';
+                const closeBtn = document.createElement('button');
+                closeBtn.textContent = 'Cerrar';
+                closeBtn.className = 'px-3 py-1 bg-green-500 text-black rounded';
+                closeBtn.addEventListener('click', () => document.body.removeChild(modal));
+                header.appendChild(title);
+                header.appendChild(closeBtn);
+
+                const grid = document.createElement('div');
+                grid.className = 'grid grid-cols-2 md:grid-cols-4 gap-3';
+
+                // features to show - keys correspond to baseElementData entries
+                const features = ['feature-hardselect','feature-softinstalled','feature-win11','feature-soporte'];
+                features.forEach(key => {
+                    const dataItem = baseElementData[key];
+                    if (!dataItem) return;
+                    // extract img src and alt from html string by creating a DOM fragment
+                    const frag = document.createElement('div');
+                    frag.innerHTML = dataItem.html;
+                    const img = frag.querySelector('img');
+                    const imgSrc = img ? img.getAttribute('src') : '';
+                    const imgAlt = img ? img.getAttribute('alt') : dataItem.name || key;
+
+                    const card = document.createElement('div');
+                    card.className = 'p-2 rounded bg-gray-800 cursor-pointer flex flex-col items-center';
+                    const thumb = document.createElement('img');
+                    thumb.src = imgSrc;
+                    thumb.alt = imgAlt;
+                    thumb.className = 'w-20 h-20 object-contain mb-2';
+                    const label = document.createElement('div');
+                    label.textContent = imgAlt;
+                    label.className = 'text-sm text-center';
+                    card.appendChild(thumb);
+                    card.appendChild(label);
+                    card.addEventListener('click', () => {
+                        // create the base element in the current cuadro
+                        const flyerEl = document.getElementById('flyer');
+                        if (!flyerEl) return;
+                        // center position
+                        const rect = flyerEl.getBoundingClientRect();
+                        // clone baseElementData to avoid mutations
+                        const itemData = Object.assign({}, baseElementData[key]);
+                        // pass through image src/name so created element shows same image
+                        // set dataset.itemName to imgAlt when element is created inside createComponentElement
+                        createComponentElement(itemData, rect.width / 2, rect.height / 2, { itemName: imgAlt, _imageSrc: imgSrc });
+                        document.body.removeChild(modal);
+                    });
+                    grid.appendChild(card);
+                });
+
+                box.appendChild(header);
+                box.appendChild(grid);
+                modal.appendChild(box);
+                document.body.appendChild(modal);
+            });
             // The clear button is now in the design row; ensure other dynamic buttons remain in base row
 
-            // Wire markup toolbar button (toggle if exists)
+            // Wire markup toolbar button
             toolbarAddMarkupBtn.addEventListener('click', () => {
                 const flyerEl = document.getElementById('flyer');
-                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'markup');
-                if (existingElement) {
-                    const el = existingElement.element;
-                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
-                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
-                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
-                    updateBaseElements();
-                    return;
+                const isRepetible = baseElementData['markup'] && baseElementData['markup'].repetible;
+                if (!isRepetible) {
+                    const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'markup');
+                    if (existingElement) {
+                        const el = existingElement.element;
+                        const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                        if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                        else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                        updateBaseElements();
+                        return;
+                    }
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
                 createComponentElement(baseElementData['markup'], flyerRect.width / 2, flyerRect.height / 2);
@@ -2321,14 +2655,17 @@
             // Wire H2 toolbar button
             toolbarAddH2Btn.addEventListener('click', () => {
                 const flyerEl = document.getElementById('flyer');
-                const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'h2');
-                if (existingElement) {
-                    const el = existingElement.element;
-                    const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
-                    if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
-                    else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
-                    updateBaseElements();
-                    return;
+                const isRepetible = baseElementData['h2'] && baseElementData['h2'].repetible;
+                if (!isRepetible) {
+                    const existingElement = addedComponents.find(c => c.isBaseElement && c.id === 'h2');
+                    if (existingElement) {
+                        const el = existingElement.element;
+                        const isHidden = window.getComputedStyle(el).display === 'none' || el.style.opacity === '0';
+                        if (isHidden) { el.style.display = ''; el.style.opacity = el.style.opacity === '0' ? '1' : el.style.opacity; }
+                        else { el.style.display = 'none'; if (selectedFlyerItem === el) { selectedFlyerItem.classList.remove('active'); selectedFlyerItem = null; updatePropertiesPanel(); } }
+                        updateBaseElements();
+                        return;
+                    }
                 }
                 const flyerRect = flyerEl.getBoundingClientRect();
                 createComponentElement(baseElementData['h2'], flyerRect.width / 2, flyerRect.height / 2);
