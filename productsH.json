@@ -1955,6 +1955,44 @@
       ],
       "linksAlt": [],
       "total": 8
+    },
+    {
+      "id": 10363,
+      "name": "DDR4 8 GB - Patriot Viper",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-gamer-color-negrorojo-8gb-1-patriot-pve248g320c8/p/MLA19135093?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 34644,
+          "date": "2025-09-24T16:45:10.377Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-09-24T16:44:19.814Z"
+        }
+      ],
+      "linksAlt": [],
+      "total": 8
+    },
+    {
+      "id": 69550,
+      "name": "DDR3 2x8 - Samsung",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1457171545-memoria-ram-samsung-ddr3-2x8gb-1600mhz-oem-kit-16gb-total-_JM?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 49196,
+          "date": "2025-09-24T16:45:42.825Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-09-24T16:45:18.150Z"
+        }
+      ],
+      "linksAlt": [],
+      "total": 16
     }
   ],
   "comboOptions": [
