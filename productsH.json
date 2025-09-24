@@ -6,9 +6,9 @@
       "description": "Buen rendimiento en juegos ligeros a 1080p, multitarea básica y creación de contenido principiante. Con 6 núcleos y gráfica integrada Vega 7, es el más económico y simple, pero más que suficiente si no corrés software pesado.",
       "cpu": "896",
       "mother": "23506",
-      "ram": "81841",
-      "cantRam": 1,
-      "total": 380816,
+      "ram": "77124",
+      "cantRam": 2,
+      "total": 371429,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -25,9 +25,9 @@
       "description": "La nave equilibrada para gamers y creadores. 8 núcleos/16 hilos y gráfica Vega 8 para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
       "cpu": "55990",
       "mother": "23506",
-      "ram": "81841",
-      "cantRam": 1,
-      "total": 406816,
+      "ram": "77124",
+      "cantRam": 2,
+      "total": 397429,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -1953,7 +1953,8 @@
           "date": "2025-09-24T14:34:10.116Z"
         }
       ],
-      "linksAlt": []
+      "linksAlt": [],
+      "total": 8
     }
   ],
   "comboOptions": [

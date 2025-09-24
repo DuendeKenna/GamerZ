@@ -6,9 +6,9 @@
       "description": "Buen rendimiento en juegos ligeros a 1080p, multitarea básica y creación de contenido principiante. Con 6 núcleos y gráfica integrada Vega 7, es el más económico y simple, pero más que suficiente si no corrés software pesado.",
       "cpu": "896",
       "mother": "23506",
-      "ram": "81841",
-      "cantRam": 1,
-      "total": 380816,
+      "ram": "77124",
+      "cantRam": 2,
+      "total": 371429,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -20,9 +20,9 @@
       "description": "La nave equilibrada para gamers y creadores. 8 núcleos/16 hilos y gráfica Vega 8 para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
       "cpu": "55990",
       "mother": "23506",
-      "ram": "81841",
-      "cantRam": 1,
-      "total": 406816,
+      "ram": "77124",
+      "cantRam": 2,
+      "total": 397429,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -339,12 +339,12 @@
     {
       "id": 77124,
       "name": "DDR4 8 GB - Patriot",
-      "price": 30300,
       "link": "https://www.mercadolibre.com.ar/memoria-ram-patriot-signature-8gb-3200mhz-dimm-negra/p/MLA37810612?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "price": 30300,
       "lastUpd": "2025-09-24T14:35:01.569Z",
-      "total": 0
+      "total": 8
     }
   ],
   "comboOptions": [
