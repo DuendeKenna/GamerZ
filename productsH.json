@@ -44,9 +44,9 @@
       "description": "Potencia extra para creadores. La RAM adicional es clave para <b>Edición de Video avanzada, IA Generativa</b> y <b>Renders 3D complejos</b>. Enfocado en multitarea intensiva vs. los otros niveles, evitando cuelgues en proyectos grandes.",
       "cpu": "55990",
       "mother": "23506",
-      "ram": "8502",
+      "ram": "55457",
       "cantRam": 2,
-      "total": 442827,
+      "total": 456537,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -1989,6 +1989,25 @@
         {
           "value": 0,
           "date": "2025-09-24T16:45:18.150Z"
+        }
+      ],
+      "linksAlt": [],
+      "total": 16
+    },
+    {
+      "id": 55457,
+      "name": "DDR4 16GB - Hiksemi Armor",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-16gb-3200mhz-hiksemi-armor-u-dimm/p/MLA38657900?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 59854,
+          "date": "2025-09-24T16:59:21.254Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-09-24T16:59:14.217Z"
         }
       ],
       "linksAlt": [],
