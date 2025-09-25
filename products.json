@@ -20,9 +20,9 @@
       "description": "La nave equilibrada para gamers y creadores. 8 núcleos/16 hilos y gráfica Vega 8 para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
       "cpu": "55990",
       "mother": "23506",
-      "ram": "77124",
+      "ram": "10363",
       "cantRam": 2,
-      "total": 397429,
+      "total": 406117,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -46,12 +46,21 @@
   "armadasOptions": [
     {
       "id": 76800,
-      "name": "I5 2400 16 Gb 480 Gb Ssd",
+      "name": "I5 2400 16GB 480GB Sata",
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
       "price": 236631,
       "lastUpd": "2025-09-24T14:27:49.843Z"
+    },
+    {
+      "id": 97786,
+      "name": "I5 3.3 GHz + 8GB RAM + 240GB SSD",
+      "price": 199780,
+      "link": "https://www.mercadolibre.com.ar/pc-de-escritorio-armada-cpu-computadora-intel-core-i5-8gb-ssd-240gb-ideal-uso-de-oficina-administrativo-hogareno-locales-sistema-de-gestion/p/MLA38525278?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "lastUpd": "2025-09-24T17:06:23.609Z"
     }
   ],
   "towersOptions": [
@@ -154,13 +163,22 @@
       "lastUpd": "1970-01-01T00:00:00.000Z"
     },
     {
+      "id": 50566,
+      "name": "GT 740 | 2GB",
+      "price": 179999,
+      "link": "https://www.mercadolibre.com.ar/placa-video-geforce-gt740-2gb-gddr5-128bit-hdmi-vga-dvi/p/MLA22805535?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "lastUpd": "2025-09-25T05:08:39.987Z"
+    },
+    {
       "id": 85207,
       "name": "RX 550",
       "link": "https://www.mercadolibre.com.ar/placa-video-amd-radeon-asus-rx-550-2gb-gddr5-hdmi/p/MLA20014742?offer_type=OFFICIAL_STORE",
       "visible": 0,
-      "description": "2GB | GDDR5 / 128bit",
-      "price": 140000,
-      "lastUpd": "2025-09-04T15:22:53.450Z"
+      "description": "2GB | GDDR5 / 64bit",
+      "price": 129999,
+      "lastUpd": "2025-09-25T05:09:09.413Z"
     },
     {
       "id": 47347,
@@ -322,7 +340,7 @@
       "total": 16,
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
-      "visible": 1,
+      "visible": 0,
       "price": 52999,
       "lastUpd": "2025-09-19T03:10:19.848Z"
     },
@@ -332,7 +350,7 @@
       "total": 8,
       "description": "",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1420730281?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "price": 22998,
       "lastUpd": "2025-09-24T14:43:08.187Z"
     },
@@ -361,7 +379,7 @@
       "name": "DDR3 2x8 - Samsung",
       "price": 49196,
       "link": "https://articulo.mercadolibre.com.ar/MLA-1457171545-memoria-ram-samsung-ddr3-2x8gb-1600mhz-oem-kit-16gb-total-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "",
       "lastUpd": "2025-09-24T16:45:42.825Z",
       "total": 16
@@ -697,5 +715,17 @@
       "lastUpd": "2025-09-24T14:47:54.495Z"
     }
   ],
-  "miniPcOptions": []
+  "miniPcOptions": [
+    {
+      "id": 10541,
+      "name": "Enova",
+      "price": 349999,
+      "link": "https://www.mercadolibre.com.ar/mini-pc-enova-ryzen-5-3500u-8gb-2400mhz-ram-240gb-ssd-w11/p/MLA50633796?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "Ryzen 5 3500U",
+      "ram": "8gb 2400mhz",
+      "ssd": "240GB",
+      "lastUpd": "2025-09-25T05:15:49.111Z"
+    }
+  ]
 }

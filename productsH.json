@@ -25,9 +25,9 @@
       "description": "La nave equilibrada para gamers y creadores. 8 núcleos/16 hilos y gráfica Vega 8 para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
       "cpu": "55990",
       "mother": "23506",
-      "ram": "77124",
+      "ram": "10363",
       "cantRam": 2,
-      "total": 397429,
+      "total": 406117,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -61,7 +61,7 @@
   "armadasOptions": [
     {
       "id": 76800,
-      "name": "I5 2400 16 Gb 480 Gb Ssd",
+      "name": "I5 2400 16GB 480GB Sata",
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
@@ -149,6 +149,24 @@
         {
           "value": 228000,
           "date": "2025-08-26T16:13:31.663Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 97786,
+      "name": "I5 3.3 GHz + 8GB RAM + 240GB SSD",
+      "link": "https://www.mercadolibre.com.ar/pc-de-escritorio-armada-cpu-computadora-intel-core-i5-8gb-ssd-240gb-ideal-uso-de-oficina-administrativo-hogareno-locales-sistema-de-gestion/p/MLA38525278?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 199780,
+          "date": "2025-09-24T17:06:23.609Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-09-24T17:05:36.507Z"
         }
       ],
       "linksAlt": []
@@ -746,12 +764,34 @@
       "linksAlt": []
     },
     {
+      "id": 50566,
+      "name": "GT 740 | 2GB",
+      "link": "https://www.mercadolibre.com.ar/placa-video-geforce-gt740-2gb-gddr5-128bit-hdmi-vga-dvi/p/MLA22805535?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 179999,
+          "date": "2025-09-25T05:08:39.987Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-09-25T05:08:11.815Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
       "id": 85207,
       "name": "RX 550",
       "link": "https://www.mercadolibre.com.ar/placa-video-amd-radeon-asus-rx-550-2gb-gddr5-hdmi/p/MLA20014742?offer_type=OFFICIAL_STORE",
       "visible": 0,
-      "description": "2GB | GDDR5 / 128bit",
+      "description": "2GB | GDDR5 / 64bit",
       "prices": [
+        {
+          "value": 129999,
+          "date": "2025-09-25T05:09:09.413Z"
+        },
         {
           "value": 140000,
           "date": "2025-09-04T15:22:53.450Z"
@@ -1801,7 +1841,7 @@
       "total": 16,
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
-      "visible": 1,
+      "visible": 0,
       "prices": [
         {
           "value": 52999,
@@ -1876,7 +1916,7 @@
       "total": 8,
       "description": "",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1420730281?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "prices": [
         {
           "value": 22998,
@@ -1979,7 +2019,7 @@
       "id": 69550,
       "name": "DDR3 2x8 - Samsung",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1457171545-memoria-ram-samsung-ddr3-2x8gb-1600mhz-oem-kit-16gb-total-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "",
       "prices": [
         {
@@ -4162,5 +4202,26 @@
       "linksAlt": []
     }
   ],
-  "miniPcOptions": []
+  "miniPcOptions": [
+    {
+      "id": 10541,
+      "name": "Enova",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-enova-ryzen-5-3500u-8gb-2400mhz-ram-240gb-ssd-w11/p/MLA50633796?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "Ryzen 5 3500U",
+      "ram": "8gb 2400mhz",
+      "ssd": "240GB",
+      "prices": [
+        {
+          "value": 349999,
+          "date": "2025-09-25T05:15:49.111Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-09-25T05:07:50.304Z"
+        }
+      ],
+      "linksAlt": []
+    }
+  ]
 }

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creador de Flyers Digitales</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪁</text></svg>">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for icons -->
@@ -33,7 +35,8 @@
             font-family: 'Inter', sans-serif;
             background-color: #111827;
             color: #e5e7eb;
-            overflow: hidden;
+            /* Allow page-level overflow so inner panels can control scrolling independently */
+            overflow: auto;
             display: flex;
         }
 
@@ -140,23 +143,50 @@
         }
 
         #herramientas {
-            width: 30%;
-            min-width: 350px;
-            max-height: 100vh;
+            /* Fixed sidebar on the left column (sticky) */
+            width: 320px;
+            min-width: 240px;
+            height: 100vh;
             overflow-y: auto;
             padding: 1rem;
             flex-shrink: 0;
+            position: -webkit-sticky; position: sticky;
+            top: 0;
+            box-sizing: border-box;
         }
 
         #flyer-section-container {
-            flex-grow: 1;
+            flex: 1 1 auto;
+            /* Let the main area size itself and use remaining width after sidebars */
             max-height: 100vh;
-            overflow-y: auto;
+            overflow: auto;
             padding: 1rem;
             display: flex;
             justify-content: center;
             align-items: flex-start;
+            gap: 1rem;
+            min-width: 0; /* allow shrinking inside flex */
         }
+
+        /* Left 'Elementos' panel placed beside the flyer canvas */
+        #elementos-panel {
+            /* Left-most panel: Elementos — sticky and full height */
+            width: 260px;
+            min-width: 200px;
+            height: 100vh;
+            overflow-y: auto;
+            flex-shrink: 0;
+            padding: 1rem;
+            background-color: rgba(31,41,55,0.9);
+            border: 1px solid rgba(75,85,99,0.5);
+            box-sizing: border-box;
+            position: -webkit-sticky; position: sticky;
+            top: 0;
+        }
+        #elementos-list { display:flex; flex-direction:column; gap:8px; }
+        #elementos-list .elemento-row { padding:8px 10px; border-radius:6px; background:#071022; color:#e5e7eb; cursor:pointer; text-align:left; border:1px solid rgba(255,255,255,0.03); }
+        #elementos-list .elemento-row:hover { transform:scale(1.02); background:#0b1220; }
+        #elementos-list .elemento-row.selected { border-color: var(--brand-green-333); background: rgba(66,210,50,0.06); }
 
         /* Estilo para las scrollbars */
         ::-webkit-scrollbar {
@@ -193,6 +223,15 @@
             align-items: flex-start;
 
             /* The dimensions are now set by JavaScript */
+        }
+
+        /* Make the cuadros container fill available area and center the cuadro inside it */
+        #cuadros-container {
+            flex: 1 1 auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-width: 0; /* allow children to shrink properly inside flex */
         }
 
         /* Estilo base para el flyer */
@@ -373,6 +412,82 @@
             pointer-events: none;
         }
 
+        /* Make grupo/cuadro selector buttons low-contrast by default to avoid visual noise
+           and reveal their semantic color on hover. The download CTA will also be muted
+           by default but will restore its gradient on hover. */
+        #grupo-cuadro-selector button {
+            /* override any existing background gradients or utility classes */
+            background: #374151 !important; /* gray-700 */
+            color: #ffffff !important;
+            border: 1px solid rgba(255,255,255,0.04) !important;
+            transition: background 180ms ease, border 180ms ease, color 160ms ease;
+        }
+        #grupo-cuadro-selector button:hover {
+            /* subtle lightening as a fallback when no semantic color is applied */
+            background: #4b5563 !important; /* gray-600 */
+        }
+        /* Map semantic hover colors to each action button so the color appears on hover */
+        #add-group-btn:hover,
+        #add-cuadro-btn:hover {
+            background: #16a34a !important; /* green-600 */
+            border-color: #16a34a !important;
+            color: #042a11 !important;
+        }
+        #delete-group-btn:hover,
+        #delete-cuadro-btn:hover {
+            background: #dc2626 !important; /* red-600 */
+            border-color: #dc2626 !important;
+            color: #081018 !important;
+        }
+        #rename-group-btn:hover,
+        #rename-cuadro-btn:hover {
+            background: #d97706 !important; /* amber-600 */
+            border-color: #d97706 !important;
+            color: #081018 !important;
+        }
+        #prev-cuadro-btn:hover,
+        #next-cuadro-btn:hover,
+        #toggle-scale-btn:hover {
+            background: #4b5563 !important; /* gray-600 */
+            border-color: #4b5563 !important;
+        }
+        /* Restore CTA gradient and stronger border for the download button on hover */
+        #grupo-cuadro-selector #download-btn {
+            /* mute default CTA gradient too (override .cta-button) */
+            background: #374151 !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(255,255,255,0.04) !important;
+        }
+        #grupo-cuadro-selector #download-btn:hover {
+            background: linear-gradient(to right, var(--brand-green-333), var(--brand-green-222)) !important;
+            border: 2px solid var(--brand-green-333) !important;
+            color: #042a11 !important;
+        }
+
+        /* Make icons inside the selector buttons adopt the same color as the button text/border on hover */
+        #grupo-cuadro-selector button i { color: inherit; transition: color 160ms ease; }
+        #add-group-btn:hover i,
+        #add-cuadro-btn:hover i { color: #042a11 !important; }
+        #delete-group-btn:hover i,
+        #delete-cuadro-btn:hover i { color: #081018 !important; }
+        #rename-group-btn:hover i,
+        #rename-cuadro-btn:hover i { color: #081018 !important; }
+        #prev-cuadro-btn:hover i,
+        #next-cuadro-btn:hover i,
+        #toggle-scale-btn:hover i { color: inherit !important; }
+        #grupo-cuadro-selector #download-btn:hover i { color: #042a11 !important; }
+
+        /* Slightly smaller toggle-scale button to visually differentiate it */
+        #toggle-scale-btn { transform: scale(0.8); }
+
+        /* Allow scaling the summary table via CSS variable --summary-scale (default 1) */
+        #summary-table {
+            --summary-scale: 1;
+            transform-origin: center center;
+            transform: scale(var(--summary-scale));
+            transition: transform 0.15s ease;
+        }
+
         .custom-select {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -522,17 +637,44 @@
 </head>
 
 <body>
-    <div class="container mx-auto max-w-7xl flex h-screen">
+    <div class="flex h-screen w-full">
+        <!-- Left column: Elementos (lists visible elements) -->
+        <aside id="elementos-panel">
+            <h3 class="text-lg font-bold text-white font-saira mb-2">Elementos</h3>
+            <div id="elementos-list" aria-live="polite">
+                <!-- Populated by JS -->
+            </div>
+        </aside>
         <!-- Columna de Herramientas -->
         <aside id="herramientas" class="section-card-style p-6 flex-shrink-0">
             <h2 class="text-3xl font-bold mb-6 text-center text-white font-saira">Herramientas</h2>
 
-            <!-- Selector de Cuadros -->
-            <div class="mb-2">
+            <!-- Selector de Grupos + Cuadros -->
+            <div id="grupo-cuadro-selector" class="mb-2">
+                <div class="flex items-center space-x-2 mb-2">
+                    <select id="group-selector" class="w-full custom-select">
+                        <option value="">Grupo: Selecciona o crea uno</option>
+                    </select>
+                    <button id="reorder-group-btn" class="p-2 rounded-md bg-gray-700 hover:bg-gray-600 transition ml-2" title="Reordenar Grupos">
+                        <i class="fas fa-arrows-alt-v"></i>
+                    </button>
+                    <button id="add-group-btn" class="p-2 rounded-md bg-green-600 hover:bg-green-700 transition" title="Agregar Grupo">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button id="delete-group-btn" class="p-2 rounded-md bg-red-600 hover:bg-red-700 transition" title="Eliminar Grupo">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <button id="rename-group-btn" class="p-2 rounded-md bg-yellow-500 hover:bg-yellow-600 transition" title="Renombrar Grupo">
+                        <i class="fas fa-i-cursor"></i>
+                    </button>
+                </div>
                 <div class="flex items-center space-x-2">
                     <select id="cuadro-selector" class="w-full custom-select">
                         <!-- Options will be populated by JS -->
                     </select>
+                    <button id="reorder-cuadros-btn" class="p-2 rounded-md bg-gray-700 hover:bg-gray-600 transition ml-2" title="Reordenar Cuadros">
+                        <i class="fas fa-arrows-alt-v"></i>
+                    </button>
                     <button id="add-cuadro-btn" class="p-2 rounded-md bg-green-600 hover:bg-green-700 transition"
                         title="Agregar Cuadro">
                         <i class="fas fa-plus"></i>
@@ -564,7 +706,7 @@
                     </button>
                     <button id="download-btn"
                         class="w-full cta-button text-green-900 font-bold py-2 rounded-md transition">
-                        <i class="fas fa-download"></i> Descargar Imagen
+                        <i class="fas fa-download"></i> Descargar
                     </button>
                 </div>
                 <div id="download-section" class="text-center space-y-4">
@@ -637,6 +779,12 @@
                                 class="px-3 py-2 bg-green-600 rounded text-white">Aplicar</button>
                         </div>
                     </div>
+                    <div id="final-price-value-properties" class="hidden">
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" id="final-price-round-checkbox" />
+                            <span class="text-sm">Redondear (último dígito a 0)</span>
+                        </label>
+                    </div>
                     <div id="h2-properties" class="hidden">
                         <label for="h2-text" class="block text-sm font-medium">Texto Amarillo (Shift+Enter inserta
                             &lt;br&gt;):</label>
@@ -650,6 +798,13 @@
                             <option value="center">Centrada</option>
                             <option value="right">Derecha</option>
                         </select>
+                    </div>
+                    <div id="feature-softinstalled-properties" class="hidden">
+                        <label for="feature-dynamic-word" class="block text-sm font-medium">Palabra dinámica (feature):</label>
+                        <input type="text" id="feature-dynamic-word" class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" placeholder="USAR" />
+                        <div class="mt-2 text-right">
+                            <button id="apply-feature-dynamic" class="px-3 py-2 bg-green-600 rounded text-white">Aplicar</button>
+                        </div>
                     </div>
                     <div>
                         <label for="pos-x" class="block text-sm font-medium">Posición X:</label>
@@ -665,6 +820,11 @@
                         <label for="scale" class="block text-sm font-medium">Tamaño (0.1 - 8):</label>
                         <input type="number" step="0.1" min="0.1" max="8" id="scale"
                             class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200">
+                    </div>
+                    <div id="img-border-radius-container" class="hidden">
+                        <label for="img-border-radius" class="block text-sm font-medium">Radio de Esquina (px):</label>
+                        <input type="number" step="1" min="0" id="img-border-radius"
+                            class="w-full p-2 rounded-md bg-gray-800 border border-gray-600 text-gray-200" placeholder="0">
                     </div>
                     <div id="width-container" class="hidden">
                         <label for="width" class="block text-sm font-medium">Ancho del Contenedor (%):</label>
@@ -792,6 +952,9 @@
                 title="Limpiar Cuadro">
                 <i class="fas fa-sync-alt"></i>
             </button>
+            <button id="clone-cuadro-btn" class="p-2 rounded-md text-white bg-gray-600 hover:bg-gray-700 transition" title="Clonar Cuadro" style="margin-left:6px;">
+                <i class="fas fa-clone"></i>
+            </button>
         </div>
 
         <div id="flyer-size-selector-wrapper" class="mt-4 w-full">
@@ -827,12 +990,42 @@
             const zIndexInput = document.getElementById('z-index');
             const toggleVisibilityBtn = document.getElementById('toggle-visibility-btn');
             const deleteBtn = document.getElementById('delete-btn');
+            const imgBorderRadiusContainer = document.getElementById('img-border-radius-container');
+            const imgBorderRadiusInput = document.getElementById('img-border-radius');
             const zoomSlider = document.getElementById('zoom-slider');
+            // Wire zoom slider to control the cuadro (canvas) scale and keep state in sync
+            if (zoomSlider) {
+                // Update cuadro scale as the slider moves
+                zoomSlider.addEventListener('input', () => {
+                    try {
+                        const val = Math.max(0.01, Math.min(20, parseFloat(zoomSlider.value) || 1));
+                        const cuadroNode = document.getElementById('cuadro');
+                        if (cuadroNode) {
+                            cuadroNode.style.transform = `scale(${val})`;
+                            cuadroNode.dataset.scaled = String(val);
+                        }
+                    } catch (e) {
+                        console.error('zoomSlider input handler failed', e);
+                    }
+                });
+                // Try to apply initial slider value if cuadro already exists
+                try {
+                    const initial = parseFloat(zoomSlider.value) || 1;
+                    const c = document.getElementById('cuadro');
+                    if (c) { c.style.transform = `scale(${initial})`; c.dataset.scaled = String(initial); }
+                } catch (e) { /* ignore */ }
+            }
             const saveBtn = document.getElementById('save-btn');
             const loadBtn = document.getElementById('load-btn');
             const cuadroSelector = document.getElementById('cuadro-selector');
+            const groupSelector = document.getElementById('group-selector');
+            const addGroupBtn = document.getElementById('add-group-btn');
+            const deleteGroupBtn = document.getElementById('delete-group-btn');
+            const renameGroupBtn = document.getElementById('rename-group-btn');
             const addCuadroBtn = document.getElementById('add-cuadro-btn');
             const deleteCuadroBtn = document.getElementById('delete-cuadro-btn');
+            const reorderGroupBtn = document.getElementById('reorder-group-btn');
+            const reorderCuadrosBtn = document.getElementById('reorder-cuadros-btn');
             const flyerToolbar = document.getElementById('flyer-toolbar');
             let cuadroEl; // Declare cuadroEl here
 
@@ -842,6 +1035,7 @@
             const toolbarAddPriceBtn = document.getElementById('add-price-btn');
             const toolbarAddInfoBtn = document.getElementById('add-info-btn');
             const toolbarClearFlyerBtn = document.getElementById('clear-flyer-btn');
+            const toolbarCloneCuadroBtn = document.getElementById('clone-cuadro-btn');
             const toolbarAddMarkupBtn = document.createElement('button');
             toolbarAddMarkupBtn.id = 'add-markup-btn';
             toolbarAddMarkupBtn.className = 'p-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 transition';
@@ -884,6 +1078,8 @@
             let selectedFlyerItem = null;
             let currentCuadroId = null;
             let allCuadros = [];
+            let allGroups = [];
+            let currentGroupId = null;
             let addedComponents = [];
             const MIN_SCALE = 0.1;
             const MAX_SCALE = 8;
@@ -1327,6 +1523,7 @@
                     width: width,
                     height: height,
                     elements: [],
+                    groupId: currentGroupId || null
                 };
                 allCuadros.push(newCuadro);
                 renderCuadrosSelector();
@@ -1354,7 +1551,10 @@
 
             function renderCuadrosSelector() {
                 cuadroSelector.innerHTML = '';
-                allCuadros.forEach(cuadro => {
+                // Show only cuadros that belong to the current group
+                const groupId = currentGroupId;
+                const cuadrosToShow = groupId ? allCuadros.filter(c => c.groupId === groupId) : allCuadros;
+                cuadrosToShow.forEach(cuadro => {
                     const option = document.createElement('option');
                     option.value = cuadro.id;
                     option.textContent = cuadro.name;
@@ -1363,6 +1563,278 @@
                 if (currentCuadroId) {
                     cuadroSelector.value = currentCuadroId;
                 }
+            }
+
+            function renderGroupSelector() {
+                if (!groupSelector) return;
+                groupSelector.innerHTML = '';
+                allGroups.forEach(g => {
+                    const opt = document.createElement('option');
+                    opt.value = g.id;
+                    opt.textContent = g.name;
+                    groupSelector.appendChild(opt);
+                });
+                if (currentGroupId) groupSelector.value = currentGroupId;
+            }
+
+            // --- Reorder UI Helpers ---
+            function openReorderModal(items, titleText, renderItemLabel, onReorder) {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 z-50 flex items-center justify-center';
+                modal.style.background = 'rgba(0,0,0,0.7)';
+
+                const box = document.createElement('div');
+                box.style.background = '#0b1220';
+                box.style.color = '#e5e7eb';
+                box.style.border = '1px solid rgba(75,85,99,0.5)';
+                box.style.borderRadius = '8px';
+                box.style.padding = '12px';
+                box.style.maxWidth = '520px';
+                box.style.width = '90%';
+                box.style.maxHeight = '80vh';
+                box.style.overflow = 'hidden';
+
+                const header = document.createElement('div');
+                header.style.display = 'flex';
+                header.style.justifyContent = 'space-between';
+                header.style.alignItems = 'center';
+                header.style.marginBottom = '8px';
+                const title = document.createElement('h3');
+                title.textContent = titleText;
+                title.style.margin = '0';
+                title.style.fontSize = '1.05rem';
+                title.style.fontWeight = '700';
+                const closeBtn = document.createElement('button');
+                closeBtn.textContent = 'Cerrar';
+                closeBtn.style.background = 'linear-gradient(to right, #42d232, #95ef81)';
+                closeBtn.style.border = 'none';
+                closeBtn.style.color = '#081018';
+                closeBtn.style.padding = '6px 10px';
+                closeBtn.style.borderRadius = '6px';
+                closeBtn.addEventListener('click', () => document.body.removeChild(modal));
+                header.appendChild(title);
+                header.appendChild(closeBtn);
+
+                const listWrap = document.createElement('div');
+                listWrap.style.overflow = 'auto';
+                listWrap.style.maxHeight = '60vh';
+                listWrap.style.padding = '6px 2px';
+
+                const ul = document.createElement('ul');
+                ul.style.listStyle = 'none';
+                ul.style.padding = '6px';
+                ul.style.margin = '0';
+                ul.style.display = 'flex';
+                ul.style.flexDirection = 'column';
+                ul.style.gap = '6px';
+
+                // Build items
+                items.forEach((it, idx) => {
+                    const li = document.createElement('li');
+                    li.draggable = true;
+                    li.dataset.index = idx;
+                    // store stable id for mapping after DOM reorder
+                    try { li.dataset.itemId = it.id != null ? String(it.id) : String(idx); } catch (e) { li.dataset.itemId = String(idx); }
+                    li.style.background = '#071022';
+                    li.style.border = '1px solid rgba(255,255,255,0.04)';
+                    li.style.padding = '8px 10px';
+                    li.style.borderRadius = '6px';
+                    li.style.display = 'flex';
+                    li.style.alignItems = 'center';
+                    li.style.justifyContent = 'space-between';
+
+                    const label = document.createElement('div');
+                    label.style.color = '#e5e7eb';
+                    label.style.flex = '1';
+                    label.textContent = renderItemLabel(it);
+
+                    const handle = document.createElement('div');
+                    handle.innerHTML = '<i class="fas fa-grip-vertical"></i>';
+                    handle.style.color = '#9ca3af';
+                    handle.style.marginLeft = '8px';
+
+                    li.appendChild(label);
+                    li.appendChild(handle);
+
+                    // drag events
+                    li.addEventListener('dragstart', (e) => {
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/plain', li.dataset.index);
+                        li.style.opacity = '0.4';
+                    });
+                    li.addEventListener('dragend', (e) => { li.style.opacity = '1'; });
+                    li.addEventListener('dragover', (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; li.style.boxShadow = 'inset 0 0 0 2px rgba(255,255,255,0.03)'; });
+                    li.addEventListener('dragleave', (e) => { li.style.boxShadow = ''; });
+                    li.addEventListener('drop', (e) => {
+                        e.preventDefault();
+                        li.style.boxShadow = '';
+                        const from = parseInt(e.dataTransfer.getData('text/plain'));
+                        const to = parseInt(li.dataset.index);
+                        if (isNaN(from) || isNaN(to) || from === to) return;
+                        // Reorder the DOM list in place and update dataset indices so the
+                        // user can continue reordering without the modal closing.
+                        try {
+                            const children = Array.from(ul.children);
+                            const movedNode = children[from];
+                            if (!movedNode) return;
+                            const referenceNode = children[to];
+                            // If moving forward, insert after the reference; otherwise before
+                            if (from < to) {
+                                ul.insertBefore(movedNode, referenceNode.nextSibling);
+                            } else {
+                                ul.insertBefore(movedNode, referenceNode);
+                            }
+                            // Refresh index dataset on each li to reflect new order
+                            Array.from(ul.children).forEach((node, idx) => node.dataset.index = idx);
+                        } catch (err) {
+                            console.error('Reorder failed:', err);
+                        }
+                        // Do NOT call onReorder or close the modal here; wait for user to click Aplicar.
+                    });
+
+                    ul.appendChild(li);
+                });
+
+                listWrap.appendChild(ul);
+
+                const footer = document.createElement('div');
+                footer.style.display = 'flex';
+                footer.style.justifyContent = 'flex-end';
+                footer.style.gap = '8px';
+                footer.style.marginTop = '8px';
+
+                const cancelBtn = document.createElement('button');
+                cancelBtn.textContent = 'Cancelar';
+                cancelBtn.style.background = '#374151';
+                cancelBtn.style.color = '#e5e7eb';
+                cancelBtn.style.padding = '6px 10px';
+                cancelBtn.style.border = 'none';
+                cancelBtn.style.borderRadius = '6px';
+                cancelBtn.addEventListener('click', () => document.body.removeChild(modal));
+
+                const applyBtn = document.createElement('button');
+                applyBtn.textContent = 'Aplicar';
+                applyBtn.style.background = 'linear-gradient(to right, #6366f1, #8b5cf6)';
+                applyBtn.style.color = '#fff';
+                applyBtn.style.padding = '6px 10px';
+                applyBtn.style.border = 'none';
+                applyBtn.style.borderRadius = '6px';
+                applyBtn.addEventListener('click', () => {
+                    // collect current order from UL using stable item ids so DOM moves are respected
+                    const lookup = {};
+                    items.forEach(it => { try { lookup[String(it.id)] = it; } catch (e) {} });
+                    const newOrder = Array.from(ul.children).map(li => {
+                        const id = li.dataset.itemId;
+                        return lookup[id] || items[parseInt(li.dataset.index)];
+                    });
+                    onReorder(newOrder);
+                    document.body.removeChild(modal);
+                });
+
+                footer.appendChild(cancelBtn);
+                footer.appendChild(applyBtn);
+
+                box.appendChild(header);
+                box.appendChild(listWrap);
+                box.appendChild(footer);
+                modal.appendChild(box);
+                document.body.appendChild(modal);
+            }
+
+            // Wire reorder buttons
+            if (typeof reorderGroupBtn !== 'undefined' && reorderGroupBtn) {
+                reorderGroupBtn.addEventListener('click', () => {
+                    // open modal with groups
+                    openReorderModal(allGroups.slice(), 'Reordenar Grupos', (g) => g.name, (newOrder) => {
+                        // Replace allGroups order
+                        allGroups = newOrder.slice();
+                        renderGroupSelector();
+                        // Keep currentGroupId if possible, otherwise clear
+                        if (currentGroupId && !allGroups.find(g => g.id === currentGroupId)) currentGroupId = allGroups[0] ? allGroups[0].id : null;
+                        renderCuadrosSelector();
+                        saveCurrentDesign();
+                        showMessage('Orden de grupos actualizado.', 2000);
+                    });
+                });
+            }
+
+            if (typeof reorderCuadrosBtn !== 'undefined' && reorderCuadrosBtn) {
+                reorderCuadrosBtn.addEventListener('click', () => {
+                    if (!currentGroupId) { showMessage('Selecciona un grupo primero.', 2000); return; }
+                    // Build list of cuadros for current group preserving original references
+                    const cuadrosForGroup = allCuadros.filter(c => c.groupId === currentGroupId);
+                    if (cuadrosForGroup.length <= 1) { showMessage('No hay suficientes cuadros para reordenar.', 2000); return; }
+                    openReorderModal(cuadrosForGroup.slice(), 'Reordenar Cuadros (grupo seleccionado)', (c) => c.name, (newOrder) => {
+                        // Rebuild allCuadros by placing re-ordered group cuadros where they were in the master list
+                        const otherCuadros = allCuadros.filter(c => c.groupId !== currentGroupId);
+                        // We'll append the reordered cuadros after the otherCuadros to preserve a deterministic order
+                        allCuadros = otherCuadros.concat(newOrder.slice());
+                        renderCuadrosSelector();
+                        // Keep selection if possible
+                        if (currentCuadroId && !allCuadros.find(c => c.id === currentCuadroId)) currentCuadroId = newOrder[0].id;
+                        renderGroupSelector();
+                        saveCurrentDesign();
+                        showMessage('Orden de cuadros actualizado.', 2000);
+                    });
+                });
+            }
+
+            function createNewGroup(name) {
+                const id = `group-${Date.now()}`;
+                const g = { id, name, cuadros: [] };
+                allGroups.push(g);
+                renderGroupSelector();
+                // select created group
+                currentGroupId = id;
+                renderGroupSelector();
+                renderCuadrosSelector();
+                // Clear canvas since new group likely has no cuadros
+                clearCanvas();
+                showMessage(`Grupo "${name}" creado.`, 2500);
+            }
+
+            function clearCanvas() {
+                try {
+                    const cuadroNode = document.getElementById('cuadro');
+                    if (cuadroNode) {
+                        const flyer = cuadroNode.querySelector('#flyer');
+                        if (flyer) flyer.remove();
+                        // Optionally remove the cuadro node entirely to avoid residual styles
+                        // but keeping the node is fine; we'll keep it empty
+                    }
+                    addedComponents = [];
+                    selectedFlyerItem = null;
+                    currentDesign = null;
+                    currentCuadroId = null;
+                    if (flyerToolbar) flyerToolbar.classList.add('hidden');
+                    updatePropertiesPanel();
+                    try { populateElementList(); } catch(e) {}
+                } catch (e) { console.error('clearCanvas failed', e); }
+            }
+
+            function deleteCurrentGroup() {
+                if (!currentGroupId) { showMessage('No hay grupo seleccionado.', 2000); return; }
+                // prevent deleting last group
+                if (allGroups.length <= 1) { showMessage('No puedes eliminar el último grupo.', 3000); return; }
+                const idx = allGroups.findIndex(g => g.id === currentGroupId);
+                if (idx === -1) return;
+                // Reassign cuadros in this group to the first remaining group
+                const remaining = allGroups.filter(g => g.id !== currentGroupId);
+                const newGroupId = remaining[0].id;
+                allCuadros.forEach(c => { if (c.groupId === currentGroupId) c.groupId = newGroupId; });
+                allGroups.splice(idx, 1);
+                currentGroupId = newGroupId;
+                renderGroupSelector();
+                renderCuadrosSelector();
+                switchCuadro(allCuadros.find(c => c.groupId === currentGroupId).id);
+                showMessage('Grupo eliminado. Cuadros reasignados.', 3000);
+            }
+
+            function renameCurrentGroup() {
+                const g = allGroups.find(x => x.id === currentGroupId);
+                if (!g) { showMessage('No hay grupo seleccionado.', 2000); return; }
+                const newName = prompt('Nuevo nombre para el grupo:', g.name || '');
+                if (newName && newName.trim()) { g.name = newName.trim(); renderGroupSelector(); showMessage('Grupo renombrado.', 2000); }
             }
 
             function switchCuadro(cuadroId) {
@@ -1376,6 +1848,16 @@
 
                 currentCuadroId = cuadroId;
                 currentDesign = selectedCuadro;
+
+                // Update the selector UI so it matches the newly selected cuadro
+                try {
+                    if (cuadroSelector) {
+                        // If the option exists, set value; otherwise, re-render the selector then set
+                        const opt = Array.from(cuadroSelector.options).find(o => o.value === cuadroId);
+                        if (!opt) renderCuadrosSelector();
+                        cuadroSelector.value = cuadroId;
+                    }
+                } catch (e) { console.warn('Failed to update cuadroSelector value', e); }
 
                 renderCuadro(selectedCuadro);
                 updatePropertiesPanel();
@@ -1416,6 +1898,13 @@
                     cuadro.elements.forEach(elData => loadElement(elData));
                 }
 
+                // When the cuadro finishes loading, ensure no element remains selected.
+                try {
+                    document.querySelectorAll('#flyer .flyer-item').forEach(item => item.classList.remove('active'));
+                    selectedFlyerItem = null;
+                    updatePropertiesPanel();
+                } catch (e) { console.error('Failed to clear selection after renderCuadro', e); }
+
                 updateBaseElements();
 
                 // Set the toolbar position to fixed bottom-right
@@ -1430,6 +1919,18 @@
                 }
 
                 flyerToolbar.classList.remove('hidden');
+
+                // Apply global zoom slider value to cuadro if present
+                try {
+                    if (zoomSlider) {
+                        const v = parseFloat(zoomSlider.value) || 1;
+                        cuadroEl.style.transform = `scale(${v})`;
+                        cuadroEl.dataset.scaled = String(v);
+                    }
+                } catch (e) { /* ignore */ }
+
+                // Update Elementos panel after rendering the cuadro
+                try { populateElementList(); } catch (e) { /* ignore */ }
             }
 
             // Execute optional JS snippets defined in `baseElementData[*].js`
@@ -1467,6 +1968,9 @@
                         nameElementState: component.nameElement ? component.nameElement.style.cssText : null,
                         priceElementState: component.priceElement ? component.priceElement.style.cssText : null,
                         imageName: item.dataset.imageName || null,
+                        // Persist summary table scale separately (uses CSS variable)
+                        summaryScale: (item.dataset.itemId === 'summary-table') ? (getComputedStyle(item).getPropertyValue('--summary-scale') || null) : null,
+                        imageBorderRadius: null,
                         markup: item.dataset.markup || null,
                         h2Text: item.dataset.itemId === 'h2' ? (item.querySelector('h2') ? item.querySelector('h2').innerHTML : null) : null
                     };
@@ -1482,6 +1986,14 @@
                         // Preserve original filename if available (useful when a file was chosen)
                         itemData.imageName = item.dataset.imageName || null;
                     }
+                    // Persist border-radius for any element that contains an <img>
+                    try {
+                        const img = item.querySelector('img');
+                        if (img) {
+                            const br = img.dataset.borderRadius != null ? img.dataset.borderRadius : (img.style.borderRadius ? parseInt(img.style.borderRadius) : null);
+                            itemData.imageBorderRadius = br != null ? br : null;
+                        }
+                    } catch (e) { /* ignore */ }
                     // Persist the three paragraph texts for final-price-info base element
                     if (item.dataset.itemId === 'final-price-info') {
                         try {
@@ -1503,6 +2015,17 @@
                     // Persist meme flip flag
                     if (item.dataset.itemId === 'meme') {
                         itemData.memeFlipped = item.dataset.memeFlipped === '1' ? 1 : 0;
+                    }
+                    // Persist dynamic word for feature-softinstalled
+                    if (item.dataset.itemId === 'feature-softinstalled') {
+                        try {
+                            const span = item.querySelector('#dynamic-word') || item.querySelector('.dynamic-word');
+                            itemData.dynamicWord = span ? span.textContent : (item.dataset.dynamicWord || null);
+                        } catch (e) { itemData.dynamicWord = item.dataset.dynamicWord || null; }
+                    }
+                    // Persist redondear flag for final-price-value
+                    if (item.dataset.itemId === 'final-price-value') {
+                        itemData.redondear = item.dataset.redondear === '1' ? 1 : 0;
                     }
                     currentDesign.elements.push(itemData);
                 });
@@ -1588,6 +2111,30 @@
                             finalInfoProps.classList.add('hidden');
                         }
                     }
+                    // Show final-price-value properties (Redondear)
+                    try {
+                        const fpProps = document.getElementById('final-price-value-properties');
+                        const fpCheckbox = document.getElementById('final-price-round-checkbox');
+                        if (fpProps && fpCheckbox) {
+                            if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === 'final-price-value') {
+                                fpProps.classList.remove('hidden');
+                                fpCheckbox.checked = selectedFlyerItem.dataset.redondear === '1';
+                            } else {
+                                fpProps.classList.add('hidden');
+                            }
+                        }
+                        // Wire change handler safely
+                        if (fpCheckbox) {
+                            fpCheckbox.removeEventListener('change', fpCheckbox._handler || (()=>{}));
+                            fpCheckbox._handler = function() {
+                                if (!selectedFlyerItem) return;
+                                selectedFlyerItem.dataset.redondear = this.checked ? '1' : '0';
+                                updateBaseElements();
+                                saveCurrentDesign();
+                            };
+                            fpCheckbox.addEventListener('change', fpCheckbox._handler);
+                        }
+                    } catch (e) { console.error('final-price-value properties update failed', e); }
                     // Show H2 properties
                     const h2Props = document.getElementById('h2-properties');
                     if (h2Props) {
@@ -1604,6 +2151,37 @@
                             h2Props.classList.add('hidden');
                         }
                     }
+                    // Show image border-radius control when the selected item contains an <img>
+                    try {
+                        if (imgBorderRadiusContainer && imgBorderRadiusInput) {
+                            const imgEl = selectedFlyerItem.querySelector('img');
+                            if (imgEl) {
+                                imgBorderRadiusContainer.classList.remove('hidden');
+                                // read inline style or dataset value
+                                const currentRadius = imgEl.dataset.borderRadius != null ? imgEl.dataset.borderRadius : (imgEl.style.borderRadius ? parseInt(imgEl.style.borderRadius) : 0);
+                                imgBorderRadiusInput.value = currentRadius || 0;
+                            } else {
+                                imgBorderRadiusContainer.classList.add('hidden');
+                            }
+                        }
+                    } catch (e) { console.error('img border-radius panel update failed', e); }
+                    // Feature softinstalled dynamic word property
+                    try {
+                        const featureProps = document.getElementById('feature-softinstalled-properties');
+                        const featureInput = document.getElementById('feature-dynamic-word');
+                        const applyBtn = document.getElementById('apply-feature-dynamic');
+                        if (featureProps && featureInput && applyBtn) {
+                            if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === 'feature-softinstalled') {
+                                featureProps.classList.remove('hidden');
+                                // Find the span with id dynamic-word inside the element
+                                const span = selectedFlyerItem.querySelector('#dynamic-word') || selectedFlyerItem.querySelector('.dynamic-word');
+                                const current = span ? span.textContent : (selectedFlyerItem.dataset.dynamicWord || 'USAR');
+                                featureInput.value = current;
+                            } else {
+                                featureProps.classList.add('hidden');
+                            }
+                        }
+                    } catch (e) { console.error('feature-softinstalled properties update failed', e); }
                 } else {
                     document.getElementById('properties-section').classList.add('hidden');
                 }
@@ -1626,14 +2204,57 @@
                     saveCurrentDesign();
                 };
                 elementNameInput.addEventListener('input', elementNameInput._onInputHandler);
+
+                // Wire apply-feature-dynamic button (avoid duplicates)
+                try {
+                    const applyBtn = document.getElementById('apply-feature-dynamic');
+                    const featureInput = document.getElementById('feature-dynamic-word');
+                    if (applyBtn && featureInput) {
+                        applyBtn.removeEventListener('click', applyBtn._handler || (() => {}));
+                        applyBtn._handler = function () {
+                            if (!selectedFlyerItem || selectedFlyerItem.dataset.itemId !== 'feature-softinstalled') return;
+                            const val = featureInput.value || 'USAR';
+                            // update span inside element
+                            const span = selectedFlyerItem.querySelector('#dynamic-word') || selectedFlyerItem.querySelector('.dynamic-word');
+                            if (span) span.textContent = val;
+                            // persist in dataset for saving
+                            selectedFlyerItem.dataset.dynamicWord = val;
+                            saveCurrentDesign();
+                        };
+                        applyBtn.addEventListener('click', applyBtn._handler);
+                    }
+                } catch (e) { console.error('Wiring apply-feature-dynamic failed', e); }
             }
 
             // --- Event Listeners para Propiedades ---
             posXInput.addEventListener('input', () => { if (selectedFlyerItem) selectedFlyerItem.style.left = `${posXInput.value}px`; });
             posYInput.addEventListener('input', () => { if (selectedFlyerItem) selectedFlyerItem.style.top = `${posYInput.value}px`; });
-            scaleInput.addEventListener('input', () => { if (selectedFlyerItem) selectedFlyerItem.style.transform = `scale(${Math.max(MIN_SCALE, Math.min(MAX_SCALE, parseFloat(scaleInput.value)))})`; });
+            scaleInput.addEventListener('input', () => {
+                if (!selectedFlyerItem) return;
+                const val = Math.max(MIN_SCALE, Math.min(MAX_SCALE, parseFloat(scaleInput.value)));
+                // If the selected item is the summary table, use the CSS variable --summary-scale
+                if (selectedFlyerItem.dataset.itemId === 'summary-table') {
+                    try {
+                        selectedFlyerItem.style.setProperty('--summary-scale', String(val));
+                    } catch (e) { console.error('Failed to set summary-table scale', e); }
+                } else {
+                    selectedFlyerItem.style.transform = `scale(${val})`;
+                }
+            });
             widthInput.addEventListener('input', () => { if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === 'summary-table') selectedFlyerItem.style.width = `${Math.max(10, Math.min(100, parseFloat(widthInput.value)))}%`; });
             zIndexInput.addEventListener('input', () => { if (selectedFlyerItem) selectedFlyerItem.style.zIndex = zIndexInput.value; });
+            if (imgBorderRadiusInput) {
+                imgBorderRadiusInput.addEventListener('input', () => {
+                    if (!selectedFlyerItem) return;
+                    const img = selectedFlyerItem.querySelector('img');
+                    if (!img) return;
+                    const val = parseInt(imgBorderRadiusInput.value) || 0;
+                    img.style.borderRadius = val ? (val + 'px') : '';
+                    // persist on dataset for saving
+                    img.dataset.borderRadius = val;
+                    saveCurrentDesign();
+                });
+            }
             // H2 text change
             const h2TextInput = document.getElementById('h2-text');
             if (h2TextInput) {
@@ -1748,6 +2369,7 @@
                 selectedFlyerItem = null;
                 updateBaseElements();
                 updatePropertiesPanel();
+                try { populateElementList(); } catch (e) {}
             });
 
             // --- Lógica de Creación y Actualización ---
@@ -1806,6 +2428,14 @@
                         img.src = src;
                         img.alt = 'Imagen';
                         img.onerror = () => { img.src = 'https://placehold.co/400x300/374151/ffffff?text=Imagen+No+Encontrada'; };
+                        // apply border-radius from opts if provided
+                        try {
+                            const br = opts.imageBorderRadius != null ? opts.imageBorderRadius : (itemData.imageBorderRadius != null ? itemData.imageBorderRadius : null);
+                            if (br != null && br !== '') {
+                                img.style.borderRadius = (parseInt(br) || 0) ? (parseInt(br) + 'px') : '';
+                                img.dataset.borderRadius = br;
+                            }
+                        } catch (e) { }
                         compEl.appendChild(img);
                         if (itemData._imageName) compEl.dataset.imageName = itemData._imageName;
                         if (itemData._imageSrc) compEl.dataset.imageSrc = itemData._imageSrc;
@@ -1818,6 +2448,11 @@
                         img.src = itemData._imageSrc || `memes/${defaultName}`;
                         img.alt = 'Meme';
                         img.onerror = () => { img.src = 'https://placehold.co/600x600/374151/ffffff?text=Image+Not+Found'; };
+                        // restore border-radius if present on meme
+                        try {
+                            const br = itemData.imageBorderRadius != null ? itemData.imageBorderRadius : (opts.imageBorderRadius != null ? opts.imageBorderRadius : null);
+                            if (br != null) { img.style.borderRadius = (parseInt(br) || 0) ? (parseInt(br) + 'px') : ''; img.dataset.borderRadius = br; }
+                        } catch (e) { }
                         compEl.appendChild(img);
                         // Attach meme popup selector
                         setupMemePopup(compEl);
@@ -1831,6 +2466,15 @@
                     } else {
                         // default: use HTML from baseElementData
                         compEl.innerHTML = baseElementData[itemData.id].html;
+                        // Initialize dynamic word for feature-softinstalled if provided via opts or itemData
+                        if (itemData.id === 'feature-softinstalled') {
+                            try {
+                                const span = compEl.querySelector('#dynamic-word') || compEl.querySelector('.dynamic-word');
+                                const initial = (opts && opts.dynamicWord) ? opts.dynamicWord : (itemData.dynamicWord ? itemData.dynamicWord : (compEl.querySelector('#dynamic-word') ? compEl.querySelector('#dynamic-word').textContent : 'USAR'));
+                                if (span) span.textContent = initial;
+                                compEl.dataset.dynamicWord = initial;
+                            } catch (e) { /* ignore */ }
+                        }
                         // If caller passed an override image src or name (from popup), apply it
                         try {
                             const innerImg = compEl.querySelector('img');
@@ -1862,6 +2506,11 @@
                     if (itemData.id === 'summary-table') {
                         compEl.addEventListener('selectstart', e => e.preventDefault());
                         compEl.addEventListener('dblclick', e => { e.stopPropagation(); compEl.classList.toggle('show-categories'); updateBaseElements(); });
+                        // Apply initial scale if provided via opts or itemData
+                        try {
+                            const initialScale = (opts && opts.summaryScale) ? opts.summaryScale : (itemData.summaryScale ? itemData.summaryScale : null);
+                            if (initialScale) compEl.style.setProperty('--summary-scale', String(initialScale));
+                        } catch (e) { /* ignore */ }
                     }
                 } else {
                     // product/component from catalog
@@ -1883,6 +2532,12 @@
                     compEl.innerHTML = `
                         <img src="comps/${itemData.id}.webp" alt="${itemData.name}" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/ffffff?text=${itemData.name.replace(/\s/g, '+')}';">
                     `;
+                    // apply border-radius if opts provided
+                    try {
+                        const img = compEl.querySelector('img');
+                        const br = opts.imageBorderRadius != null ? opts.imageBorderRadius : (itemData.imageBorderRadius != null ? itemData.imageBorderRadius : null);
+                        if (br != null && img) { img.style.borderRadius = (parseInt(br) || 0) ? (parseInt(br) + 'px') : ''; img.dataset.borderRadius = br; }
+                    } catch (e) { }
                     const nameEl = document.createElement('div');
                     nameEl.className = 'flyer-item component-label';
                     nameEl.textContent = itemData.name;
@@ -1934,6 +2589,7 @@
                 selectedFlyerItem = compEl;
                 updateBaseElements();
                 updatePropertiesPanel();
+                try { populateElementList(); } catch (e) {}
             }
 
             function loadElement(elData) {
@@ -1959,6 +2615,12 @@
                         compEl.querySelector('h3').textContent = elData.summaryTitle;
                         compEl.addEventListener('selectstart', e => e.preventDefault());
                         compEl.addEventListener('dblclick', e => { e.stopPropagation(); compEl.classList.toggle('show-categories'); updateBaseElements(); });
+                        // Restore summary table scale if present (applies to CSS variable)
+                        try {
+                            if (elData.summaryScale) {
+                                compEl.style.setProperty('--summary-scale', elData.summaryScale);
+                            }
+                        } catch (e) { console.warn('Failed restoring summaryScale', e); }
                     }
                     addedComponents.push({ id: elData.id, name: elData.name, element: compEl, isBaseElement: true });
                     document.getElementById('flyer').appendChild(compEl);
@@ -1993,6 +2655,15 @@
                             }
                         } catch (e) { compEl.dataset.memeFlipped = '0'; }
                     }
+                    // If this base is feature-softinstalled, restore dynamic word
+                    if (elData.id === 'feature-softinstalled') {
+                        try {
+                            const span = compEl.querySelector('#dynamic-word') || compEl.querySelector('.dynamic-word');
+                            const val = elData.dynamicWord || compEl.querySelector('#dynamic-word')?.textContent || elData.name || 'USAR';
+                            if (span) span.textContent = val;
+                            compEl.dataset.dynamicWord = val;
+                        } catch (e) { console.warn('Failed restoring feature-softinstalled dynamicWord', e); }
+                    }
                     // If this base is an imagen, restore image src/name if present
                     if (elData.id === 'imagen') {
                         const img = compEl.querySelector('img') || compEl.querySelector('.generic-image');
@@ -2004,6 +2675,13 @@
                             if (img) img.src = elData.imageName;
                         }
                         if (img) img.onerror = () => { img.src = 'https://placehold.co/400x300/374151/ffffff?text=Imagen+No+Encontrada'; };
+                        // Restore border radius if present
+                        try {
+                            if (elData.imageBorderRadius != null && img) {
+                                img.style.borderRadius = (parseInt(elData.imageBorderRadius) || 0) ? (parseInt(elData.imageBorderRadius) + 'px') : '';
+                                img.dataset.borderRadius = elData.imageBorderRadius;
+                            }
+                        } catch (e) { }
                     }
                     // If this base is a markup element, restore stored HTML
                     if (elData.id === 'markup') {
@@ -2041,6 +2719,12 @@
                             if (elData.finalInfo3 && pEls[2]) pEls[2].innerHTML = elData.finalInfo3;
                         } catch (e) { console.error('Failed restoring final-price-info texts', e); }
                     }
+                    // If this base is final-price-value, restore redondear flag
+                    if (elData.id === 'final-price-value') {
+                        try {
+                            compEl.dataset.redondear = elData.redondear && parseInt(elData.redondear) === 1 ? '1' : '0';
+                        } catch (e) { compEl.dataset.redondear = '0'; }
+                    }
                 } else {
                     const allProducts = data ? Object.values(data).flat() : [];
                     const currentProduct = allProducts.find(p => p.id === parseInt(elData.id));
@@ -2054,6 +2738,15 @@
                     compEl.dataset.itemType = elData.type;
                     compEl.style.cssText = elData.style;
                     compEl.innerHTML = `<img src="comps/${elData.id}.webp" alt="${elData.name}" class="w-full h-full object-contain" onerror="this.onerror=null;this.src='https://placehold.co/200x200/374151/ffffff?text=${elData.name.replace(/\s/g, '+')}';">`;
+
+                    // Apply saved image border-radius for catalog items
+                    try {
+                        const img = compEl.querySelector('img');
+                        if (elData.imageBorderRadius != null && img) {
+                            img.style.borderRadius = (parseInt(elData.imageBorderRadius) || 0) ? (parseInt(elData.imageBorderRadius) + 'px') : '';
+                            img.dataset.borderRadius = elData.imageBorderRadius;
+                        }
+                    } catch (e) { }
 
                     const nameEl = document.createElement('div');
                     nameEl.className = 'flyer-item component-label';
@@ -2098,7 +2791,15 @@
                 if (priceEl) {
                     const priceTextEl = priceEl.querySelector('p');
                     if (priceTextEl) {
-                        priceTextEl.textContent = `$${totalServicePrice.toLocaleString('es-AR')}`;
+                        let displayPrice = totalServicePrice;
+                        try {
+                            const shouldRound = priceEl.dataset.redondear === '1';
+                            if (shouldRound) {
+                                // Round down so the last digit becomes 0 (e.g., 115 -> 110)
+                                displayPrice = Math.floor(displayPrice / 10) * 10;
+                            }
+                        } catch (e) { /* ignore */ }
+                        priceTextEl.textContent = `$${displayPrice.toLocaleString('es-AR')}`;
                     }
                 }
 
@@ -2133,6 +2834,48 @@
                     `;
                     tableBody.appendChild(serviceRow);
                 }
+            }
+
+            // Populate the left 'Elementos' panel with visible elements from the canvas
+            function populateElementList() {
+                const panel = document.getElementById('elementos-list');
+                if (!panel) return;
+                panel.innerHTML = '';
+                // Collect visible elements currently in the flyer
+                const flyerItems = Array.from(document.querySelectorAll('#flyer .flyer-item'));
+                // Map to objects with name and ref; prefer dataset.itemName then dataset.itemId
+                const items = flyerItems.map(el => ({
+                    id: el.dataset.itemId || el.id || '',
+                    name: (el.dataset.itemName || el.dataset.itemId || el.id || '').toString(),
+                    element: el
+                }));
+                // Sort by name (locale compare) and then render
+                items.sort((a,b) => a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }));
+                items.forEach(it => {
+                    const row = document.createElement('div');
+                    row.className = 'elemento-row';
+                    row.tabIndex = 0;
+                    row.dataset.itemId = it.id;
+                    row.textContent = it.name || '(sin nombre)';
+                    // Highlight if currently selected
+                    try { if (selectedFlyerItem && selectedFlyerItem.dataset.itemId === it.id) row.classList.add('selected'); } catch(e) {}
+                    row.addEventListener('click', (ev) => {
+                        try {
+                            // Deselect any selected flyer item
+                            document.querySelectorAll('#flyer .flyer-item').forEach(i => i.classList.remove('active'));
+                            // Mark this element active and update properties
+                            it.element.classList.add('active');
+                            selectedFlyerItem = it.element;
+                            updatePropertiesPanel();
+                            // Do NOT change element position/size when selecting; just highlight and update properties
+                            // Update the Elementos panel selection visual
+                            Array.from(panel.children).forEach(ch => ch.classList.remove('selected'));
+                            row.classList.add('selected');
+                        } catch (err) { console.error('Failed selecting element from Elementos panel', err); }
+                    });
+                    row.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); row.click(); } });
+                    panel.appendChild(row);
+                });
             }
 
 
@@ -2176,6 +2919,10 @@
 
             // --- Carga Inicial de Datos ---
             async function initializeApp() {
+                // Ensure at least one default group exists
+                if (!allGroups || allGroups.length === 0) {
+                    createNewGroup('Default');
+                }
                 try {
                     // FIX: Changed the JSON file to 'productsH.json'
                     const productsResponse = await fetch('productsH.json');
@@ -2190,10 +2937,36 @@
                     const flyersResponse = await fetch('flyers.json');
                     if (flyersResponse.ok) {
                         const responseData = await flyersResponse.json();
-                        if (Array.isArray(responseData) && responseData.length > 0) {
-                            allCuadros = responseData;
+                        // Support new format { groups: [], cuadros: [] }
+                        if (responseData && responseData.cuadros && Array.isArray(responseData.cuadros) && responseData.cuadros.length > 0) {
+                            allCuadros = responseData.cuadros;
+                            if (Array.isArray(responseData.groups) && responseData.groups.length > 0) {
+                                allGroups = responseData.groups;
+                                currentGroupId = allGroups[0].id;
+                            } else if (!allGroups || allGroups.length === 0) {
+                                createNewGroup('Default');
+                            }
+                            const defaultGroupId = currentGroupId || (allGroups[0] && allGroups[0].id);
+                            allCuadros.forEach(c => { if (!c.groupId) c.groupId = defaultGroupId; });
+                            renderGroupSelector();
                             renderCuadrosSelector();
-                            switchCuadro(allCuadros[0].id);
+                            // Select the first cuadro that belongs to the current group, if any.
+                            const initialForGroup = allCuadros.find(c => c.groupId === (currentGroupId || (allGroups[0] && allGroups[0].id)));
+                            if (initialForGroup) switchCuadro(initialForGroup.id);
+                            else if (allCuadros[0]) switchCuadro(allCuadros[0].id);
+                        } else if (Array.isArray(responseData) && responseData.length > 0) {
+                            // legacy array format
+                            allCuadros = responseData;
+                            if (!allGroups || allGroups.length === 0) {
+                                createNewGroup('Default');
+                            }
+                            const defaultGroupId = currentGroupId || (allGroups[0] && allGroups[0].id);
+                            allCuadros.forEach(c => { if (!c.groupId) c.groupId = defaultGroupId; });
+                            renderCuadrosSelector();
+                            // For legacy array format, prefer a cuadro in the current/default group
+                            const defaultGroup = currentGroupId || (allGroups[0] && allGroups[0].id);
+                            const initialLegacy = allCuadros.find(c => c.groupId === defaultGroup) || allCuadros[0];
+                            if (initialLegacy) switchCuadro(initialLegacy.id);
                         } else {
                             createNewCuadro("Cuadro 1");
                         }
@@ -2212,10 +2985,27 @@
                     const clipboardText = await navigator.clipboard.readText();
                     const parsedData = JSON.parse(clipboardText);
 
-                    if (Array.isArray(parsedData) && parsedData.length > 0) {
-                        allCuadros = parsedData;
+                    // Accept both new format { groups, cuadros } and legacy array of cuadros
+                    if (parsedData && parsedData.cuadros && Array.isArray(parsedData.cuadros) && parsedData.cuadros.length > 0) {
+                        allCuadros = parsedData.cuadros;
+                        if (Array.isArray(parsedData.groups) && parsedData.groups.length > 0) {
+                            allGroups = parsedData.groups;
+                            currentGroupId = allGroups[0].id;
+                        } else if (!allGroups || allGroups.length === 0) createNewGroup('Default');
+                        const defaultGroupId = currentGroupId || (allGroups[0] && allGroups[0].id);
+                        allCuadros.forEach(c => { if (!c.groupId) c.groupId = defaultGroupId; });
+                        renderGroupSelector();
                         renderCuadrosSelector();
-                        switchCuadro(allCuadros[0].id);
+                        switchCuadro(allCuadros.find(c => c.groupId === defaultGroupId).id);
+                        showMessage("Diseños cargados desde el portapapeles.", 3000);
+                    } else if (Array.isArray(parsedData) && parsedData.length > 0) {
+                        allCuadros = parsedData;
+                        if (!allGroups || allGroups.length === 0) createNewGroup('Default');
+                        const defaultGroupId = currentGroupId || (allGroups[0] && allGroups[0].id);
+                        allCuadros.forEach(c => { if (!c.groupId) c.groupId = defaultGroupId; });
+                        renderGroupSelector();
+                        renderCuadrosSelector();
+                        switchCuadro(allCuadros.find(c => c.groupId === defaultGroupId).id);
                         showMessage("Diseños cargados desde el portapapeles.", 3000);
                     } else {
                         showMessage("El JSON del portapapeles no es válido o está vacío.", 5000);
@@ -2230,6 +3020,27 @@
             addCuadroBtn.addEventListener('click', () => {
                 const newCuadroName = prompt("Ingresa el nombre del nuevo cuadro:", `Cuadro ${allCuadros.length + 1}`);
                 if (newCuadroName) createNewCuadro(newCuadroName);
+            });
+            // Group buttons
+            if (addGroupBtn) addGroupBtn.addEventListener('click', () => {
+                const name = prompt('Nombre del nuevo grupo:', `Grupo ${allGroups.length + 1}`);
+                if (name) createNewGroup(name);
+            });
+            if (deleteGroupBtn) deleteGroupBtn.addEventListener('click', () => {
+                if (confirm('¿Eliminar grupo actual? Los cuadros se reasignarán a otro grupo.')) deleteCurrentGroup();
+            });
+            if (renameGroupBtn) renameGroupBtn.addEventListener('click', () => renameCurrentGroup());
+            if (groupSelector) groupSelector.addEventListener('change', (e) => {
+                currentGroupId = e.target.value;
+                renderCuadrosSelector();
+                // If the selected group has cuadros, auto-select the first one.
+                // Otherwise, clear the canvas and keep it blank for empty groups.
+                const cuadrosInGroup = allCuadros.filter(c => c.groupId === currentGroupId);
+                if (cuadrosInGroup.length > 0) {
+                    switchCuadro(cuadrosInGroup[0].id);
+                } else {
+                    clearCanvas();
+                }
             });
             // Rename selected cuadro
             const renameBtn = document.getElementById('rename-cuadro-btn');
@@ -2259,11 +3070,256 @@
             categorySelector.addEventListener('change', () => populateImageSelector(categorySelector.value));
             saveBtn.addEventListener('click', () => {
                 saveCurrentDesign();
-                const jsonString = JSON.stringify(allCuadros, null, 2);
+                // Save both groups and cuadros together
+                const payload = { groups: allGroups, cuadros: allCuadros };
+                const jsonString = JSON.stringify(payload, null, 2);
                 navigator.clipboard.writeText(jsonString);
                 showMessage("JSON de cuadros copiado al portapapeles. ¡Pégalo en tu archivo flyers.json!", 5000);
             });
             loadBtn.addEventListener('click', loadDesignsFromJson);
+
+            // Global key handler: Escape deselects any selected flyer item
+            document.addEventListener('keydown', (ev) => {
+                // Toggle herramientas with Tab (prevent default focus movement)
+                if (ev.key === 'Tab') {
+                    ev.preventDefault();
+                    const herramientas = document.getElementById('herramientas');
+                    const elementosPanel = document.getElementById('elementos-panel');
+                    const flyerToolbarEl = document.getElementById('flyer-toolbar');
+                    // Toggle herramientas visibility
+                    if (herramientas) {
+                        const isHidden = herramientas.style.display === 'none' || herramientas.classList.contains('hidden');
+                        if (isHidden) {
+                            herramientas.style.display = '';
+                            herramientas.classList.remove('hidden');
+                        } else {
+                            herramientas.style.display = 'none';
+                            herramientas.classList.add('hidden');
+                        }
+                    }
+                    // Toggle elementos panel to match herramientas
+                    if (elementosPanel) {
+                        const isHiddenE = elementosPanel.style.display === 'none' || elementosPanel.classList.contains('hidden');
+                        if (isHiddenE) {
+                            elementosPanel.style.display = '';
+                            elementosPanel.classList.remove('hidden');
+                        } else {
+                            elementosPanel.style.display = 'none';
+                            elementosPanel.classList.add('hidden');
+                        }
+                    }
+                    // Toggle flyer toolbar visibility to match
+                    if (flyerToolbarEl) {
+                        const tHidden = flyerToolbarEl.style.display === 'none' || flyerToolbarEl.classList.contains('hidden');
+                        if (tHidden) {
+                            flyerToolbarEl.style.display = '';
+                            flyerToolbarEl.classList.remove('hidden');
+                        } else {
+                            flyerToolbarEl.style.display = 'none';
+                            flyerToolbarEl.classList.add('hidden');
+                        }
+                    }
+                    return;
+                }
+                if (ev.key === 'Escape' || ev.key === 'Esc') {
+                    try {
+                        if (selectedFlyerItem) {
+                            selectedFlyerItem.classList.remove('active');
+                        }
+                        selectedFlyerItem = null;
+                        updatePropertiesPanel();
+                    } catch (e) { console.error('Failed to deselect on Escape', e); }
+                }
+            });
+
+            // Ctrl/Meta + wheel to control global canvas zoom (updates zoomSlider)
+            document.addEventListener('wheel', (ev) => {
+                try {
+                    const isModifier = ev.ctrlKey || ev.metaKey;
+                    if (!isModifier) return; // only act when Ctrl/Cmd is held
+                    // Prevent browser/page zoom/pinch
+                    ev.preventDefault();
+
+                    if (!zoomSlider) return;
+                    const step = parseFloat(zoomSlider.step) || 0.05;
+                    const min = parseFloat(zoomSlider.min) || 0.01;
+                    const max = parseFloat(zoomSlider.max) || 20;
+                    // wheel delta: negative means scrolling up (zoom in)
+                    const delta = ev.deltaY < 0 ? 1 : -1;
+                    let current = parseFloat(zoomSlider.value) || 1;
+                    current = current + (delta * step);
+                    current = Math.max(min, Math.min(max, current));
+                    // Update slider and apply to cuadro
+                    zoomSlider.value = String(current);
+                    const cuadroNode = document.getElementById('cuadro');
+                    if (cuadroNode) {
+                        cuadroNode.style.transform = `scale(${current})`;
+                        cuadroNode.dataset.scaled = String(current);
+                    }
+                } catch (e) { console.error('Ctrl+wheel zoom handler failed', e); }
+            }, { passive: false });
+
+            // Clone cuadro button: open modal to select destination group and clone current cuadro
+            if (toolbarCloneCuadroBtn) {
+                toolbarCloneCuadroBtn.addEventListener('click', () => {
+                    try {
+                        if (!currentDesign || !currentCuadroId) {
+                            showMessage('No hay cuadro seleccionado para clonar.', 3000);
+                            return;
+                        }
+
+                        // Build modal
+                        const modal = document.createElement('div');
+                        modal.className = 'fixed inset-0 z-50 flex items-center justify-center';
+                        modal.style.background = 'rgba(0,0,0,0.6)';
+
+                        const box = document.createElement('div');
+                        box.style.background = '#0b1220';
+                        box.style.color = '#e5e7eb';
+                        box.style.border = '1px solid rgba(255,255,255,0.06)';
+                        box.style.borderRadius = '8px';
+                        box.style.padding = '14px';
+                        box.style.width = '420px';
+                        box.style.maxWidth = '95%';
+
+                        const title = document.createElement('h3');
+                        title.textContent = 'Clonar cuadro';
+                        title.style.margin = '0 0 10px 0';
+                        title.style.fontSize = '1.05rem';
+                        title.style.fontWeight = '700';
+
+                        const info = document.createElement('div');
+                        info.style.color = '#9ca3af';
+                        info.style.fontSize = '13px';
+                        info.style.marginBottom = '8px';
+                        info.textContent = `Clonando: "${currentDesign.name || currentCuadroId}". Elige el grupo destino:`;
+
+                        const select = document.createElement('select');
+                        select.style.width = '100%';
+                        select.style.padding = '8px';
+                        select.style.marginBottom = '10px';
+                        // Dark mode styling
+                        select.style.background = '#0f1724';
+                        select.style.color = '#e5e7eb';
+                        select.style.border = '1px solid rgba(255,255,255,0.06)';
+                        select.style.borderRadius = '6px';
+                        // populate groups
+                        if (!allGroups || allGroups.length === 0) {
+                            const opt = document.createElement('option'); opt.value = ''; opt.textContent = 'No hay grupos. Crea uno primero.'; select.appendChild(opt);
+                        } else {
+                            allGroups.forEach(g => {
+                                const opt = document.createElement('option'); opt.value = g.id; opt.textContent = g.name || g.id; select.appendChild(opt);
+                            });
+                        }
+
+                        const nameLabel = document.createElement('label');
+                        nameLabel.textContent = 'Nombre del nuevo cuadro (opcional)';
+                        nameLabel.style.display = 'block';
+                        nameLabel.style.fontSize = '12px';
+                        nameLabel.style.marginBottom = '6px';
+
+                        const nameInput = document.createElement('input');
+                        nameInput.type = 'text';
+                        nameInput.placeholder = `${currentDesign.name || 'Nuevo Cuadro'}`;
+                        nameInput.style.width = '100%';
+                        nameInput.style.padding = '8px';
+                        nameInput.style.marginBottom = '10px';
+                        // Dark mode styling for input
+                        nameInput.style.background = '#071023';
+                        nameInput.style.color = '#e5e7eb';
+                        nameInput.style.border = '1px solid rgba(255,255,255,0.06)';
+                        nameInput.style.borderRadius = '6px';
+                        nameInput.style.outline = 'none';
+                        nameInput.addEventListener('focus', () => { nameInput.style.boxShadow = '0 0 0 3px rgba(66,210,50,0.08)'; });
+                        nameInput.addEventListener('blur', () => { nameInput.style.boxShadow = 'none'; });
+
+                        const actions = document.createElement('div');
+                        actions.style.display = 'flex';
+                        actions.style.justifyContent = 'flex-end';
+                        actions.style.gap = '8px';
+
+                        const cancelBtn = document.createElement('button');
+                        cancelBtn.textContent = 'Cancelar';
+                        cancelBtn.style.padding = '8px 10px';
+                        cancelBtn.style.background = 'transparent';
+                        cancelBtn.style.border = '1px solid rgba(255,255,255,0.06)';
+                        cancelBtn.style.color = '#cbd5e1';
+                        cancelBtn.style.borderRadius = '6px';
+
+                        const okBtn = document.createElement('button');
+                        okBtn.textContent = 'Clonar';
+                        okBtn.style.padding = '8px 12px';
+                        okBtn.style.background = 'linear-gradient(to right, #42d232, #95ef81)';
+                        okBtn.style.border = 'none';
+                        okBtn.style.color = '#081018';
+                        okBtn.style.borderRadius = '6px';
+
+                        actions.appendChild(cancelBtn);
+                        actions.appendChild(okBtn);
+
+                        box.appendChild(title);
+                        box.appendChild(info);
+                        box.appendChild(select);
+                        box.appendChild(nameLabel);
+                        box.appendChild(nameInput);
+                        box.appendChild(actions);
+                        modal.appendChild(box);
+                        document.body.appendChild(modal);
+
+                        cancelBtn.addEventListener('click', () => document.body.removeChild(modal));
+                        modal.addEventListener('click', (ev) => { if (ev.target === modal) document.body.removeChild(modal); });
+
+                        okBtn.addEventListener('click', () => {
+                            try {
+                                const destGroupId = select.value;
+                                if (!destGroupId) { showMessage('Selecciona un grupo destino válido.', 3000); return; }
+
+                                // Save current design first
+                                saveCurrentDesign();
+
+                                // Deep clone currentDesign
+                                const cloned = JSON.parse(JSON.stringify(currentDesign));
+                                cloned.id = `cuadro-${Date.now()}`;
+                                cloned.name = (nameInput.value && nameInput.value.trim()) ? nameInput.value.trim() : (cloned.name ? cloned.name + ' (clon)' : `Clon ${Date.now()}`);
+                                cloned.groupId = destGroupId;
+
+                                // Ensure elements arrays are independent objects (already via JSON clone)
+                                allCuadros.push(cloned);
+
+                                // Ensure the destination group exists and add cuadro id to group record if that structure is used
+                                const grp = allGroups.find(g => g.id === destGroupId);
+                                if (grp) {
+                                    if (!Array.isArray(grp.cuadros)) grp.cuadros = [];
+                                    grp.cuadros.push(cloned.id);
+                                }
+
+                                // Make the cloned group the current group and select the cloned cuadro
+                                currentGroupId = destGroupId;
+                                renderGroupSelector();
+                                renderCuadrosSelector();
+                                // Ensure cuadro selector shows the new cuadro and switch to it
+                                try {
+                                    const selector = document.getElementById('cuadro-selector');
+                                    if (selector) selector.value = cloned.id;
+                                } catch (e) {}
+                                switchCuadro(cloned.id);
+                                showMessage(`Cuadro clonado a grupo "${grp ? grp.name : destGroupId}".`, 3500);
+                                document.body.removeChild(modal);
+                            } catch (err) {
+                                console.error('Error clonando cuadro', err);
+                                showMessage('Error al clonar el cuadro.', 3000);
+                                try { if (modal && modal.parentNode) modal.parentNode.removeChild(modal); } catch (e) {}
+                            }
+                        });
+
+                        // keyboard accessibility: Esc to close
+                        modal.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') { try { document.body.removeChild(modal); } catch (e) {} } });
+                        // focus first control
+                        select.focus();
+
+                    } catch (e) { console.error('Clone handler failed', e); showMessage('No se pudo abrir el diálogo de clonación.', 3000); }
+                });
+            }
 
             // Export using local `js/html-to-image.js` only (minimal flow)
             downloadBtn.addEventListener('click', async () => {
@@ -2478,6 +3534,7 @@
                 selectedFlyerItem = null;
                 updateBaseElements();
                 updatePropertiesPanel();
+                try { populateElementList(); } catch (e) {}
                 showMessage("Cuadro de diseño limpiado.", 3000);
             });
             toolbarAddMemeBtn.addEventListener('click', () => {
@@ -2702,10 +3759,12 @@
                         cuadro.style.transform = 'scale(1)';
                         cuadro.dataset.scaled = '1';
                         toggleScaleBtn.title = 'Alternar escala (0.5)';
+                        try { if (zoomSlider) zoomSlider.value = '1'; } catch(e){}
                     } else {
                         cuadro.style.transform = 'scale(0.5)';
                         cuadro.dataset.scaled = '0.5';
                         toggleScaleBtn.title = 'Alternar escala (1)';
+                        try { if (zoomSlider) zoomSlider.value = '0.5'; } catch(e){}
                     }
                 });
             }
