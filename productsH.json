@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "10363",
       "cantRam": 2,
-      "total": 406117,
+      "total": 394807,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 456537,
+      "total": 445227,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -66,6 +66,10 @@
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 236499,
+          "date": "2025-09-25T13:27:12.836Z"
+        },
         {
           "value": 236631,
           "date": "2025-09-24T14:27:49.843Z"
@@ -160,6 +164,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 201000,
+          "date": "2025-09-25T13:29:16.422Z"
+        },
         {
           "value": 199780,
           "date": "2025-09-24T17:06:23.609Z"
@@ -1609,6 +1617,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 243589,
+          "date": "2025-09-25T13:28:00.951Z"
+        },
+        {
           "value": 254899,
           "date": "2025-09-24T14:28:53.151Z"
         },
@@ -1843,6 +1855,10 @@
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
       "visible": 0,
       "prices": [
+        {
+          "value": 51499,
+          "date": "2025-09-25T13:28:15.038Z"
+        },
         {
           "value": 52999,
           "date": "2025-09-19T03:10:19.848Z"

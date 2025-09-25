@@ -20,9 +20,9 @@
       "description": "La nave equilibrada para gamers y creadores. 8 núcleos/16 hilos y gráfica Vega 8 para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
       "cpu": "55990",
       "mother": "23506",
-      "ram": "10363",
+      "ram": "93477",
       "cantRam": 2,
-      "total": 406117,
+      "total": 415299,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -36,7 +36,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 456537,
+      "total": 442117,
       "totalram": 32,
       "visible": 1,
       "price": 0,
@@ -50,17 +50,17 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 236631,
-      "lastUpd": "2025-09-24T14:27:49.843Z"
+      "price": 236499,
+      "lastUpd": "2025-09-25T13:27:12.836Z"
     },
     {
       "id": 97786,
       "name": "I5 3.3 GHz + 8GB RAM + 240GB SSD",
-      "price": 199780,
       "link": "https://www.mercadolibre.com.ar/pc-de-escritorio-armada-cpu-computadora-intel-core-i5-8gb-ssd-240gb-ideal-uso-de-oficina-administrativo-hogareno-locales-sistema-de-gestion/p/MLA38525278?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "lastUpd": "2025-09-24T17:06:23.609Z"
+      "price": 201000,
+      "lastUpd": "2025-09-25T13:29:16.422Z"
     }
   ],
   "towersOptions": [
@@ -130,8 +130,8 @@
       "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 56216,
-      "lastUpd": "2025-09-24T14:43:49.593Z"
+      "price": 54777,
+      "lastUpd": "2025-09-25T14:49:17.299Z"
     },
     {
       "id": 93692,
@@ -139,8 +139,8 @@
       "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
       "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 103309,
-      "lastUpd": "2025-09-24T14:43:57.037Z"
+      "price": 100448,
+      "lastUpd": "2025-09-25T14:49:23.660Z"
     },
     {
       "id": 86326,
@@ -148,8 +148,8 @@
       "description": "Opción económica si precisás exprimir el precio y no precisás tanto espacio. SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-hiksemi-wave-240gb-3d-nand-pc-notebook/p/MLA45759263?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 35238,
-      "lastUpd": "2025-09-24T14:44:04.426Z"
+      "price": 33630,
+      "lastUpd": "2025-09-25T14:49:40.908Z"
     }
   ],
   "gpuOptions": [
@@ -165,10 +165,10 @@
     {
       "id": 50566,
       "name": "GT 740 | 2GB",
-      "price": 179999,
       "link": "https://www.mercadolibre.com.ar/placa-video-geforce-gt740-2gb-gddr5-128bit-hdmi-vga-dvi/p/MLA22805535?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
+      "price": 179999,
       "lastUpd": "2025-09-25T05:08:39.987Z"
     },
     {
@@ -309,40 +309,20 @@
       "description": "8 nucleos 4.6ghz Am4",
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 254899,
-      "lastUpd": "2025-09-24T14:28:53.151Z"
+      "price": 243589,
+      "lastUpd": "2025-09-25T13:28:00.951Z"
     }
   ],
   "ramOptions": [
     {
-      "id": 81841,
-      "name": "DDR4 8x2 = 16 GB",
+      "id": 69550,
+      "name": "DDR3 2x8 - Samsung",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1457171545-memoria-ram-samsung-ddr3-2x8gb-1600mhz-oem-kit-16gb-total-_JM?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
       "total": 16,
-      "description": "",
-      "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE",
-      "visible": 0,
-      "price": 69987,
-      "lastUpd": "2025-09-17T12:41:01.259Z"
-    },
-    {
-      "id": 93477,
-      "name": "DDR4 8 GB - Hiksemi",
-      "total": 8,
-      "description": "",
-      "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
-      "visible": 0,
-      "price": 44890,
-      "lastUpd": "2025-09-11T13:55:14.254Z"
-    },
-    {
-      "id": 8502,
-      "name": "DDR4 16GB - 3200 Mhz Hiksemi",
-      "total": 16,
-      "description": "",
-      "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
-      "visible": 0,
-      "price": 52999,
-      "lastUpd": "2025-09-19T03:10:19.848Z"
+      "price": 49196,
+      "lastUpd": "2025-09-24T16:45:42.825Z"
     },
     {
       "id": 769,
@@ -355,44 +335,64 @@
       "lastUpd": "2025-09-24T14:43:08.187Z"
     },
     {
+      "id": 81841,
+      "name": "DDR4 8x2 = 16 GB",
+      "total": 16,
+      "description": "",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE",
+      "visible": 0,
+      "price": 69987,
+      "lastUpd": "2025-09-17T12:41:01.259Z"
+    },
+    {
+      "id": 8502,
+      "name": "DDR4 16GB - 3200 Mhz Hiksemi",
+      "total": 16,
+      "description": "",
+      "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
+      "visible": 0,
+      "price": 51499,
+      "lastUpd": "2025-09-25T13:28:15.038Z"
+    },
+    {
       "id": 77124,
-      "name": "DDR4 8 GB - Patriot",
+      "name": "DDR4 8 GB - Patriot OEM",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-patriot-signature-8gb-3200mhz-dimm-negra/p/MLA37810612?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "total": 8,
       "price": 30300,
-      "lastUpd": "2025-09-24T14:35:01.569Z",
-      "total": 8
+      "lastUpd": "2025-09-24T14:35:01.569Z"
+    },
+    {
+      "id": 93477,
+      "name": "DDR4 8 GB - Hiksemi",
+      "total": 8,
+      "description": "",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
+      "visible": 1,
+      "price": 44890,
+      "lastUpd": "2025-09-11T13:55:14.254Z"
     },
     {
       "id": 10363,
       "name": "DDR4 8 GB - Patriot Viper",
-      "price": 34644,
       "link": "https://www.mercadolibre.com.ar/memoria-ram-gamer-color-negrorojo-8gb-1-patriot-pve248g320c8/p/MLA19135093?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "lastUpd": "2025-09-24T16:45:10.377Z",
-      "total": 8
-    },
-    {
-      "id": 69550,
-      "name": "DDR3 2x8 - Samsung",
-      "price": 49196,
-      "link": "https://articulo.mercadolibre.com.ar/MLA-1457171545-memoria-ram-samsung-ddr3-2x8gb-1600mhz-oem-kit-16gb-total-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
-      "lastUpd": "2025-09-24T16:45:42.825Z",
-      "total": 16
+      "total": 8,
+      "price": 59741,
+      "lastUpd": "2025-09-25T14:43:32.609Z"
     },
     {
       "id": 55457,
       "name": "DDR4 16GB - Hiksemi Armor",
-      "price": 59854,
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-16gb-3200mhz-hiksemi-armor-u-dimm/p/MLA38657900?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "lastUpd": "2025-09-24T16:59:21.254Z",
-      "total": 16
+      "total": 16,
+      "price": 58299,
+      "lastUpd": "2025-09-25T14:48:32.482Z"
     }
   ],
   "comboOptions": [
@@ -495,22 +495,13 @@
   ],
   "keyboardOptions": [
     {
-      "id": 97647,
-      "name": "Inalámbrico | Multimedia Noga",
-      "description": "",
-      "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
-      "visible": 0,
-      "price": 33344,
-      "lastUpd": "2025-09-17T12:43:58.043Z"
-    },
-    {
       "id": 78296,
       "name": "Cabledo | Mecánico Noganet",
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 41400,
-      "lastUpd": "2025-09-18T15:49:27.363Z"
+      "price": 39864,
+      "lastUpd": "2025-09-25T14:50:56.287Z"
     },
     {
       "id": 15740,
@@ -520,6 +511,15 @@
       "visible": 1,
       "price": 54388,
       "lastUpd": "2025-09-24T14:45:25.312Z"
+    },
+    {
+      "id": 97647,
+      "name": "Inalámbrico | Multimedia Noga",
+      "description": "",
+      "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
+      "visible": 1,
+      "price": 33379,
+      "lastUpd": "2025-09-25T14:51:28.846Z"
     },
     {
       "id": 67546,
@@ -539,8 +539,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/auriculares-gamer-noga-stormer-ng-8620-negro-y-rojo/p/MLA6354312?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=78f0b566-6759-43a3-8568-c4800be17775&wid=MLA1941191004&sid=search",
       "visible": 1,
-      "price": 12701,
-      "lastUpd": "2025-09-24T14:46:15.690Z"
+      "price": 12999,
+      "lastUpd": "2025-09-25T14:52:00.816Z"
     },
     {
       "id": 63286,
@@ -557,8 +557,8 @@
       "link": "https://www.mercadolibre.com.ar/auriculares-inalambricos-aiwa-aw-bt301-negro/p/MLA19149264?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 44999,
-      "lastUpd": "2025-09-19T03:13:16.744Z"
+      "price": 47735,
+      "lastUpd": "2025-09-25T14:52:12.298Z"
     }
   ],
   "parlantesOptions": [
@@ -606,8 +606,8 @@
       "link": "https://www.mercadolibre.com.ar/webcam-c270-logitech-color-negro/p/MLA18931576?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 46500,
-      "lastUpd": "2025-09-24T14:46:55.274Z"
+      "price": 42189,
+      "lastUpd": "2025-09-25T14:52:37.393Z"
     },
     {
       "id": 34001,
@@ -711,20 +711,20 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/aro-de-luz-led-26-cm-con-tripode-2-metros-soprte-celular/p/MLA44508125?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 33000,
-      "lastUpd": "2025-09-24T14:47:54.495Z"
+      "price": 25000,
+      "lastUpd": "2025-09-25T14:53:32.443Z"
     }
   ],
   "miniPcOptions": [
     {
       "id": 10541,
       "name": "Enova",
-      "price": 349999,
       "link": "https://www.mercadolibre.com.ar/mini-pc-enova-ryzen-5-3500u-8gb-2400mhz-ram-240gb-ssd-w11/p/MLA50633796?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "cpu": "Ryzen 5 3500U",
       "ram": "8gb 2400mhz",
       "ssd": "240GB",
+      "price": 349999,
       "lastUpd": "2025-09-25T05:15:49.111Z"
     }
   ]

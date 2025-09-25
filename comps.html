@@ -639,6 +639,7 @@
     let selectedBaseIndex = 0;
 
     // Price Check Loop State
+    // priceCheckQueue will store entries as { categoryKey, productId }
     let priceCheckQueue = [];
     let currentQueueIndex = 0;
     let isLoopRunning = false;
@@ -1056,7 +1057,7 @@
                 if (tableRow) {
                     const tooltip = tableRow.querySelector('.price-history-tooltip');
                     if (tooltip) {
-                        tooltip.innerHTML = generateTooltipTable(product.prices);
+                        tooltip.innerHTML = generateTooltipTable(product.prices, product.price);
                     }
                 }
             } else {
@@ -1553,14 +1554,53 @@
         }
     }
 
-    function generateTooltipTable(prices) {
+    function generateTooltipTable(prices, currentPrice) {
+        // prices: array newest-first ({value, date})
         if (!prices || prices.length === 0) {
+            // If no stored prices but we have a currentPrice, show it as Hoy
+            if (typeof currentPrice === 'number' && currentPrice > 0) {
+                const now = new Date();
+                const time = new Intl.DateTimeFormat('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }).format(now);
+                return `<table class="tooltip-table"><thead><tr><th>Fecha</th><th>Precio</th></tr></thead><tbody><tr><td>Hoy ${time}</td><td>$${currentPrice.toLocaleString('es-AR')}</td></tr></tbody></table>`;
+            }
             return '<span>Sin historial de precios.</span>';
         }
-        const recentPrices = prices.slice(0, 7);
+
+        // Make a shallow copy to avoid mutating original
+        const copy = prices.slice();
+        const todayKey = new Date().toISOString().slice(0, 10);
+
+        // If the list doesn't already include an entry for today, prepend the currentPrice as 'Hoy'
+        const hasToday = copy.some(p => {
+            try {
+                return new Date(p.date).toISOString().slice(0, 10) === todayKey;
+            } catch (e) {
+                return false;
+            }
+        });
+
+        if (!hasToday && typeof currentPrice === 'number' && currentPrice > 0) {
+            copy.unshift({ value: currentPrice, date: new Date().toISOString() });
+        }
+
+        const recentPrices = copy.slice(0, 7);
         let tableHTML = '<table class="tooltip-table"><thead><tr><th>Fecha</th><th>Precio</th></tr></thead><tbody>';
         recentPrices.forEach(p => {
-            tableHTML += `<tr><td>${formatTimestamp(p.date)}</td><td>$${p.value.toLocaleString('es-AR')}</td></tr>`;
+            let dateLabel = '';
+            try {
+                const d = new Date(p.date);
+                const key = d.toISOString().slice(0, 10);
+                if (key === todayKey) {
+                    const time = new Intl.DateTimeFormat('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
+                    dateLabel = `Hoy ${time}`;
+                } else {
+                    dateLabel = formatTimestamp(p.date);
+                }
+            } catch (e) {
+                dateLabel = formatTimestamp(p.date);
+            }
+
+            tableHTML += `<tr><td>${dateLabel}</td><td>$${p.value.toLocaleString('es-AR')}</td></tr>`;
         });
         tableHTML += '</tbody></table>';
         return tableHTML;
@@ -1669,7 +1709,7 @@
                             </button>
                         ` : '';
                         
-                        const tooltipTableHTML = generateTooltipTable(product.prices);
+                        const tooltipTableHTML = generateTooltipTable(product.prices, product.price);
                         
                         const chartButton = (product.prices && product.prices.length > 1) ? `
                             <button onclick="openPriceChartPopup('${categoryKey}', ${index})" class="text-indigo-400 hover:text-indigo-300 ml-2" title="Ver Historial de Precios">
@@ -2361,10 +2401,10 @@
         CATEGORY_NAV_LIST.forEach(category => {
             const categoryKey = category.key;
             if (!categoryKey.includes('Options')) return;
-            
-            (dataMap[categoryKey] || []).forEach((product, index) => {
-                if (product.visible && product.link) {
-                    priceCheckQueue.push({ categoryKey, index, productId: product.id });
+
+            (dataMap[categoryKey] || []).forEach((product) => {
+                if (product && product.visible && product.link) {
+                    priceCheckQueue.push({ categoryKey, productId: product.id });
                 }
             });
         });
@@ -2372,7 +2412,9 @@
 
     function startSinglePriceCheckAndContinue(categoryKey, index) {
         const product = dataMap[categoryKey][index];
-        const startIndex = priceCheckQueue.findIndex(item => item.productId === product.id);
+        if (!product) return;
+
+        const startIndex = priceCheckQueue.findIndex(item => item.productId === product.id && item.categoryKey === categoryKey);
 
         if (startIndex === -1) {
             showToast('Este producto no puede iniciar un chequeo en lote (puede no ser visible o no tener link).', 'error');
@@ -2441,22 +2483,46 @@
 
         const twoHoursInMs = 2 * 60 * 60 * 1000;
         const twoHoursAgo = new Date(Date.now() - twoHoursInMs);
-        
+
         let itemToCheck = null;
         while (currentQueueIndex < priceCheckQueue.length) {
             const potentialItem = priceCheckQueue[currentQueueIndex];
-            const product = dataMap[potentialItem.categoryKey][potentialItem.index];
-            
-            if (!product || product.id !== potentialItem.productId) {
-                 currentQueueIndex++;
-                 continue;
+            if (!potentialItem) { currentQueueIndex++; continue; }
+
+            // Resolve the current index of the product dynamically by productId + categoryKey
+            const arr = dataMap[potentialItem.categoryKey] || [];
+            const resolvedIndex = arr.findIndex(p => p && p.id === potentialItem.productId);
+            const product = resolvedIndex > -1 ? arr[resolvedIndex] : null;
+
+            // If product missing (removed) skip
+            if (!product) {
+                currentQueueIndex++;
+                continue;
             }
 
-            if (!product.lastUpd || new Date(product.lastUpd) < twoHoursAgo) {
-                itemToCheck = potentialItem;
+            // Parse lastUpd safely; invalid dates => eligible
+            let eligible = true;
+            if (product.lastUpd) {
+                try {
+                    const lastDate = new Date(product.lastUpd);
+                    if (!isNaN(lastDate.getTime())) {
+                        eligible = lastDate < twoHoursAgo;
+                    } else {
+                        eligible = true;
+                    }
+                } catch (e) {
+                    eligible = true;
+                }
+            } else {
+                eligible = true;
+            }
+
+            if (eligible) {
+                // Attach resolved index so popup opens at the correct row
+                itemToCheck = { categoryKey: potentialItem.categoryKey, productId: potentialItem.productId, index: resolvedIndex };
                 break;
             }
-            
+
             currentQueueIndex++;
         }
 

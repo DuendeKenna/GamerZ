@@ -106,7 +106,7 @@
                 // { name: 'Macrium Reflect', slug: 'macrium_reflect', checked: false, disabled: false, category: 'Sistema', descripcion: 'Clona y respalda discos.' },
                 { name: 'Lightshot', slug: 'lightshot', checked: false, disabled: false, category: 'Sistema', descripcion: 'Toma capturas de pantalla prolijas. Fundamental si sos creador.' },
                 { name: 'WinDirStat', slug: 'windirstat', checked: true, disabled: false, category: 'Sistema', descripcion: 'Visualiza qué te está ocupando lugar en disco.' },
-                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: false, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
+                { name: 'Uninstall Tool', slug: 'uninstall_tool', checked: true, disabled: false, category: 'Sistema', descripcion: 'Desinstala programas a fondo.' },
                 { name: 'Wise Memory Optimizer', slug: 'wise_memory_optimizer', checked: false, disabled: false, category: 'Sistema', descripcion: 'Libera y optimiza la RAM.' },
                 // MULTIMEDIA
                 { name: 'Hear', slug: 'hear', checked: false, disabled: false, category: 'Multimedia', descripcion: 'Mejora el audio del sistema. Alta configuración.' },
@@ -129,7 +129,7 @@
                 { name: 'Inkscape', slug: 'inkscape', checked: false, disabled: false, category: 'Creación', descripcion: 'Gráficos vectoriales. Ideal para diseñar logos profesionales.' },
                 { name: 'Krita', slug: 'krita', checked: false, disabled: false, category: 'Creación', descripcion: 'Pintura y arte digital.' },
                 { name: 'Photopea', slug: 'photopea', checked: false, disabled: false, category: 'Creación', descripcion: 'Clon de Photoshop online.' },
-                { name: 'Canva', slug: 'canva', checked: true, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
+                { name: 'Canva', slug: 'canva', checked: false, disabled: false, category: 'Creación', descripcion: 'Diseño gráfico fácil.' },
                 { name: 'XnConvert', slug: 'xnconvert', checked: false, disabled: false, category: 'Creación', descripcion: 'Conversión y mejora de imágenes por lotes.' },
                 { name: 'Fast Stone Image', slug: 'faststone_image', checked: false, disabled: false, category: 'Creación', descripcion: 'Completísimo visualizador y retocador de imágenes.' },
                 { name: 'CapCut', slug: 'capcut', checked: false, disabled: false, category: 'Creación', descripcion: 'Edición de video sencilla. OJO! Sin premium es muy limitado.' },
@@ -140,7 +140,7 @@
                 { name: 'Visual Studio Code', slug: 'visual_studio_code', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Editor de código moderno.' },
                 { name: 'n8n', slug: 'n8n', checked: false, disabled: false, category: 'Desarrollo', descripcion: 'Agentes de IA en local para automatizar lo-que-sea.' },
                 // JUEGOS
-                { name: 'Steam', slug: 'steam', checked: true, disabled: false, category: 'Juegos', descripcion: 'La plataforma de juegos de PC más grande.' },
+                { name: 'Steam', slug: 'steam', checked: false, disabled: false, category: 'Juegos', descripcion: 'La plataforma de juegos de PC más grande.' },
                 { name: 'Epic Games', slug: 'epic_games', checked: false, disabled: false, category: 'Juegos', descripcion: 'Ofrece juegos gratis cada semana.' },
                 { name: 'EA App', slug: 'ea_app', checked: false, disabled: false, category: 'Juegos', descripcion: 'Lanzador para juegos de Electronic Arts.' },
                 { name: 'Battle.net', slug: 'battlenet', checked: false, disabled: false, category: 'Juegos', descripcion: 'Plataforma para juegos de Blizzard.' },
