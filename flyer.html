@@ -222,6 +222,14 @@
             justify-content: center;
             align-items: flex-start;
 
+            /* Prevent the cuadro from being shrunk by parent flex containers.
+               We want the cuadro to keep the exact px dimensions set by JS
+               (e.g. 1080x1080). When the viewport is smaller, the surrounding
+               container will scroll instead of compressing this node. */
+            flex: 0 0 auto;
+            min-width: 0;
+            max-width: none;
+
             /* The dimensions are now set by JavaScript */
         }
 
@@ -232,6 +240,9 @@
             justify-content: center;
             align-items: flex-start;
             min-width: 0; /* allow children to shrink properly inside flex */
+            /* If the available space is smaller than the fixed-size cuadro,
+               allow scrolling instead of letting the cuadro be compressed. */
+            overflow: auto;
         }
 
         /* Estilo base para el flyer */
@@ -640,11 +651,20 @@
     <div class="flex h-screen w-full">
         <!-- Left column: Elementos (lists visible elements) -->
         <aside id="elementos-panel">
-            <h3 class="text-lg font-bold text-white font-saira mb-2">Elementos</h3>
+            <div class="flex items-center justify-between mb-2">
+                <h3 class="text-lg font-bold text-white font-saira">Elementos</h3>
+                <button id="collapse-elementos-btn" title="Colapsar panel" class="p-1 rounded bg-gray-800 text-gray-200 hover:bg-gray-700">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
             <div id="elementos-list" aria-live="polite">
                 <!-- Populated by JS -->
             </div>
         </aside>
+        <!-- Floating open button shown when elementos-panel is collapsed -->
+        <button id="open-elementos-btn" title="Abrir Elementos" style="position:fixed;left:0.5rem;top:27px;transform:translateY(-50%);z-index:99999;display:none;padding:0.4rem;border-radius:6px;background:#0b1220;border:1px solid rgba(255,255,255,0.04);color:#e5e7eb;">
+            <i class="fas fa-chevron-right"></i>
+        </button>
         <!-- Columna de Herramientas -->
         <aside id="herramientas" class="section-card-style p-6 flex-shrink-0">
             <h2 class="text-3xl font-bold mb-6 text-center text-white font-saira">Herramientas</h2>
@@ -1086,6 +1106,42 @@
             const INITIAL_IMAGE_SCALE = 1.33;
             const BASE_SERVICE_PRICE = 110000;
             let memeFilenamesCache = null;
+
+            // Elementos panel collapse/open buttons
+            const collapseElementosBtn = document.getElementById('collapse-elementos-btn');
+            const openElementosBtn = document.getElementById('open-elementos-btn');
+
+            // Initialize elementos panel collapsed by default
+            try {
+                const elementosPanelNode = document.getElementById('elementos-panel');
+                if (elementosPanelNode) {
+                    elementosPanelNode.style.display = 'none';
+                    elementosPanelNode.classList.add('hidden');
+                }
+                if (openElementosBtn) {
+                    openElementosBtn.style.display = '';
+                }
+            } catch (e) { console.error('Failed initializing elementos panel collapsed', e); }
+
+            // Toggle handlers
+            if (collapseElementosBtn) {
+                collapseElementosBtn.addEventListener('click', () => {
+                    const el = document.getElementById('elementos-panel');
+                    if (!el) return;
+                    el.style.display = 'none';
+                    el.classList.add('hidden');
+                    if (openElementosBtn) openElementosBtn.style.display = '';
+                });
+            }
+            if (openElementosBtn) {
+                openElementosBtn.addEventListener('click', () => {
+                    const el = document.getElementById('elementos-panel');
+                    if (!el) return;
+                    el.style.display = '';
+                    el.classList.remove('hidden');
+                    openElementosBtn.style.display = 'none';
+                });
+            }
             // Exact filenames discovered in the workspace `memes/` folder.
             const MEME_FILES = [
                 'PAS09790_OP.webp', 'PAS09793_OP.webp', 'PAS09795_OP.webp', 'PAS09796_OP.webp', 'PAS09798_OP.webp', 'PAS09800_OP.webp', 'PAS09804_OP.webp', 'PAS09805_OP.webp', 'PAS09806_OP.webp', 'PAS09807_OP.webp', 'PAS09810_OP.webp', 'PAS09811_OP.webp', 'PAS09813_OP.webp', 'PAS09814_OP.webp', 'PAS09815_OP.webp', 'PAS09816_OP.webp', 'PAS09818_OP.webp', 'PAS09828_OP.webp', 'PAS09832_OP.webp', 'PAS09834_OP.webp', 'PAS09837_OP.webp', 'PAS09839_OP.webp', 'PAS09840_OP.webp', 'PAS09845_OP.webp', 'PAS09846_OP.webp', 'PAS09847_OP.webp', 'PAS09849_OP.webp', 'PAS09854_OP.webp', 'PAS09856_OP.webp', 'PAS09857_OP.webp', 'PAS09861_OP.webp', 'PAS09863_OP.webp', 'PAS09865_OP.webp', 'PAS09867_OP.webp', 'PAS09869_OP.webp', 'PAS09872_OP.webp', 'PAS09873_OP.webp', 'PAS09874_OP.webp', 'PAS09877_OP.webp', 'PAS09878_OP.webp', 'PAS09886_OP.webp', 'PAS09888_OP.webp', 'PAS09889_OP.webp', 'PAS09891_OP.webp', 'PAS09892_OP.webp', 'PAS09893_OP.webp', 'PAS09895_OP.webp', 'PAS09903_OP.webp', 'PAS09904_OP.webp', 'PAS09908_OP.webp', 'PAS09909_OP.webp', 'PAS09912_OP.webp', 'PAS09916_OP.webp', 'PAS09917_OP.webp', 'PAS09918_OP.webp', 'PAS09919_OP.webp', 'PAS09921_OP.webp', 'PAS09933_OP.webp', 'PAS09937_OP.webp', 'PAS09938_OP.webp', 'PAS09941_OP.webp', 'PAS09943_OP.webp', 'PAS09949_OP.webp', 'PAS09950_OP.webp', 'PAS09953_OP.webp', 'PAS09954_OP.webp', 'PAS09955_OP.webp', 'PAS09963_OP.webp', 'PAS09964_OP.webp', 'PAS09965_OP.webp', 'PAS09966_OP.webp', 'PAS09970_OP.webp', 'PAS09973_OP.webp', 'PAS09974_OP.webp', 'PAS09975_OP.webp', 'PAS09976_OP.webp', 'PAS09977_OP.webp', 'PAS09978_OP.webp', 'PAS09979_OP.webp', 'PAS09980_OP.webp', 'PAS09986_OP.webp', 'PAS09987_OP.webp', 'PAS09990_OP.webp', 'PAS09991_OP.webp', 'PAS09992_OP.webp', 'PAS09993_OP.webp', 'PAS09995_OP.webp'
