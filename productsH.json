@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 415299,
+      "total": 411597,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -227,7 +227,12 @@
       "visible": 1,
       "description": "",
       "linksAlt": [],
-      "prices": []
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
     }
   ],
   "armadasOptions": [
@@ -1251,6 +1256,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 446620,
+          "date": "2025-09-29T02:55:18.996Z"
+        },
+        {
           "value": 530000,
           "date": "2025-09-05T10:54:19.890Z"
         },
@@ -1296,6 +1305,10 @@
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 527799,
+          "date": "2025-09-29T02:55:27.334Z"
+        },
         {
           "value": 486363,
           "date": "2025-09-27T15:58:10.053Z"
@@ -1386,6 +1399,10 @@
       "visible": 0,
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "prices": [
+        {
+          "value": 511477,
+          "date": "2025-09-29T02:55:36.335Z"
+        },
         {
           "value": 530000,
           "date": "2025-09-04T15:42:37.487Z"
@@ -1560,6 +1577,10 @@
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
       "visible": 0,
       "prices": [
+        {
+          "value": 43411,
+          "date": "2025-09-29T02:56:19.601Z"
+        },
         {
           "value": 38000,
           "date": "2025-09-18T15:48:27.611Z"
@@ -1996,6 +2017,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 43039,
+          "date": "2025-09-29T02:53:53.413Z"
+        },
+        {
           "value": 44890,
           "date": "2025-09-11T13:55:14.254Z"
         },
@@ -2054,6 +2079,10 @@
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
       "visible": 0,
       "prices": [
+        {
+          "value": 54999,
+          "date": "2025-09-29T02:54:02.045Z"
+        },
         {
           "value": 51499,
           "date": "2025-09-25T13:28:15.038Z"
@@ -2133,6 +2162,10 @@
       "link": "https://articulo.mercadolibre.com.ar/MLA-1420730281?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "prices": [
+        {
+          "value": 21388,
+          "date": "2025-09-29T02:54:11.150Z"
+        },
         {
           "value": 22998,
           "date": "2025-09-24T14:43:08.187Z"
@@ -2945,6 +2978,10 @@
       "description": "",
       "prices": [
         {
+          "value": 50200,
+          "date": "2025-09-29T02:57:13.187Z"
+        },
+        {
           "value": 55183,
           "date": "2025-09-28T15:28:37.981Z"
         },
@@ -3028,6 +3065,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
       "visible": 0,
       "prices": [
+        {
+          "value": 33424,
+          "date": "2025-09-29T02:57:23.119Z"
+        },
         {
           "value": 33344,
           "date": "2025-09-17T12:43:58.043Z"
@@ -3184,6 +3225,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 56104,
+          "date": "2025-09-29T02:57:38.008Z"
+        },
         {
           "value": 54388,
           "date": "2025-09-24T14:45:25.312Z"
@@ -3676,6 +3721,10 @@
       "description": "",
       "prices": [
         {
+          "value": 70550,
+          "date": "2025-09-29T02:58:27.061Z"
+        },
+        {
           "value": 59344,
           "date": "2025-09-18T15:50:31.505Z"
         },
@@ -3982,6 +4031,10 @@
       "description": "",
       "prices": [
         {
+          "value": 65669,
+          "date": "2025-09-29T02:58:54.512Z"
+        },
+        {
           "value": 75500,
           "date": "2025-09-16T11:54:41.891Z"
         },
@@ -4072,36 +4125,6 @@
     }
   ],
   "microfonosOptions": [
-    {
-      "id": 12112,
-      "name": "Yanmai SF-666 RGB",
-      "link": "https://www.mercadolibre.com.ar/microfono-yanmai-sf-666r-usb-rgb-streaming-gamer-color-negro/p/MLA26225280?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
-      "prices": [
-        {
-          "value": 29800,
-          "date": "2025-09-07T14:12:16.721Z"
-        },
-        {
-          "value": 35500,
-          "date": "2025-09-04T15:55:01.531Z"
-        },
-        {
-          "value": 35500,
-          "date": "2025-09-03T13:36:42.228Z"
-        },
-        {
-          "value": 35500,
-          "date": "2025-09-02T20:00:11.830Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T19:59:59.602Z"
-        }
-      ],
-      "linksAlt": []
-    },
     {
       "id": 31544,
       "name": "Noga MIC-ST800",
