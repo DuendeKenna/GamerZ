@@ -2260,6 +2260,7 @@
             if (isFromLoop === 'true') {
                 currentQueueIndex++;
                 sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                updatePriceCheckQueueCount();
                 processNextInQueue();
             }
             return;
@@ -2303,6 +2304,7 @@
         if (isFromLoop === 'true') {
             currentQueueIndex++;
             sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+            updatePriceCheckQueueCount();
             processNextInQueue();
         }
     }
@@ -2815,7 +2817,12 @@
     function updatePriceCheckQueueCount() {
         const el = document.getElementById('price-check-queue-count');
         if (!el) return;
-        el.textContent = (priceCheckQueue && priceCheckQueue.length) ? String(priceCheckQueue.length) : '0';
+        if (isLoopRunning) {
+            const remaining = Math.max(0, (priceCheckQueue ? priceCheckQueue.length : 0) - (currentQueueIndex || 0));
+            el.textContent = String(remaining);
+        } else {
+            el.textContent = (priceCheckQueue && priceCheckQueue.length) ? String(priceCheckQueue.length) : '0';
+        }
     }
 
     function processNextInQueue() {
@@ -2904,6 +2911,8 @@
             icon.setAttribute('data-lucide', 'play-circle');
         }
         lucide.createIcons({nodes: [icon]});
+        // Update visible count (total or remaining) whenever loop UI changes
+        updatePriceCheckQueueCount();
     }
 
     // --- Code Export ---
