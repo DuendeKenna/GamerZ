@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 412309,
+      "total": 415299,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 436727,
+      "total": 439717,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -225,7 +225,9 @@
         }
       ],
       "visible": 1,
-      "description": ""
+      "description": "",
+      "linksAlt": [],
+      "prices": []
     }
   ],
   "armadasOptions": [
@@ -627,6 +629,10 @@
       "link": "https://www.mercadolibre.com.ar/sentey-a8-cube-rgb-gabinete-sentey-a8-vidrio-temp-5-coolers-blanco/p/MLA50547846?offer_type=BEST_PRICE",
       "visible": 0,
       "prices": [
+        {
+          "value": 84999,
+          "date": "2025-09-29T02:43:00.950Z"
+        },
         {
           "value": 75600,
           "date": "2025-09-04T15:02:46.827Z"
@@ -1653,6 +1659,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 82250,
+          "date": "2025-09-29T02:43:54.453Z"
+        },
+        {
           "value": 94199,
           "date": "2025-09-16T11:49:48.708Z"
         },
@@ -1877,6 +1887,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 243589,
+          "date": "2025-09-29T02:43:45.851Z"
+        },
+        {
           "value": 240599,
           "date": "2025-09-26T12:48:07.809Z"
         },
@@ -1973,85 +1987,6 @@
     }
   ],
   "ramOptions": [
-    {
-      "id": 81841,
-      "name": "DDR4 8x2 = 16 GB",
-      "total": 16,
-      "description": "",
-      "link": "https://www.mercadolibre.com.ar/memoria-ram-kingdian-ddr4-16gb-2x8gb-3200mhz-cl22-12v/p/MLA48899665?offer_type=BEST_PRICE",
-      "visible": 0,
-      "prices": [
-        {
-          "value": 69987,
-          "date": "2025-09-17T12:41:01.259Z"
-        },
-        {
-          "value": 60987,
-          "date": "2025-09-16T11:50:06.230Z"
-        },
-        {
-          "value": 70766,
-          "date": "2025-09-13T11:44:32.514Z"
-        },
-        {
-          "value": 70766,
-          "date": "2025-09-12T13:25:48.802Z"
-        },
-        {
-          "value": 52428,
-          "date": "2025-09-11T13:55:08.501Z"
-        },
-        {
-          "value": 52428,
-          "date": "2025-09-10T12:56:58.792Z"
-        },
-        {
-          "value": 48999,
-          "date": "2025-09-09T12:43:06.321Z"
-        },
-        {
-          "value": 66137,
-          "date": "2025-09-08T14:48:54.083Z"
-        },
-        {
-          "value": 66130,
-          "date": "2025-09-07T14:01:25.158Z"
-        },
-        {
-          "value": 59800,
-          "date": "2025-09-04T15:04:13.244Z"
-        },
-        {
-          "value": 59800,
-          "date": "2025-09-03T13:30:29.394Z"
-        },
-        {
-          "value": 59800,
-          "date": "2025-09-02T19:28:44.683Z"
-        },
-        {
-          "value": 60000,
-          "date": "2025-09-02T02:25:12.184Z"
-        },
-        {
-          "value": 49000,
-          "date": "2025-08-31T13:10:16.978Z"
-        },
-        {
-          "value": 49000,
-          "date": "2025-08-29T14:18:34.137Z"
-        },
-        {
-          "value": 49000,
-          "date": "2025-08-28T14:33:34.222Z"
-        },
-        {
-          "value": 59830,
-          "date": "2025-08-25T13:06:50.312Z"
-        }
-      ],
-      "linksAlt": []
-    },
     {
       "id": 93477,
       "name": "DDR4 8 GB - Hiksemi",
@@ -2371,6 +2306,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 374099,
+          "date": "2025-09-29T02:43:16.633Z"
+        },
+        {
           "value": 406399,
           "date": "2025-09-17T12:39:22.053Z"
         },
@@ -2444,6 +2383,10 @@
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684?offer_type=BEST_PRICE",
       "visible": 0,
       "prices": [
+        {
+          "value": 277421,
+          "date": "2025-09-29T02:43:25.018Z"
+        },
         {
           "value": 258641,
           "date": "2025-09-16T11:49:09.801Z"
