@@ -2817,12 +2817,25 @@
     function updatePriceCheckQueueCount() {
         const el = document.getElementById('price-check-queue-count');
         if (!el) return;
+        const total = (priceCheckQueue && priceCheckQueue.length) ? priceCheckQueue.length : 0;
+        const idx = Number.isInteger(currentQueueIndex) ? currentQueueIndex : 0;
+
+        // If the loop is running, show how many remain (including current index position)
         if (isLoopRunning) {
-            const remaining = Math.max(0, (priceCheckQueue ? priceCheckQueue.length : 0) - (currentQueueIndex || 0));
+            const remaining = Math.max(0, total - idx);
             el.textContent = String(remaining);
-        } else {
-            el.textContent = (priceCheckQueue && priceCheckQueue.length) ? String(priceCheckQueue.length) : '0';
+            return;
         }
+
+        // If loop is not running but we've progressed (saved index > 0 and less than total),
+        // show the remaining items instead of the full total so the user sees progress after pause/cancel.
+        if (idx > 0 && idx < total) {
+            el.textContent = String(Math.max(0, total - idx));
+            return;
+        }
+
+        // Default: show total count
+        el.textContent = String(total);
     }
 
     function processNextInQueue() {

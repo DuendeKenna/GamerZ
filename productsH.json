@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 411597,
+      "total": 408607,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 439717,
+      "total": 436727,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -243,6 +243,10 @@
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 236631,
+          "date": "2025-09-29T10:20:19.883Z"
+        },
         {
           "value": 234089,
           "date": "2025-09-28T15:25:11.728Z"
@@ -460,6 +464,10 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 62510,
+          "date": "2025-09-29T10:20:53.301Z"
+        },
         {
           "value": 63480,
           "date": "2025-09-24T14:28:07.855Z"
@@ -992,6 +1000,10 @@
       "description": "",
       "prices": [
         {
+          "value": 119820,
+          "date": "2025-09-29T10:25:28.265Z"
+        },
+        {
           "value": 95909,
           "date": "2025-09-29T02:16:01.495Z"
         },
@@ -1255,6 +1267,10 @@
       "link": "https://www.mercadolibre.com.ar/placa-de-video-xfx-speedster-swft21-amd-rx7600-8gb-hdmi-ddr6/p/MLA28570288?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&wid=MLA1516810373&search_layout=grid&position=2&type=product&tracking_id=b3d0404e-0664-4045-8da3-fb3948bde594&sid=search",
       "visible": 0,
       "prices": [
+        {
+          "value": 437150,
+          "date": "2025-09-29T10:24:41.936Z"
+        },
         {
           "value": 446620,
           "date": "2025-09-29T02:55:18.996Z"
@@ -1908,6 +1924,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 240599,
+          "date": "2025-09-29T10:22:48.508Z"
+        },
+        {
           "value": 243589,
           "date": "2025-09-29T02:43:45.851Z"
         },
@@ -2163,6 +2183,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 20077,
+          "date": "2025-09-29T10:23:27.445Z"
+        },
+        {
           "value": 21388,
           "date": "2025-09-29T02:54:11.150Z"
         },
@@ -2410,76 +2434,6 @@
       "linksAlt": []
     },
     {
-      "id": 61498,
-      "name": "Ryzen 5 4500 + A520 + 8 Gb",
-      "description": "Descripción del nuevo Combo.",
-      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-5-4500-a520-8-gb-color-negro/p/MLA39670684?offer_type=BEST_PRICE",
-      "visible": 0,
-      "prices": [
-        {
-          "value": 277421,
-          "date": "2025-09-29T02:43:25.018Z"
-        },
-        {
-          "value": 258641,
-          "date": "2025-09-16T11:49:09.801Z"
-        },
-        {
-          "value": 255607,
-          "date": "2025-09-13T11:43:15.835Z"
-        },
-        {
-          "value": 252233,
-          "date": "2025-09-12T13:24:53.356Z"
-        },
-        {
-          "value": 250628,
-          "date": "2025-09-11T13:53:29.594Z"
-        },
-        {
-          "value": 248943,
-          "date": "2025-09-10T12:56:24.848Z"
-        },
-        {
-          "value": 248943,
-          "date": "2025-09-09T12:42:06.896Z"
-        },
-        {
-          "value": 239468,
-          "date": "2025-09-08T14:43:55.894Z"
-        },
-        {
-          "value": 237000,
-          "date": "2025-09-04T15:03:11.059Z"
-        },
-        {
-          "value": 237000,
-          "date": "2025-09-03T13:29:49.953Z"
-        },
-        {
-          "value": 237000,
-          "date": "2025-09-02T02:24:16.351Z"
-        },
-        {
-          "value": 237000,
-          "date": "2025-08-31T13:09:05.734Z"
-        },
-        {
-          "value": 237000,
-          "date": "2025-08-29T14:17:15.904Z"
-        },
-        {
-          "value": 237000,
-          "date": "2025-08-28T14:32:55.458Z"
-        },
-        {
-          "value": 236000,
-          "date": "2025-08-26T16:14:36.056Z"
-        }
-      ],
-      "linksAlt": []
-    },
-    {
       "id": 69988,
       "name": " I5 4570 + Mother + 8gb",
       "description": "Descripción del nuevo Combo.",
@@ -2620,6 +2574,10 @@
       "link": "https://www.mercadolibre.com.ar/monitor-noblex-25-pulgadas-nxsm2500-led-fhd/p/MLA45717090?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 202999,
+          "date": "2025-09-29T10:26:12.698Z"
+        },
         {
           "value": 192850,
           "date": "2025-09-22T12:51:50.276Z"
@@ -3066,6 +3024,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 33015,
+          "date": "2025-09-29T10:26:56.505Z"
+        },
+        {
           "value": 33424,
           "date": "2025-09-29T02:57:23.119Z"
         },
@@ -3225,6 +3187,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 54388,
+          "date": "2025-09-29T10:27:11.533Z"
+        },
         {
           "value": 56104,
           "date": "2025-09-29T02:57:38.008Z"
