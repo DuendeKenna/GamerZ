@@ -452,6 +452,7 @@
                 <span class="lucide-icon mr-2" data-lucide="play-circle"></span>
                 <span id="price-check-loop-btn-text">Chequeo en Lote</span>
             </button>
+            <span id="price-check-queue-count" class="ml-2 font-semibold text-gray-200">0</span>
         </div>
 
         <div id="bases-section-container" class="mb-8 bg-gray-900 rounded-lg shadow-sm border border-gray-700 hidden md:block">
@@ -876,8 +877,12 @@
     function showToast(message, type = 'success') {
         const container = document.getElementById('message-container');
         const toast = document.createElement('div');
-        const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
-        toast.className = `px-4 py-2 rounded-md text-white font-semibold shadow-lg ${bgColor}`;
+        let bgColorClass = 'bg-red-500';
+        if (type === 'success') bgColorClass = 'bg-green-500';
+        else if (type === 'error') bgColorClass = 'bg-red-500';
+        else if (type === 'same') bgColorClass = 'bg-sky-500'; // color for 'Precio Igual'
+        else if (type === 'info') bgColorClass = 'bg-sky-500';
+        toast.className = `px-4 py-2 rounded-md text-white font-semibold shadow-lg ${bgColorClass}`;
         toast.textContent = message;
         container.appendChild(toast);
         setTimeout(() => {
@@ -2247,7 +2252,7 @@
         if (event.key === 'w' && input.value.trim() === '') {
             event.preventDefault(); // Prevent browser back navigation
             const { categoryKey, index, isFromLoop } = input.dataset;
-            showToast('Producto omitido.', 'info');
+            showToast('Producto omitido.', 'same');
             const popup = document.getElementById('price-check-popup');
             if (priceCheckOpenTimeout) { clearTimeout(priceCheckOpenTimeout); priceCheckOpenTimeout = null; }
             popup.classList.add('hidden');
@@ -2735,11 +2740,13 @@
             if (!categoryKey.includes('Options')) return;
 
             (dataMap[categoryKey] || []).forEach((product) => {
-                if (product && product.visible && product.link) {
+                // Include all products that have a link (no visibility check)
+                if (product && product.link) {
                     priceCheckQueue.push({ categoryKey, productId: product.id });
                 }
             });
         });
+        updatePriceCheckQueueCount();
     }
 
     function startSinglePriceCheckAndContinue(categoryKey, index) {
@@ -2780,7 +2787,7 @@
         }
         
         if (priceCheckQueue.length === 0) {
-            showToast('No hay productos para chequear (visibles y con link).', 'error');
+            showToast('No hay productos para chequear (no hay links disponibles).', 'error');
             resetPriceCheckLoop();
             return;
         }
@@ -2802,6 +2809,13 @@
         sessionStorage.removeItem('priceCheckQueueIndex');
         initializePriceCheckQueue(); // Rebuild the queue on reset
         updateLoopButtonUI(false);
+        updatePriceCheckQueueCount();
+    }
+
+    function updatePriceCheckQueueCount() {
+        const el = document.getElementById('price-check-queue-count');
+        if (!el) return;
+        el.textContent = (priceCheckQueue && priceCheckQueue.length) ? String(priceCheckQueue.length) : '0';
     }
 
     function processNextInQueue() {
