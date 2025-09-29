@@ -20,9 +20,9 @@
       "description": "La nave equilibrada para gamers y creadores. 8 núcleos/16 hilos y gráfica Vega 8 para juegazos fluidos, edición de video ligera y multitarea sin problemas. Ideal para quien busca calidad-precio sin exagerar.",
       "cpu": "55990",
       "mother": "23506",
-      "ram": "10363",
+      "ram": "93477",
       "cantRam": 2,
-      "total": 439957,
+      "total": 412309,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -41,6 +41,157 @@
       "visible": 1,
       "price": 0,
       "lastUpd": "1970-01-01T00:00:00.000Z"
+    }
+  ],
+  "bundlesOptions": [
+    {
+      "id": 90249,
+      "name": "i5 4570 Joy",
+      "items": [
+        {
+          "categoryKey": "comboOptions",
+          "id": 69988
+        },
+        {
+          "categoryKey": "ramOptions",
+          "id": 769
+        },
+        {
+          "categoryKey": "gpuOptions",
+          "id": 85207
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 45939
+        },
+        {
+          "categoryKey": "keyboardOptions",
+          "id": 67546
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 54105
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "price": 0,
+      "lastUpd": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 16233,
+      "name": "Ryzen 5 Joy",
+      "items": [
+        {
+          "categoryKey": "baseOptions",
+          "id": 49735
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 45939
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 93692
+        },
+        {
+          "categoryKey": "keyboardOptions",
+          "id": 67546
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "price": 0,
+      "lastUpd": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 12541,
+      "name": "i5 2400 Armada Joy",
+      "items": [
+        {
+          "categoryKey": "armadasOptions",
+          "id": 97786
+        },
+        {
+          "categoryKey": "gpuOptions",
+          "id": 85207
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "ramOptions",
+          "id": 769
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 54105
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "price": 0,
+      "lastUpd": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 82516,
+      "name": "i5 2400 Armada Joy (N°2)",
+      "items": [
+        {
+          "categoryKey": "gpuOptions",
+          "id": 85207
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "armadasOptions",
+          "id": 76800
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 54105
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "price": 0,
+      "lastUpd": "1970-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 17905,
+      "name": "Mini Ryzen 5",
+      "items": [
+        {
+          "categoryKey": "miniPcOptions",
+          "id": 10541
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 93692
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "price": 0
     }
   ],
   "armadasOptions": [
@@ -150,6 +301,15 @@
       "visible": 1,
       "price": 33630,
       "lastUpd": "2025-09-26T12:50:19.805Z"
+    },
+    {
+      "id": 54105,
+      "name": "1 TB - SATA",
+      "price": 95909,
+      "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds100t3g0a-3-1tb-verde/p/MLA14661338?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "lastUpd": "2025-09-29T02:16:01.495Z"
     }
   ],
   "gpuOptions": [
