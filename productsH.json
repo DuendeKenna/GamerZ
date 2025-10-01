@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "77124",
       "cantRam": 2,
-      "total": 364727,
+      "total": 395233,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 408847,
+      "total": 420145,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 436727,
+      "total": 456945,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -244,6 +244,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 233800,
+          "date": "2025-10-01T14:16:37.235Z"
+        },
+        {
           "value": 231770,
           "date": "2025-09-30T13:21:18.892Z"
         },
@@ -362,6 +366,10 @@
       "description": "",
       "prices": [
         {
+          "value": 201779,
+          "date": "2025-10-01T14:16:49.489Z"
+        },
+        {
           "value": 199000,
           "date": "2025-09-27T15:56:07.679Z"
         },
@@ -393,6 +401,10 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 61999,
+          "date": "2025-10-01T14:17:07.425Z"
+        },
         {
           "value": 63690,
           "date": "2025-09-28T15:25:33.113Z"
@@ -468,6 +480,10 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 63470,
+          "date": "2025-10-01T14:17:16.775Z"
+        },
         {
           "value": 63480,
           "date": "2025-09-30T13:21:46.346Z"
@@ -651,6 +667,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 81792,
+          "date": "2025-10-01T14:17:34.794Z"
+        },
+        {
           "value": 84999,
           "date": "2025-09-29T02:43:00.950Z"
         },
@@ -826,6 +846,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 99899,
+          "date": "2025-10-01T14:21:00.250Z"
+        },
+        {
           "value": 98698,
           "date": "2025-09-30T13:25:02.658Z"
         },
@@ -911,6 +935,10 @@
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-hiksemi-wave-240gb-3d-nand-pc-notebook/p/MLA45759263?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "prices": [
+        {
+          "value": 33334,
+          "date": "2025-10-01T14:21:09.006Z"
+        },
         {
           "value": 33630,
           "date": "2025-09-26T12:50:19.805Z"
@@ -1012,6 +1040,10 @@
       "description": "",
       "prices": [
         {
+          "value": 106999,
+          "date": "2025-10-01T14:21:17.927Z"
+        },
+        {
           "value": 119820,
           "date": "2025-09-29T10:25:28.265Z"
         },
@@ -1067,6 +1099,10 @@
       "visible": 0,
       "description": "2GB | GDDR5 / 64bit",
       "prices": [
+        {
+          "value": 153627,
+          "date": "2025-10-01T14:19:55.146Z"
+        },
         {
           "value": 129999,
           "date": "2025-09-25T05:09:09.413Z"
@@ -1206,6 +1242,10 @@
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "prices": [
         {
+          "value": 368999,
+          "date": "2025-10-01T14:20:18.374Z"
+        },
+        {
           "value": 355999,
           "date": "2025-09-30T13:24:24.074Z"
         },
@@ -1284,6 +1324,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 448870,
+          "date": "2025-10-01T14:20:27.213Z"
+        },
+        {
           "value": 446620,
           "date": "2025-09-30T13:24:31.775Z"
         },
@@ -1341,6 +1385,10 @@
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 513834,
+          "date": "2025-10-01T14:20:35.948Z"
+        },
         {
           "value": 527799,
           "date": "2025-09-29T02:55:27.334Z"
@@ -1436,6 +1484,10 @@
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "prices": [
         {
+          "value": 620595,
+          "date": "2025-10-01T14:20:44.874Z"
+        },
+        {
           "value": 511477,
           "date": "2025-09-29T02:55:36.335Z"
         },
@@ -1473,6 +1525,10 @@
       "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-redragon-rpgs-gc-ps001-500w-negra/p/MLA43937355?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 89938,
+          "date": "2025-10-01T14:21:26.836Z"
+        },
         {
           "value": 88803,
           "date": "2025-09-24T14:44:12.013Z"
@@ -1539,6 +1595,10 @@
       "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 94499,
+          "date": "2025-10-01T14:21:35.287Z"
+        },
         {
           "value": 93999,
           "date": "2025-09-28T15:27:42.797Z"
@@ -1720,6 +1780,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 85030,
+          "date": "2025-10-01T14:18:27.714Z"
+        },
+        {
           "value": 84890,
           "date": "2025-09-30T13:22:47.257Z"
         },
@@ -1797,6 +1861,10 @@
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 81518,
+          "date": "2025-10-01T14:18:37.273Z"
+        },
         {
           "value": 81930,
           "date": "2025-09-24T14:29:01.178Z"
@@ -1886,6 +1954,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 248775,
+          "date": "2025-10-01T14:18:06.832Z"
+        },
+        {
           "value": 220999,
           "date": "2025-09-30T13:22:29.827Z"
         },
@@ -1955,6 +2027,10 @@
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 261229,
+          "date": "2025-10-01T14:18:18.368Z"
+        },
         {
           "value": 240599,
           "date": "2025-09-29T10:22:48.508Z"
@@ -2068,6 +2144,10 @@
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
       "visible": 0,
       "prices": [
+        {
+          "value": 38699,
+          "date": "2025-10-01T14:18:46.299Z"
+        },
         {
           "value": 43159,
           "date": "2025-09-30T13:23:04.576Z"
@@ -2219,6 +2299,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 22998,
+          "date": "2025-10-01T14:19:02.396Z"
+        },
+        {
           "value": 21388,
           "date": "2025-09-30T13:23:22.707Z"
         },
@@ -2297,6 +2381,10 @@
       "description": "",
       "prices": [
         {
+          "value": 32470,
+          "date": "2025-10-01T14:19:13.545Z"
+        },
+        {
           "value": 30899,
           "date": "2025-09-30T13:23:30.817Z"
         },
@@ -2332,6 +2420,10 @@
       "description": "",
       "prices": [
         {
+          "value": 60857,
+          "date": "2025-10-01T14:19:22.439Z"
+        },
+        {
           "value": 58714,
           "date": "2025-09-27T15:57:26.731Z"
         },
@@ -2358,6 +2450,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 52899,
+          "date": "2025-10-01T14:19:31.513Z"
+        },
         {
           "value": 49196,
           "date": "2025-09-24T16:45:42.825Z"
@@ -2406,6 +2502,10 @@
       "link": "https://articulo.mercadolibre.com.ar/MLA-1106736374-combo-actualizacion-pc-amd-ryzen-5600g-mother-16-gb-_JM?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "prices": [
+        {
+          "value": 416099,
+          "date": "2025-10-01T14:17:51.299Z"
+        },
         {
           "value": 374099,
           "date": "2025-09-29T02:43:16.633Z"
@@ -2544,6 +2644,10 @@
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 158052,
+          "date": "2025-10-01T14:21:57.333Z"
+        },
         {
           "value": 159900,
           "date": "2025-09-30T13:25:51.427Z"
@@ -2689,6 +2793,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 274350,
+          "date": "2025-10-01T14:22:13.097Z"
+        },
+        {
           "value": 269999,
           "date": "2025-09-30T13:26:05.897Z"
         },
@@ -2773,6 +2881,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 10530,
+          "date": "2025-10-01T14:22:22.256Z"
+        },
+        {
           "value": 6635,
           "date": "2025-09-11T13:58:25.312Z"
         },
@@ -2822,6 +2934,10 @@
       "link": "https://www.mercadolibre.com.ar/mouse-y-pad-2-en-1-gamer-redragon-m601wl-ba-negrorojo/p/MLA17588671?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 25980,
+          "date": "2025-10-01T14:22:32.308Z"
+        },
         {
           "value": 23901,
           "date": "2025-09-26T12:51:22.017Z"
@@ -2898,6 +3014,10 @@
       "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "prices": [
+        {
+          "value": 27786,
+          "date": "2025-10-01T14:22:41.248Z"
+        },
         {
           "value": 25760,
           "date": "2025-09-27T15:59:42.038Z"
@@ -2987,6 +3107,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 54799,
+          "date": "2025-10-01T14:22:50.761Z"
+        },
         {
           "value": 55183,
           "date": "2025-09-30T13:26:33.389Z"
@@ -3080,6 +3204,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 33424,
+          "date": "2025-10-01T14:22:59.264Z"
+        },
+        {
           "value": 33015,
           "date": "2025-09-29T10:26:56.505Z"
         },
@@ -3157,6 +3285,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 38088,
+          "date": "2025-10-01T14:23:08.884Z"
+        },
         {
           "value": 41700,
           "date": "2025-09-30T13:26:48.009Z"
@@ -3247,6 +3379,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 50799,
+          "date": "2025-10-01T14:23:20.337Z"
+        },
         {
           "value": 53463,
           "date": "2025-09-30T13:26:55.814Z"
@@ -3559,6 +3695,10 @@
       "description": "",
       "prices": [
         {
+          "value": 55288,
+          "date": "2025-10-01T14:23:54.530Z"
+        },
+        {
           "value": 44999,
           "date": "2025-09-30T13:27:23.264Z"
         },
@@ -3614,6 +3754,10 @@
       "link": "https://www.mercadolibre.com.ar/parlantes-genius-sp-hf180-madera/p/MLA15840120?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "prices": [
+        {
+          "value": 24475,
+          "date": "2025-10-01T14:24:04.272Z"
+        },
         {
           "value": 19999,
           "date": "2025-09-26T12:52:37.815Z"
@@ -3692,6 +3836,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 37136,
+          "date": "2025-10-01T14:24:13.571Z"
+        },
         {
           "value": 37199,
           "date": "2025-09-22T12:53:34.312Z"
@@ -3908,6 +4056,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 41704,
+          "date": "2025-10-01T14:24:35.897Z"
+        },
         {
           "value": 44388,
           "date": "2025-09-30T13:28:05.744Z"
@@ -4322,6 +4474,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 67900,
+          "date": "2025-10-01T14:25:22.859Z"
+        },
         {
           "value": 66347,
           "date": "2025-09-11T14:01:08.173Z"
