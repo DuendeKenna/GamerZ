@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "77124",
       "cantRam": 2,
-      "total": 364715,
+      "total": 379063,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -22,7 +22,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 426915,
+      "total": 421415,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -36,7 +36,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 464517,
+      "total": 459017,
       "totalram": 32,
       "visible": 1,
       "price": 0,
@@ -143,6 +143,10 @@
         {
           "categoryKey": "ssdOptions",
           "id": 54105
+        },
+        {
+          "categoryKey": "keyboardOptions",
+          "id": 67546
         }
       ],
       "visible": 1,
@@ -178,7 +182,7 @@
     },
     {
       "id": 17905,
-      "name": "Mini Ryzen 5",
+      "name": "Mini Ryzen 5 1Joy+TecMouIN",
       "items": [
         {
           "categoryKey": "miniPcOptions",
@@ -187,6 +191,14 @@
         {
           "categoryKey": "ssdOptions",
           "id": 93692
+        },
+        {
+          "categoryKey": "keyboardOptions",
+          "id": 67546
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
         }
       ],
       "visible": 1,
@@ -202,8 +214,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 236431,
-      "lastUpd": "2025-10-02T16:49:22.928Z"
+      "price": 234998,
+      "lastUpd": "2025-10-03T13:32:16.205Z"
     },
     {
       "id": 97786,
@@ -211,8 +223,8 @@
       "link": "https://www.mercadolibre.com.ar/pc-de-escritorio-armada-cpu-computadora-intel-core-i5-8gb-ssd-240gb-ideal-uso-de-oficina-administrativo-hogareno-locales-sistema-de-gestion/p/MLA38525278?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 199499,
-      "lastUpd": "2025-10-02T16:53:57.599Z"
+      "price": 195989,
+      "lastUpd": "2025-10-03T13:51:53.028Z"
     }
   ],
   "towersOptions": [
@@ -223,8 +235,8 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE",
       "visible": 1,
       "description": "",
-      "price": 61999,
-      "lastUpd": "2025-10-01T14:17:07.425Z"
+      "price": 62894,
+      "lastUpd": "2025-10-03T13:52:09.187Z"
     },
     {
       "id": 50127,
@@ -253,8 +265,8 @@
       "link": "https://www.mercadolibre.com.ar/sentey-a8-cube-rgb-gabinete-sentey-a8-vidrio-temp-5-coolers-blanco/p/MLA50547846?offer_type=BEST_PRICE",
       "visible": 0,
       "description": "",
-      "price": 89999,
-      "lastUpd": "2025-10-02T16:55:48.254Z"
+      "price": 73815,
+      "lastUpd": "2025-10-03T13:52:32.423Z"
     },
     {
       "id": 24451,
@@ -282,8 +294,8 @@
       "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 53999,
-      "lastUpd": "2025-10-02T16:58:56.093Z"
+      "price": 79591,
+      "lastUpd": "2025-10-03T13:58:34.544Z"
     },
     {
       "id": 93692,
@@ -373,7 +385,7 @@
       "name": "RX 7600 | 8GB",
       "description": "Un caño para jugar en 1080p fluidamente en calidad Alta. Arquitectura RDNA 3, eficiencia energética y potencia moderna.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-xfx-speedster-swft21-amd-rx7600-8gb-hdmi-ddr6/p/MLA28570288?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&wid=MLA1516810373&search_layout=grid&position=2&type=product&tracking_id=b3d0404e-0664-4045-8da3-fb3948bde594&sid=search",
-      "visible": 0,
+      "visible": 1,
       "price": 473910,
       "lastUpd": "2025-10-02T16:58:29.778Z"
     },
@@ -382,7 +394,7 @@
       "name": "RTX 3060 | 12GB",
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
-      "visible": 1,
+      "visible": 0,
       "price": 535575,
       "lastUpd": "2025-10-02T16:58:38.542Z"
     },
@@ -390,7 +402,7 @@
       "id": 76382,
       "name": "RTX 3060 | 12GB",
       "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
-      "visible": 0,
+      "visible": 1,
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "price": 529999,
       "lastUpd": "2025-10-02T16:58:47.673Z"
@@ -412,8 +424,8 @@
       "description": "Aún mejor opción 80 Plus, con cables mallados y que agrega 2 Años de Garantía.",
       "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 92000,
-      "lastUpd": "2025-10-02T16:59:35.415Z"
+      "price": 89999,
+      "lastUpd": "2025-10-03T13:59:12.237Z"
     },
     {
       "id": 28101,
@@ -441,8 +453,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 91942,
-      "lastUpd": "2025-10-02T16:56:37.866Z"
+      "price": 87600,
+      "lastUpd": "2025-10-03T13:54:58.640Z"
     },
     {
       "id": 23506,
@@ -470,8 +482,8 @@
       "description": "8 nucleos 4.6ghz Am4",
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 267999,
-      "lastUpd": "2025-10-02T16:56:29.516Z"
+      "price": 262499,
+      "lastUpd": "2025-10-03T13:54:50.128Z"
     }
   ],
   "ramOptions": [
@@ -492,8 +504,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
       "visible": 0,
-      "price": 54999,
-      "lastUpd": "2025-09-29T02:54:02.045Z"
+      "price": 58199,
+      "lastUpd": "2025-10-03T13:55:22.064Z"
     },
     {
       "id": 769,
@@ -512,8 +524,8 @@
       "visible": 1,
       "description": "",
       "total": 8,
-      "price": 31199,
-      "lastUpd": "2025-10-02T16:57:14.055Z"
+      "price": 38373,
+      "lastUpd": "2025-10-03T13:55:37.032Z"
     },
     {
       "id": 10363,
@@ -522,8 +534,8 @@
       "visible": 1,
       "description": "",
       "total": 8,
-      "price": 61110,
-      "lastUpd": "2025-10-02T16:57:22.290Z"
+      "price": 57000,
+      "lastUpd": "2025-10-03T13:55:45.481Z"
     },
     {
       "id": 69550,
@@ -582,8 +594,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-noblex-25-pulgadas-nxsm2500-led-fhd/p/MLA45717090?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 202999,
-      "lastUpd": "2025-09-29T10:26:12.698Z"
+      "price": 203269,
+      "lastUpd": "2025-10-03T13:59:41.725Z"
     },
     {
       "id": 17689,
@@ -633,6 +645,15 @@
       "description": "",
       "price": 54799,
       "lastUpd": "2025-10-01T14:22:50.761Z"
+    },
+    {
+      "id": 7020,
+      "name": "Xbox 360 - Inalámbrico",
+      "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-seisa-njx311/p/MLA17789958?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "price": 44890,
+      "lastUpd": "2025-10-03T13:24:44.926Z"
     }
   ],
   "keyboardOptions": [
@@ -766,8 +787,8 @@
       "link": "https://www.mercadolibre.com.ar/webcam-logitech-brio-100-full-hd-1080p-negro/p/MLA28407045?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
-      "price": 73264,
-      "lastUpd": "2025-10-02T17:04:04.016Z"
+      "price": 73059,
+      "lastUpd": "2025-10-03T14:02:05.828Z"
     },
     {
       "id": 18249,
