@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "77124",
       "cantRam": 2,
-      "total": 379063,
+      "total": 382419,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 421415,
+      "total": 427717,
       "totalram": 16,
       "visible": 1,
       "prices": [
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 459017,
+      "total": 465319,
       "totalram": 32,
       "visible": 1,
       "prices": [
@@ -255,6 +255,10 @@
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 236431,
+          "date": "2025-10-04T13:33:21.869Z"
+        },
         {
           "value": 234998,
           "date": "2025-10-03T13:32:16.205Z"
@@ -616,6 +620,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 65320,
+          "date": "2025-10-04T13:33:59.756Z"
+        },
+        {
           "value": 67550,
           "date": "2025-10-02T16:55:38.982Z"
         },
@@ -823,6 +831,10 @@
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 53599,
+          "date": "2025-10-04T13:36:47.591Z"
+        },
         {
           "value": 79591,
           "date": "2025-10-03T13:58:34.544Z"
@@ -1572,6 +1584,10 @@
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "prices": [
         {
+          "value": 620595,
+          "date": "2025-10-04T13:36:39.181Z"
+        },
+        {
           "value": 529999,
           "date": "2025-10-02T16:58:47.673Z"
         },
@@ -1774,6 +1790,10 @@
       "visible": 0,
       "prices": [
         {
+          "value": 38775,
+          "date": "2025-10-04T13:37:28.961Z"
+        },
+        {
           "value": 40399,
           "date": "2025-09-30T13:25:37.386Z"
         },
@@ -1969,6 +1989,10 @@
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 87820,
+          "date": "2025-10-04T13:34:56.317Z"
+        },
         {
           "value": 81518,
           "date": "2025-10-01T14:18:37.273Z"
@@ -2505,6 +2529,10 @@
       "description": "",
       "prices": [
         {
+          "value": 36900,
+          "date": "2025-10-04T13:35:24.095Z"
+        },
+        {
           "value": 38373,
           "date": "2025-10-03T13:55:37.032Z"
         },
@@ -2646,6 +2674,10 @@
       "link": "https://articulo.mercadolibre.com.ar/MLA-1106736374-combo-actualizacion-pc-amd-ryzen-5600g-mother-16-gb-_JM?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "prices": [
+        {
+          "value": 399799,
+          "date": "2025-10-04T13:34:21.909Z"
+        },
         {
           "value": 410199,
           "date": "2025-10-02T16:56:04.508Z"
@@ -3091,6 +3123,10 @@
       "visible": 1,
       "prices": [
         {
+          "value": 26118,
+          "date": "2025-10-04T13:38:14.346Z"
+        },
+        {
           "value": 25980,
           "date": "2025-10-01T14:22:32.308Z"
         },
@@ -3377,6 +3413,10 @@
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
       "visible": 0,
       "prices": [
+        {
+          "value": 33000,
+          "date": "2025-10-04T13:38:43.507Z"
+        },
         {
           "value": 33424,
           "date": "2025-10-01T14:22:59.264Z"
@@ -3869,6 +3909,10 @@
       "description": "",
       "prices": [
         {
+          "value": 59999,
+          "date": "2025-10-04T13:39:28.673Z"
+        },
+        {
           "value": 44999,
           "date": "2025-10-02T17:01:26.169Z"
         },
@@ -4244,12 +4288,82 @@
   ],
   "webcamOptions": [
     {
+      "id": 34001,
+      "name": "Ken Brown Clip 720",
+      "link": "https://www.mercadolibre.com.ar/camara-web-portatil-ken-brown-clip-720-color-negro/p/MLA26009488?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 23488,
+          "date": "2025-09-22T12:54:09.695Z"
+        },
+        {
+          "value": 68310,
+          "date": "2025-09-19T03:13:45.983Z"
+        },
+        {
+          "value": 68310,
+          "date": "2025-09-18T15:50:44.679Z"
+        },
+        {
+          "value": 61499,
+          "date": "2025-09-14T13:04:39.472Z"
+        },
+        {
+          "value": 61499,
+          "date": "2025-09-12T13:29:22.942Z"
+        },
+        {
+          "value": 61499,
+          "date": "2025-09-11T14:00:36.111Z"
+        },
+        {
+          "value": 61499,
+          "date": "2025-09-10T13:06:00.842Z"
+        },
+        {
+          "value": 33769,
+          "date": "2025-09-09T12:52:55.798Z"
+        },
+        {
+          "value": 33769,
+          "date": "2025-09-08T15:33:14.983Z"
+        },
+        {
+          "value": 33700,
+          "date": "2025-09-06T21:01:08.189Z"
+        },
+        {
+          "value": 33800,
+          "date": "2025-09-04T15:54:25.159Z"
+        },
+        {
+          "value": 33800,
+          "date": "2025-09-03T13:35:41.052Z"
+        },
+        {
+          "value": 33800,
+          "date": "2025-09-02T19:49:00.821Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-09-02T19:48:44.310Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
       "id": 40003,
       "name": "Logitech C270",
       "link": "https://www.mercadolibre.com.ar/webcam-c270-logitech-color-negro/p/MLA18931576?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 55999,
+          "date": "2025-10-04T13:40:03.710Z"
+        },
         {
           "value": 41704,
           "date": "2025-10-01T14:24:35.897Z"
@@ -4346,76 +4460,10 @@
       "linksAlt": []
     },
     {
-      "id": 34001,
-      "name": "Ken Brown Clip 720",
-      "link": "https://www.mercadolibre.com.ar/camara-web-portatil-ken-brown-clip-720-color-negro/p/MLA26009488?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "",
-      "prices": [
-        {
-          "value": 23488,
-          "date": "2025-09-22T12:54:09.695Z"
-        },
-        {
-          "value": 68310,
-          "date": "2025-09-19T03:13:45.983Z"
-        },
-        {
-          "value": 68310,
-          "date": "2025-09-18T15:50:44.679Z"
-        },
-        {
-          "value": 61499,
-          "date": "2025-09-14T13:04:39.472Z"
-        },
-        {
-          "value": 61499,
-          "date": "2025-09-12T13:29:22.942Z"
-        },
-        {
-          "value": 61499,
-          "date": "2025-09-11T14:00:36.111Z"
-        },
-        {
-          "value": 61499,
-          "date": "2025-09-10T13:06:00.842Z"
-        },
-        {
-          "value": 33769,
-          "date": "2025-09-09T12:52:55.798Z"
-        },
-        {
-          "value": 33769,
-          "date": "2025-09-08T15:33:14.983Z"
-        },
-        {
-          "value": 33700,
-          "date": "2025-09-06T21:01:08.189Z"
-        },
-        {
-          "value": 33800,
-          "date": "2025-09-04T15:54:25.159Z"
-        },
-        {
-          "value": 33800,
-          "date": "2025-09-03T13:35:41.052Z"
-        },
-        {
-          "value": 33800,
-          "date": "2025-09-02T19:49:00.821Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T19:48:44.310Z"
-        }
-      ],
-      "linksAlt": []
-    },
-    {
       "id": 85797,
       "name": "Logitech Brio 100 Full HD",
       "link": "https://www.mercadolibre.com.ar/webcam-logitech-brio-100-full-hd-1080p-negro/p/MLA28407045?offer_type=OFFICIAL_STORE",
-      "visible": 0,
+      "visible": 1,
       "description": "",
       "prices": [
         {
@@ -4474,7 +4522,7 @@
       "name": "Redragon Hitman Full HD",
       "description": "",
       "link": "https://www.mercadolibre.com.ar/camara-web-redragon-hitman-full-hd-30fps-color-negro/p/MLA18362781?offer_type=BEST_PRICE",
-      "visible": 1,
+      "visible": 0,
       "prices": [
         {
           "value": 120000,
@@ -4532,6 +4580,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 42596,
+          "date": "2025-10-04T13:40:31.094Z"
+        },
         {
           "value": 42170,
           "date": "2025-09-30T13:28:32.838Z"
@@ -4602,6 +4654,10 @@
       "link": "https://www.mercadolibre.com.ar/microfono-condenser-cartoide-usb-pc-estudio-streaming-podcast-tripod-profesional-bm900-vt-power/p/MLA25045936?offer_type=BEST_PRICE",
       "visible": 1,
       "prices": [
+        {
+          "value": 39446,
+          "date": "2025-10-04T13:40:40.028Z"
+        },
         {
           "value": 39444,
           "date": "2025-09-22T12:54:31.918Z"
@@ -4680,6 +4736,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 71295,
+          "date": "2025-10-04T13:40:48.228Z"
+        },
         {
           "value": 67900,
           "date": "2025-10-01T14:25:22.859Z"
