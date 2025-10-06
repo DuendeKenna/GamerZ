@@ -8,16 +8,16 @@
       "mother": "23506",
       "ram": "77124",
       "cantRam": 2,
-      "total": 382419,
+      "total": 384115,
       "totalram": 16,
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 0,
           "date": "1970-01-01T00:00:00.000Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 30077,
@@ -27,16 +27,16 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 427717,
+      "total": 422538,
       "totalram": 16,
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 0,
           "date": "1970-01-01T00:00:00.000Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 45319,
@@ -46,16 +46,16 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 465319,
+      "total": 460140,
       "totalram": 32,
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 0,
           "date": "1970-01-01T00:00:00.000Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "bundlesOptions": [
@@ -254,133 +254,17 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 231384,
+          "date": "2025-10-06T14:34:06.943Z"
+        },
         {
           "value": 236431,
           "date": "2025-10-04T13:33:21.869Z"
-        },
-        {
-          "value": 234998,
-          "date": "2025-10-03T13:32:16.205Z"
-        },
-        {
-          "value": 236431,
-          "date": "2025-10-02T16:49:22.928Z"
-        },
-        {
-          "value": 233800,
-          "date": "2025-10-01T14:16:37.235Z"
-        },
-        {
-          "value": 231770,
-          "date": "2025-09-30T13:21:18.892Z"
-        },
-        {
-          "value": 236631,
-          "date": "2025-09-29T10:20:19.883Z"
-        },
-        {
-          "value": 234089,
-          "date": "2025-09-28T15:25:11.728Z"
-        },
-        {
-          "value": 231770,
-          "date": "2025-09-27T15:55:59.245Z"
-        },
-        {
-          "value": 234089,
-          "date": "2025-09-26T12:41:39.320Z"
-        },
-        {
-          "value": 236499,
-          "date": "2025-09-25T13:27:12.836Z"
-        },
-        {
-          "value": 236631,
-          "date": "2025-09-24T14:27:49.843Z"
-        },
-        {
-          "value": 239000,
-          "date": "2025-09-22T12:47:57.510Z"
-        },
-        {
-          "value": 242000,
-          "date": "2025-09-14T12:41:38.769Z"
-        },
-        {
-          "value": 244299,
-          "date": "2025-09-13T11:40:20.998Z"
-        },
-        {
-          "value": 244443,
-          "date": "2025-09-12T13:24:05.737Z"
-        },
-        {
-          "value": 249699,
-          "date": "2025-09-11T13:44:46.501Z"
-        },
-        {
-          "value": 249699,
-          "date": "2025-09-10T12:55:43.313Z"
-        },
-        {
-          "value": 248000,
-          "date": "2025-09-09T12:41:15.264Z"
-        },
-        {
-          "value": 249998,
-          "date": "2025-09-08T14:42:11.678Z"
-        },
-        {
-          "value": 250000,
-          "date": "2025-09-07T13:57:42.261Z"
-        },
-        {
-          "value": 247000,
-          "date": "2025-09-05T10:47:56.116Z"
-        },
-        {
-          "value": 248000,
-          "date": "2025-09-04T15:02:08.853Z"
-        },
-        {
-          "value": 234000,
-          "date": "2025-09-03T13:28:58.847Z"
-        },
-        {
-          "value": 227000,
-          "date": "2025-09-02T19:26:39.848Z"
-        },
-        {
-          "value": 227000,
-          "date": "2025-09-02T02:22:57.660Z"
-        },
-        {
-          "value": 227500,
-          "date": "2025-08-31T13:08:01.038Z"
-        },
-        {
-          "value": 227500,
-          "date": "2025-08-29T14:15:58.071Z"
-        },
-        {
-          "value": 228000,
-          "date": "2025-08-28T13:33:07.696Z"
-        },
-        {
-          "value": 228000,
-          "date": "2025-08-28T13:17:23.138Z"
-        },
-        {
-          "value": 227000,
-          "date": "2025-08-28T13:07:20.563Z"
-        },
-        {
-          "value": 228000,
-          "date": "2025-08-26T16:13:31.663Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 97786,
@@ -388,41 +272,17 @@
       "link": "https://www.mercadolibre.com.ar/pc-de-escritorio-armada-cpu-computadora-intel-core-i5-8gb-ssd-240gb-ideal-uso-de-oficina-administrativo-hogareno-locales-sistema-de-gestion/p/MLA38525278?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 199499,
+          "date": "2025-10-06T14:34:16.350Z"
+        },
         {
           "value": 195989,
           "date": "2025-10-03T13:51:53.028Z"
-        },
-        {
-          "value": 199499,
-          "date": "2025-10-02T16:53:57.599Z"
-        },
-        {
-          "value": 201779,
-          "date": "2025-10-01T14:16:49.489Z"
-        },
-        {
-          "value": 199000,
-          "date": "2025-09-27T15:56:07.679Z"
-        },
-        {
-          "value": 199780,
-          "date": "2025-09-26T12:41:48.377Z"
-        },
-        {
-          "value": 201000,
-          "date": "2025-09-25T13:29:16.422Z"
-        },
-        {
-          "value": 199780,
-          "date": "2025-09-24T17:06:23.609Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-24T17:05:36.507Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "towersOptions": [
@@ -432,82 +292,14 @@
       "slug": "lnz-y11",
       "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE",
       "visible": 1,
+      "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 62894,
           "date": "2025-10-03T13:52:09.187Z"
-        },
-        {
-          "value": 61999,
-          "date": "2025-10-01T14:17:07.425Z"
-        },
-        {
-          "value": 63690,
-          "date": "2025-09-28T15:25:33.113Z"
-        },
-        {
-          "value": 62894,
-          "date": "2025-09-24T14:27:58.745Z"
-        },
-        {
-          "value": 63690,
-          "date": "2025-09-22T12:48:21.419Z"
-        },
-        {
-          "value": 62894,
-          "date": "2025-09-14T12:41:50.095Z"
-        },
-        {
-          "value": 62894,
-          "date": "2025-09-11T13:44:54.405Z"
-        },
-        {
-          "value": 62894,
-          "date": "2025-09-10T12:55:51.695Z"
-        },
-        {
-          "value": 62894,
-          "date": "2025-09-09T12:41:22.245Z"
-        },
-        {
-          "value": 59899,
-          "date": "2025-09-08T14:42:20.933Z"
-        },
-        {
-          "value": 60000,
-          "date": "2025-09-04T15:02:17.228Z"
-        },
-        {
-          "value": 60000,
-          "date": "2025-09-03T13:29:09.614Z"
-        },
-        {
-          "value": 57000,
-          "date": "2025-09-02T19:26:48.200Z"
-        },
-        {
-          "value": 57000,
-          "date": "2025-09-02T02:23:05.116Z"
-        },
-        {
-          "value": 57000,
-          "date": "2025-08-31T13:08:06.653Z"
-        },
-        {
-          "value": 57000,
-          "date": "2025-08-29T14:16:09.672Z"
-        },
-        {
-          "value": 57000,
-          "date": "2025-08-28T14:32:09.842Z"
-        },
-        {
-          "value": 57000,
-          "date": "2025-08-23T18:42:43.957Z"
         }
-      ],
-      "description": "",
-      "linksAlt": []
+      ]
     },
     {
       "id": 50127,
@@ -515,102 +307,18 @@
       "slug": "antec-ax20",
       "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE",
       "visible": 1,
+      "description": "",
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 66520,
+          "date": "2025-10-06T14:35:04.820Z"
+        },
         {
           "value": 67910,
           "date": "2025-10-02T16:55:30.678Z"
-        },
-        {
-          "value": 63470,
-          "date": "2025-10-01T14:17:16.775Z"
-        },
-        {
-          "value": 63480,
-          "date": "2025-09-30T13:21:46.346Z"
-        },
-        {
-          "value": 62510,
-          "date": "2025-09-29T10:20:53.301Z"
-        },
-        {
-          "value": 63480,
-          "date": "2025-09-24T14:28:07.855Z"
-        },
-        {
-          "value": 66929,
-          "date": "2025-09-22T12:48:32.758Z"
-        },
-        {
-          "value": 64987,
-          "date": "2025-09-19T03:09:33.376Z"
-        },
-        {
-          "value": 63058,
-          "date": "2025-09-14T12:41:56.964Z"
-        },
-        {
-          "value": 63058,
-          "date": "2025-09-13T11:40:55.191Z"
-        },
-        {
-          "value": 65685,
-          "date": "2025-09-11T13:45:01.851Z"
-        },
-        {
-          "value": 69878,
-          "date": "2025-09-10T12:56:00.072Z"
-        },
-        {
-          "value": 66384,
-          "date": "2025-09-09T12:41:29.329Z"
-        },
-        {
-          "value": 69878,
-          "date": "2025-09-08T14:42:39.372Z"
-        },
-        {
-          "value": 69800,
-          "date": "2025-09-06T20:46:50.593Z"
-        },
-        {
-          "value": 68400,
-          "date": "2025-09-05T10:49:05.950Z"
-        },
-        {
-          "value": 65700,
-          "date": "2025-09-04T15:02:25.851Z"
-        },
-        {
-          "value": 65700,
-          "date": "2025-09-03T13:29:17.777Z"
-        },
-        {
-          "value": 65700,
-          "date": "2025-09-02T19:27:02.979Z"
-        },
-        {
-          "value": 65700,
-          "date": "2025-09-02T02:23:17.878Z"
-        },
-        {
-          "value": 62900,
-          "date": "2025-08-31T13:08:31.350Z"
-        },
-        {
-          "value": 62200,
-          "date": "2025-08-29T14:16:30.165Z"
-        },
-        {
-          "value": 62190,
-          "date": "2025-08-28T14:32:20.190Z"
-        },
-        {
-          "value": 62190,
-          "date": "2025-08-26T16:13:45.951Z"
         }
-      ],
-      "description": "",
-      "linksAlt": []
+      ]
     },
     {
       "id": 47143,
@@ -618,94 +326,14 @@
       "slug": "sentey-h10",
       "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385?offer_type=BEST_PRICE",
       "visible": 1,
+      "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 65320,
           "date": "2025-10-04T13:33:59.756Z"
-        },
-        {
-          "value": 67550,
-          "date": "2025-10-02T16:55:38.982Z"
-        },
-        {
-          "value": 65320,
-          "date": "2025-09-26T12:47:36.038Z"
-        },
-        {
-          "value": 71880,
-          "date": "2025-09-22T12:48:40.764Z"
-        },
-        {
-          "value": 70923,
-          "date": "2025-09-18T15:45:42.646Z"
-        },
-        {
-          "value": 71999,
-          "date": "2025-09-17T12:38:58.059Z"
-        },
-        {
-          "value": 67026,
-          "date": "2025-09-14T12:42:02.173Z"
-        },
-        {
-          "value": 67026,
-          "date": "2025-09-13T11:41:10.061Z"
-        },
-        {
-          "value": 67124,
-          "date": "2025-09-11T13:45:09.471Z"
-        },
-        {
-          "value": 67124,
-          "date": "2025-09-10T12:56:06.735Z"
-        },
-        {
-          "value": 67124,
-          "date": "2025-09-09T12:41:36.003Z"
-        },
-        {
-          "value": 67124,
-          "date": "2025-09-08T14:42:53.699Z"
-        },
-        {
-          "value": 67100,
-          "date": "2025-09-05T10:49:18.263Z"
-        },
-        {
-          "value": 69000,
-          "date": "2025-09-04T15:02:35.213Z"
-        },
-        {
-          "value": 69000,
-          "date": "2025-09-03T13:29:23.768Z"
-        },
-        {
-          "value": 69000,
-          "date": "2025-09-02T19:27:11.105Z"
-        },
-        {
-          "value": 69000,
-          "date": "2025-09-02T02:23:45.157Z"
-        },
-        {
-          "value": 67800,
-          "date": "2025-08-31T13:08:41.614Z"
-        },
-        {
-          "value": 67800,
-          "date": "2025-08-29T14:16:40.553Z"
-        },
-        {
-          "value": 67800,
-          "date": "2025-08-28T14:32:37.350Z"
-        },
-        {
-          "value": 67790,
-          "date": "2025-08-26T16:13:54.632Z"
         }
-      ],
-      "description": "",
-      "linksAlt": []
+      ]
     },
     {
       "id": 30191,
@@ -713,58 +341,14 @@
       "slug": "sentey-a8-micro-white",
       "link": "https://www.mercadolibre.com.ar/sentey-a8-cube-rgb-gabinete-sentey-a8-vidrio-temp-5-coolers-blanco/p/MLA50547846?offer_type=BEST_PRICE",
       "visible": 0,
+      "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 73815,
           "date": "2025-10-03T13:52:32.423Z"
-        },
-        {
-          "value": 89999,
-          "date": "2025-10-02T16:55:48.254Z"
-        },
-        {
-          "value": 81792,
-          "date": "2025-10-01T14:17:34.794Z"
-        },
-        {
-          "value": 84999,
-          "date": "2025-09-29T02:43:00.950Z"
-        },
-        {
-          "value": 75600,
-          "date": "2025-09-04T15:02:46.827Z"
-        },
-        {
-          "value": 75300,
-          "date": "2025-09-03T13:29:30.312Z"
-        },
-        {
-          "value": 75300,
-          "date": "2025-09-02T19:27:19.755Z"
-        },
-        {
-          "value": 75300,
-          "date": "2025-09-02T02:23:57.478Z"
-        },
-        {
-          "value": 70300,
-          "date": "2025-08-31T13:08:49.006Z"
-        },
-        {
-          "value": 70300,
-          "date": "2025-08-29T14:16:48.236Z"
-        },
-        {
-          "value": 70300,
-          "date": "2025-08-28T14:32:42.725Z"
-        },
-        {
-          "value": 70300,
-          "date": "2025-08-23T04:17:00.340Z"
         }
-      ],
-      "description": "",
-      "linksAlt": []
+      ]
     },
     {
       "id": 24451,
@@ -772,41 +356,13 @@
       "link": "https://articulo.mercadolibre.com.ar/MLA-1481619353-gabinete-gamer-xyz-portal-100-a-rgb-gamer-vidrio-templado-_JM?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 69999,
           "date": "2025-09-14T12:42:07.964Z"
-        },
-        {
-          "value": 69999,
-          "date": "2025-09-11T13:45:28.785Z"
-        },
-        {
-          "value": 69999,
-          "date": "2025-09-10T12:56:12.655Z"
-        },
-        {
-          "value": 69999,
-          "date": "2025-09-08T14:43:03.713Z"
-        },
-        {
-          "value": 70000,
-          "date": "2025-09-04T15:02:55.142Z"
-        },
-        {
-          "value": 70000,
-          "date": "2025-09-03T13:29:36.680Z"
-        },
-        {
-          "value": 70000,
-          "date": "2025-09-02T14:48:13.482Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T14:47:35.795Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "name": "Reciclado",
@@ -814,13 +370,13 @@
       "visible": 1,
       "description": "",
       "id": 63462,
+      "linksAlt": [],
       "prices": [
         {
           "value": 0,
           "date": "2025-09-02T14:58:18.993Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "ssdOptions": [
@@ -830,81 +386,13 @@
       "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 53599,
           "date": "2025-10-04T13:36:47.591Z"
-        },
-        {
-          "value": 79591,
-          "date": "2025-10-03T13:58:34.544Z"
-        },
-        {
-          "value": 53999,
-          "date": "2025-10-02T16:58:56.093Z"
-        },
-        {
-          "value": 54099,
-          "date": "2025-09-27T15:58:18.597Z"
-        },
-        {
-          "value": 54777,
-          "date": "2025-09-26T12:49:57.766Z"
-        },
-        {
-          "value": 56216,
-          "date": "2025-09-24T14:43:49.593Z"
-        },
-        {
-          "value": 58100,
-          "date": "2025-09-12T13:26:45.813Z"
-        },
-        {
-          "value": 59466,
-          "date": "2025-09-11T13:56:10.852Z"
-        },
-        {
-          "value": 60511,
-          "date": "2025-09-10T13:03:47.284Z"
-        },
-        {
-          "value": 58999,
-          "date": "2025-09-09T12:45:35.920Z"
-        },
-        {
-          "value": 58500,
-          "date": "2025-09-08T14:50:46.185Z"
-        },
-        {
-          "value": 57000,
-          "date": "2025-09-04T15:43:47.367Z"
-        },
-        {
-          "value": 54000,
-          "date": "2025-09-04T15:42:47.441Z"
-        },
-        {
-          "value": 54000,
-          "date": "2025-09-02T19:29:50.852Z"
-        },
-        {
-          "value": 54000,
-          "date": "2025-08-31T13:11:23.611Z"
-        },
-        {
-          "value": 54000,
-          "date": "2025-08-29T14:19:35.618Z"
-        },
-        {
-          "value": 54000,
-          "date": "2025-08-28T14:34:43.213Z"
-        },
-        {
-          "value": 54000,
-          "date": "2025-08-23T04:20:51.129Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 93692,
@@ -912,89 +400,13 @@
       "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
       "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 99899,
           "date": "2025-10-01T14:21:00.250Z"
-        },
-        {
-          "value": 98698,
-          "date": "2025-09-30T13:25:02.658Z"
-        },
-        {
-          "value": 98699,
-          "date": "2025-09-27T15:58:27.451Z"
-        },
-        {
-          "value": 98999,
-          "date": "2025-09-26T12:50:08.552Z"
-        },
-        {
-          "value": 103309,
-          "date": "2025-09-24T14:43:57.037Z"
-        },
-        {
-          "value": 109989,
-          "date": "2025-09-22T12:50:56.819Z"
-        },
-        {
-          "value": 107939,
-          "date": "2025-09-18T15:48:00.442Z"
-        },
-        {
-          "value": 109999,
-          "date": "2025-09-17T12:42:20.097Z"
-        },
-        {
-          "value": 107939,
-          "date": "2025-09-12T13:26:51.794Z"
-        },
-        {
-          "value": 103199,
-          "date": "2025-09-11T13:56:17.558Z"
-        },
-        {
-          "value": 103199,
-          "date": "2025-09-10T13:03:52.428Z"
-        },
-        {
-          "value": 110406,
-          "date": "2025-09-09T12:45:43.587Z"
-        },
-        {
-          "value": 107999,
-          "date": "2025-09-08T14:50:53.884Z"
-        },
-        {
-          "value": 102000,
-          "date": "2025-09-04T15:44:01.208Z"
-        },
-        {
-          "value": 103000,
-          "date": "2025-09-02T19:29:59.885Z"
-        },
-        {
-          "value": 100700,
-          "date": "2025-09-02T02:30:32.298Z"
-        },
-        {
-          "value": 98000,
-          "date": "2025-08-31T13:11:32.851Z"
-        },
-        {
-          "value": 98000,
-          "date": "2025-08-29T14:19:44.888Z"
-        },
-        {
-          "value": 98000,
-          "date": "2025-08-28T14:34:54.297Z"
-        },
-        {
-          "value": 94400,
-          "date": "2025-08-23T04:21:00.185Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 86326,
@@ -1002,106 +414,12 @@
       "description": "Opción económica si precisás exprimir el precio y no precisás tanto espacio. SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-hiksemi-wave-240gb-3d-nand-pc-notebook/p/MLA45759263?offer_type=OFFICIAL_STORE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 34976,
           "date": "2025-10-02T16:59:11.565Z"
-        },
-        {
-          "value": 33334,
-          "date": "2025-10-01T14:21:09.006Z"
-        },
-        {
-          "value": 33630,
-          "date": "2025-09-26T12:50:19.805Z"
-        },
-        {
-          "value": 35238,
-          "date": "2025-09-24T14:44:04.426Z"
-        },
-        {
-          "value": 34200,
-          "date": "2025-09-22T12:51:07.458Z"
-        },
-        {
-          "value": 34200,
-          "date": "2025-09-19T03:11:22.162Z"
-        },
-        {
-          "value": 28000,
-          "date": "2025-09-18T15:48:07.690Z"
-        },
-        {
-          "value": 33590,
-          "date": "2025-09-17T12:42:28.193Z"
-        },
-        {
-          "value": 36814,
-          "date": "2025-09-16T11:51:28.463Z"
-        },
-        {
-          "value": 34500,
-          "date": "2025-09-15T12:37:43.636Z"
-        },
-        {
-          "value": 33741,
-          "date": "2025-09-14T12:59:57.513Z"
-        },
-        {
-          "value": 33233,
-          "date": "2025-09-13T11:45:53.229Z"
-        },
-        {
-          "value": 32999,
-          "date": "2025-09-12T13:26:57.314Z"
-        },
-        {
-          "value": 32999,
-          "date": "2025-09-11T13:57:36.916Z"
-        },
-        {
-          "value": 30429,
-          "date": "2025-09-10T13:03:58.854Z"
-        },
-        {
-          "value": 30899,
-          "date": "2025-09-09T12:46:02.524Z"
-        },
-        {
-          "value": 30621,
-          "date": "2025-09-08T14:51:01.109Z"
-        },
-        {
-          "value": 29700,
-          "date": "2025-09-04T15:44:16.229Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-09-02T19:33:31.116Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-09-02T02:30:43.273Z"
-        },
-        {
-          "value": 28000,
-          "date": "2025-08-31T13:11:43.971Z"
-        },
-        {
-          "value": 28000,
-          "date": "2025-08-29T14:19:53.493Z"
-        },
-        {
-          "value": 28000,
-          "date": "2025-08-28T14:35:13.444Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-08-26T16:17:20.621Z"
         }
-      ],
-      "linksAlt": [
-        "https://articulo.mercadolibre.com.ar/MLA-1424032565-disco-solido-ssd-240-gb-sata-hiksemi-wave-color-negro-_JM?offer_type=BEST_PRICE"
       ]
     },
     {
@@ -1110,29 +428,13 @@
       "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds100t3g0a-3-1tb-verde/p/MLA14661338?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 119820,
           "date": "2025-10-02T16:59:20.380Z"
-        },
-        {
-          "value": 106999,
-          "date": "2025-10-01T14:21:17.927Z"
-        },
-        {
-          "value": 119820,
-          "date": "2025-09-29T10:25:28.265Z"
-        },
-        {
-          "value": 95909,
-          "date": "2025-09-29T02:16:01.495Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-29T02:15:48.825Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "gpuOptions": [
@@ -1142,13 +444,13 @@
       "description": "Viene con el CPU - más que suficiente para arrancar.",
       "link": "",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 0,
           "date": "1970-01-01T00:00:00.000Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 50566,
@@ -1156,17 +458,13 @@
       "link": "https://www.mercadolibre.com.ar/placa-video-geforce-gt740-2gb-gddr5-128bit-hdmi-vga-dvi/p/MLA22805535?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 179999,
           "date": "2025-09-25T05:08:39.987Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-25T05:08:11.815Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 85207,
@@ -1174,37 +472,13 @@
       "link": "https://www.mercadolibre.com.ar/placa-video-amd-radeon-asus-rx-550-2gb-gddr5-hdmi/p/MLA20014742?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "2GB | GDDR5 / 64bit",
+      "linksAlt": [],
       "prices": [
         {
           "value": 129999,
           "date": "2025-10-02T16:57:53.527Z"
-        },
-        {
-          "value": 153627,
-          "date": "2025-10-01T14:19:55.146Z"
-        },
-        {
-          "value": 129999,
-          "date": "2025-09-25T05:09:09.413Z"
-        },
-        {
-          "value": 140000,
-          "date": "2025-09-04T15:22:53.450Z"
-        },
-        {
-          "value": 110000,
-          "date": "2025-09-03T08:07:08.073Z"
-        },
-        {
-          "value": 98000,
-          "date": "2025-09-02T17:15:27.650Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T17:15:15.706Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 47347,
@@ -1212,53 +486,13 @@
       "link": "https://articulo.mercadolibre.com.ar/MLA-1516514757-placa-de-video-amd-radeon-rx-560-4gb-gddr5-30-128-bits-_JM?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "Lo opción más económica. Aún siendo antigua, va a poder correr juegos que la integrada no tira bien. *Preguntale abajo a la IA si se banca el que querés...",
+      "linksAlt": [],
       "prices": [
         {
           "value": 203808,
           "date": "2025-10-02T16:58:02.675Z"
-        },
-        {
-          "value": 197253,
-          "date": "2025-09-24T14:43:18.341Z"
-        },
-        {
-          "value": 213084,
-          "date": "2025-09-22T12:49:44.638Z"
-        },
-        {
-          "value": 206529,
-          "date": "2025-09-11T13:55:43.038Z"
-        },
-        {
-          "value": 206529,
-          "date": "2025-09-10T13:03:12.427Z"
-        },
-        {
-          "value": 206529,
-          "date": "2025-09-09T12:43:57.526Z"
-        },
-        {
-          "value": 190799,
-          "date": "2025-09-08T14:49:49.746Z"
-        },
-        {
-          "value": 190800,
-          "date": "2025-09-04T15:23:18.050Z"
-        },
-        {
-          "value": 190800,
-          "date": "2025-09-04T15:09:49.541Z"
-        },
-        {
-          "value": 120000,
-          "date": "2025-09-03T13:09:12.518Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-03T13:08:59.265Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 8247,
@@ -1266,61 +500,13 @@
       "link": "https://articulo.mercadolibre.com.ar/MLA-1462699417-placa-de-video-amd-rx-580-8gb-ddr5-256bit-dvi-hdmi-dp-radeon-_JM?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "Un gran salto respecto a la anterior, y no solo en la VRAM. Los juegos los va a tirar mucho mejor. *Verificá abajo con la IA para saber si se banca los tuyos...",
+      "linksAlt": [],
       "prices": [
         {
           "value": 316914,
           "date": "2025-10-02T16:58:12.364Z"
-        },
-        {
-          "value": 306512,
-          "date": "2025-09-24T14:43:26.197Z"
-        },
-        {
-          "value": 332345,
-          "date": "2025-09-22T12:49:52.949Z"
-        },
-        {
-          "value": 321944,
-          "date": "2025-09-12T13:26:23.974Z"
-        },
-        {
-          "value": 321944,
-          "date": "2025-09-11T13:55:50.129Z"
-        },
-        {
-          "value": 321944,
-          "date": "2025-09-10T13:03:18.236Z"
-        },
-        {
-          "value": 321944,
-          "date": "2025-09-09T12:44:06.779Z"
-        },
-        {
-          "value": 296980,
-          "date": "2025-09-08T14:50:23.438Z"
-        },
-        {
-          "value": 297000,
-          "date": "2025-09-04T15:10:31.367Z"
-        },
-        {
-          "value": 297000,
-          "date": "2025-09-03T13:33:14.294Z"
-        },
-        {
-          "value": 297000,
-          "date": "2025-09-02T19:29:25.788Z"
-        },
-        {
-          "value": 297000,
-          "date": "2025-09-02T17:14:31.360Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T17:12:38.038Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 64601,
@@ -1328,85 +514,13 @@
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-nvidia-msi-geforce-rtx-3050-ventus-2x-6gb-oc-gddr6/p/MLA34284188?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
+      "linksAlt": [],
       "prices": [
         {
           "value": 370999,
           "date": "2025-10-02T16:58:21.135Z"
-        },
-        {
-          "value": 368999,
-          "date": "2025-10-01T14:20:18.374Z"
-        },
-        {
-          "value": 355999,
-          "date": "2025-09-30T13:24:24.074Z"
-        },
-        {
-          "value": 365999,
-          "date": "2025-09-28T15:27:02.544Z"
-        },
-        {
-          "value": 354899,
-          "date": "2025-09-27T15:57:59.886Z"
-        },
-        {
-          "value": 365999,
-          "date": "2025-09-24T14:43:34.040Z"
-        },
-        {
-          "value": 379999,
-          "date": "2025-09-22T12:50:01.866Z"
-        },
-        {
-          "value": 362609,
-          "date": "2025-09-18T15:47:34.465Z"
-        },
-        {
-          "value": 365999,
-          "date": "2025-09-17T12:41:57.995Z"
-        },
-        {
-          "value": 352999,
-          "date": "2025-09-16T11:50:54.072Z"
-        },
-        {
-          "value": 343709,
-          "date": "2025-09-12T13:26:31.271Z"
-        },
-        {
-          "value": 343709,
-          "date": "2025-09-11T13:55:57.031Z"
-        },
-        {
-          "value": 343709,
-          "date": "2025-09-10T13:03:24.244Z"
-        },
-        {
-          "value": 343709,
-          "date": "2025-09-09T12:44:27.493Z"
-        },
-        {
-          "value": 328859,
-          "date": "2025-09-08T14:50:32.029Z"
-        },
-        {
-          "value": 329000,
-          "date": "2025-09-04T15:34:25.157Z"
-        },
-        {
-          "value": 329000,
-          "date": "2025-09-03T13:33:21.597Z"
-        },
-        {
-          "value": 329000,
-          "date": "2025-09-02T17:42:20.509Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T17:39:56.326Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 38532,
@@ -1414,65 +528,17 @@
       "description": "Un caño para jugar en 1080p fluidamente en calidad Alta. Arquitectura RDNA 3, eficiencia energética y potencia moderna.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-xfx-speedster-swft21-amd-rx7600-8gb-hdmi-ddr6/p/MLA28570288?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&wid=MLA1516810373&search_layout=grid&position=2&type=product&tracking_id=b3d0404e-0664-4045-8da3-fb3948bde594&sid=search",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 461940,
+          "date": "2025-10-06T14:37:58.499Z"
+        },
         {
           "value": 473910,
           "date": "2025-10-02T16:58:29.778Z"
-        },
-        {
-          "value": 448870,
-          "date": "2025-10-01T14:20:27.213Z"
-        },
-        {
-          "value": 446620,
-          "date": "2025-09-30T13:24:31.775Z"
-        },
-        {
-          "value": 437150,
-          "date": "2025-09-29T10:24:41.936Z"
-        },
-        {
-          "value": 446620,
-          "date": "2025-09-29T02:55:18.996Z"
-        },
-        {
-          "value": 530000,
-          "date": "2025-09-05T10:54:19.890Z"
-        },
-        {
-          "value": 460000,
-          "date": "2025-09-04T15:41:49.097Z"
-        },
-        {
-          "value": 460000,
-          "date": "2025-09-03T13:33:28.198Z"
-        },
-        {
-          "value": 460000,
-          "date": "2025-09-02T19:29:36.181Z"
-        },
-        {
-          "value": 460000,
-          "date": "2025-09-02T02:26:58.410Z"
-        },
-        {
-          "value": 407600,
-          "date": "2025-08-31T13:11:10.171Z"
-        },
-        {
-          "value": 407600,
-          "date": "2025-08-29T14:19:19.749Z"
-        },
-        {
-          "value": 407600,
-          "date": "2025-08-28T14:34:24.447Z"
-        },
-        {
-          "value": 407600,
-          "date": "2025-08-26T16:16:51.613Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 64501,
@@ -1480,101 +546,17 @@
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 532199,
+          "date": "2025-10-06T14:38:07.387Z"
+        },
         {
           "value": 535575,
           "date": "2025-10-02T16:58:38.542Z"
-        },
-        {
-          "value": 513834,
-          "date": "2025-10-01T14:20:35.948Z"
-        },
-        {
-          "value": 527799,
-          "date": "2025-09-29T02:55:27.334Z"
-        },
-        {
-          "value": 486363,
-          "date": "2025-09-27T15:58:10.053Z"
-        },
-        {
-          "value": 511962,
-          "date": "2025-09-26T12:49:48.739Z"
-        },
-        {
-          "value": 530000,
-          "date": "2025-09-24T14:43:41.912Z"
-        },
-        {
-          "value": 598999,
-          "date": "2025-09-22T12:50:09.522Z"
-        },
-        {
-          "value": 530000,
-          "date": "2025-09-19T03:11:02.641Z"
-        },
-        {
-          "value": 601999,
-          "date": "2025-09-18T21:57:08.891Z"
-        },
-        {
-          "value": 530000,
-          "date": "2025-09-18T15:47:41.657Z"
-        },
-        {
-          "value": 601999,
-          "date": "2025-09-17T12:42:05.636Z"
-        },
-        {
-          "value": 621599,
-          "date": "2025-09-16T11:51:03.902Z"
-        },
-        {
-          "value": 581099,
-          "date": "2025-09-12T13:26:38.005Z"
-        },
-        {
-          "value": 581099,
-          "date": "2025-09-11T13:56:03.861Z"
-        },
-        {
-          "value": 581099,
-          "date": "2025-09-10T13:03:30.028Z"
-        },
-        {
-          "value": 615725,
-          "date": "2025-09-09T12:44:41.530Z"
-        },
-        {
-          "value": 551399,
-          "date": "2025-09-08T14:50:38.877Z"
-        },
-        {
-          "value": 540000,
-          "date": "2025-09-06T20:49:30.169Z"
-        },
-        {
-          "value": 551400,
-          "date": "2025-09-02T02:27:10.475Z"
-        },
-        {
-          "value": 541900,
-          "date": "2025-08-31T13:11:17.875Z"
-        },
-        {
-          "value": 541900,
-          "date": "2025-08-29T14:19:27.659Z"
-        },
-        {
-          "value": 541900,
-          "date": "2025-08-28T14:34:37.081Z"
-        },
-        {
-          "value": 535000,
-          "date": "2025-08-26T16:17:00.556Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 76382,
@@ -1582,46 +564,16 @@
       "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 661550,
+          "date": "2025-10-06T14:38:16.475Z"
+        },
         {
           "value": 620595,
           "date": "2025-10-04T13:36:39.181Z"
-        },
-        {
-          "value": 529999,
-          "date": "2025-10-02T16:58:47.673Z"
-        },
-        {
-          "value": 620595,
-          "date": "2025-10-01T14:20:44.874Z"
-        },
-        {
-          "value": 511477,
-          "date": "2025-09-29T02:55:36.335Z"
-        },
-        {
-          "value": 530000,
-          "date": "2025-09-04T15:42:37.487Z"
-        },
-        {
-          "value": 530000,
-          "date": "2025-09-03T13:34:08.656Z"
-        },
-        {
-          "value": 460000,
-          "date": "2025-09-02T19:29:43.628Z"
-        },
-        {
-          "value": 460000,
-          "date": "2025-09-02T15:19:16.312Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T15:18:52.159Z"
         }
-      ],
-      "linksAlt": [
-        "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=OFFICIAL_STORE"
       ]
     }
   ],
@@ -1632,69 +584,13 @@
       "description": "Recomendada para cuidar nuestros componentes.",
       "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-redragon-rpgs-gc-ps001-500w-negra/p/MLA43937355?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 89938,
           "date": "2025-10-01T14:21:26.836Z"
-        },
-        {
-          "value": 88803,
-          "date": "2025-09-24T14:44:12.013Z"
-        },
-        {
-          "value": 86999,
-          "date": "2025-09-18T15:48:14.299Z"
-        },
-        {
-          "value": 84599,
-          "date": "2025-09-11T13:57:43.708Z"
-        },
-        {
-          "value": 84599,
-          "date": "2025-09-10T13:04:04.599Z"
-        },
-        {
-          "value": 84599,
-          "date": "2025-09-09T12:46:09.970Z"
-        },
-        {
-          "value": 78999,
-          "date": "2025-09-08T14:56:50.536Z"
-        },
-        {
-          "value": 77000,
-          "date": "2025-09-07T14:04:06.079Z"
-        },
-        {
-          "value": 79000,
-          "date": "2025-09-04T15:44:25.944Z"
-        },
-        {
-          "value": 79000,
-          "date": "2025-09-02T19:33:44.011Z"
-        },
-        {
-          "value": 79000,
-          "date": "2025-09-02T02:29:56.344Z"
-        },
-        {
-          "value": 74000,
-          "date": "2025-08-31T13:11:50.539Z"
-        },
-        {
-          "value": 74000,
-          "date": "2025-08-29T14:20:01.218Z"
-        },
-        {
-          "value": 74000,
-          "date": "2025-08-28T14:35:20.744Z"
-        },
-        {
-          "value": 80000,
-          "date": "2025-08-23T04:34:38.999Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 73804,
@@ -1702,85 +598,13 @@
       "description": "Aún mejor opción 80 Plus, con cables mallados y que agrega 2 Años de Garantía.",
       "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 89999,
           "date": "2025-10-03T13:59:12.237Z"
-        },
-        {
-          "value": 92000,
-          "date": "2025-10-02T16:59:35.415Z"
-        },
-        {
-          "value": 94499,
-          "date": "2025-10-01T14:21:35.287Z"
-        },
-        {
-          "value": 93999,
-          "date": "2025-09-28T15:27:42.797Z"
-        },
-        {
-          "value": 94499,
-          "date": "2025-09-26T12:50:36.424Z"
-        },
-        {
-          "value": 93999,
-          "date": "2025-09-18T15:48:20.218Z"
-        },
-        {
-          "value": 94999,
-          "date": "2025-09-17T12:42:42.593Z"
-        },
-        {
-          "value": 89999,
-          "date": "2025-09-12T13:27:13.041Z"
-        },
-        {
-          "value": 89999,
-          "date": "2025-09-11T13:57:50.320Z"
-        },
-        {
-          "value": 89999,
-          "date": "2025-09-10T13:04:10.141Z"
-        },
-        {
-          "value": 89999,
-          "date": "2025-09-09T12:46:17.231Z"
-        },
-        {
-          "value": 85799,
-          "date": "2025-09-08T14:58:22.048Z"
-        },
-        {
-          "value": 85600,
-          "date": "2025-09-07T14:04:16.670Z"
-        },
-        {
-          "value": 85800,
-          "date": "2025-09-04T15:44:40.586Z"
-        },
-        {
-          "value": 85800,
-          "date": "2025-09-02T19:34:00.581Z"
-        },
-        {
-          "value": 85800,
-          "date": "2025-08-31T13:12:02.492Z"
-        },
-        {
-          "value": 85800,
-          "date": "2025-08-29T14:20:14.406Z"
-        },
-        {
-          "value": 95200,
-          "date": "2025-08-28T14:35:31.207Z"
-        },
-        {
-          "value": 85800,
-          "date": "2025-08-23T04:34:46.928Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 28101,
@@ -1788,85 +612,13 @@
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
         {
           "value": 38775,
           "date": "2025-10-04T13:37:28.961Z"
-        },
-        {
-          "value": 40399,
-          "date": "2025-09-30T13:25:37.386Z"
-        },
-        {
-          "value": 43411,
-          "date": "2025-09-29T02:56:19.601Z"
-        },
-        {
-          "value": 38000,
-          "date": "2025-09-18T15:48:27.611Z"
-        },
-        {
-          "value": 32348,
-          "date": "2025-09-17T12:42:49.556Z"
-        },
-        {
-          "value": 32348,
-          "date": "2025-09-16T11:51:50.820Z"
-        },
-        {
-          "value": 37620,
-          "date": "2025-09-15T12:38:10.495Z"
-        },
-        {
-          "value": 32348,
-          "date": "2025-09-12T13:27:19.204Z"
-        },
-        {
-          "value": 32348,
-          "date": "2025-09-11T13:57:58.086Z"
-        },
-        {
-          "value": 32348,
-          "date": "2025-09-10T13:04:15.270Z"
-        },
-        {
-          "value": 32348,
-          "date": "2025-09-09T12:46:24.392Z"
-        },
-        {
-          "value": 32348,
-          "date": "2025-09-08T14:58:29.363Z"
-        },
-        {
-          "value": 36500,
-          "date": "2025-09-04T15:45:36.638Z"
-        },
-        {
-          "value": 36500,
-          "date": "2025-09-02T19:34:10.893Z"
-        },
-        {
-          "value": 36500,
-          "date": "2025-09-02T02:30:13.080Z"
-        },
-        {
-          "value": 37600,
-          "date": "2025-08-31T13:12:11.876Z"
-        },
-        {
-          "value": 37200,
-          "date": "2025-08-29T14:20:30.368Z"
-        },
-        {
-          "value": 37200,
-          "date": "2025-08-28T14:36:37.493Z"
-        },
-        {
-          "value": 38400,
-          "date": "2025-08-26T16:17:38.950Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 45939,
@@ -1874,21 +626,13 @@
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-xs550-ps-550w-negra/p/MLA43933347?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 24016,
           "date": "2025-09-22T12:51:32.947Z"
-        },
-        {
-          "value": 23692,
-          "date": "2025-09-19T03:11:41.555Z"
-        },
-        {
-          "value": 38758,
-          "date": "1970-01-01T00:00:00.000Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "motherboardOptions": [
@@ -1898,89 +642,17 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333?offer_type=BEST_PRICE",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 86570,
+          "date": "2025-10-06T14:36:12.260Z"
+        },
         {
           "value": 87600,
           "date": "2025-10-03T13:54:58.640Z"
-        },
-        {
-          "value": 91942,
-          "date": "2025-10-02T16:56:37.866Z"
-        },
-        {
-          "value": 85030,
-          "date": "2025-10-01T14:18:27.714Z"
-        },
-        {
-          "value": 84890,
-          "date": "2025-09-30T13:22:47.257Z"
-        },
-        {
-          "value": 82250,
-          "date": "2025-09-29T02:43:54.453Z"
-        },
-        {
-          "value": 94199,
-          "date": "2025-09-16T11:49:48.708Z"
-        },
-        {
-          "value": 98715,
-          "date": "2025-09-13T11:44:08.026Z"
-        },
-        {
-          "value": 100999,
-          "date": "2025-09-12T13:25:24.826Z"
-        },
-        {
-          "value": 104163,
-          "date": "2025-09-11T13:54:55.139Z"
-        },
-        {
-          "value": 101999,
-          "date": "2025-09-10T12:56:47.808Z"
-        },
-        {
-          "value": 101999,
-          "date": "2025-09-09T12:42:46.747Z"
-        },
-        {
-          "value": 113075,
-          "date": "2025-09-08T14:47:40.678Z"
-        },
-        {
-          "value": 113000,
-          "date": "2025-09-05T10:50:35.402Z"
-        },
-        {
-          "value": 93000,
-          "date": "2025-09-04T15:03:55.071Z"
-        },
-        {
-          "value": 93000,
-          "date": "2025-09-03T13:30:15.738Z"
-        },
-        {
-          "value": 93000,
-          "date": "2025-09-02T02:24:53.543Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-08-31T13:10:04.529Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-08-29T14:18:04.613Z"
-        },
-        {
-          "value": 83700,
-          "date": "2025-08-28T14:33:11.198Z"
-        },
-        {
-          "value": 93000,
-          "date": "2025-08-23T04:33:29.334Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 23506,
@@ -1988,93 +660,17 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 86570,
+          "date": "2025-10-06T14:36:21.329Z"
+        },
         {
           "value": 87820,
           "date": "2025-10-04T13:34:56.317Z"
-        },
-        {
-          "value": 81518,
-          "date": "2025-10-01T14:18:37.273Z"
-        },
-        {
-          "value": 81930,
-          "date": "2025-09-24T14:29:01.178Z"
-        },
-        {
-          "value": 93952,
-          "date": "2025-09-22T12:49:15.466Z"
-        },
-        {
-          "value": 91452,
-          "date": "2025-09-14T12:42:58.504Z"
-        },
-        {
-          "value": 94282,
-          "date": "2025-09-13T11:44:20.178Z"
-        },
-        {
-          "value": 99357,
-          "date": "2025-09-12T13:25:31.991Z"
-        },
-        {
-          "value": 99794,
-          "date": "2025-09-11T13:55:02.116Z"
-        },
-        {
-          "value": 99794,
-          "date": "2025-09-10T12:56:53.201Z"
-        },
-        {
-          "value": 100274,
-          "date": "2025-09-09T12:42:56.302Z"
-        },
-        {
-          "value": 107997,
-          "date": "2025-09-08T14:48:44.571Z"
-        },
-        {
-          "value": 92000,
-          "date": "2025-09-07T14:01:03.821Z"
-        },
-        {
-          "value": 92600,
-          "date": "2025-09-05T10:51:09.186Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-09-04T15:04:03.995Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-09-03T13:30:22.761Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-09-02T19:28:31.259Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-09-02T02:25:01.664Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-08-31T13:10:11.216Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-08-29T14:18:13.044Z"
-        },
-        {
-          "value": 92900,
-          "date": "2025-08-28T14:33:24.638Z"
-        },
-        {
-          "value": 92890,
-          "date": "2025-08-23T04:33:46.654Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "cpuOptions": [
@@ -2084,77 +680,13 @@
       "description": "6 nucleos 4.4ghz Am4",
       "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 220799,
           "date": "2025-10-02T16:56:20.663Z"
-        },
-        {
-          "value": 248775,
-          "date": "2025-10-01T14:18:06.832Z"
-        },
-        {
-          "value": 220999,
-          "date": "2025-09-30T13:22:29.827Z"
-        },
-        {
-          "value": 228899,
-          "date": "2025-09-24T14:28:44.465Z"
-        },
-        {
-          "value": 228899,
-          "date": "2025-09-17T12:40:15.211Z"
-        },
-        {
-          "value": 248775,
-          "date": "2025-09-16T11:49:28.050Z"
-        },
-        {
-          "value": 229729,
-          "date": "2025-09-11T13:54:36.538Z"
-        },
-        {
-          "value": 229729,
-          "date": "2025-09-10T12:56:36.119Z"
-        },
-        {
-          "value": 229729,
-          "date": "2025-09-09T12:42:29.973Z"
-        },
-        {
-          "value": 248775,
-          "date": "2025-09-08T14:44:20.779Z"
-        },
-        {
-          "value": 219000,
-          "date": "2025-09-04T15:03:28.406Z"
-        },
-        {
-          "value": 219000,
-          "date": "2025-09-03T13:30:03.064Z"
-        },
-        {
-          "value": 219000,
-          "date": "2025-09-02T02:24:37.551Z"
-        },
-        {
-          "value": 232500,
-          "date": "2025-08-31T13:09:49.136Z"
-        },
-        {
-          "value": 232500,
-          "date": "2025-08-29T14:17:38.051Z"
-        },
-        {
-          "value": 232500,
-          "date": "2025-08-28T13:40:35.216Z"
-        },
-        {
-          "value": 232500,
-          "date": "2025-08-26T16:14:58.153Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 55990,
@@ -2162,121 +694,17 @@
       "description": "8 nucleos 4.6ghz Am4",
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 258570,
+          "date": "2025-10-06T14:36:03.586Z"
+        },
         {
           "value": 262499,
           "date": "2025-10-03T13:54:50.128Z"
-        },
-        {
-          "value": 267999,
-          "date": "2025-10-02T16:56:29.516Z"
-        },
-        {
-          "value": 261229,
-          "date": "2025-10-01T14:18:18.368Z"
-        },
-        {
-          "value": 240599,
-          "date": "2025-09-29T10:22:48.508Z"
-        },
-        {
-          "value": 243589,
-          "date": "2025-09-29T02:43:45.851Z"
-        },
-        {
-          "value": 240599,
-          "date": "2025-09-26T12:48:07.809Z"
-        },
-        {
-          "value": 243589,
-          "date": "2025-09-25T13:28:00.951Z"
-        },
-        {
-          "value": 254899,
-          "date": "2025-09-24T14:28:53.151Z"
-        },
-        {
-          "value": 263399,
-          "date": "2025-09-22T12:49:06.621Z"
-        },
-        {
-          "value": 259999,
-          "date": "2025-09-19T03:09:59.855Z"
-        },
-        {
-          "value": 263399,
-          "date": "2025-09-17T12:40:24.553Z"
-        },
-        {
-          "value": 252739,
-          "date": "2025-09-16T11:49:39.585Z"
-        },
-        {
-          "value": 249999,
-          "date": "2025-09-13T11:43:54.305Z"
-        },
-        {
-          "value": 252739,
-          "date": "2025-09-12T13:25:18.235Z"
-        },
-        {
-          "value": 265739,
-          "date": "2025-09-11T13:54:47.652Z"
-        },
-        {
-          "value": 265739,
-          "date": "2025-09-10T12:56:42.127Z"
-        },
-        {
-          "value": 265739,
-          "date": "2025-09-09T12:42:39.164Z"
-        },
-        {
-          "value": 254999,
-          "date": "2025-09-08T14:44:32.766Z"
-        },
-        {
-          "value": 250300,
-          "date": "2025-09-07T14:00:34.639Z"
-        },
-        {
-          "value": 250400,
-          "date": "2025-09-05T10:50:18.346Z"
-        },
-        {
-          "value": 250300,
-          "date": "2025-09-04T15:03:46.002Z"
-        },
-        {
-          "value": 238500,
-          "date": "2025-09-03T13:30:09.505Z"
-        },
-        {
-          "value": 238500,
-          "date": "2025-09-02T19:28:06.418Z"
-        },
-        {
-          "value": 238500,
-          "date": "2025-09-02T02:24:47.039Z"
-        },
-        {
-          "value": 238800,
-          "date": "2025-08-31T13:09:56.480Z"
-        },
-        {
-          "value": 238800,
-          "date": "2025-08-29T14:17:48.011Z"
-        },
-        {
-          "value": 238800,
-          "date": "2025-08-28T13:40:09.002Z"
-        },
-        {
-          "value": 238790,
-          "date": "2025-08-23T04:33:13.861Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "ramOptions": [
@@ -2287,69 +715,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
         {
           "value": 38699,
           "date": "2025-10-01T14:18:46.299Z"
-        },
-        {
-          "value": 43159,
-          "date": "2025-09-30T13:23:04.576Z"
-        },
-        {
-          "value": 43039,
-          "date": "2025-09-29T02:53:53.413Z"
-        },
-        {
-          "value": 44890,
-          "date": "2025-09-11T13:55:14.254Z"
-        },
-        {
-          "value": 44890,
-          "date": "2025-09-10T12:57:04.080Z"
-        },
-        {
-          "value": 44890,
-          "date": "2025-09-09T12:43:13.087Z"
-        },
-        {
-          "value": 44890,
-          "date": "2025-09-08T14:49:02.327Z"
-        },
-        {
-          "value": 44900,
-          "date": "2025-09-04T15:04:22.286Z"
-        },
-        {
-          "value": 44900,
-          "date": "2025-09-03T13:32:40.461Z"
-        },
-        {
-          "value": 44900,
-          "date": "2025-09-02T19:28:56.685Z"
-        },
-        {
-          "value": 44900,
-          "date": "2025-09-02T02:25:17.921Z"
-        },
-        {
-          "value": 44900,
-          "date": "2025-08-31T13:10:40.945Z"
-        },
-        {
-          "value": 39500,
-          "date": "2025-08-29T14:18:46.851Z"
-        },
-        {
-          "value": 40900,
-          "date": "2025-08-28T14:33:44.628Z"
-        },
-        {
-          "value": 40891,
-          "date": "2025-08-26T16:15:50.491Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 8502,
@@ -2358,85 +730,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
         {
           "value": 58199,
           "date": "2025-10-03T13:55:22.064Z"
-        },
-        {
-          "value": 54999,
-          "date": "2025-09-29T02:54:02.045Z"
-        },
-        {
-          "value": 51499,
-          "date": "2025-09-25T13:28:15.038Z"
-        },
-        {
-          "value": 52999,
-          "date": "2025-09-19T03:10:19.848Z"
-        },
-        {
-          "value": 52799,
-          "date": "2025-09-16T11:50:21.980Z"
-        },
-        {
-          "value": 55400,
-          "date": "2025-09-15T12:36:36.178Z"
-        },
-        {
-          "value": 52799,
-          "date": "2025-09-11T13:55:25.672Z"
-        },
-        {
-          "value": 52799,
-          "date": "2025-09-10T12:57:09.481Z"
-        },
-        {
-          "value": 56799,
-          "date": "2025-09-09T12:43:24.580Z"
-        },
-        {
-          "value": 53867,
-          "date": "2025-09-08T14:49:30.499Z"
-        },
-        {
-          "value": 56800,
-          "date": "2025-09-06T20:48:15.607Z"
-        },
-        {
-          "value": 56000,
-          "date": "2025-09-04T15:07:50.441Z"
-        },
-        {
-          "value": 56000,
-          "date": "2025-09-03T13:32:54.294Z"
-        },
-        {
-          "value": 56000,
-          "date": "2025-09-02T19:29:04.196Z"
-        },
-        {
-          "value": 56000,
-          "date": "2025-09-02T02:25:22.616Z"
-        },
-        {
-          "value": 56000,
-          "date": "2025-08-31T13:10:51.138Z"
-        },
-        {
-          "value": 56700,
-          "date": "2025-08-29T14:18:57.793Z"
-        },
-        {
-          "value": 56700,
-          "date": "2025-08-28T14:33:55.762Z"
-        },
-        {
-          "value": 56700,
-          "date": "2025-08-23T04:20:24.825Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 769,
@@ -2445,81 +745,13 @@
       "description": "",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1420730281?offer_type=OFFICIAL_STORE",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
         {
           "value": 22998,
           "date": "2025-10-01T14:19:02.396Z"
-        },
-        {
-          "value": 21388,
-          "date": "2025-09-30T13:23:22.707Z"
-        },
-        {
-          "value": 20077,
-          "date": "2025-09-29T10:23:27.445Z"
-        },
-        {
-          "value": 21388,
-          "date": "2025-09-29T02:54:11.150Z"
-        },
-        {
-          "value": 22998,
-          "date": "2025-09-24T14:43:08.187Z"
-        },
-        {
-          "value": 20698,
-          "date": "2025-09-17T12:41:27.734Z"
-        },
-        {
-          "value": 22998,
-          "date": "2025-09-11T13:55:35.307Z"
-        },
-        {
-          "value": 22998,
-          "date": "2025-09-10T13:03:05.451Z"
-        },
-        {
-          "value": 22998,
-          "date": "2025-09-09T12:43:32.836Z"
-        },
-        {
-          "value": 22998,
-          "date": "2025-09-08T14:49:41.467Z"
-        },
-        {
-          "value": 23000,
-          "date": "2025-09-04T15:08:04.870Z"
-        },
-        {
-          "value": 23000,
-          "date": "2025-09-03T13:33:01.542Z"
-        },
-        {
-          "value": 23000,
-          "date": "2025-09-02T19:29:12.627Z"
-        },
-        {
-          "value": 23000,
-          "date": "2025-09-02T02:25:31.976Z"
-        },
-        {
-          "value": 17900,
-          "date": "2025-08-31T13:11:00.682Z"
-        },
-        {
-          "value": 17900,
-          "date": "2025-08-29T14:19:07.251Z"
-        },
-        {
-          "value": 17900,
-          "date": "2025-08-28T14:34:07.791Z"
-        },
-        {
-          "value": 18000,
-          "date": "2025-08-25T13:10:07.718Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 77124,
@@ -2527,50 +759,18 @@
       "link": "https://www.mercadolibre.com.ar/memoria-ram-patriot-signature-8gb-3200mhz-dimm-negra/p/MLA37810612?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "total": 8,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 38373,
+          "date": "2025-10-06T14:36:50.615Z"
+        },
         {
           "value": 36900,
           "date": "2025-10-04T13:35:24.095Z"
-        },
-        {
-          "value": 38373,
-          "date": "2025-10-03T13:55:37.032Z"
-        },
-        {
-          "value": 31199,
-          "date": "2025-10-02T16:57:14.055Z"
-        },
-        {
-          "value": 32470,
-          "date": "2025-10-01T14:19:13.545Z"
-        },
-        {
-          "value": 30899,
-          "date": "2025-09-30T13:23:30.817Z"
-        },
-        {
-          "value": 32470,
-          "date": "2025-09-28T15:26:29.149Z"
-        },
-        {
-          "value": 39560,
-          "date": "2025-09-27T15:57:18.400Z"
-        },
-        {
-          "value": 32470,
-          "date": "2025-09-26T12:48:39.744Z"
-        },
-        {
-          "value": 30300,
-          "date": "2025-09-24T14:35:01.569Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-24T14:34:10.116Z"
         }
-      ],
-      "linksAlt": [],
-      "total": 8
+      ]
     },
     {
       "id": 10363,
@@ -2578,38 +778,18 @@
       "link": "https://www.mercadolibre.com.ar/memoria-ram-gamer-color-negrorojo-8gb-1-patriot-pve248g320c8/p/MLA19135093?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "total": 8,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 55000,
+          "date": "2025-10-06T14:36:59.007Z"
+        },
         {
           "value": 57000,
           "date": "2025-10-03T13:55:45.481Z"
-        },
-        {
-          "value": 61110,
-          "date": "2025-10-02T16:57:22.290Z"
-        },
-        {
-          "value": 60857,
-          "date": "2025-10-01T14:19:22.439Z"
-        },
-        {
-          "value": 58714,
-          "date": "2025-09-27T15:57:26.731Z"
-        },
-        {
-          "value": 59555,
-          "date": "2025-09-26T12:49:07.760Z"
-        },
-        {
-          "value": 34644,
-          "date": "2025-09-24T16:45:10.377Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-24T16:44:19.814Z"
         }
-      ],
-      "linksAlt": [],
-      "total": 8
+      ]
     },
     {
       "id": 69550,
@@ -2617,22 +797,14 @@
       "link": "https://articulo.mercadolibre.com.ar/MLA-1457171545-memoria-ram-samsung-ddr3-2x8gb-1600mhz-oem-kit-16gb-total-_JM?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
+      "total": 16,
+      "linksAlt": [],
       "prices": [
         {
           "value": 52899,
           "date": "2025-10-01T14:19:31.513Z"
-        },
-        {
-          "value": 49196,
-          "date": "2025-09-24T16:45:42.825Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-24T16:45:18.150Z"
         }
-      ],
-      "linksAlt": [],
-      "total": 16
+      ]
     },
     {
       "id": 55457,
@@ -2640,30 +812,14 @@
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-16gb-3200mhz-hiksemi-armor-u-dimm/p/MLA38657900?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "total": 16,
+      "linksAlt": [],
       "prices": [
         {
           "value": 57500,
           "date": "2025-10-02T16:57:38.209Z"
-        },
-        {
-          "value": 57099,
-          "date": "2025-09-27T15:57:35.068Z"
-        },
-        {
-          "value": 58299,
-          "date": "2025-09-26T12:49:16.777Z"
-        },
-        {
-          "value": 59854,
-          "date": "2025-09-24T16:59:21.254Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-24T16:59:14.217Z"
         }
-      ],
-      "linksAlt": [],
-      "total": 16
+      ]
     }
   ],
   "comboOptions": [
@@ -2673,89 +829,17 @@
       "description": "Descripción del nuevo Combo.",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1106736374-combo-actualizacion-pc-amd-ryzen-5600g-mother-16-gb-_JM?offer_type=OFFICIAL_STORE",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 438472,
+          "date": "2025-10-06T14:35:38.173Z"
+        },
         {
           "value": 399799,
           "date": "2025-10-04T13:34:21.909Z"
-        },
-        {
-          "value": 410199,
-          "date": "2025-10-02T16:56:04.508Z"
-        },
-        {
-          "value": 416099,
-          "date": "2025-10-01T14:17:51.299Z"
-        },
-        {
-          "value": 374099,
-          "date": "2025-09-29T02:43:16.633Z"
-        },
-        {
-          "value": 406399,
-          "date": "2025-09-17T12:39:22.053Z"
-        },
-        {
-          "value": 403799,
-          "date": "2025-09-16T11:48:36.513Z"
-        },
-        {
-          "value": 399799,
-          "date": "2025-09-13T11:43:06.513Z"
-        },
-        {
-          "value": 395199,
-          "date": "2025-09-12T13:24:44.449Z"
-        },
-        {
-          "value": 399999,
-          "date": "2025-09-11T13:53:17.828Z"
-        },
-        {
-          "value": 407376,
-          "date": "2025-09-10T12:56:18.128Z"
-        },
-        {
-          "value": 407376,
-          "date": "2025-09-09T12:41:58.704Z"
-        },
-        {
-          "value": 398118,
-          "date": "2025-09-08T14:43:42.322Z"
-        },
-        {
-          "value": 377000,
-          "date": "2025-09-04T15:03:02.486Z"
-        },
-        {
-          "value": 377000,
-          "date": "2025-09-03T13:29:43.839Z"
-        },
-        {
-          "value": 377000,
-          "date": "2025-09-02T14:34:51.289Z"
-        },
-        {
-          "value": 310000,
-          "date": "2025-09-02T02:24:09.950Z"
-        },
-        {
-          "value": 309900,
-          "date": "2025-08-31T13:08:58.719Z"
-        },
-        {
-          "value": 324500,
-          "date": "2025-08-29T14:17:05.369Z"
-        },
-        {
-          "value": 324500,
-          "date": "2025-08-28T13:33:28.850Z"
-        },
-        {
-          "value": 324000,
-          "date": "2025-08-26T16:14:19.096Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 69988,
@@ -2763,57 +847,13 @@
       "description": "Descripción del nuevo Combo.",
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-pc-intel-i5-4570--mother--8gb-ram/up/MLAU3143273772?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 187000,
           "date": "2025-09-24T14:28:35.462Z"
-        },
-        {
-          "value": 187000,
-          "date": "2025-09-11T13:53:41.745Z"
-        },
-        {
-          "value": 187000,
-          "date": "2025-09-10T12:56:30.560Z"
-        },
-        {
-          "value": 187000,
-          "date": "2025-09-09T12:42:18.799Z"
-        },
-        {
-          "value": 179990,
-          "date": "2025-09-08T14:44:08.607Z"
-        },
-        {
-          "value": 180000,
-          "date": "2025-09-04T15:03:20.156Z"
-        },
-        {
-          "value": 180000,
-          "date": "2025-09-03T13:29:56.136Z"
-        },
-        {
-          "value": 180000,
-          "date": "2025-09-02T02:24:23.495Z"
-        },
-        {
-          "value": 180000,
-          "date": "2025-08-31T13:09:41.305Z"
-        },
-        {
-          "value": 180000,
-          "date": "2025-08-29T14:17:23.445Z"
-        },
-        {
-          "value": 180000,
-          "date": "2025-08-28T14:33:02.447Z"
-        },
-        {
-          "value": 180000,
-          "date": "2025-08-23T04:17:43.110Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "monitorOptions": [
@@ -2823,81 +863,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 158052,
           "date": "2025-10-01T14:21:57.333Z"
-        },
-        {
-          "value": 159900,
-          "date": "2025-09-30T13:25:51.427Z"
-        },
-        {
-          "value": 160399,
-          "date": "2025-09-28T15:27:57.360Z"
-        },
-        {
-          "value": 159900,
-          "date": "2025-09-27T15:59:04.573Z"
-        },
-        {
-          "value": 162762,
-          "date": "2025-09-22T12:51:41.869Z"
-        },
-        {
-          "value": 164390,
-          "date": "2025-09-15T12:38:18.914Z"
-        },
-        {
-          "value": 160271,
-          "date": "2025-09-14T13:00:44.276Z"
-        },
-        {
-          "value": 164390,
-          "date": "2025-09-12T13:27:25.441Z"
-        },
-        {
-          "value": 164390,
-          "date": "2025-09-11T13:58:04.713Z"
-        },
-        {
-          "value": 164399,
-          "date": "2025-09-10T13:04:21.014Z"
-        },
-        {
-          "value": 164390,
-          "date": "2025-09-09T12:46:30.876Z"
-        },
-        {
-          "value": 164399,
-          "date": "2025-09-08T14:58:36.281Z"
-        },
-        {
-          "value": 164400,
-          "date": "2025-09-04T15:45:52.679Z"
-        },
-        {
-          "value": 164400,
-          "date": "2025-09-02T19:34:27.364Z"
-        },
-        {
-          "value": 164400,
-          "date": "2025-08-31T13:12:22.261Z"
-        },
-        {
-          "value": 156000,
-          "date": "2025-08-29T14:20:38.306Z"
-        },
-        {
-          "value": 156000,
-          "date": "2025-08-28T14:36:44.824Z"
-        },
-        {
-          "value": 164400,
-          "date": "2025-08-23T04:35:07.978Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 93025,
@@ -2905,69 +877,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-noblex-25-pulgadas-nxsm2500-led-fhd/p/MLA45717090?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 203269,
           "date": "2025-10-03T13:59:41.725Z"
-        },
-        {
-          "value": 202999,
-          "date": "2025-09-29T10:26:12.698Z"
-        },
-        {
-          "value": 192850,
-          "date": "2025-09-22T12:51:50.276Z"
-        },
-        {
-          "value": 200000,
-          "date": "2025-09-19T03:11:53.395Z"
-        },
-        {
-          "value": 198000,
-          "date": "2025-09-12T13:27:32.727Z"
-        },
-        {
-          "value": 198000,
-          "date": "2025-09-11T13:58:12.428Z"
-        },
-        {
-          "value": 184999,
-          "date": "2025-09-10T13:04:26.006Z"
-        },
-        {
-          "value": 181999,
-          "date": "2025-09-09T12:46:37.522Z"
-        },
-        {
-          "value": 185000,
-          "date": "2025-09-08T14:58:43.469Z"
-        },
-        {
-          "value": 181000,
-          "date": "2025-09-04T15:46:11.776Z"
-        },
-        {
-          "value": 153500,
-          "date": "2025-09-02T19:34:40.301Z"
-        },
-        {
-          "value": 183000,
-          "date": "2025-08-31T13:12:28.092Z"
-        },
-        {
-          "value": 183000,
-          "date": "2025-08-29T14:20:46.617Z"
-        },
-        {
-          "value": 183000,
-          "date": "2025-08-28T14:36:53.653Z"
-        },
-        {
-          "value": 202000,
-          "date": "2025-08-26T16:18:05.998Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 17689,
@@ -2975,89 +891,17 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-gigabyte-gs27fa-27-180hz-panel-ips-1ms-hdr-full-hd/p/MLA48944295?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 290990,
+          "date": "2025-10-06T14:40:03.118Z"
+        },
         {
           "value": 293570,
           "date": "2025-10-02T17:00:09.334Z"
-        },
-        {
-          "value": 274350,
-          "date": "2025-10-01T14:22:13.097Z"
-        },
-        {
-          "value": 269999,
-          "date": "2025-09-30T13:26:05.897Z"
-        },
-        {
-          "value": 274310,
-          "date": "2025-09-24T14:44:44.060Z"
-        },
-        {
-          "value": 293944,
-          "date": "2025-09-22T12:51:58.736Z"
-        },
-        {
-          "value": 264999,
-          "date": "2025-09-18T15:48:51.131Z"
-        },
-        {
-          "value": 293944,
-          "date": "2025-09-17T12:43:13.030Z"
-        },
-        {
-          "value": 293944,
-          "date": "2025-09-16T11:52:14.115Z"
-        },
-        {
-          "value": 300000,
-          "date": "2025-09-13T11:47:00.736Z"
-        },
-        {
-          "value": 299999,
-          "date": "2025-09-12T13:27:39.723Z"
-        },
-        {
-          "value": 299999,
-          "date": "2025-09-11T13:58:18.897Z"
-        },
-        {
-          "value": 299999,
-          "date": "2025-09-10T13:04:31.294Z"
-        },
-        {
-          "value": 281000,
-          "date": "2025-09-09T12:46:43.866Z"
-        },
-        {
-          "value": 266699,
-          "date": "2025-09-08T14:58:50.036Z"
-        },
-        {
-          "value": 266700,
-          "date": "2025-09-04T15:46:26.997Z"
-        },
-        {
-          "value": 279300,
-          "date": "2025-09-02T19:34:56.901Z"
-        },
-        {
-          "value": 284000,
-          "date": "2025-08-31T13:12:33.997Z"
-        },
-        {
-          "value": 284000,
-          "date": "2025-08-29T14:20:55.566Z"
-        },
-        {
-          "value": 284000,
-          "date": "2025-08-28T14:37:01.358Z"
-        },
-        {
-          "value": 284000,
-          "date": "2025-08-26T16:18:18.479Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "mouseOptions": [
@@ -3067,53 +911,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/mouse-gamer-usb-wesdar-2400-dpi-pc-led-de-6-botones-pad-color-negro/p/MLA21250931?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 10530,
           "date": "2025-10-01T14:22:22.256Z"
-        },
-        {
-          "value": 6635,
-          "date": "2025-09-11T13:58:25.312Z"
-        },
-        {
-          "value": 6635,
-          "date": "2025-09-10T13:04:37.326Z"
-        },
-        {
-          "value": 6251,
-          "date": "2025-09-09T12:46:52.632Z"
-        },
-        {
-          "value": 6251,
-          "date": "2025-09-08T14:58:56.766Z"
-        },
-        {
-          "value": 6250,
-          "date": "2025-09-04T15:46:46.304Z"
-        },
-        {
-          "value": 6200,
-          "date": "2025-09-02T19:35:26.896Z"
-        },
-        {
-          "value": 8900,
-          "date": "2025-08-31T13:12:45.966Z"
-        },
-        {
-          "value": 8900,
-          "date": "2025-08-29T14:21:15.495Z"
-        },
-        {
-          "value": 8900,
-          "date": "2025-08-28T14:37:19.052Z"
-        },
-        {
-          "value": 8930,
-          "date": "2025-08-23T04:21:53.972Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 18066,
@@ -3121,81 +925,17 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/mouse-y-pad-2-en-1-gamer-redragon-m601wl-ba-negrorojo/p/MLA17588671?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 24999,
+          "date": "2025-10-06T14:40:18.285Z"
+        },
         {
           "value": 26118,
           "date": "2025-10-04T13:38:14.346Z"
-        },
-        {
-          "value": 25980,
-          "date": "2025-10-01T14:22:32.308Z"
-        },
-        {
-          "value": 23901,
-          "date": "2025-09-26T12:51:22.017Z"
-        },
-        {
-          "value": 25980,
-          "date": "2025-09-22T12:52:14.330Z"
-        },
-        {
-          "value": 24891,
-          "date": "2025-09-18T15:49:02.843Z"
-        },
-        {
-          "value": 25980,
-          "date": "2025-09-17T12:43:34.922Z"
-        },
-        {
-          "value": 27237,
-          "date": "2025-09-13T11:47:19.577Z"
-        },
-        {
-          "value": 26433,
-          "date": "2025-09-12T13:27:51.719Z"
-        },
-        {
-          "value": 26433,
-          "date": "2025-09-11T13:58:39.393Z"
-        },
-        {
-          "value": 26433,
-          "date": "2025-09-10T13:04:42.734Z"
-        },
-        {
-          "value": 26433,
-          "date": "2025-09-09T12:46:58.835Z"
-        },
-        {
-          "value": 27237,
-          "date": "2025-09-08T14:59:03.274Z"
-        },
-        {
-          "value": 25600,
-          "date": "2025-09-04T15:46:55.409Z"
-        },
-        {
-          "value": 25600,
-          "date": "2025-09-02T19:35:15.654Z"
-        },
-        {
-          "value": 24200,
-          "date": "2025-08-31T13:12:39.573Z"
-        },
-        {
-          "value": 24200,
-          "date": "2025-08-29T14:21:08.525Z"
-        },
-        {
-          "value": 24200,
-          "date": "2025-08-28T14:37:09.831Z"
-        },
-        {
-          "value": 25600,
-          "date": "2025-08-26T16:18:26.847Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "joystickOptions": [
@@ -3205,91 +945,16 @@
       "description": "Generico Xbox 360 Con Cable",
       "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 27000,
+          "date": "2025-10-06T14:40:26.914Z"
+        },
         {
           "value": 27786,
           "date": "2025-10-01T14:22:41.248Z"
-        },
-        {
-          "value": 25760,
-          "date": "2025-09-27T15:59:42.038Z"
-        },
-        {
-          "value": 27786,
-          "date": "2025-09-26T12:51:30.842Z"
-        },
-        {
-          "value": 21802,
-          "date": "2025-09-24T14:45:03.562Z"
-        },
-        {
-          "value": 23200,
-          "date": "2025-09-22T12:52:21.812Z"
-        },
-        {
-          "value": 22345,
-          "date": "2025-09-19T03:12:24.179Z"
-        },
-        {
-          "value": 25500,
-          "date": "2025-09-17T12:43:43.762Z"
-        },
-        {
-          "value": 25600,
-          "date": "2025-09-16T11:52:40.220Z"
-        },
-        {
-          "value": 22836,
-          "date": "2025-09-14T13:01:47.012Z"
-        },
-        {
-          "value": 23150,
-          "date": "2025-09-13T11:51:26.069Z"
-        },
-        {
-          "value": 29900,
-          "date": "2025-09-10T13:04:48.687Z"
-        },
-        {
-          "value": 29900,
-          "date": "2025-09-09T12:47:04.747Z"
-        },
-        {
-          "value": 29900,
-          "date": "2025-09-08T14:59:09.505Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-09-04T15:47:08.626Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-09-02T19:35:34.863Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-09-02T02:29:19.880Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-08-31T13:12:52.165Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-08-29T14:21:23.467Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-08-28T14:38:07.423Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-08-23T04:35:21.832Z"
         }
-      ],
-      "linksAlt": [
-        "https://www.mercadolibre.com.ar/joystick--para-microsoft-xbox-360-con-cable-pc-windows/up/MLAU3163397996?offer_type=OFFICIAL_STORE",
-        "https://www.mercadolibre.com.ar/seisa-joystick-cable-usb-negro-compatible-con-xbox-360-y-pc-windows-njx301/p/MLA27574823?offer_type=OFFICIAL_STORE"
       ]
     },
     {
@@ -3298,93 +963,13 @@
       "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-redragon-harrow-g808-negro/p/MLA15086696?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 54799,
           "date": "2025-10-01T14:22:50.761Z"
-        },
-        {
-          "value": 55183,
-          "date": "2025-09-30T13:26:33.389Z"
-        },
-        {
-          "value": 50200,
-          "date": "2025-09-29T02:57:13.187Z"
-        },
-        {
-          "value": 55183,
-          "date": "2025-09-28T15:28:37.981Z"
-        },
-        {
-          "value": 54799,
-          "date": "2025-09-27T15:59:50.987Z"
-        },
-        {
-          "value": 55183,
-          "date": "2025-09-24T14:45:10.887Z"
-        },
-        {
-          "value": 54799,
-          "date": "2025-09-17T12:43:49.979Z"
-        },
-        {
-          "value": 54799,
-          "date": "2025-09-16T11:52:53.589Z"
-        },
-        {
-          "value": 55199,
-          "date": "2025-09-15T12:39:10.235Z"
-        },
-        {
-          "value": 54799,
-          "date": "2025-09-14T13:01:53.489Z"
-        },
-        {
-          "value": 54799,
-          "date": "2025-09-13T11:51:35.358Z"
-        },
-        {
-          "value": 26433,
-          "date": "2025-09-12T13:28:02.746Z"
-        },
-        {
-          "value": 55199,
-          "date": "2025-09-11T13:58:54.623Z"
-        },
-        {
-          "value": 51670,
-          "date": "2025-09-10T13:04:53.687Z"
-        },
-        {
-          "value": 51598,
-          "date": "2025-09-09T12:47:10.230Z"
-        },
-        {
-          "value": 51598,
-          "date": "2025-09-08T14:59:15.671Z"
-        },
-        {
-          "value": 51600,
-          "date": "2025-09-07T14:05:50.243Z"
-        },
-        {
-          "value": 50900,
-          "date": "2025-09-06T20:57:39.094Z"
-        },
-        {
-          "value": 53000,
-          "date": "2025-09-04T15:47:21.009Z"
-        },
-        {
-          "value": 50000,
-          "date": "2025-09-02T21:05:55.859Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T21:05:29.479Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 7020,
@@ -3392,17 +977,13 @@
       "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-seisa-njx311/p/MLA17789958?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 44890,
           "date": "2025-10-03T13:24:44.926Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-10-03T13:24:14.673Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "keyboardOptions": [
@@ -3412,85 +993,17 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 34818,
+          "date": "2025-10-06T14:40:49.190Z"
+        },
         {
           "value": 33000,
           "date": "2025-10-04T13:38:43.507Z"
-        },
-        {
-          "value": 33424,
-          "date": "2025-10-01T14:22:59.264Z"
-        },
-        {
-          "value": 33015,
-          "date": "2025-09-29T10:26:56.505Z"
-        },
-        {
-          "value": 33424,
-          "date": "2025-09-29T02:57:23.119Z"
-        },
-        {
-          "value": 33344,
-          "date": "2025-09-17T12:43:58.043Z"
-        },
-        {
-          "value": 33344,
-          "date": "2025-09-14T13:02:04.011Z"
-        },
-        {
-          "value": 33344,
-          "date": "2025-09-13T11:51:44.190Z"
-        },
-        {
-          "value": 33379,
-          "date": "2025-09-12T13:28:08.546Z"
-        },
-        {
-          "value": 32524,
-          "date": "2025-09-11T13:59:02.284Z"
-        },
-        {
-          "value": 32524,
-          "date": "2025-09-10T13:04:59.223Z"
-        },
-        {
-          "value": 32524,
-          "date": "2025-09-09T12:47:14.841Z"
-        },
-        {
-          "value": 33990,
-          "date": "2025-09-08T14:59:21.969Z"
-        },
-        {
-          "value": 34000,
-          "date": "2025-09-04T15:47:29.609Z"
-        },
-        {
-          "value": 34000,
-          "date": "2025-09-02T19:35:43.119Z"
-        },
-        {
-          "value": 34000,
-          "date": "2025-09-02T02:28:42.381Z"
-        },
-        {
-          "value": 25000,
-          "date": "2025-08-31T13:13:03.469Z"
-        },
-        {
-          "value": 25000,
-          "date": "2025-08-29T14:21:33.440Z"
-        },
-        {
-          "value": 34000,
-          "date": "2025-08-28T14:38:14.790Z"
-        },
-        {
-          "value": 34000,
-          "date": "2025-08-26T16:18:45.488Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 78296,
@@ -3498,93 +1011,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 38088,
           "date": "2025-10-01T14:23:08.884Z"
-        },
-        {
-          "value": 41700,
-          "date": "2025-09-30T13:26:48.009Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-09-28T15:28:45.922Z"
-        },
-        {
-          "value": 39864,
-          "date": "2025-09-26T12:51:48.804Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-09-18T15:49:27.363Z"
-        },
-        {
-          "value": 39999,
-          "date": "2025-09-16T11:53:10.801Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-09-15T12:39:25.105Z"
-        },
-        {
-          "value": 39999,
-          "date": "2025-09-14T13:02:11.845Z"
-        },
-        {
-          "value": 39999,
-          "date": "2025-09-13T11:51:51.593Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-09-12T13:28:15.813Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-09-11T13:59:09.217Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-09-10T13:05:04.888Z"
-        },
-        {
-          "value": 36990,
-          "date": "2025-09-09T12:47:22.020Z"
-        },
-        {
-          "value": 36990,
-          "date": "2025-09-08T14:59:28.286Z"
-        },
-        {
-          "value": 37000,
-          "date": "2025-09-04T15:47:41.106Z"
-        },
-        {
-          "value": 34000,
-          "date": "2025-09-02T19:42:38.433Z"
-        },
-        {
-          "value": 37000,
-          "date": "2025-09-02T02:28:51.485Z"
-        },
-        {
-          "value": 37000,
-          "date": "2025-08-31T13:13:11.846Z"
-        },
-        {
-          "value": 35000,
-          "date": "2025-08-29T14:21:51.094Z"
-        },
-        {
-          "value": 35000,
-          "date": "2025-08-28T14:38:23.244Z"
-        },
-        {
-          "value": 35200,
-          "date": "2025-08-26T16:18:52.560Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 15740,
@@ -3592,101 +1025,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 50799,
           "date": "2025-10-01T14:23:20.337Z"
-        },
-        {
-          "value": 53463,
-          "date": "2025-09-30T13:26:55.814Z"
-        },
-        {
-          "value": 54388,
-          "date": "2025-09-29T10:27:11.533Z"
-        },
-        {
-          "value": 56104,
-          "date": "2025-09-29T02:57:38.008Z"
-        },
-        {
-          "value": 54388,
-          "date": "2025-09-24T14:45:25.312Z"
-        },
-        {
-          "value": 56980,
-          "date": "2025-09-22T12:52:48.906Z"
-        },
-        {
-          "value": 57784,
-          "date": "2025-09-16T11:53:19.726Z"
-        },
-        {
-          "value": 54058,
-          "date": "2025-09-15T12:39:33.614Z"
-        },
-        {
-          "value": 52498,
-          "date": "2025-09-14T13:02:18.869Z"
-        },
-        {
-          "value": 52498,
-          "date": "2025-09-13T11:51:59.467Z"
-        },
-        {
-          "value": 52498,
-          "date": "2025-09-12T13:28:22.836Z"
-        },
-        {
-          "value": 54125,
-          "date": "2025-09-11T13:59:16.216Z"
-        },
-        {
-          "value": 53987,
-          "date": "2025-09-10T13:05:10.217Z"
-        },
-        {
-          "value": 52498,
-          "date": "2025-09-09T12:47:52.780Z"
-        },
-        {
-          "value": 49999,
-          "date": "2025-09-08T14:59:34.978Z"
-        },
-        {
-          "value": 48400,
-          "date": "2025-09-07T14:06:18.695Z"
-        },
-        {
-          "value": 49000,
-          "date": "2025-09-04T15:47:51.767Z"
-        },
-        {
-          "value": 47800,
-          "date": "2025-09-02T19:42:49.233Z"
-        },
-        {
-          "value": 47800,
-          "date": "2025-09-02T02:28:58.207Z"
-        },
-        {
-          "value": 47800,
-          "date": "2025-08-31T13:13:19.438Z"
-        },
-        {
-          "value": 47800,
-          "date": "2025-08-29T14:22:01.999Z"
-        },
-        {
-          "value": 43900,
-          "date": "2025-08-28T14:39:15.454Z"
-        },
-        {
-          "value": 43900,
-          "date": "2025-08-25T13:13:27.074Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 67546,
@@ -3694,65 +1039,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-y-mouse-combo-inalambrico-solarmax-kb302wmw200-color-negro/p/MLA21805667?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 30500,
           "date": "2025-09-16T11:53:27.589Z"
-        },
-        {
-          "value": 19990,
-          "date": "2025-09-14T13:02:24.651Z"
-        },
-        {
-          "value": 19990,
-          "date": "2025-09-12T13:28:29.029Z"
-        },
-        {
-          "value": 19990,
-          "date": "2025-09-11T13:59:23.029Z"
-        },
-        {
-          "value": 19990,
-          "date": "2025-09-10T13:05:15.216Z"
-        },
-        {
-          "value": 19990,
-          "date": "2025-09-09T12:51:40.254Z"
-        },
-        {
-          "value": 30500,
-          "date": "2025-09-08T15:31:36.405Z"
-        },
-        {
-          "value": 16300,
-          "date": "2025-09-06T20:58:13.170Z"
-        },
-        {
-          "value": 30500,
-          "date": "2025-09-04T15:48:00.581Z"
-        },
-        {
-          "value": 30500,
-          "date": "2025-09-02T19:42:57.459Z"
-        },
-        {
-          "value": 30500,
-          "date": "2025-08-31T13:13:26.422Z"
-        },
-        {
-          "value": 30500,
-          "date": "2025-08-29T14:22:15.483Z"
-        },
-        {
-          "value": 16300,
-          "date": "2025-08-28T14:39:22.503Z"
-        },
-        {
-          "value": 16300,
-          "date": "2025-08-26T16:19:13.424Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "comboMouseTecladoOptions": [],
@@ -3763,77 +1056,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/auriculares-gamer-noga-stormer-ng-8620-negro-y-rojo/p/MLA6354312?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=78f0b566-6759-43a3-8568-c4800be17775&wid=MLA1941191004&sid=search",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 12813,
           "date": "2025-09-26T12:52:12.680Z"
-        },
-        {
-          "value": 12701,
-          "date": "2025-09-24T14:46:15.690Z"
-        },
-        {
-          "value": 12886,
-          "date": "2025-09-19T03:13:00.893Z"
-        },
-        {
-          "value": 13000,
-          "date": "2025-09-18T15:49:52.352Z"
-        },
-        {
-          "value": 12886,
-          "date": "2025-09-13T11:52:15.986Z"
-        },
-        {
-          "value": 12886,
-          "date": "2025-09-12T13:28:41.937Z"
-        },
-        {
-          "value": 12999,
-          "date": "2025-09-11T13:59:30.496Z"
-        },
-        {
-          "value": 12886,
-          "date": "2025-09-10T13:05:20.984Z"
-        },
-        {
-          "value": 12887,
-          "date": "2025-09-09T12:51:47.675Z"
-        },
-        {
-          "value": 12887,
-          "date": "2025-09-08T15:31:47.068Z"
-        },
-        {
-          "value": 12900,
-          "date": "2025-09-07T14:06:42.077Z"
-        },
-        {
-          "value": 12000,
-          "date": "2025-09-04T15:48:08.967Z"
-        },
-        {
-          "value": 12000,
-          "date": "2025-09-02T19:43:16.539Z"
-        },
-        {
-          "value": 12000,
-          "date": "2025-08-31T13:13:48.351Z"
-        },
-        {
-          "value": 12000,
-          "date": "2025-08-29T14:22:32.320Z"
-        },
-        {
-          "value": 12000,
-          "date": "2025-08-28T14:39:38.654Z"
-        },
-        {
-          "value": 12000,
-          "date": "2025-08-24T17:19:47.068Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 63286,
@@ -3841,65 +1070,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/auriculares-con-microfono-para-gaming-oficina-estudio-amitosai-ps4-mts-drop-conector-plug-35mm-compatible-con-consolas-y-computadoras-color-azul/p/MLA27290643?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=ec648d01-ddd2-4739-8a2d-c105ddbcc648&wid=MLA1541012206&sid=search",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 30030,
           "date": "2025-09-19T03:13:09.228Z"
-        },
-        {
-          "value": 30000,
-          "date": "2025-09-18T15:50:01.321Z"
-        },
-        {
-          "value": 27290,
-          "date": "2025-09-12T13:28:48.513Z"
-        },
-        {
-          "value": 27290,
-          "date": "2025-09-11T13:59:38.549Z"
-        },
-        {
-          "value": 27290,
-          "date": "2025-09-10T13:05:26.149Z"
-        },
-        {
-          "value": 27290,
-          "date": "2025-09-09T12:51:54.243Z"
-        },
-        {
-          "value": 27290,
-          "date": "2025-09-08T15:31:56.318Z"
-        },
-        {
-          "value": 27300,
-          "date": "2025-09-04T15:48:19.978Z"
-        },
-        {
-          "value": 27300,
-          "date": "2025-09-02T19:43:24.563Z"
-        },
-        {
-          "value": 27300,
-          "date": "2025-09-02T02:27:48.572Z"
-        },
-        {
-          "value": 27300,
-          "date": "2025-08-31T13:13:54.855Z"
-        },
-        {
-          "value": 27300,
-          "date": "2025-08-29T14:22:40.571Z"
-        },
-        {
-          "value": 27300,
-          "date": "2025-08-28T14:39:48.055Z"
-        },
-        {
-          "value": 27000,
-          "date": "2025-08-23T04:22:47.732Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 85855,
@@ -3907,65 +1084,17 @@
       "link": "https://www.mercadolibre.com.ar/auriculares-inalambricos-aiwa-aw-bt301-negro/p/MLA19149264?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 60373,
+          "date": "2025-10-06T14:41:40.449Z"
+        },
         {
           "value": 59999,
           "date": "2025-10-04T13:39:28.673Z"
-        },
-        {
-          "value": 44999,
-          "date": "2025-10-02T17:01:26.169Z"
-        },
-        {
-          "value": 55288,
-          "date": "2025-10-01T14:23:54.530Z"
-        },
-        {
-          "value": 44999,
-          "date": "2025-09-30T13:27:23.264Z"
-        },
-        {
-          "value": 42974,
-          "date": "2025-09-26T12:52:28.839Z"
-        },
-        {
-          "value": 44999,
-          "date": "2025-09-19T03:13:16.744Z"
-        },
-        {
-          "value": 45000,
-          "date": "2025-09-18T15:50:09.105Z"
-        },
-        {
-          "value": 44999,
-          "date": "2025-09-16T11:53:51.004Z"
-        },
-        {
-          "value": 42974,
-          "date": "2025-09-12T13:28:54.229Z"
-        },
-        {
-          "value": 42974,
-          "date": "2025-09-11T13:59:45.330Z"
-        },
-        {
-          "value": 44293,
-          "date": "2025-09-10T13:05:33.808Z"
-        },
-        {
-          "value": 44051,
-          "date": "2025-09-08T15:32:10.483Z"
-        },
-        {
-          "value": 44000,
-          "date": "2025-09-04T15:50:27.345Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-04T15:50:04.930Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "parlantesOptions": [
@@ -3975,85 +1104,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/parlantes-genius-sp-hf180-madera/p/MLA15840120?offer_type=OFFICIAL_STORE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 19999,
           "date": "2025-10-02T17:02:07.472Z"
-        },
-        {
-          "value": 24475,
-          "date": "2025-10-01T14:24:04.272Z"
-        },
-        {
-          "value": 19999,
-          "date": "2025-09-26T12:52:37.815Z"
-        },
-        {
-          "value": 23999,
-          "date": "2025-09-22T12:53:26.014Z"
-        },
-        {
-          "value": 22099,
-          "date": "2025-09-19T03:13:22.495Z"
-        },
-        {
-          "value": 33000,
-          "date": "2025-09-17T12:44:50.923Z"
-        },
-        {
-          "value": 22099,
-          "date": "2025-09-12T13:28:59.393Z"
-        },
-        {
-          "value": 22099,
-          "date": "2025-09-11T13:59:52.078Z"
-        },
-        {
-          "value": 22099,
-          "date": "2025-09-10T13:05:38.689Z"
-        },
-        {
-          "value": 22099,
-          "date": "2025-09-09T12:52:07.514Z"
-        },
-        {
-          "value": 22099,
-          "date": "2025-09-08T15:32:21.580Z"
-        },
-        {
-          "value": 22100,
-          "date": "2025-09-04T15:52:45.707Z"
-        },
-        {
-          "value": 18500,
-          "date": "2025-09-03T13:34:18.608Z"
-        },
-        {
-          "value": 18500,
-          "date": "2025-09-02T19:43:30.875Z"
-        },
-        {
-          "value": 18500,
-          "date": "2025-09-02T02:27:53.884Z"
-        },
-        {
-          "value": 18500,
-          "date": "2025-08-31T13:14:00.822Z"
-        },
-        {
-          "value": 18500,
-          "date": "2025-08-29T14:22:51.856Z"
-        },
-        {
-          "value": 22000,
-          "date": "2025-08-28T14:39:52.978Z"
-        },
-        {
-          "value": 22000,
-          "date": "2025-08-26T16:28:07.055Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 80394,
@@ -4061,69 +1118,13 @@
       "link": "https://www.mercadolibre.com.ar/parlante-barra-sonido-genius-soundbar-100-usb-35mm-pc-gamer-computadora-notebook/p/MLA19480741?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 37199,
           "date": "2025-10-02T17:02:13.451Z"
-        },
-        {
-          "value": 37136,
-          "date": "2025-10-01T14:24:13.571Z"
-        },
-        {
-          "value": 37199,
-          "date": "2025-09-22T12:53:34.312Z"
-        },
-        {
-          "value": 34999,
-          "date": "2025-09-19T03:13:28.854Z"
-        },
-        {
-          "value": 35000,
-          "date": "2025-09-18T15:50:22.097Z"
-        },
-        {
-          "value": 33000,
-          "date": "2025-09-17T12:44:58.433Z"
-        },
-        {
-          "value": 34999,
-          "date": "2025-09-12T13:29:05.040Z"
-        },
-        {
-          "value": 34999,
-          "date": "2025-09-11T13:59:59.726Z"
-        },
-        {
-          "value": 34999,
-          "date": "2025-09-10T13:05:44.368Z"
-        },
-        {
-          "value": 37099,
-          "date": "2025-09-08T15:32:30.959Z"
-        },
-        {
-          "value": 37000,
-          "date": "2025-09-07T14:07:16.169Z"
-        },
-        {
-          "value": 24600,
-          "date": "2025-09-05T11:15:44.346Z"
-        },
-        {
-          "value": 37100,
-          "date": "2025-09-04T15:53:54.646Z"
-        },
-        {
-          "value": 37000,
-          "date": "2025-09-02T20:10:51.756Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T20:10:37.138Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 68110,
@@ -4131,81 +1132,13 @@
       "link": "https://www.mercadolibre.com.ar/parlantes-para-pc-notebook-o-tv-21-subwoofer-graves-genius-sw-21-300-10w-color-negro/p/MLA20012784?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 83889,
           "date": "2025-10-02T17:02:23.695Z"
-        },
-        {
-          "value": 83889,
-          "date": "2025-09-30T13:27:47.640Z"
-        },
-        {
-          "value": 70550,
-          "date": "2025-09-29T02:58:27.061Z"
-        },
-        {
-          "value": 59344,
-          "date": "2025-09-18T15:50:31.505Z"
-        },
-        {
-          "value": 57556,
-          "date": "2025-09-13T11:52:51.916Z"
-        },
-        {
-          "value": 57812,
-          "date": "2025-09-12T13:29:11.469Z"
-        },
-        {
-          "value": 54926,
-          "date": "2025-09-11T14:00:22.658Z"
-        },
-        {
-          "value": 57617,
-          "date": "2025-09-10T13:05:49.394Z"
-        },
-        {
-          "value": 57617,
-          "date": "2025-09-09T12:52:22.619Z"
-        },
-        {
-          "value": 54435,
-          "date": "2025-09-08T15:32:38.942Z"
-        },
-        {
-          "value": 54200,
-          "date": "2025-09-07T14:07:31.942Z"
-        },
-        {
-          "value": 54400,
-          "date": "2025-09-06T21:00:51.142Z"
-        },
-        {
-          "value": 54600,
-          "date": "2025-09-05T11:15:54.330Z"
-        },
-        {
-          "value": 59000,
-          "date": "2025-09-04T15:54:06.037Z"
-        },
-        {
-          "value": 59000,
-          "date": "2025-09-03T13:35:19.632Z"
-        },
-        {
-          "value": 59000,
-          "date": "2025-09-02T20:26:57.548Z"
-        },
-        {
-          "value": 54400,
-          "date": "2025-09-02T20:12:35.970Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T20:11:57.246Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 56860,
@@ -4213,77 +1146,13 @@
       "link": "https://www.mercadolibre.com.ar/parlante-21-canales-genius-para-pc-notebook-o-tv-smart-10w/p/MLA22253883?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 55100,
           "date": "2025-10-02T17:03:35.833Z"
-        },
-        {
-          "value": 56050,
-          "date": "2025-09-26T12:52:55.180Z"
-        },
-        {
-          "value": 57114,
-          "date": "2025-09-24T14:46:48.285Z"
-        },
-        {
-          "value": 59279,
-          "date": "2025-09-22T12:53:42.943Z"
-        },
-        {
-          "value": 58229,
-          "date": "2025-09-19T03:13:34.414Z"
-        },
-        {
-          "value": 58229,
-          "date": "2025-09-18T15:50:38.255Z"
-        },
-        {
-          "value": 58054,
-          "date": "2025-09-16T11:54:20.176Z"
-        },
-        {
-          "value": 56487,
-          "date": "2025-09-13T11:52:58.215Z"
-        },
-        {
-          "value": 58200,
-          "date": "2025-09-12T13:29:17.211Z"
-        },
-        {
-          "value": 55873,
-          "date": "2025-09-11T14:00:29.712Z"
-        },
-        {
-          "value": 58625,
-          "date": "2025-09-10T13:05:54.593Z"
-        },
-        {
-          "value": 59062,
-          "date": "2025-09-09T12:52:48.367Z"
-        },
-        {
-          "value": 54435,
-          "date": "2025-09-08T15:33:08.090Z"
-        },
-        {
-          "value": 59000,
-          "date": "2025-09-04T15:54:15.932Z"
-        },
-        {
-          "value": 55900,
-          "date": "2025-09-03T13:35:32.811Z"
-        },
-        {
-          "value": 59000,
-          "date": "2025-09-02T20:26:35.458Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T20:26:23.699Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "webcamOptions": [
@@ -4293,65 +1162,13 @@
       "link": "https://www.mercadolibre.com.ar/camara-web-portatil-ken-brown-clip-720-color-negro/p/MLA26009488?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 23488,
           "date": "2025-09-22T12:54:09.695Z"
-        },
-        {
-          "value": 68310,
-          "date": "2025-09-19T03:13:45.983Z"
-        },
-        {
-          "value": 68310,
-          "date": "2025-09-18T15:50:44.679Z"
-        },
-        {
-          "value": 61499,
-          "date": "2025-09-14T13:04:39.472Z"
-        },
-        {
-          "value": 61499,
-          "date": "2025-09-12T13:29:22.942Z"
-        },
-        {
-          "value": 61499,
-          "date": "2025-09-11T14:00:36.111Z"
-        },
-        {
-          "value": 61499,
-          "date": "2025-09-10T13:06:00.842Z"
-        },
-        {
-          "value": 33769,
-          "date": "2025-09-09T12:52:55.798Z"
-        },
-        {
-          "value": 33769,
-          "date": "2025-09-08T15:33:14.983Z"
-        },
-        {
-          "value": 33700,
-          "date": "2025-09-06T21:01:08.189Z"
-        },
-        {
-          "value": 33800,
-          "date": "2025-09-04T15:54:25.159Z"
-        },
-        {
-          "value": 33800,
-          "date": "2025-09-03T13:35:41.052Z"
-        },
-        {
-          "value": 33800,
-          "date": "2025-09-02T19:49:00.821Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T19:48:44.310Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 40003,
@@ -4359,105 +1176,13 @@
       "link": "https://www.mercadolibre.com.ar/webcam-c270-logitech-color-negro/p/MLA18931576?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 55999,
           "date": "2025-10-04T13:40:03.710Z"
-        },
-        {
-          "value": 41704,
-          "date": "2025-10-01T14:24:35.897Z"
-        },
-        {
-          "value": 44388,
-          "date": "2025-09-30T13:28:05.744Z"
-        },
-        {
-          "value": 42292,
-          "date": "2025-09-27T16:01:04.947Z"
-        },
-        {
-          "value": 42189,
-          "date": "2025-09-26T12:53:05.038Z"
-        },
-        {
-          "value": 46500,
-          "date": "2025-09-24T14:46:55.274Z"
-        },
-        {
-          "value": 52800,
-          "date": "2025-09-22T12:53:55.583Z"
-        },
-        {
-          "value": 52800,
-          "date": "2025-09-19T12:21:35.503Z"
-        },
-        {
-          "value": 46500,
-          "date": "2025-09-18T15:50:51.648Z"
-        },
-        {
-          "value": 49900,
-          "date": "2025-09-17T12:45:32.451Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-16T11:54:34.157Z"
-        },
-        {
-          "value": 41649,
-          "date": "2025-09-15T12:40:50.689Z"
-        },
-        {
-          "value": 52800,
-          "date": "2025-09-14T13:04:45.317Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-12T13:29:28.713Z"
-        },
-        {
-          "value": 41649,
-          "date": "2025-09-11T14:00:42.784Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-10T13:06:05.858Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-09T12:53:03.436Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-08T15:33:22.035Z"
-        },
-        {
-          "value": 42900,
-          "date": "2025-09-06T21:01:18.385Z"
-        },
-        {
-          "value": 42000,
-          "date": "2025-09-05T11:16:30.172Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-04T15:54:32.979Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-03T13:36:01.842Z"
-        },
-        {
-          "value": 43000,
-          "date": "2025-09-02T19:54:26.021Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T19:53:44.029Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 85797,
@@ -4465,57 +1190,13 @@
       "link": "https://www.mercadolibre.com.ar/webcam-logitech-brio-100-full-hd-1080p-negro/p/MLA28407045?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 73059,
           "date": "2025-10-03T14:02:05.828Z"
-        },
-        {
-          "value": 73264,
-          "date": "2025-10-02T17:04:04.016Z"
-        },
-        {
-          "value": 65669,
-          "date": "2025-09-29T02:58:54.512Z"
-        },
-        {
-          "value": 75500,
-          "date": "2025-09-16T11:54:41.891Z"
-        },
-        {
-          "value": 74000,
-          "date": "2025-09-11T14:00:49.400Z"
-        },
-        {
-          "value": 74000,
-          "date": "2025-09-10T13:06:11.690Z"
-        },
-        {
-          "value": 74000,
-          "date": "2025-09-09T12:53:10.823Z"
-        },
-        {
-          "value": 74000,
-          "date": "2025-09-08T15:33:28.671Z"
-        },
-        {
-          "value": 70000,
-          "date": "2025-09-04T15:54:40.798Z"
-        },
-        {
-          "value": 70000,
-          "date": "2025-09-03T13:36:08.482Z"
-        },
-        {
-          "value": 70000,
-          "date": "2025-09-02T19:56:16.745Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T19:55:53.733Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 18249,
@@ -4523,53 +1204,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/camara-web-redragon-hitman-full-hd-30fps-color-negro/p/MLA18362781?offer_type=BEST_PRICE",
       "visible": 0,
+      "linksAlt": [],
       "prices": [
         {
           "value": 120000,
           "date": "2025-10-02T17:04:15.864Z"
-        },
-        {
-          "value": 85000,
-          "date": "2025-09-19T03:13:52.160Z"
-        },
-        {
-          "value": 96500,
-          "date": "2025-09-07T14:08:13.406Z"
-        },
-        {
-          "value": 94000,
-          "date": "2025-09-05T11:16:52.211Z"
-        },
-        {
-          "value": 93500,
-          "date": "2025-09-04T15:54:52.779Z"
-        },
-        {
-          "value": 93500,
-          "date": "2025-09-03T13:36:35.355Z"
-        },
-        {
-          "value": 93400,
-          "date": "2025-09-02T02:28:00.189Z"
-        },
-        {
-          "value": 88100,
-          "date": "2025-08-31T13:14:10.424Z"
-        },
-        {
-          "value": 86000,
-          "date": "2025-08-29T14:22:59.823Z"
-        },
-        {
-          "value": 86000,
-          "date": "2025-08-28T14:40:02.199Z"
-        },
-        {
-          "value": 85000,
-          "date": "2025-08-26T16:28:15.968Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "microfonosOptions": [
@@ -4579,73 +1220,17 @@
       "link": "https://www.mercadolibre.com.ar/microfono-noga-mic-st800-condensador-cardioide-color-negro/p/MLA19567827?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 42170,
+          "date": "2025-10-06T14:42:46.870Z"
+        },
         {
           "value": 42596,
           "date": "2025-10-04T13:40:31.094Z"
-        },
-        {
-          "value": 42170,
-          "date": "2025-09-30T13:28:32.838Z"
-        },
-        {
-          "value": 42569,
-          "date": "2025-09-28T15:30:08.409Z"
-        },
-        {
-          "value": 42999,
-          "date": "2025-09-27T16:01:26.928Z"
-        },
-        {
-          "value": 42569,
-          "date": "2025-09-19T03:13:58.592Z"
-        },
-        {
-          "value": 42999,
-          "date": "2025-09-18T15:51:06.736Z"
-        },
-        {
-          "value": 44240,
-          "date": "2025-09-17T12:45:48.862Z"
-        },
-        {
-          "value": 39999,
-          "date": "2025-09-14T13:04:57.387Z"
-        },
-        {
-          "value": 39999,
-          "date": "2025-09-12T13:30:38.495Z"
-        },
-        {
-          "value": 38299,
-          "date": "2025-09-11T14:00:55.583Z"
-        },
-        {
-          "value": 38299,
-          "date": "2025-09-10T13:06:17.003Z"
-        },
-        {
-          "value": 38299,
-          "date": "2025-09-09T12:53:16.990Z"
-        },
-        {
-          "value": 40000,
-          "date": "2025-09-04T15:55:16.180Z"
-        },
-        {
-          "value": 38000,
-          "date": "2025-09-03T13:36:51.723Z"
-        },
-        {
-          "value": 40000,
-          "date": "2025-09-02T20:06:53.786Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T20:06:41.119Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 43732,
@@ -4653,81 +1238,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/microfono-condenser-cartoide-usb-pc-estudio-streaming-podcast-tripod-profesional-bm900-vt-power/p/MLA25045936?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 39446,
           "date": "2025-10-04T13:40:40.028Z"
-        },
-        {
-          "value": 39444,
-          "date": "2025-09-22T12:54:31.918Z"
-        },
-        {
-          "value": 44296,
-          "date": "2025-09-19T03:14:04.646Z"
-        },
-        {
-          "value": 43196,
-          "date": "2025-09-18T15:51:13.352Z"
-        },
-        {
-          "value": 43196,
-          "date": "2025-09-12T13:30:45.094Z"
-        },
-        {
-          "value": 43196,
-          "date": "2025-09-11T14:01:01.867Z"
-        },
-        {
-          "value": 45446,
-          "date": "2025-09-10T13:06:22.683Z"
-        },
-        {
-          "value": 42798,
-          "date": "2025-09-09T12:53:30.047Z"
-        },
-        {
-          "value": 42798,
-          "date": "2025-09-08T15:34:35.842Z"
-        },
-        {
-          "value": 42800,
-          "date": "2025-09-07T14:13:51.789Z"
-        },
-        {
-          "value": 42900,
-          "date": "2025-09-06T21:14:58.429Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-04T15:55:28.688Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-03T13:36:59.547Z"
-        },
-        {
-          "value": 43600,
-          "date": "2025-09-02T02:28:09.022Z"
-        },
-        {
-          "value": 44800,
-          "date": "2025-08-31T13:14:16.559Z"
-        },
-        {
-          "value": 44800,
-          "date": "2025-08-29T14:23:19.572Z"
-        },
-        {
-          "value": 44700,
-          "date": "2025-08-28T14:40:11.823Z"
-        },
-        {
-          "value": 43500,
-          "date": "2025-08-25T13:18:50.795Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 8668,
@@ -4735,49 +1252,17 @@
       "link": "https://www.mercadolibre.com.ar/microfono-gamer-con-condensador-usb-negro-havit-gk50-pro-rgb/p/MLA35431415?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
+        {
+          "value": 75999,
+          "date": "2025-10-06T14:43:02.745Z"
+        },
         {
           "value": 71295,
           "date": "2025-10-04T13:40:48.228Z"
-        },
-        {
-          "value": 67900,
-          "date": "2025-10-01T14:25:22.859Z"
-        },
-        {
-          "value": 66347,
-          "date": "2025-09-11T14:01:08.173Z"
-        },
-        {
-          "value": 66347,
-          "date": "2025-09-10T13:06:28.339Z"
-        },
-        {
-          "value": 66347,
-          "date": "2025-09-08T15:34:42.419Z"
-        },
-        {
-          "value": 66300,
-          "date": "2025-09-05T11:17:31.197Z"
-        },
-        {
-          "value": 65700,
-          "date": "2025-09-04T15:55:42.378Z"
-        },
-        {
-          "value": 66300,
-          "date": "2025-09-03T13:37:13.908Z"
-        },
-        {
-          "value": 66300,
-          "date": "2025-09-02T20:01:08.665Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T20:00:41.479Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "wifiOptions": [
@@ -4787,53 +1272,13 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/adaptador-usb-wifi-placa-pro-red-600mbps-5ghz-amitosai-s3y5/p/MLA23095540?offer_type=OFFICIAL_STORE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 30840,
           "date": "2025-09-19T03:14:18.440Z"
-        },
-        {
-          "value": 28020,
-          "date": "2025-09-11T14:01:14.612Z"
-        },
-        {
-          "value": 28020,
-          "date": "2025-09-10T13:06:33.811Z"
-        },
-        {
-          "value": 28000,
-          "date": "2025-09-04T15:55:50.988Z"
-        },
-        {
-          "value": 28000,
-          "date": "2025-09-03T13:37:21.356Z"
-        },
-        {
-          "value": 28000,
-          "date": "2025-09-02T20:42:45.828Z"
-        },
-        {
-          "value": 27700,
-          "date": "2025-09-02T02:28:13.108Z"
-        },
-        {
-          "value": 27700,
-          "date": "2025-08-31T13:14:21.311Z"
-        },
-        {
-          "value": 27700,
-          "date": "2025-08-29T14:23:32.828Z"
-        },
-        {
-          "value": 27700,
-          "date": "2025-08-28T14:40:22.795Z"
-        },
-        {
-          "value": 32700,
-          "date": "2025-08-26T16:28:30.719Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 67930,
@@ -4841,49 +1286,13 @@
       "link": "https://www.mercadolibre.com.ar/adaptador-receptor-placa-usb-wifi-1200mbps-antena-interna-dual-band-chipset-realtek-8812-mts-wifi1201-amitosai/p/MLA22558831?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 39250,
           "date": "2025-09-19T03:14:24.565Z"
-        },
-        {
-          "value": 35860,
-          "date": "2025-09-11T14:01:20.966Z"
-        },
-        {
-          "value": 35860,
-          "date": "2025-09-10T13:06:39.252Z"
-        },
-        {
-          "value": 35860,
-          "date": "2025-09-09T13:55:11.528Z"
-        },
-        {
-          "value": 35860,
-          "date": "2025-09-08T15:35:02.112Z"
-        },
-        {
-          "value": 35800,
-          "date": "2025-09-06T21:15:22.901Z"
-        },
-        {
-          "value": 36000,
-          "date": "2025-09-04T15:56:03.027Z"
-        },
-        {
-          "value": 36000,
-          "date": "2025-09-03T13:37:32.510Z"
-        },
-        {
-          "value": 36000,
-          "date": "2025-09-02T20:44:24.638Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T20:30:16.755Z"
         }
-      ],
-      "linksAlt": []
+      ]
     },
     {
       "id": 16848,
@@ -4891,65 +1300,13 @@
       "link": "https://www.mercadolibre.com.ar/tplink-receptor-usb-bluetooth-ub500-plus/p/MLA44907785?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
+      "linksAlt": [],
       "prices": [
         {
           "value": 10790,
           "date": "2025-10-02T17:05:06.923Z"
-        },
-        {
-          "value": 10800,
-          "date": "2025-09-22T12:55:02.734Z"
-        },
-        {
-          "value": 10690,
-          "date": "2025-09-19T03:14:31.208Z"
-        },
-        {
-          "value": 10800,
-          "date": "2025-09-16T11:55:28.708Z"
-        },
-        {
-          "value": 10790,
-          "date": "2025-09-15T12:45:25.362Z"
-        },
-        {
-          "value": 10800,
-          "date": "2025-09-11T14:01:33.675Z"
-        },
-        {
-          "value": 10800,
-          "date": "2025-09-10T13:06:44.925Z"
-        },
-        {
-          "value": 10800,
-          "date": "2025-09-09T13:55:19.974Z"
-        },
-        {
-          "value": 35860,
-          "date": "2025-09-08T15:40:39.127Z"
-        },
-        {
-          "value": 10400,
-          "date": "2025-09-05T11:18:33.278Z"
-        },
-        {
-          "value": 13900,
-          "date": "2025-09-04T15:56:20.017Z"
-        },
-        {
-          "value": 14000,
-          "date": "2025-09-03T13:37:39.798Z"
-        },
-        {
-          "value": 14000,
-          "date": "2025-09-02T21:07:40.356Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-02T21:07:08.369Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
   "arosDeLuzOptions": [
@@ -4959,87 +1316,14 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/aro-de-luz-led-26-cm-con-tripode-2-metros-soprte-celular/p/MLA44508125?offer_type=BEST_PRICE",
       "visible": 1,
+      "linksAlt": [],
       "prices": [
         {
           "value": 25000,
           "date": "2025-09-26T12:54:12.931Z"
-        },
-        {
-          "value": 33000,
-          "date": "2025-09-24T14:47:54.495Z"
-        },
-        {
-          "value": 19999,
-          "date": "2025-09-19T03:14:37.664Z"
-        },
-        {
-          "value": 20000,
-          "date": "2025-09-18T15:51:43.467Z"
-        },
-        {
-          "value": 19999,
-          "date": "2025-09-11T14:01:40.282Z"
-        },
-        {
-          "value": 19999,
-          "date": "2025-09-10T13:06:50.188Z"
-        },
-        {
-          "value": 16625,
-          "date": "2025-09-09T13:55:27.163Z"
-        },
-        {
-          "value": 16600,
-          "date": "2025-09-04T15:56:29.806Z"
-        },
-        {
-          "value": 16600,
-          "date": "2025-09-03T13:37:50.494Z"
-        },
-        {
-          "value": 16600,
-          "date": "2025-09-02T02:28:17.932Z"
-        },
-        {
-          "value": 16600,
-          "date": "2025-08-31T13:14:29.440Z"
-        },
-        {
-          "value": 16400,
-          "date": "2025-08-29T14:23:43.233Z"
-        },
-        {
-          "value": 16400,
-          "date": "2025-08-28T14:40:30.621Z"
-        },
-        {
-          "value": 16400,
-          "date": "2025-08-25T13:19:15.148Z"
         }
-      ],
-      "linksAlt": []
+      ]
     }
   ],
-  "miniPcOptions": [
-    {
-      "id": 10541,
-      "name": "Enova",
-      "link": "https://www.mercadolibre.com.ar/mini-pc-enova-ryzen-5-3500u-8gb-2400mhz-ram-240gb-ssd-w11/p/MLA50633796?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "cpu": "Ryzen 5 3500U",
-      "ram": "8gb 2400mhz",
-      "ssd": "240GB",
-      "prices": [
-        {
-          "value": 349999,
-          "date": "2025-09-25T05:15:49.111Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-09-25T05:07:50.304Z"
-        }
-      ],
-      "linksAlt": []
-    }
-  ]
+  "miniPcOptions": []
 }
