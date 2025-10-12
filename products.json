@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "77124",
       "cantRam": 2,
-      "total": 403369,
+      "total": 403879,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -22,7 +22,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 421667,
+      "total": 433697,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -36,7 +36,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 459269,
+      "total": 479297,
       "totalram": 32,
       "visible": 1,
       "price": 0,
@@ -223,8 +223,8 @@
       "link": "https://www.mercadolibre.com.ar/pc-de-escritorio-armada-cpu-computadora-intel-core-i5-8gb-ssd-240gb-ideal-uso-de-oficina-administrativo-hogareno-locales-sistema-de-gestion/p/MLA38525278?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 198069,
-      "lastUpd": "2025-10-09T18:15:31.950Z"
+      "price": 195724,
+      "lastUpd": "2025-10-12T18:37:57.374Z"
     }
   ],
   "towersOptions": [
@@ -235,8 +235,8 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE",
       "visible": 1,
       "description": "",
-      "price": 62894,
-      "lastUpd": "2025-10-03T13:52:09.187Z"
+      "price": 64963,
+      "lastUpd": "2025-10-12T18:38:05.572Z"
     },
     {
       "id": 50127,
@@ -255,8 +255,8 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385?offer_type=BEST_PRICE",
       "visible": 1,
       "description": "",
-      "price": 71999,
-      "lastUpd": "2025-10-10T14:21:47.245Z"
+      "price": 72344,
+      "lastUpd": "2025-10-12T18:38:19.951Z"
     },
     {
       "id": 30191,
@@ -265,8 +265,8 @@
       "link": "https://www.mercadolibre.com.ar/sentey-a8-cube-rgb-gabinete-sentey-a8-vidrio-temp-5-coolers-blanco/p/MLA50547846?offer_type=BEST_PRICE",
       "visible": 0,
       "description": "",
-      "price": 73800,
-      "lastUpd": "2025-10-10T14:21:56.260Z"
+      "price": 73815,
+      "lastUpd": "2025-10-12T18:38:28.056Z"
     },
     {
       "id": 24451,
@@ -386,8 +386,8 @@
       "description": "Un caño para jugar en 1080p fluidamente en calidad Alta. Arquitectura RDNA 3, eficiencia energética y potencia moderna.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-xfx-speedster-swft21-amd-rx7600-8gb-hdmi-ddr6/p/MLA28570288?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&wid=MLA1516810373&search_layout=grid&position=2&type=product&tracking_id=b3d0404e-0664-4045-8da3-fb3948bde594&sid=search",
       "visible": 1,
-      "price": 456720,
-      "lastUpd": "2025-10-10T14:24:34.753Z"
+      "price": 461940,
+      "lastUpd": "2025-10-12T18:40:53.691Z"
     },
     {
       "id": 64501,
@@ -402,7 +402,7 @@
       "id": 76382,
       "name": "RTX 3060 | 12GB",
       "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "price": 512499,
       "lastUpd": "2025-10-10T14:24:50.338Z"
@@ -415,8 +415,8 @@
       "description": "Recomendada para cuidar nuestros componentes.",
       "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-redragon-rpgs-gc-ps001-500w-negra/p/MLA43937355?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 88999,
-      "lastUpd": "2025-10-10T14:25:27.231Z"
+      "price": 85999,
+      "lastUpd": "2025-10-12T19:01:07.346Z"
     },
     {
       "id": 73804,
@@ -424,8 +424,8 @@
       "description": "Aún mejor opción 80 Plus, con cables mallados y que agrega 2 Años de Garantía.",
       "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 84999,
-      "lastUpd": "2025-10-08T15:14:57.847Z"
+      "price": 84157,
+      "lastUpd": "2025-10-12T19:01:17.440Z"
     },
     {
       "id": 28101,
@@ -433,8 +433,8 @@
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 38775,
-      "lastUpd": "2025-10-10T14:25:42.714Z"
+      "price": 36313,
+      "lastUpd": "2025-10-12T19:01:25.583Z"
     },
     {
       "id": 45939,
@@ -453,8 +453,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 90610,
-      "lastUpd": "2025-10-10T14:22:44.758Z"
+      "price": 121390,
+      "lastUpd": "2025-10-12T18:39:09.625Z"
     },
     {
       "id": 23506,
@@ -462,8 +462,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 86570,
-      "lastUpd": "2025-10-06T14:36:21.329Z"
+      "price": 98600,
+      "lastUpd": "2025-10-12T18:39:17.733Z"
     }
   ],
   "cpuOptions": [
@@ -524,8 +524,8 @@
       "visible": 1,
       "description": "",
       "total": 8,
-      "price": 48000,
-      "lastUpd": "2025-10-10T14:23:25.758Z"
+      "price": 42240,
+      "lastUpd": "2025-10-12T18:39:46.417Z"
     },
     {
       "id": 10363,
@@ -534,8 +534,8 @@
       "visible": 1,
       "description": "",
       "total": 8,
-      "price": 50000,
-      "lastUpd": "2025-10-07T12:54:48.658Z"
+      "price": 48000,
+      "lastUpd": "2025-10-12T18:39:54.414Z"
     },
     {
       "id": 69550,
@@ -554,8 +554,8 @@
       "visible": 1,
       "description": "",
       "total": 16,
-      "price": 57500,
-      "lastUpd": "2025-10-02T16:57:38.209Z"
+      "price": 61499,
+      "lastUpd": "2025-10-12T18:40:11.343Z"
     }
   ],
   "comboOptions": [
@@ -623,8 +623,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/mouse-y-pad-2-en-1-gamer-redragon-m601wl-ba-negrorojo/p/MLA17588671?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 24838,
-      "lastUpd": "2025-10-09T18:21:58.835Z"
+      "price": 24738,
+      "lastUpd": "2025-10-12T19:02:07.376Z"
     }
   ],
   "joystickOptions": [
@@ -634,8 +634,8 @@
       "description": "Generico Xbox 360 Con Cable",
       "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 34000,
-      "lastUpd": "2025-10-08T15:16:01.813Z"
+      "price": 33000,
+      "lastUpd": "2025-10-12T19:02:15.407Z"
     },
     {
       "id": 80101,
@@ -663,8 +663,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 33424,
-      "lastUpd": "2025-10-10T14:27:05.002Z"
+      "price": 24842,
+      "lastUpd": "2025-10-12T19:02:37.945Z"
     },
     {
       "id": 78296,
@@ -718,7 +718,7 @@
       "id": 85855,
       "name": "Inalámbricos Aiwa AW-BT301",
       "link": "https://www.mercadolibre.com.ar/auriculares-inalambricos-aiwa-aw-bt301-negro/p/MLA19149264?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "",
       "price": 60719,
       "lastUpd": "2025-10-09T18:23:10.584Z"
@@ -731,8 +731,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/parlantes-genius-sp-hf180-madera/p/MLA15840120?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 31599,
-      "lastUpd": "2025-10-07T12:59:07.741Z"
+      "price": 19999,
+      "lastUpd": "2025-10-12T19:10:50.329Z"
     },
     {
       "id": 80394,

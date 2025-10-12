@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "77124",
       "cantRam": 2,
-      "total": 403369,
+      "total": 403879,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 421667,
+      "total": 433697,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 459269,
+      "total": 479297,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -283,6 +283,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 195724,
+          "date": "2025-10-12T18:37:57.374Z"
+        },
+        {
           "value": 198069,
           "date": "2025-10-09T18:15:31.950Z"
         },
@@ -311,6 +315,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 64963,
+          "date": "2025-10-12T18:38:05.572Z"
+        },
         {
           "value": 62894,
           "date": "2025-10-03T13:52:09.187Z"
@@ -346,6 +354,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 72344,
+          "date": "2025-10-12T18:38:19.951Z"
+        },
+        {
           "value": 71999,
           "date": "2025-10-10T14:21:47.245Z"
         },
@@ -368,6 +380,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 73815,
+          "date": "2025-10-12T18:38:28.056Z"
+        },
         {
           "value": 73800,
           "date": "2025-10-10T14:21:56.260Z"
@@ -599,6 +615,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 461940,
+          "date": "2025-10-12T18:40:53.691Z"
+        },
+        {
           "value": 456720,
           "date": "2025-10-10T14:24:34.753Z"
         },
@@ -642,7 +662,7 @@
       "id": 76382,
       "name": "RTX 3060 | 12GB",
       "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "linksAlt": [],
       "prices": [
@@ -679,6 +699,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 85999,
+          "date": "2025-10-12T19:01:07.346Z"
+        },
+        {
           "value": 88999,
           "date": "2025-10-10T14:25:27.231Z"
         },
@@ -697,6 +721,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 84157,
+          "date": "2025-10-12T19:01:17.440Z"
+        },
+        {
           "value": 84999,
           "date": "2025-10-08T15:14:57.847Z"
         },
@@ -714,6 +742,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 36313,
+          "date": "2025-10-12T19:01:25.583Z"
+        },
         {
           "value": 38775,
           "date": "2025-10-10T14:25:42.714Z"
@@ -765,6 +797,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 121390,
+          "date": "2025-10-12T18:39:09.625Z"
+        },
+        {
           "value": 90610,
           "date": "2025-10-10T14:22:44.758Z"
         },
@@ -786,6 +822,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 98600,
+          "date": "2025-10-12T18:39:17.733Z"
+        },
         {
           "value": 86570,
           "date": "2025-10-06T14:36:21.329Z"
@@ -899,6 +939,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 42240,
+          "date": "2025-10-12T18:39:46.417Z"
+        },
+        {
           "value": 48000,
           "date": "2025-10-10T14:23:25.758Z"
         },
@@ -921,6 +965,10 @@
       "total": 8,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 48000,
+          "date": "2025-10-12T18:39:54.414Z"
+        },
         {
           "value": 50000,
           "date": "2025-10-07T12:54:48.658Z"
@@ -959,6 +1007,10 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 61499,
+          "date": "2025-10-12T18:40:11.343Z"
+        },
         {
           "value": 57500,
           "date": "2025-10-02T16:57:38.209Z"
@@ -1104,6 +1156,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 24738,
+          "date": "2025-10-12T19:02:07.376Z"
+        },
+        {
           "value": 24838,
           "date": "2025-10-09T18:21:58.835Z"
         },
@@ -1131,6 +1187,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 33000,
+          "date": "2025-10-12T19:02:15.407Z"
+        },
         {
           "value": 34000,
           "date": "2025-10-08T15:16:01.813Z"
@@ -1187,6 +1247,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 24842,
+          "date": "2025-10-12T19:02:37.945Z"
+        },
         {
           "value": 33424,
           "date": "2025-10-10T14:27:05.002Z"
@@ -1294,7 +1358,7 @@
       "id": 85855,
       "name": "Inalámbricos Aiwa AW-BT301",
       "link": "https://www.mercadolibre.com.ar/auriculares-inalambricos-aiwa-aw-bt301-negro/p/MLA19149264?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "",
       "linksAlt": [],
       "prices": [
@@ -1326,6 +1390,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 19999,
+          "date": "2025-10-12T19:10:50.329Z"
+        },
         {
           "value": 31599,
           "date": "2025-10-07T12:59:07.741Z"
