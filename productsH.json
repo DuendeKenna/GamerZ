@@ -637,9 +637,15 @@
       "name": "RTX 3060 | 12GB",
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
-      "visible": 0,
-      "linksAlt": [],
+      "visible": 1,
+      "linksAlt": [
+        "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE"
+      ],
       "prices": [
+        {
+          "value": 560000,
+          "date": "2025-10-13T10:41:35.370Z"
+        },
         {
           "value": 556299,
           "date": "2025-10-08T15:13:59.316Z"
@@ -655,36 +661,6 @@
         {
           "value": 535575,
           "date": "2025-10-02T16:58:38.542Z"
-        }
-      ]
-    },
-    {
-      "id": 76382,
-      "name": "RTX 3060 | 12GB",
-      "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 512499,
-          "date": "2025-10-10T14:24:50.338Z"
-        },
-        {
-          "value": 540590,
-          "date": "2025-10-09T18:18:42.451Z"
-        },
-        {
-          "value": 559999,
-          "date": "2025-10-08T15:14:08.396Z"
-        },
-        {
-          "value": 661550,
-          "date": "2025-10-06T14:38:16.475Z"
-        },
-        {
-          "value": 620595,
-          "date": "2025-10-04T13:36:39.181Z"
         }
       ]
     }
@@ -720,6 +696,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 84499,
+          "date": "2025-10-13T10:44:51.676Z"
+        },
         {
           "value": 84157,
           "date": "2025-10-12T19:01:17.440Z"
@@ -965,6 +945,10 @@
       "total": 8,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 45000,
+          "date": "2025-10-13T10:40:29.754Z"
+        },
         {
           "value": 48000,
           "date": "2025-10-12T18:39:54.414Z"
@@ -1296,6 +1280,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 51615,
+          "date": "2025-10-13T10:46:20.475Z"
+        },
+        {
           "value": 50999,
           "date": "2025-10-09T18:22:42.782Z"
         },
@@ -1353,32 +1341,6 @@
           "date": "2025-09-19T03:13:09.228Z"
         }
       ]
-    },
-    {
-      "id": 85855,
-      "name": "Inalámbricos Aiwa AW-BT301",
-      "link": "https://www.mercadolibre.com.ar/auriculares-inalambricos-aiwa-aw-bt301-negro/p/MLA19149264?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 60719,
-          "date": "2025-10-09T18:23:10.584Z"
-        },
-        {
-          "value": 65999,
-          "date": "2025-10-08T15:17:13.286Z"
-        },
-        {
-          "value": 60373,
-          "date": "2025-10-06T14:41:40.449Z"
-        },
-        {
-          "value": 59999,
-          "date": "2025-10-04T13:39:28.673Z"
-        }
-      ]
     }
   ],
   "parlantesOptions": [
@@ -1390,6 +1352,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 31599,
+          "date": "2025-10-13T10:50:17.206Z"
+        },
         {
           "value": 19999,
           "date": "2025-10-12T19:10:50.329Z"
@@ -1430,6 +1396,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 249799,
+          "date": "2025-10-13T10:50:32.083Z"
+        },
         {
           "value": 249999,
           "date": "2025-10-07T12:59:23.106Z"
@@ -1650,6 +1620,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 10800,
+          "date": "2025-10-13T10:51:46.922Z"
+        },
         {
           "value": 10790,
           "date": "2025-10-08T15:19:11.578Z"

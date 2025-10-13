@@ -394,18 +394,9 @@
       "name": "RTX 3060 | 12GB",
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
-      "visible": 0,
-      "price": 556299,
-      "lastUpd": "2025-10-08T15:13:59.316Z"
-    },
-    {
-      "id": 76382,
-      "name": "RTX 3060 | 12GB",
-      "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
-      "price": 512499,
-      "lastUpd": "2025-10-10T14:24:50.338Z"
+      "visible": 1,
+      "price": 560000,
+      "lastUpd": "2025-10-13T10:41:35.370Z"
     }
   ],
   "psuOptions": [
@@ -424,8 +415,8 @@
       "description": "Aún mejor opción 80 Plus, con cables mallados y que agrega 2 Años de Garantía.",
       "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 84157,
-      "lastUpd": "2025-10-12T19:01:17.440Z"
+      "price": 84499,
+      "lastUpd": "2025-10-13T10:44:51.676Z"
     },
     {
       "id": 28101,
@@ -534,8 +525,8 @@
       "visible": 1,
       "description": "",
       "total": 8,
-      "price": 48000,
-      "lastUpd": "2025-10-12T18:39:54.414Z"
+      "price": 45000,
+      "lastUpd": "2025-10-13T10:40:29.754Z"
     },
     {
       "id": 69550,
@@ -681,8 +672,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 50999,
-      "lastUpd": "2025-10-09T18:22:42.782Z"
+      "price": 51615,
+      "lastUpd": "2025-10-13T10:46:20.475Z"
     },
     {
       "id": 67546,
@@ -713,15 +704,6 @@
       "visible": 1,
       "price": 30030,
       "lastUpd": "2025-09-19T03:13:09.228Z"
-    },
-    {
-      "id": 85855,
-      "name": "Inalámbricos Aiwa AW-BT301",
-      "link": "https://www.mercadolibre.com.ar/auriculares-inalambricos-aiwa-aw-bt301-negro/p/MLA19149264?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
-      "price": 60719,
-      "lastUpd": "2025-10-09T18:23:10.584Z"
     }
   ],
   "parlantesOptions": [
@@ -731,8 +713,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/parlantes-genius-sp-hf180-madera/p/MLA15840120?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 19999,
-      "lastUpd": "2025-10-12T19:10:50.329Z"
+      "price": 31599,
+      "lastUpd": "2025-10-13T10:50:17.206Z"
     },
     {
       "id": 80394,
@@ -749,8 +731,8 @@
       "link": "https://www.mercadolibre.com.ar/parlantes-para-pc-notebook-o-tv-21-subwoofer-graves-genius-sw-21-300-10w-color-negro/p/MLA20012784?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
-      "price": 249999,
-      "lastUpd": "2025-10-07T12:59:23.106Z"
+      "price": 249799,
+      "lastUpd": "2025-10-13T10:50:32.083Z"
     },
     {
       "id": 56860,
@@ -854,8 +836,8 @@
       "link": "https://www.mercadolibre.com.ar/tplink-receptor-usb-bluetooth-ub500-plus/p/MLA44907785?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 10790,
-      "lastUpd": "2025-10-08T15:19:11.578Z"
+      "price": 10800,
+      "lastUpd": "2025-10-13T10:51:46.922Z"
     }
   ],
   "arosDeLuzOptions": [
