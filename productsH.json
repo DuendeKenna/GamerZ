@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "77124",
       "cantRam": 2,
-      "total": 403879,
+      "total": 411598,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 433697,
+      "total": 432727,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 479297,
+      "total": 471249,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -316,6 +316,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 62700,
+          "date": "2025-10-14T13:35:51.301Z"
+        },
+        {
           "value": 64963,
           "date": "2025-10-12T18:38:05.572Z"
         },
@@ -334,6 +338,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 63580,
+          "date": "2025-10-14T13:36:00.465Z"
+        },
         {
           "value": 66520,
           "date": "2025-10-06T14:35:04.820Z"
@@ -380,6 +388,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 73083,
+          "date": "2025-10-14T13:36:16.441Z"
+        },
         {
           "value": 73815,
           "date": "2025-10-12T18:38:28.056Z"
@@ -441,6 +453,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 54352,
+          "date": "2025-10-14T13:43:42.564Z"
+        },
+        {
           "value": 59999,
           "date": "2025-10-09T18:18:50.825Z"
         },
@@ -458,6 +474,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 100413,
+          "date": "2025-10-14T13:43:50.657Z"
+        },
         {
           "value": 99899,
           "date": "2025-10-01T14:21:00.250Z"
@@ -593,6 +613,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 368999,
+          "date": "2025-10-14T13:43:18.060Z"
+        },
+        {
           "value": 370999,
           "date": "2025-10-10T14:24:25.914Z"
         },
@@ -614,6 +638,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 441120,
+          "date": "2025-10-14T13:43:26.188Z"
+        },
         {
           "value": 461940,
           "date": "2025-10-12T18:40:53.691Z"
@@ -642,6 +670,10 @@
         "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 559999,
+          "date": "2025-10-14T13:43:34.359Z"
+        },
         {
           "value": 560000,
           "date": "2025-10-13T10:41:35.370Z"
@@ -696,6 +728,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 83499,
+          "date": "2025-10-14T13:44:18.748Z"
+        },
         {
           "value": 84499,
           "date": "2025-10-13T10:44:51.676Z"
@@ -777,6 +813,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 98600,
+          "date": "2025-10-14T13:41:35.531Z"
+        },
+        {
           "value": 121390,
           "date": "2025-10-12T18:39:09.625Z"
         },
@@ -822,10 +862,16 @@
       "id": 896,
       "name": "Ryzen 5 5600g",
       "description": "6 nucleos 4.4ghz Am4",
-      "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE",
+      "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-5-5600g-de-6-nucleos-y-44ghz-de-frecuencia/p/MLA21817899?has_official_store=false&highlight=true&headerTopBrand=true&offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=3&type=product&tracking_id=bc707b0c-d03b-4812-b0c2-85a76c1e1768&wid=MLA2062000222&sid=search",
       "visible": 1,
-      "linksAlt": [],
+      "linksAlt": [
+        "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE"
+      ],
       "prices": [
+        {
+          "value": 237000,
+          "date": "2025-10-14T13:41:16.713Z"
+        },
         {
           "value": 220799,
           "date": "2025-10-02T16:56:20.663Z"
@@ -840,6 +886,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 257649,
+          "date": "2025-10-14T13:41:27.123Z"
+        },
         {
           "value": 257699,
           "date": "2025-10-07T12:53:58.395Z"
@@ -866,6 +916,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 38239,
+          "date": "2025-10-14T13:41:51.698Z"
+        },
+        {
           "value": 38699,
           "date": "2025-10-01T14:18:46.299Z"
         }
@@ -880,6 +934,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 56163,
+          "date": "2025-10-14T13:42:00.146Z"
+        },
         {
           "value": 58199,
           "date": "2025-10-10T14:23:09.651Z"
@@ -904,6 +962,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 20698,
+          "date": "2025-10-14T13:42:08.733Z"
+        },
+        {
           "value": 22998,
           "date": "2025-10-01T14:19:02.396Z"
         }
@@ -918,6 +980,10 @@
       "total": 8,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 37999,
+          "date": "2025-10-14T13:42:17.142Z"
+        },
         {
           "value": 42240,
           "date": "2025-10-12T18:39:46.417Z"
@@ -945,6 +1011,10 @@
       "total": 8,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 44000,
+          "date": "2025-10-14T13:42:25.555Z"
+        },
         {
           "value": 45000,
           "date": "2025-10-13T10:40:29.754Z"
@@ -992,6 +1062,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 57500,
+          "date": "2025-10-14T13:42:41.394Z"
+        },
+        {
           "value": 61499,
           "date": "2025-10-12T18:40:11.343Z"
         },
@@ -1011,6 +1085,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 381299,
+          "date": "2025-10-14T13:36:32.511Z"
+        },
         {
           "value": 404499,
           "date": "2025-10-10T14:22:12.977Z"
@@ -1097,6 +1175,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 273899,
+          "date": "2025-10-14T13:44:53.728Z"
+        },
         {
           "value": 288499,
           "date": "2025-10-09T18:20:04.547Z"
@@ -1232,6 +1314,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 24400,
+          "date": "2025-10-14T13:45:40.222Z"
+        },
+        {
           "value": 24842,
           "date": "2025-10-12T19:02:37.945Z"
         },
@@ -1279,6 +1365,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 55860,
+          "date": "2025-10-14T13:45:55.334Z"
+        },
         {
           "value": 51615,
           "date": "2025-10-13T10:46:20.475Z"
@@ -1397,6 +1487,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 249999,
+          "date": "2025-10-14T13:46:37.237Z"
+        },
+        {
           "value": 249799,
           "date": "2025-10-13T10:50:32.083Z"
         },
@@ -1418,6 +1512,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 54167,
+          "date": "2025-10-14T13:46:45.545Z"
+        },
         {
           "value": 54988,
           "date": "2025-10-10T14:28:31.391Z"
@@ -1529,6 +1627,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 42596,
+          "date": "2025-10-14T13:47:21.512Z"
+        },
+        {
           "value": 42170,
           "date": "2025-10-09T18:24:20.438Z"
         },
@@ -1554,6 +1656,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 39444,
+          "date": "2025-10-14T13:47:29.574Z"
+        },
         {
           "value": 39446,
           "date": "2025-10-04T13:40:40.028Z"
@@ -1620,6 +1726,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 9720,
+          "date": "2025-10-14T13:47:58.084Z"
+        },
         {
           "value": 10800,
           "date": "2025-10-13T10:51:46.922Z"
