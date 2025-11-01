@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 449536,
+      "total": 453536,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 528996,
+      "total": 532996,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -88,12 +88,12 @@
           "id": 29026
         },
         {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
           "categoryKey": "ssdOptions",
           "id": 54105
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 7020
         }
       ],
       "visible": 1,
@@ -127,51 +127,12 @@
           "id": 67546
         },
         {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
           "categoryKey": "towersOptions",
           "id": 29026
-        }
-      ],
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
-      "id": 12541,
-      "name": "i5 2400 Armada Joy",
-      "items": [
-        {
-          "categoryKey": "armadasOptions",
-          "id": 97786
-        },
-        {
-          "categoryKey": "gpuOptions",
-          "id": 85207
         },
         {
           "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "ramOptions",
-          "id": 769
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 54105
-        },
-        {
-          "categoryKey": "keyboardOptions",
-          "id": 67546
+          "id": 7020
         }
       ],
       "visible": 1,
@@ -193,47 +154,28 @@
           "id": 85207
         },
         {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
           "categoryKey": "armadasOptions",
           "id": 76800
         },
         {
           "categoryKey": "ssdOptions",
           "id": 54105
-        }
-      ],
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
-      "id": 17905,
-      "name": "Mini Ryzen 5 1Joy+TecMouIN",
-      "items": [
-        {
-          "categoryKey": "miniPcOptions",
-          "id": 10541
         },
         {
-          "categoryKey": "ssdOptions",
-          "id": 93692
+          "categoryKey": "towersOptions",
+          "id": 29026
         },
         {
           "categoryKey": "keyboardOptions",
           "id": 67546
         },
         {
+          "categoryKey": "psuOptions",
+          "id": 45939
+        },
+        {
           "categoryKey": "joystickOptions",
-          "id": 80115
+          "id": 7020
         }
       ],
       "visible": 1,
@@ -256,6 +198,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 228099,
+          "date": "2025-11-01T12:32:24.061Z"
+        },
         {
           "value": 232599,
           "date": "2025-10-30T13:51:39.505Z"
@@ -301,6 +247,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 62894,
+          "date": "2025-11-01T12:32:32.810Z"
+        },
         {
           "value": 64499,
           "date": "2025-10-30T13:51:57.242Z"
@@ -419,6 +369,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 74999,
+          "date": "2025-11-01T12:32:55.405Z"
+        },
+        {
           "value": 75299,
           "date": "2025-10-28T12:13:48.128Z"
         },
@@ -499,6 +453,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 62000,
+          "date": "2025-11-01T12:35:39.111Z"
+        },
+        {
           "value": 59079,
           "date": "2025-10-31T10:03:42.789Z"
         },
@@ -549,6 +507,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 112275,
+          "date": "2025-11-01T12:35:47.765Z"
+        },
+        {
           "value": 115677,
           "date": "2025-10-30T13:55:14.683Z"
         },
@@ -586,6 +548,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 40867,
+          "date": "2025-11-01T12:35:56.828Z"
+        },
         {
           "value": 38300,
           "date": "2025-10-30T13:55:23.288Z"
@@ -628,6 +594,10 @@
       "description": "",
       "prices": [
         {
+          "value": 60999,
+          "date": "2025-11-01T12:36:05.479Z"
+        },
+        {
           "value": 0,
           "date": "2025-10-31T09:56:42.852Z"
         }
@@ -642,6 +612,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 102999,
+          "date": "2025-11-01T12:36:14.323Z"
+        },
         {
           "value": 118999,
           "date": "2025-10-30T13:55:32.051Z"
@@ -706,6 +680,10 @@
       "description": "2GB | GDDR5 / 64bit",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 163868,
+          "date": "2025-11-01T12:34:52.739Z"
+        },
         {
           "value": 129999,
           "date": "2025-10-02T16:57:53.527Z"
@@ -772,6 +750,10 @@
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 381999,
+          "date": "2025-11-01T12:35:15.008Z"
+        },
         {
           "value": 363299,
           "date": "2025-10-25T18:56:52.759Z"
@@ -850,6 +832,10 @@
         "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 496471,
+          "date": "2025-11-01T12:35:30.541Z"
+        },
         {
           "value": 529519,
           "date": "2025-10-31T10:03:34.090Z"
@@ -975,6 +961,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 38775,
+          "date": "2025-11-01T12:36:36.534Z"
+        },
+        {
           "value": 35267,
           "date": "2025-10-31T10:04:26.567Z"
         },
@@ -1056,6 +1046,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 99999,
+          "date": "2025-11-01T12:33:42.959Z"
+        },
         {
           "value": 101599,
           "date": "2025-10-31T10:01:43.959Z"
@@ -1162,6 +1156,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 273999,
+          "date": "2025-11-01T12:33:33.504Z"
+        },
         {
           "value": 269999,
           "date": "2025-10-31T10:01:35.168Z"
@@ -1450,6 +1448,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 484152,
+          "date": "2025-11-01T12:33:11.297Z"
+        },
+        {
           "value": 441450,
           "date": "2025-10-30T13:52:37.774Z"
         },
@@ -1515,6 +1517,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 159500,
+          "date": "2025-11-01T12:36:52.639Z"
+        },
         {
           "value": 158999,
           "date": "2025-10-30T13:56:11.810Z"
@@ -1616,6 +1622,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 5617,
+          "date": "2025-11-01T12:37:15.452Z"
+        },
+        {
           "value": 5791,
           "date": "2025-10-07T12:57:35.582Z"
         },
@@ -1633,6 +1643,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 25618,
+          "date": "2025-11-01T12:37:24.017Z"
+        },
         {
           "value": 23802,
           "date": "2025-10-25T18:59:00.362Z"
@@ -1673,6 +1687,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 33000,
+          "date": "2025-11-01T12:37:32.562Z"
+        },
         {
           "value": 32672,
           "date": "2025-10-31T10:05:17.191Z"
@@ -1723,6 +1741,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 58999,
+          "date": "2025-11-01T12:37:41.145Z"
+        },
         {
           "value": 58414,
           "date": "2025-10-30T13:56:59.615Z"
@@ -1781,6 +1803,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 33424,
+          "date": "2025-11-01T12:37:56.463Z"
+        },
         {
           "value": 33199,
           "date": "2025-10-25T18:59:32.936Z"
@@ -1846,6 +1872,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 53688,
+          "date": "2025-11-01T12:38:11.891Z"
+        },
+        {
           "value": 53505,
           "date": "2025-10-28T12:19:03.216Z"
         },
@@ -1887,6 +1917,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 30500,
+          "date": "2025-11-01T12:38:20.786Z"
+        },
         {
           "value": 28060,
           "date": "2025-10-16T12:56:10.990Z"
@@ -1951,6 +1985,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 34594,
+          "date": "2025-11-01T12:38:43.605Z"
+        },
+        {
           "value": 33092,
           "date": "2025-10-31T10:06:24.338Z"
         },
@@ -1997,6 +2035,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 56369,
+          "date": "2025-11-01T12:38:52.536Z"
+        },
+        {
           "value": 62459,
           "date": "2025-10-31T10:06:32.838Z"
         },
@@ -2034,6 +2076,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 77173,
+          "date": "2025-11-01T12:39:01.087Z"
+        },
         {
           "value": 75000,
           "date": "2025-10-31T10:06:41.530Z"
@@ -2087,6 +2133,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 61499,
+          "date": "2025-11-01T12:39:09.675Z"
+        },
+        {
           "value": 27674,
           "date": "2025-10-25T19:00:48.172Z"
         },
@@ -2104,6 +2154,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 56137,
+          "date": "2025-11-01T12:39:18.205Z"
+        },
         {
           "value": 62864,
           "date": "2025-10-30T13:58:26.300Z"
@@ -2142,6 +2196,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 68600,
+          "date": "2025-11-01T12:39:26.704Z"
+        },
         {
           "value": 71324,
           "date": "2025-10-31T10:07:04.251Z"
@@ -2293,6 +2351,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 75999,
+          "date": "2025-11-01T12:39:55.726Z"
+        },
+        {
           "value": 89999,
           "date": "2025-10-25T19:01:34.374Z"
         },
@@ -2348,6 +2410,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 10899,
+          "date": "2025-11-01T12:40:18.368Z"
+        },
         {
           "value": 9740,
           "date": "2025-10-30T13:59:26.880Z"
@@ -2411,5 +2477,26 @@
       ]
     }
   ],
-  "miniPcOptions": []
+  "miniPcOptions": [
+    {
+      "id": 39746,
+      "name": "Bmax B4",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b4-ultra-intel-n150-16gb-512gb-wifi-bluetooth/up/MLAU3466433240?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "N150",
+      "ram": "16",
+      "ssd": "512",
+      "prices": [
+        {
+          "value": 389999,
+          "date": "2025-11-01T13:38:36.860Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-11-01T13:36:58.840Z"
+        }
+      ],
+      "linksAlt": []
+    }
+  ]
 }
