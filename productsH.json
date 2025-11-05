@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 448976,
+      "total": 453996,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 453676,
+      "total": 443443,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 553698,
+      "total": 538445,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -369,6 +369,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 70300,
+          "date": "2025-11-05T12:54:56.161Z"
+        },
+        {
           "value": 70031,
           "date": "2025-11-04T13:45:12.535Z"
         },
@@ -508,6 +512,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 64995,
+          "date": "2025-11-05T12:57:49.440Z"
+        },
+        {
           "value": 63699,
           "date": "2025-11-03T13:14:44.232Z"
         },
@@ -566,6 +574,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 117699,
+          "date": "2025-11-05T12:57:58.683Z"
+        },
+        {
           "value": 112275,
           "date": "2025-11-01T12:35:47.765Z"
         },
@@ -608,6 +620,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 51097,
+          "date": "2025-11-05T12:58:07.546Z"
+        },
+        {
           "value": 40867,
           "date": "2025-11-01T12:35:56.828Z"
         },
@@ -649,8 +665,8 @@
       "id": 28539,
       "name": "480 GB - SATA",
       "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds480g2g0a-480gb-verde/p/MLA12451965?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
+      "visible": 1,
+      "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
         {
           "value": 68999,
@@ -671,8 +687,8 @@
       "id": 54105,
       "name": "1 TB - SATA",
       "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds100t3g0a-3-1tb-verde/p/MLA14661338?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
+      "visible": 1,
+      "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "linksAlt": [],
       "prices": [
         {
@@ -817,10 +833,14 @@
       "id": 64601,
       "name": "RTX 3050 | 6GB",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-nvidia-msi-geforce-rtx-3050-ventus-2x-6gb-oc-gddr6/p/MLA34284188?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 519640,
+          "date": "2025-11-05T12:57:25.104Z"
+        },
         {
           "value": 557750,
           "date": "2025-11-03T13:14:17.503Z"
@@ -860,9 +880,13 @@
       "name": "RX 7600 | 8GB",
       "description": "Un caño para jugar en 1080p fluidamente en calidad Alta. Arquitectura RDNA 3, eficiencia energética y potencia moderna.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-xfx-speedster-swft21-amd-rx7600-8gb-hdmi-ddr6/p/MLA28570288?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&wid=MLA1516810373&search_layout=grid&position=2&type=product&tracking_id=b3d0404e-0664-4045-8da3-fb3948bde594&sid=search",
-      "visible": 1,
+      "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 700380,
+          "date": "2025-11-05T12:57:33.869Z"
+        },
         {
           "value": 456860,
           "date": "2025-11-03T13:14:26.677Z"
@@ -1056,6 +1080,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 36359,
+          "date": "2025-11-05T12:58:44.637Z"
+        },
+        {
           "value": 35021,
           "date": "2025-11-03T13:15:39.915Z"
         },
@@ -1109,6 +1137,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 24046,
+          "date": "2025-11-05T12:58:53.459Z"
+        },
         {
           "value": 24000,
           "date": "2025-11-04T13:49:06.410Z"
@@ -1276,6 +1308,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 259446,
+          "date": "2025-11-05T12:55:40.346Z"
+        },
+        {
           "value": 274699,
           "date": "2025-11-04T13:45:59.562Z"
         },
@@ -1328,6 +1364,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 42999,
+          "date": "2025-11-05T12:56:05.165Z"
+        },
         {
           "value": 40489,
           "date": "2025-11-03T13:12:54.797Z"
@@ -1745,6 +1785,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 290499,
+          "date": "2025-11-05T12:59:16.104Z"
+        },
+        {
           "value": 297699,
           "date": "2025-11-03T13:16:12.779Z"
         },
@@ -1823,6 +1867,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 22915,
+          "date": "2025-11-05T12:59:31.982Z"
+        },
+        {
           "value": 23506,
           "date": "2025-11-03T13:18:36.939Z"
         },
@@ -1870,6 +1918,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 29000,
+          "date": "2025-11-05T12:59:40.694Z"
+        },
         {
           "value": 33000,
           "date": "2025-11-01T12:37:32.562Z"
@@ -1924,6 +1976,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 61999,
+          "date": "2025-11-05T12:59:49.547Z"
+        },
         {
           "value": 60000,
           "date": "2025-11-04T13:50:03.250Z"
@@ -2063,6 +2119,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 47484,
+          "date": "2025-11-05T13:00:19.334Z"
+        },
+        {
           "value": 49150,
           "date": "2025-11-04T13:50:32.543Z"
         },
@@ -2146,6 +2206,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 12999,
+          "date": "2025-11-05T13:00:35.109Z"
+        },
+        {
           "value": 11787,
           "date": "2025-10-31T10:06:08.505Z"
         },
@@ -2226,52 +2290,6 @@
       ]
     },
     {
-      "id": 68110,
-      "name": "Genius SW-2.1 300",
-      "link": "https://www.mercadolibre.com.ar/parlantes-para-pc-notebook-o-tv-21-subwoofer-graves-genius-sw-21-300-10w-color-negro/p/MLA20012784?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 249999,
-          "date": "2025-11-03T13:19:57.562Z"
-        },
-        {
-          "value": 56369,
-          "date": "2025-11-01T12:38:52.536Z"
-        },
-        {
-          "value": 62459,
-          "date": "2025-10-31T10:06:32.838Z"
-        },
-        {
-          "value": 249999,
-          "date": "2025-10-16T12:56:49.778Z"
-        },
-        {
-          "value": 62459,
-          "date": "2025-10-15T10:12:02.185Z"
-        },
-        {
-          "value": 249999,
-          "date": "2025-10-14T13:46:37.237Z"
-        },
-        {
-          "value": 249799,
-          "date": "2025-10-13T10:50:32.083Z"
-        },
-        {
-          "value": 249999,
-          "date": "2025-10-07T12:59:23.106Z"
-        },
-        {
-          "value": 83889,
-          "date": "2025-10-02T17:02:23.695Z"
-        }
-      ]
-    },
-    {
       "id": 56860,
       "name": "Genius SW-2.1 300X",
       "link": "https://www.mercadolibre.com.ar/parlante-21-canales-genius-para-pc-notebook-o-tv-smart-10w/p/MLA22253883?offer_type=OFFICIAL_STORE",
@@ -2279,6 +2297,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 77173,
+          "date": "2025-11-05T13:01:59.071Z"
+        },
         {
           "value": 61979,
           "date": "2025-11-04T13:51:16.302Z"
@@ -2339,6 +2361,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 23988,
+          "date": "2025-11-05T13:02:07.762Z"
+        },
         {
           "value": 26988,
           "date": "2025-11-03T13:20:13.025Z"
@@ -2578,6 +2604,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 71295,
+          "date": "2025-11-05T13:02:52.189Z"
+        },
+        {
           "value": 75999,
           "date": "2025-11-01T12:39:55.726Z"
         },
@@ -2637,6 +2667,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 10699,
+          "date": "2025-11-05T13:03:14.600Z"
+        },
         {
           "value": 10599,
           "date": "2025-11-04T13:52:31.300Z"
@@ -2722,6 +2756,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 384029,
+          "date": "2025-11-05T12:54:24.847Z"
+        },
         {
           "value": 329799,
           "date": "2025-11-04T01:50:26.894Z"
