@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 453996,
+      "total": 477870,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 443443,
+      "total": 481870,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 538445,
+      "total": 599856,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -226,6 +226,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 259000,
+          "date": "2025-11-09T14:15:27.279Z"
+        },
+        {
           "value": 235999,
           "date": "2025-11-04T13:44:34.249Z"
         },
@@ -329,6 +333,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 70780,
+          "date": "2025-11-09T14:16:01.490Z"
+        },
         {
           "value": 68920,
           "date": "2025-11-03T13:11:33.250Z"
@@ -512,6 +520,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 61999,
+          "date": "2025-11-09T14:20:56.313Z"
+        },
+        {
           "value": 64995,
           "date": "2025-11-05T12:57:49.440Z"
         },
@@ -574,6 +586,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 115999,
+          "date": "2025-11-09T14:21:05.048Z"
+        },
+        {
           "value": 117699,
           "date": "2025-11-05T12:57:58.683Z"
         },
@@ -619,6 +635,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 44289,
+          "date": "2025-11-09T14:21:14.415Z"
+        },
         {
           "value": 51097,
           "date": "2025-11-05T12:58:07.546Z"
@@ -804,32 +824,6 @@
       ]
     },
     {
-      "id": 8247,
-      "name": "RX 580 | 8GB",
-      "link": "https://articulo.mercadolibre.com.ar/MLA-1462699417-placa-de-video-amd-rx-580-8gb-ddr5-256bit-dvi-hdmi-dp-radeon-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "Un gran salto respecto a la anterior, y no solo en la VRAM. Los juegos los va a tirar mucho mejor. *Verificá abajo con la IA para saber si se banca los tuyos...",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 325235,
-          "date": "2025-10-25T18:56:45.044Z"
-        },
-        {
-          "value": 310673,
-          "date": "2025-10-16T12:53:11.631Z"
-        },
-        {
-          "value": 302352,
-          "date": "2025-10-15T10:08:32.020Z"
-        },
-        {
-          "value": 316914,
-          "date": "2025-10-02T16:58:12.364Z"
-        }
-      ]
-    },
-    {
       "id": 64601,
       "name": "RTX 3050 | 6GB",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-nvidia-msi-geforce-rtx-3050-ventus-2x-6gb-oc-gddr6/p/MLA34284188?offer_type=OFFICIAL_STORE",
@@ -837,6 +831,10 @@
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 512970,
+          "date": "2025-11-09T14:20:32.015Z"
+        },
         {
           "value": 519640,
           "date": "2025-11-05T12:57:25.104Z"
@@ -883,6 +881,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 707120,
+          "date": "2025-11-09T14:20:40.633Z"
+        },
         {
           "value": 700380,
           "date": "2025-11-05T12:57:33.869Z"
@@ -1026,6 +1028,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 81102,
+          "date": "2025-11-09T14:21:43.704Z"
+        },
+        {
           "value": 83699,
           "date": "2025-11-04T13:48:50.772Z"
         },
@@ -1079,6 +1085,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 35021,
+          "date": "2025-11-09T14:21:52.533Z"
+        },
         {
           "value": 36359,
           "date": "2025-11-05T12:58:44.637Z"
@@ -1308,6 +1318,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 273999,
+          "date": "2025-11-09T14:16:54.534Z"
+        },
+        {
           "value": 259446,
           "date": "2025-11-05T12:55:40.346Z"
         },
@@ -1365,6 +1379,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 54936,
+          "date": "2025-11-09T14:17:16.938Z"
+        },
+        {
           "value": 42999,
           "date": "2025-11-05T12:56:05.165Z"
         },
@@ -1415,6 +1433,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 68999,
+          "date": "2025-11-09T14:17:25.931Z"
+        },
         {
           "value": 66899,
           "date": "2025-11-04T13:46:32.923Z"
@@ -1501,6 +1523,10 @@
       "total": 8,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 53300,
+          "date": "2025-11-09T14:17:41.287Z"
+        },
         {
           "value": 55000,
           "date": "2025-11-03T13:13:18.564Z"
@@ -1599,6 +1625,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 113929,
+          "date": "2025-11-09T14:18:03.916Z"
+        },
+        {
           "value": 90500,
           "date": "2025-11-04T13:47:09.801Z"
         },
@@ -1634,6 +1664,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 417399,
+          "date": "2025-11-09T14:16:31.827Z"
+        },
         {
           "value": 406836,
           "date": "2025-11-03T13:12:07.700Z"
@@ -1708,6 +1742,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 160215,
+          "date": "2025-11-09T14:22:08.169Z"
+        },
         {
           "value": 159737,
           "date": "2025-11-04T13:49:15.327Z"
@@ -1784,6 +1822,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 292786,
+          "date": "2025-11-09T14:22:23.913Z"
+        },
         {
           "value": 290499,
           "date": "2025-11-05T12:59:16.104Z"
@@ -1867,6 +1909,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 24412,
+          "date": "2025-11-09T14:22:39.679Z"
+        },
+        {
           "value": 22915,
           "date": "2025-11-05T12:59:31.982Z"
         },
@@ -1918,6 +1964,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 33000,
+          "date": "2025-11-09T14:22:48.397Z"
+        },
         {
           "value": 29000,
           "date": "2025-11-05T12:59:40.694Z"
@@ -1977,6 +2027,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 63999,
+          "date": "2025-11-09T14:22:57.296Z"
+        },
+        {
           "value": 61999,
           "date": "2025-11-05T12:59:49.547Z"
         },
@@ -2026,6 +2080,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 42000,
+          "date": "2025-11-09T14:23:06.016Z"
+        },
         {
           "value": 44000,
           "date": "2025-10-28T12:18:39.065Z"
@@ -2119,6 +2177,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 48049,
+          "date": "2025-11-09T14:23:28.525Z"
+        },
+        {
           "value": 47484,
           "date": "2025-11-05T13:00:19.334Z"
         },
@@ -2205,6 +2267,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 11787,
+          "date": "2025-11-09T14:23:44.154Z"
+        },
         {
           "value": 12999,
           "date": "2025-11-05T13:00:35.109Z"
@@ -2293,10 +2359,14 @@
       "id": 56860,
       "name": "Genius SW-2.1 300X",
       "link": "https://www.mercadolibre.com.ar/parlante-21-canales-genius-para-pc-notebook-o-tv-smart-10w/p/MLA22253883?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 107903,
+          "date": "2025-11-09T14:24:07.424Z"
+        },
         {
           "value": 77173,
           "date": "2025-11-05T13:01:59.071Z"
@@ -2391,6 +2461,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 54699,
+          "date": "2025-11-09T14:24:22.906Z"
+        },
         {
           "value": 56137,
           "date": "2025-11-01T12:39:18.205Z"
@@ -2491,6 +2565,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 77999,
+          "date": "2025-11-09T14:24:39.170Z"
+        },
         {
           "value": 78400,
           "date": "2025-11-04T13:51:46.503Z"
@@ -2668,6 +2746,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 10749,
+          "date": "2025-11-09T14:25:22.472Z"
+        },
+        {
           "value": 10699,
           "date": "2025-11-05T13:03:14.600Z"
         },
@@ -2728,6 +2810,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 16000,
+          "date": "2025-11-09T14:25:31.221Z"
+        },
+        {
           "value": 24999,
           "date": "2025-10-25T19:02:04.512Z"
         },
@@ -2756,6 +2842,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 437950,
+          "date": "2025-11-09T14:15:36.654Z"
+        },
         {
           "value": 384029,
           "date": "2025-11-05T12:54:24.847Z"
@@ -2790,6 +2880,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 386561,
+          "date": "2025-11-09T14:15:45.258Z"
+        },
         {
           "value": 386725,
           "date": "2025-11-04T13:44:49.826Z"
