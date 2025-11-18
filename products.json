@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 519253,
+      "total": 518695,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -22,7 +22,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 490774,
+      "total": 482736,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -36,7 +36,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 610830,
+      "total": 602850,
       "totalram": 32,
       "visible": 1,
       "price": 0,
@@ -188,8 +188,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 239099,
-      "lastUpd": "2025-11-17T10:07:49.170Z"
+      "price": 245999,
+      "lastUpd": "2025-11-18T14:23:04.741Z"
     }
   ],
   "towersOptions": [
@@ -200,8 +200,8 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE",
       "visible": 1,
       "description": "",
-      "price": 60719,
-      "lastUpd": "2025-11-17T10:08:11.934Z"
+      "price": 60999,
+      "lastUpd": "2025-11-18T14:23:29.183Z"
     },
     {
       "id": 50127,
@@ -210,8 +210,8 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE",
       "visible": 1,
       "description": "",
-      "price": 71670,
-      "lastUpd": "2025-11-12T11:20:04.018Z"
+      "price": 73900,
+      "lastUpd": "2025-11-18T14:23:38.631Z"
     },
     {
       "id": 47143,
@@ -259,8 +259,8 @@
       "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 62272,
-      "lastUpd": "2025-11-14T13:52:20.836Z"
+      "price": 74539,
+      "lastUpd": "2025-11-18T14:26:50.817Z"
     },
     {
       "id": 93692,
@@ -268,8 +268,8 @@
       "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
       "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 127057,
-      "lastUpd": "2025-11-16T12:43:10.420Z"
+      "price": 131029,
+      "lastUpd": "2025-11-18T14:26:59.753Z"
     },
     {
       "id": 86326,
@@ -360,8 +360,8 @@
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
       "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 614059,
-      "lastUpd": "2025-11-14T13:52:12.168Z"
+      "price": 638600,
+      "lastUpd": "2025-11-18T14:26:41.783Z"
     }
   ],
   "psuOptions": [
@@ -398,8 +398,8 @@
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-xs550-ps-550w-negra/p/MLA43933347?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 25900,
-      "lastUpd": "2025-11-13T14:13:13.284Z"
+      "price": 28160,
+      "lastUpd": "2025-11-18T14:27:51.735Z"
     }
   ],
   "motherboardOptions": [
@@ -409,8 +409,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-amd-b450m-hdv-r40-am4-hdmi-ddr4-color-negro/p/MLA22661333?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 97499,
-      "lastUpd": "2025-11-12T11:21:07.244Z"
+      "price": 96999,
+      "lastUpd": "2025-11-18T14:24:56.037Z"
     },
     {
       "id": 23506,
@@ -418,8 +418,17 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 97499,
-      "lastUpd": "2025-11-12T11:21:15.914Z"
+      "price": 96999,
+      "lastUpd": "2025-11-18T14:25:04.733Z"
+    },
+    {
+      "name": "Ninguno",
+      "link": "",
+      "visible": 0,
+      "description": "",
+      "id": 9236,
+      "price": 0,
+      "lastUpd": "2025-11-17T13:27:38.232Z"
     }
   ],
   "cpuOptions": [
@@ -438,8 +447,8 @@
       "description": "8 nucleos 4.6ghz Am4",
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 279479,
-      "lastUpd": "2025-11-16T12:41:06.828Z"
+      "price": 271999,
+      "lastUpd": "2025-11-18T14:24:47.029Z"
     }
   ],
   "ramOptions": [
@@ -450,8 +459,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 56898,
-      "lastUpd": "2025-11-17T10:09:34.504Z"
+      "price": 56869,
+      "lastUpd": "2025-11-18T14:25:13.589Z"
     },
     {
       "id": 8502,
@@ -460,8 +469,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
       "visible": 0,
-      "price": 85999,
-      "lastUpd": "2025-11-16T12:41:37.772Z"
+      "price": 91899,
+      "lastUpd": "2025-11-18T14:25:22.337Z"
     },
     {
       "id": 769,
@@ -517,8 +526,8 @@
   "comboOptions": [
     {
       "id": 9976,
-      "name": "5 5600g + A520 Asrock",
-      "description": "Descripción del nuevo Combo.",
+      "name": "5 5600g + A520 Asrock + 16DC",
+      "description": "",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1106736374-combo-actualizacion-pc-amd-ryzen-5600g-mother-16-gb-_JM?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "price": 442699,
@@ -527,11 +536,29 @@
     {
       "id": 69988,
       "name": " I5 4570 + Mother + 8gb",
-      "description": "Descripción del nuevo Combo.",
+      "description": "",
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-pc-intel-i5-4570--mother--8gb-ram/up/MLAU3143273772?offer_type=BEST_PRICE",
       "visible": 1,
       "price": 187000,
       "lastUpd": "2025-09-24T14:28:35.462Z"
+    },
+    {
+      "id": 93205,
+      "name": "3 3200g + Mother + 16DC",
+      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-3-3200g-mother-am4-16gb-de-ram-2x8gb-dual-channel-ddr4/p/MLA41498390?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=18&type=product&tracking_id=3295a0ef-3bad-41a7-a072-2b02e4df3d3a&wid=MLA1486532417&sid=search",
+      "visible": 1,
+      "description": "",
+      "price": 296630,
+      "lastUpd": "2025-11-18T14:24:22.515Z"
+    },
+    {
+      "id": 93414,
+      "name": "5 5600g + A520 Asrock",
+      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-ddr4-ryzen-5-5600g-a520m-am4-color-negro/p/MLA43499795?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "price": 341490,
+      "lastUpd": "2025-11-18T14:24:31.185Z"
     }
   ],
   "monitorOptions": [
@@ -541,8 +568,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 157699,
-      "lastUpd": "2025-11-12T11:24:32.420Z"
+      "price": 166550,
+      "lastUpd": "2025-11-18T14:28:00.405Z"
     },
     {
       "id": 93025,
@@ -559,8 +586,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-gigabyte-gs27fa-27-180hz-panel-ips-1ms-hdr-full-hd/p/MLA48944295?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 290029,
-      "lastUpd": "2025-11-14T13:53:48.261Z"
+      "price": 287729,
+      "lastUpd": "2025-11-18T14:28:16.072Z"
     }
   ],
   "mouseOptions": [
@@ -579,8 +606,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/mouse-y-pad-2-en-1-gamer-redragon-m601wl-ba-negrorojo/p/MLA17588671?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 23100,
-      "lastUpd": "2025-11-12T11:25:06.854Z"
+      "price": 24119,
+      "lastUpd": "2025-11-18T14:28:31.645Z"
     }
   ],
   "joystickOptions": [
@@ -590,8 +617,8 @@
       "description": "Generico Xbox 360 Con Cable",
       "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 35000,
-      "lastUpd": "2025-11-16T12:44:46.271Z"
+      "price": 23951,
+      "lastUpd": "2025-11-18T14:28:40.613Z"
     },
     {
       "id": 80101,
@@ -599,8 +626,8 @@
       "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-redragon-harrow-g808-negro/p/MLA15086696?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 63499,
-      "lastUpd": "2025-11-16T12:44:55.826Z"
+      "price": 61593,
+      "lastUpd": "2025-11-18T14:28:49.670Z"
     },
     {
       "id": 7020,
@@ -608,8 +635,8 @@
       "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-seisa-njx311/p/MLA17789958?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 44890,
-      "lastUpd": "2025-11-14T13:54:27.925Z"
+      "price": 43000,
+      "lastUpd": "2025-11-18T14:28:58.446Z"
     }
   ],
   "keyboardOptions": [
@@ -637,8 +664,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 47300,
-      "lastUpd": "2025-11-12T11:25:57.105Z"
+      "price": 47687,
+      "lastUpd": "2025-11-18T14:29:20.934Z"
     },
     {
       "id": 67546,
@@ -658,8 +685,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/auriculares-gamer-noga-stormer-ng-8620-negro-y-rojo/p/MLA6354312?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=78f0b566-6759-43a3-8568-c4800be17775&wid=MLA1941191004&sid=search",
       "visible": 1,
-      "price": 13999,
-      "lastUpd": "2025-11-17T10:13:35.632Z"
+      "price": 14207,
+      "lastUpd": "2025-11-18T14:29:36.797Z"
     },
     {
       "id": 63286,
@@ -716,8 +743,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/camara-web-redragon-hitman-full-hd-30fps-color-negro/p/MLA18362781?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 67399,
-      "lastUpd": "2025-11-17T10:14:19.549Z"
+      "price": 66499,
+      "lastUpd": "2025-11-18T14:30:20.883Z"
     }
   ],
   "microfonosOptions": [
@@ -736,8 +763,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/microfono-condenser-cartoide-usb-pc-estudio-streaming-podcast-tripod-profesional-bm900-vt-power/p/MLA25045936?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 45398,
-      "lastUpd": "2025-11-16T12:46:38.991Z"
+      "price": 45396,
+      "lastUpd": "2025-11-18T14:30:36.713Z"
     },
     {
       "id": 8668,
@@ -809,8 +836,8 @@
       "cpu": "Ryzen 5 3500u",
       "ram": "16",
       "ssd": "512",
-      "price": 763691,
-      "lastUpd": "2025-11-14T13:46:54.590Z"
+      "price": 771338,
+      "lastUpd": "2025-11-18T14:23:20.375Z"
     }
   ]
 }
