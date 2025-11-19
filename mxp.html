@@ -4,24 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MXP | Manual de Juego</title>
-    <!-- Cargando Tailwind CSS -->
+    <title>MXP | Manual de Juego v2.0</title>
+    
+    <!-- Cargando Tailwind CSS (Script vital) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        /* Usando una fuente más gamer/retro si Inter no carga */
+        /* Fuentes */
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap');
 
         body {
-            /* Fuente Inter como principal, con fallback */
             font-family: 'Inter', sans-serif;
         }
 
+        /* ESTILOS BASE (Fallback por si Tailwind no carga) */
         .main-container {
             background-color: #060606; /* Fondo oscuro */
+            color: #f3f4f6; /* Color de texto claro forzado (equivale a gray-100) */
         }
-
-        /* Fallback para una fuente pixelada si se quiere, aunque Inter es más legible */
-        /* .font-pixel { font-family: 'Press Start 2P', cursive; } */
+        
+        /* Aseguramos que los links o textos no queden oscuros si falla el framework */
+        a, h1, h2, h3, h4, p, li {
+            color: inherit;
+        }
     </style>
 </head>
 
@@ -29,130 +34,69 @@
 
     <div class="container max-w-4xl mx-auto p-6 md:p-10">
 
-        <!-- Logo en la parte superior -->
+        <!-- Logo -->
         <img src="MillennialGAMERXP.logo.png" alt="Logo Millennial Gamer XP"
             class="w-full max-w-lg mx-auto mb-8 rounded-lg"
             onerror="this.src='https://placehold.co/600x200/ef4444/ffffff?text=Millennial+GAMER+XP'; this.onerror=null;">
 
-        <!-- Título principal con gradiente de colores del logo -->
+        <!-- Título -->
         <h1
-            class="text-4xl md:text-5xl font-bold text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400">
-            MXP | Manual de Juego
+            class="text-4xl md:text-5xl font-bold text-center pb-10 text-transparent bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400"
+            style="background-image: linear-gradient(to right, #ef4444, #fb923c, #facc15); -webkit-background-clip: text;">
+            MXP | Manual de Juego v2.0
         </h1>
 
-        <!-- Contenido del Documento -->
-        <div class="bg-gray-900 p-6 md:p-8 rounded-lg shadow-2xl">
-
-            <p class="text-lg text-gray-400 mb-6">Pestaña 1</p>
+        <!-- Contenido -->
+        <div class="bg-gray-900 p-6 md:p-8 rounded-lg shadow-2xl border border-gray-800">
 
             <!-- Módulo 1 -->
-            <h2 class="text-3xl font-bold mt-8 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
+            <h2 class="text-3xl font-bold mt-1 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
                 Módulo 1: El Juego, los Jugadores y Roles
             </h2>
 
-            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">1. La Misión:</h3>
+                        <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">0. Misión Principal:</h3>
             <p class="text-lg text-gray-200 mb-4 leading-relaxed">
-                "Vendemos 'Máquinas del Tiempo' (<strong class="text-orange-400">look XP + rendimiento</strong>) que
+            </p>
+            
+            "Acercar la Experiencia del Gamer Millennial a la comunidad hispanohablante, tocando la nostalgia y el humor, la filosofía y la historia, el arte y la creación, otorgando nuevas maneras de disfrutar los frutos de una Era Épica (90s~2012) con el aporte comunitario y nuestra auténtica creatividad."
+            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">1. Misión de Despegue:</h3>
+            <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                "Ofrecemos  'Máquinas del Tiempo' que
                 aportan una experiencia <strong class="text-orange-400">Plug & Play</strong> reviviendo la era dorada
                 del gaming y el arte audiovisual del cruce de milenios."
             </p>
 
+
             <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">2. Los Roles (Quién hace qué):</h3>
 
-            <p class="text-xl font-semibold text-gray-100 mt-4">Diego (El Arquitecto):</p>
+            <p class="text-xl font-semibold text-gray-100 mt-4">Diego (El Arquitecto Full Stack):</p>
             <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Dueño y responsable del <strong class="text-orange-400">Core</strong>: el Windows MXP
-                    (optimización y personalización).</li>
-                    <li>Programador, Técnico, Diseñador y Editor.</li>
-                <li><strong class="text-orange-400">Voto final</strong> sobre edición, guiones y voz de la marca.</li>
+                <li>Dueño y responsable del <strong class="text-orange-400">Core</strong>: la MillennialXP
+                    (Concepto, Desarrollo, Instalación y Personalización).</li>
+<li>Responsable del <strong class="text-orange-400">Pack de Juegos de PC</strong> (Selección, Configuración, Modding y Testing).</li>
+                <li>Responsable del <strong class="text-orange-400">Pack de Emulación</strong> (Selección, Configuración y Testing).</li>
+                <li>Desarrollador (Web & Soft).</li>
+                <li>Diseño de Marca e Identidad Visual Bases.</li>
+                <li>Automatización.</li>
+                <li>Investigación de Mercado y Armado de Hardware.</li>
+                <li>Servicio Técnico.</li>
+                <li>Creación de Contenido: Ideas, Guión, Voz y Personajes, Edición de Audio, Música, Grabación de Video/Gameplays, Assets complementarios.</li>
+                <li>Comunicación Técnica en Redes (Discord).</li>
+                <li><strong class="text-orange-400">Voto final</strong> sobre Producto, Diseño y Dirección de la Marca.</li>
                 <li>Responsable de Vender.</li>
             </ul>
 
-            <p class="text-xl font-semibold text-gray-100 mt-4">Emi (El Curador / Acelerador):</p>
+            <p class="text-xl font-semibold text-gray-100 mt-4">Ale (El Editor y Difusor):</p>
             <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Dueño y responsable del <strong class="text-orange-400">Pack de Emuladores</strong>.</li>
-                <li>Provee material de IA para redes.</li>
+                <li>Grabación y Edición de Video.</li>
+                <li>Diseño Gráfico y Generación de Assets.</li>
+                <li>Diseño de Marca e Identidad Visual.</li>
+                <li>Fotografía y Edición de Imágenes.</li>                
+                <li>Community Manager (Gestión de Redes y Comunicación).</li>
                 <li>Responsable de Vender.</li>
+                <div class="text-sm"><li>Marketing?</li>    
+                <li>Gameplays? Streaming? Personajes?</li></div>
             </ul>
-
-            <p class="text-xl font-semibold text-gray-100 mt-4">Pablo (El Capital):</p>
-            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Es el Inversor. Se encarga de <strong class="text-orange-400">fondear</strong> el 100% del Costo de
-                    Hardware (<strong class="text-orange-400">COGS</strong>) de cada MXP.</li>
-                <li>No participa en el <strong class="text-orange-400">laburo</strong> diario (instalación, redes,
-                    soporte).</li>
-            </ul>
-
-            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">3. La Guita (El "Split" 20-80):</h3>
-            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Se arma una cuenta de MercadoPago <strong class="text-orange-400">solo</strong> para el negocio.
-                </li>
-                <li>De cada venta ($790k), se separa el COGS ($508.5k) y se le <strong
-                        class="text-orange-400">devuelve</strong> a Pablo <strong class="text-orange-400">de
-                        toque</strong>.</li>
-                <li>De la Ganancia Bruta ($281.5k), se separa 15% al "<strong class="text-orange-400">Fondo de
-                        Garantía</strong>" ($42.2k).</li>
-                <li>De la Ganancia Neta ($239.3k), se reparte:
-                    <ul class="list-circle list-inside ml-6 mt-2 space-y-1">
-                        <li>20% para Pablo ($47.860).</li>
-                        <li>80% para el "<strong class="text-orange-400">Fondo de Laburo y Ventas</strong>" ($191.440).
-                        </li>
-                    </ul>
-                </li>
-                <li>Ese Fondo de Laburo se divide: 15% Comisión al Vendedor ($28.7k) y 85% al Fondo de Laburo ($162.7k).
-                </li>
-                <li>El Fondo de Laburo se divide 60% (Diego) y 40% (Emi).</li>
-                <li>La plata se reparte <strong class="text-orange-400">ni bien entra</strong>, para que Pablo recupere
-                    rápido y ustedes vean el <strong class="text-orange-400">mango</strong>.</li>
-            </ul>
-
-            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">4. Las Garantías (El "Fondo"):</h3>
-            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Ese 15% ($42.2k) se usa <strong class="text-orange-400">solo</strong> para reponer hardware fallado
-                    (joysticks, etc.).</li>
-                <li>Lo manejan Diego y Emi. Pablo no tiene que poner un <strong class="text-orange-400">mango</strong> más
-                    para esto.</li>
-            </ul>
-
-            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">5. El "Game Over" (Protocolo de Salida):</h3>
-            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Si el negocio se frena, se <strong class="text-orange-400">liquida</strong> el stock que queda.</li>
-                <li>Con esa guita, la prioridad #1 es devolverle a Pablo <strong class="text-orange-400">todo</strong>
-                    el capital que haya puesto y que no haya recuperado.</li>
-                <li>Lo que sobra, se reparte 60/40 entre Diego y Emi (después de cubrir el Fondo de Garantía, obvio).</li>
-                <li>El Windows MXP sigue siendo <strong class="text-orange-400">tuyo</strong>.</li>
-            </ul>
-
-            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">Resúmen Roles</h3>
-
-            <p class="text-xl font-semibold text-gray-100 mt-4">DIEGO (El Arquitecto / Dueño del Mambo):</p>
-            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Es el creador y dueño intelectual del <strong class="text-orange-400">Producto Core</strong>: el
-                    <strong class="text-orange-400">Windows MXP</strong> (el <strong
-                        class="text-orange-400">look</strong> XP + la optimización).</li>
-                <li>Tiene el <strong class="text-orange-400">voto final</strong> y la responsabilidad sobre la marca, la
-                    identidad visual, los guiones y la edición final de todo el contenido.</li>
-                <li>Es responsable de vender y manejar su propia cartera de clientes.</li>
-            </ul>
-
-            <p class="text-xl font-semibold text-gray-100 mt-4">EMI (El Curador / Acelerador):</p>
-            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Es el responsable total del <strong class="text-orange-400">Pack de Emuladores</strong>. Su <strong
-                        class="text-orange-400">laburo</strong> es que esa parte esté siempre 10 puntos, actualizada y
-                    libre de <strong class="text-orange-400">quilombos</strong>.</li>
-                <li>Acelera el marketing: genera los <strong class="text-orange-400">assets</strong> (imágenes/videos)
-                    con IA para que Diego edite, siguiendo la línea de los guiones.</li>
-                <li>Es responsable de vender y manejar su propia cartera de clientes.</li>
-            </ul>
-
-            <p class="text-xl font-semibold text-gray-100 mt-4">PABLO (El Capital / El Banco):</p>
-            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
-                <li>Es el Inversor. Su <strong class="text-orange-400">único</strong> rol es <strong
-                        class="text-orange-400">fondear</strong> (poner la <strong
-                        class="text-orange-400">guita</strong>) el 100% del costo de hardware (COGS) de cada MXP que se
-                    decide armar.</li>
-            </ul>
-
 
             <!-- Módulo 2 -->
             <h2 class="text-3xl font-bold mt-12 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
@@ -160,93 +104,191 @@
             </h2>
 
             <div class="bg-gray-800 p-6 rounded-lg my-6 text-lg text-gray-200 leading-relaxed">
-                <h3 class="text-2xl font-semibold mb-4 text-yellow-400">El costo:</h3>
-                <!-- Usando <pre> para mantener el formato exacto de las líneas y espacios -->
-                <pre class="whitespace-pre-wrap font-sans">
-MiniPC Bmax B4: $389.999
-2 Joystick Xbox 360: $88.000
-Combo Solarmax: $30.500
-<strong class="text-yellow-400">COSTO BRUTO (COGS): $508.499</strong>
+                <h3 class="text-2xl font-semibold mb-4 text-yellow-400">El costo y los números:</h3>
+                
+                <p class="mb-2">Costo de Hardware (Reposición de Stock):</p>
+                <pre class="whitespace-pre-wrap font-sans mb-4 text-gray-300">
+Ryzen 3 3200G - 16GB RAM - SSD NVme 1TB
+1 Joystick Inalambrico
+Combo Mouse+Teclado Inalambricos
+<strong class="text-red-400">TOTAL COGS: <span id="display-costo">$0</span></strong>
                 </pre>
 
                 <p class="mt-6">
-                    Ahora, el <strong class="text-orange-400">split</strong> de la ganancia con 3 socios (Diego, Emi,
-                    Pablo).
+                    Ahora, el <strong class="text-orange-400">Precio de Venta</strong> se calcula automáticamente: <br>
+                    <span class="text-sm italic opacity-75">Costo Hardware + Ganancia Objetivo ($200k)</span>
                 </p>
 
-                <!-- Usando <pre> de nuevo para el desglose financiero -->
-                <pre class="whitespace-pre-wrap font-sans mt-4 leading-relaxed">
-Venta Final:              $790.000
-Costo Hardware (Pablo):  -$508.500
-<strong class="text-green-400">= Ganancia Bruta:          $281.500</strong>
+                <!-- Desglose Financiero Dinámico -->
+                <div class="font-mono bg-black/30 p-4 rounded mt-4 border border-gray-700">
+                    <div class="flex justify-between mb-1 border-b border-gray-700 pb-2">
+                        <span class="text-gray-400">Costo Hardware:</span>
+                        <span class="text-red-400" id="display-costo-suma">$0</span>
+                    </div>
+                    <div class="flex justify-between mb-1 border-b border-gray-700 pb-2">
+                        <span class="text-gray-400">(+) Ganancia Objetivo:</span>
+                        <span class="text-yellow-500" id="display-ganancia-obj">$0</span>
+                    </div>
+                    <div class="flex justify-between mb-3 pt-2">
+                        <strong class="text-xl text-white">= PRECIO DE VENTA:</strong>
+                        <strong class="text-xl text-green-400" id="display-venta">$0</strong>
+                    </div>
 
-FONDO DE GARANTÍA (15%):  -$42.200 (INTOCABLE, para cubrir fallas)
-<strong class="text-green-400">= GANANCIA NETA (A repartir): $239.300</strong>
-                </pre>
+                    <div class="flex justify-between mb-1 text-yellow-500 opacity-80 text-sm">
+                        <span>Ganancia Bruta Real:</span>
+                        <span id="display-bruta">$0</span>
+                    </div>
+
+                    <div class="flex justify-between mb-1 text-red-400 opacity-80 text-sm">
+                        <span>(-) Fondo de Garantía (15%):</span>
+                        <span id="display-garantia">-$0</span>
+                    </div>
+                    
+                    <div class="flex justify-between mt-2 border-t-2 border-green-500 pt-2 text-xl">
+                        <strong class="text-green-400">GANANCIA NETA (A repartir):</strong>
+                        <strong class="text-green-400" id="display-neta">$0</strong>
+                    </div>
+                </div>
             </div>
 
-            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">¿Cómo repartimos esos $239.300?</h3>
+            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">¿Cómo repartimos la Ganancia Neta?</h3>
             <p class="text-lg text-gray-200 mb-4 leading-relaxed">
-                Acá hay que pagarle a 3 roles distintos: <strong class="text-orange-400">Capital</strong> (Pablo),
-                <strong class="text-orange-400">Laburo Fijo</strong> (Diego y Emi) y <strong
-                    class="text-orange-400">Venta</strong> (Diego o Emi).
+                Acá hay que pagarle a 2 roles: <strong class="text-orange-400">La Venta</strong> (Comisión) y <strong
+                    class="text-orange-400">La Sociedad</strong> (Diego y Ale).
             </p>
 
             <div class="bg-gray-800 p-6 rounded-lg my-6 space-y-4">
-                <h4 class="text-xl font-semibold text-gray-100">Paso 1: Pagar el Capital (Pablo)</h4>
-                <p class="text-lg text-gray-200">Pablo arriesga $508.500 en cada caja. Merece un retorno <strong
-                        class="text-orange-400">relevante</strong> y <strong class="text-orange-400">rápido</strong>.
-                </p>
-                <p class="text-lg text-gray-200">Le damos un <strong class="text-orange-400">20% FIJO de la Ganancia
-                        Neta</strong>.</p>
-                <p class="text-lg text-gray-100 bg-gray-900 p-3 rounded"><strong class="text-yellow-400">Pablo
-                        (Inversor): $239.300 x 20% = $47.860</strong></p>
-                <p class="text-md text-gray-300">(Esto es un ~9.4% de retorno sobre <strong
-                        class="text-orange-400">su</strong> inversión, por cada venta).</p>
-            </div>
-
-            <div class="bg-gray-800 p-6 rounded-lg my-6 space-y-4">
-                <h4 class="text-xl font-semibold text-gray-100">Paso 2: Pagar el Laburo y la Venta (Diego y Emi)</h4>
-                <p class="text-lg text-gray-200">Nos queda el 80% restante para ustedes dos: <strong
-                        class="text-yellow-400">$191.440</strong> (El "<strong class="text-orange-400">Fondo de Laburo y
-                        Ventas</strong>").</p>
-                <p class="text-lg text-gray-200">Mantenemos el mismo esquema de antes:</p>
+                <h4 class="text-xl font-semibold text-gray-100">Paso 1: La Comisión de Venta</h4>
+                <p class="text-lg text-gray-200">Primero se separa el incentivo para el que cerró la venta.</p>
                 <ul class="list-disc list-inside ml-4 text-lg text-gray-200 space-y-2">
-                    <li><strong class="text-orange-400">Comisión por Venta (15% del fondo): $191.440 x 15% =
-                            $28.700</strong><br>(Se lo lleva quien <strong class="text-orange-400">cerró</strong> la
-                        venta).</li>
-                    <li><strong class="text-orange-400">Fondo de Laburo (85% del fondo): $191.440 x 85% =
-                            $162.740</strong><br>(Se reparte por rol, 60% Diego / 40% Emi).</li>
+                    <li><strong class="text-orange-400">Comisión (15% de la Neta): <span id="display-comision">$0</span></strong><br>
+                    (Se lo lleva quien <strong class="text-orange-400">cerró</strong> la venta, sea Diego o Ale).</li>
                 </ul>
             </div>
 
-            <div class="bg-gray-800 p-6 rounded-lg my-6">
-                <h3 class="text-2xl font-semibold mb-4 text-yellow-400">En Resumen (por cada MXP de $790k vendida):</h3>
-                <pre class="whitespace-pre-wrap font-sans text-lg leading-relaxed text-gray-100">
-Pablo (Inversor) SIEMPRE se lleva:   <strong class="text-green-400">$47.860</strong>
-Diego (Arquitecto) SIEMPRE se lleva (60% Laburo):   <strong class="text-green-400">$97.640</strong>
-Emi (Curador) SIEMPRE se lleva (40% Laburo):   <strong class="text-green-400">$65.100</strong>
-
-...Y ADEMÁS...
-
-Si la VENDE DIEGO, suma:  <strong class="text-yellow-400">+$28.700 (Comisión)</strong>
-<strong class="text-xl text-white">SU TOTAL: $126.340</strong>
-
-Si la VENDE EMI, él suma:  <strong class="text-yellow-400">+$28.700 (Comisión)</strong>
-<strong class="text-xl text-white">SU TOTAL: $93.800</strong>
-                </pre>
+            <div class="bg-gray-800 p-6 rounded-lg my-6 space-y-4">
+                <h4 class="text-xl font-semibold text-gray-100">Paso 2: El Reparto de Socios</h4>
+                <p class="text-lg text-gray-200">Queda el Remanente (<strong class="text-yellow-400" id="display-remanente">$0</strong>) que se divide por porcentaje societario:</p>
+                
+                <ul class="list-circle list-inside ml-6 mt-2 space-y-2 text-lg text-gray-200">
+                    <li><strong class="text-orange-400">Diego (60%):</strong> <span id="display-diego-base" class="font-bold text-green-400">$0</span><br>
+                    <span class="text-sm text-gray-400">(Por Dueño de IP, Service, Investigación, Desarrollo y Creación).</span></li>
+                    
+                    <li><strong class="text-orange-400">Ale (40%):</strong> <span id="display-ale-base" class="font-bold text-green-400">$0</span><br>
+                    <span class="text-sm text-gray-400">(Por Edición, Diseño, Fotografía, Redes y Creatividad).</span></li>
+                </ul>
             </div>
 
-            <p class="text-lg text-gray-200 mt-6 leading-relaxed">
-                Este esquema es <strong class="text-orange-400">sólido</strong>. Pablo cobra por arriesgar la guita. Diego
-                cobra más que Emi por ser el dueño de la IP (<strong class="text-orange-400">MillennialXP</strong>). Y
-                el que más vende, gana un <strong class="text-orange-400">plus</strong>. <strong
-                    class="text-orange-400">Posta</strong>, es lo más justo.
+            <div class="bg-gray-800 p-6 rounded-lg my-6 border border-yellow-600/50">
+                <h3 class="text-2xl font-semibold mb-4 text-yellow-400">En Resumen (Total al Bolsillo):</h3>
+                <p class="text-gray-300 mb-4 text-sm italic">Dependiendo de quién venda la máquina, los números finales son:</p>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Escenario 1: Vende Diego -->
+                    <div class="bg-gray-900 p-4 rounded border-l-4 border-blue-500">
+                        <h4 class="text-lg font-bold text-blue-400 mb-2">Si vende DIEGO:</h4>
+                        <p class="text-gray-200">Diego cobra: <strong class="text-green-400 text-xl" id="total-diego-vende">$0</strong></p>
+                        <p class="text-gray-500 text-sm">(Su parte + Comisión)</p>
+                        <hr class="border-gray-700 my-2">
+                        <p class="text-gray-200">Ale cobra: <strong class="text-green-400 text-lg" id="total-ale-passive">$0</strong></p>
+                    </div>
+
+                    <!-- Escenario 2: Vende Ale -->
+                    <div class="bg-gray-900 p-4 rounded border-l-4 border-purple-500">
+                        <h4 class="text-lg font-bold text-purple-400 mb-2">Si vende ALE:</h4>
+                        <p class="text-gray-200">Ale cobra: <strong class="text-green-400 text-xl" id="total-ale-vende">$0</strong></p>
+                        <p class="text-gray-500 text-sm">(Su parte + Comisión)</p>
+                        <hr class="border-gray-700 my-2">
+                        <p class="text-gray-200">Diego cobra: <strong class="text-green-400 text-lg" id="total-diego-passive">$0</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold mt-1 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
+                Módulo 3: El Futuro
+            </h2>
+            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">1. La Visión:</h3>
+            <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                "Somos lideres en difundir la Experiencia Millennial Definitiva, honrando su arte y filosofía, historia y legado, juntando a la comunidad gamer y desarrolladora (independiente o empresarial), inspirando a consumidores para convertirse en creadores."
             </p>
 
+                        <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">2. El Objetivo:</h3>
+            <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                "Usamos la Misión de Despegue para sustentar la labor mientras expandimos la Marca y la Comunidad, creando un Ecosistema Sostenible de Software y Contenido Original que reemplace la MXP p1r4ta."
+            </p>
         </div>
     </div>
 
+    <!-- SCRIPT DE CÁLCULO DINÁMICO -->
+    <script>
+        // --- VARIABLES DE NEGOCIO (EDITAR ACÁ) ---
+        const COSTO_HARDWARE = 508499;
+        const GANANCIA_OBJETIVO = 250000; // La ganancia limpia (bruta) que queremos sacar
+        
+        // El precio de venta se construye sumando:
+        const PRECIO_VENTA = COSTO_HARDWARE + GANANCIA_OBJETIVO;
+
+        const PORCENTAJE_GARANTIA = 0.15;
+        const PORCENTAJE_COMISION = 0.15;
+        
+        const SHARE_DIEGO = 0.60;
+        const SHARE_ALE = 0.40;
+
+        // Función para formatear moneda
+        const fmt = (num) => {
+            return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(num);
+        };
+
+        function actualizarValores() {
+            // 1. Cálculos
+            const gananciaBruta = PRECIO_VENTA - COSTO_HARDWARE; // Debería ser igual a GANANCIA_OBJETIVO
+            const fondoGarantia = gananciaBruta * PORCENTAJE_GARANTIA;
+            const gananciaNeta = gananciaBruta - fondoGarantia; // A repartir
+
+            const comisionVenta = gananciaNeta * PORCENTAJE_COMISION;
+            const remanenteSocios = gananciaNeta - comisionVenta;
+
+            const pagoDiegoBase = remanenteSocios * SHARE_DIEGO;
+            const pagoAleBase = remanenteSocios * SHARE_ALE;
+
+            // Escenarios Totales
+            // Si vende Diego
+            const totalDiegoVendedor = pagoDiegoBase + comisionVenta;
+            const totalAlePasivo = pagoAleBase;
+            
+            // Si vende Ale
+            const totalAleVendedor = pagoAleBase + comisionVenta;
+            const totalDiegoPasivo = pagoDiegoBase;
+
+            // 2. Inserción en HTML
+            document.getElementById('display-costo').textContent = fmt(COSTO_HARDWARE);
+            document.getElementById('display-costo-suma').textContent = fmt(COSTO_HARDWARE);
+            document.getElementById('display-ganancia-obj').textContent = fmt(GANANCIA_OBJETIVO);
+            
+            document.getElementById('display-venta').textContent = fmt(PRECIO_VENTA);
+            
+            document.getElementById('display-bruta').textContent = fmt(gananciaBruta);
+            
+            document.getElementById('display-garantia').textContent = "-" + fmt(fondoGarantia);
+            document.getElementById('display-neta').textContent = fmt(gananciaNeta);
+
+            document.getElementById('display-comision').textContent = fmt(comisionVenta);
+            document.getElementById('display-remanente').textContent = fmt(remanenteSocios);
+
+            document.getElementById('display-diego-base').textContent = fmt(pagoDiegoBase);
+            document.getElementById('display-ale-base').textContent = fmt(pagoAleBase);
+
+            // Resumen Final
+            document.getElementById('total-diego-vende').textContent = fmt(totalDiegoVendedor);
+            document.getElementById('total-ale-passive').textContent = fmt(totalAlePasivo);
+            
+            document.getElementById('total-ale-vende').textContent = fmt(totalAleVendedor);
+            document.getElementById('total-diego-passive').textContent = fmt(totalDiegoPasivo);
+        }
+
+        // Ejecutar al cargar
+        document.addEventListener('DOMContentLoaded', actualizarValores);
+    </script>
 </body>
 
 </html>
