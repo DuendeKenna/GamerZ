@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 518695,
+      "total": 480794,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 482736,
+      "total": 484790,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 602850,
+      "total": 604846,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -315,6 +315,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 60719,
+          "date": "2025-11-19T14:58:07.938Z"
+        },
+        {
           "value": 60999,
           "date": "2025-11-18T14:23:29.183Z"
         },
@@ -495,6 +499,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 74999,
+          "date": "2025-11-19T14:58:31.288Z"
+        },
         {
           "value": 74300,
           "date": "2025-11-17T10:08:35.332Z"
@@ -840,6 +848,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 134999,
+          "date": "2025-11-19T15:01:46.586Z"
+        },
+        {
           "value": 125999,
           "date": "2025-11-13T14:12:41.059Z"
         },
@@ -1170,6 +1182,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 89938,
+          "date": "2025-11-19T15:01:55.240Z"
+        },
+        {
           "value": 85000,
           "date": "2025-10-25T18:57:54.246Z"
         },
@@ -1412,6 +1428,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 88999,
+          "date": "2025-11-19T14:59:31.118Z"
+        },
+        {
           "value": 96999,
           "date": "2025-11-18T14:24:56.037Z"
         },
@@ -1542,6 +1562,10 @@
       ],
       "prices": [
         {
+          "value": 269999,
+          "date": "2025-11-19T14:59:14.101Z"
+        },
+        {
           "value": 307958,
           "date": "2025-11-16T12:40:58.192Z"
         },
@@ -1571,6 +1595,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 273995,
+          "date": "2025-11-19T14:59:22.618Z"
+        },
         {
           "value": 271999,
           "date": "2025-11-18T14:24:47.029Z"
@@ -1644,6 +1672,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 56898,
+          "date": "2025-11-19T14:59:46.937Z"
+        },
         {
           "value": 56869,
           "date": "2025-11-18T14:25:13.589Z"
@@ -2387,6 +2419,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 33000,
+          "date": "2025-11-19T15:02:59.054Z"
+        },
+        {
           "value": 23951,
           "date": "2025-11-18T14:28:40.613Z"
         },
@@ -2465,6 +2501,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 56199,
+          "date": "2025-11-19T15:03:07.947Z"
+        },
+        {
           "value": 61593,
           "date": "2025-11-18T14:28:49.670Z"
         },
@@ -2530,6 +2570,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 41799,
+          "date": "2025-11-19T15:03:16.603Z"
+        },
         {
           "value": 43000,
           "date": "2025-11-18T14:28:58.446Z"
@@ -2642,6 +2686,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 48503,
+          "date": "2025-11-19T15:03:39.299Z"
+        },
         {
           "value": 47687,
           "date": "2025-11-18T14:29:20.934Z"
@@ -2804,6 +2852,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 33000,
+          "date": "2025-11-19T15:04:08.882Z"
+        },
+        {
           "value": 31799,
           "date": "2025-11-14T13:55:20.109Z"
         },
@@ -2955,6 +3007,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 89112,
+          "date": "2025-11-19T15:04:31.767Z"
+        },
         {
           "value": 71150,
           "date": "2025-11-13T14:15:26.833Z"
@@ -3356,100 +3412,5 @@
       ]
     }
   ],
-  "miniPcOptions": [
-    {
-      "id": 39746,
-      "name": "Bmax B4",
-      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-intel-celeron-b4-ultra-n150-16gb-512gb/p/MLA59198528?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "cpu": "N150",
-      "ram": "16",
-      "ssd": "512",
-      "prices": [
-        {
-          "value": 421250,
-          "date": "2025-11-16T12:39:49.812Z"
-        },
-        {
-          "value": 567688,
-          "date": "2025-11-14T13:46:45.453Z"
-        },
-        {
-          "value": 425150,
-          "date": "2025-11-12T11:19:37.504Z"
-        },
-        {
-          "value": 437950,
-          "date": "2025-11-09T14:15:36.654Z"
-        },
-        {
-          "value": 384029,
-          "date": "2025-11-05T12:54:24.847Z"
-        },
-        {
-          "value": 329799,
-          "date": "2025-11-04T01:50:26.894Z"
-        },
-        {
-          "value": 331499,
-          "date": "2025-11-03T13:11:14.540Z"
-        },
-        {
-          "value": 389999,
-          "date": "2025-11-01T13:38:36.860Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-11-01T13:36:58.840Z"
-        }
-      ],
-      "linksAlt": [
-        "https://www.mercadolibre.com.ar/mini-pc-bmax-b4-ultra-intel-n150-16gb-512gb-wifi-bluetooth/up/MLAU3466433240?offer_type=OFFICIAL_STORE"
-      ]
-    },
-    {
-      "id": 47494,
-      "name": "Gmktec G10",
-      "link": "https://articulo.mercadolibre.com.ar/MLA-2156383068-gmktec-g10-mini-pc-ryzen-5-3500u-16gb-ram-512gb-beats-n150-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "cpu": "Ryzen 5 3500u",
-      "ram": "16",
-      "ssd": "512",
-      "prices": [
-        {
-          "value": 771338,
-          "date": "2025-11-18T14:23:20.375Z"
-        },
-        {
-          "value": 763691,
-          "date": "2025-11-14T13:46:54.590Z"
-        },
-        {
-          "value": 756190,
-          "date": "2025-11-13T14:08:52.973Z"
-        },
-        {
-          "value": 758892,
-          "date": "2025-11-12T11:19:46.074Z"
-        },
-        {
-          "value": 386561,
-          "date": "2025-11-09T14:15:45.258Z"
-        },
-        {
-          "value": 386725,
-          "date": "2025-11-04T13:44:49.826Z"
-        },
-        {
-          "value": 384565,
-          "date": "2025-11-04T02:00:22.579Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-11-04T02:00:06.040Z"
-        }
-      ],
-      "linksAlt": []
-    }
-  ]
+  "miniPcOptions": []
 }
