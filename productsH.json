@@ -224,10 +224,6 @@
           "id": 45939
         },
         {
-          "categoryKey": "ssdOptions",
-          "id": 93692
-        },
-        {
           "categoryKey": "towersOptions",
           "id": 29026
         },
@@ -238,6 +234,14 @@
         {
           "categoryKey": "comboOptions",
           "id": 93205
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 27876
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 64421
         }
       ],
       "visible": 1,
@@ -895,10 +899,46 @@
       "linksAlt": []
     },
     {
+      "id": 4953,
+      "name": "480 GB - SATA",
+      "link": "https://www.mercadolibre.com.ar/disco-solido-interno-western-digital-wd-green-wds480g3g0a-480gb-verde/p/MLA26922959?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 72890,
+          "date": "2025-11-21T01:01:03.086Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-11-21T01:00:52.099Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 98851,
+      "name": "1 TB - SATA",
+      "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-1-tb-western-digital-green-verde/p/MLA14661338?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
+      "prices": [
+        {
+          "value": 129900,
+          "date": "2025-11-21T01:01:37.883Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-11-21T01:01:28.034Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
       "id": 54105,
       "name": "1 TB - SATA",
       "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds100t3g0a-3-1tb-verde/p/MLA14661338?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "linksAlt": [],
       "prices": [
@@ -947,6 +987,24 @@
           "date": "2025-10-02T16:59:20.380Z"
         }
       ]
+    },
+    {
+      "id": 64421,
+      "name": "1TB - HDD",
+      "link": "https://www.mercadolibre.com.ar/disco-duro-western-digital-blue-wd10ezex-1tb-7200-rpm/p/MLA20953266?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 80069,
+          "date": "2025-11-21T01:03:39.250Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-11-21T01:03:24.493Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "gpuOptions": [
