@@ -326,19 +326,19 @@
     {
       "id": 4953,
       "name": "480 GB - SATA",
-      "price": 72890,
       "link": "https://www.mercadolibre.com.ar/disco-solido-interno-western-digital-wd-green-wds480g3g0a-480gb-verde/p/MLA26922959?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
-      "lastUpd": "2025-11-21T01:01:03.086Z"
+      "price": 74800,
+      "lastUpd": "2025-11-23T10:23:11.665Z"
     },
     {
       "id": 98851,
       "name": "1 TB - SATA",
-      "price": 134999,
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-1-tb-western-digital-green-verde/p/MLA14661338?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
+      "price": 134999,
       "lastUpd": "2025-11-21T14:07:47.197Z"
     },
     {
@@ -353,11 +353,11 @@
     {
       "id": 64421,
       "name": "1TB - HDD",
-      "price": 78490,
       "link": "https://www.mercadolibre.com.ar/disco-duro-western-digital-blue-wd10ezex-1tb-7200-rpm/p/MLA20953266?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
-      "lastUpd": "2025-11-22T11:25:21.566Z"
+      "price": 76942,
+      "lastUpd": "2025-11-23T10:23:33.812Z"
     }
   ],
   "gpuOptions": [
@@ -450,8 +450,8 @@
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 35757,
-      "lastUpd": "2025-11-22T11:25:45.695Z"
+      "price": 35758,
+      "lastUpd": "2025-11-23T10:23:55.991Z"
     },
     {
       "id": 45939,
@@ -550,8 +550,8 @@
       "visible": 1,
       "description": "",
       "total": 8,
-      "price": 67542,
-      "lastUpd": "2025-11-22T11:14:55.162Z"
+      "price": 66900,
+      "lastUpd": "2025-11-23T10:21:34.168Z"
     },
     {
       "id": 10363,
@@ -667,8 +667,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/mouse-y-pad-2-en-1-gamer-redragon-m601wl-ba-negrorojo/p/MLA17588671?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 35878,
-      "lastUpd": "2025-11-22T11:58:04.720Z"
+      "price": 27599,
+      "lastUpd": "2025-11-23T10:24:38.903Z"
     }
   ],
   "joystickOptions": [
@@ -725,8 +725,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 50422,
-      "lastUpd": "2025-11-22T12:00:40.090Z"
+      "price": 55699,
+      "lastUpd": "2025-11-23T10:25:22.142Z"
     },
     {
       "id": 67546,
@@ -824,8 +824,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/microfono-condenser-cartoide-usb-pc-estudio-streaming-podcast-tripod-profesional-bm900-vt-power/p/MLA25045936?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 45396,
-      "lastUpd": "2025-11-18T14:30:36.713Z"
+      "price": 45398,
+      "lastUpd": "2025-11-23T10:26:33.123Z"
     },
     {
       "id": 8668,
@@ -873,8 +873,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/aro-de-luz-led-26-cm-con-tripode-2-metros-soprte-celular/p/MLA44508125?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 19000,
-      "lastUpd": "2025-11-16T12:47:15.987Z"
+      "price": 18729,
+      "lastUpd": "2025-11-23T10:27:09.970Z"
     }
   ],
   "miniPcOptions": []
