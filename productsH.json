@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 505998,
+      "total": 542957,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 509989,
+      "total": 523948,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 629979,
+      "total": 625390,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -354,6 +354,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 60839,
+          "date": "2025-11-26T15:27:10.856Z"
+        },
+        {
           "value": 60999,
           "date": "2025-11-20T16:20:57.631Z"
         },
@@ -429,6 +433,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 70912,
+          "date": "2025-11-26T15:27:19.263Z"
+        },
+        {
           "value": 74337,
           "date": "2025-11-21T14:03:56.060Z"
         },
@@ -487,6 +495,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 65320,
+          "date": "2025-11-26T15:27:28.228Z"
+        },
         {
           "value": 68399,
           "date": "2025-11-20T16:21:14.267Z"
@@ -671,6 +683,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 77421,
+          "date": "2025-11-26T15:30:36.654Z"
+        },
+        {
           "value": 71466,
           "date": "2025-11-25T15:22:31.653Z"
         },
@@ -760,6 +776,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 145999,
+          "date": "2025-11-26T15:30:45.402Z"
+        },
         {
           "value": 139999,
           "date": "2025-11-20T16:24:13.732Z"
@@ -930,6 +950,10 @@
       "description": "",
       "prices": [
         {
+          "value": 75890,
+          "date": "2025-11-26T15:31:07.555Z"
+        },
+        {
           "value": 87618,
           "date": "2025-11-25T15:23:00.022Z"
         },
@@ -956,6 +980,10 @@
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
         {
+          "value": 140999,
+          "date": "2025-11-26T15:31:16.180Z"
+        },
+        {
           "value": 134999,
           "date": "2025-11-21T14:07:47.197Z"
         },
@@ -971,66 +999,16 @@
       "linksAlt": []
     },
     {
-      "id": 54105,
-      "name": "1 TB - SATA",
-      "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds100t3g0a-3-1tb-verde/p/MLA14661338?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 134999,
-          "date": "2025-11-19T15:01:46.586Z"
-        },
-        {
-          "value": 125999,
-          "date": "2025-11-13T14:12:41.059Z"
-        },
-        {
-          "value": 119999,
-          "date": "2025-11-12T11:23:48.007Z"
-        },
-        {
-          "value": 118999,
-          "date": "2025-11-03T13:15:15.870Z"
-        },
-        {
-          "value": 102999,
-          "date": "2025-11-01T12:36:14.323Z"
-        },
-        {
-          "value": 118999,
-          "date": "2025-10-30T13:55:32.051Z"
-        },
-        {
-          "value": 114999,
-          "date": "2025-10-25T18:57:46.251Z"
-        },
-        {
-          "value": 102999,
-          "date": "2025-10-09T18:19:11.683Z"
-        },
-        {
-          "value": 115340,
-          "date": "2025-10-08T15:14:42.219Z"
-        },
-        {
-          "value": 109999,
-          "date": "2025-10-07T12:56:34.466Z"
-        },
-        {
-          "value": 119820,
-          "date": "2025-10-02T16:59:20.380Z"
-        }
-      ]
-    },
-    {
       "id": 64421,
       "name": "1TB - HDD",
       "link": "https://www.mercadolibre.com.ar/disco-duro-western-digital-blue-wd10ezex-1tb-7200-rpm/p/MLA20953266?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 77072,
+          "date": "2025-11-26T15:31:33.020Z"
+        },
         {
           "value": 110413,
           "date": "2025-11-25T15:23:22.042Z"
@@ -1119,6 +1097,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 207740,
+          "date": "2025-11-26T15:30:01.903Z"
+        },
+        {
           "value": 203808,
           "date": "2025-11-13T14:11:34.813Z"
         },
@@ -1148,6 +1130,10 @@
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 352144,
+          "date": "2025-11-26T15:30:10.952Z"
+        },
         {
           "value": 355999,
           "date": "2025-11-21T14:06:44.049Z"
@@ -1210,6 +1196,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 634090,
+          "date": "2025-11-26T15:30:19.335Z"
+        },
         {
           "value": 644516,
           "date": "2025-11-25T15:22:16.556Z"
@@ -1278,6 +1268,10 @@
         "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 573989,
+          "date": "2025-11-26T15:30:28.186Z"
+        },
         {
           "value": 599345,
           "date": "2025-11-22T11:21:32.664Z"
@@ -1487,6 +1481,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 35021,
+          "date": "2025-11-26T15:31:56.307Z"
+        },
+        {
           "value": 35758,
           "date": "2025-11-23T10:23:55.991Z"
         },
@@ -1645,6 +1643,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 89999,
+          "date": "2025-11-26T15:28:41.834Z"
+        },
+        {
           "value": 94999,
           "date": "2025-11-21T14:05:16.241Z"
         },
@@ -1714,6 +1716,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 94999,
+          "date": "2025-11-26T15:28:50.786Z"
+        },
         {
           "value": 95999,
           "date": "2025-11-22T11:11:47.450Z"
@@ -1787,6 +1793,10 @@
       ],
       "prices": [
         {
+          "value": 307958,
+          "date": "2025-11-26T15:28:24.049Z"
+        },
+        {
           "value": 269999,
           "date": "2025-11-19T14:59:14.101Z"
         },
@@ -1820,6 +1830,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 288949,
+          "date": "2025-11-26T15:28:33.047Z"
+        },
         {
           "value": 273990,
           "date": "2025-11-21T14:05:07.328Z"
@@ -2232,6 +2246,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 120721,
+          "date": "2025-11-26T15:29:39.436Z"
+        },
+        {
           "value": 129995,
           "date": "2025-11-25T15:21:40.388Z"
         },
@@ -2287,6 +2305,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 459999,
+          "date": "2025-11-26T15:27:50.811Z"
+        },
         {
           "value": 516121,
           "date": "2025-11-21T14:04:26.970Z"
@@ -2371,6 +2393,10 @@
       "description": "",
       "prices": [
         {
+          "value": 303106,
+          "date": "2025-11-26T15:28:06.245Z"
+        },
+        {
           "value": 365525,
           "date": "2025-11-21T14:04:42.985Z"
         },
@@ -2400,6 +2426,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 335889,
+          "date": "2025-11-26T15:28:15.231Z"
+        },
         {
           "value": 455646,
           "date": "2025-11-21T14:04:51.720Z"
@@ -2433,6 +2463,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 156101,
+          "date": "2025-11-26T15:32:12.491Z"
+        },
         {
           "value": 169399,
           "date": "2025-11-21T14:08:45.516Z"
@@ -2492,6 +2526,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 176006,
+          "date": "2025-11-26T15:32:21.460Z"
+        },
+        {
           "value": 189999,
           "date": "2025-11-25T15:24:04.960Z"
         },
@@ -2541,6 +2579,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 278027,
+          "date": "2025-11-26T15:32:30.327Z"
+        },
         {
           "value": 289999,
           "date": "2025-11-25T15:24:13.305Z"
@@ -2818,6 +2860,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 54959,
+          "date": "2025-11-26T15:33:00.175Z"
+        },
+        {
           "value": 58299,
           "date": "2025-11-22T11:58:21.385Z"
         },
@@ -2944,6 +2990,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 25065,
+          "date": "2025-11-26T15:33:15.945Z"
+        },
+        {
           "value": 33424,
           "date": "2025-11-01T12:37:56.463Z"
         },
@@ -2990,6 +3040,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 45125,
+          "date": "2025-11-26T15:33:24.362Z"
+        },
+        {
           "value": 41400,
           "date": "2025-11-21T14:10:58.739Z"
         },
@@ -3015,6 +3069,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 46706,
+          "date": "2025-11-26T15:33:32.812Z"
+        },
         {
           "value": 50422,
           "date": "2025-11-25T15:25:10.164Z"
@@ -3135,6 +3193,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 13779,
+          "date": "2025-11-26T15:33:48.048Z"
+        },
+        {
           "value": 13999,
           "date": "2025-11-21T14:11:23.145Z"
         },
@@ -3200,6 +3262,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 19199,
+          "date": "2025-11-26T15:34:04.471Z"
+        },
         {
           "value": 22595,
           "date": "2025-11-20T16:26:53.030Z"
@@ -3276,6 +3342,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 23488,
+          "date": "2025-11-26T15:34:12.789Z"
+        },
         {
           "value": 55349,
           "date": "2025-11-12T11:28:06.193Z"
@@ -3443,6 +3513,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 65999,
+          "date": "2025-11-26T15:34:35.201Z"
+        },
+        {
           "value": 67812,
           "date": "2025-11-25T15:26:09.233Z"
         },
@@ -3523,6 +3597,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 40939,
+          "date": "2025-11-26T15:34:43.882Z"
+        },
+        {
           "value": 44499,
           "date": "2025-11-25T15:26:17.682Z"
         },
@@ -3576,6 +3654,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 45396,
+          "date": "2025-11-26T15:34:52.483Z"
+        },
         {
           "value": 45398,
           "date": "2025-11-23T10:26:33.123Z"
@@ -3694,6 +3776,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 10899,
+          "date": "2025-11-26T15:35:21.934Z"
+        },
         {
           "value": 11396,
           "date": "2025-11-25T15:26:53.368Z"
