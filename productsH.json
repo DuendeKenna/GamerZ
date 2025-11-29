@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 611200,
+      "total": 649016,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -221,6 +221,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 242564,
+          "date": "2025-11-29T12:34:24.612Z"
+        },
         {
           "value": 239099,
           "date": "2025-11-28T14:55:15.177Z"
@@ -528,6 +532,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 80999,
+          "date": "2025-11-29T12:34:53.543Z"
+        },
+        {
           "value": 76799,
           "date": "2025-11-28T14:55:45.748Z"
         },
@@ -753,6 +761,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 156375,
+          "date": "2025-11-29T12:41:51.333Z"
+        },
         {
           "value": 153999,
           "date": "2025-11-27T12:45:16.687Z"
@@ -1002,6 +1014,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 75072,
+          "date": "2025-11-29T12:42:27.012Z"
+        },
         {
           "value": 78118,
           "date": "2025-11-28T14:59:20.222Z"
@@ -1273,6 +1289,10 @@
         "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 569990,
+          "date": "2025-11-29T12:41:36.300Z"
+        },
         {
           "value": 573989,
           "date": "2025-11-26T15:30:28.186Z"
@@ -2139,6 +2159,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 32998,
+          "date": "2025-11-29T12:40:23.308Z"
+        },
+        {
           "value": 29998,
           "date": "2025-10-28T12:15:05.651Z"
         },
@@ -2260,6 +2284,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 69899,
+          "date": "2025-11-29T12:40:45.225Z"
+        },
+        {
           "value": 59899,
           "date": "2025-10-28T12:15:28.387Z"
         },
@@ -2282,6 +2310,10 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 140059,
+          "date": "2025-11-29T12:40:53.575Z"
+        },
         {
           "value": 121151,
           "date": "2025-11-27T12:44:18.380Z"
@@ -2346,6 +2378,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 508772,
+          "date": "2025-11-29T12:35:08.760Z"
+        },
         {
           "value": 510631,
           "date": "2025-11-28T14:56:03.091Z"
@@ -2431,50 +2467,16 @@
       ]
     },
     {
-      "id": 93205,
-      "name": "3 3200g + Mother + 16DC",
-      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-3-3200g-mother-am4-16gb-de-ram-2x8gb-dual-channel-ddr4/p/MLA41498390?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=18&type=product&tracking_id=3295a0ef-3bad-41a7-a072-2b02e4df3d3a&wid=MLA1486532417&sid=search",
-      "visible": 1,
-      "description": "",
-      "prices": [
-        {
-          "value": 404117,
-          "date": "2025-11-28T14:56:18.549Z"
-        },
-        {
-          "value": 303106,
-          "date": "2025-11-26T15:28:06.245Z"
-        },
-        {
-          "value": 365525,
-          "date": "2025-11-21T14:04:42.985Z"
-        },
-        {
-          "value": 296544,
-          "date": "2025-11-20T16:21:49.620Z"
-        },
-        {
-          "value": 296630,
-          "date": "2025-11-18T14:24:22.515Z"
-        },
-        {
-          "value": 285660,
-          "date": "2025-11-17T13:25:36.802Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-11-17T13:25:17.044Z"
-        }
-      ],
-      "linksAlt": []
-    },
-    {
       "id": 93414,
       "name": "5 5600g + A520 Asrock",
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-ddr4-ryzen-5-5600g-a520m-am4-color-negro/p/MLA43499795?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 452271,
+          "date": "2025-11-29T12:39:33.256Z"
+        },
         {
           "value": 335889,
           "date": "2025-11-26T15:28:15.231Z"
@@ -2921,6 +2923,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 61532,
+          "date": "2025-11-29T12:43:45.039Z"
+        },
+        {
           "value": 61815,
           "date": "2025-11-28T15:00:44.329Z"
         },
@@ -3006,6 +3012,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 41384,
+          "date": "2025-11-29T12:43:53.532Z"
+        },
         {
           "value": 41799,
           "date": "2025-11-19T15:03:16.603Z"
@@ -3105,6 +3115,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 38088,
+          "date": "2025-11-29T12:44:08.884Z"
+        },
+        {
           "value": 41400,
           "date": "2025-11-27T12:51:17.900Z"
         },
@@ -3138,6 +3152,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 50323,
+          "date": "2025-11-29T12:44:17.734Z"
+        },
         {
           "value": 50422,
           "date": "2025-11-28T15:01:14.425Z"
@@ -3335,6 +3353,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 28039,
+          "date": "2025-11-29T12:44:46.618Z"
+        },
         {
           "value": 19199,
           "date": "2025-11-26T15:34:04.471Z"
@@ -3802,6 +3824,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 68999,
+          "date": "2025-11-29T12:45:35.570Z"
+        },
+        {
           "value": 69899,
           "date": "2025-11-22T12:02:02.631Z"
         },
@@ -3869,6 +3895,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 13388,
+          "date": "2025-11-29T12:45:57.554Z"
+        },
         {
           "value": 10999,
           "date": "2025-11-28T15:02:58.738Z"
@@ -3961,6 +3991,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 16975,
+          "date": "2025-11-29T12:46:05.887Z"
+        },
         {
           "value": 17500,
           "date": "2025-11-28T15:03:07.466Z"
