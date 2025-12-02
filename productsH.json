@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 556504,
+      "total": 559277,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 524045,
+      "total": 538818,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 650165,
+      "total": 623092,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -221,6 +221,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 265000,
+          "date": "2025-12-02T16:48:58.791Z"
+        },
         {
           "value": 245999,
           "date": "2025-12-01T15:16:33.850Z"
@@ -668,6 +672,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 74440,
+          "date": "2025-12-02T16:52:51.293Z"
+        },
+        {
           "value": 79591,
           "date": "2025-11-28T14:58:33.882Z"
         },
@@ -766,6 +774,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 164204,
+          "date": "2025-12-02T16:52:59.913Z"
+        },
+        {
           "value": 156375,
           "date": "2025-11-29T12:41:51.333Z"
         },
@@ -851,6 +863,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 70392,
+          "date": "2025-12-02T16:53:08.343Z"
+        },
         {
           "value": 55799,
           "date": "2025-11-28T14:58:49.454Z"
@@ -951,6 +967,10 @@
       "description": "",
       "prices": [
         {
+          "value": 80990,
+          "date": "2025-12-02T16:53:23.346Z"
+        },
+        {
           "value": 78890,
           "date": "2025-11-28T14:59:04.792Z"
         },
@@ -1022,6 +1042,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 82000,
+          "date": "2025-12-02T16:53:38.580Z"
+        },
         {
           "value": 73072,
           "date": "2025-12-01T15:20:24.218Z"
@@ -1163,6 +1187,10 @@
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 527999,
+          "date": "2025-12-02T16:52:28.677Z"
+        },
         {
           "value": 352144,
           "date": "2025-11-26T15:30:10.952Z"
@@ -1410,6 +1438,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 109977,
+          "date": "2025-12-02T16:53:47.027Z"
+        },
+        {
           "value": 93201,
           "date": "2025-12-01T15:20:32.959Z"
         },
@@ -1447,6 +1479,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 72056,
+          "date": "2025-12-02T16:53:55.447Z"
+        },
         {
           "value": 78322,
           "date": "2025-11-28T14:59:37.442Z"
@@ -1652,6 +1688,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 27100,
+          "date": "2025-12-02T16:54:10.545Z"
+        },
+        {
           "value": 33189,
           "date": "2025-12-01T15:20:55.421Z"
         },
@@ -1798,6 +1838,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 94999,
+          "date": "2025-12-02T16:50:25.138Z"
+        },
+        {
           "value": 94548,
           "date": "2025-12-01T15:17:58.720Z"
         },
@@ -1916,6 +1960,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 287499,
+          "date": "2025-12-02T16:50:09.453Z"
+        },
+        {
           "value": 275499,
           "date": "2025-11-30T15:21:02.958Z"
         },
@@ -2013,6 +2061,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 78160,
+          "date": "2025-12-02T16:50:33.770Z"
+        },
+        {
           "value": 76999,
           "date": "2025-12-01T15:18:07.310Z"
         },
@@ -2103,6 +2155,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 109899,
+          "date": "2025-12-02T16:50:42.590Z"
+        },
         {
           "value": 119323,
           "date": "2025-11-22T11:12:37.631Z"
@@ -2280,45 +2336,6 @@
       ]
     },
     {
-      "id": 10363,
-      "name": "DDR4 8 GB - Patriot Viper",
-      "link": "https://www.mercadolibre.com.ar/memoria-ram-gamer-color-negrorojo-8gb-1-patriot-pve248g320c8/p/MLA19135093?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "",
-      "total": 8,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 85999,
-          "date": "2025-11-12T11:21:58.446Z"
-        },
-        {
-          "value": 44000,
-          "date": "2025-10-14T13:42:25.555Z"
-        },
-        {
-          "value": 45000,
-          "date": "2025-10-13T10:40:29.754Z"
-        },
-        {
-          "value": 48000,
-          "date": "2025-10-12T18:39:54.414Z"
-        },
-        {
-          "value": 50000,
-          "date": "2025-10-07T12:54:48.658Z"
-        },
-        {
-          "value": 55000,
-          "date": "2025-10-06T14:36:59.007Z"
-        },
-        {
-          "value": 57000,
-          "date": "2025-10-03T13:55:45.481Z"
-        }
-      ]
-    },
-    {
       "id": 69550,
       "name": "DDR3 2x8 - Samsung",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1457171545-memoria-ram-samsung-ddr3-2x8gb-1600mhz-oem-kit-16gb-total-_JM?offer_type=OFFICIAL_STORE",
@@ -2354,6 +2371,10 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 120297,
+          "date": "2025-12-02T16:52:00.110Z"
+        },
         {
           "value": 140059,
           "date": "2025-12-01T15:18:51.080Z"
@@ -2889,6 +2910,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 36670,
+          "date": "2025-12-02T16:54:52.265Z"
+        },
+        {
           "value": 33000,
           "date": "2025-12-01T15:21:38.718Z"
         },
@@ -3225,6 +3250,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 50319,
+          "date": "2025-12-02T16:55:28.135Z"
+        },
+        {
           "value": 50323,
           "date": "2025-12-01T15:22:19.440Z"
         },
@@ -3434,6 +3463,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 19199,
+          "date": "2025-12-02T16:55:56.869Z"
+        },
+        {
           "value": 28039,
           "date": "2025-11-29T12:44:46.618Z"
         },
@@ -3622,6 +3655,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 91619,
+          "date": "2025-12-02T16:56:19.219Z"
+        },
+        {
           "value": 85936,
           "date": "2025-12-01T15:23:09.904Z"
         },
@@ -3707,6 +3744,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 64399,
+          "date": "2025-12-02T16:56:27.684Z"
+        },
         {
           "value": 67126,
           "date": "2025-11-30T15:26:25.489Z"
@@ -3857,6 +3898,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 44296,
+          "date": "2025-12-02T16:56:43.171Z"
+        },
         {
           "value": 45396,
           "date": "2025-11-26T15:34:52.483Z"
