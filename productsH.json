@@ -173,43 +173,28 @@
       ]
     },
     {
-      "id": 10332,
-      "name": "Ryzen 3 Joy",
+      "id": 42763,
+      "name": "Mini R5 | 16*500",
       "items": [
         {
-          "categoryKey": "psuOptions",
-          "id": 45939
-        },
-        {
-          "categoryKey": "towersOptions",
-          "id": 29026
+          "categoryKey": "miniPcOptions",
+          "id": 6849
         },
         {
           "categoryKey": "joystickOptions",
-          "id": 80115
+          "id": 7020
         },
         {
-          "categoryKey": "comboOptions",
-          "id": 93205
+          "categoryKey": "joystickOptions",
+          "id": 7020
         },
         {
-          "categoryKey": "ssdOptions",
-          "id": 27876
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 64421
+          "categoryKey": "keyboardOptions",
+          "id": 67546
         }
       ],
       "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
+      "description": ""
     }
   ],
   "armadasOptions": [
@@ -4179,5 +4164,46 @@
       ]
     }
   ],
-  "miniPcOptions": []
+  "miniPcOptions": [
+    {
+      "id": 6849,
+      "name": "Enova",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-enova-ryzen-5-3500u-16gb-ssd-480gb-win11/p/MLA61515276?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "R5 3500u",
+      "ram": "16",
+      "ssd": "480",
+      "prices": [
+        {
+          "value": 541099,
+          "date": "2025-12-03T02:53:37.607Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-03T02:53:21.229Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 87789,
+      "name": "CX",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-cx-ryzen-3-ram-16gb-ssd-480-hdmi-dp-wifi-bt-lan-x2/p/MLA46004191?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=e4f5df5d-dd99-48ea-8ac2-12b86a859c9f&wid=MLA1475805129&sid=search",
+      "visible": 1,
+      "cpu": "R3 3200",
+      "ram": "16",
+      "ssd": "480",
+      "prices": [
+        {
+          "value": 468000,
+          "date": "2025-12-03T02:56:59.565Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-03T02:56:55.977Z"
+        }
+      ],
+      "linksAlt": []
+    }
+  ]
 }
