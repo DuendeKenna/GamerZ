@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 559277,
+      "total": 555541,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 538818,
+      "total": 535082,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 623092,
+      "total": 622526,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -160,45 +160,6 @@
         {
           "categoryKey": "joystickOptions",
           "id": 80115
-        }
-      ],
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
-      "id": 10332,
-      "name": "Ryzen 3 Joy",
-      "items": [
-        {
-          "categoryKey": "psuOptions",
-          "id": 45939
-        },
-        {
-          "categoryKey": "towersOptions",
-          "id": 29026
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "comboOptions",
-          "id": 93205
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 27876
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 64421
         }
       ],
       "visible": 1,
@@ -331,6 +292,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 59067,
+          "date": "2025-12-04T16:29:31.570Z"
+        },
+        {
           "value": 60839,
           "date": "2025-11-26T15:27:10.856Z"
         },
@@ -410,6 +375,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 100089,
+          "date": "2025-12-05T15:24:10.317Z"
+        },
+        {
+          "value": 73031,
+          "date": "2025-12-04T16:29:40.796Z"
+        },
+        {
           "value": 70912,
           "date": "2025-11-26T15:27:19.263Z"
         },
@@ -472,6 +445,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 65499,
+          "date": "2025-12-04T16:29:49.534Z"
+        },
         {
           "value": 65320,
           "date": "2025-11-26T15:27:28.228Z"
@@ -543,6 +520,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 69999,
+          "date": "2025-12-04T16:29:57.767Z"
+        },
+        {
           "value": 67899,
           "date": "2025-11-28T14:55:54.336Z"
         },
@@ -584,6 +565,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 75099,
+          "date": "2025-12-05T15:28:25.361Z"
+        },
+        {
+          "value": 75099,
+          "date": "2025-12-04T16:32:37.461Z"
+        },
         {
           "value": 74440,
           "date": "2025-12-02T16:52:51.293Z"
@@ -687,6 +676,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 172649,
+          "date": "2025-12-05T15:28:31.055Z"
+        },
+        {
+          "value": 172649,
+          "date": "2025-12-04T16:32:46.208Z"
+        },
+        {
           "value": 165863,
           "date": "2025-12-03T13:31:46.527Z"
         },
@@ -781,6 +778,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 59799,
+          "date": "2025-12-05T15:28:36.167Z"
+        },
+        {
+          "value": 59799,
+          "date": "2025-12-04T16:32:54.894Z"
+        },
+        {
           "value": 70392,
           "date": "2025-12-02T16:53:08.343Z"
         },
@@ -855,6 +860,14 @@
       "prices": [
         {
           "value": 85599,
+          "date": "2025-12-05T15:28:41.274Z"
+        },
+        {
+          "value": 84260,
+          "date": "2025-12-04T16:33:03.573Z"
+        },
+        {
+          "value": 85599,
           "date": "2025-11-21T14:07:31.661Z"
         },
         {
@@ -883,6 +896,14 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 87290,
+          "date": "2025-12-05T15:28:46.268Z"
+        },
+        {
+          "value": 87290,
+          "date": "2025-12-04T16:33:12.223Z"
+        },
         {
           "value": 81990,
           "date": "2025-12-03T13:32:09.109Z"
@@ -931,6 +952,10 @@
       "prices": [
         {
           "value": 172999,
+          "date": "2025-12-05T15:28:51.221Z"
+        },
+        {
+          "value": 172999,
           "date": "2025-12-01T15:20:15.598Z"
         },
         {
@@ -963,6 +988,14 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 79999,
+          "date": "2025-12-05T15:28:56.252Z"
+        },
+        {
+          "value": 79999,
+          "date": "2025-12-04T16:33:27.812Z"
+        },
         {
           "value": 82000,
           "date": "2025-12-02T16:53:38.580Z"
@@ -1040,6 +1073,10 @@
       "prices": [
         {
           "value": 179999,
+          "date": "2025-12-05T15:27:51.549Z"
+        },
+        {
+          "value": 179999,
           "date": "2025-09-25T05:08:39.987Z"
         }
       ]
@@ -1052,6 +1089,10 @@
       "description": "2GB | GDDR5 / 64bit",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 129999,
+          "date": "2025-12-05T15:27:56.750Z"
+        },
         {
           "value": 129999,
           "date": "2025-11-03T13:13:55.092Z"
@@ -1074,6 +1115,10 @@
       "description": "Lo opción más económica. Aún siendo antigua, va a poder correr juegos que la integrada no tira bien. *Preguntale abajo a la IA si se banca el que querés...",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 207740,
+          "date": "2025-12-05T15:28:02.733Z"
+        },
         {
           "value": 207740,
           "date": "2025-11-26T15:30:01.903Z"
@@ -1108,6 +1153,14 @@
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 398999,
+          "date": "2025-12-05T15:28:08.867Z"
+        },
+        {
+          "value": 398999,
+          "date": "2025-12-04T16:32:11.337Z"
+        },
         {
           "value": 527999,
           "date": "2025-12-02T16:52:28.677Z"
@@ -1178,6 +1231,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 577248,
+          "date": "2025-12-05T15:28:13.984Z"
+        },
+        {
+          "value": 584188,
+          "date": "2025-12-04T16:32:20.136Z"
+        },
         {
           "value": 619868,
           "date": "2025-11-28T14:58:17.936Z"
@@ -1254,6 +1315,14 @@
         "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 584249,
+          "date": "2025-12-05T15:28:19.019Z"
+        },
+        {
+          "value": 605829,
+          "date": "2025-12-04T16:32:28.767Z"
+        },
         {
           "value": 573989,
           "date": "2025-11-30T15:22:49.941Z"
@@ -1359,6 +1428,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 92710,
+          "date": "2025-12-05T15:29:01.319Z"
+        },
+        {
+          "value": 92710,
+          "date": "2025-12-04T16:33:36.658Z"
+        },
+        {
           "value": 109977,
           "date": "2025-12-02T16:53:47.027Z"
         },
@@ -1400,6 +1477,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 79106,
+          "date": "2025-12-05T15:29:06.404Z"
+        },
         {
           "value": 79106,
           "date": "2025-12-03T13:32:38.443Z"
@@ -1502,6 +1583,14 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 34280,
+          "date": "2025-12-05T15:29:11.307Z"
+        },
+        {
+          "value": 34280,
+          "date": "2025-12-04T16:33:52.347Z"
+        },
         {
           "value": 34778,
           "date": "2025-12-03T13:32:46.947Z"
@@ -1618,6 +1707,10 @@
       "prices": [
         {
           "value": 27100,
+          "date": "2025-12-05T15:29:16.440Z"
+        },
+        {
+          "value": 27100,
           "date": "2025-12-02T16:54:10.545Z"
         },
         {
@@ -1693,6 +1786,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 93697,
+          "date": "2025-12-05T15:27:01.845Z"
+        },
+        {
+          "value": 94548,
+          "date": "2025-12-04T16:30:44.687Z"
+        },
+        {
           "value": 89999,
           "date": "2025-11-26T15:28:41.834Z"
         },
@@ -1766,6 +1867,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 93585,
+          "date": "2025-12-05T15:27:08.106Z"
+        },
+        {
+          "value": 94548,
+          "date": "2025-12-04T16:30:53.587Z"
+        },
         {
           "value": 94999,
           "date": "2025-12-02T16:50:25.138Z"
@@ -1852,6 +1961,10 @@
       "prices": [
         {
           "value": 307958,
+          "date": "2025-12-05T15:26:44.918Z"
+        },
+        {
+          "value": 307958,
           "date": "2025-11-26T15:28:24.049Z"
         },
         {
@@ -1888,6 +2001,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 287499,
+          "date": "2025-12-05T15:26:55.542Z"
+        },
         {
           "value": 287499,
           "date": "2025-12-02T16:50:09.453Z"
@@ -1990,6 +2107,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 76999,
+          "date": "2025-12-05T15:27:14.781Z"
+        },
+        {
+          "value": 76999,
+          "date": "2025-12-04T16:31:02.375Z"
+        },
+        {
           "value": 78160,
           "date": "2025-12-02T16:50:33.770Z"
         },
@@ -2084,6 +2209,14 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 133527,
+          "date": "2025-12-05T15:27:21.725Z"
+        },
+        {
+          "value": 129888,
+          "date": "2025-12-04T16:31:11.565Z"
+        },
         {
           "value": 115024,
           "date": "2025-12-03T13:30:19.667Z"
@@ -2193,6 +2326,10 @@
       "prices": [
         {
           "value": 32998,
+          "date": "2025-12-05T15:27:28.077Z"
+        },
+        {
+          "value": 32998,
           "date": "2025-11-29T12:40:23.308Z"
         },
         {
@@ -2222,6 +2359,10 @@
       "total": 8,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 70000,
+          "date": "2025-12-05T15:27:33.556Z"
+        },
         {
           "value": 66900,
           "date": "2025-11-23T10:21:34.168Z"
@@ -2279,6 +2420,10 @@
       "prices": [
         {
           "value": 69899,
+          "date": "2025-12-05T15:27:39.497Z"
+        },
+        {
+          "value": 69899,
           "date": "2025-11-29T12:40:45.225Z"
         },
         {
@@ -2304,6 +2449,14 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 120721,
+          "date": "2025-12-05T15:27:45.991Z"
+        },
+        {
+          "value": 70583,
+          "date": "2025-12-04T16:31:41.702Z"
+        },
         {
           "value": 120297,
           "date": "2025-12-02T16:52:00.110Z"
@@ -2384,6 +2537,14 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 527966,
+          "date": "2025-12-05T15:26:07.659Z"
+        },
+        {
+          "value": 531476,
+          "date": "2025-12-04T16:30:06.400Z"
+        },
         {
           "value": 508224,
           "date": "2025-12-03T13:29:21.123Z"
@@ -2471,6 +2632,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 199990,
+          "date": "2025-12-05T15:26:31.980Z"
+        },
+        {
           "value": 187000,
           "date": "2025-09-24T14:28:35.462Z"
         }
@@ -2483,6 +2648,14 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 409031,
+          "date": "2025-12-05T15:26:39.711Z"
+        },
+        {
+          "value": 350403,
+          "date": "2025-12-04T16:30:21.916Z"
+        },
         {
           "value": 452271,
           "date": "2025-11-29T12:39:33.256Z"
@@ -2524,6 +2697,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 152317,
+          "date": "2025-12-05T15:29:21.474Z"
+        },
+        {
+          "value": 152317,
+          "date": "2025-12-04T16:34:07.966Z"
+        },
         {
           "value": 151519,
           "date": "2025-11-27T12:50:09.146Z"
@@ -2591,6 +2772,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 208249,
+          "date": "2025-12-05T15:29:30.491Z"
+        },
+        {
+          "value": 208249,
+          "date": "2025-12-04T16:34:16.812Z"
+        },
+        {
           "value": 176006,
           "date": "2025-11-26T15:32:21.460Z"
         },
@@ -2644,6 +2833,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 282999,
+          "date": "2025-12-05T15:29:36.337Z"
+        },
+        {
+          "value": 282999,
+          "date": "2025-12-04T16:34:25.500Z"
+        },
         {
           "value": 277048,
           "date": "2025-11-27T12:50:24.824Z"
@@ -2733,6 +2930,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 10934,
+          "date": "2025-12-05T15:29:43.053Z"
+        },
+        {
+          "value": 10934,
+          "date": "2025-12-04T16:34:34.256Z"
+        },
+        {
           "value": 8276,
           "date": "2025-11-21T14:10:11.386Z"
         },
@@ -2766,6 +2971,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 27599,
+          "date": "2025-12-05T15:29:48.404Z"
+        },
+        {
+          "value": 27599,
+          "date": "2025-12-04T16:34:43.207Z"
+        },
         {
           "value": 27118,
           "date": "2025-11-27T12:50:40.801Z"
@@ -2846,6 +3059,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 33000,
+          "date": "2025-12-05T15:29:54.251Z"
+        },
         {
           "value": 33000,
           "date": "2025-12-03T13:33:37.042Z"
@@ -2944,6 +3161,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 49999,
+          "date": "2025-12-05T15:29:59.821Z"
+        },
+        {
+          "value": 54743,
+          "date": "2025-12-04T16:34:59.692Z"
+        },
         {
           "value": 61532,
           "date": "2025-12-01T15:21:47.516Z"
@@ -3044,6 +3269,10 @@
       "prices": [
         {
           "value": 41384,
+          "date": "2025-12-05T15:30:04.943Z"
+        },
+        {
+          "value": 41384,
           "date": "2025-11-29T12:43:53.532Z"
         },
         {
@@ -3094,6 +3323,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 32599,
+          "date": "2025-12-05T15:30:10.176Z"
+        },
         {
           "value": 32599,
           "date": "2025-12-03T13:33:59.877Z"
@@ -3157,6 +3390,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 41400,
+          "date": "2025-12-05T15:30:15.122Z"
+        },
+        {
+          "value": 45125,
+          "date": "2025-12-04T16:35:22.445Z"
+        },
+        {
           "value": 38088,
           "date": "2025-11-29T12:44:08.884Z"
         },
@@ -3194,6 +3435,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 57829,
+          "date": "2025-12-05T15:30:21.833Z"
+        },
+        {
+          "value": 53318,
+          "date": "2025-12-04T16:35:31.184Z"
+        },
         {
           "value": 50319,
           "date": "2025-12-02T16:55:28.135Z"
@@ -3306,6 +3555,10 @@
       "prices": [
         {
           "value": 30500,
+          "date": "2025-12-05T15:30:27.439Z"
+        },
+        {
+          "value": 30500,
           "date": "2025-11-01T12:38:20.786Z"
         },
         {
@@ -3337,6 +3590,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 13999,
+          "date": "2025-12-05T15:30:32.904Z"
+        },
+        {
+          "value": 13999,
+          "date": "2025-12-04T16:35:47.184Z"
+        },
         {
           "value": 13779,
           "date": "2025-11-26T15:33:48.048Z"
@@ -3393,6 +3654,10 @@
       "prices": [
         {
           "value": 30030,
+          "date": "2025-12-05T15:30:38.092Z"
+        },
+        {
+          "value": 30030,
           "date": "2025-09-19T03:13:09.228Z"
         }
       ]
@@ -3407,6 +3672,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 20199,
+          "date": "2025-12-05T15:30:43.372Z"
+        },
+        {
+          "value": 20199,
+          "date": "2025-12-04T16:36:04.418Z"
+        },
         {
           "value": 19199,
           "date": "2025-12-02T16:55:56.869Z"
@@ -3497,6 +3770,10 @@
       "prices": [
         {
           "value": 23488,
+          "date": "2025-12-05T15:30:48.931Z"
+        },
+        {
+          "value": 23488,
           "date": "2025-11-26T15:34:12.789Z"
         },
         {
@@ -3533,6 +3810,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 44549,
+          "date": "2025-12-05T15:30:54.460Z"
+        },
+        {
+          "value": 44549,
+          "date": "2025-12-04T16:36:20.470Z"
+        },
         {
           "value": 45339,
           "date": "2025-11-28T15:01:57.576Z"
@@ -3599,6 +3884,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 69999,
+          "date": "2025-12-05T15:31:00.091Z"
+        },
         {
           "value": 77500,
           "date": "2025-12-03T13:35:05.210Z"
@@ -3693,6 +3982,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 64399,
+          "date": "2025-12-05T15:31:05.142Z"
+        },
         {
           "value": 64399,
           "date": "2025-12-02T16:56:27.684Z"
@@ -3790,6 +4083,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 50443,
+          "date": "2025-12-05T15:31:09.987Z"
+        },
+        {
+          "value": 44499,
+          "date": "2025-12-04T16:36:43.150Z"
+        },
+        {
           "value": 40939,
           "date": "2025-11-26T15:34:43.882Z"
         },
@@ -3847,6 +4148,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 44296,
+          "date": "2025-12-05T15:31:15.107Z"
+        },
         {
           "value": 44296,
           "date": "2025-12-02T16:56:43.171Z"
@@ -3907,6 +4212,10 @@
       "prices": [
         {
           "value": 69899,
+          "date": "2025-12-05T15:31:20.392Z"
+        },
+        {
+          "value": 69899,
           "date": "2025-11-30T15:26:47.606Z"
         },
         {
@@ -3955,6 +4264,10 @@
       "prices": [
         {
           "value": 30840,
+          "date": "2025-12-05T15:31:25.508Z"
+        },
+        {
+          "value": 30840,
           "date": "2025-09-19T03:14:18.440Z"
         }
       ]
@@ -3969,6 +4282,10 @@
       "prices": [
         {
           "value": 39250,
+          "date": "2025-12-05T15:31:30.828Z"
+        },
+        {
+          "value": 39250,
           "date": "2025-09-19T03:14:24.565Z"
         }
       ]
@@ -3981,6 +4298,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 11161,
+          "date": "2025-12-05T15:31:37.334Z"
+        },
+        {
+          "value": 11161,
+          "date": "2025-12-04T16:37:19.955Z"
+        },
         {
           "value": 13388,
           "date": "2025-11-29T12:45:57.554Z"
@@ -4078,6 +4403,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 17500,
+          "date": "2025-12-05T15:31:42.179Z"
+        },
+        {
+          "value": 17500,
+          "date": "2025-12-04T16:37:29.047Z"
+        },
+        {
           "value": 16975,
           "date": "2025-11-29T12:46:05.887Z"
         },
@@ -4128,5 +4461,66 @@
       ]
     }
   ],
-  "miniPcOptions": []
+  "miniPcOptions": [
+    {
+      "id": 5987,
+      "name": "Enova",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-performance-ryzen-5-3500u-8gb-ram-240gb-ssd-wifi-bt/up/MLAU3360749240?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=stack&position=16&type=product&tracking_id=f71becb0-358d-4480-8868-0b1840cc2abd&wid=MLA2243321226&sid=search",
+      "visible": 1,
+      "cpu": "R5 3500u",
+      "ram": "8",
+      "ssd": "240",
+      "prices": [
+        {
+          "value": 414707,
+          "date": "2025-12-04T16:40:08.451Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-04T16:39:54.877Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 30404,
+      "name": "BMax",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b7-a-pro-ryzen-5-7430u-16gb-ssd-512gb/p/MLA59197305?offer_type=OFFICIAL_STORE#wid=MLA2483994276&sid=search",
+      "visible": 1,
+      "cpu": "R5 7430",
+      "ram": "16",
+      "ssd": "512",
+      "prices": [
+        {
+          "value": 605842,
+          "date": "2025-12-04T16:40:57.312Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-04T16:40:44.623Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 11411,
+      "name": "Enova",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-enova-ryzen-5-3500u-8gb-2400mhz-ram-240gb-ssd-w11/p/MLA50633796?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=stack&position=8&type=product&tracking_id=f71becb0-358d-4480-8868-0b1840cc2abd&wid=MLA1584238945&sid=search",
+      "visible": 1,
+      "cpu": "R5 3500u",
+      "ram": "8",
+      "ssd": "240",
+      "prices": [
+        {
+          "value": 459999,
+          "date": "2025-12-04T16:42:21.877Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-04T16:41:49.330Z"
+        }
+      ],
+      "linksAlt": []
+    }
+  ]
 }
