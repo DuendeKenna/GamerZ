@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 551605,
+      "total": 555541,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 531146,
+      "total": 529732,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 637986,
+      "total": 695714,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -183,6 +183,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 262000,
+          "date": "2025-12-10T13:32:58.439Z"
+        },
+        {
           "value": 282499,
           "date": "2025-12-03T13:28:02.725Z"
         },
@@ -279,6 +283,28 @@
           "date": "2025-10-04T13:33:21.869Z"
         }
       ]
+    },
+    {
+      "id": 3151,
+      "name": "I5 2400 16GB 480GB Sata",
+      "link": "https://www.mercadolibre.com.ar/pc-computadora-i5-16gb-480-ssd-wifi-dualband-5ghz-hawk-pro/up/MLAU3287905236?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 275136,
+          "date": "2025-12-10T13:33:07.438Z"
+        },
+        {
+          "value": 275000,
+          "date": "2025-12-08T18:16:15.282Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-08T18:16:02.641Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "towersOptions": [
@@ -291,6 +317,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 61999,
+          "date": "2025-12-10T13:33:55.031Z"
+        },
         {
           "value": 59067,
           "date": "2025-12-08T12:57:33.033Z"
@@ -378,6 +408,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 96045,
+          "date": "2025-12-10T13:34:04.765Z"
+        },
         {
           "value": 73130,
           "date": "2025-12-08T12:57:41.297Z"
@@ -582,6 +616,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 92454,
+          "date": "2025-12-10T13:36:51.724Z"
+        },
+        {
           "value": 75099,
           "date": "2025-12-08T13:12:34.647Z"
         },
@@ -695,6 +733,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 122249,
+          "date": "2025-12-10T13:37:00.388Z"
+        },
         {
           "value": 173999,
           "date": "2025-12-08T13:12:43.078Z"
@@ -887,6 +929,10 @@
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
         {
+          "value": 90999,
+          "date": "2025-12-10T13:37:16.055Z"
+        },
+        {
           "value": 85599,
           "date": "2025-12-08T13:12:53.854Z"
         },
@@ -928,6 +974,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 89999,
+          "date": "2025-12-10T13:37:24.539Z"
+        },
         {
           "value": 87290,
           "date": "2025-12-08T13:12:58.773Z"
@@ -1028,6 +1078,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 85000,
+          "date": "2025-12-10T13:37:40.058Z"
+        },
         {
           "value": 79999,
           "date": "2025-12-08T13:13:07.380Z"
@@ -1291,6 +1345,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 482498,
+          "date": "2025-12-10T13:36:36.285Z"
+        },
         {
           "value": 498722,
           "date": "2025-12-08T13:12:24.581Z"
@@ -1786,6 +1844,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 26900,
+          "date": "2025-12-10T13:38:09.592Z"
+        },
+        {
           "value": 27100,
           "date": "2025-12-08T13:13:28.378Z"
         },
@@ -1956,6 +2018,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 93585,
+          "date": "2025-12-10T13:35:12.451Z"
+        },
+        {
           "value": 89649,
           "date": "2025-12-08T12:58:46.658Z"
         },
@@ -2097,6 +2163,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 282149,
+          "date": "2025-12-10T13:34:56.647Z"
+        },
         {
           "value": 287499,
           "date": "2025-12-08T12:58:23.536Z"
@@ -2314,6 +2384,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 127908,
+          "date": "2025-12-10T13:35:28.150Z"
+        },
+        {
           "value": 127498,
           "date": "2025-12-08T13:11:37.190Z"
         },
@@ -2472,6 +2546,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 90000,
+          "date": "2025-12-10T13:35:43.561Z"
+        },
+        {
           "value": 70000,
           "date": "2025-12-08T13:11:45.711Z"
         },
@@ -2569,6 +2647,10 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 159990,
+          "date": "2025-12-10T13:35:59.368Z"
+        },
         {
           "value": 130419,
           "date": "2025-12-08T13:11:56.773Z"
@@ -2781,6 +2863,10 @@
       "description": "",
       "prices": [
         {
+          "value": 415393,
+          "date": "2025-12-10T13:34:41.170Z"
+        },
+        {
           "value": 406324,
           "date": "2025-12-08T12:58:13.349Z"
         },
@@ -2833,6 +2919,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 152317,
+          "date": "2025-12-10T13:38:18.276Z"
+        },
         {
           "value": 152968,
           "date": "2025-12-08T13:13:39.933Z"
@@ -2912,6 +3002,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 202999,
+          "date": "2025-12-10T13:38:27.236Z"
+        },
+        {
           "value": 208249,
           "date": "2025-12-08T13:13:44.531Z"
         },
@@ -2977,6 +3071,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 337000,
+          "date": "2025-12-10T13:38:35.845Z"
+        },
         {
           "value": 273094,
           "date": "2025-12-08T13:13:50.097Z"
@@ -3204,6 +3302,24 @@
           "date": "2025-10-04T13:38:14.346Z"
         }
       ]
+    },
+    {
+      "id": 44814,
+      "name": "Ergonómico Inalambrico Recargable Jertech ",
+      "link": "https://www.mercadolibre.com.ar/mouse-ergonomico-inalambrico-recargable-jertech-jr322-color-negro/p/MLA46042907?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 24154,
+          "date": "2025-12-08T18:24:00.658Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-08T18:23:39.045Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "joystickOptions": [
@@ -3321,6 +3437,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 53243,
+          "date": "2025-12-10T13:39:12.551Z"
+        },
         {
           "value": 54185,
           "date": "2025-12-08T13:14:10.623Z"
@@ -3561,6 +3681,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 39999,
+          "date": "2025-12-10T13:39:35.127Z"
+        },
         {
           "value": 43700,
           "date": "2025-12-08T13:14:28.750Z"
@@ -4191,6 +4315,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 68999,
+          "date": "2025-12-10T13:40:41.115Z"
+        },
+        {
           "value": 64399,
           "date": "2025-12-08T13:15:20.678Z"
         },
@@ -4294,6 +4422,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 40899,
+          "date": "2025-12-10T13:40:49.848Z"
+        },
         {
           "value": 50443,
           "date": "2025-12-08T13:15:25.029Z"
@@ -4639,6 +4771,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 16450,
+          "date": "2025-12-10T13:41:34.031Z"
+        },
+        {
           "value": 17112,
           "date": "2025-12-08T13:16:06.584Z"
         },
@@ -4732,6 +4868,10 @@
       "ssd": "512",
       "prices": [
         {
+          "value": 707722,
+          "date": "2025-12-10T13:33:23.223Z"
+        },
+        {
           "value": 622795,
           "date": "2025-12-08T12:57:06.234Z"
         },
@@ -4756,6 +4896,10 @@
       "ssd": "240",
       "prices": [
         {
+          "value": 369899,
+          "date": "2025-12-10T13:33:32.030Z"
+        },
+        {
           "value": 459999,
           "date": "2025-12-08T12:57:17.177Z"
         },
@@ -4766,6 +4910,46 @@
         {
           "value": 0,
           "date": "2025-12-04T16:41:49.330Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 13575,
+      "name": "IIISI",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-msi-cubi-n-adl-021us-intel-celeron-n100-de-4-gb-de-ram/p/MLA38322049?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "N100",
+      "ram": "4",
+      "ssd": "240",
+      "prices": [
+        {
+          "value": 442156,
+          "date": "2025-12-08T18:35:33.403Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-08T18:34:51.034Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 82479,
+      "name": "BMax N150",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-intel-celeron-b4-ultra-n150-16gb-512gb/p/MLA59198528?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "N150",
+      "ram": "16",
+      "ssd": "512",
+      "prices": [
+        {
+          "value": 389999,
+          "date": "2025-12-08T18:42:09.387Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-08T18:41:58.956Z"
         }
       ],
       "linksAlt": []
