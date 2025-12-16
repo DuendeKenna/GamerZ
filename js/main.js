@@ -846,7 +846,7 @@
                 // Agregar span de licencia Windows 11 Original
                 const licenciaSpan = document.createElement('span');
                 licenciaSpan.className = 'flex items-center justify-end w-full mt-2 text-blue-400 text-sm font-semibold';
-                licenciaSpan.innerHTML = `<svg xmlns='http://www.w3.org/2000/svg' class='inline-block mr-2' width='20' height='20' fill='currentColor' viewBox='0 0 24 24'><rect x='3' y='3' width='7' height='7' rx='1.5'/><rect x='14' y='3' width='7' height='7' rx='1.5'/><rect x='14' y='14' width='7' height='7' rx='1.5'/><rect x='3' y='14' width='7' height='7' rx='1.5'/></svg>Incluye Licencia Windows 11`;
+                
                 container.appendChild(licenciaSpan);
             }
 

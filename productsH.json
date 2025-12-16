@@ -2,13 +2,13 @@
   "baseOptions": [
     {
       "id": 49735,
-      "name": "Ryzen 5 5600G + 16 de RAM",
-      "description": "Buen rendimiento en juegos ligeros a 1080p, multitarea básica y creación de contenido principiante. Con 6 núcleos y gráfica integrada Vega 7, es el más económico y simple, pero más que suficiente si no corrés software pesado.",
-      "cpu": "896",
+      "name": "Ryzen 3 3200g",
+      "description": "Buen rendimiento en juegos ligeros a 1080p, multitarea básica y creación de contenido principiante. Con 4 núcleos y gráfica integrada Vega 8, es el más económico y simple, pero más que suficiente si no corrés software pesado.",
+      "cpu": "24931",
       "mother": "23506",
-      "ram": "93477",
+      "ram": "6555",
       "cantRam": 2,
-      "total": 555541,
+      "total": 362694,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 529732,
+      "total": 599926,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 695714,
+      "total": 749132,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -61,7 +61,7 @@
   "bundlesOptions": [
     {
       "id": 90249,
-      "name": "i5 4570 Joy",
+      "name": "i5 4570 | Full+Joys",
       "items": [
         {
           "categoryKey": "comboOptions",
@@ -94,37 +94,6 @@
         {
           "categoryKey": "joystickOptions",
           "id": 80115
-        }
-      ],
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
-      "id": 16233,
-      "name": "Ryzen 5 Joy",
-      "items": [
-        {
-          "categoryKey": "baseOptions",
-          "id": 49735
-        },
-        {
-          "categoryKey": "psuOptions",
-          "id": 45939
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 93692
-        },
-        {
-          "categoryKey": "towersOptions",
-          "id": 29026
         },
         {
           "categoryKey": "joystickOptions",
@@ -143,7 +112,7 @@
     },
     {
       "id": 82516,
-      "name": "i5 2400 Armada Joy",
+      "name": "i5 2400 | Full+Joys",
       "items": [
         {
           "categoryKey": "gpuOptions",
@@ -160,10 +129,201 @@
         {
           "categoryKey": "joystickOptions",
           "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
         }
       ],
       "visible": 1,
       "description": "",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 14283,
+      "name": "Ryzen 7 | Full+Joys",
+      "items": [
+        {
+          "categoryKey": "baseOptions",
+          "id": 30077
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 45939
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 27876
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 64421
+        }
+      ],
+      "visible": 1,
+      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 93189,
+      "name": "Ryzen 7 | PC+Joy",
+      "items": [
+        {
+          "categoryKey": "baseOptions",
+          "id": 30077
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 45939
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 93692
+        }
+      ],
+      "visible": 1,
+      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 73676,
+      "name": "Ryzen 7 | Emus+Joys",
+      "items": [
+        {
+          "categoryKey": "baseOptions",
+          "id": 30077
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 45939
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 27876
+        }
+      ],
+      "visible": 1,
+      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 94643,
+      "name": "Ryzen 3 | Full+Joys",
+      "items": [
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 45939
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 27876
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 64421
+        },
+        {
+          "categoryKey": "comboOptions",
+          "id": 86147
+        }
+      ],
+      "visible": 1,
+      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 95796,
+      "name": "Mini n150 | Emus/PC+Joys",
+      "items": [
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "miniPcOptions",
+          "id": 82479
+        }
+      ],
+      "visible": 1,
+      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
       "linksAlt": [],
       "prices": [
         {
@@ -182,6 +342,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 279998,
+          "date": "2025-12-16T19:03:39.973Z"
+        },
         {
           "value": 262000,
           "date": "2025-12-10T13:32:58.439Z"
@@ -318,6 +482,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 47499,
+          "date": "2025-12-16T19:06:19.899Z"
+        },
+        {
           "value": 61999,
           "date": "2025-12-10T13:33:55.031Z"
         },
@@ -409,6 +577,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 73130,
+          "date": "2025-12-16T19:06:29.447Z"
+        },
+        {
           "value": 96045,
           "date": "2025-12-10T13:34:04.765Z"
         },
@@ -487,6 +659,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 72343,
+          "date": "2025-12-16T19:06:38.800Z"
+        },
         {
           "value": 67399,
           "date": "2025-12-08T12:57:47.930Z"
@@ -616,6 +792,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 79900,
+          "date": "2025-12-16T19:09:48.496Z"
+        },
+        {
           "value": 92454,
           "date": "2025-12-10T13:36:51.724Z"
         },
@@ -734,6 +914,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 189999,
+          "date": "2025-12-16T19:09:57.881Z"
+        },
+        {
           "value": 122249,
           "date": "2025-12-10T13:37:00.388Z"
         },
@@ -844,6 +1028,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 71840,
+          "date": "2025-12-16T19:10:07.622Z"
+        },
+        {
           "value": 58979,
           "date": "2025-12-08T13:12:48.581Z"
         },
@@ -929,6 +1117,10 @@
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
         {
+          "value": 96999,
+          "date": "2025-12-16T19:10:17.340Z"
+        },
+        {
           "value": 90999,
           "date": "2025-12-10T13:37:16.055Z"
         },
@@ -974,6 +1166,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 97618,
+          "date": "2025-12-16T19:10:26.727Z"
+        },
         {
           "value": 89999,
           "date": "2025-12-10T13:37:24.539Z"
@@ -1150,7 +1346,7 @@
     {
       "id": 67931,
       "name": "Integrada",
-      "description": "Viene con el CPU - más que suficiente para arrancar.",
+      "description": "Ryzen viene con gráfica Vega, más que suficiente para arrancar con juegos de gráfica media.",
       "link": "",
       "visible": 1,
       "linksAlt": [],
@@ -1217,8 +1413,8 @@
       "id": 47347,
       "name": "RX 560 | 4GB",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1516514757-placa-de-video-amd-radeon-rx-560-4gb-gddr5-30-128-bits-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "Lo opción más económica. Aún siendo antigua, va a poder correr juegos que la integrada no tira bien. *Preguntale abajo a la IA si se banca el que querés...",
+      "visible": 0,
+      "description": "Lo opción más económica. Aún siendo antigua, va a poder correr juegos que la integrada no tira bien.",
       "linksAlt": [],
       "prices": [
         {
@@ -1261,8 +1457,14 @@
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-nvidia-msi-geforce-rtx-3050-ventus-2x-6gb-oc-gddr6/p/MLA34284188?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
-      "linksAlt": [],
+      "linksAlt": [
+        "https://www.mercadolibre.com.ar/placa-de-video-msi-geforce-rtx-3050-oc-6gb-gddr6-96bits/p/MLA37776074?offer_type=OFFICIAL_STORE"
+      ],
       "prices": [
+        {
+          "value": 409999,
+          "date": "2025-12-16T19:09:21.690Z"
+        },
         {
           "value": 398999,
           "date": "2025-12-08T13:12:17.340Z"
@@ -1431,12 +1633,16 @@
       "id": 64501,
       "name": "RTX 3060 | 12GB",
       "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
-      "link": "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE",
-      "visible": 1,
+      "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
+      "visible": 0,
       "linksAlt": [
-        "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE"
+        "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE"
       ],
       "prices": [
+        {
+          "value": 1426000,
+          "date": "2025-12-16T19:09:39.033Z"
+        },
         {
           "value": 584249,
           "date": "2025-12-08T13:12:28.220Z"
@@ -1542,6 +1748,42 @@
           "date": "2025-10-02T16:58:38.542Z"
         }
       ]
+    },
+    {
+      "id": 4156,
+      "name": "RTX 5060 | 8GB ",
+      "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-msi-rtx-5060-8-gb-gddr7-128-bit-shadow-2x-oc/p/MLA51032833?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
+      "prices": [
+        {
+          "value": 668999,
+          "date": "2025-12-16T19:31:21.830Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-16T19:29:00.101Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 41455,
+      "name": "RX 9060 | 16GB",
+      "link": "https://www.mercadolibre.com.ar/vga-xfx-swift-amd-radeon-rx-9060-xt-oc-negro-16gb-gddr6/p/MLA51292495?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
+      "prices": [
+        {
+          "value": 909598,
+          "date": "2025-12-16T19:44:40.122Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-16T19:44:33.376Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "psuOptions": [
@@ -1553,6 +1795,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 91137,
+          "date": "2025-12-16T19:10:51.544Z"
+        },
         {
           "value": 109977,
           "date": "2025-12-08T13:13:13.316Z"
@@ -1607,6 +1853,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 99999,
+          "date": "2025-12-16T19:11:00.908Z"
+        },
         {
           "value": 76731,
           "date": "2025-12-08T13:13:19.571Z"
@@ -1717,6 +1967,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 36864,
+          "date": "2025-12-16T19:11:10.354Z"
+        },
         {
           "value": 34280,
           "date": "2025-12-08T13:13:24.057Z"
@@ -1932,6 +2186,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 93697,
+          "date": "2025-12-16T19:07:47.466Z"
+        },
+        {
           "value": 94999,
           "date": "2025-12-08T12:58:34.214Z"
         },
@@ -2017,6 +2275,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 94999,
+          "date": "2025-12-16T19:07:56.914Z"
+        },
         {
           "value": 93585,
           "date": "2025-12-10T13:35:12.451Z"
@@ -2111,10 +2373,10 @@
       "id": 896,
       "name": "Ryzen 5 5600g",
       "description": "6 nucleos 4.4ghz Am4",
-      "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-5-5600g-de-6-nucleos-y-44ghz-de-frecuencia/p/MLA21817899?has_official_store=false&highlight=true&headerTopBrand=true&offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=3&type=product&tracking_id=bc707b0c-d03b-4812-b0c2-85a76c1e1768&wid=MLA2062000222&sid=search",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE",
       "visible": 1,
       "linksAlt": [
-        "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE"
+        "https://www.mercadolibre.com.ar/procesador-amd-ryzen-5-5600g-de-6-nucleos-y-44ghz-de-frecuencia/p/MLA21817899?has_official_store=false&highlight=true&headerTopBrand=true&offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=3&type=product&tracking_id=bc707b0c-d03b-4812-b0c2-85a76c1e1768&wid=MLA2062000222&sid=search"
       ],
       "prices": [
         {
@@ -2264,18 +2526,44 @@
           "date": "2025-10-03T13:54:50.128Z"
         }
       ]
+    },
+    {
+      "id": 24931,
+      "name": "Ryzen 3 3200g",
+      "link": "https://www.mercadolibre.com.ar/procesador-gamer-amd-ryzen-3-3200g-de-4-nucleos-y-4ghz-con-grafica-integrada/p/MLA15076943?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "4 nucleos 4ghz Am4",
+      "prices": [
+        {
+          "value": 107799,
+          "date": "2025-12-16T20:01:35.423Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-16T20:00:37.783Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "ramOptions": [
     {
       "id": 93477,
-      "name": "DDR4 8 GB - Hiksemi",
+      "name": "DDR4 8 GB - Hiksemi Armor",
       "total": 8,
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
-      "visible": 0,
+      "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 111389,
+          "date": "2025-12-16T20:16:07.025Z"
+        },
+        {
+          "value": 86240,
+          "date": "2025-12-16T19:08:06.544Z"
+        },
         {
           "value": 76999,
           "date": "2025-12-08T12:58:54.186Z"
@@ -2380,9 +2668,17 @@
       "total": 16,
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ddr4-16-gb-3200-mhz-hiksemi-hsc416u32z1-negro/p/MLA24540268?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=9db4b83c-6923-4933-aa62-22019534380d&wid=MLA1774552482&sid=search",
-      "visible": 0,
+      "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 92918,
+          "date": "2025-12-16T20:16:18.853Z"
+        },
+        {
+          "value": 159999,
+          "date": "2025-12-16T19:08:16.055Z"
+        },
         {
           "value": 127908,
           "date": "2025-12-10T13:35:28.150Z"
@@ -2648,6 +2944,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 185992,
+          "date": "2025-12-16T19:08:48.871Z"
+        },
+        {
           "value": 159990,
           "date": "2025-12-10T13:35:59.368Z"
         },
@@ -2732,6 +3032,25 @@
           "date": "2025-10-02T16:57:38.209Z"
         }
       ]
+    },
+    {
+      "id": 6555,
+      "name": "DDR4 8 GB - Hiksemi ",
+      "link": "https://www.mercadolibre.com.ar/memoria-ddr4-8-gb-3200-mhz-hiksemi/up/MLAU558509089?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 79948,
+          "date": "2025-12-16T20:14:35.072Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-16T20:14:20.200Z"
+        }
+      ],
+      "linksAlt": [],
+      "total": 8
     }
   ],
   "comboOptions": [
@@ -2743,6 +3062,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 531299,
+          "date": "2025-12-16T19:06:56.124Z"
+        },
         {
           "value": 527966,
           "date": "2025-12-08T12:58:01.274Z"
@@ -2863,6 +3186,10 @@
       "description": "",
       "prices": [
         {
+          "value": 466256,
+          "date": "2025-12-16T19:07:13.370Z"
+        },
+        {
           "value": 415393,
           "date": "2025-12-10T13:34:41.170Z"
         },
@@ -2908,6 +3235,28 @@
         }
       ],
       "linksAlt": []
+    },
+    {
+      "id": 86147,
+      "name": "Ryzen 3200G + 16",
+      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-pc-amd-ryzen-3-3200g-mother-16-gb-ddr4/up/MLAU238932249?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 343599,
+          "date": "2025-12-16T19:07:22.799Z"
+        },
+        {
+          "value": 279999,
+          "date": "2025-12-11T00:35:14.122Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-11T00:34:46.401Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "monitorOptions": [
@@ -2919,6 +3268,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 152968,
+          "date": "2025-12-16T19:11:27.633Z"
+        },
         {
           "value": 152317,
           "date": "2025-12-10T13:38:18.276Z"
@@ -3002,6 +3355,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 200549,
+          "date": "2025-12-16T19:11:37.231Z"
+        },
+        {
           "value": 202999,
           "date": "2025-12-10T13:38:27.236Z"
         },
@@ -3071,6 +3428,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 295899,
+          "date": "2025-12-16T19:11:46.738Z"
+        },
         {
           "value": 337000,
           "date": "2025-12-10T13:38:35.845Z"
@@ -3222,6 +3583,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 26345,
+          "date": "2025-12-16T19:12:03.917Z"
+        },
+        {
           "value": 27599,
           "date": "2025-12-08T13:13:59.347Z"
         },
@@ -3302,24 +3667,6 @@
           "date": "2025-10-04T13:38:14.346Z"
         }
       ]
-    },
-    {
-      "id": 44814,
-      "name": "Ergonómico Inalambrico Recargable Jertech ",
-      "link": "https://www.mercadolibre.com.ar/mouse-ergonomico-inalambrico-recargable-jertech-jr322-color-negro/p/MLA46042907?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
-      "prices": [
-        {
-          "value": 24154,
-          "date": "2025-12-08T18:24:00.658Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-12-08T18:23:39.045Z"
-        }
-      ],
-      "linksAlt": []
     }
   ],
   "joystickOptions": [
@@ -3331,6 +3678,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 19900,
+          "date": "2025-12-16T19:12:55.206Z"
+        },
         {
           "value": 33000,
           "date": "2025-12-08T13:14:04.665Z"
@@ -3552,6 +3903,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 36169,
+          "date": "2025-12-16T19:13:12.660Z"
+        },
+        {
           "value": 41384,
           "date": "2025-12-08T13:14:16.621Z"
         },
@@ -3611,6 +3966,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 25331,
+          "date": "2025-12-16T19:13:22.059Z"
+        },
         {
           "value": 32599,
           "date": "2025-12-08T13:14:22.206Z"
@@ -3682,6 +4041,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 47500,
+          "date": "2025-12-16T19:13:31.481Z"
+        },
+        {
           "value": 39999,
           "date": "2025-12-10T13:39:35.127Z"
         },
@@ -3735,6 +4098,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 53049,
+          "date": "2025-12-16T19:13:40.980Z"
+        },
         {
           "value": 57829,
           "date": "2025-12-08T13:14:33.626Z"
@@ -3988,6 +4355,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 33899,
+          "date": "2025-12-16T19:14:13.918Z"
+        },
         {
           "value": 20199,
           "date": "2025-12-08T13:14:54.276Z"
@@ -4315,6 +4686,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 67840,
+          "date": "2025-12-16T19:14:46.638Z"
+        },
+        {
           "value": 68999,
           "date": "2025-12-10T13:40:41.115Z"
         },
@@ -4497,6 +4872,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 46496,
+          "date": "2025-12-16T19:15:05.597Z"
+        },
+        {
           "value": 47096,
           "date": "2025-12-08T13:15:30.533Z"
         },
@@ -4562,6 +4941,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 68899,
+          "date": "2025-12-16T19:15:15.095Z"
+        },
         {
           "value": 69899,
           "date": "2025-12-08T13:15:40.277Z"
@@ -4771,6 +5154,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 16203,
+          "date": "2025-12-16T19:15:47.591Z"
+        },
+        {
           "value": 16450,
           "date": "2025-12-10T13:41:34.031Z"
         },
@@ -4848,6 +5235,10 @@
       "ssd": "240",
       "prices": [
         {
+          "value": 487890,
+          "date": "2025-12-16T19:03:57.445Z"
+        },
+        {
           "value": 414707,
           "date": "2025-12-04T16:40:08.451Z"
         },
@@ -4868,6 +5259,10 @@
       "ssd": "512",
       "prices": [
         {
+          "value": 552499,
+          "date": "2025-12-16T19:04:06.913Z"
+        },
+        {
           "value": 707722,
           "date": "2025-12-10T13:33:23.223Z"
         },
@@ -4882,34 +5277,6 @@
         {
           "value": 0,
           "date": "2025-12-04T16:40:44.623Z"
-        }
-      ],
-      "linksAlt": []
-    },
-    {
-      "id": 11411,
-      "name": "Enova",
-      "link": "https://www.mercadolibre.com.ar/mini-pc-enova-ryzen-5-3500u-8gb-2400mhz-ram-240gb-ssd-w11/p/MLA50633796?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=stack&position=8&type=product&tracking_id=f71becb0-358d-4480-8868-0b1840cc2abd&wid=MLA1584238945&sid=search",
-      "visible": 1,
-      "cpu": "R5 3500u",
-      "ram": "8",
-      "ssd": "240",
-      "prices": [
-        {
-          "value": 369899,
-          "date": "2025-12-10T13:33:32.030Z"
-        },
-        {
-          "value": 459999,
-          "date": "2025-12-08T12:57:17.177Z"
-        },
-        {
-          "value": 459999,
-          "date": "2025-12-04T16:42:21.877Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-12-04T16:41:49.330Z"
         }
       ],
       "linksAlt": []
@@ -4943,6 +5310,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 384029,
+          "date": "2025-12-16T19:06:10.485Z"
+        },
         {
           "value": 389999,
           "date": "2025-12-08T18:42:09.387Z"
