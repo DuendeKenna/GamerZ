@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "6555",
       "cantRam": 2,
-      "total": 362694,
+      "total": 362204,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -324,6 +324,37 @@
       ],
       "visible": 1,
       "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 64113,
+      "name": "EmulaDrive",
+      "items": [
+        {
+          "categoryKey": "ssdOptions",
+          "id": 28539
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 65237
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        }
+      ],
+      "visible": 1,
+      "description": "",
       "linksAlt": [],
       "prices": [
         {
@@ -792,6 +823,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 95000,
+          "date": "2025-12-17T12:40:35.746Z"
+        },
+        {
           "value": 79900,
           "date": "2025-12-16T19:09:48.496Z"
         },
@@ -914,6 +949,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 186999,
+          "date": "2025-12-17T12:40:45.598Z"
+        },
+        {
           "value": 189999,
           "date": "2025-12-16T19:09:57.881Z"
         },
@@ -1027,6 +1066,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 64999,
+          "date": "2025-12-17T12:40:55.192Z"
+        },
         {
           "value": 71840,
           "date": "2025-12-16T19:10:07.622Z"
@@ -1275,6 +1318,10 @@
       "description": "",
       "prices": [
         {
+          "value": 92000,
+          "date": "2025-12-17T12:41:28.467Z"
+        },
+        {
           "value": 85000,
           "date": "2025-12-10T13:37:40.058Z"
         },
@@ -1337,6 +1384,24 @@
         {
           "value": 0,
           "date": "2025-11-21T01:03:24.493Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 65237,
+      "name": "Carry Disk 2.5",
+      "link": "https://www.mercadolibre.com.ar/carry-disk-case-usb-30-sata-25-notebook-disco-sdd-hdd/p/MLA38945178?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 6159,
+          "date": "2025-12-17T00:12:51.518Z"
+        },
+        {
+          "value": 0,
+          "date": "2025-12-17T00:12:31.501Z"
         }
       ],
       "linksAlt": []
@@ -1548,6 +1613,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 489763,
+          "date": "2025-12-17T12:39:19.927Z"
+        },
+        {
           "value": 482498,
           "date": "2025-12-10T13:36:36.285Z"
         },
@@ -1630,126 +1699,6 @@
       ]
     },
     {
-      "id": 64501,
-      "name": "RTX 3060 | 12GB",
-      "description": "Potencia asegurada para gaming fluido en 1440p, con tecnologías de Ray Tracing y DLSS . Sus 12GB de VRAM la hacen ideal para multitareas: jugAAAr, editar ligero, streamear en 2K…todo al mango.",
-      "link": "https://www.mercadolibre.com.ar/p/MLA17456216?pdp_filters=item_id%3AMLA1105725302&offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "linksAlt": [
-        "https://www.mercadolibre.com.ar/placa-de-video-nvidia-msi-ventus-geforce-rtx-30-series-rtx-3060-ventus-2x-12g-oc-oc-edition-12gb-gddr6/p/MLA17486628?offer_type=BEST_PRICE"
-      ],
-      "prices": [
-        {
-          "value": 1426000,
-          "date": "2025-12-16T19:09:39.033Z"
-        },
-        {
-          "value": 584249,
-          "date": "2025-12-08T13:12:28.220Z"
-        },
-        {
-          "value": 584249,
-          "date": "2025-12-05T15:28:19.019Z"
-        },
-        {
-          "value": 605829,
-          "date": "2025-12-04T16:32:28.767Z"
-        },
-        {
-          "value": 573989,
-          "date": "2025-11-30T15:22:49.941Z"
-        },
-        {
-          "value": 569990,
-          "date": "2025-11-29T12:41:36.300Z"
-        },
-        {
-          "value": 573989,
-          "date": "2025-11-26T15:30:28.186Z"
-        },
-        {
-          "value": 599345,
-          "date": "2025-11-22T11:21:32.664Z"
-        },
-        {
-          "value": 616899,
-          "date": "2025-11-21T14:07:02.096Z"
-        },
-        {
-          "value": 605299,
-          "date": "2025-11-20T16:23:58.545Z"
-        },
-        {
-          "value": 638600,
-          "date": "2025-11-18T14:26:41.783Z"
-        },
-        {
-          "value": 614059,
-          "date": "2025-11-14T13:52:12.168Z"
-        },
-        {
-          "value": 596310,
-          "date": "2025-11-13T14:11:59.218Z"
-        },
-        {
-          "value": 580050,
-          "date": "2025-11-12T11:23:01.836Z"
-        },
-        {
-          "value": 546099,
-          "date": "2025-11-04T13:48:00.169Z"
-        },
-        {
-          "value": 528899,
-          "date": "2025-11-03T13:14:35.349Z"
-        },
-        {
-          "value": 496471,
-          "date": "2025-11-01T12:35:30.541Z"
-        },
-        {
-          "value": 529519,
-          "date": "2025-10-31T10:03:34.090Z"
-        },
-        {
-          "value": 545899,
-          "date": "2025-10-28T12:16:31.076Z"
-        },
-        {
-          "value": 575399,
-          "date": "2025-10-25T18:57:09.903Z"
-        },
-        {
-          "value": 543999,
-          "date": "2025-10-16T12:53:33.702Z"
-        },
-        {
-          "value": 559999,
-          "date": "2025-10-14T13:43:34.359Z"
-        },
-        {
-          "value": 560000,
-          "date": "2025-10-13T10:41:35.370Z"
-        },
-        {
-          "value": 556299,
-          "date": "2025-10-08T15:13:59.316Z"
-        },
-        {
-          "value": 572999,
-          "date": "2025-10-07T12:55:55.983Z"
-        },
-        {
-          "value": 532199,
-          "date": "2025-10-06T14:38:07.387Z"
-        },
-        {
-          "value": 535575,
-          "date": "2025-10-02T16:58:38.542Z"
-        }
-      ]
-    },
-    {
       "id": 4156,
       "name": "RTX 5060 | 8GB ",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-msi-rtx-5060-8-gb-gddr7-128-bit-shadow-2x-oc/p/MLA51032833?offer_type=OFFICIAL_STORE",
@@ -1774,6 +1723,10 @@
       "visible": 1,
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "prices": [
+        {
+          "value": 841733,
+          "date": "2025-12-17T12:40:26.192Z"
+        },
         {
           "value": 909598,
           "date": "2025-12-16T19:44:40.122Z"
@@ -1853,6 +1806,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 103061,
+          "date": "2025-12-17T12:41:53.997Z"
+        },
         {
           "value": 99999,
           "date": "2025-12-16T19:11:00.908Z"
@@ -2370,54 +2327,6 @@
   ],
   "cpuOptions": [
     {
-      "id": 896,
-      "name": "Ryzen 5 5600g",
-      "description": "6 nucleos 4.4ghz Am4",
-      "link": "https://articulo.mercadolibre.com.ar/MLA-933485601-micro-procesador-amd-ryzen-5-5600g-44ghz-am4-radeon-vega-_JM?offer_type=BEST_PRICE",
-      "visible": 1,
-      "linksAlt": [
-        "https://www.mercadolibre.com.ar/procesador-amd-ryzen-5-5600g-de-6-nucleos-y-44ghz-de-frecuencia/p/MLA21817899?has_official_store=false&highlight=true&headerTopBrand=true&offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=3&type=product&tracking_id=bc707b0c-d03b-4812-b0c2-85a76c1e1768&wid=MLA2062000222&sid=search"
-      ],
-      "prices": [
-        {
-          "value": 307958,
-          "date": "2025-12-08T12:58:18.034Z"
-        },
-        {
-          "value": 307958,
-          "date": "2025-12-05T15:26:44.918Z"
-        },
-        {
-          "value": 307958,
-          "date": "2025-11-26T15:28:24.049Z"
-        },
-        {
-          "value": 269999,
-          "date": "2025-11-19T14:59:14.101Z"
-        },
-        {
-          "value": 307958,
-          "date": "2025-11-16T12:40:58.192Z"
-        },
-        {
-          "value": 269999,
-          "date": "2025-11-04T13:45:50.813Z"
-        },
-        {
-          "value": 254999,
-          "date": "2025-10-25T18:54:52.130Z"
-        },
-        {
-          "value": 237000,
-          "date": "2025-10-14T13:41:16.713Z"
-        },
-        {
-          "value": 220799,
-          "date": "2025-10-02T16:56:20.663Z"
-        }
-      ]
-    },
-    {
       "id": 55990,
       "name": "Ryzen 7 5700G ",
       "description": "8 nucleos 4.6ghz Am4",
@@ -2534,6 +2443,10 @@
       "visible": 1,
       "description": "4 nucleos 4ghz Am4",
       "prices": [
+        {
+          "value": 107309,
+          "date": "2025-12-17T12:37:25.232Z"
+        },
         {
           "value": 107799,
           "date": "2025-12-16T20:01:35.423Z"
@@ -2671,6 +2584,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 98978,
+          "date": "2025-12-17T12:37:58.684Z"
+        },
         {
           "value": 92918,
           "date": "2025-12-16T20:16:18.853Z"
@@ -3186,6 +3103,10 @@
       "description": "",
       "prices": [
         {
+          "value": 350993,
+          "date": "2025-12-17T12:28:23.855Z"
+        },
+        {
           "value": 466256,
           "date": "2025-12-16T19:07:13.370Z"
         },
@@ -3268,6 +3189,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 170999,
+          "date": "2025-12-17T12:42:19.249Z"
+        },
         {
           "value": 152968,
           "date": "2025-12-16T19:11:27.633Z"
@@ -4583,6 +4508,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 67889,
+          "date": "2025-12-17T12:44:35.909Z"
+        },
         {
           "value": 70999,
           "date": "2025-12-08T13:15:14.952Z"
