@@ -478,28 +478,6 @@
           "date": "2025-10-04T13:33:21.869Z"
         }
       ]
-    },
-    {
-      "id": 3151,
-      "name": "I5 2400 16GB 480GB Sata",
-      "link": "https://www.mercadolibre.com.ar/pc-computadora-i5-16gb-480-ssd-wifi-dualband-5ghz-hawk-pro/up/MLAU3287905236?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "",
-      "prices": [
-        {
-          "value": 275136,
-          "date": "2025-12-10T13:33:07.438Z"
-        },
-        {
-          "value": 275000,
-          "date": "2025-12-08T18:16:15.282Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-12-08T18:16:02.641Z"
-        }
-      ],
-      "linksAlt": []
     }
   ],
   "towersOptions": [
@@ -823,6 +801,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 97699,
+          "date": "2025-12-18T17:24:32.379Z"
+        },
+        {
           "value": 95000,
           "date": "2025-12-17T12:40:35.746Z"
         },
@@ -949,6 +931,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 195999,
+          "date": "2025-12-18T17:24:41.948Z"
+        },
+        {
           "value": 186999,
           "date": "2025-12-17T12:40:45.598Z"
         },
@@ -1066,6 +1052,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 65899,
+          "date": "2025-12-18T17:24:51.580Z"
+        },
         {
           "value": 64999,
           "date": "2025-12-17T12:40:55.192Z"
@@ -1318,6 +1308,10 @@
       "description": "",
       "prices": [
         {
+          "value": 117499,
+          "date": "2025-12-18T17:25:25.173Z"
+        },
+        {
           "value": 92000,
           "date": "2025-12-17T12:41:28.467Z"
         },
@@ -1395,6 +1389,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 6713,
+          "date": "2025-12-18T17:25:34.786Z"
+        },
         {
           "value": 6159,
           "date": "2025-12-17T00:12:51.518Z"
@@ -1483,6 +1481,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 210362,
+          "date": "2025-12-18T17:23:44.055Z"
+        },
+        {
           "value": 207740,
           "date": "2025-12-08T13:12:12.925Z"
         },
@@ -1526,6 +1528,10 @@
         "https://www.mercadolibre.com.ar/placa-de-video-msi-geforce-rtx-3050-oc-6gb-gddr6-96bits/p/MLA37776074?offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 497699,
+          "date": "2025-12-18T17:23:53.756Z"
+        },
         {
           "value": 409999,
           "date": "2025-12-16T19:09:21.690Z"
@@ -1612,6 +1618,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 488154,
+          "date": "2025-12-18T17:24:03.606Z"
+        },
         {
           "value": 489763,
           "date": "2025-12-17T12:39:19.927Z"
@@ -1706,6 +1716,10 @@
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
         {
+          "value": 710999,
+          "date": "2025-12-18T17:24:13.089Z"
+        },
+        {
           "value": 668999,
           "date": "2025-12-16T19:31:21.830Z"
         },
@@ -1723,6 +1737,10 @@
       "visible": 1,
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "prices": [
+        {
+          "value": 851298,
+          "date": "2025-12-18T17:24:22.888Z"
+        },
         {
           "value": 841733,
           "date": "2025-12-17T12:40:26.192Z"
@@ -2585,6 +2603,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 164999,
+          "date": "2025-12-18T17:22:38.835Z"
+        },
+        {
           "value": 98978,
           "date": "2025-12-17T12:37:58.684Z"
         },
@@ -2980,6 +3002,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 565364,
+          "date": "2025-12-18T17:20:51.460Z"
+        },
+        {
           "value": 531299,
           "date": "2025-12-16T19:06:56.124Z"
         },
@@ -3096,68 +3122,6 @@
       ]
     },
     {
-      "id": 93414,
-      "name": "5 5600g + A520 Asrock",
-      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-ddr4-ryzen-5-5600g-a520m-am4-color-negro/p/MLA43499795?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "",
-      "prices": [
-        {
-          "value": 350993,
-          "date": "2025-12-17T12:28:23.855Z"
-        },
-        {
-          "value": 466256,
-          "date": "2025-12-16T19:07:13.370Z"
-        },
-        {
-          "value": 415393,
-          "date": "2025-12-10T13:34:41.170Z"
-        },
-        {
-          "value": 406324,
-          "date": "2025-12-08T12:58:13.349Z"
-        },
-        {
-          "value": 409031,
-          "date": "2025-12-05T15:26:39.711Z"
-        },
-        {
-          "value": 350403,
-          "date": "2025-12-04T16:30:21.916Z"
-        },
-        {
-          "value": 452271,
-          "date": "2025-11-29T12:39:33.256Z"
-        },
-        {
-          "value": 335889,
-          "date": "2025-11-26T15:28:15.231Z"
-        },
-        {
-          "value": 455646,
-          "date": "2025-11-21T14:04:51.720Z"
-        },
-        {
-          "value": 341456,
-          "date": "2025-11-20T16:21:58.658Z"
-        },
-        {
-          "value": 341490,
-          "date": "2025-11-18T14:24:31.185Z"
-        },
-        {
-          "value": 328300,
-          "date": "2025-11-17T13:27:13.491Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-11-17T13:26:50.344Z"
-        }
-      ],
-      "linksAlt": []
-    },
-    {
       "id": 86147,
       "name": "Ryzen 3200G + 16",
       "link": "https://www.mercadolibre.com.ar/combo-actualizacion-pc-amd-ryzen-3-3200g-mother-16-gb-ddr4/up/MLAU238932249?offer_type=OFFICIAL_STORE",
@@ -3189,6 +3153,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 159436,
+          "date": "2025-12-18T17:26:16.378Z"
+        },
         {
           "value": 170999,
           "date": "2025-12-17T12:42:19.249Z"
@@ -3508,6 +3476,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 35050,
+          "date": "2025-12-18T17:26:50.346Z"
+        },
+        {
           "value": 26345,
           "date": "2025-12-16T19:12:03.917Z"
         },
@@ -3603,6 +3575,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 33000,
+          "date": "2025-12-18T17:27:00.331Z"
+        },
         {
           "value": 19900,
           "date": "2025-12-16T19:12:55.206Z"
@@ -3713,6 +3689,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 54999,
+          "date": "2025-12-18T17:27:09.998Z"
+        },
         {
           "value": 53243,
           "date": "2025-12-10T13:39:12.551Z"
@@ -3828,6 +3808,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 35000,
+          "date": "2025-12-18T17:27:19.800Z"
+        },
+        {
           "value": 36169,
           "date": "2025-12-16T19:13:12.660Z"
         },
@@ -3891,6 +3875,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 27000,
+          "date": "2025-12-18T17:27:29.601Z"
+        },
         {
           "value": 25331,
           "date": "2025-12-16T19:13:22.059Z"
@@ -4023,6 +4011,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 52498,
+          "date": "2025-12-18T17:27:47.067Z"
+        },
         {
           "value": 53049,
           "date": "2025-12-16T19:13:40.980Z"
@@ -4727,6 +4719,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 40749,
+          "date": "2025-12-18T17:29:00.816Z"
+        },
+        {
           "value": 40899,
           "date": "2025-12-10T13:40:49.848Z"
         },
@@ -5188,6 +5184,10 @@
       "ssd": "512",
       "prices": [
         {
+          "value": 729990,
+          "date": "2025-12-18T17:18:59.226Z"
+        },
+        {
           "value": 552499,
           "date": "2025-12-16T19:04:06.913Z"
         },
@@ -5211,26 +5211,6 @@
       "linksAlt": []
     },
     {
-      "id": 13575,
-      "name": "IIISI",
-      "link": "https://www.mercadolibre.com.ar/mini-pc-msi-cubi-n-adl-021us-intel-celeron-n100-de-4-gb-de-ram/p/MLA38322049?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "cpu": "N100",
-      "ram": "4",
-      "ssd": "240",
-      "prices": [
-        {
-          "value": 442156,
-          "date": "2025-12-08T18:35:33.403Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-12-08T18:34:51.034Z"
-        }
-      ],
-      "linksAlt": []
-    },
-    {
       "id": 82479,
       "name": "BMax N150",
       "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-intel-celeron-b4-ultra-n150-16gb-512gb/p/MLA59198528?offer_type=OFFICIAL_STORE",
@@ -5239,6 +5219,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 399999,
+          "date": "2025-12-18T17:20:09.680Z"
+        },
         {
           "value": 384029,
           "date": "2025-12-16T19:06:10.485Z"
