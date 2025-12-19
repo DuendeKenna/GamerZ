@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 599926,
+      "total": 587148,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 749132,
+      "total": 733310,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -374,6 +374,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 299000,
+          "date": "2025-12-19T17:19:56.762Z"
+        },
+        {
           "value": 279998,
           "date": "2025-12-16T19:03:39.973Z"
         },
@@ -490,6 +494,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 61999,
+          "date": "2025-12-19T17:20:32.515Z"
+        },
         {
           "value": 47499,
           "date": "2025-12-16T19:06:19.899Z"
@@ -669,6 +677,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 68399,
+          "date": "2025-12-19T17:20:50.149Z"
+        },
+        {
           "value": 72343,
           "date": "2025-12-16T19:06:38.800Z"
         },
@@ -800,6 +812,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 87699,
+          "date": "2025-12-19T17:24:05.128Z"
+        },
         {
           "value": 97699,
           "date": "2025-12-18T17:24:32.379Z"
@@ -1053,6 +1069,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 69999,
+          "date": "2025-12-19T17:24:22.819Z"
+        },
+        {
           "value": 65899,
           "date": "2025-12-18T17:24:51.580Z"
         },
@@ -1200,6 +1220,10 @@
       "description": "",
       "prices": [
         {
+          "value": 99999,
+          "date": "2025-12-19T17:24:40.815Z"
+        },
+        {
           "value": 97618,
           "date": "2025-12-16T19:10:26.727Z"
         },
@@ -1307,6 +1331,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 92000,
+          "date": "2025-12-19T17:24:58.578Z"
+        },
         {
           "value": 117499,
           "date": "2025-12-18T17:25:25.173Z"
@@ -1481,6 +1509,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 214863,
+          "date": "2025-12-19T17:23:18.522Z"
+        },
+        {
           "value": 210362,
           "date": "2025-12-18T17:23:44.055Z"
         },
@@ -1528,6 +1560,10 @@
         "https://www.mercadolibre.com.ar/placa-de-video-msi-geforce-rtx-3050-oc-6gb-gddr6-96bits/p/MLA37776074?offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 487069,
+          "date": "2025-12-19T17:23:28.121Z"
+        },
         {
           "value": 497699,
           "date": "2025-12-18T17:23:53.756Z"
@@ -1716,6 +1752,10 @@
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
         {
+          "value": 851910,
+          "date": "2025-12-19T17:23:45.588Z"
+        },
+        {
           "value": 710999,
           "date": "2025-12-18T17:24:13.089Z"
         },
@@ -1737,6 +1777,10 @@
       "visible": 1,
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "prices": [
+        {
+          "value": 823603,
+          "date": "2025-12-19T17:23:55.257Z"
+        },
         {
           "value": 851298,
           "date": "2025-12-18T17:24:22.888Z"
@@ -2488,6 +2532,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 105000,
+          "date": "2025-12-19T17:22:02.936Z"
+        },
+        {
           "value": 111389,
           "date": "2025-12-16T20:16:07.025Z"
         },
@@ -2602,6 +2650,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 214589,
+          "date": "2025-12-19T17:22:12.623Z"
+        },
         {
           "value": 164999,
           "date": "2025-12-18T17:22:38.835Z"
@@ -2882,6 +2934,10 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 178081,
+          "date": "2025-12-19T17:22:46.059Z"
+        },
         {
           "value": 185992,
           "date": "2025-12-16T19:08:48.871Z"
@@ -3576,6 +3632,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 19900,
+          "date": "2025-12-19T17:26:28.002Z"
+        },
+        {
           "value": 33000,
           "date": "2025-12-18T17:27:00.331Z"
         },
@@ -3689,6 +3749,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 53243,
+          "date": "2025-12-19T17:26:38.038Z"
+        },
         {
           "value": 54999,
           "date": "2025-12-18T17:27:09.998Z"
@@ -3808,6 +3872,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 34335,
+          "date": "2025-12-19T17:26:47.928Z"
+        },
+        {
           "value": 35000,
           "date": "2025-12-18T17:27:19.800Z"
         },
@@ -3875,6 +3943,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 32599,
+          "date": "2025-12-19T17:26:57.559Z"
+        },
         {
           "value": 27000,
           "date": "2025-12-18T17:27:29.601Z"
@@ -3947,12 +4019,16 @@
     },
     {
       "id": 78296,
-      "name": "Cabledo | Mecánico Noganet",
+      "name": "Cabledo | Mecánico Hamr's",
       "description": "",
-      "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-noganet-ganon-qwerty-cherry-mx-blue-ingles-us-color-negro-con-luz-rgb/p/MLA16189184?offer_type=BEST_PRICE",
+      "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-hamers-argb-software/up/MLAU3370339947?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 53520,
+          "date": "2025-12-19T17:30:01.692Z"
+        },
         {
           "value": 47500,
           "date": "2025-12-16T19:13:31.481Z"
@@ -4182,6 +4258,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 13998,
+          "date": "2025-12-19T17:30:48.425Z"
+        },
         {
           "value": 13999,
           "date": "2025-12-08T13:14:43.126Z"
@@ -4719,6 +4799,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 44054,
+          "date": "2025-12-19T17:31:45.924Z"
+        },
+        {
           "value": 40749,
           "date": "2025-12-18T17:29:00.816Z"
         },
@@ -4866,6 +4950,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 68216,
+          "date": "2025-12-19T17:32:03.844Z"
+        },
         {
           "value": 68899,
           "date": "2025-12-16T19:15:15.095Z"
@@ -5183,6 +5271,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 684807,
+          "date": "2025-12-19T17:20:15.066Z"
+        },
         {
           "value": 729990,
           "date": "2025-12-18T17:18:59.226Z"
