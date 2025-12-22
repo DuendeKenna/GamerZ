@@ -735,28 +735,6 @@
         </div>
     </div>
 
-    <!-- Gemini AI Analysis Popup -->
-    <div id="gemini-analysis-popup" class="hidden">
-        <div class="popup-content" style="max-width: 600px;">
-            <div class="popup-header">
-                <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                    <span class="text-purple-400">✨</span> Análisis de la Base con IA
-                </h3>
-                <button onclick="closeGeminiPopup()" class="text-gray-400 hover:text-white">
-                    <span class="lucide-icon w-6 h-6" data-lucide="x"></span>
-                </button>
-            </div>
-            <div id="gemini-popup-body" class="popup-body">
-                <div id="gemini-loading" class="text-center py-8 hidden">
-                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-purple-400"></div>
-                    <p class="mt-4 text-gray-300">Analizando configuración y buscando recomendaciones...</p>
-                </div>
-                <div id="gemini-result" class="text-gray-300 space-y-4 max-w-none">
-                    <!-- Content will be injected here -->
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <script>
@@ -867,84 +845,6 @@
                 }
             }
             throw new Error('Could not get a response from the API after several attempts.');
-        }
-
-        function openGeminiPopup() {
-            document.getElementById('gemini-analysis-popup').classList.remove('hidden');
-        }
-
-        function closeGeminiPopup() {
-            document.getElementById('gemini-analysis-popup').classList.add('hidden');
-        }
-
-        async function analyzeSelectedBase() {
-            const base = dataMap.baseOptions[selectedBaseIndex];
-            if (!base) return;
-
-            const cpu = dataMap.cpuOptions.find(c => c.id == base.cpu);
-            const mother = dataMap.motherboardOptions.find(m => m.id == base.mother);
-            const ram = dataMap.ramOptions.find(r => r.id == base.ram);
-
-            if (!cpu || !mother || !ram) {
-                showToast('Por favor, seleccione CPU, Mother y RAM para la base.', 'error');
-                return;
-            }
-
-            openGeminiPopup();
-            const loadingDiv = document.getElementById('gemini-loading');
-            const resultDiv = document.getElementById('gemini-result');
-            loadingDiv.classList.remove('hidden');
-            resultDiv.classList.add('hidden');
-            resultDiv.innerHTML = '';
-
-            const prompt = `Actúa como un experto en armado de PCs para el mercado argentino. Analiza esta "base" de componentes: CPU: "${cpu.name}", Motherboard: "${mother.name}", RAM: "${ram.name}" (Cantidad: ${base.cantRam}).\n\nResponde en el siguiente formato:\n\n**Análisis de la Base:**\n[Describe en 2-3 frases para qué tipo de usuario y uso es ideal esta configuración (ej: gaming 1080p, edición de video, etc.) y cuáles son sus puntos fuertes.]\n\n**Recomendación de GPU:**\n[Recomienda UNA GPU específica que haga un buen equilibrio con esta base, explicando en una frase por qué es una buena elección.]\n\n**Recomendación de Fuente (PSU):**\n[Recomienda UNA potencia y certificación de fuente (ej: 650W 80+ Bronze) explicando en una frase por qué es adecuada.]`;
-
-            try {
-                const responseText = await callGeminiAPI(prompt);
-                let formattedHtml = responseText
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                    .replace(/\n/g, '<br>');
-                resultDiv.innerHTML = formattedHtml;
-            } catch (error) {
-                console.error('Error analyzing base:', error);
-                resultDiv.innerHTML = `<p class="text-red-400">Hubo un error al contactar a la IA. Por favor, intente de nuevo. Error: ${error.message}</p>`;
-                showToast('Error al analizar la base.', 'error');
-            } finally {
-                loadingDiv.classList.add('hidden');
-                resultDiv.classList.remove('hidden');
-            }
-        }
-
-        async function generateDescription(categoryKey, index, buttonElement) {
-            const product = dataMap[categoryKey][index];
-            if (!product || !product.name) {
-                showToast('El producto necesita un nombre para generar una descripción.', 'error');
-                return;
-            }
-
-            const originalIcon = buttonElement.innerHTML;
-            buttonElement.innerHTML = `<div class="w-4 h-4 border-2 border-purple-400 border-t-transparent rounded-full animate-spin"></div>`;
-            buttonElement.disabled = true;
-
-            const prompt = `Genera una descripción de producto concisa y atractiva (máximo 2-3 frases) para el siguiente componente de PC: "${product.name}". Enfócate en el público gamer y creador de contenido de Argentina. Destaca su característica principal.`;
-
-            try {
-                const responseText = await callGeminiAPI(prompt);
-                const cleanText = responseText.replace(/[*_]/g, '');
-
-                const textarea = document.querySelector(`#row-${categoryKey}-${index} textarea`);
-                if (textarea) {
-                    textarea.value = cleanText;
-                    updateProduct(categoryKey, index, 'description', cleanText);
-                }
-                showToast('Descripción generada con IA.');
-            } catch (error) {
-                console.error('Error generating description:', error);
-                showToast('Error al generar la descripción.', 'error');
-            } finally {
-                buttonElement.innerHTML = originalIcon;
-                buttonElement.disabled = false;
-            }
         }
 
 
@@ -1572,7 +1472,7 @@
             return total;
         }
 
-        function renderSelectedBundleDetails() {
+        function renderSelectedBundleDetails(preservedCategory = '', preservedComponent = '') {
             const detailsContainer = document.getElementById('bundle-details');
             const bundle = dataMap.bundlesOptions[selectedBundleIndex];
             if (!bundle) {
@@ -1583,7 +1483,15 @@
 
             // build a single category dropdown and a dependent component dropdown
             const categoryKeys = Object.keys(dataMap).filter(k => Array.isArray(dataMap[k]) && k !== 'bundlesOptions');
-            const categoryOptionsHtml = categoryKeys.map(k => `<option value="${k}">${getComponentName(k)}</option>`).join('');
+            const categoryOptionsHtml = categoryKeys.map(k => `<option value="${k}" ${k === preservedCategory ? 'selected' : ''}>${getComponentName(k)}</option>`).join('');
+
+            let componentOptionsHtml = '<option value="">-- Seleccione componente --</option>';
+            if (preservedCategory && dataMap[preservedCategory]) {
+                componentOptionsHtml += dataMap[preservedCategory].map(c =>
+                    `<option value="${c.id}" ${String(c.id) === String(preservedComponent) ? 'selected' : ''}>${c.name} ($${(c.price || 0).toLocaleString('es-AR')})</option>`
+                ).join('');
+            }
+
             const categorySelectors = `
             <div>
                 <label class="block text-sm font-medium mb-1">Categoría</label>
@@ -1595,7 +1503,7 @@
             <div>
                 <label class="block text-sm font-medium mb-1">Componente</label>
                 <select id="bundle-component-select" class="w-full bg-gray-800 border border-gray-700 text-gray-200 p-2 rounded">
-                    <option value="">-- Seleccione componente --</option>
+                    ${componentOptionsHtml}
                 </select>
             </div>
         `;
@@ -1626,17 +1534,6 @@
                     <input type="text" value="${bundle.name || ''}" oninput="updateBundle('name', this.value)" class="w-full bg-gray-800 border border-gray-700 text-gray-200 p-2 rounded">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Ganancia (Bundle)</label>
-                    <div class="relative">
-                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
-                        <input type="text" value="${(bundle.profit || 0).toLocaleString('es-AR')}" 
-                            oninput="formatPriceInput(this)"
-                            onchange="updateBundle('profit', this.value)"
-                            class="w-full pl-7 bg-gray-900 border-gray-700 text-teal-400 font-bold rounded-md" 
-                            placeholder="0">
-                    </div>
-                </div>
-                <div>
                     <label class="block text-sm font-medium mb-1">ID</label>
                     <div class="w-full p-2 bg-gray-900 rounded-md text-xs font-mono text-gray-400 truncate">${bundle.id}</div>
                 </div>
@@ -1645,25 +1542,50 @@
                     <textarea oninput="updateBundle('description', this.value)" class="w-full bg-gray-800 border border-gray-700 text-gray-200 p-2 rounded" rows="2">${bundle.description || ''}</textarea>
                 </div>
             </div>
+
             <div class="mb-4">
-                <div class="font-semibold mb-2">Componentes en el Bundle</div>
-                <div class="border border-gray-700 rounded">${itemsHtml}</div>
+                <div class="font-semibold mb-2 text-indigo-300">Componentes en el Bundle</div>
+                <div class="border border-gray-700 rounded overflow-hidden h-auto bg-gray-900/30">${itemsHtml}</div>
             </div>
-            <div class="mb-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 bg-gray-900/50 rounded-lg border border-gray-700 items-start">
                 <div>
-                    <label class="block text-sm font-medium mb-1">Añadir componente</label>
-                    <div class="grid grid-cols-2 gap-2">${categorySelectors}</div>
-                </div>
-                <div>
-                    <label class="block text-sm font-medium mb-1">Acciones</label>
-                    <div class="flex gap-2">
-                        <button onclick="addSelectedComponentToBundle()" class="btn btn-primary">Añadir seleccionado</button>
+                    <label class="block text-sm font-medium mb-2 text-indigo-300">Añadir componente</label>
+                    <div class="grid grid-cols-1 gap-3 mb-3">
+                        ${categorySelectors}
                     </div>
-                    <div class="mt-4">
-                        <div class="text-sm text-gray-300">Total Componentes:</div>
-                        <div class="text-lg font-bold text-gray-300">$${computeBundleTotal(bundle).toLocaleString('es-AR')}</div>
-                        <div class="text-sm text-gray-300 mt-2">Total Estimado (incl. Ganancia):</div>
-                        <div class="text-2xl font-bold text-teal-400">$${(computeBundleTotal(bundle) + (bundle.profit || 0)).toLocaleString('es-AR')}</div>
+                    <button onclick="addSelectedComponentToBundle()" class="btn btn-primary w-full">
+                        <span class="lucide-icon mr-2" data-lucide="plus"></span> Añadir seleccionado
+                    </button>
+                </div>
+                
+                <div class="flex flex-col gap-4 pt-4 md:pt-0 md:border-l md:border-gray-700 md:pl-6 h-full justify-between">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-indigo-300">Ganancia (Bundle)</label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
+                            <input type="text" value="${(bundle.profit || 0).toLocaleString('es-AR')}" 
+                                oninput="formatPriceInput(this)"
+                                onchange="updateBundle('profit', this.value)"
+                                class="w-full pl-7 bg-gray-800 border-gray-700 text-teal-400 font-bold rounded-md py-2" 
+                                placeholder="0">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-end">
+                            <span class="text-sm text-gray-400 font-medium">Total Componentes:</span>
+                            <span class="text-lg font-bold text-gray-200">$${computeBundleTotal(bundle).toLocaleString('es-AR')}</span>
+                        </div>
+                        <div class="border-t border-gray-700 pt-3 flex justify-between items-end">
+                            <div>
+                                <div class="text-xs text-teal-500 uppercase tracking-wider font-bold">Total Estimado</div>
+                                <div class="text-xs text-gray-500">(incl. Ganancia)</div>
+                            </div>
+                            <div id="bundle-detail-total-price" class="text-3xl font-bold text-teal-400">
+                                $${(computeBundleTotal(bundle) + (bundle.profit || 0)).toLocaleString('es-AR')}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1718,8 +1640,8 @@
             bundle.items = bundle.items || [];
             bundle.items.push({ categoryKey, id: Number(id) });
             saveDataToSessionStorage();
-            // Re-render only the details pane to show the new item list and keep inputs focused.
-            renderSelectedBundleDetails();
+            // Re-render passing current selection to preserve it
+            renderSelectedBundleDetails(categoryKey, id);
             // Update the bundle total displayed in the left list in-place to avoid replacing the list DOM.
             const bundleItemDiv = document.getElementById(`bundle-item-${selectedBundleIndex}`);
             if (bundleItemDiv) {
@@ -1932,11 +1854,6 @@
                         <span class="font-medium">Visible</span>
                     </label>
                 </div>
-            </div>
-            <div class="mt-6">
-                <button onclick="analyzeSelectedBase()" class="btn btn-primary w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700">
-                    <span class="lucide-icon mr-2" data-lucide="sparkles"></span> ✨ Analizar Base con IA
-                </button>
             </div>
         `;
             lucide.createIcons();
@@ -2190,10 +2107,7 @@
                         customColumns = `
                                 <td class="px-2 py-2 hidden md:table-cell">
                                     <div class="relative">
-                                        <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none pr-8">${product.description || ''}</textarea>
-                                        <button onclick="generateDescription('${categoryKey}', ${index}, this)" class="absolute bottom-2 right-2 text-purple-400 hover:text-purple-300 p-1 rounded-full bg-gray-900/50 hover:bg-gray-900" title="✨ Generar descripción con IA">
-                                            <span class="lucide-icon w-4 h-4" data-lucide="sparkles"></span>
-                                        </button>
+                                        <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
                                     </div>
                                 </td>
                                 <td class="px-2 py-2 hidden md:table-cell">
@@ -2204,10 +2118,7 @@
                         customColumns = `
                             <td class="px-2 py-2 hidden md:table-cell">
                                 <div class="relative">
-                                    <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none pr-8">${product.description || ''}</textarea>
-                                    <button onclick="generateDescription('${categoryKey}', ${index}, this)" class="absolute bottom-2 right-2 text-purple-400 hover:text-purple-300 p-1 rounded-full bg-gray-900/50 hover:bg-gray-900" title="✨ Generar descripción con IA">
-                                        <span class="lucide-icon w-4 h-4" data-lucide="sparkles"></span>
-                                    </button>
+                                    <textarea rows="2" style="min-height:2.5em;max-height:4.5em;" oninput="updateProduct('${categoryKey}', ${index}, 'description', this.value)" class="w-full resize-none">${product.description || ''}</textarea>
                                 </div>
                             </td>`;
                     }
