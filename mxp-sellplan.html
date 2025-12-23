@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MXP | Manual de Juego v2.0</title>
+
+    <!-- Cargando Tailwind CSS (Script vital) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Fuentes */
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ESTILOS BASE (Fallback por si Tailwind no carga) */
+        .main-container {
+            background-color: #060606;
+            /* Fondo oscuro */
+            color: #f3f4f6;
+            /* Color de texto claro forzado (equivale a gray-100) */
+        }
+
+        /* Aseguramos que los links o textos no queden oscuros si falla el framework */
+        a,
+        h1,
+        h2,
+        h3,
+        h4,
+        p,
+        li {
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body class="main-container text-gray-100">
+
+    <div class="container max-w-4xl mx-auto p-6 md:p-10">
+
+        <!-- Logo -->
+        <img src="MillennialGAMERXP.logo.png" alt="Logo Millennial Gamer XP"
+            class="w-full max-w-lg mx-auto mb-8 rounded-lg"
+            onerror="this.src='https://placehold.co/600x200/ef4444/ffffff?text=Millennial+GAMER+XP'; this.onerror=null;">
+
+        <!-- Título -->
+        <h1 class="text-4xl md:text-5xl font-bold text-center pb-10 text-transparent bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400"
+            style="background-image: linear-gradient(to right, #ef4444, #fb923c, #facc15); -webkit-background-clip: text;background-clip: text;">
+            MXP | Manual de Juego v2.0
+        </h1>
+
+        <!-- Contenido -->
+        <div class="bg-gray-900 p-6 md:p-8 rounded-lg shadow-2xl border border-gray-800">
+
+            <!-- Módulo 1 -->
+            <h2 class="text-3xl font-bold mt-1 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
+                Módulo 1: El Juego, los Jugadores y Roles
+            </h2>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">0. Misión Principal:</h3>
+            <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+            </p>
+
+            "Acercar la Experiencia del Gamer Millennial a la comunidad hispanohablante, tocando la nostalgia y el
+            humor, la filosofía y la historia, el arte y la creación, otorgando nuevas maneras de disfrutar los frutos
+            de una Era Épica (90s~2012) con el aporte comunitario y nuestra auténtica creatividad."
+            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">1. Misión de Despegue:</h3>
+            <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                "Ofrecemos 'Máquinas del Tiempo' que
+                aportan una experiencia <strong class="text-orange-400">Plug & Play</strong> reviviendo la era dorada
+                del gaming y el arte audiovisual del cruce de milenios."
+            </p>
+
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">2. Los Roles (Quién hace qué):</h3>
+
+            <p class="text-xl font-semibold text-gray-100 mt-4">Diego (El Arquitecto Full Stack):</p>
+            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
+                <li>Dueño y responsable del <strong class="text-orange-400">Core</strong>: la MillennialXP
+                    (Concepto, Desarrollo, Instalación y Personalización).</li>
+                <li>Responsable del <strong class="text-orange-400">Pack de Juegos de PC</strong> (Selección,
+                    Configuración, Modding y Testing).</li>
+                <li>Responsable del <strong class="text-orange-400">Pack de Emulación</strong> (Selección, Configuración
+                    y Testing).</li>
+                <li>Desarrollador (Web & Soft).</li>
+                <li>Diseño Gráfico e Identidad Visual.</li>
+                <li>Investigación de Mercado y Armado de Hardware.</li>
+                <li>Servicio Técnico.</li>
+                <li>Creación de Contenido: Ideas, Guión, Voz y Personajes, Edición Audiovisual, Grabación de
+                    Video/Gameplays.</li>
+                <li>Comunicación Técnica en Redes.</li>
+
+                <li><strong class="text-orange-400">Voto final</strong> sobre Producto, Diseño y Dirección de la Marca.
+                </li>
+            </ul>
+
+            <p class="text-xl font-semibold text-gray-100 mt-4">Leo (El Vendedor y Difusor):</p>
+            <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
+                <li>Responsable de Vender / Cierre de Ventas.</li>
+                <small>
+                    <h5>Futuros Roles:</h5>
+                    <li>Marketing y Publicidad.</li>
+                    <li>Testing y Grabación de Video/Gameplays.</li>
+                    <li>Community Manager (Gestión de Redes y Comunicación).</li>
+                </small>
+            </ul>
+
+            <!-- Módulo 2 -->
+            <h2 class="text-3xl font-bold mt-12 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
+                Módulo 2: El Capital (y la Repartija)
+            </h2>
+
+            <div class="bg-gray-800 p-6 rounded-lg my-6 text-lg text-gray-200 leading-relaxed">
+                <h3 class="text-2xl font-semibold mb-4 text-yellow-400">El costo y los números:</h3>
+
+                <div class="mb-6">
+                    <label for="bundle-selector" class="block text-sm font-medium text-gray-400 mb-2">Seleccionar Bundle
+                        de Venta:</label>
+                    <select id="bundle-selector"
+                        class="w-full bg-gray-900 border border-gray-700 text-yellow-400 font-bold p-3 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+                        <option value="">Cargando bundles...</option>
+                    </select>
+                </div>
+
+                <div id="bundle-items-container" class="space-y-2 mb-6 hidden">
+                    <p class="text-sm text-gray-400 mb-2">Componentes e Insumos:</p>
+                    <div id="bundle-items-list" class="grid grid-cols-1 gap-2">
+                        <!-- Items cargados dinámicamente -->
+                    </div>
+                </div>
+
+                <p class="mt-6">
+                    El <strong class="text-orange-400">Precio de Venta</strong> se calcula sumando el costo de hardware
+                    más la ganancia definida en el bundle:
+                </p>
+
+                <!-- Desglose Financiero Dinámico -->
+                <div class="font-mono bg-black/30 p-4 rounded mt-4 border border-gray-700">
+                    <div class="flex justify-between mb-1 border-b border-gray-700 pb-2">
+                        <span class="text-gray-400">Costo Hardware:</span>
+                        <span class="text-red-400" id="display-costo-suma">$0</span>
+                    </div>
+                    <div class="flex justify-between mb-1 border-b border-gray-700 pb-2">
+                        <span class="text-gray-400">(+) Ganancia Objetivo:</span>
+                        <span class="text-yellow-500" id="display-ganancia-obj">$0</span>
+                    </div>
+                    <div class="flex justify-between mb-3 pt-2">
+                        <strong class="text-xl text-white">= PRECIO DE VENTA:</strong>
+                        <strong class="text-xl text-green-400" id="display-venta">$0</strong>
+                    </div>
+
+                    <div class="flex justify-between mb-1 text-yellow-500 opacity-80 text-sm">
+                        <span>Ganancia Bruta Real:</span>
+                        <span id="display-bruta">$0</span>
+                    </div>
+
+                    <div class="flex justify-between mb-1 text-red-400 opacity-80 text-sm">
+                        <span>(-) Fondo de Garantía (8%):</span>
+                        <span id="display-garantia">-$0</span>
+                    </div>
+
+                    <div class="flex justify-between mt-2 border-t-2 border-green-500 pt-2 text-xl">
+                        <strong class="text-green-400">GANANCIA NETA (A repartir):</strong>
+                        <strong class="text-green-400" id="display-neta">$0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-lg my-6 space-y-4">
+                <h4 class="text-xl font-semibold text-gray-100 italic opacity-80">Distribución de Ingresos por Venta:
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-gray-900/50 p-4 rounded border border-gray-700">
+                        <p class="text-sm text-gray-400">Leo (33%)</p>
+                        <p class="text-xl font-bold text-green-400" id="display-ale-base">$0</p>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded border border-gray-700">
+                        <p class="text-sm text-gray-400">Inversor (10%)</p>
+                        <p class="text-xl font-bold text-yellow-500" id="display-inversor">$0</p>
+                    </div>
+                    <div class="bg-gray-900/50 p-4 rounded border border-gray-700">
+                        <p class="text-sm text-gray-400">Diego (57%)</p>
+                        <p class="text-xl font-bold text-blue-400" id="display-diego-base">$0</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <h2 class="text-3xl font-bold mt-1 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
+                Módulo 3: El Futuro
+            </h2>
+            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">1. La Visión:</h3>
+            <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                "Somos lideres en difundir la Experiencia Millennial Definitiva, honrando su arte y filosofía, historia
+                y legado, juntando a la comunidad gamer y desarrolladora (independiente o empresarial), inspirando a
+                consumidores para convertirse en creadores."
+            </p>
+
+            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">2. El Objetivo:</h3>
+            <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                "Usamos la Misión de Despegue para sustentar la labor mientras expandimos la Marca y la Comunidad,
+                creando un Ecosistema Sostenible de Software y Contenido Original que reemplace la MXP p1r4ta."
+            </p>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE CÁLCULO DINÁMICO -->
+    <script>
+        // --- CONFIGURACIÓN ---
+        const CANT_BUNDLES_VISIBLES = 3; // Configurable: cuántos bundles mostrar
+        const PORCENTAJE_GARANTIA = 0.08;
+        const SHARE_DIEGO = 0.57;
+        const SHARE_LEO = 0.33;
+        const SHARE_INVERSOR = 0.10;
+
+        let globalData = null;
+
+        const fmt = (num) => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(num);
+
+        async function init() {
+            try {
+                const response = await fetch('productsH.json');
+                globalData = await response.json();
+                populateSelector();
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById('bundle-selector').innerHTML = '<option value="">Error al cargar datos</option>';
+            }
+        }
+
+        function populateSelector() {
+            const selector = document.getElementById('bundle-selector');
+            const bundles = globalData.bundlesOptions || [];
+            selector.innerHTML = '<option value="">-- Seleccionar un bundle --</option>';
+
+            bundles.slice(0, CANT_BUNDLES_VISIBLES).forEach((b, idx) => {
+                const opt = document.createElement('option');
+                opt.value = idx;
+                opt.textContent = b.name;
+                selector.appendChild(opt);
+            });
+
+            selector.addEventListener('change', (e) => {
+                if (e.target.value !== "") actualizarValores(bundles[e.target.value]);
+            });
+        }
+
+        function findComponent(categoryKey, id) {
+            return (globalData[categoryKey] || []).find(c => String(c.id) === String(id));
+        }
+
+        function actualizarValores(bundle) {
+            const itemsList = document.getElementById('bundle-items-list');
+            const itemsContainer = document.getElementById('bundle-items-container');
+            itemsList.innerHTML = '';
+            let costoHardware = 0;
+
+            bundle.items.forEach(it => {
+                const comp = findComponent(it.categoryKey, it.id);
+                if (comp) {
+                    let precio = (it.categoryKey === 'baseOptions') ? (comp.total || 0) : (comp.price || (comp.prices?.[0]?.value || 0));
+                    costoHardware += precio;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = "flex justify-between items-center p-2 bg-black/20 rounded text-xs border border-gray-800 hover:border-gray-600 transition-colors";
+                    itemDiv.innerHTML = `
+                        <div class="flex-grow truncate mr-2">
+                            <span class="text-gray-400">[${it.categoryKey.replace('Options', '')}]</span> 
+                            <span class="text-gray-100 font-medium">${comp.name}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gray-300 font-mono">${fmt(precio)}</span>
+                            ${comp.link ? `<a href="${comp.link}" target="_blank" class="text-orange-400 hover:text-orange-300"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>` : ''}
+                        </div>`;
+                    itemsList.appendChild(itemDiv);
+                }
+            });
+
+            itemsContainer.classList.remove('hidden');
+            const profit = bundle.profit || 0;
+            const precioVenta = costoHardware + profit;
+            const fondoGarantia = profit * PORCENTAJE_GARANTIA;
+            const gananciaNeta = profit - fondoGarantia;
+
+            document.getElementById('display-costo-suma').textContent = fmt(costoHardware);
+            document.getElementById('display-ganancia-obj').textContent = fmt(profit);
+            document.getElementById('display-venta').textContent = fmt(precioVenta);
+            document.getElementById('display-bruta').textContent = fmt(profit);
+            document.getElementById('display-garantia').textContent = "-" + fmt(fondoGarantia);
+            document.getElementById('display-neta').textContent = fmt(gananciaNeta);
+
+            document.getElementById('display-ale-base').textContent = fmt(gananciaNeta * SHARE_LEO);
+            document.getElementById('display-inversor').textContent = fmt(gananciaNeta * SHARE_INVERSOR);
+            document.getElementById('display-diego-base').textContent = fmt(gananciaNeta * SHARE_DIEGO);
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

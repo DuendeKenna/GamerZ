@@ -16,6 +16,7 @@
         rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <style>
         /* General Styles */
         html {
@@ -280,7 +281,7 @@
         }
 
         .list-item {
-            cursor: pointer;
+            cursor: grab;
             padding: 0.5rem 0.75rem;
             border-radius: 0.5rem;
             transition: background-color 0.2s;
@@ -292,6 +293,10 @@
             min-height: 64px;
         }
 
+        .list-item:active {
+            cursor: grabbing;
+        }
+
         .list-item.active {
             background-color: #6366f1;
             color: white;
@@ -300,6 +305,12 @@
 
         .list-item:not(.active):hover {
             background-color: #374151;
+        }
+
+
+        .sortable-ghost {
+            opacity: 0.4;
+            background-color: #6366f1 !important;
         }
 
         /* Accordion Styles */
@@ -574,7 +585,7 @@
                 <span id="price-check-loop-btn-text">Chequeo en Lote (Manual)</span>
             </button>
             <button id="price-check-api-btn" onclick="togglePriceCheckAPI()"
-                class="btn btn-info border-cyan-500 hover:bg-cyan-600 ml-2">
+                class="hidden btn btn-info border-cyan-500 hover:bg-cyan-600 ml-2">
                 <span class="lucide-icon mr-2" data-lucide="cloud-lightning"></span>
                 <span id="price-check-api-btn-text">Chequeo API</span>
             </button>
@@ -1131,8 +1142,9 @@
                     if (categoryKey === 'towersOptions' && item.description === undefined) {
                         item.description = '';
                     }
-                    if (categoryKey === 'bundlesOptions' && item.profit === undefined) {
-                        item.profit = 0;
+                    if (categoryKey === 'bundlesOptions') {
+                        if (item.profit === undefined) item.profit = 0;
+                        if (item.order === undefined) item.order = 0;
                     }
                 });
             }
@@ -1442,14 +1454,30 @@
 
         // --- BASES Section Rendering ---
         // --- BUNDLES Section Rendering (new) ---
+        let selectedBundleId = null;
         let selectedBundleIndex = 0;
 
         function renderBundlesSection() {
             const container = document.getElementById('bundles-section');
             if (!dataMap.bundlesOptions) dataMap.bundlesOptions = [];
+
+            // Ensure order property and sort
+            dataMap.bundlesOptions.forEach((b, i) => { if (b.order === undefined) b.order = i; });
+            dataMap.bundlesOptions.sort((a, b) => a.order - b.order);
+
             if (dataMap.bundlesOptions.length === 0) {
-                dataMap.bundlesOptions.push({ id: generateUniqueId(getAllIds()), name: 'Nuevo Bundle', items: [], visible: 1, description: '' });
+                const newId = generateUniqueId(getAllIds());
+                dataMap.bundlesOptions.push({ id: newId, name: 'Nuevo Bundle', items: [], visible: 1, description: '', order: 0 });
+                selectedBundleId = newId;
             }
+
+            if (selectedBundleId === null && dataMap.bundlesOptions.length > 0) {
+                selectedBundleId = dataMap.bundlesOptions[0].id;
+            }
+
+            // Sync selectedBundleIndex
+            const foundIdx = dataMap.bundlesOptions.findIndex(b => b.id === selectedBundleId);
+            selectedBundleIndex = foundIdx !== -1 ? foundIdx : 0;
 
             container.innerHTML = `
             <div class="flex flex-col gap-2">
@@ -1484,17 +1512,55 @@
 
             renderSelectedBundleDetails();
             lucide.createIcons();
+            initBundlesSortable();
+        }
+
+        function initBundlesSortable() {
+            const el = document.getElementById('bundle-list');
+            if (!el) return;
+            new Sortable(el, {
+                animation: 150,
+                ghostClass: 'sortable-ghost',
+                onEnd: function (evt) {
+                    const oldIndex = evt.oldIndex;
+                    const newIndex = evt.newIndex;
+                    if (oldIndex === newIndex) return;
+
+                    // Reorder the array
+                    const item = dataMap.bundlesOptions.splice(oldIndex, 1)[0];
+                    dataMap.bundlesOptions.splice(newIndex, 0, item);
+
+                    // Update 'order' property for all items to match their new index
+                    dataMap.bundlesOptions.forEach((b, i) => {
+                        b.order = i;
+                    });
+
+                    // Sync selectedBundleIndex since the array changed
+                    const foundIdx = dataMap.bundlesOptions.findIndex(b => b.id === selectedBundleId);
+                    selectedBundleIndex = foundIdx !== -1 ? foundIdx : 0;
+
+                    saveDataToSessionStorage();
+                    renderBundlesSection();
+                }
+            });
         }
 
         function selectBundle(index) {
             selectedBundleIndex = index;
+            if (dataMap.bundlesOptions[index]) {
+                selectedBundleId = dataMap.bundlesOptions[index].id;
+            }
             renderBundlesSection();
         }
 
         function addBundle() {
-            const newBundle = { id: generateUniqueId(getAllIds()), name: 'Nuevo Bundle', items: [], visible: 1, description: '', profit: 0 };
+            const maxOrder = dataMap.bundlesOptions.length > 0
+                ? Math.max(...dataMap.bundlesOptions.map(b => b.order || 0))
+                : 0;
+            const newId = generateUniqueId(getAllIds());
+            const newBundle = { id: newId, name: 'Nuevo Bundle', items: [], visible: 1, description: '', profit: 0, order: maxOrder + 1 };
             dataMap.bundlesOptions.push(newBundle);
-            selectedBundleIndex = dataMap.bundlesOptions.length - 1;
+            selectedBundleId = newId;
             renderBundlesSection();
             saveDataToSessionStorage();
         }
@@ -1511,8 +1577,9 @@
             clone.name = (clone.name || 'Bundle') + ' (copia)';
             // ensure nested arrays exist
             clone.items = Array.isArray(clone.items) ? clone.items.slice() : [];
+            clone.order = clone.order + 0.5; // temporary order to put it after the source
             dataMap.bundlesOptions.push(clone);
-            selectedBundleIndex = dataMap.bundlesOptions.length - 1;
+            selectedBundleId = clone.id;
             renderBundlesSection();
             saveDataToSessionStorage();
             showToast('Bundle clonado.');
@@ -1521,7 +1588,11 @@
         function deleteSelectedBundle() {
             if (!dataMap.bundlesOptions || dataMap.bundlesOptions.length === 0) return;
             dataMap.bundlesOptions.splice(selectedBundleIndex, 1);
-            selectedBundleIndex = Math.max(0, selectedBundleIndex - 1);
+            if (dataMap.bundlesOptions.length > 0) {
+                selectedBundleId = dataMap.bundlesOptions[Math.max(0, selectedBundleIndex - 1)].id;
+            } else {
+                selectedBundleId = null;
+            }
             renderBundlesSection();
             saveDataToSessionStorage();
         }
