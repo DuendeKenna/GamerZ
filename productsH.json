@@ -1363,10 +1363,14 @@
     {
       "id": 64421,
       "name": "1TB - HDD",
-      "link": "https://www.mercadolibre.com.ar/disco-duro-western-digital-blue-wd10ezex-1tb-7200-rpm/p/MLA20953266?offer_type=OFFICIAL_STORE",
+      "link": "https://www.mercadolibre.com.ar/disco-duro-interno-hdd-western-digital-1tb-wd-7200-rpm-sata-iii-av-gp-wd10eurx/p/MLA6131430?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 79999,
+          "date": "2025-12-23T12:21:19.555Z"
+        },
         {
           "value": 123874,
           "date": "2025-12-23T11:57:43.605Z"
@@ -1448,7 +1452,9 @@
           "date": "2025-11-21T01:03:24.493Z"
         }
       ],
-      "linksAlt": []
+      "linksAlt": [
+        "https://www.mercadolibre.com.ar/disco-duro-western-digital-blue-wd10ezex-1tb-7200-rpm/p/MLA20953266?offer_type=OFFICIAL_STORE"
+      ]
     },
     {
       "id": 65237,
