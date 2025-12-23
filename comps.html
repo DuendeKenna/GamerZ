@@ -571,7 +571,12 @@
             </button>
             <button id="price-check-loop-btn" onclick="togglePriceCheckLoop()" class="btn btn-success">
                 <span class="lucide-icon mr-2" data-lucide="play-circle"></span>
-                <span id="price-check-loop-btn-text">Chequeo en Lote</span>
+                <span id="price-check-loop-btn-text">Chequeo en Lote (Manual)</span>
+            </button>
+            <button id="price-check-api-btn" onclick="togglePriceCheckAPI()"
+                class="btn btn-info border-cyan-500 hover:bg-cyan-600 ml-2">
+                <span class="lucide-icon mr-2" data-lucide="cloud-lightning"></span>
+                <span id="price-check-api-btn-text">Chequeo API</span>
             </button>
             <span id="price-check-queue-count" class="ml-2 font-semibold text-gray-200">0</span>
         </div>
@@ -783,8 +788,10 @@
         let priceCheckQueue = [];
         let currentQueueIndex = 0;
         let isLoopRunning = false;
+        let isApiLoopRunning = false; // New state for API loop
         // Timeout handle for delayed link opening when showing price-check popup
         let priceCheckOpenTimeout = null;
+        let apiDelay = 1500; // Delay between API calls to avoid rate limits
 
         let priceChartInstance = null;
         let openLinkManagerId = null;
@@ -796,6 +803,71 @@
             same: true,
             default: true
         };
+
+        // --- Meli API Helpers ---
+        function extractMeliId(url) {
+            if (!url) return null;
+            // Matches MLA-xxxx or MLAxxxx usually found in URLs
+            // Example: .../MLA-1456987_... or .../p/MLA1923812
+            // Also supports just ID if it starts with MLA
+            const match = url.match(/(MLA-?\d+)/i);
+            if (match) {
+                return match[1].replace('-', ''); // Remove dash if present for pure ID format if needed by endpoint
+            }
+            return null;
+        }
+
+        async function fetchMeliPrice(itemId) {
+            // Determine API base URL
+            // 1. If running on Vercel Dev (localhost:3000), use relative path to hit local API.
+            // 2. If running on Live Server (localhost:5500) or file://, hit Production API (requires CORS on Prod).
+            // 3. If running on Production (lanave.vercel.app), use relative path.
+
+            let baseUrl = '/api/chequear-precio'; // Default relative
+
+            if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+                if (location.port === '3000') {
+                    // Vercel Dev Local
+                    baseUrl = '/api/chequear-precio';
+                } else {
+                    // Live Server or other
+                    baseUrl = 'https://lanave.vercel.app/api/chequear-precio';
+                }
+            } else if (location.protocol === 'file:') {
+                baseUrl = 'https://lanave.vercel.app/api/chequear-precio';
+            }
+
+            try {
+                const response = await fetch(`${baseUrl}?itemId=${itemId}`);
+
+                // Intentar leer JSON siempre, incluso si no es ok
+                let data;
+                try {
+                    data = await response.json();
+                } catch (parseError) {
+                    // Si no es JSON (ej. error de servidor 500 HTML), data será undefined
+                }
+
+                if (!response.ok) {
+                    let friendlyMessage = `Error ${response.status}`;
+                    if (response.status === 404) friendlyMessage = 'Publicación no encontrada (Link Caído)';
+                    if (response.status === 403) friendlyMessage = 'Acceso Denegado (Error de Token o IP)';
+                    if (response.status === 400) friendlyMessage = 'ID de Item Inválido';
+
+                    const errorMsg = data && (data.error || data.message)
+                        ? `${friendlyMessage} [${data.message || data.error}]`
+                        : `${friendlyMessage} (${response.statusText})`;
+                    throw new Error(errorMsg);
+                }
+
+                if (data.error) throw new Error(data.error);
+                return data; // { price, available_quantity, title, status }
+            } catch (e) {
+                console.warn(`Falló API para ${itemId}:`, e);
+                // Return object with error so process loop can show it
+                return { error: e.message };
+            }
+        }
 
         // --- Gemini API Functions ---
         async function callGeminiAPI(prompt) {
@@ -2816,7 +2888,7 @@
             showToast('Coloreado de filas aplicado.', 'success');
         }
 
-        // --- Price Check Loop Logic (REFACTORED) ---
+        // --- Price Check Loop Logic (REFACTORED for API) ---
 
         function initializePriceCheckQueue() {
             priceCheckQueue = [];
@@ -2825,7 +2897,7 @@
                 if (!categoryKey.includes('Options')) return;
 
                 (dataMap[categoryKey] || []).forEach((product) => {
-                    // Include all products that have a link (no visibility check)
+                    // Include all products that have a link
                     if (product && product.link) {
                         priceCheckQueue.push({ categoryKey, productId: product.id });
                     }
@@ -2835,20 +2907,37 @@
         }
 
         function startSinglePriceCheckAndContinue(categoryKey, index) {
+            // ... existing logic for single manual check ...
             const product = dataMap[categoryKey][index];
             if (!product) return;
 
             const startIndex = priceCheckQueue.findIndex(item => item.productId === product.id && item.categoryKey === categoryKey);
 
             if (startIndex === -1) {
-                showToast('Este producto no puede iniciar un chequeo en lote (puede no ser visible o no tener link).', 'error');
-                openPriceCheckPopup(categoryKey, index, false); // Open for single check only
+                // Try API check first even for single items if not in queue context
+                const meliId = extractMeliId(product.link);
+                if (meliId) {
+                    showToast('Consultando API...', 'info');
+                    fetchMeliPrice(meliId).then(data => {
+                        if (data && data.price) {
+                            updateProductAndNotify(categoryKey, index, data.price, product.name);
+                        } else {
+                            showToast('API falló, abriendo manual...', 'error');
+                            openPriceCheckPopup(categoryKey, index, false);
+                        }
+                    });
+                    return;
+                }
+
+                showToast('Este producto no puede iniciar un chequeo en lote.', 'error');
+                openPriceCheckPopup(categoryKey, index, false);
                 return;
             }
 
+            // If it is in queue, start manual loop from here
             currentQueueIndex = startIndex;
             isLoopRunning = true;
-
+            isApiLoopRunning = false; // Ensure API loop is off
             processNextInQueue();
         }
 
@@ -2856,8 +2945,42 @@
             if (isLoopRunning) {
                 pausePriceCheckLoop();
             } else {
+                // Ensure API loop is off
+                isApiLoopRunning = false;
+                updateApiLoopButtonUI(false);
                 startPriceCheckLoop();
             }
+        }
+
+        function togglePriceCheckAPI() {
+            if (isApiLoopRunning) {
+                pausePriceCheckLoop(); // Re-use pause which stops everything
+            } else {
+                isLoopRunning = false; // Stop manual loop
+                updateLoopButtonUI(false);
+
+                startApiCheckLoop();
+            }
+        }
+
+        function startApiCheckLoop() {
+            isApiLoopRunning = true;
+            updateApiLoopButtonUI(true);
+
+            currentQueueIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
+
+            if (currentQueueIndex >= priceCheckQueue.length) {
+                currentQueueIndex = 0;
+                sessionStorage.setItem('priceCheckQueueIndex', '0');
+            }
+
+            if (priceCheckQueue.length === 0) {
+                showToast('No hay productos para chequear.', 'error');
+                resetPriceCheckLoop();
+                return;
+            }
+
+            processNextInQueueAPI();
         }
 
         function startPriceCheckLoop() {
@@ -2872,7 +2995,7 @@
             }
 
             if (priceCheckQueue.length === 0) {
-                showToast('No hay productos para chequear (no hay links disponibles).', 'error');
+                showToast('No hay productos para chequear.', 'error');
                 resetPriceCheckLoop();
                 return;
             }
@@ -2880,20 +3003,25 @@
             processNextInQueue();
         }
 
+
         function pausePriceCheckLoop() {
             isLoopRunning = false;
+            isApiLoopRunning = false;
             sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
             updateLoopButtonUI(false);
-            showToast('Chequeo en lote pausado.');
+            updateApiLoopButtonUI(false);
+            showToast('Chequeo pausado.');
         }
 
         function resetPriceCheckLoop() {
             isLoopRunning = false;
+            isApiLoopRunning = false;
             priceCheckQueue = [];
             currentQueueIndex = 0;
             sessionStorage.removeItem('priceCheckQueueIndex');
-            initializePriceCheckQueue(); // Rebuild the queue on reset
+            initializePriceCheckQueue();
             updateLoopButtonUI(false);
+            updateApiLoopButtonUI(false);
             updatePriceCheckQueueCount();
         }
 
@@ -2904,7 +3032,7 @@
             const idx = Number.isInteger(currentQueueIndex) ? currentQueueIndex : 0;
 
             // If the loop is running, show how many remain (including current index position)
-            if (isLoopRunning) {
+            if (isLoopRunning || isApiLoopRunning) {
                 const remaining = Math.max(0, total - idx);
                 el.textContent = String(remaining);
                 return;
@@ -2921,75 +3049,139 @@
             el.textContent = String(total);
         }
 
-        function processNextInQueue() {
-            if (!isLoopRunning) return;
+        function updateProductIdFromQueue(idx) {
+            // Helper to find dataMap coords
+            if (idx >= priceCheckQueue.length) return null;
+            const item = priceCheckQueue[idx];
+            const arr = dataMap[item.categoryKey] || [];
+            const resolvedIndex = arr.findIndex(p => p && p.id === item.productId);
+            if (resolvedIndex === -1) return null;
+            return { categoryKey: item.categoryKey, index: resolvedIndex, product: arr[resolvedIndex] };
+        }
+
+        async function processNextInQueueAPI() {
+            if (!isApiLoopRunning) return;
 
             if (currentQueueIndex >= priceCheckQueue.length) {
-                showToast('¡Chequeo en lote completado!', 'success');
+                showToast('¡Chequeo API completado!', 'success');
                 resetPriceCheckLoop();
                 return;
             }
 
+            updatePriceCheckQueueCount();
+
+            // Find next valid item
+            let coords = updateProductIdFromQueue(currentQueueIndex);
+
+            // Skip invalid items or recently updated (2 hours logic could apply here too, but usually API check is fast so we might force check all? 
+            // Lets keep 2 hour logic to be efficient)
+
             const twoHoursInMs = 2 * 60 * 60 * 1000;
             const twoHoursAgo = new Date(Date.now() - twoHoursInMs);
 
-            let itemToCheck = null;
-            while (currentQueueIndex < priceCheckQueue.length) {
-                const potentialItem = priceCheckQueue[currentQueueIndex];
-                if (!potentialItem) { currentQueueIndex++; continue; }
-
-                // Resolve the current index of the product dynamically by productId + categoryKey
-                const arr = dataMap[potentialItem.categoryKey] || [];
-                const resolvedIndex = arr.findIndex(p => p && p.id === potentialItem.productId);
-                const product = resolvedIndex > -1 ? arr[resolvedIndex] : null;
-
-                // If product missing (removed) skip
-                if (!product) {
-                    currentQueueIndex++;
-                    continue;
-                }
-
-                // Parse lastUpd safely; invalid dates => eligible
-                let eligible = true;
-                if (product.lastUpd) {
-                    try {
-                        const lastDate = new Date(product.lastUpd);
-                        if (!isNaN(lastDate.getTime())) {
-                            eligible = lastDate < twoHoursAgo;
-                        } else {
-                            eligible = true;
-                        }
-                    } catch (e) {
-                        eligible = true;
+            // If coords is null (product deleted), or recent update, skip
+            let skip = false;
+            if (!coords) skip = true;
+            else if (coords.product.lastUpd) {
+                try {
+                    const lastDate = new Date(coords.product.lastUpd);
+                    if (!isNaN(lastDate.getTime()) && lastDate > twoHoursAgo) {
+                        skip = true;
                     }
-                } else {
-                    eligible = true;
-                }
-
-                if (eligible) {
-                    // Attach resolved index so popup opens at the correct row
-                    itemToCheck = { categoryKey: potentialItem.categoryKey, productId: potentialItem.productId, index: resolvedIndex };
-                    break;
-                }
-
-                currentQueueIndex++;
+                } catch (e) { }
             }
 
-            sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
-            updateLoopButtonUI(true, `(${currentQueueIndex}/${priceCheckQueue.length})`);
+            if (skip) {
+                currentQueueIndex++;
+                // update UI progress
+                updateApiLoopButtonUI(true);
+                sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                // immediate next
+                setTimeout(processNextInQueueAPI, 0);
+                return;
+            }
 
-            if (itemToCheck) {
-                scrollToComponentRow(itemToCheck.categoryKey, itemToCheck.index);
-                setTimeout(() => {
-                    openPriceCheckPopup(itemToCheck.categoryKey, itemToCheck.index, true);
-                }, 200);
+            // Scroll to item so user sees progress
+            scrollToComponentRow(coords.categoryKey, coords.index);
+
+            const meliId = extractMeliId(coords.product.link);
+
+            if (!meliId) {
+                // Fallback to manual? Or just skip/log error for API mode?
+                // API mode implies automatic. If no ID, we can't automate.
+                // We'll skip and notify.
+                showToast(`Skip: ${coords.product.name} (Link inválido)`, 'error');
+                currentQueueIndex++;
+                sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                setTimeout(processNextInQueueAPI, 500);
+                return;
+            }
+
+            // Perform API Call
+            // Show some visual indicator on the row? (BackgroundColor handled by scrollTo)
+
+            const apiData = await fetchMeliPrice(meliId);
+
+            if (apiData && apiData.price) {
+                // Success
+                updateProductAndNotify(coords.categoryKey, coords.index, apiData.price, coords.product.name);
+
+                // Wait delay then next
+                currentQueueIndex++;
+                sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                setTimeout(processNextInQueueAPI, apiDelay);
             } else {
-                showToast('¡Chequeo en lote completado! (No hay más productos que necesiten revisión)', 'success');
-                resetPriceCheckLoop();
+                // Error
+                showToast(`Error API: ${coords.product.name} - ${apiData?.error || 'Desconocido'}`, 'error');
+                // We could stop or continue. Continue seems better.
+                currentQueueIndex++;
+                sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                setTimeout(processNextInQueueAPI, apiDelay);
             }
         }
 
+        function updateProductAndNotify(categoryKey, index, newPrice, productName) {
+            const product = dataMap[categoryKey][index];
+            const oldPrice = product.price || 0;
+            if (oldPrice !== newPrice) {
+                updateProduct(categoryKey, index, 'price', newPrice);
+                // Force UI update manually if needed (updateProduct handles standard usage but let's be sure)
+                const tableRow = document.getElementById(`row-${categoryKey}-${index}`);
+                if (tableRow) {
+                    const priceInput = tableRow.querySelector('.price-cell input');
+                    if (priceInput) priceInput.value = newPrice.toLocaleString('es-AR');
+                    applyPriceChangeVisuals(tableRow, oldPrice, newPrice);
+                }
+                showToast(`Actualizado: ${productName} ($${newPrice})`);
+            } else {
+                // Update timestamp anyway
+                updateProduct(categoryKey, index, 'price', newPrice);
+                // showToast(`Sin cambios: ${productName}`, 'same');
+            }
+        }
+
+        function updateApiLoopButtonUI(isRunning) {
+            const btn = document.getElementById('price-check-api-btn');
+            const btnText = document.getElementById('price-check-api-btn-text');
+            const icon = btn.querySelector('.lucide-icon');
+
+            const total = priceCheckQueue.length;
+            const current = currentQueueIndex;
+
+            if (isRunning) {
+                btnText.textContent = `Pausar API (${current}/${total})`;
+                icon.setAttribute('data-lucide', 'pause-circle');
+                btn.classList.add('animate-pulse');
+            } else {
+                btnText.textContent = 'Chequeo API';
+                icon.setAttribute('data-lucide', 'cloud-lightning');
+                btn.classList.remove('animate-pulse');
+            }
+            lucide.createIcons({ nodes: [icon] });
+        }
+
         function updateLoopButtonUI(isRunning, progressText = '') {
+            // ... existing manual UI update ...
             const btn = document.getElementById('price-check-loop-btn');
             const btnText = document.getElementById('price-check-loop-btn-text');
             const icon = btn.querySelector('.lucide-icon');
@@ -3000,14 +3192,13 @@
             } else {
                 const savedIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
                 if (savedIndex > 0 && savedIndex < priceCheckQueue.length) {
-                    btnText.textContent = `Continuar Chequeo (${savedIndex}/${priceCheckQueue.length})`;
+                    btnText.textContent = `Continuar Local (${savedIndex}/${priceCheckQueue.length})`;
                 } else {
                     btnText.textContent = 'Chequeo en Lote';
                 }
                 icon.setAttribute('data-lucide', 'play-circle');
             }
             lucide.createIcons({ nodes: [icon] });
-            // Update visible count (total or remaining) whenever loop UI changes
             updatePriceCheckQueueCount();
         }
 
