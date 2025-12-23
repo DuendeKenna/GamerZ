@@ -152,6 +152,10 @@
         {
           "categoryKey": "comboOptions",
           "id": 86147
+        },
+        {
+          "categoryKey": "ramOptions",
+          "id": 6555
         }
       ],
       "visible": 1,
@@ -3277,11 +3281,15 @@
     },
     {
       "id": 86147,
-      "name": "Ryzen 3200G + 16",
-      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-pc-amd-ryzen-3-3200g-mother-16-gb-ddr4/up/MLAU238932249?offer_type=OFFICIAL_STORE",
+      "name": "Ryzen 3200G + 8",
+      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-amd-ryzen-3-3200g-mother-am4-8gb-ddr4/up/MLAU1594664937?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 259990,
+          "date": "2025-12-23T21:13:12.289Z"
+        },
         {
           "value": 343599,
           "date": "2025-12-16T19:07:22.799Z"
