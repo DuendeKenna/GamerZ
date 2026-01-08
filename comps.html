@@ -3251,14 +3251,16 @@
             lucide.createIcons({ nodes: [icon] });
         }
 
-        function updateLoopButtonUI(isRunning, progressText = '') {
+        function updateLoopButtonUI(isRunning) {
             // ... existing manual UI update ...
             const btn = document.getElementById('price-check-loop-btn');
             const btnText = document.getElementById('price-check-loop-btn-text');
             const icon = btn.querySelector('.lucide-icon');
 
             if (isRunning) {
-                btnText.textContent = `Pausar Chequeo ${progressText}`;
+                const total = priceCheckQueue.length;
+                const current = currentQueueIndex;
+                btnText.textContent = `Pausar Chequeo (${current}/${total})`;
                 icon.setAttribute('data-lucide', 'pause-circle');
             } else {
                 const savedIndex = parseInt(sessionStorage.getItem('priceCheckQueueIndex') || '0', 10);
@@ -3271,6 +3273,31 @@
             }
             lucide.createIcons({ nodes: [icon] });
             updatePriceCheckQueueCount();
+        }
+
+        function processNextInQueue() {
+            if (!isLoopRunning) return;
+
+            if (currentQueueIndex >= priceCheckQueue.length) {
+                showToast('¡Chequeo manual completado!', 'success');
+                resetPriceCheckLoop();
+                return;
+            }
+
+            updatePriceCheckQueueCount();
+
+            let coords = updateProductIdFromQueue(currentQueueIndex);
+
+            if (!coords) {
+                currentQueueIndex++;
+                sessionStorage.setItem('priceCheckQueueIndex', currentQueueIndex);
+                setTimeout(processNextInQueue, 0);
+                return;
+            }
+
+            scrollToComponentRow(coords.categoryKey, coords.index);
+
+            openPriceCheckPopup(coords.categoryKey, coords.index, true);
         }
 
         // --- Code Export ---

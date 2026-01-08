@@ -2,13 +2,13 @@
   "baseOptions": [
     {
       "id": 49735,
-      "name": "Ryzen 3 3200g",
+      "name": "Ryzen 3 3200G + 16 de RAM",
       "description": "Buen rendimiento en juegos ligeros a 1080p, multitarea básica y creación de contenido principiante. Con 4 núcleos y gráfica integrada Vega 8, es el más económico y simple, pero más que suficiente si no corrés software pesado.",
       "cpu": "24931",
       "mother": "23506",
-      "ram": "6555",
+      "ram": "93477",
       "cantRam": 2,
-      "total": 376108,
+      "total": 544105,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 590464,
+      "total": 731193,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 748946,
+      "total": 937771,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -89,7 +89,7 @@
           "date": "1970-01-01T00:00:00.000Z"
         }
       ],
-      "profit": 100000,
+      "profit": 130000,
       "order": 0
     },
     {
@@ -519,6 +519,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 65999,
+          "date": "2026-01-04T15:48:31.720Z"
+        },
+        {
           "value": 62894,
           "date": "2025-12-23T11:53:07.633Z"
         },
@@ -622,6 +626,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 79688,
+          "date": "2026-01-04T15:48:41.421Z"
+        },
+        {
           "value": 96045,
           "date": "2025-12-23T11:53:17.849Z"
         },
@@ -708,6 +716,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 77499,
+          "date": "2026-01-04T15:48:50.987Z"
+        },
         {
           "value": 72343,
           "date": "2025-12-23T11:53:27.585Z"
@@ -799,6 +811,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 66499,
+          "date": "2026-01-05T14:16:17.828Z"
+        },
+        {
           "value": 69999,
           "date": "2025-12-08T12:57:55.733Z"
         },
@@ -848,6 +864,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 105575,
+          "date": "2026-01-04T16:03:00.598Z"
+        },
         {
           "value": 87699,
           "date": "2025-12-19T17:24:05.128Z"
@@ -975,6 +995,50 @@
       ]
     },
     {
+      "id": 52698,
+      "name": "500 GB - NVMe",
+      "link": "https://www.mercadolibre.com.ar/western-digital-ssd-sn5000s-pcie-gen-4x4-nvme-512gb-m2-2280/up/MLAU3336812138?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "Western Digital",
+      "prices": [
+        {
+          "value": 104999,
+          "date": "2026-01-08T14:23:31.024Z"
+        },
+        {
+          "value": 89999,
+          "date": "2026-01-05T14:59:16.524Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-01-05T14:59:01.758Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 85054,
+      "name": "500 GB - NVMe",
+      "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-480gb-crucial-e100-nvme-gen4-5000mbs/p/MLA46065423?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=4&type=product&tracking_id=2d030a31-a133-4b1a-9df1-5f2b8d34486e&wid=MLA1482712971&sid=search",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 135999,
+          "date": "2026-01-08T14:23:40.858Z"
+        },
+        {
+          "value": 99899,
+          "date": "2026-01-05T14:48:12.611Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-01-05T14:48:03.888Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
       "id": 93692,
       "name": "1 TB - NVMe",
       "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
@@ -982,6 +1046,18 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 234094,
+          "date": "2026-01-08T14:23:50.377Z"
+        },
+        {
+          "value": 224013,
+          "date": "2026-01-05T14:25:13.408Z"
+        },
+        {
+          "value": 218189,
+          "date": "2026-01-04T16:03:10.259Z"
+        },
         {
           "value": 195999,
           "date": "2025-12-18T17:24:41.948Z"
@@ -1105,6 +1181,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 99733,
+          "date": "2026-01-08T14:23:59.911Z"
+        },
+        {
+          "value": 74499,
+          "date": "2026-01-04T16:03:19.848Z"
+        },
+        {
           "value": 77900,
           "date": "2025-12-23T11:57:06.515Z"
         },
@@ -1206,9 +1290,17 @@
       "id": 28539,
       "name": "480 GB - SATA",
       "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds480g2g0a-480gb-verde/p/MLA12451965?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
+        {
+          "value": 140729,
+          "date": "2026-01-08T14:24:09.621Z"
+        },
+        {
+          "value": 110999,
+          "date": "2026-01-04T16:03:29.317Z"
+        },
         {
           "value": 96999,
           "date": "2025-12-16T19:10:17.340Z"
@@ -1259,6 +1351,14 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 131999,
+          "date": "2026-01-08T14:24:19.293Z"
+        },
+        {
+          "value": 149999,
+          "date": "2026-01-04T16:03:39.109Z"
+        },
         {
           "value": 104000,
           "date": "2025-12-23T11:57:24.185Z"
@@ -1327,12 +1427,38 @@
       "linksAlt": []
     },
     {
+      "id": 86854,
+      "name": "Externo 500 HDD",
+      "link": "https://www.mercadolibre.com.ar/disco-externo-hiksemi-25--usb-31-tipo-c-500gb/up/MLAU2875081733?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 64999,
+          "date": "2026-01-05T14:43:20.795Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-01-05T14:42:51.706Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
       "id": 98851,
       "name": "1 TB - SATA",
-      "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-1-tb-western-digital-green-verde/p/MLA14661338?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-1-tb-western-digital-green-verde/p/MLA14661338?pdp_filters=SHIPPING_ORIGIN%3A10215068&offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=20&type=product&tracking_id=6c3debaf-0b0c-4c5c-9955-8f7a006c6826&wid=MLA876845294&sid=search",
+      "visible": 0,
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
+        {
+          "value": 217525,
+          "date": "2026-01-08T14:24:36.613Z"
+        },
+        {
+          "value": 191999,
+          "date": "2026-01-04T16:03:48.744Z"
+        },
         {
           "value": 189999,
           "date": "2025-12-23T11:57:33.885Z"
@@ -1375,10 +1501,18 @@
     {
       "id": 64421,
       "name": "1TB - HDD",
-      "link": "https://www.mercadolibre.com.ar/disco-duro-interno-hdd-western-digital-1tb-wd-7200-rpm-sata-iii-av-gp-wd10eurx/p/MLA6131430?offer_type=OFFICIAL_STORE",
+      "link": "https://www.mercadolibre.com.ar/disco-duro-western-digital-blue-wd10ezex-1tb-7200-rpm/p/MLA20953266?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 123874,
+          "date": "2026-01-05T14:25:57.729Z"
+        },
+        {
+          "value": 97000,
+          "date": "2026-01-04T16:27:19.918Z"
+        },
         {
           "value": 79999,
           "date": "2025-12-23T12:21:19.555Z"
@@ -1465,7 +1599,7 @@
         }
       ],
       "linksAlt": [
-        "https://www.mercadolibre.com.ar/disco-duro-western-digital-blue-wd10ezex-1tb-7200-rpm/p/MLA20953266?offer_type=OFFICIAL_STORE"
+        "https://www.mercadolibre.com.ar/disco-duro-interno-hdd-western-digital-1tb-wd-7200-rpm-sata-iii-av-gp-wd10eurx/p/MLA6131430?offer_type=OFFICIAL_STORE"
       ]
     },
     {
@@ -1475,6 +1609,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 6159,
+          "date": "2026-01-04T16:28:29.363Z"
+        },
         {
           "value": 6713,
           "date": "2025-12-18T17:25:34.786Z"
@@ -1486,6 +1624,60 @@
         {
           "value": 0,
           "date": "2025-12-17T00:12:31.501Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 49934,
+      "name": "Externo 1TB",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1599777181-ssd-externo-1tb-disco-solido-portatil-pc-notebook-tablet-ps5-_JM?searchVariation=187684802148&pdp_filters=SHIPPING_ORIGIN%3A10215068&offer_type=OFFICIAL_STORE#polycard_client=search-nordic&searchVariation=187684802148&search_layout=grid&position=2&type=item&tracking_id=6c3debaf-0b0c-4c5c-9955-8f7a006c6826",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 64800,
+          "date": "2026-01-04T16:27:34.677Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-01-04T16:27:28.144Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 42031,
+      "name": "Carry Disk NVMe",
+      "link": "https://articulo.mercadolibre.com.ar/MLA-1451505571-carry-disk-externo-ssd-m2-nvme-usb-31-a-usb-c-disco-adapta-_JM?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 18284,
+          "date": "2026-01-05T14:53:27.579Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-01-05T14:53:07.982Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 81805,
+      "name": "Carry Disk NVMe",
+      "link": "https://www.mercadolibre.com.ar/caja-externa-ssd-m2-nvme-usb-31-gen2-tipo-c-unitek-con-led/p/MLA34061429?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "Cheto",
+      "prices": [
+        {
+          "value": 33250,
+          "date": "2026-01-05T14:53:58.821Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-01-05T14:53:41.987Z"
         }
       ],
       "linksAlt": []
@@ -1515,6 +1707,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 199999,
+          "date": "2026-01-04T16:00:15.539Z"
+        },
+        {
           "value": 179999,
           "date": "2025-12-08T13:12:03.950Z"
         },
@@ -1536,6 +1732,10 @@
       "description": "2GB | GDDR5 / 64bit",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 163868,
+          "date": "2026-01-04T16:00:25.285Z"
+        },
         {
           "value": 129999,
           "date": "2025-12-08T13:12:08.159Z"
@@ -1566,6 +1766,10 @@
       "description": "Lo opción más económica. Aún siendo antigua, va a poder correr juegos que la integrada no tira bien.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 196388,
+          "date": "2026-01-08T14:22:47.759Z"
+        },
         {
           "value": 214863,
           "date": "2025-12-19T17:23:18.522Z"
@@ -1618,6 +1822,10 @@
         "https://www.mercadolibre.com.ar/placa-de-video-msi-geforce-rtx-3050-oc-6gb-gddr6-96bits/p/MLA37776074?offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 635130,
+          "date": "2026-01-04T16:00:43.287Z"
+        },
         {
           "value": 487069,
           "date": "2025-12-19T17:23:28.121Z"
@@ -1705,114 +1913,24 @@
       ]
     },
     {
-      "id": 38532,
-      "name": "RX 7600 | 8GB",
-      "description": "Un caño para jugar en 1080p fluidamente en calidad Alta. Arquitectura RDNA 3, eficiencia energética y potencia moderna.",
-      "link": "https://www.mercadolibre.com.ar/placa-de-video-xfx-speedster-swft21-amd-rx7600-8gb-hdmi-ddr6/p/MLA28570288?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&wid=MLA1516810373&search_layout=grid&position=2&type=product&tracking_id=b3d0404e-0664-4045-8da3-fb3948bde594&sid=search",
-      "visible": 1,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 526865,
-          "date": "2025-12-23T11:56:20.943Z"
-        },
-        {
-          "value": 488154,
-          "date": "2025-12-18T17:24:03.606Z"
-        },
-        {
-          "value": 489763,
-          "date": "2025-12-17T12:39:19.927Z"
-        },
-        {
-          "value": 482498,
-          "date": "2025-12-10T13:36:36.285Z"
-        },
-        {
-          "value": 498722,
-          "date": "2025-12-08T13:12:24.581Z"
-        },
-        {
-          "value": 577248,
-          "date": "2025-12-05T15:28:13.984Z"
-        },
-        {
-          "value": 584188,
-          "date": "2025-12-04T16:32:20.136Z"
-        },
-        {
-          "value": 619868,
-          "date": "2025-11-28T14:58:17.936Z"
-        },
-        {
-          "value": 634090,
-          "date": "2025-11-26T15:30:19.335Z"
-        },
-        {
-          "value": 644516,
-          "date": "2025-11-25T15:22:16.556Z"
-        },
-        {
-          "value": 498437,
-          "date": "2025-11-21T14:06:52.736Z"
-        },
-        {
-          "value": 479575,
-          "date": "2025-11-12T11:22:53.244Z"
-        },
-        {
-          "value": 707120,
-          "date": "2025-11-09T14:20:40.633Z"
-        },
-        {
-          "value": 700380,
-          "date": "2025-11-05T12:57:33.869Z"
-        },
-        {
-          "value": 456860,
-          "date": "2025-11-03T13:14:26.677Z"
-        },
-        {
-          "value": 494930,
-          "date": "2025-10-30T13:54:50.294Z"
-        },
-        {
-          "value": 474040,
-          "date": "2025-10-28T12:16:22.145Z"
-        },
-        {
-          "value": 488390,
-          "date": "2025-10-25T18:57:02.157Z"
-        },
-        {
-          "value": 441120,
-          "date": "2025-10-14T13:43:26.188Z"
-        },
-        {
-          "value": 461940,
-          "date": "2025-10-12T18:40:53.691Z"
-        },
-        {
-          "value": 456720,
-          "date": "2025-10-10T14:24:34.753Z"
-        },
-        {
-          "value": 461940,
-          "date": "2025-10-06T14:37:58.499Z"
-        },
-        {
-          "value": 473910,
-          "date": "2025-10-02T16:58:29.778Z"
-        }
-      ]
-    },
-    {
       "id": 4156,
       "name": "RTX 5060 | 8GB ",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-msi-rtx-5060-8-gb-gddr7-128-bit-shadow-2x-oc/p/MLA51032833?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
+        {
+          "value": 739429,
+          "date": "2026-01-08T14:23:05.505Z"
+        },
+        {
+          "value": 967429,
+          "date": "2026-01-05T14:18:45.067Z"
+        },
+        {
+          "value": 695999,
+          "date": "2026-01-04T16:02:41.272Z"
+        },
         {
           "value": 695699,
           "date": "2025-12-23T11:56:30.803Z"
@@ -1839,10 +1957,18 @@
     {
       "id": 41455,
       "name": "RX 9060 | 16GB",
-      "link": "https://www.mercadolibre.com.ar/vga-xfx-swift-amd-radeon-rx-9060-xt-oc-negro-16gb-gddr6/p/MLA51292495?offer_type=OFFICIAL_STORE",
+      "link": "https://www.mercadolibre.com.ar/placa-de-video-radeon-powercolor-rx-9060-xt-16gb-gddr6/p/MLA51865733?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=1&type=product&tracking_id=825c6cea-4d48-4035-ba90-ba3112acb4c5&wid=MLA2461256168&sid=search",
       "visible": 1,
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "prices": [
+        {
+          "value": 876989,
+          "date": "2026-01-05T14:23:58.778Z"
+        },
+        {
+          "value": 957471,
+          "date": "2026-01-04T16:02:51.062Z"
+        },
         {
           "value": 832857,
           "date": "2025-12-23T11:56:40.632Z"
@@ -1880,6 +2006,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 88599,
+          "date": "2026-01-04T16:28:39.252Z"
+        },
         {
           "value": 91137,
           "date": "2025-12-16T19:10:51.544Z"
@@ -1931,128 +2061,6 @@
       ]
     },
     {
-      "id": 73804,
-      "name": "Certificada Sentey",
-      "description": "Aún mejor opción 80 Plus, con cables mallados y que agrega 2 Años de Garantía.",
-      "link": "https://www.mercadolibre.com.ar/fuente-pc-gamer-500w-sentey-hbp500-gs-80-plus-bronze-atx-color-negro/p/MLA19715438?offer_type=BEST_PRICE",
-      "visible": 1,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 76731,
-          "date": "2025-12-23T11:58:09.580Z"
-        },
-        {
-          "value": 103061,
-          "date": "2025-12-17T12:41:53.997Z"
-        },
-        {
-          "value": 99999,
-          "date": "2025-12-16T19:11:00.908Z"
-        },
-        {
-          "value": 76731,
-          "date": "2025-12-08T13:13:19.571Z"
-        },
-        {
-          "value": 79106,
-          "date": "2025-12-05T15:29:06.404Z"
-        },
-        {
-          "value": 79106,
-          "date": "2025-12-03T13:32:38.443Z"
-        },
-        {
-          "value": 72056,
-          "date": "2025-12-02T16:53:55.447Z"
-        },
-        {
-          "value": 78322,
-          "date": "2025-11-28T14:59:37.442Z"
-        },
-        {
-          "value": 79106,
-          "date": "2025-11-27T12:49:43.512Z"
-        },
-        {
-          "value": 79206,
-          "date": "2025-11-21T14:08:19.000Z"
-        },
-        {
-          "value": 79999,
-          "date": "2025-11-20T16:24:51.414Z"
-        },
-        {
-          "value": 80023,
-          "date": "2025-11-16T12:43:46.608Z"
-        },
-        {
-          "value": 81102,
-          "date": "2025-11-14T13:53:07.587Z"
-        },
-        {
-          "value": 82499,
-          "date": "2025-11-13T14:12:56.281Z"
-        },
-        {
-          "value": 82999,
-          "date": "2025-11-12T11:24:03.986Z"
-        },
-        {
-          "value": 74613,
-          "date": "2025-11-10T13:05:26.978Z"
-        },
-        {
-          "value": 81102,
-          "date": "2025-11-09T14:21:43.704Z"
-        },
-        {
-          "value": 83699,
-          "date": "2025-11-04T13:48:50.772Z"
-        },
-        {
-          "value": 83611,
-          "date": "2025-11-03T13:15:31.186Z"
-        },
-        {
-          "value": 83711,
-          "date": "2025-10-28T12:17:19.628Z"
-        },
-        {
-          "value": 88999,
-          "date": "2025-10-25T18:58:03.410Z"
-        },
-        {
-          "value": 81699,
-          "date": "2025-10-17T09:41:36.746Z"
-        },
-        {
-          "value": 81999,
-          "date": "2025-10-16T12:54:20.837Z"
-        },
-        {
-          "value": 83499,
-          "date": "2025-10-14T13:44:18.748Z"
-        },
-        {
-          "value": 84499,
-          "date": "2025-10-13T10:44:51.676Z"
-        },
-        {
-          "value": 84157,
-          "date": "2025-10-12T19:01:17.440Z"
-        },
-        {
-          "value": 84999,
-          "date": "2025-10-08T15:14:57.847Z"
-        },
-        {
-          "value": 89999,
-          "date": "2025-10-03T13:59:12.237Z"
-        }
-      ]
-    },
-    {
       "id": 28101,
       "name": "Genérica Noga",
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
@@ -2060,6 +2068,18 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 39067,
+          "date": "2026-01-08T14:25:33.756Z"
+        },
+        {
+          "value": 40283,
+          "date": "2026-01-05T14:26:34.080Z"
+        },
+        {
+          "value": 40284,
+          "date": "2026-01-04T16:34:32.286Z"
+        },
         {
           "value": 33764,
           "date": "2025-12-23T11:58:19.179Z"
@@ -2283,6 +2303,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 121572,
+          "date": "2026-01-04T15:49:54.249Z"
+        },
+        {
           "value": 93697,
           "date": "2025-12-16T19:07:47.466Z"
         },
@@ -2372,6 +2396,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 164999,
+          "date": "2026-01-05T14:17:16.530Z"
+        },
+        {
+          "value": 93585,
+          "date": "2026-01-04T15:50:03.921Z"
+        },
         {
           "value": 94999,
           "date": "2025-12-16T19:07:56.914Z"
@@ -2474,6 +2506,18 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 309484,
+          "date": "2026-01-08T14:21:01.029Z"
+        },
+        {
+          "value": 489937,
+          "date": "2026-01-05T14:16:50.883Z"
+        },
+        {
+          "value": 470424,
+          "date": "2026-01-04T15:49:34.807Z"
+        },
         {
           "value": 282149,
           "date": "2025-12-10T13:34:56.647Z"
@@ -2584,6 +2628,14 @@
       "description": "4 nucleos 4ghz Am4",
       "prices": [
         {
+          "value": 122396,
+          "date": "2026-01-08T14:21:10.732Z"
+        },
+        {
+          "value": 120167,
+          "date": "2026-01-04T15:49:44.550Z"
+        },
+        {
           "value": 107309,
           "date": "2025-12-17T12:37:25.232Z"
         },
@@ -2605,10 +2657,24 @@
       "name": "DDR4 8 GB - Hiksemi Armor",
       "total": 8,
       "description": "",
-      "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-hiksemi-armor-udimm-ddr4-8gb-3200mhz-negro/p/MLA39435268?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "linksAlt": [],
+      "linksAlt": [
+        "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE"
+      ],
       "prices": [
+        {
+          "value": 128355,
+          "date": "2026-01-08T14:21:36.103Z"
+        },
+        {
+          "value": 91397,
+          "date": "2026-01-04T15:52:36.629Z"
+        },
+        {
+          "value": 106265,
+          "date": "2026-01-04T15:50:13.543Z"
+        },
         {
           "value": 106658,
           "date": "2025-12-23T11:54:43.378Z"
@@ -2732,6 +2798,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 206116,
+          "date": "2026-01-08T14:21:45.753Z"
+        },
+        {
+          "value": 208332,
+          "date": "2026-01-04T15:50:23.054Z"
+        },
         {
           "value": 179999,
           "date": "2025-12-23T11:54:53.361Z"
@@ -2880,6 +2954,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 41848,
+          "date": "2026-01-08T14:21:55.585Z"
+        },
+        {
+          "value": 44998,
+          "date": "2026-01-04T15:50:32.995Z"
+        },
+        {
           "value": 32998,
           "date": "2025-12-08T13:11:41.688Z"
         },
@@ -2918,6 +3000,10 @@
       "total": 8,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 112000,
+          "date": "2026-01-04T15:50:42.845Z"
+        },
         {
           "value": 108015,
           "date": "2025-12-23T11:55:11.395Z"
@@ -2990,6 +3076,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 75904,
+          "date": "2026-01-08T14:22:13.138Z"
+        },
+        {
+          "value": 79899,
+          "date": "2026-01-04T15:50:52.691Z"
+        },
+        {
           "value": 69899,
           "date": "2025-12-08T13:11:50.068Z"
         },
@@ -3024,6 +3118,14 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 231644,
+          "date": "2026-01-08T14:22:22.824Z"
+        },
+        {
+          "value": 221005,
+          "date": "2026-01-04T15:51:02.473Z"
+        },
         {
           "value": 185899,
           "date": "2025-12-23T11:55:29.356Z"
@@ -3121,29 +3223,6 @@
           "date": "2025-10-02T16:57:38.209Z"
         }
       ]
-    },
-    {
-      "id": 6555,
-      "name": "DDR4 8 GB - Hiksemi ",
-      "link": "https://www.mercadolibre.com.ar/memoria-ddr4-8-gb-3200-mhz-hiksemi/up/MLAU558509089?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "",
-      "prices": [
-        {
-          "value": 86900,
-          "date": "2025-12-23T11:55:39.145Z"
-        },
-        {
-          "value": 79948,
-          "date": "2025-12-16T20:14:35.072Z"
-        },
-        {
-          "value": 0,
-          "date": "2025-12-16T20:14:20.200Z"
-        }
-      ],
-      "linksAlt": [],
-      "total": 8
     }
   ],
   "comboOptions": [
@@ -3155,6 +3234,14 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 564377,
+          "date": "2026-01-08T14:20:36.002Z"
+        },
+        {
+          "value": 561197,
+          "date": "2026-01-04T15:49:07.907Z"
+        },
         {
           "value": 515499,
           "date": "2025-12-23T11:53:45.209Z"
@@ -3287,6 +3374,10 @@
       "description": "",
       "prices": [
         {
+          "value": 452945,
+          "date": "2026-01-04T15:49:25.374Z"
+        },
+        {
           "value": 259990,
           "date": "2025-12-23T21:13:12.289Z"
         },
@@ -3315,6 +3406,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 194999,
+          "date": "2026-01-08T14:25:51.282Z"
+        },
+        {
+          "value": 236908,
+          "date": "2026-01-04T16:34:49.896Z"
+        },
         {
           "value": 159436,
           "date": "2025-12-18T17:26:16.378Z"
@@ -3410,6 +3509,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 218999,
+          "date": "2026-01-04T16:34:59.572Z"
+        },
+        {
           "value": 194699,
           "date": "2025-12-23T11:58:44.906Z"
         },
@@ -3487,6 +3590,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 339877,
+          "date": "2026-01-08T14:26:08.901Z"
+        },
+        {
+          "value": 329018,
+          "date": "2026-01-04T16:35:09.298Z"
+        },
         {
           "value": 295899,
           "date": "2025-12-16T19:11:46.738Z"
@@ -3597,6 +3708,14 @@
       "prices": [
         {
           "value": 10291,
+          "date": "2026-01-08T14:26:18.750Z"
+        },
+        {
+          "value": 12864,
+          "date": "2026-01-04T16:35:18.872Z"
+        },
+        {
+          "value": 10291,
           "date": "2025-12-23T11:59:01.983Z"
         },
         {
@@ -3645,6 +3764,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 45999,
+          "date": "2026-01-04T16:36:22.748Z"
+        },
         {
           "value": 26345,
           "date": "2025-12-23T11:59:11.980Z"
@@ -3749,6 +3872,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 22828,
+          "date": "2026-01-04T16:36:32.541Z"
+        },
         {
           "value": 21000,
           "date": "2025-12-23T11:59:21.588Z"
@@ -3871,6 +3998,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 57999,
+          "date": "2026-01-08T14:26:44.012Z"
+        },
+        {
+          "value": 62649,
+          "date": "2026-01-04T16:36:42.156Z"
+        },
         {
           "value": 52999,
           "date": "2025-12-23T11:59:31.541Z"
@@ -3998,6 +4133,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 31758,
+          "date": "2026-01-05T14:27:54.441Z"
+        },
+        {
+          "value": 44890,
+          "date": "2026-01-04T16:36:51.972Z"
+        },
+        {
           "value": 34177,
           "date": "2025-12-23T11:59:41.325Z"
         },
@@ -4073,6 +4216,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 27000,
+          "date": "2026-01-04T16:37:01.481Z"
+        },
         {
           "value": 32599,
           "date": "2025-12-19T17:26:57.559Z"
@@ -4218,6 +4365,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 49874,
+          "date": "2026-01-04T16:37:18.820Z"
+        },
+        {
           "value": 62397,
           "date": "2025-12-23T12:00:07.193Z"
         },
@@ -4352,6 +4503,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 28365,
+          "date": "2026-01-08T14:27:25.147Z"
+        },
+        {
           "value": 30500,
           "date": "2025-12-08T13:14:38.420Z"
         },
@@ -4392,6 +4547,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 13999,
+          "date": "2026-01-04T16:37:36.680Z"
+        },
         {
           "value": 13896,
           "date": "2025-12-23T12:00:25.068Z"
@@ -4490,6 +4649,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 30509,
+          "date": "2026-01-08T14:27:50.549Z"
+        },
         {
           "value": 33899,
           "date": "2025-12-16T19:14:13.918Z"
@@ -4595,6 +4758,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 25287,
+          "date": "2026-01-08T14:28:00.166Z"
+        },
+        {
+          "value": 61499,
+          "date": "2026-01-04T16:38:01.948Z"
+        },
+        {
           "value": 23488,
           "date": "2025-12-08T13:15:01.107Z"
         },
@@ -4640,6 +4811,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 47949,
+          "date": "2026-01-04T16:38:11.540Z"
+        },
         {
           "value": 44549,
           "date": "2025-12-08T13:15:07.245Z"
@@ -4718,6 +4893,18 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 64999,
+          "date": "2026-01-08T14:28:18.079Z"
+        },
+        {
+          "value": 59900,
+          "date": "2026-01-05T14:29:22.940Z"
+        },
+        {
+          "value": 67918,
+          "date": "2026-01-04T16:38:21.293Z"
+        },
         {
           "value": 67100,
           "date": "2025-12-23T12:01:06.695Z"
@@ -4829,6 +5016,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 95999,
+          "date": "2026-01-08T14:28:27.559Z"
+        },
+        {
+          "value": 75999,
+          "date": "2026-01-04T16:38:30.898Z"
+        },
+        {
           "value": 67840,
           "date": "2025-12-16T19:14:46.638Z"
         },
@@ -4934,12 +5129,16 @@
   "microfonosOptions": [
     {
       "id": 31544,
-      "name": "Noga MIC-ST800",
-      "link": "https://www.mercadolibre.com.ar/microfono-noga-mic-st800-condensador-cardioide-color-negro/p/MLA19567827?offer_type=OFFICIAL_STORE",
+      "name": "Hügel CM800",
+      "link": "https://www.mercadolibre.com.ar/microfono-hugel-cm800-kit-condensador-cardioide-color-negro/p/MLA17545655?pdp_filters=item_id%3AMLA928321808&offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-right&reco_backend=pdp_pads_right_rars_v2_with_default&wid=MLA928321808&reco_model=rk_ent_v2_retsys_ads&reco_client=pdp-pads-right&reco_item_pos=0&reco_backend_type=low_level&reco_id=1dd06598-4f40-4fc3-89da-ff8ab66fbf43&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_RIGHT&ad_position=1&ad_click_id=YmYyNjgwOTYtY2U0Ni00MDA1LWI5ZjktMDMzZTdiZTA5Nzc2",
       "visible": 1,
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 38433,
+          "date": "2026-01-04T16:39:28.820Z"
+        },
         {
           "value": 44054,
           "date": "2025-12-19T17:31:45.924Z"
@@ -5022,6 +5221,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 47096,
+          "date": "2026-01-08T14:28:45.009Z"
+        },
+        {
+          "value": 48298,
+          "date": "2026-01-04T16:40:23.004Z"
+        },
         {
           "value": 46496,
           "date": "2025-12-16T19:15:05.597Z"
@@ -5201,6 +5408,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 14998,
+          "date": "2026-01-08T14:29:18.208Z"
+        },
+        {
+          "value": 12000,
+          "date": "2026-01-04T16:40:56.588Z"
+        },
+        {
           "value": 11880,
           "date": "2025-12-08T13:15:57.145Z"
         },
@@ -5309,6 +5524,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 14999,
+          "date": "2026-01-04T16:41:06.160Z"
+        },
+        {
           "value": 16203,
           "date": "2025-12-16T19:15:47.591Z"
         },
@@ -5390,6 +5609,14 @@
       "ssd": "512",
       "prices": [
         {
+          "value": 724356,
+          "date": "2026-01-08T14:19:45.200Z"
+        },
+        {
+          "value": 722265,
+          "date": "2026-01-04T15:48:12.673Z"
+        },
+        {
           "value": 684807,
           "date": "2025-12-19T17:20:15.066Z"
         },
@@ -5429,6 +5656,18 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 389999,
+          "date": "2026-01-08T14:19:54.910Z"
+        },
+        {
+          "value": 558735,
+          "date": "2026-01-05T14:15:43.990Z"
+        },
+        {
+          "value": 374499,
+          "date": "2026-01-04T15:48:22.234Z"
+        },
         {
           "value": 399999,
           "date": "2025-12-18T17:20:09.680Z"
