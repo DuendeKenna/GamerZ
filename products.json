@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 544105,
+      "total": 451173,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -22,7 +22,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 731193,
+      "total": 638261,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -36,7 +36,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 937771,
+      "total": 858743,
       "totalram": 32,
       "visible": 1,
       "price": 0,
@@ -336,8 +336,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 282499,
-      "lastUpd": "2025-12-23T11:51:58.686Z"
+      "price": 380000,
+      "lastUpd": "2026-01-09T08:56:10.128Z"
     }
   ],
   "towersOptions": [
@@ -442,8 +442,8 @@
       "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds480g2g0a-480gb-verde/p/MLA12451965?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
-      "price": 140729,
-      "lastUpd": "2026-01-08T14:24:09.621Z"
+      "price": 133999,
+      "lastUpd": "2026-01-09T09:00:16.123Z"
     },
     {
       "id": 4953,
@@ -451,8 +451,8 @@
       "link": "https://www.mercadolibre.com.ar/disco-solido-interno-western-digital-wd-green-wds480g3g0a-480gb-verde/p/MLA26922959?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
-      "price": 131999,
-      "lastUpd": "2026-01-08T14:24:19.293Z"
+      "price": 133999,
+      "lastUpd": "2026-01-09T09:00:25.504Z"
     },
     {
       "id": 86854,
@@ -543,8 +543,8 @@
       "link": "https://www.mercadolibre.com.ar/placa-video-amd-radeon-asus-rx-550-2gb-gddr5-hdmi/p/MLA20014742?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "2GB | GDDR5 / 64bit",
-      "price": 163868,
-      "lastUpd": "2026-01-04T16:00:25.285Z"
+      "price": 170028,
+      "lastUpd": "2026-01-09T08:58:56.785Z"
     },
     {
       "id": 47347,
@@ -570,8 +570,8 @@
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-msi-rtx-5060-8-gb-gddr7-128-bit-shadow-2x-oc/p/MLA51032833?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
-      "price": 739429,
-      "lastUpd": "2026-01-08T14:23:05.505Z"
+      "price": 1027799,
+      "lastUpd": "2026-01-09T08:59:21.269Z"
     },
     {
       "id": 41455,
@@ -590,8 +590,8 @@
       "description": "Recomendada para cuidar nuestros componentes.",
       "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-redragon-rpgs-gc-ps001-500w-negra/p/MLA43937355?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 88599,
-      "lastUpd": "2026-01-04T16:28:39.252Z"
+      "price": 88639,
+      "lastUpd": "2026-01-09T09:01:28.226Z"
     },
     {
       "id": 28101,
@@ -599,8 +599,8 @@
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 39067,
-      "lastUpd": "2026-01-08T14:25:33.756Z"
+      "price": 39499,
+      "lastUpd": "2026-01-09T09:01:37.628Z"
     },
     {
       "id": 45939,
@@ -608,8 +608,8 @@
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "link": "https://www.mercadolibre.com.ar/fuente-de-alimentacion-para-pc-lnz-xs550-ps-550w-negra/p/MLA43933347?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 26900,
-      "lastUpd": "2025-12-10T13:38:09.592Z"
+      "price": 37492,
+      "lastUpd": "2026-01-09T09:01:46.976Z"
     }
   ],
   "motherboardOptions": [
@@ -628,8 +628,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 164999,
-      "lastUpd": "2026-01-05T14:17:16.530Z"
+      "price": 105999,
+      "lastUpd": "2026-01-09T08:57:51.050Z"
     },
     {
       "name": "Ninguno",
@@ -669,8 +669,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-hiksemi-armor-udimm-ddr4-8gb-3200mhz-negro/p/MLA39435268?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 128355,
-      "lastUpd": "2026-01-08T14:21:36.103Z"
+      "price": 111389,
+      "lastUpd": "2026-01-09T08:58:00.265Z"
     },
     {
       "id": 8502,
@@ -719,8 +719,8 @@
       "visible": 1,
       "description": "",
       "total": 16,
-      "price": 231644,
-      "lastUpd": "2026-01-08T14:22:22.824Z"
+      "price": 221630,
+      "lastUpd": "2026-01-09T08:58:40.019Z"
     }
   ],
   "comboOptions": [
@@ -759,8 +759,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 194999,
-      "lastUpd": "2026-01-08T14:25:51.282Z"
+      "price": 174000,
+      "lastUpd": "2026-01-09T09:01:56.327Z"
     },
     {
       "id": 93025,
@@ -925,8 +925,8 @@
       "link": "https://www.mercadolibre.com.ar/webcam-logitech-brio-100-full-hd-1080p-negro/p/MLA28407045?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 64999,
-      "lastUpd": "2026-01-08T14:28:18.079Z"
+      "price": 63000,
+      "lastUpd": "2026-01-09T09:04:08.550Z"
     },
     {
       "id": 18249,
@@ -992,8 +992,8 @@
       "link": "https://www.mercadolibre.com.ar/tplink-receptor-usb-bluetooth-ub500-plus/p/MLA44907785?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 14998,
-      "lastUpd": "2026-01-08T14:29:18.208Z"
+      "price": 12000,
+      "lastUpd": "2026-01-09T09:05:03.737Z"
     }
   ],
   "arosDeLuzOptions": [
