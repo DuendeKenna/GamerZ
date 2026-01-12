@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 451173,
+      "total": 469989,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 638261,
+      "total": 662592,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 858743,
+      "total": 853258,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -393,6 +393,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 349900,
+          "date": "2026-01-12T16:44:53.561Z"
+        },
         {
           "value": 380000,
           "date": "2026-01-09T08:56:10.128Z"
@@ -869,6 +873,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 117464,
+          "date": "2026-01-12T16:48:30.153Z"
+        },
+        {
           "value": 105575,
           "date": "2026-01-04T16:03:00.598Z"
         },
@@ -999,28 +1007,6 @@
       ]
     },
     {
-      "id": 52698,
-      "name": "500 GB - NVMe",
-      "link": "https://www.mercadolibre.com.ar/western-digital-ssd-sn5000s-pcie-gen-4x4-nvme-512gb-m2-2280/up/MLAU3336812138?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "Western Digital",
-      "prices": [
-        {
-          "value": 104999,
-          "date": "2026-01-08T14:23:31.024Z"
-        },
-        {
-          "value": 89999,
-          "date": "2026-01-05T14:59:16.524Z"
-        },
-        {
-          "value": 0,
-          "date": "2026-01-05T14:59:01.758Z"
-        }
-      ],
-      "linksAlt": []
-    },
-    {
       "id": 85054,
       "name": "500 GB - NVMe",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-480gb-crucial-e100-nvme-gen4-5000mbs/p/MLA46065423?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=4&type=product&tracking_id=2d030a31-a133-4b1a-9df1-5f2b8d34486e&wid=MLA1482712971&sid=search",
@@ -1050,6 +1036,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 209999,
+          "date": "2026-01-12T16:50:28.362Z"
+        },
         {
           "value": 234094,
           "date": "2026-01-08T14:23:50.377Z"
@@ -1298,6 +1288,10 @@
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
         {
+          "value": 155000,
+          "date": "2026-01-12T16:50:45.725Z"
+        },
+        {
           "value": 133999,
           "date": "2026-01-09T09:00:16.123Z"
         },
@@ -1359,6 +1353,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 148999,
+          "date": "2026-01-12T16:50:55.248Z"
+        },
         {
           "value": 133999,
           "date": "2026-01-09T09:00:25.504Z"
@@ -1518,6 +1516,10 @@
       "description": "",
       "prices": [
         {
+          "value": 129874,
+          "date": "2026-01-12T16:51:20.153Z"
+        },
+        {
           "value": 123874,
           "date": "2026-01-05T14:25:57.729Z"
         },
@@ -1665,6 +1667,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 21170,
+          "date": "2026-01-12T16:51:45.281Z"
+        },
         {
           "value": 18284,
           "date": "2026-01-05T14:53:27.579Z"
@@ -1936,6 +1942,10 @@
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
         {
+          "value": 1071679,
+          "date": "2026-01-12T16:48:11.112Z"
+        },
+        {
           "value": 1027799,
           "date": "2026-01-09T08:59:21.269Z"
         },
@@ -1982,6 +1992,10 @@
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "prices": [
         {
+          "value": 917589,
+          "date": "2026-01-12T16:48:20.609Z"
+        },
+        {
           "value": 876989,
           "date": "2026-01-05T14:23:58.778Z"
         },
@@ -2026,6 +2040,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 96128,
+          "date": "2026-01-12T16:52:03.133Z"
+        },
         {
           "value": 88639,
           "date": "2026-01-09T09:01:28.226Z"
@@ -2092,6 +2110,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 39000,
+          "date": "2026-01-12T16:52:12.553Z"
+        },
         {
           "value": 39499,
           "date": "2026-01-09T09:01:37.628Z"
@@ -2429,6 +2451,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 94999,
+          "date": "2026-01-12T16:46:41.648Z"
+        },
+        {
           "value": 105999,
           "date": "2026-01-09T08:57:51.050Z"
         },
@@ -2542,6 +2568,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 314999,
+          "date": "2026-01-12T16:46:15.400Z"
+        },
         {
           "value": 309484,
           "date": "2026-01-08T14:21:01.029Z"
@@ -2699,6 +2729,10 @@
         "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE"
       ],
       "prices": [
+        {
+          "value": 126297,
+          "date": "2026-01-12T16:46:51.202Z"
+        },
         {
           "value": 111389,
           "date": "2026-01-09T08:58:00.265Z"
@@ -3450,6 +3484,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 194999,
+          "date": "2026-01-12T16:52:29.977Z"
+        },
         {
           "value": 174000,
           "date": "2026-01-09T09:01:56.327Z"
@@ -4551,6 +4589,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 28060,
+          "date": "2026-01-12T16:53:56.881Z"
+        },
+        {
           "value": 28365,
           "date": "2026-01-08T14:27:25.147Z"
         },
@@ -5352,6 +5394,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 68899,
+          "date": "2026-01-12T16:55:16.465Z"
+        },
+        {
           "value": 68216,
           "date": "2025-12-19T17:32:03.844Z"
         },
@@ -5712,6 +5758,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 378399,
+          "date": "2026-01-12T16:45:11.468Z"
+        },
         {
           "value": 389999,
           "date": "2026-01-08T14:19:54.910Z"
