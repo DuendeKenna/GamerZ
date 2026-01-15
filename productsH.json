@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 480989,
+      "total": 523063,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 758592,
+      "total": 800666,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 949258,
+      "total": 987988,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -59,39 +59,6 @@
     }
   ],
   "bundlesOptions": [
-    {
-      "id": 64113,
-      "name": "EmulaDrive",
-      "items": [
-        {
-          "categoryKey": "ssdOptions",
-          "id": 28539
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 65237
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        }
-      ],
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ],
-      "profit": 130000,
-      "order": 0
-    },
     {
       "id": 95796,
       "name": "Mini n150 | Emus/PC+Joys",
@@ -118,7 +85,44 @@
           "date": "1970-01-01T00:00:00.000Z"
         }
       ],
-      "profit": 250000,
+      "profit": 100000,
+      "order": 0
+    },
+    {
+      "id": 82516,
+      "name": "i5 2400 | Full+Joys",
+      "items": [
+        {
+          "categoryKey": "gpuOptions",
+          "id": 85207
+        },
+        {
+          "categoryKey": "armadasOptions",
+          "id": 76800
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 64421
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ],
+      "profit": 101000,
       "order": 1
     },
     {
@@ -155,7 +159,7 @@
         },
         {
           "categoryKey": "ramOptions",
-          "id": 6555
+          "id": 77124
         }
       ],
       "visible": 1,
@@ -167,8 +171,41 @@
           "date": "1970-01-01T00:00:00.000Z"
         }
       ],
-      "profit": 250000,
+      "profit": 100000,
       "order": 2
+    },
+    {
+      "id": 64113,
+      "name": "EmulaDrive",
+      "items": [
+        {
+          "categoryKey": "ssdOptions",
+          "id": 28539
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 65237
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ],
+      "profit": 100000,
+      "order": 3
     },
     {
       "id": 14283,
@@ -212,8 +249,8 @@
           "date": "1970-01-01T00:00:00.000Z"
         }
       ],
-      "profit": 250000,
-      "order": 3
+      "profit": 100000,
+      "order": 4
     },
     {
       "id": 90249,
@@ -265,44 +302,7 @@
           "date": "1970-01-01T00:00:00.000Z"
         }
       ],
-      "profit": 200000,
-      "order": 4
-    },
-    {
-      "id": 82516,
-      "name": "i5 2400 | Full+Joys",
-      "items": [
-        {
-          "categoryKey": "gpuOptions",
-          "id": 85207
-        },
-        {
-          "categoryKey": "armadasOptions",
-          "id": 76800
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 64421
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        }
-      ],
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ],
-      "profit": 200000,
+      "profit": 100000,
       "order": 5
     },
     {
@@ -339,7 +339,7 @@
           "date": "1970-01-01T00:00:00.000Z"
         }
       ],
-      "profit": 200000,
+      "profit": 100000,
       "order": 6
     },
     {
@@ -380,7 +380,7 @@
           "date": "1970-01-01T00:00:00.000Z"
         }
       ],
-      "profit": 0,
+      "profit": 100000,
       "order": 7
     }
   ],
@@ -393,6 +393,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 340000,
+          "date": "2026-01-15T14:54:13.071Z"
+        },
         {
           "value": 349900,
           "date": "2026-01-12T16:44:53.561Z"
@@ -526,6 +530,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 49999,
+          "date": "2026-01-15T14:54:40.682Z"
+        },
         {
           "value": 65999,
           "date": "2026-01-04T15:48:31.720Z"
@@ -725,6 +733,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 76199,
+          "date": "2026-01-15T14:54:58.198Z"
+        },
+        {
           "value": 77499,
           "date": "2026-01-04T15:48:50.987Z"
         },
@@ -811,44 +823,6 @@
       ]
     },
     {
-      "id": 24451,
-      "name": "XYZ Portal 100",
-      "link": "https://articulo.mercadolibre.com.ar/MLA-1481619353-gabinete-gamer-xyz-portal-100-a-rgb-gamer-vidrio-templado-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 66499,
-          "date": "2026-01-05T14:16:17.828Z"
-        },
-        {
-          "value": 69999,
-          "date": "2025-12-08T12:57:55.733Z"
-        },
-        {
-          "value": 69999,
-          "date": "2025-12-04T16:29:57.767Z"
-        },
-        {
-          "value": 67899,
-          "date": "2025-11-28T14:55:54.336Z"
-        },
-        {
-          "value": 69999,
-          "date": "2025-10-25T18:54:26.255Z"
-        },
-        {
-          "value": 64399,
-          "date": "2025-10-16T12:50:58.710Z"
-        },
-        {
-          "value": 69999,
-          "date": "2025-09-14T12:42:07.964Z"
-        }
-      ]
-    },
-    {
       "name": "Reciclado",
       "link": "",
       "visible": 1,
@@ -872,6 +846,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 104999,
+          "date": "2026-01-15T14:58:59.397Z"
+        },
         {
           "value": 117464,
           "date": "2026-01-12T16:48:30.153Z"
@@ -1014,6 +992,10 @@
       "description": "",
       "prices": [
         {
+          "value": 131243,
+          "date": "2026-01-15T14:59:08.994Z"
+        },
+        {
           "value": 135999,
           "date": "2026-01-08T14:23:40.858Z"
         },
@@ -1036,6 +1018,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 284497,
+          "date": "2026-01-15T14:59:18.658Z"
+        },
         {
           "value": 214999,
           "date": "2026-01-13T14:51:34.346Z"
@@ -1178,6 +1164,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 91000,
+          "date": "2026-01-15T14:59:28.119Z"
+        },
         {
           "value": 92999,
           "date": "2026-01-13T14:51:43.616Z"
@@ -1361,6 +1351,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 154999,
+          "date": "2026-01-15T14:59:45.589Z"
+        },
         {
           "value": 148999,
           "date": "2026-01-12T16:50:55.248Z"
@@ -1865,6 +1859,10 @@
       ],
       "prices": [
         {
+          "value": 419000,
+          "date": "2026-01-15T14:58:30.577Z"
+        },
+        {
           "value": 635130,
           "date": "2026-01-04T16:00:43.287Z"
         },
@@ -1962,6 +1960,10 @@
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
         {
+          "value": 1238479,
+          "date": "2026-01-15T14:58:40.197Z"
+        },
+        {
           "value": 1016079,
           "date": "2026-01-13T14:51:02.540Z"
         },
@@ -2016,6 +2018,10 @@
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "prices": [
         {
+          "value": 946599,
+          "date": "2026-01-15T14:58:49.660Z"
+        },
+        {
           "value": 917589,
           "date": "2026-01-12T16:48:20.609Z"
         },
@@ -2064,6 +2070,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 92999,
+          "date": "2026-01-15T15:00:49.667Z"
+        },
         {
           "value": 96128,
           "date": "2026-01-12T16:52:03.133Z"
@@ -2134,6 +2144,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 40284,
+          "date": "2026-01-15T15:00:59.180Z"
+        },
         {
           "value": 39000,
           "date": "2026-01-12T16:52:12.553Z"
@@ -2288,6 +2302,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 26700,
+          "date": "2026-01-15T15:01:08.741Z"
+        },
         {
           "value": 37492,
           "date": "2026-01-09T09:01:46.976Z"
@@ -2478,6 +2496,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 93585,
+          "date": "2026-01-15T14:57:03.052Z"
+        },
         {
           "value": 105999,
           "date": "2026-01-13T14:49:37.488Z"
@@ -2766,6 +2788,10 @@
       ],
       "prices": [
         {
+          "value": 153541,
+          "date": "2026-01-15T14:57:12.568Z"
+        },
+        {
           "value": 126297,
           "date": "2026-01-12T16:46:51.202Z"
         },
@@ -2908,6 +2934,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 205007,
+          "date": "2026-01-15T14:57:22.340Z"
+        },
         {
           "value": 206116,
           "date": "2026-01-08T14:21:45.753Z"
@@ -3111,6 +3141,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 142574,
+          "date": "2026-01-15T14:57:40.098Z"
+        },
+        {
           "value": 112000,
           "date": "2026-01-04T15:50:42.845Z"
         },
@@ -3228,6 +3262,10 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 247202,
+          "date": "2026-01-15T14:57:57.536Z"
+        },
         {
           "value": 221630,
           "date": "2026-01-09T08:58:40.019Z"
@@ -3348,6 +3386,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 620201,
+          "date": "2026-01-15T14:56:14.177Z"
+        },
         {
           "value": 562841,
           "date": "2026-01-13T14:48:47.106Z"
@@ -3716,6 +3758,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 329999,
+          "date": "2026-01-15T15:01:33.835Z"
+        },
         {
           "value": 319999,
           "date": "2026-01-13T14:53:44.093Z"
@@ -4129,6 +4175,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 57999,
+          "date": "2026-01-15T15:02:06.754Z"
+        },
+        {
           "value": 62999,
           "date": "2026-01-13T14:54:16.732Z"
         },
@@ -4350,6 +4400,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 34000,
+          "date": "2026-01-15T15:02:24.437Z"
+        },
         {
           "value": 27000,
           "date": "2026-01-04T16:37:01.481Z"
@@ -4950,6 +5004,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 47949,
+          "date": "2026-01-15T15:03:28.457Z"
+        },
+        {
           "value": 24558,
           "date": "2026-01-13T14:55:34.780Z"
         },
@@ -5281,6 +5339,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 42704,
+          "date": "2026-01-15T15:03:53.967Z"
+        },
         {
           "value": 38433,
           "date": "2026-01-04T16:39:28.820Z"
@@ -5810,6 +5872,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 389999,
+          "date": "2026-01-15T14:54:30.874Z"
+        },
         {
           "value": 378399,
           "date": "2026-01-12T16:45:11.468Z"

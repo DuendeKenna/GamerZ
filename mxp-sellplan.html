@@ -78,7 +78,7 @@
 
             <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">2. Los Roles (Quién hace qué):</h3>
 
-            <p class="text-xl font-semibold text-gray-100 mt-4">Diego (El Arquitecto Full Stack):</p>
+            <p class="text-xl font-semibold text-gray-100 mt-4">Kenna (El Arquitecto Full Stack):</p>
             <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
                 <li>Dueño y responsable del <strong class="text-orange-400">Core</strong>: la MillennialXP
                     (Concepto, Desarrollo, Instalación y Personalización).</li>
@@ -98,7 +98,7 @@
                 </li>
             </ul>
 
-            <p class="text-xl font-semibold text-gray-100 mt-4">Leo (El Vendedor y Difusor):</p>
+            <p class="text-xl font-semibold text-gray-100 mt-4">X (El Vendedor y Difusor):</p>
             <ul class="list-disc list-inside ml-4 mb-4 text-lg text-gray-200 space-y-2">
                 <li>Responsable de Vender / Cierre de Ventas.</li>
                 <small>
@@ -175,7 +175,7 @@
                 </h4>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-gray-900/50 p-4 rounded border border-gray-700">
-                        <p class="text-sm text-gray-400">Leo (33%)</p>
+                        <p class="text-sm text-gray-400">X (33%)</p>
                         <p class="text-xl font-bold text-green-400" id="display-ale-base">$0</p>
                     </div>
                     <div class="bg-gray-900/50 p-4 rounded border border-gray-700">
@@ -183,7 +183,7 @@
                         <p class="text-xl font-bold text-yellow-500" id="display-inversor">$0</p>
                     </div>
                     <div class="bg-gray-900/50 p-4 rounded border border-gray-700">
-                        <p class="text-sm text-gray-400">Diego (57%)</p>
+                        <p class="text-sm text-gray-400">Kenna (57%)</p>
                         <p class="text-xl font-bold text-blue-400" id="display-diego-base">$0</p>
                     </div>
                 </div>
@@ -211,10 +211,10 @@
     <!-- SCRIPT DE CÁLCULO DINÁMICO -->
     <script>
         // --- CONFIGURACIÓN ---
-        const CANT_BUNDLES_VISIBLES = 3; // Configurable: cuántos bundles mostrar
+        const CANT_BUNDLES_VISIBLES = 4; // Configurable: cuántos bundles mostrar
         const PORCENTAJE_GARANTIA = 0.08;
-        const SHARE_DIEGO = 0.57;
-        const SHARE_LEO = 0.33;
+        const SHARE_KENNA = 0.57;
+        const SHARE_X = 0.33;
         const SHARE_INVERSOR = 0.10;
 
         let globalData = null;
@@ -292,9 +292,9 @@
             document.getElementById('display-garantia').textContent = "-" + fmt(fondoGarantia);
             document.getElementById('display-neta').textContent = fmt(gananciaNeta);
 
-            document.getElementById('display-ale-base').textContent = fmt(gananciaNeta * SHARE_LEO);
+            document.getElementById('display-ale-base').textContent = fmt(gananciaNeta * SHARE_X);
             document.getElementById('display-inversor').textContent = fmt(gananciaNeta * SHARE_INVERSOR);
-            document.getElementById('display-diego-base').textContent = fmt(gananciaNeta * SHARE_DIEGO);
+            document.getElementById('display-diego-base').textContent = fmt(gananciaNeta * SHARE_KENNA);
         }
 
         document.addEventListener('DOMContentLoaded', init);
