@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 523063,
+      "total": 548105,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 800666,
+      "total": 825708,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 987988,
+      "total": 1059402,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -393,6 +393,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 344990,
+          "date": "2026-01-16T13:17:48.280Z"
+        },
         {
           "value": 340000,
           "date": "2026-01-15T14:54:13.071Z"
@@ -991,6 +995,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 154512,
+          "date": "2026-01-16T13:21:34.230Z"
+        },
         {
           "value": 131243,
           "date": "2026-01-15T14:59:08.994Z"
@@ -1960,6 +1968,10 @@
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
         {
+          "value": 1262879,
+          "date": "2026-01-16T13:21:08.752Z"
+        },
+        {
           "value": 1238479,
           "date": "2026-01-15T14:58:40.197Z"
         },
@@ -2497,6 +2509,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 164999,
+          "date": "2026-01-16T13:19:36.481Z"
+        },
+        {
           "value": 93585,
           "date": "2026-01-15T14:57:03.052Z"
         },
@@ -2788,6 +2804,10 @@
       ],
       "prices": [
         {
+          "value": 130355,
+          "date": "2026-01-16T13:19:45.962Z"
+        },
+        {
           "value": 153541,
           "date": "2026-01-15T14:57:12.568Z"
         },
@@ -2934,6 +2954,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 273085,
+          "date": "2026-01-16T13:19:55.745Z"
+        },
         {
           "value": 205007,
           "date": "2026-01-15T14:57:22.340Z"
@@ -3387,6 +3411,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 627659,
+          "date": "2026-01-16T13:18:46.517Z"
+        },
+        {
           "value": 620201,
           "date": "2026-01-15T14:56:14.177Z"
         },
@@ -3758,6 +3786,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 299000,
+          "date": "2026-01-16T13:23:48.448Z"
+        },
         {
           "value": 329999,
           "date": "2026-01-15T15:01:33.835Z"
@@ -4175,6 +4207,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 62999,
+          "date": "2026-01-16T13:24:21.718Z"
+        },
+        {
           "value": 57999,
           "date": "2026-01-15T15:02:06.754Z"
         },
@@ -4316,6 +4352,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 51145,
+          "date": "2026-01-16T13:24:31.424Z"
+        },
         {
           "value": 31758,
           "date": "2026-01-05T14:27:54.441Z"
@@ -4552,6 +4592,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 70129,
+          "date": "2026-01-16T13:25:26.742Z"
+        },
         {
           "value": 49874,
           "date": "2026-01-04T16:37:18.820Z"
@@ -5333,12 +5377,20 @@
   "microfonosOptions": [
     {
       "id": 31544,
-      "name": "Hügel CM800",
-      "link": "https://www.mercadolibre.com.ar/microfono-hugel-cm800-kit-condensador-cardioide-color-negro/p/MLA17545655?pdp_filters=item_id%3AMLA928321808&offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-right&reco_backend=pdp_pads_right_rars_v2_with_default&wid=MLA928321808&reco_model=rk_ent_v2_retsys_ads&reco_client=pdp-pads-right&reco_item_pos=0&reco_backend_type=low_level&reco_id=1dd06598-4f40-4fc3-89da-ff8ab66fbf43&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_RIGHT&ad_position=1&ad_click_id=YmYyNjgwOTYtY2U0Ni00MDA1LWI5ZjktMDMzZTdiZTA5Nzc2",
+      "name": "Condenser USB - BM200",
+      "link": "https://www.mercadolibre.com.ar/microfono-condensador-condenser-profesional-estudio-bm2000-color-negro/p/MLA20722143?pdp_filters=item_id%3AMLA1866363854&offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-right&reco_backend=pdp_pads_right_rars_v2_with_default&wid=MLA1866363854&reco_model=rk_ent_v2_retsys_ads&reco_client=pdp-pads-right&reco_item_pos=1&reco_backend_type=low_level&reco_id=2d559fa4-f07c-43f9-bc5e-7434ad73dfe3&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_RIGHT&ad_position=2&ad_click_id=NTRlYjU4NjEtYmM4NC00ZmU4LTg0ZDQtZGM2MzEzMWJmMzA4",
       "visible": 1,
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 69999,
+          "date": "2026-01-16T13:28:23.694Z"
+        },
+        {
+          "value": 50924,
+          "date": "2026-01-16T13:27:33.442Z"
+        },
         {
           "value": 42704,
           "date": "2026-01-15T15:03:53.967Z"
@@ -5508,6 +5560,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 73899,
+          "date": "2026-01-16T13:28:41.254Z"
+        },
+        {
           "value": 68899,
           "date": "2026-01-12T16:55:16.465Z"
         },
@@ -5619,6 +5675,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 14999,
+          "date": "2026-01-16T13:29:06.319Z"
+        },
         {
           "value": 12000,
           "date": "2026-01-09T09:05:03.737Z"
@@ -5824,6 +5884,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 684482,
+          "date": "2026-01-16T13:18:04.786Z"
+        },
         {
           "value": 724356,
           "date": "2026-01-08T14:19:45.200Z"
