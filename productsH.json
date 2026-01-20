@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 590314,
+      "total": 519740,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 823184,
+      "total": 752610,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 1059402,
+      "total": 987988,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -1004,6 +1004,10 @@
       "description": "",
       "prices": [
         {
+          "value": 131243,
+          "date": "2026-01-20T15:06:55.729Z"
+        },
+        {
           "value": 154512,
           "date": "2026-01-16T13:21:34.230Z"
         },
@@ -1180,6 +1184,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 103057,
+          "date": "2026-01-20T15:07:12.884Z"
+        },
         {
           "value": 90208,
           "date": "2026-01-19T19:07:49.633Z"
@@ -1895,6 +1903,10 @@
       ],
       "prices": [
         {
+          "value": 419000,
+          "date": "2026-01-20T15:06:21.387Z"
+        },
+        {
           "value": 611399,
           "date": "2026-01-19T19:06:53.307Z"
         },
@@ -1999,6 +2011,10 @@
       "visible": 1,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
+        {
+          "value": 1220659,
+          "date": "2026-01-20T15:06:30.672Z"
+        },
         {
           "value": 1289159,
           "date": "2026-01-19T19:07:03.579Z"
@@ -2196,6 +2212,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 39094,
+          "date": "2026-01-20T15:08:39.011Z"
+        },
         {
           "value": 40283,
           "date": "2026-01-19T19:09:29.136Z"
@@ -2557,6 +2577,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 93585,
+          "date": "2026-01-20T15:04:58.303Z"
+        },
+        {
           "value": 164999,
           "date": "2026-01-16T13:19:36.481Z"
         },
@@ -2856,6 +2880,10 @@
       ],
       "prices": [
         {
+          "value": 129513,
+          "date": "2026-01-20T15:05:07.830Z"
+        },
+        {
           "value": 129093,
           "date": "2026-01-19T19:05:31.695Z"
         },
@@ -3010,6 +3038,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 179449,
+          "date": "2026-01-20T15:05:17.270Z"
+        },
         {
           "value": 172391,
           "date": "2026-01-19T19:05:41.744Z"
@@ -3471,6 +3503,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 616691,
+          "date": "2026-01-20T15:04:09.936Z"
+        },
+        {
           "value": 627659,
           "date": "2026-01-16T13:18:46.517Z"
         },
@@ -3655,6 +3691,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 194999,
+          "date": "2026-01-20T15:08:56.347Z"
+        },
+        {
           "value": 173979,
           "date": "2026-01-19T19:09:47.968Z"
         },
@@ -3768,6 +3808,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 194999,
+          "date": "2026-01-20T15:09:05.819Z"
+        },
         {
           "value": 218999,
           "date": "2026-01-04T16:34:59.572Z"
@@ -4669,6 +4713,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 49874,
+          "date": "2026-01-20T15:10:18.534Z"
+        },
+        {
           "value": 70129,
           "date": "2026-01-16T13:25:26.742Z"
         },
@@ -4864,6 +4912,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 13718,
+          "date": "2026-01-20T15:10:35.628Z"
+        },
+        {
           "value": 13324,
           "date": "2026-01-19T19:11:38.236Z"
         },
@@ -4969,6 +5021,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 19999,
+          "date": "2026-01-20T15:10:52.792Z"
+        },
         {
           "value": 28039,
           "date": "2026-01-19T19:11:57.752Z"
@@ -5574,6 +5630,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 46629,
+          "date": "2026-01-20T15:11:41.414Z"
+        },
+        {
           "value": 47096,
           "date": "2026-01-08T14:28:45.009Z"
         },
@@ -5771,6 +5831,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 12000,
+          "date": "2026-01-20T15:12:14.307Z"
+        },
         {
           "value": 14424,
           "date": "2026-01-19T19:13:28.157Z"
