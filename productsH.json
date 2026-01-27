@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 536110,
+      "total": 488354,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 755320,
+      "total": 757862,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 990252,
+      "total": 937042,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -397,6 +397,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 386599,
+          "date": "2026-01-27T13:10:27.146Z"
+        },
         {
           "value": 304999,
           "date": "2026-01-23T03:36:03.952Z"
@@ -753,6 +757,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 78249,
+          "date": "2026-01-27T13:11:09.504Z"
+        },
+        {
           "value": 76199,
           "date": "2026-01-15T14:54:58.198Z"
         },
@@ -866,6 +874,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 101000,
+          "date": "2026-01-27T13:13:59.294Z"
+        },
         {
           "value": 104999,
           "date": "2026-01-15T14:58:59.397Z"
@@ -1012,6 +1024,10 @@
       "description": "",
       "prices": [
         {
+          "value": 164628,
+          "date": "2026-01-27T13:14:08.640Z"
+        },
+        {
           "value": 139999,
           "date": "2026-01-23T03:39:37.049Z"
         },
@@ -1050,6 +1066,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 316920,
+          "date": "2026-01-27T13:14:18.157Z"
+        },
         {
           "value": 249000,
           "date": "2026-01-23T03:39:46.292Z"
@@ -1200,6 +1220,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 96757,
+          "date": "2026-01-27T13:14:27.689Z"
+        },
         {
           "value": 93118,
           "date": "2026-01-23T03:39:55.311Z"
@@ -1516,6 +1540,10 @@
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
         {
+          "value": 236338,
+          "date": "2026-01-27T13:15:00.370Z"
+        },
+        {
           "value": 231793,
           "date": "2026-01-23T03:40:26.950Z"
         },
@@ -1581,6 +1609,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 150999,
+          "date": "2026-01-27T13:15:09.634Z"
+        },
         {
           "value": 117720,
           "date": "2026-01-23T03:40:36.340Z"
@@ -1935,6 +1967,10 @@
       ],
       "prices": [
         {
+          "value": 429000,
+          "date": "2026-01-27T13:13:32.395Z"
+        },
+        {
           "value": 419000,
           "date": "2026-01-20T15:06:21.387Z"
         },
@@ -2043,6 +2079,10 @@
       "visible": 1,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
+        {
+          "value": 1065389,
+          "date": "2026-01-27T13:13:41.698Z"
+        },
         {
           "value": 1179148,
           "date": "2026-01-23T03:39:12.947Z"
@@ -2249,6 +2289,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 39499,
+          "date": "2026-01-27T13:15:57.398Z"
+        },
+        {
           "value": 39000,
           "date": "2026-01-23T03:41:22.340Z"
         },
@@ -2418,6 +2462,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 26700,
+          "date": "2026-01-27T13:16:06.929Z"
+        },
         {
           "value": 26880,
           "date": "2026-01-23T03:41:31.508Z"
@@ -2892,6 +2940,10 @@
       "description": "4 nucleos 4ghz Am4",
       "prices": [
         {
+          "value": 120491,
+          "date": "2026-01-27T13:11:50.247Z"
+        },
+        {
           "value": 170789,
           "date": "2026-01-23T03:37:25.091Z"
         },
@@ -2935,6 +2987,10 @@
         "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE"
       ],
       "prices": [
+        {
+          "value": 130932,
+          "date": "2026-01-27T13:12:15.459Z"
+        },
         {
           "value": 129661,
           "date": "2026-01-23T03:37:51.092Z"
@@ -3098,6 +3154,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 249881,
+          "date": "2026-01-27T13:12:24.784Z"
+        },
         {
           "value": 273085,
           "date": "2026-01-23T03:38:00.163Z"
@@ -3321,6 +3381,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 129310,
+          "date": "2026-01-27T13:12:42.389Z"
+        },
+        {
           "value": 142574,
           "date": "2026-01-15T14:57:40.098Z"
         },
@@ -3442,6 +3506,10 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 220522,
+          "date": "2026-01-27T13:12:59.876Z"
+        },
         {
           "value": 247127,
           "date": "2026-01-23T03:38:32.196Z"
@@ -4281,6 +4349,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 33900,
+          "date": "2026-01-27T13:16:55.193Z"
+        },
+        {
           "value": 22828,
           "date": "2026-01-04T16:36:32.541Z"
         },
@@ -4406,6 +4478,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 56669,
+          "date": "2026-01-27T13:17:04.851Z"
+        },
         {
           "value": 60999,
           "date": "2026-01-23T03:42:30.874Z"
@@ -4648,6 +4724,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 27000,
+          "date": "2026-01-27T13:17:21.837Z"
+        },
         {
           "value": 34000,
           "date": "2026-01-15T15:02:24.437Z"
@@ -5114,6 +5194,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 19399,
+          "date": "2026-01-27T13:18:10.509Z"
+        },
+        {
           "value": 18999,
           "date": "2026-01-23T03:43:34.425Z"
         },
@@ -5377,6 +5461,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 77500,
+          "date": "2026-01-27T13:18:35.655Z"
+        },
         {
           "value": 63000,
           "date": "2026-01-09T09:04:08.550Z"
@@ -5812,6 +5900,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 68216,
+          "date": "2026-01-27T13:19:08.419Z"
+        },
+        {
           "value": 68899,
           "date": "2026-01-19T19:13:01.337Z"
         },
@@ -5931,6 +6023,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 12000,
+          "date": "2026-01-27T13:19:33.374Z"
+        },
         {
           "value": 14424,
           "date": "2026-01-23T03:44:53.017Z"
@@ -6152,6 +6248,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 677521,
+          "date": "2026-01-27T13:10:36.751Z"
+        },
         {
           "value": 749999,
           "date": "2026-01-23T03:36:13.320Z"
