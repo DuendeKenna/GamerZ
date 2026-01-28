@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 937042,
+      "total": 990252,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -85,7 +85,7 @@
           "date": "1970-01-01T00:00:00.000Z"
         }
       ],
-      "profit": 150000,
+      "profit": 200000,
       "order": 0
     },
     {
@@ -397,6 +397,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 370000,
+          "date": "2026-01-28T12:58:12.321Z"
+        },
         {
           "value": 386599,
           "date": "2026-01-27T13:10:27.146Z"
@@ -875,6 +879,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 104999,
+          "date": "2026-01-28T13:01:34.711Z"
+        },
+        {
           "value": 101000,
           "date": "2026-01-27T13:13:59.294Z"
         },
@@ -1024,6 +1032,10 @@
       "description": "",
       "prices": [
         {
+          "value": 162507,
+          "date": "2026-01-28T13:01:44.426Z"
+        },
+        {
           "value": 164628,
           "date": "2026-01-27T13:14:08.640Z"
         },
@@ -1066,6 +1078,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 289999,
+          "date": "2026-01-28T13:01:53.813Z"
+        },
         {
           "value": 316920,
           "date": "2026-01-27T13:14:18.157Z"
@@ -1221,6 +1237,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 110558,
+          "date": "2026-01-28T13:02:03.260Z"
+        },
+        {
           "value": 96757,
           "date": "2026-01-27T13:14:27.689Z"
         },
@@ -1357,6 +1377,10 @@
       "visible": 0,
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
+        {
+          "value": 196863,
+          "date": "2026-01-28T13:02:12.656Z"
+        },
         {
           "value": 155000,
           "date": "2026-01-12T16:50:45.725Z"
@@ -1609,6 +1633,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 97000,
+          "date": "2026-01-28T13:02:44.961Z"
+        },
         {
           "value": 150999,
           "date": "2026-01-27T13:15:09.634Z"
@@ -3507,6 +3535,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 247127,
+          "date": "2026-01-28T13:00:38.610Z"
+        },
+        {
           "value": 220522,
           "date": "2026-01-27T13:12:59.876Z"
         },
@@ -3638,6 +3670,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 657270,
+          "date": "2026-01-28T12:59:02.721Z"
+        },
         {
           "value": 649594,
           "date": "2026-01-23T03:36:52.578Z"
@@ -4043,6 +4079,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 330784,
+          "date": "2026-01-28T13:04:05.409Z"
+        },
+        {
           "value": 339999,
           "date": "2026-01-23T03:41:59.036Z"
         },
@@ -4342,12 +4382,27 @@
   "joystickOptions": [
     {
       "id": 80115,
-      "name": "Xbox 360 - Cableado",
+      "name": "PS3  - Inalámbrico",
       "description": "Generico Xbox 360 Con Cable",
-      "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "linksAlt": [],
+      "link": "https://www.mercadolibre.com.ar/joystick-compatible-ps3-pc-notebook----cable-usb/up/MLAU3731228532?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "linksAlt": [
+        "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
+        "https://www.mercadolibre.com.ar/joystick-inalambrico-playstation-dualshock-3-negro/p/MLA21530107?offer_type=OFFICIAL_STORE"
+      ],
       "prices": [
+        {
+          "value": 22999,
+          "date": "2026-01-28T13:25:37.795Z"
+        },
+        {
+          "value": 321530107,
+          "date": "2026-01-28T13:15:44.728Z"
+        },
+        {
+          "value": 22999,
+          "date": "2026-01-28T13:13:48.192Z"
+        },
         {
           "value": 33900,
           "date": "2026-01-27T13:16:55.193Z"
@@ -4471,6 +4526,96 @@
       ]
     },
     {
+      "id": 7020,
+      "name": "Xbox 360 - Inalámbrico",
+      "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-seisa-njx311/p/MLA17789958?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 51145,
+          "date": "2026-01-28T13:20:08.897Z"
+        },
+        {
+          "value": 51145,
+          "date": "2026-01-16T13:24:31.424Z"
+        },
+        {
+          "value": 31758,
+          "date": "2026-01-05T14:27:54.441Z"
+        },
+        {
+          "value": 44890,
+          "date": "2026-01-04T16:36:51.972Z"
+        },
+        {
+          "value": 34177,
+          "date": "2025-12-23T11:59:41.325Z"
+        },
+        {
+          "value": 34335,
+          "date": "2025-12-19T17:26:47.928Z"
+        },
+        {
+          "value": 35000,
+          "date": "2025-12-18T17:27:19.800Z"
+        },
+        {
+          "value": 36169,
+          "date": "2025-12-16T19:13:12.660Z"
+        },
+        {
+          "value": 41384,
+          "date": "2025-12-08T13:14:16.621Z"
+        },
+        {
+          "value": 41384,
+          "date": "2025-12-05T15:30:04.943Z"
+        },
+        {
+          "value": 41384,
+          "date": "2025-11-29T12:43:53.532Z"
+        },
+        {
+          "value": 41799,
+          "date": "2025-11-19T15:03:16.603Z"
+        },
+        {
+          "value": 43000,
+          "date": "2025-11-18T14:28:58.446Z"
+        },
+        {
+          "value": 44890,
+          "date": "2025-11-14T13:54:27.925Z"
+        },
+        {
+          "value": 42000,
+          "date": "2025-11-13T14:14:13.336Z"
+        },
+        {
+          "value": 40739,
+          "date": "2025-11-12T11:25:33.596Z"
+        },
+        {
+          "value": 42000,
+          "date": "2025-11-09T14:23:06.016Z"
+        },
+        {
+          "value": 44000,
+          "date": "2025-10-28T12:18:39.065Z"
+        },
+        {
+          "value": 52168,
+          "date": "2025-10-25T18:59:24.967Z"
+        },
+        {
+          "value": 44890,
+          "date": "2025-10-03T13:24:44.926Z"
+        }
+      ]
+    },
+    {
       "id": 80101,
       "name": "Redragon Harrow - Inalámbrico",
       "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-redragon-harrow-g808-negro/p/MLA15086696?offer_type=OFFICIAL_STORE",
@@ -4478,6 +4623,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 64899,
+          "date": "2026-01-28T13:20:16.310Z"
+        },
         {
           "value": 56669,
           "date": "2026-01-27T13:17:04.851Z"
@@ -4627,92 +4776,6 @@
           "date": "2025-10-01T14:22:50.761Z"
         }
       ]
-    },
-    {
-      "id": 7020,
-      "name": "Xbox 360 - Inalámbrico",
-      "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-seisa-njx311/p/MLA17789958?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 51145,
-          "date": "2026-01-16T13:24:31.424Z"
-        },
-        {
-          "value": 31758,
-          "date": "2026-01-05T14:27:54.441Z"
-        },
-        {
-          "value": 44890,
-          "date": "2026-01-04T16:36:51.972Z"
-        },
-        {
-          "value": 34177,
-          "date": "2025-12-23T11:59:41.325Z"
-        },
-        {
-          "value": 34335,
-          "date": "2025-12-19T17:26:47.928Z"
-        },
-        {
-          "value": 35000,
-          "date": "2025-12-18T17:27:19.800Z"
-        },
-        {
-          "value": 36169,
-          "date": "2025-12-16T19:13:12.660Z"
-        },
-        {
-          "value": 41384,
-          "date": "2025-12-08T13:14:16.621Z"
-        },
-        {
-          "value": 41384,
-          "date": "2025-12-05T15:30:04.943Z"
-        },
-        {
-          "value": 41384,
-          "date": "2025-11-29T12:43:53.532Z"
-        },
-        {
-          "value": 41799,
-          "date": "2025-11-19T15:03:16.603Z"
-        },
-        {
-          "value": 43000,
-          "date": "2025-11-18T14:28:58.446Z"
-        },
-        {
-          "value": 44890,
-          "date": "2025-11-14T13:54:27.925Z"
-        },
-        {
-          "value": 42000,
-          "date": "2025-11-13T14:14:13.336Z"
-        },
-        {
-          "value": 40739,
-          "date": "2025-11-12T11:25:33.596Z"
-        },
-        {
-          "value": 42000,
-          "date": "2025-11-09T14:23:06.016Z"
-        },
-        {
-          "value": 44000,
-          "date": "2025-10-28T12:18:39.065Z"
-        },
-        {
-          "value": 52168,
-          "date": "2025-10-25T18:59:24.967Z"
-        },
-        {
-          "value": 44890,
-          "date": "2025-10-03T13:24:44.926Z"
-        }
-      ]
     }
   ],
   "keyboardOptions": [
@@ -4807,68 +4870,6 @@
         {
           "value": 33000,
           "date": "2025-10-04T13:38:43.507Z"
-        }
-      ]
-    },
-    {
-      "id": 78296,
-      "name": "Cabledo | Mecánico Hamr's",
-      "description": "",
-      "link": "https://www.mercadolibre.com.ar/teclado-mecanico-gamer-hamers-argb-software/up/MLAU3370339947?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 53520,
-          "date": "2025-12-19T17:30:01.692Z"
-        },
-        {
-          "value": 47500,
-          "date": "2025-12-16T19:13:31.481Z"
-        },
-        {
-          "value": 39999,
-          "date": "2025-12-10T13:39:35.127Z"
-        },
-        {
-          "value": 43700,
-          "date": "2025-12-08T13:14:28.750Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-12-05T15:30:15.122Z"
-        },
-        {
-          "value": 45125,
-          "date": "2025-12-04T16:35:22.445Z"
-        },
-        {
-          "value": 38088,
-          "date": "2025-11-29T12:44:08.884Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-11-27T12:51:17.900Z"
-        },
-        {
-          "value": 45125,
-          "date": "2025-11-26T15:33:24.362Z"
-        },
-        {
-          "value": 41400,
-          "date": "2025-11-21T14:10:58.739Z"
-        },
-        {
-          "value": 38088,
-          "date": "2025-10-28T12:18:54.685Z"
-        },
-        {
-          "value": 36944,
-          "date": "2025-10-25T18:59:40.768Z"
-        },
-        {
-          "value": 38088,
-          "date": "2025-10-01T14:23:08.884Z"
         }
       ]
     },
@@ -5372,6 +5373,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 56599,
+          "date": "2026-01-28T13:22:06.705Z"
+        },
+        {
           "value": 47949,
           "date": "2026-01-15T15:03:28.457Z"
         },
@@ -5708,108 +5713,6 @@
   ],
   "microfonosOptions": [
     {
-      "id": 31544,
-      "name": "Condenser USB - BM200",
-      "link": "https://www.mercadolibre.com.ar/microfono-condensador-condenser-profesional-estudio-bm2000-color-negro/p/MLA20722143?pdp_filters=item_id%3AMLA1866363854&offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-right&reco_backend=pdp_pads_right_rars_v2_with_default&wid=MLA1866363854&reco_model=rk_ent_v2_retsys_ads&reco_client=pdp-pads-right&reco_item_pos=1&reco_backend_type=low_level&reco_id=2d559fa4-f07c-43f9-bc5e-7434ad73dfe3&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_RIGHT&ad_position=2&ad_click_id=NTRlYjU4NjEtYmM4NC00ZmU4LTg0ZDQtZGM2MzEzMWJmMzA4",
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 64399,
-          "date": "2026-01-23T03:44:13.727Z"
-        },
-        {
-          "value": 69999,
-          "date": "2026-01-16T13:28:23.694Z"
-        },
-        {
-          "value": 50924,
-          "date": "2026-01-16T13:27:33.442Z"
-        },
-        {
-          "value": 42704,
-          "date": "2026-01-15T15:03:53.967Z"
-        },
-        {
-          "value": 38433,
-          "date": "2026-01-04T16:39:28.820Z"
-        },
-        {
-          "value": 44054,
-          "date": "2025-12-19T17:31:45.924Z"
-        },
-        {
-          "value": 40749,
-          "date": "2025-12-18T17:29:00.816Z"
-        },
-        {
-          "value": 40899,
-          "date": "2025-12-10T13:40:49.848Z"
-        },
-        {
-          "value": 50443,
-          "date": "2025-12-08T13:15:25.029Z"
-        },
-        {
-          "value": 50443,
-          "date": "2025-12-05T15:31:09.987Z"
-        },
-        {
-          "value": 44499,
-          "date": "2025-12-04T16:36:43.150Z"
-        },
-        {
-          "value": 40939,
-          "date": "2025-11-26T15:34:43.882Z"
-        },
-        {
-          "value": 44499,
-          "date": "2025-11-25T15:26:17.682Z"
-        },
-        {
-          "value": 44054,
-          "date": "2025-11-14T13:55:56.470Z"
-        },
-        {
-          "value": 42731,
-          "date": "2025-11-13T14:15:44.213Z"
-        },
-        {
-          "value": 45000,
-          "date": "2025-11-04T13:51:54.964Z"
-        },
-        {
-          "value": 39188,
-          "date": "2025-11-03T13:20:43.912Z"
-        },
-        {
-          "value": 42170,
-          "date": "2025-10-17T09:44:43.996Z"
-        },
-        {
-          "value": 42596,
-          "date": "2025-10-14T13:47:21.512Z"
-        },
-        {
-          "value": 42170,
-          "date": "2025-10-09T18:24:20.438Z"
-        },
-        {
-          "value": 37986,
-          "date": "2025-10-08T15:18:27.086Z"
-        },
-        {
-          "value": 42170,
-          "date": "2025-10-06T14:42:46.870Z"
-        },
-        {
-          "value": 42596,
-          "date": "2025-10-04T13:40:31.094Z"
-        }
-      ]
-    },
-    {
       "id": 43732,
       "name": "Condenser USB - BM900 VT-Power",
       "description": "",
@@ -5899,6 +5802,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 68899,
+          "date": "2026-01-28T13:23:25.084Z"
+        },
         {
           "value": 68216,
           "date": "2026-01-27T13:19:08.419Z"
@@ -6312,6 +6219,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 427999,
+          "date": "2026-01-28T12:58:29.793Z"
+        },
         {
           "value": 429999,
           "date": "2026-01-19T19:03:51.510Z"
