@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 527182,
+      "total": 475982,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 744655,
+      "total": 693382,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 1002657,
+      "total": 949896,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -398,6 +398,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 366999,
+          "date": "2026-02-07T14:32:08.338Z"
+        },
+        {
           "value": 368000,
           "date": "2026-02-03T13:23:42.355Z"
         },
@@ -559,6 +563,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 49995,
+          "date": "2026-02-07T14:32:34.382Z"
+        },
+        {
           "value": 47499,
           "date": "2026-02-03T13:24:09.804Z"
         },
@@ -678,6 +686,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 74190,
+          "date": "2026-02-07T14:32:43.781Z"
+        },
+        {
           "value": 99470,
           "date": "2026-02-03T13:24:19.783Z"
         },
@@ -772,6 +784,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 76199,
+          "date": "2026-02-07T14:32:53.066Z"
+        },
         {
           "value": 78249,
           "date": "2026-01-27T13:11:09.504Z"
@@ -890,6 +906,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 152370,
+          "date": "2026-02-07T14:35:41.255Z"
+        },
         {
           "value": 111599,
           "date": "2026-02-03T13:30:02.130Z"
@@ -1095,6 +1115,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 289999,
+          "date": "2026-02-07T14:35:58.251Z"
+        },
+        {
           "value": 265000,
           "date": "2026-02-03T13:30:18.929Z"
         },
@@ -1257,6 +1281,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 90999,
+          "date": "2026-02-07T14:36:07.463Z"
+        },
+        {
           "value": 91999,
           "date": "2026-02-03T13:30:28.368Z"
         },
@@ -1401,6 +1429,10 @@
       "visible": 0,
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "prices": [
+        {
+          "value": 157665,
+          "date": "2026-02-07T14:36:16.775Z"
+        },
         {
           "value": 145000,
           "date": "2026-02-03T13:30:37.773Z"
@@ -1669,6 +1701,10 @@
       "visible": 0,
       "description": "",
       "prices": [
+        {
+          "value": 98000,
+          "date": "2026-02-07T14:36:48.689Z"
+        },
         {
           "value": 122999,
           "date": "2026-02-03T13:31:14.075Z"
@@ -1990,7 +2026,7 @@
       "id": 47347,
       "name": "RX 560 | 4GB",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1516514757-placa-de-video-amd-radeon-rx-560-4gb-gddr5-30-128-bits-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 0,
+      "visible": 1,
       "description": "Lo opción más económica. Aún siendo antigua, va a poder correr juegos que la integrada no tira bien.",
       "linksAlt": [],
       "prices": [
@@ -2044,12 +2080,16 @@
       "id": 64601,
       "name": "RTX 3050 | 6GB",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-nvidia-msi-geforce-rtx-3050-ventus-2x-6gb-oc-gddr6/p/MLA34284188?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "linksAlt": [
         "https://www.mercadolibre.com.ar/placa-de-video-msi-geforce-rtx-3050-oc-6gb-gddr6-96bits/p/MLA37776074?offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 743240,
+          "date": "2026-02-07T14:35:13.411Z"
+        },
         {
           "value": 449000,
           "date": "2026-02-03T13:29:33.881Z"
@@ -2164,9 +2204,13 @@
       "id": 4156,
       "name": "RTX 5060 | 8GB ",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-msi-rtx-5060-8-gb-gddr7-128-bit-shadow-2x-oc/p/MLA51032833?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
+        {
+          "value": 1043719,
+          "date": "2026-02-07T14:35:22.640Z"
+        },
         {
           "value": 1043889,
           "date": "2026-02-03T13:29:43.283Z"
@@ -2249,6 +2293,10 @@
       "visible": 1,
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "prices": [
+        {
+          "value": 940789,
+          "date": "2026-02-07T14:35:31.945Z"
+        },
         {
           "value": 951229,
           "date": "2026-02-03T13:29:52.669Z"
@@ -2384,6 +2432,10 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 39000,
+          "date": "2026-02-07T14:37:35.451Z"
+        },
         {
           "value": 39499,
           "date": "2026-01-27T13:15:57.398Z"
@@ -2773,6 +2825,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 93585,
+          "date": "2026-02-07T14:33:51.941Z"
+        },
+        {
           "value": 183331,
           "date": "2026-02-03T13:28:04.110Z"
         },
@@ -2915,6 +2971,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 324399,
+          "date": "2026-02-07T14:33:25.422Z"
+        },
+        {
           "value": 325072,
           "date": "2026-02-03T13:27:35.581Z"
         },
@@ -3052,6 +3112,10 @@
       "description": "4 nucleos 4ghz Am4",
       "prices": [
         {
+          "value": 106999,
+          "date": "2026-02-07T14:33:34.716Z"
+        },
+        {
           "value": 107599,
           "date": "2026-02-03T13:27:45.035Z"
         },
@@ -3103,6 +3167,10 @@
         "https://www.mercadolibre.com.ar/memoria-ram-ddr4-8gb-3200mhz-hiksemi-armor-white-u-dimm/p/MLA39241493?offer_type=BEST_PRICE"
       ],
       "prices": [
+        {
+          "value": 137699,
+          "date": "2026-02-07T14:34:01.373Z"
+        },
         {
           "value": 118126,
           "date": "2026-02-03T13:28:13.614Z"
@@ -3643,6 +3711,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 265956,
+          "date": "2026-02-07T14:34:41.407Z"
+        },
+        {
           "value": 247127,
           "date": "2026-01-28T13:00:38.610Z"
         },
@@ -3983,6 +4055,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 174799,
+          "date": "2026-02-07T14:37:52.294Z"
+        },
+        {
           "value": 179500,
           "date": "2026-02-03T13:32:24.420Z"
         },
@@ -4109,6 +4185,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 192899,
+          "date": "2026-02-07T14:38:01.663Z"
+        },
+        {
           "value": 180899,
           "date": "2026-02-03T13:32:33.939Z"
         },
@@ -4202,6 +4282,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 329999,
+          "date": "2026-02-07T14:38:10.953Z"
+        },
         {
           "value": 328999,
           "date": "2026-02-03T13:32:43.729Z"
@@ -4346,6 +4430,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 9373,
+          "date": "2026-02-07T14:38:20.347Z"
+        },
         {
           "value": 12864,
           "date": "2026-02-03T13:32:53.342Z"
@@ -4756,6 +4844,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 53842,
+          "date": "2026-02-07T14:38:52.213Z"
+        },
+        {
           "value": 54899,
           "date": "2026-02-03T13:33:25.831Z"
         },
@@ -4924,6 +5016,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 35146,
+          "date": "2026-02-07T14:39:01.583Z"
+        },
+        {
           "value": 27000,
           "date": "2026-01-27T13:17:21.837Z"
         },
@@ -5017,6 +5113,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 51299,
+          "date": "2026-02-07T14:39:10.863Z"
+        },
         {
           "value": 52499,
           "date": "2026-02-03T13:33:43.062Z"
@@ -5224,6 +5324,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 13620,
+          "date": "2026-02-07T14:39:27.761Z"
+        },
         {
           "value": 13713,
           "date": "2026-01-23T03:43:17.654Z"
@@ -5521,6 +5625,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 24228,
+          "date": "2026-02-07T14:39:59.802Z"
+        },
+        {
           "value": 44549,
           "date": "2026-02-03T13:34:34.210Z"
         },
@@ -5618,6 +5726,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 59500,
+          "date": "2026-02-07T14:40:09.316Z"
+        },
         {
           "value": 61750,
           "date": "2026-02-03T13:34:43.617Z"
@@ -6103,6 +6215,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 10890,
+          "date": "2026-02-07T14:40:56.475Z"
+        },
+        {
           "value": 10219,
           "date": "2026-02-03T13:35:38.638Z"
         },
@@ -6247,6 +6363,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 19398,
+          "date": "2026-02-07T14:41:05.853Z"
+        },
+        {
           "value": 14999,
           "date": "2026-01-04T16:41:06.160Z"
         },
@@ -6331,6 +6451,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 644299,
+          "date": "2026-02-07T14:32:17.647Z"
+        },
         {
           "value": 677521,
           "date": "2026-01-27T13:10:36.751Z"

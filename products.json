@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 527182,
+      "total": 475982,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -22,7 +22,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 744655,
+      "total": 693382,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -36,7 +36,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 1002657,
+      "total": 949896,
       "totalram": 32,
       "visible": 1,
       "price": 0,
@@ -340,8 +340,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/pc-armada-intel-i5-16gb-memoria-ram-ssd-480gb-almacenamiento-windows-10-pro-wifitecladomouseparlantes/p/MLA45398956?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 368000,
-      "lastUpd": "2026-02-03T13:23:42.355Z"
+      "price": 366999,
+      "lastUpd": "2026-02-07T14:32:08.338Z"
     }
   ],
   "towersOptions": [
@@ -352,8 +352,8 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-gamer-lnz-y11-frentelateral-templado-y11-sf-argb-color-negro/p/MLA47405234?offer_type=BEST_PRICE",
       "visible": 1,
       "description": "",
-      "price": 47499,
-      "lastUpd": "2026-02-03T13:24:09.804Z"
+      "price": 49995,
+      "lastUpd": "2026-02-07T14:32:34.382Z"
     },
     {
       "id": 50127,
@@ -362,8 +362,8 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-para-computadora-de-escritorio-antec-ax20-elite-4/p/MLA28594175?offer_type=BEST_PRICE",
       "visible": 1,
       "description": "",
-      "price": 99470,
-      "lastUpd": "2026-02-03T13:24:19.783Z"
+      "price": 74190,
+      "lastUpd": "2026-02-07T14:32:43.781Z"
     },
     {
       "id": 47143,
@@ -372,8 +372,8 @@
       "link": "https://www.mercadolibre.com.ar/gabinete-sentey-h10-lateralfrente-transparente-argb-negro/p/MLA45231385?offer_type=BEST_PRICE",
       "visible": 1,
       "description": "",
-      "price": 78249,
-      "lastUpd": "2026-01-27T13:11:09.504Z"
+      "price": 76199,
+      "lastUpd": "2026-02-07T14:32:53.066Z"
     },
     {
       "name": "Reciclado",
@@ -392,8 +392,8 @@
       "description": "Alta velocidad PCIe 3.0, mucho más rápido que un sólido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-512gb-m2-nvme-hiksemi-wave-2500mbs-pcie/p/MLA25591261?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 111599,
-      "lastUpd": "2026-02-03T13:30:02.130Z"
+      "price": 152370,
+      "lastUpd": "2026-02-07T14:35:41.255Z"
     },
     {
       "id": 85054,
@@ -410,8 +410,8 @@
       "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
       "link": "https://www.mercadolibre.com.ar/disco-ssd-1tb-sn350-m2-nvme-green-western-digital/p/MLA24819136?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 265000,
-      "lastUpd": "2026-02-03T13:30:18.929Z"
+      "price": 289999,
+      "lastUpd": "2026-02-07T14:35:58.251Z"
     },
     {
       "id": 86326,
@@ -419,8 +419,8 @@
       "description": "Opción económica si precisás exprimir el precio y no precisás tanto espacio. SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-hiksemi-wave-240gb-3d-nand-pc-notebook/p/MLA45759263?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 91999,
-      "lastUpd": "2026-02-03T13:30:28.368Z"
+      "price": 90999,
+      "lastUpd": "2026-02-07T14:36:07.463Z"
     },
     {
       "id": 28539,
@@ -428,8 +428,8 @@
       "link": "https://www.mercadolibre.com.ar/interno-western-digital-wd-green-wds480g2g0a-480gb-verde/p/MLA12451965?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
-      "price": 145000,
-      "lastUpd": "2026-02-03T13:30:37.773Z"
+      "price": 157665,
+      "lastUpd": "2026-02-07T14:36:16.775Z"
     },
     {
       "id": 4953,
@@ -464,8 +464,8 @@
       "link": "https://www.mercadolibre.com.ar/disco-duro-western-digital-blue-wd10ezex-1tb-7200-rpm/p/MLA20953266?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
-      "price": 122999,
-      "lastUpd": "2026-02-03T13:31:14.075Z"
+      "price": 98000,
+      "lastUpd": "2026-02-07T14:36:48.689Z"
     },
     {
       "id": 65237,
@@ -536,7 +536,7 @@
       "id": 47347,
       "name": "RX 560 | 4GB",
       "link": "https://articulo.mercadolibre.com.ar/MLA-1516514757-placa-de-video-amd-radeon-rx-560-4gb-gddr5-30-128-bits-_JM?offer_type=OFFICIAL_STORE",
-      "visible": 0,
+      "visible": 1,
       "description": "Lo opción más económica. Aún siendo antigua, va a poder correr juegos que la integrada no tira bien.",
       "price": 196388,
       "lastUpd": "2026-01-08T14:22:47.759Z"
@@ -545,19 +545,19 @@
       "id": 64601,
       "name": "RTX 3050 | 6GB",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-nvidia-msi-geforce-rtx-3050-ventus-2x-6gb-oc-gddr6/p/MLA34284188?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
-      "price": 449000,
-      "lastUpd": "2026-02-03T13:29:33.881Z"
+      "price": 743240,
+      "lastUpd": "2026-02-07T14:35:13.411Z"
     },
     {
       "id": 4156,
       "name": "RTX 5060 | 8GB ",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-msi-rtx-5060-8-gb-gddr7-128-bit-shadow-2x-oc/p/MLA51032833?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "visible": 0,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
-      "price": 1043889,
-      "lastUpd": "2026-02-03T13:29:43.283Z"
+      "price": 1043719,
+      "lastUpd": "2026-02-07T14:35:22.640Z"
     },
     {
       "id": 41455,
@@ -565,8 +565,8 @@
       "link": "https://www.mercadolibre.com.ar/placa-de-video-radeon-powercolor-rx-9060-xt-16gb-gddr6/p/MLA51865733?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=1&type=product&tracking_id=825c6cea-4d48-4035-ba90-ba3112acb4c5&wid=MLA2461256168&sid=search",
       "visible": 1,
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
-      "price": 951229,
-      "lastUpd": "2026-02-03T13:29:52.669Z"
+      "price": 940789,
+      "lastUpd": "2026-02-07T14:35:31.945Z"
     }
   ],
   "psuOptions": [
@@ -585,8 +585,8 @@
       "description": "Dentro de las genéricas de lo mejorcito. MODO AHORRO *ON*",
       "link": "https://www.mercadolibre.com.ar/fuente-alimentacion-pc-atx-600w-luces-led-noga-atx-600-rgb-color-negro/p/MLA24830036?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 39499,
-      "lastUpd": "2026-01-27T13:15:57.398Z"
+      "price": 39000,
+      "lastUpd": "2026-02-07T14:37:35.451Z"
     },
     {
       "id": 45939,
@@ -614,8 +614,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 183331,
-      "lastUpd": "2026-02-03T13:28:04.110Z"
+      "price": 93585,
+      "lastUpd": "2026-02-07T14:33:51.941Z"
     },
     {
       "name": "Ninguno",
@@ -634,8 +634,8 @@
       "description": "8 nucleos 4.6ghz Am4",
       "link": "https://www.mercadolibre.com.ar/procesador-amd-ryzen-7-5700g-100-100000263box-de-8-nucleos-y-46ghz-de-frecuencia-con-grafica-integrada/p/MLA18441624?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 325072,
-      "lastUpd": "2026-02-03T13:27:35.581Z"
+      "price": 324399,
+      "lastUpd": "2026-02-07T14:33:25.422Z"
     },
     {
       "id": 24931,
@@ -643,8 +643,8 @@
       "link": "https://www.mercadolibre.com.ar/procesador-gamer-amd-ryzen-3-3200g-de-4-nucleos-y-4ghz-con-grafica-integrada/p/MLA15076943?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "4 nucleos 4ghz Am4",
-      "price": 107599,
-      "lastUpd": "2026-02-03T13:27:45.035Z"
+      "price": 106999,
+      "lastUpd": "2026-02-07T14:33:34.716Z"
     }
   ],
   "ramOptions": [
@@ -655,8 +655,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/memoria-ram-hiksemi-armor-udimm-ddr4-8gb-3200mhz-negro/p/MLA39435268?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "price": 118126,
-      "lastUpd": "2026-02-03T13:28:13.614Z"
+      "price": 137699,
+      "lastUpd": "2026-02-07T14:34:01.373Z"
     },
     {
       "id": 8502,
@@ -705,8 +705,8 @@
       "visible": 1,
       "description": "",
       "total": 16,
-      "price": 247127,
-      "lastUpd": "2026-01-28T13:00:38.610Z"
+      "price": 265956,
+      "lastUpd": "2026-02-07T14:34:41.407Z"
     }
   ],
   "comboOptions": [
@@ -745,8 +745,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-24-cooler-master-full-hd-100hz-1ms-ga241-2-color-negro/p/MLA28141684?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 179500,
-      "lastUpd": "2026-02-03T13:32:24.420Z"
+      "price": 174799,
+      "lastUpd": "2026-02-07T14:37:52.294Z"
     },
     {
       "id": 93025,
@@ -754,8 +754,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-noblex-25-pulgadas-nxsm2500-led-fhd/p/MLA45717090?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 180899,
-      "lastUpd": "2026-02-03T13:32:33.939Z"
+      "price": 192899,
+      "lastUpd": "2026-02-07T14:38:01.663Z"
     },
     {
       "id": 17689,
@@ -763,8 +763,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/monitor-gamer-gigabyte-gs27fa-27-180hz-panel-ips-1ms-hdr-full-hd/p/MLA48944295?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 328999,
-      "lastUpd": "2026-02-03T13:32:43.729Z"
+      "price": 329999,
+      "lastUpd": "2026-02-07T14:38:10.953Z"
     }
   ],
   "mouseOptions": [
@@ -774,8 +774,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/mouse-gamer-usb-wesdar-2400-dpi-pc-led-de-6-botones-pad-color-negro/p/MLA21250931?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 12864,
-      "lastUpd": "2026-02-03T13:32:53.342Z"
+      "price": 9373,
+      "lastUpd": "2026-02-07T14:38:20.347Z"
     },
     {
       "id": 18066,
@@ -812,8 +812,8 @@
       "link": "https://www.mercadolibre.com.ar/joystick-inalambrico-redragon-harrow-g808-negro/p/MLA15086696?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 54899,
-      "lastUpd": "2026-02-03T13:33:25.831Z"
+      "price": 53842,
+      "lastUpd": "2026-02-07T14:38:52.213Z"
     }
   ],
   "keyboardOptions": [
@@ -823,8 +823,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-inalambrico-logitech-k270-qwerty-espanol-color-negro/p/MLA7177565?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 27000,
-      "lastUpd": "2026-01-27T13:17:21.837Z"
+      "price": 35146,
+      "lastUpd": "2026-02-07T14:39:01.583Z"
     },
     {
       "id": 15740,
@@ -832,8 +832,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/teclado-gamer-redragon-shiva-k512-rgb-qwerty-espanol-latinoamerica-color-negro-con-luz-rgb/p/MLA17496952?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 52499,
-      "lastUpd": "2026-02-03T13:33:43.062Z"
+      "price": 51299,
+      "lastUpd": "2026-02-07T14:39:10.863Z"
     },
     {
       "id": 67546,
@@ -853,8 +853,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/auriculares-gamer-noga-stormer-ng-8620-negro-y-rojo/p/MLA6354312?offer_type=OFFICIAL_STORE#polycard_client=search_best-seller&tracking_id=78f0b566-6759-43a3-8568-c4800be17775&wid=MLA1941191004&sid=search",
       "visible": 1,
-      "price": 13713,
-      "lastUpd": "2026-01-23T03:43:17.654Z"
+      "price": 13620,
+      "lastUpd": "2026-02-07T14:39:27.761Z"
     },
     {
       "id": 63286,
@@ -893,8 +893,8 @@
       "link": "https://www.mercadolibre.com.ar/webcam-c270-logitech-color-negro/p/MLA18931576?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 44549,
-      "lastUpd": "2026-02-03T13:34:34.210Z"
+      "price": 24228,
+      "lastUpd": "2026-02-07T14:39:59.802Z"
     },
     {
       "id": 85797,
@@ -902,8 +902,8 @@
       "link": "https://www.mercadolibre.com.ar/webcam-logitech-brio-100-full-hd-1080p-negro/p/MLA28407045?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 61750,
-      "lastUpd": "2026-02-03T13:34:43.617Z"
+      "price": 59500,
+      "lastUpd": "2026-02-07T14:40:09.316Z"
     },
     {
       "id": 18249,
@@ -960,8 +960,8 @@
       "link": "https://www.mercadolibre.com.ar/tplink-receptor-usb-bluetooth-ub500-plus/p/MLA44907785?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "",
-      "price": 10219,
-      "lastUpd": "2026-02-03T13:35:38.638Z"
+      "price": 10890,
+      "lastUpd": "2026-02-07T14:40:56.475Z"
     }
   ],
   "arosDeLuzOptions": [
@@ -971,8 +971,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/aro-de-luz-led-26-cm-con-tripode-2-metros-soprte-celular/p/MLA44508125?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 14999,
-      "lastUpd": "2026-01-04T16:41:06.160Z"
+      "price": 19398,
+      "lastUpd": "2026-02-07T14:41:05.853Z"
     }
   ],
   "miniPcOptions": [
@@ -984,8 +984,8 @@
       "cpu": "R5 7430",
       "ram": "16",
       "ssd": "512",
-      "price": 677521,
-      "lastUpd": "2026-01-27T13:10:36.751Z"
+      "price": 644299,
+      "lastUpd": "2026-02-07T14:32:17.647Z"
     },
     {
       "id": 82479,
