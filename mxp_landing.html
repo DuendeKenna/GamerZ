@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<<<<<<< HEAD <html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>MillennialXP - Lo Viejo...Vuelve</title>
+        <!-- Tailwind CSS v3 CDN -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <!-- Custom Tailwind Configuration -->
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            xpBlue: '#0053e1',
+                            xpDarkBlue: '#0020a0',
+                            xpOrange: '#e04300',
+                            xpLightBlue: '#4a86e8',
+                            xpBeige: '#f0ede1',
+                        },
+                        fontFamily: {
+                            segoe: ['"Segoe UI"', 'Tahoma', 'sans-serif'],
+                            serif: ['Georgia', 'serif'],
+                        }
+                    }
+                }
+            }
+        </script>
+        <!-- BEGIN: Custom Styles -->
+        <style data-purpose="custom-gradients">
+            .xp-gradient-taskbar {
+                background: linear-gradient(to bottom, #245edb 0%, #3f8cf3 9%, #245edb 18%, #245edb 92%, #333 100%);
+            }
+
+            .xp-start-button {
+                background: linear-gradient(to bottom, #388e3c 0%, #4caf50 50%, #388e3c 100%);
+                box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4);
+            }
+
+            .xp-text-glow {
+                text-shadow: 0 0 15px rgba(224, 67, 0, 0.6);
+            }
+
+            .slant-divider {
+                clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+            }
+
+            .slant-divider-reverse {
+                clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+            }
+        </style>
+        <style data-purpose="typography">
+            .hero-title {
+                font-style: italic;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+        </style>
+        <!-- END: Custom Styles -->
+    </head>
+
+    <body class="font-segoe m-0 p-0 overflow-x-hidden">
+        <!-- BEGIN: Windows Taskbar Header -->
+        <header
+            class="fixed top-0 left-0 w-full z-50 xp-gradient-taskbar h-10 flex items-center justify-between px-2 border-b border-blue-800 shadow-lg"
+            data-purpose="header-taskbar">
+            <div class="flex items-center h-full">
+                <!-- Start Button Mockup -->
+                <button
+                    class="xp-start-button flex items-center px-4 h-8 rounded-tr-xl rounded-br-xl italic font-bold text-white text-lg hover:brightness-110 transition-all mr-6">
+                    <span class="mr-1">M</span>XP
+                </button>
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-6 text-white font-semibold text-sm">
+                    <a class="hover:text-blue-200 transition-colors" href="#">Home</a>
+                    <a class="hover:text-blue-200 transition-colors" href="#">Games</a>
+                    <a class="hover:text-blue-200 transition-colors" href="#">Specs</a>
+                </nav>
+            </div>
+            <!-- System Tray Mockup Area -->
+            <div
+                class="hidden sm:flex items-center bg-[#0997ff] border-l border-blue-400 h-full px-4 text-white text-xs">
+                <span id="digital-clock">12:00 PM</span>
+            </div>
+        </header>
+        <!-- END: Windows Taskbar Header -->
+        <!-- BEGIN: Main Content Container -->
+        <main class="w-full min-h-screen pt-10">
+            <!-- BEGIN: Hero Section -->
+            <!-- Replicating the Bliss-like hill and planet background from the sketch -->
+            <section class="relative h-[45vh] md:h-[50vh] overflow-hidden" data-purpose="hero-image-area">
+                <img alt="Lush green hills with a planet in a blue sky" class="w-full h-full object-cover object-top"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWoWkeErAXTfYtgpHIamdvRMhIi2q0QsPfyn1rFLfQTy4eygVgx1JT0XQ5Dyvocjb1AF9aYNHucE5G-K99YyULE-5g_yITbXOltv8_kMeoAp217-wAzruyyty20Bc3ObmcXx4fV40kka10-geAbhjNKxnrvaIPS42QN7OI_uD2pTURhCriVSvLuXrW8TA7CRc-Z_4b_oUOObSKKVx-1OeBAO3v93DatQ08FzTDd_OH2pcK7oqp57trxXz3IZ-angazdAuOCGysVssJ" />
+                <!-- Hero Text overlay -->
+                <div class="absolute top-8 left-8">
+                    <h2 class="hero-title text-3xl md:text-5xl text-white font-serif">
+                        Lo Viejo...Vuelve
+                    </h2>
+                </div>
+            </section>
+            <!-- END: Hero Section -->
+            <!-- BEGIN: Branding Section -->
+            <!-- Deep blue section containing the main logo -->
+            <section class="bg-xpDarkBlue py-24 md:py-40 flex items-center justify-center -mt-10 slant-divider"
+                data-purpose="main-branding">
+                <div class="text-center px-4">
+                    <h1
+                        class="text-5xl md:text-8xl font-bold text-white tracking-tight flex flex-wrap justify-center items-center gap-2">
+                        <span>Millennial</span>
+                        <span class="text-xpOrange italic xp-text-glow">XP</span>
+                    </h1>
+                    <p class="text-blue-300 mt-6 text-lg md:text-xl max-w-2xl mx-auto italic">
+                        Experience the nostalgia of the 2000s, reimagined for the modern web.
+                    </p>
+                </div>
+            </section>
+            <!-- END: Branding Section -->
+            <!-- BEGIN: Feature Section (Lighter Blue) -->
+            <section class="bg-xpLightBlue py-32 -mt-10 slant-divider-reverse" data-purpose="sub-section-blue">
+                <div class="container mx-auto px-6 text-white text-center">
+                    <h3 class="text-3xl font-bold mb-8">Modern Performance, Classic Vibe</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                        <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
+                            <div class="text-4xl mb-4">🚀</div>
+                            <h4 class="font-bold mb-2">Blazing Fast</h4>
+                            <p class="text-sm opacity-90">Optimized for speed without losing the chunky aesthetic of the
+                                early millennium.</p>
+                        </div>
+                        <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
+                            <div class="text-4xl mb-4">🎮</div>
+                            <h4 class="font-bold mb-2">Classic Games</h4>
+                            <p class="text-sm opacity-90">Access a curated library of software that defined a
+                                generation.
+                            </p>
+                        </div>
+                        <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
+                            <div class="text-4xl mb-4">🛠️</div>
+                            <h4 class="font-bold mb-2">Full Control</h4>
+                            <p class="text-sm opacity-90">The customizability you remember, with the security you need
+                                today.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- END: Feature Section -->
+            <!-- BEGIN: Beige Section -->
+            <section class="bg-xpBeige py-32 -mt-10" data-purpose="bottom-beige-area">
+                <div class="container mx-auto px-6 text-center">
+                    <div class="max-w-xl mx-auto p-8 border-4 border-double border-gray-400 bg-white shadow-inner">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Ready to go back?</h2>
+                        <p class="text-gray-600 mb-8">Join thousands of users rediscovering the joy of a simpler
+                            operating
+                            system aesthetic.</p>
+                        <button
+                            class="bg-xpOrange hover:bg-orange-700 text-white font-bold py-3 px-10 rounded shadow-lg transform transition active:scale-95">
+                            START NOW
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <!-- END: Beige Section -->
+        </main>
+        <!-- END: Main Content Container -->
+        <!-- BEGIN: Footer -->
+        <footer class="bg-xpBlue py-6 text-white text-center border-t-2 border-blue-400" data-purpose="page-footer">
+            <p class="text-sm opacity-75">© 2024 MillennialXP. All rights reserved. Not affiliated with any corporation.
+            </p>
+        </footer>
+        <!-- END: Footer -->
+        <!-- BEGIN: Clock Script -->
+        <script data-purpose="event-handlers">
+            // Simple script to update the "taskbar" clock
+            function updateClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                let minutes = now.getMinutes();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                const strTime = hours + ':' + minutes + ' ' + ampm;
+                document.getElementById('digital-clock').textContent = strTime;
+            }
+
+            setInterval(updateClock, 1000);
+            updateClock();
+        </script>
+        <!-- END: Clock Script -->
+        =======
+        <html lang="es">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MXP Demo | Instalación</title>
+            <link rel="icon"
+                href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💾</text></svg>">
+            <!-- Cargando Tailwind CSS (Script vital) -->
+            <script src="https://cdn.tailwindcss.com"></script>
+
+            <style>
+                /* Fuentes */
+                @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap');
+
+                body {
+                    font-family: 'Inter', sans-serif;
+                }
+
+                /* ESTILOS BASE (Fallback por si Tailwind no carga) */
+                .main-container {
+                    background-color: #060606;
+                    /* Fondo oscuro */
+                    color: #f3f4f6;
+                    /* Color de texto claro forzado (equivale a gray-100) */
+                }
+
+                /* Aseguramos que los links o textos no queden oscuros si falla el framework */
+                a,
+                h1,
+                h2,
+                h3,
+                h4,
+                p,
+                li {
+                    color: inherit;
+                }
+            </style>
+        </head>
+
+        <body class="main-container text-gray-100">
+
+            <div class="container max-w-4xl mx-auto p-6 md:p-10">
+
+                <!-- Logo -->
+                <img src="MillennialGAMERXP.logo.png" alt="Logo Millennial Gamer XP"
+                    class="w-full max-w-lg mx-auto mb-8 rounded-lg"
+                    onerror="this.src='https://placehold.co/600x200/ef4444/ffffff?text=Millennial+GAMER+XP'; this.onerror=null;">
+
+                <!-- Título -->
+                <h1 class="text-4xl md:text-5xl font-bold text-center pb-10 text-transparent bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400"
+                    style="background-image: linear-gradient(to right, #ef4444, #fb923c, #facc15); -webkit-background-clip: text;">
+                    MXP Demo | Instalación
+                </h1>
+
+                <!-- Contenido -->
+                <div class="bg-gray-900 p-6 md:p-8 rounded-lg shadow-2xl border border-gray-800">
+
+                    <!-- Módulo 1 -->
+                    <h2 class="text-3xl font-bold mt-1 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
+                        ¿Qué es la MillennialXP?
+                    </h2>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        Una 'Máquina del Tiempo' que
+                        aporta una experiencia <strong class="text-orange-400">Plug & Play</strong> para revivir la era
+                        dorada
+                        del gaming y el arte audiovisual del cruce de milenios (90s~2012).
+                    </p>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        Esta versión conceptual es totalmente funcional, pero dista del proyecto a futuro. Propone un
+                        vistazo a
+                        la experiencia que queremos entregar - jugar a títulos clásicos expandidos por la comunidad en
+                        un
+                        entorno retro/renovado y optimizado.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">1. Sistema Operativo</h3>
+
+
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">Usamos un Windows 11 23H2 personalizado hasta
+                        la coronilla con un estilo que recuerda a XP - iconos, ventanas, menús, sonidos, etc.
+                    </p>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        Tiene las actualizaciones desactivadas y montones de características eliminadas o modificadas;
+                        no hay
+                        Store, ni Drive, ni Copilot ni nada que sobre respecto a la experiencia retro que queremos
+                        generar.
+                    </p>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        No tiene antivirus - confiamos en la seguridad por aislamiento. <br>(más sobre este tema en el
+                        punto 3)
+                    </p>
+                    </p>
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">2A. Colección de Juegos</h3>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        En el Escritorio hay 2 íconos: <strong class="text-orange-400">Playnite</strong> (juegos de PC)
+                        y
+                        <strong class="text-orange-400">Retrobat</strong> (Emuladores)
+                    </p>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        Contienen colecciones curadas de juegos de la época (hasta 2012), y el fuerte está en los de PC,
+                        preconfigurados para sistemas modernos y unos cuantos con mods, mapas de la comunidad y/o packs
+                        HD, así como traducciones al español cuando el juego original no las tenía.
+                    </p>
+
+                    <p
+                        class="hidden text-lg text-gray-200 mb-4 leading-relaxed font-mono bg-black/30 p-4 rounded border border-gray-700">
+                        Los juegos presentes en esta versión <i>no son</i> los que estarán en la v2.0, en la que
+                        procuraremos
+                        solo software liberado, abandonware, ports de la comunidad, emulación, y un sistema de acceso a
+                        compras
+                        en tiendas como GOG para luego expandirlos con la instalación automática de addons.
+                    </p>
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">2B. Colección de Programas</h3>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        Además de los juegos, la MXP incluye una serie de programas clásicos y modernos para
+                        reproducción
+                        multimedia, navegadores y downloaders web, descargas de drivers, mantenimiento del sistema y
+                        más.
+                    </p>
+
+
+                    <h3 id="vichus" class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">3. ¡ALERTA DE VIRUS!</h3>
+                    <div class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        <p>
+                            Efectivamente esta versión conceptual está <strong
+                                class="text-green-500">envirosada</strong> - no
+                            de una forma que sea disfuncional (funciona perfectamente) pero sí con alertas de seguridad
+                            brindadas por VirusTotal en muchos de sus ejecutables.
+                        </p>
+                        <p class="mt-4">Pueden ser falsos positivos? Algunos pueden ser...pero no le confiaría mi
+                            información
+                            personal a esta versión, ni me arriesgaría a infectar otras PCs. <br> <u><strong>USALA SOLO
+                                    PARA
+                                    JUGAR y probar el sistema.</strong></u></p>
+                        </p>
+                        <br>
+                        <strong class="text-red-400">PRECAUCIONES</strong>
+                        <div class="font-mono bg-black/30 p-4 rounded mt-1 border border-gray-700">
+                            <ul class="list-disc list-inside ml-4 space-y-2">
+                                <li>No la instales en una PC con otros discos conectados</li>
+                                <li>No enchufes un pendrive</li>
+                                <li>No navegues con tus cuentas personales (creá otras)</li>
+                                <li>No la conectes a una red privada (usá una red aislada con otro router o desconectá
+                                    las demás
+                                    PCs mientras usás Internet - o como mínimo que estén todas conectadas a una Red
+                                    Pública)</li>
+                            </ul>
+                        </div>
+
+                        <p>
+                        <p class="pt-2">Siguiendo esas 4 reglas, podés usar la MXP para jugar <u>sin riesgo de
+                                contagio</u>. En
+                            la v2.0 todo esto estará solucionado y será un sistema 100% seguro y confiable.</p>
+                        </p>
+                    </div>
+
+
+
+                    <p class="bg-gray-900 p-4 rounded border-l-4 border-blue-500">
+                        Por el momento, la MXP es una demostración técnica y conceptual, donde el foco está en la
+                        experiencia de
+                        usuario, la interfaz del sistema operativo y la expansión/curación de los juegos por parte de la
+                        fanática y
+                        fantástica comunidad gamer/developer.
+                    </p>
+                </div>
+
+
+                <div class="bg-gray-900 p-6 md:p-8 rounded-lg shadow-2xl border border-gray-800 mt-10">
+
+                    <!-- Módulo 1 -->
+                    <h2 class="text-3xl font-bold mt-1 mb-4 border-b-2 border-orange-500 pb-2 text-gray-100">
+                        ¿Como la instalo?
+                    </h2>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        La MXP se distribuye como un solo archivo listo para clonar en un disco vacio o a borrar
+                        (preferentemente un SSD)
+                        usando el software gratuito Macrium Reflect. Luego se conecta este disco a la PC donde se quiere
+                        usar la
+                        MXP y se arranca desde el mismo.
+                    </p>
+                    <p class="text-lg text-gray-200 mb-4 leading-relaxed"><strong>OJO:</strong> Esto puede ser rebuscado
+                        si no sabés nada de informática. No digo que no se pueda, claro que sí, más aún con la ayuda de
+                        IA y YouTube...pero te advierto que no es toser y ya está, puede ser desafiante...y el resultado
+                        sin duda sumamente gratificante ;)</p>
+                    <br>
+                    <strong class="text-orange-400">REQUERIMIENTOS MÍNIMOS</strong>
+                    <div class="font-mono bg-black/30 p-4 rounded mt-1 border border-gray-700">
+                        <ul class="list-disc list-inside ml-4 space-y-2">
+                            <li>CPU de 4 Nucleos (un i5 de 2da gen ya va bien, o un Ryzen 3)</li>
+                            <li>8GB de RAM (si es en Dual Channel mucho mejor)</li>
+                            <li>Disco Sólido (SSD, con un HDD vas a sufrir) de al menos 240GB</li>
+                            <li>GPU Dedicada de 2GB GDDR5 (yo uso una RX550)</li>
+                            <p style="padding-left: 1.5rem;">o</p>
+                            <li>GPU Integrada moderna (Intel HD 620, AMD Vega 8)</li>
+                            <li>Software: Macrium Reflect (para clonar el disco)</li>
+                        </ul>
+                    </div>
+                    <p class=" text-orange-300">Cómo acabo de explicar, esta versión está "envirosada", así que es
+                        importante
+                        que sigas las
+                        precauciones para evitar contagios (<u>no inicies la MXP con otros discos conectados</u>).</p>
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">1. Descargar la MXP</h3>
+
+                    <p class="text-lg text-gray-200 leading-relaxed">Es un archivo (imagen de disco) para Macrium
+                        Reflect.
+                    <p class="text-orange-500">Elegí uno solo, dependiendo del tamaño de tu disco.</p>
+                    </p>
+                    <br>
+                    <p class="text-lg text-gray-200 leading-relaxed">Para discos de 240GB (menos juegos):</p>
+
+
+                    <a target="_blank"
+                        href="https://drive.google.com/file/d/1MKDQQxtxHNmk-lk2xO9KMj-WOcoNNNgd/view?usp=drive_link"
+                        class="inline-block bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
+                        💾 Descargar MXP Demo | Lite (138GB)
+                    </a>
+                    <br> <br>
+                    <p class="text-lg text-gray-200 leading-relaxed">Para discos de 500GB:</p>
+
+                    <a target="_blank"
+                        href="https://drive.google.com/file/d/1NS9PLC3zrpd9Exy0tK4nvvhA3TEWTMW0/view?usp=drive_link"
+                        class="inline-block bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
+                        💾 Descargar MXP Demo | Full (324GB)
+                    </a>
+
+                    <br> <br>
+
+
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">2. Descargar Macrium Reflect</h3>
+                    <p class="text-lg text-gray-200 leading-relaxed mt-4">Mientras descarga la imagen de disco, bajate
+                        el soft
+                        que usamos para clonarla.<i><br>(fuente: MajorGeeks)</i>
+                    </p>
+
+                    <a target="_blank" href="https://www.majorgeeks.com/mg/get/macrium_reflect_free_edition,3.html"
+                        class="inline-block bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg">
+                        💾 Descargar Macrium Reflect Free
+                    </a>
+                    <p class="text-orange-500">Al instalar, destildá el checkbox de "Registro".</p>
+
+
+
+
+                    <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">3. Clonar</h3>
+                    <div class="text-lg text-gray-200 mb-4 leading-relaxed">
+                        <p>
+                            El disco de destino debe estar conectado a la PC, ya sea al mother o con un adaptador USB.
+                        </p>
+                        <p class="mt-2 font-mono text-orange-500">TODA LA DATA DEL DISCO DE DESTINO SERÁ BORRADA.</p>
+                        <p class="mt-6">Abrir Macrium Reflect, ir a "Restaurar" y luego a "Explorar..."</p>
+                        </p>
+                        <img src="MXP/Shots/macriumA.png">
+                        <p class="mt-6">Abrir el archivo .mrimg descargado.</p>
+                        </p>
+                        <img src="MXP/Shots/macriumB.png">
+                        <p class="mt-6">Seleccionar el archivo y apretar el botón "Restauración".</p>
+                        </p>
+                        <img src="MXP/Shots/macriumC.png">
+                        <p class="mt-6">Seleccionar el disco de destino. OJO CON ESTE PASO, chequear bien que sea el
+                            disco
+                            correcto para evitar borrar otro.</p>
+                        </p>
+                        <img src="MXP/Shots/macriumD.png">
+                        <p class="mt-6">OPCIONAL: Chequeá la casilla "Verificar la imágen..." por seguridad. Dale a
+                            "Siguiente".
+                        </p>
+                        </p>
+                        <img src="MXP/Shots/macriumE.png">
+                        <p class="mt-6">Esperá que termine el proceso.</p>
+                        </p>
+                        <img src="MXP/Shots/macriumF.png">
+                        <p class="mt-6">Al terminar va a salir un cartel de finalización. El disco estará tendrá el
+                            sistema
+                            MillennialXP listo para enchufar en una PC y bootear desde el mismo.</p>
+                        </p>
+                        <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">4. Bootear</h3>
+                        <div class="text-lg text-gray-200 mb-4 leading-relaxed">
+                            <p>
+                                El disco clonado lo enchufamos en el motherboard de la PC donde queremos usar la MXP. <i
+                                    class="text-orange-400">Acá uso un HDD pero es mucho mejor un SSD.</i>
+                            </p>
+
+                            <img src="MXP/Shots/montaje1.png">
+                            <p class="mt-4">Encendemos la PC y <i>si tenemos suerte</i> arranca el sistema; SI NO,
+                                entramos a la
+                                BIOS (normalmente apretando DEL, F2, F12 o ESC).</p>
+                            <img src="MXP/Shots/montaje2.png">
+                            <p class="bg-gray-900 p-4 mt-8 rounded border-l-4 border-blue-500">La config va a depender
+                                del
+                                modelo de tu <i>motherboard</i>. <br>Google/Gemini/ChatGPT te van a orientar en cómo
+                                hacer que
+                                bootee.</p>
+                            <p class="mt-4">Una vez que veamos estas pantallas, podemos festejar 🥳</p>
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <img src="MXP/Shots/montaje4.png" class="w-full md:w-1/2">
+                                <img src="MXP/Shots/montaje5.png" class="w-full md:w-1/2">
+                            </div>
+                            <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">5. Drivers</h3>
+                            <p class="mt-4">Sin ellos los juegos no van a correr.
+                                <br>Podés buscarlos en sus webs oficiales (googleando "tu_hardware driver win11") o usar
+                                el acceso directo a 3 programas claves que uso
+                                para instalar controladores:<br><small class="text-gray-400">o podés buscar en la web
+                                    los
+                                    drivers específicos de tu hardware</small>
+                            </p>
+                            </p>
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <img src="MXP/Shots/drivers1.png" class="w-full md:w-1/2">
+                                <img src="MXP/Shots/drivers2.png" class="w-full md:w-1/2">
+                            </div>
+                            <p class="text-orange-300">Están en orden de prioridad. El de red puede que se instale solo.
+                            </p>
+                            <p class="mt-4">Para los dos primeros hay que tocar en el número de versión del driver...
+                            </p>
+                            <img src="MXP/Shots/drivers3.png">
+                            <p class="mt-4">...que nos abre la web donde descargarlo.</p>
+                            <img src="MXP/Shots/drivers4.png">
+                            <p class="mt-4">Para terminar de actualizar todos los drivers usamos el 3ro (DriverBooster).
+                                Tarda
+                                un toque en cargar. Una vez abierto analizá...</p>
+
+                            <img src="MXP/Shots/drivers5.png">
+                            <p class="mt-4">...y mandale actualizar:</p>
+                            <img src="MXP/Shots/drivers6.png">
+                            <p class="mt-4">Esperá que termine y reiniciá la PC.</p>
+                            <img src="MXP/Shots/drivers7.png">
+                        </div>
+
+
+
+
+                        <h3 class="text-2xl font-semibold mt-6 mb-3 text-yellow-400">6. ¡JUGAR!</h3>
+                        <p class="mt-4">Ahora seee después de toda esta odisea ya estás listx para revivir la
+                            experiencia
+                            millennial como corresponde ;)</p>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <img src="MXP/Shots/MXP-2.png" class="w-full md:w-1/2">
+                            <img src="MXP/Shots/MXP-4.png" class="w-full md:w-1/2">
+                        </div>
+                        <p class="mt-4">Tenés las colecciones de PC y Consolas en los iconos más al sur de tu
+                            escritorio. La
+                            "LAN Virtual" (RadminVPN) sirve para jugar via internet con tus compas (tuts de cómo usarlo
+                            está
+                            lleno).</p>
+                        <p class="mt-4 text-2xl font-semibold mb-3 text-yellow-400">¡QUE LO DISFRUTEN! </p>
+                        <p class="mt-4 text-green-500">Recordá seguir las <a href="#vichus"
+                                style="text-decoration: underline;">precauciones de seguridad</a> para evitar
+                            contagios...<br>o
+                            corré el riesgo, pero dps no digas que no te avisé :P</p>
+                    </div>
+                </div>
+
+
+
+                >>>>>>> a2be1aa27583c513fe1a500ddd35ac232619c388
+        </body>
+
+        </html>
