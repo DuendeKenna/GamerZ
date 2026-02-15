@@ -35,8 +35,34 @@
         }
 
         .xp-start-button {
-            background: linear-gradient(to bottom, #388e3c 0%, #4caf50 50%, #388e3c 100%);
-            box-shadow: inset 1px 1px 1px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(to bottom,
+                    #509e2a 0%,
+                    #3e881e 50%,
+                    #2e7a19 50%,
+                    #58a02d 100%);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                inset 1px 0 0 rgba(255, 255, 255, 0.2),
+                2px 0 5px rgba(0, 0, 0, 0.3);
+            border-right: 1px solid #2e7a19;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .xp-start-button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
+        }
+
+        .xp-button-text {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            font-family: "Trebuchet MS", sans-serif;
         }
 
         .xp-text-glow {
@@ -49,6 +75,29 @@
 
         .slant-divider-reverse {
             clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+        }
+
+        #heroText {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 3.5rem;
+            /* 5rem + 2.5rem (to counter the -mt-10 overlap) */
+            text-align: center;
+            z-index: 10;
+        }
+
+        .xp-systray-gradient {
+            background: linear-gradient(to bottom,
+                    #084295 0%,
+                    #135cc9 5%,
+                    #0c8df5 10%,
+                    #0997ff 30%,
+                    #0997ff 70%,
+                    #135cc9 95%,
+                    #084295 100%);
+            box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.2);
+            border-left: 1px solid #0831d9;
         }
     </style>
     <style data-purpose="typography">
@@ -63,23 +112,23 @@
 <body class="font-segoe m-0 p-0 overflow-x-hidden">
     <!-- BEGIN: Windows Taskbar Header -->
     <header
-        class="fixed top-0 left-0 w-full z-50 xp-gradient-taskbar h-10 flex items-center justify-between px-2 border-b border-blue-800 shadow-lg"
+        class="fixed top-0 left-0 w-full z-50 xp-gradient-taskbar h-10 flex items-center justify-between border-b border-blue-800 shadow-lg"
         data-purpose="header-taskbar">
         <div class="flex items-center h-full">
             <!-- Start Button Mockup -->
             <button
-                class="xp-start-button flex items-center px-4 h-8 rounded-tr-xl rounded-br-xl italic font-bold text-white text-lg hover:brightness-110 transition-all mr-6">
-                <span class="mr-1">M</span>XP
+                class="xp-start-button flex items-center px-8 h-10 rounded-tr-3xl rounded-br-3xl italic font-bold text-white text-2xl hover:brightness-110 transition-all">
+                <span class="xp-button-text">MXP</span>
             </button>
             <!-- Navigation -->
-            <nav class="hidden md:flex space-x-6 text-white font-semibold text-sm">
+            <nav class="md:flex space-x-6 text-white font-semibold text-sm ml-8">
                 <a class="hover:text-blue-200 transition-colors" href="#">Home</a>
                 <a class="hover:text-blue-200 transition-colors" href="#">Games</a>
                 <a class="hover:text-blue-200 transition-colors" href="#">Specs</a>
             </nav>
         </div>
         <!-- System Tray Mockup Area -->
-        <div class="hidden sm:flex items-center bg-[#0997ff] border-l border-blue-400 h-full px-4 text-white text-xs">
+        <div class="hidden sm:flex items-center xp-systray-gradient h-full px-4 text-white text-xs">
             <span id="digital-clock">12:00 PM</span>
         </div>
     </header>
@@ -89,59 +138,76 @@
         <!-- BEGIN: Hero Section -->
         <!-- Replicating the Bliss-like hill and planet background from the sketch -->
         <section class="relative h-[45vh] md:h-[50vh] overflow-hidden" data-purpose="hero-image-area">
-            <img alt="Lush green hills with a planet in a blue sky" class="w-full h-full object-cover object-top"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWoWkeErAXTfYtgpHIamdvRMhIi2q0QsPfyn1rFLfQTy4eygVgx1JT0XQ5Dyvocjb1AF9aYNHucE5G-K99YyULE-5g_yITbXOltv8_kMeoAp217-wAzruyyty20Bc3ObmcXx4fV40kka10-geAbhjNKxnrvaIPS42QN7OI_uD2pTURhCriVSvLuXrW8TA7CRc-Z_4b_oUOObSKKVx-1OeBAO3v93DatQ08FzTDd_OH2pcK7oqp57trxXz3IZ-angazdAuOCGysVssJ" />
+            <img alt="Lush green hills with a planet in a blue sky" class="w-full h-full object-cover object-bottom"
+                src="xpWall.jpg" />
             <!-- Hero Text overlay -->
-            <div class="absolute top-8 left-8">
-                <h2 class="hero-title text-3xl md:text-5xl text-white font-serif">
-                    Lo Viejo...Vuelve
+            <div id="heroText">
+                <h2 class="hero-title text-xl md:text-3xl text-white font-serif">
+                    ¿Vos también extrañás esta era?<br>Tranca, resucitó...
                 </h2>
             </div>
         </section>
         <!-- END: Hero Section -->
         <!-- BEGIN: Branding Section -->
         <!-- Deep blue section containing the main logo -->
-        <section class="bg-xpDarkBlue py-24 md:py-40 flex items-center justify-center -mt-10 slant-divider"
+        <section id="secBranding"
+            class="bg-xpDarkBlue py-24 md:py-40 flex items-center justify-center -mt-10 slant-divider"
             data-purpose="main-branding">
-            <div class="text-center px-4">
+            <div class="text-center px-4 -mt-10">
                 <h1
                     class="text-5xl md:text-8xl font-bold text-white tracking-tight flex flex-wrap justify-center items-center gap-2">
                     <span>Millennial</span>
-                    <span class="text-xpOrange italic xp-text-glow">XP</span>
+                    <span class="text-6xl md:text-9xl text-xpOrange italic xp-text-glow">XP</span>
                 </h1>
-                <p class="text-blue-300 mt-6 text-lg md:text-xl max-w-2xl mx-auto italic">
-                    Experience the nostalgia of the 2000s, reimagined for the modern web.
+                <p class="text-blue-300 mt-6 text-lg md:text-3xl max-w-2xl mx-auto italic">
+                    Volvé a los 90s/2Ks, con la tecnología de hoy.
                 </p>
             </div>
         </section>
         <!-- END: Branding Section -->
         <!-- BEGIN: Feature Section (Lighter Blue) -->
-        <section class="bg-xpLightBlue py-32 -mt-10 slant-divider-reverse" data-purpose="sub-section-blue">
+        <section class="bg-xpLightBlue py-32 -mt-20 slant-divider-reverse" data-purpose="sub-section-blue">
             <div class="container mx-auto px-6 text-white text-center">
-                <h3 class="text-3xl font-bold mb-8">Modern Performance, Classic Vibe</h3>
+                <h3 class="text-3xl font-bold mb-8">Un Entorno Retro~Renovado</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
                     <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-                        <div class="text-4xl mb-4">🚀</div>
-                        <h4 class="font-bold mb-2">Blazing Fast</h4>
-                        <p class="text-sm opacity-90">Optimized for speed without losing the chunky aesthetic of the
-                            early millennium.</p>
+                        <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Appearance.png"
+                                class="max-w-20"></div>
+                        <h4 class="font-bold mb-2">Estilo XP</h4>
+                        <p class="text-sm opacity-90">Un entorno visual que te va a hacer sentir como en los 2000.</p>
                     </div>
                     <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-                        <div class="text-4xl mb-4">🎮</div>
-                        <h4 class="font-bold mb-2">Classic Games</h4>
-                        <p class="text-sm opacity-90">Access a curated library of software that defined a generation.
+                        <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Game Controller.png"
+                                class="max-w-20"></div>
+                        <h4 class="font-bold mb-2">Juegazos</h4>
+                        <p class="text-sm opacity-90">Una colección curada; sin basura y potenciados.
                         </p>
                     </div>
                     <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-                        <div class="text-4xl mb-4">🛠️</div>
-                        <h4 class="font-bold mb-2">Full Control</h4>
-                        <p class="text-sm opacity-90">The customizability you remember, with the security you need
-                            today.</p>
+                        <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Programs.png"
+                                class="max-w-20"></div>
+                        <h4 class="font-bold mb-2">Software Clave</h4>
+                        <p class="text-sm opacity-90">Preinstalado y activado. Nada de bloatware. Pura usabilidad.</p>
+                    </div>
+                    <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
+                        <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Audio Devices.png"
+                                class="max-w-20"></div>
+                        <h4 class="font-bold mb-2">Música Offline</h4>
+                        <p class="text-sm opacity-90">Con packs de hitazos de la época, sin depender de internet.</p>
                     </div>
                 </div>
             </div>
         </section>
         <!-- END: Feature Section -->
+
+        <!-- BEGIN: Empty Intercalated Sections -->
+        <section class="bg-xpDarkBlue py-32 -mt-10 slant-divider" data-purpose="empty-section-1"></section>
+        <section class="bg-xpLightBlue py-32 -mt-10 slant-divider-reverse" data-purpose="empty-section-2"></section>
+        <section class="bg-xpDarkBlue py-32 -mt-10 slant-divider" data-purpose="empty-section-3"></section>
+        <section class="bg-xpLightBlue py-32 -mt-10 slant-divider-reverse" data-purpose="empty-section-4"></section>
+        <section class="bg-xpDarkBlue py-32 -mt-10 slant-divider" data-purpose="empty-section-5"></section>
+        <section class="bg-xpLightBlue py-32 -mt-10 slant-divider-reverse" data-purpose="empty-section-6"></section>
+        <!-- END: Empty Intercalated Sections -->
         <!-- BEGIN: Beige Section -->
         <section class="bg-xpBeige py-32 -mt-10" data-purpose="bottom-beige-area">
             <div class="container mx-auto px-6 text-center">
@@ -161,7 +227,7 @@
     <!-- END: Main Content Container -->
     <!-- BEGIN: Footer -->
     <footer class="bg-xpBlue py-6 text-white text-center border-t-2 border-blue-400" data-purpose="page-footer">
-        <p class="text-sm opacity-75">© 2024 MillennialXP. All rights reserved. Not affiliated with any corporation.</p>
+        <p class="text-sm opacity-75">© 2026 MillennialXP. All rights reserved. Not affiliated with any corporation.</p>
     </footer>
     <!-- END: Footer -->
     <!-- BEGIN: Clock Script -->
