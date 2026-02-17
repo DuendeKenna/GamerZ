@@ -1303,8 +1303,8 @@
                     const diffSpan = document.createElement('span');
                     diffSpan.className = 'diff-span';
                     diffSpan.style.backgroundColor = diffColor;
-                    const diffAmount = Math.round(diff / 1000);
-                    diffSpan.textContent = diffAmount > 0 ? `+${diffAmount}k` : `${diffAmount}k`;
+                    const diffAmount = formatShortNumber(diff);
+                    diffSpan.textContent = diff > 0 ? `+${diffAmount}` : `${diffAmount}`;
 
                     indicatorContainer.appendChild(oldPriceSpan);
                     indicatorContainer.appendChild(diffSpan);

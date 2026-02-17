@@ -1,5 +1,4 @@
 {
-  "lastUpdate": "2026-02-17T00:00:00.000Z",
   "baseOptions": [
     {
       "id": 49735,
@@ -9,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 475982,
+      "total": 477482,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -438,8 +437,8 @@
       "link": "https://www.mercadolibre.com.ar/disco-solido-interno-western-digital-wd-green-wds480g3g0a-480gb-verde/p/MLA26922959?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
-      "price": 158999,
-      "lastUpd": "2026-02-15T11:30:40.203Z"
+      "price": 140000,
+      "lastUpd": "2026-02-17T10:46:25.542Z"
     },
     {
       "id": 86854,
@@ -557,8 +556,8 @@
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-msi-rtx-5060-8-gb-gddr7-128-bit-shadow-2x-oc/p/MLA51032833?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
-      "price": 703999,
-      "lastUpd": "2026-02-15T11:29:36.897Z"
+      "price": 725899,
+      "lastUpd": "2026-02-17T10:45:19.922Z"
     },
     {
       "id": 41455,
@@ -644,8 +643,8 @@
       "link": "https://www.mercadolibre.com.ar/procesador-gamer-amd-ryzen-3-3200g-de-4-nucleos-y-4ghz-con-grafica-integrada/p/MLA15076943?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "description": "4 nucleos 4ghz Am4",
-      "price": 106999,
-      "lastUpd": "2026-02-07T14:33:34.716Z"
+      "price": 108499,
+      "lastUpd": "2026-02-17T10:43:39.601Z"
     }
   ],
   "ramOptions": [
@@ -912,8 +911,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/camara-web-redragon-hitman-full-hd-30fps-color-negro/p/MLA18362781?offer_type=BEST_PRICE",
       "visible": 0,
-      "price": 67812,
-      "lastUpd": "2026-02-15T11:34:42.878Z"
+      "price": 68124,
+      "lastUpd": "2026-02-17T10:50:08.402Z"
     }
   ],
   "microfonosOptions": [
@@ -972,8 +971,8 @@
       "description": "",
       "link": "https://www.mercadolibre.com.ar/aro-de-luz-led-26-cm-con-tripode-2-metros-soprte-celular/p/MLA44508125?offer_type=BEST_PRICE",
       "visible": 1,
-      "price": 12803,
-      "lastUpd": "2026-02-16T12:11:42.990Z"
+      "price": 13122,
+      "lastUpd": "2026-02-17T10:50:54.257Z"
     }
   ],
   "miniPcOptions": [
@@ -996,8 +995,8 @@
       "cpu": "N150",
       "ram": "16",
       "ssd": "512",
-      "price": 447989,
-      "lastUpd": "2026-02-15T11:25:51.683Z"
+      "price": 429999,
+      "lastUpd": "2026-02-17T10:42:35.717Z"
     },
     {
       "id": 72135,

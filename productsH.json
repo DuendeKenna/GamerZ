@@ -1,5 +1,4 @@
 {
-  "lastUpdate": "2026-02-17T00:00:00.000Z",
   "baseOptions": [
     {
       "id": 49735,
@@ -9,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 475982,
+      "total": 477482,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -1541,6 +1540,10 @@
       "description": "",
       "prices": [
         {
+          "value": 140000,
+          "date": "2026-02-17T10:46:25.542Z"
+        },
+        {
           "value": 158999,
           "date": "2026-02-15T11:30:40.203Z"
         },
@@ -2260,6 +2263,10 @@
       "visible": 0,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "prices": [
+        {
+          "value": 725899,
+          "date": "2026-02-17T10:45:19.922Z"
+        },
         {
           "value": 703999,
           "date": "2026-02-15T11:29:36.897Z"
@@ -3192,6 +3199,10 @@
       "visible": 1,
       "description": "4 nucleos 4ghz Am4",
       "prices": [
+        {
+          "value": 108499,
+          "date": "2026-02-17T10:43:39.601Z"
+        },
         {
           "value": 106999,
           "date": "2026-02-07T14:33:34.716Z"
@@ -6018,6 +6029,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 68124,
+          "date": "2026-02-17T10:50:08.402Z"
+        },
+        {
           "value": 67812,
           "date": "2026-02-15T11:34:42.878Z"
         },
@@ -6524,6 +6539,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 13122,
+          "date": "2026-02-17T10:50:54.257Z"
+        },
+        {
           "value": 12803,
           "date": "2026-02-16T12:11:42.990Z"
         },
@@ -6692,6 +6711,10 @@
       "ram": "16",
       "ssd": "512",
       "prices": [
+        {
+          "value": 429999,
+          "date": "2026-02-17T10:42:35.717Z"
+        },
         {
           "value": 447989,
           "date": "2026-02-15T11:25:51.683Z"
