@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MillennialXP - Tu cápsula del tiempo digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0052e0",
+                        "primary-dark": "#003bb3",
+                        "secondary": "#e04300", // Orange accent
+                        "secondary-hover": "#ff5e1a",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#0f1623",
+                        "xp-green": "#5c9a29", // Start button green
+                        "xp-window-bg": "#ece9d8", // Classic beige/grey window bg
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Tahoma", "Segoe UI", "sans-serif"] // Fallback for body text as requested
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                    boxShadow: {
+                        'xp-window': '2px 2px 10px rgba(0, 0, 0, 0.4)',
+                        'xp-inset': 'inset 2px 2px 2px rgba(0, 0, 0, 0.1), inset -2px -2px 2px rgba(255, 255, 255, 0.7)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar to match the aesthetic */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #ece9d8;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2b70e4;
+            border: 2px solid #ece9d8;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0052e0;
+        }
+
+        /* Bliss Gradient fallback */
+        .bliss-bg {
+            background: linear-gradient(180deg, #3d94f6 0%, #a2d2ff 45%, #8bc34a 45%, #4caf50 100%);
+        }
+
+        /* Glass effect for hero content */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .dark .glass-panel {
+            background: rgba(15, 22, 35, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* XP Window Header Gradient */
+        .xp-header-gradient {
+            background: linear-gradient(180deg, #2b70e4 0%, #1a5dc8 10%, #0052e0 100%);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-100 min-h-screen flex flex-col overflow-x-hidden">
+    <!-- Taskbar Header -->
+    <header
+        class="fixed top-0 w-full z-50 bg-primary h-12 shadow-md flex items-center justify-between px-2 border-b-2 border-[#3d94f6]">
+        <div class="flex items-center h-full">
+            <!-- Start Button -->
+            <button
+                class="flex items-center gap-2 bg-gradient-to-b from-[#5c9a29] to-[#3f7614] hover:brightness-110 text-white px-4 py-1 rounded-r-xl rounded-l-md shadow-[inset_1px_1px_0px_rgba(255,255,255,0.4)] mr-4 italic font-bold text-lg transform transition-transform active:scale-95 border-2 border-[#3f7614]">
+                <img alt="Abstract pixelated logo icon" class="w-6 h-6 rounded-full object-cover border border-white/50"
+                    data-alt="Abstract pixelated logo icon representing MXP"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp7K1i5kbgW4ZX7MVjp9c5UllXoIXFCoSadzCAUApLrdh8Hf60_mUt4oXaE5hqFQJFBcgtLU6C0geE9u3tuuYDXpbJECcRZTrHwmD9T4OWX9xzDjvZvgs9Zpr21Sm5_k__LJzAzkLffaOn95Yb_JZuIlkZto7boVj123IvY5xWJUmNfxnreOd0ftuHrqbVkFxTzcpphLNJOwG1LA8FyFZ8hgL_fBQ_6DRb92T6zYpvxmt1X1zsVzWN5atiPJTKlYsGfnXXvzedRIqA" />
+                <span>Start</span>
+            </button>
+            <!-- Quick Launch Icons (Hidden on mobile) -->
+            <div class="hidden md:flex items-center gap-3 ml-2 border-r border-[#1a5dc8] pr-4 h-8">
+                <span
+                    class="material-icons text-white/80 hover:text-white cursor-pointer text-xl drop-shadow-md">desktop_windows</span>
+                <span
+                    class="material-icons text-white/80 hover:text-white cursor-pointer text-xl drop-shadow-md">folder_open</span>
+                <span
+                    class="material-icons text-white/80 hover:text-white cursor-pointer text-xl drop-shadow-md">language</span>
+            </div>
+            <!-- Main Nav -->
+            <nav class="hidden md:flex ml-4 gap-1">
+                <a class="px-4 py-1 bg-[#1a5dc8]/50 hover:bg-[#1a5dc8] text-white rounded-t-lg transition-colors text-sm font-medium border-t border-l border-r border-transparent hover:border-white/20"
+                    href="#">Inicio</a>
+                <a class="px-4 py-1 hover:bg-[#1a5dc8] text-white/80 hover:text-white rounded-t-lg transition-colors text-sm font-medium"
+                    href="#features">Juegos</a>
+                <a class="px-4 py-1 hover:bg-[#1a5dc8] text-white/80 hover:text-white rounded-t-lg transition-colors text-sm font-medium"
+                    href="#services">Hardware</a>
+            </nav>
+        </div>
+        <!-- Clock/Tray -->
+        <div
+            class="flex items-center h-full bg-[#15469e] px-3 py-1 rounded border border-[#3d94f6]/30 shadow-inner gap-3 text-white text-xs">
+            <span class="material-icons text-sm text-yellow-300 animate-pulse">notifications</span>
+            <span class="font-mono">10:48 PM</span>
+        </div>
+    </header>
+    <!-- Main Content Area -->
+    <main class="flex-grow pt-12">
+        <!-- Hero Section: Bliss Reimagined -->
+        <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <img alt="Green rolling hills under a bright blue sky with fluffy clouds"
+                    class="w-full h-full object-cover object-bottom brightness-110 saturate-150"
+                    data-alt="Green rolling hills under a bright blue sky with fluffy clouds"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtZFYN2u_HBTA3aqRA0xfj6nOFAKBi_PAr-AHMEF8otdWrrACp4NgdGMHYmdm5e3vyaXyxywXk3p-v9ukX6UOkvNu6sD8dR2pZFkrXN2vDTtgaTv8lZTDOK2IZG3Gi9n2egSjKsYQuha8pjLKCfDEbwse7PJuCh_SItRbq-QNwkdwjiu2mWqwKeY_DSoTFu9IKLIz5ZEU8O79mUfA0CHLE4PDeskTgTLiGP0WfrV5qGohqr402kMjK2OMyAby0k3UKTm7ppa3k18ky" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-background-light/20 to-transparent dark:from-background-dark/20">
+                </div>
+            </div>
+            <div class="container mx-auto px-4 z-10 relative mt-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <!-- Text Content Window -->
+                    <div class="w-full lg:w-1/2">
+                        <div
+                            class="glass-panel p-1 rounded-xl shadow-xp-window transform transition-all hover:scale-[1.01] duration-500">
+                            <!-- Window Title Bar -->
+                            <div class="xp-header-gradient px-4 py-2 rounded-t-lg flex justify-between items-center">
+                                <span class="text-white font-bold text-shadow drop-shadow-md flex items-center gap-2">
+                                    <span class="material-icons text-sm">terminal</span> Welcome to MXP.exe
+                                </span>
+                                <div class="flex gap-2">
+                                    <div
+                                        class="w-5 h-5 bg-red-500 rounded border border-white/50 shadow text-white flex items-center justify-center text-xs cursor-pointer hover:bg-red-600">
+                                        ✕</div>
+                                </div>
+                            </div>
+                            <!-- Window Body -->
+                            <div class="bg-white/90 dark:bg-slate-900/90 p-8 rounded-b-lg">
+                                <h1 class="font-display text-4xl md:text-6xl font-bold text-primary mb-4 leading-tight">
+                                    MXP: Tu cápsula del tiempo digital
+                                </h1>
+                                <p class="font-body text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                                    The retro-modern hybrid operating system optimized for the ultimate gaming
+                                    nostalgia. Experimentá lo mejor de dos mundos: la estética que amás con la potencia
+                                    que necesitás.
+                                </p>
+                                <div class="flex flex-wrap gap-4">
+                                    <button
+                                        class="bg-secondary hover:bg-secondary-hover text-white font-bold py-3 px-8 rounded-lg shadow-lg transform transition active:scale-95 flex items-center gap-2">
+                                        <span class="material-icons">download</span>
+                                        Descargar ISO
+                                    </button>
+                                    <button
+                                        class="bg-white dark:bg-slate-800 text-primary border-2 border-primary hover:bg-blue-50 dark:hover:bg-slate-700 font-bold py-3 px-8 rounded-lg shadow transform transition active:scale-95">
+                                        Explorar Features
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mockup Visual -->
+                    <div class="w-full lg:w-1/2 flex justify-center perspective-1000">
+                        <div
+                            class="relative w-full max-w-lg transform rotate-y-6 hover:rotate-0 transition-transform duration-700 ease-out">
+                            <img alt="Modern desktop computer monitor displaying colorful interface"
+                                class="w-full relative z-10 drop-shadow-2xl rounded-lg"
+                                data-alt="Modern desktop computer monitor displaying colorful interface"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1rJwL_gS2gRDZXdluSAr1D0lo6KUEk3ibqi3Zir1_b--W2vUVaLnLme5YNTvUlcF9ASDPw5FTy6kJJaw4rdBdFuwhPc8nRCyoFLZeMZauyxeEUwT3EQpTurGlx6FUKqlygQErcxzfkAMAhaGl3bM9VKLi6Qxy5-doHJ_6cPNbAY45eHvEv-J7zw0WpjS6tduWYg8Qa09HPDTHjtsvzV4ZCHr7uEO_qFhIZUP5wyBVDOm61vFGFXTzjnuFmq2sdv8cSjaDvOT3WImI" />
+                            <!-- Reflection/Glow -->
+                            <div class="absolute -inset-4 bg-primary/30 blur-2xl -z-10 rounded-full opacity-60"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Features Section: Calidad sobre Cantidad -->
+        <section class="py-20 bg-background-light dark:bg-background-dark relative" id="features">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                        <span class="border-b-4 border-primary pb-2">Calidad sobre Cantidad</span>
+                    </h2>
+                    <p class="font-body text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+                        Olvidate de las librerías infinitas que nunca jugás. MXP trae una selección curada a mano de las
+                        joyas que definieron una generación.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature Card 1 -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-t-xl rounded-b-lg shadow-xp-window overflow-hidden border border-gray-200 dark:border-gray-700 hover:-translate-y-1 transition-transform">
+                        <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-2 flex items-center justify-between">
+                            <span class="text-white font-bold text-sm tracking-wide pl-2">Games.exe</span>
+                            <div class="flex gap-1">
+                                <div class="w-3 h-3 bg-white/30 rounded-sm"></div>
+                                <div class="w-3 h-3 bg-white/30 rounded-sm"></div>
+                                <div class="w-3 h-3 bg-orange-400 rounded-sm"></div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div
+                                class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mb-4 mx-auto border-2 border-primary border-dashed">
+                                <span class="material-icons text-3xl text-primary">sports_esports</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-center mb-2 font-display">150+ Títulos Curados</h3>
+                            <p class="text-center text-gray-600 dark:text-gray-300 font-body text-sm">
+                                Desde FPS clásicos hasta joyas RTS. Cada juego está optimizado para correr suave como la
+                                seda en hardware moderno.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Feature Card 2 -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-t-xl rounded-b-lg shadow-xp-window overflow-hidden border border-gray-200 dark:border-gray-700 hover:-translate-y-1 transition-transform">
+                        <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-2 flex items-center justify-between">
+                            <span class="text-white font-bold text-sm tracking-wide pl-2">Performance.bat</span>
+                            <div class="flex gap-1">
+                                <div class="w-3 h-3 bg-white/30 rounded-sm"></div>
+                                <div class="w-3 h-3 bg-white/30 rounded-sm"></div>
+                                <div class="w-3 h-3 bg-orange-400 rounded-sm"></div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div
+                                class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-4 mx-auto border-2 border-green-500 border-dashed">
+                                <span class="material-icons text-3xl text-green-600">bolt</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-center mb-2 font-display">Zero Bloatware</h3>
+                            <p class="text-center text-gray-600 dark:text-gray-300 font-body text-sm">
+                                Sin telemetría, sin apps basura, sin actualizaciones forzadas. Solo vos y tu máquina.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Feature Card 3 -->
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-t-xl rounded-b-lg shadow-xp-window overflow-hidden border border-gray-200 dark:border-gray-700 hover:-translate-y-1 transition-transform">
+                        <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-2 flex items-center justify-between">
+                            <span class="text-white font-bold text-sm tracking-wide pl-2">UI_Theme.msi</span>
+                            <div class="flex gap-1">
+                                <div class="w-3 h-3 bg-white/30 rounded-sm"></div>
+                                <div class="w-3 h-3 bg-white/30 rounded-sm"></div>
+                                <div class="w-3 h-3 bg-orange-400 rounded-sm"></div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div
+                                class="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center mb-4 mx-auto border-2 border-purple-500 border-dashed">
+                                <span class="material-icons text-3xl text-purple-600">palette</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-center mb-2 font-display">Estética Híbrida</h3>
+                            <p class="text-center text-gray-600 dark:text-gray-300 font-body text-sm">
+                                La calidez del diseño 'Luna' con la nitidez del diseño plano moderno. Pixel perfect en
+                                4K.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section class="py-20 bg-gray-100 dark:bg-[#151b2b]" id="services">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <!-- Service Window 1: Hardware -->
+                    <div class="flex-1 bg-[#ece9d8] dark:bg-slate-800 rounded-t-xl shadow-xp-window flex flex-col">
+                        <div
+                            class="bg-gradient-to-r from-[#0052e0] to-[#3d94f6] px-4 py-2 rounded-t-xl flex justify-between items-center shadow-md">
+                            <span class="text-white font-bold font-display tracking-wide flex items-center gap-2">
+                                <span class="material-icons text-sm">memory</span>
+                                MXP Hardware Edition
+                            </span>
+                            <div class="flex gap-1">
+                                <button
+                                    class="w-5 h-5 bg-[#e04300] hover:bg-red-600 text-white rounded shadow border border-white/30 flex items-center justify-center text-xs">✕</button>
+                            </div>
+                        </div>
+                        <div
+                            class="p-8 flex flex-col md:flex-row items-center gap-8 flex-grow bg-white dark:bg-slate-900 m-1 border border-gray-300 dark:border-gray-700">
+                            <div class="w-full md:w-1/2">
+                                <img alt="Small form factor retro style computer case"
+                                    class="w-full rounded shadow-lg border-4 border-gray-200"
+                                    data-alt="Small form factor retro style computer case"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwC1ie4uZKIn2ARR0NezHfDWLm0jDfaiv4u2LWBD7eoRXshqGS59h4wkMI4P9SeuJblhwgDVY_Z9z1jZun7p-td8Cnq7_8WqdihmPO2bbaL96VBWTXZYd0hN6GPgxrKbWf_woTFg6Pz6Gxya3cHlop8r2Jf4Hg-BOu56SpM2cfOlLQ4PX21N3SjeR1Pirpaugjp07XLsIcFjdNRRlBJKKoByqWLqEF3M0r2APA0e7gnE-5kqljCIqaeFkeyMOS2X6Vrr8s1lsRJ1wI" />
+                            </div>
+                            <div class="w-full md:w-1/2 space-y-4">
+                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">El fierro que te faltaba
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    Mini-PCs pre-configuradas con MXP OS. Gabinetes con estética beige retro pero con
+                                    componentes Ryzen de última generación.
+                                </p>
+                                <ul class="list-disc list-inside text-sm text-gray-500 dark:text-gray-400 space-y-1">
+                                    <li>Ryzen 7 5800X Inside</li>
+                                    <li>Gabinete Custom "Beige Box"</li>
+                                    <li>Teclado Mecánico Modelo M (Replica)</li>
+                                </ul>
+                                <button
+                                    class="mt-4 w-full bg-secondary hover:bg-secondary-hover text-white font-bold py-2 rounded shadow border-b-4 border-orange-800 active:border-b-0 active:translate-y-1 transition-all">
+                                    Ver Hardware
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Window 2: Software -->
+                    <div class="flex-1 bg-[#ece9d8] dark:bg-slate-800 rounded-t-xl shadow-xp-window flex flex-col">
+                        <div
+                            class="bg-gradient-to-r from-[#0052e0] to-[#3d94f6] px-4 py-2 rounded-t-xl flex justify-between items-center shadow-md">
+                            <span class="text-white font-bold font-display tracking-wide flex items-center gap-2">
+                                <span class="material-icons text-sm">save</span>
+                                Inyectá el ADN MXP
+                            </span>
+                            <div class="flex gap-1">
+                                <button
+                                    class="w-5 h-5 bg-[#e04300] hover:bg-red-600 text-white rounded shadow border border-white/30 flex items-center justify-center text-xs">✕</button>
+                            </div>
+                        </div>
+                        <div
+                            class="p-8 flex flex-col md:flex-row items-center gap-8 flex-grow bg-white dark:bg-slate-900 m-1 border border-gray-300 dark:border-gray-700">
+                            <div class="w-full md:w-1/2 order-2 md:order-1 space-y-4">
+                                <h3 class="text-2xl font-bold text-gray-800 dark:text-white">Reviví tu PC</h3>
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    ¿Ya tenés hardware? Bajate la ISO de MXP e instalalo en tu máquina actual. Drivers
+                                    automáticos y compatibilidad total.
+                                </p>
+                                <ul class="list-disc list-inside text-sm text-gray-500 dark:text-gray-400 space-y-1">
+                                    <li>Instalador One-Click</li>
+                                    <li>Dual Boot Friendly</li>
+                                    <li>Soporte para Steam &amp; GOG</li>
+                                </ul>
+                                <button
+                                    class="mt-4 w-full bg-secondary hover:bg-secondary-hover text-white font-bold py-2 rounded shadow border-b-4 border-orange-800 active:border-b-0 active:translate-y-1 transition-all">
+                                    Descargar ISO Gratis
+                                </button>
+                            </div>
+                            <div id="compactdisk" class="w-full md:w-1/2 order-1 md:order-2">
+                                <img alt="CD-ROM disc reflecting rainbow colors"
+                                    class="w-full rounded-full shadow-xl border-4 border-gray-200 animate-[spin_10s_linear_infinite] hover:animate-none"
+                                    data-alt="CD-ROM disc reflecting rainbow colors"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb1J12aBEFP3GQ9M_I8VdHJl6Cn9cbSq2C1rignds38_suMyeKgB6Q2lC_QUtuVcI3iYHtYIi93fzFPLWP6zetBmOx3m96eFZsdnBWFj8fJ5wTRyWAR3QW-Kjc9MAQtha5SC63dizVKdS3p5OPttpprRhWihpXFzkWRNZAC84PGxxVAFgHZoRNNxfEYeBeqN0YKFY8A3mehgPwbjQ_4eQRzbtja8RBryGgpNv6srzIE2qeww5UtW9iOlE8oByoItrM1xHmt4zko9mB" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Newsletter / Contact Area with Paper Clip aesthetic -->
+        <section class="py-16 bg-primary/5 dark:bg-primary/10">
+            <div id="newsletter" class="container mx-auto px-4 text-center">
+                <div
+                    class="relative inline-block max-w-2xl bg-[#ffffe1] text-gray-800 p-6 rounded shadow-lg border border-yellow-200 transform rotate-1">
+                    <div class="absolute -top-4 -left-4">
+                        <!-- Clippy Substitute -->
+                        <span class="material-icons text-5xl text-gray-400 transform -rotate-12">attach_file</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">¡Parece que estás interesado en MXP!</h4>
+                    <p class="mb-4">¿Querés recibir actualizaciones sobre nuevos juegos y hardware? Suscribite al
+                        boletín.</p>
+                    <form class="flex gap-2">
+                        <input
+                            class="flex-grow px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-primary focus:border-transparent"
+                            placeholder="tu@email.com" type="email" />
+                        <button
+                            class="bg-primary text-white px-6 py-2 rounded font-bold hover:bg-primary-dark shadow">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer: System Tray Aesthetic -->
+    <footer class="bg-[#ece9d8] dark:bg-[#1a202c] border-t-2 border-white/50 dark:border-gray-700 py-2">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-xs text-gray-500 font-display">
+                © 2024 MillennialXP. All rights reserved. <span class="hidden sm:inline">| System Resources: 98%
+                    Free</span>
+            </div>
+            <!-- Tray Icons -->
+            <div
+                class="flex items-center gap-4 bg-white/50 dark:bg-black/20 px-4 py-2 rounded-full shadow-inner border border-gray-300 dark:border-gray-600">
+                <!-- Winamp (Music) -->
+                <a class="group relative" href="#" title="Music">
+                    <div
+                        class="w-8 h-8 bg-orange-100 rounded flex items-center justify-center border border-orange-300 hover:scale-110 transition-transform">
+                        <span class="material-icons text-orange-600 text-lg">electric_bolt</span>
+                    </div>
+                    <span
+                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Winamp</span>
+                </a>
+                <!-- MSN (Contact) -->
+                <a class="group relative" href="#" title="Contact">
+                    <div
+                        class="w-8 h-8 bg-blue-100 rounded flex items-center justify-center border border-blue-300 hover:scale-110 transition-transform">
+                        <span class="material-icons text-blue-600 text-lg">people</span>
+                    </div>
+                    <span
+                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">MSN</span>
+                </a>
+                <!-- IE (About) -->
+                <a class="group relative" href="#" title="About">
+                    <div
+                        class="w-8 h-8 bg-blue-50 rounded flex items-center justify-center border border-blue-200 hover:scale-110 transition-transform">
+                        <span class="material-icons text-blue-400 text-lg">public</span>
+                    </div>
+                    <span
+                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Internet</span>
+                </a>
+                <div class="h-4 w-px bg-gray-400 mx-1"></div>
+                <!-- Volume -->
+                <span class="material-icons text-gray-500 text-sm cursor-pointer hover:text-gray-800">volume_up</span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

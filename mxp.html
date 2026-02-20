@@ -6,8 +6,14 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>MillennialXP - Lo Viejo...Vuelve</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💾</text></svg>">
     <!-- Tailwind CSS v3 CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- XP.css for authentic retro windows -->
+    <link rel="stylesheet" href="https://unpkg.com/xp.css">
+    <!-- Material Icons for Sticky Note -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <!-- Custom Tailwind Configuration -->
     <script>
         tailwind.config = {
@@ -99,17 +105,149 @@
             box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.2);
             border-left: 1px solid #0831d9;
         }
+
+        /* Modern XP Reusable Button Control */
+        .xp-button-modern {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 2rem;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: white;
+            background-color: #0053e1;
+            /* xpBlue */
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .xp-button-modern:hover {
+            background-color: #3e881e;
+            /* xpGreen */
+            transform: rotate(2deg) scale(1.1);
+            box-shadow: 0 0 30px rgba(62, 136, 30, 0.7);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .xp-button-modern:active {
+            transform: scale(0.95);
+        }
+
+        .xp-button-modern .xp-icon {
+            margin-left: 0.75rem;
+            font-size: 1.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .xp-button-modern:hover .xp-icon {
+            transform: scale(1.25) rotate(12deg);
+        }
+
+        /* Joystick Floating Animations */
+        @keyframes floatJoystick1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(10px, -15px) rotate(2deg);
+            }
+
+            50% {
+                transform: translate(-5px, 10px) rotate(-1deg);
+            }
+
+            75% {
+                transform: translate(12px, 5px) rotate(3deg);
+            }
+        }
+
+        @keyframes floatJoystick2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(-12px, 12px) rotate(-3deg);
+            }
+
+            66% {
+                transform: translate(8px, -10px) rotate(2deg);
+            }
+        }
+
+        .float-joy-1 {
+            animation: floatJoystick1 9s ease-in-out infinite;
+        }
+
+        .float-joy-2 {
+            animation: floatJoystick2 13s ease-in-out infinite;
+        }
+
+        /* CD Spin Animation */
+        @keyframes spin-constant {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cd-spin {
+            animation: spin-constant 10s linear infinite;
+        }
+
+        .cd-paused {
+            animation-play-state: paused;
+        }
+
+        /* Oval Deformation & Inverse Spin */
+        @keyframes oval-spin-inverse {
+            0% {
+                transform: rotate(360deg) scale(1, 0.85);
+                border-radius: 50%;
+            }
+
+            50% {
+                transform: rotate(180deg) scale(1.1, 0.95);
+                border-radius: 40% 60% 40% 60%;
+            }
+
+            100% {
+                transform: rotate(0deg) scale(1, 0.85);
+                border-radius: 50%;
+            }
+        }
+
+        .cd-oval {
+            animation: oval-spin-inverse 12s linear infinite;
+        }
     </style>
     <style data-purpose="typography">
         .hero-title {
             font-style: italic;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+
+        .xp-title-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
     </style>
     <!-- END: Custom Styles -->
 </head>
 
-<body class="font-segoe m-0 p-0 overflow-x-hidden">
+<body class="font-segoe m-0 p-0 overflow-x-hidden bg-[#3e881e]">
     <!-- BEGIN: Windows Taskbar Header -->
     <header
         class="fixed top-0 left-0 w-full z-50 xp-gradient-taskbar h-10 flex items-center justify-between border-b border-blue-800 shadow-lg"
@@ -143,7 +281,7 @@
             <!-- Hero Text overlay -->
             <div id="heroText">
                 <h2 class="hero-title text-xl md:text-3xl text-white font-serif">
-                    ¿Vos también extrañás esta era?<br>Tranca, resucitó...
+                    ¿Vos también extrañás <strong>esta era</strong>?<br>Tranca, <strong>resucitó</strong>...
                 </h2>
             </div>
         </section>
@@ -168,32 +306,32 @@
         <!-- BEGIN: Feature Section (Lighter Blue) -->
         <section class="bg-xpLightBlue py-32 -mt-20 slant-divider-reverse" data-purpose="sub-section-blue">
             <div class="container mx-auto px-6 text-white text-center">
-                <h3 class="text-3xl font-bold mb-8">Un Entorno Retro~Renovado</h3>
+                <h3 class="text-3xl font-bold mb-8 xp-title-shadow">Un Sistema Retro~Renovado</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
                     <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
                         <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Appearance.png"
                                 class="max-w-20"></div>
                         <h4 class="font-bold mb-2">Estilo XP</h4>
-                        <p class="text-sm opacity-90">Un entorno visual que te va a hacer sentir como en los 2000.</p>
+                        <p class="text-md opacity-90">Un entorno visual que te va a hacer sentir como en los 2000.</p>
                     </div>
                     <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
                         <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Game Controller.png"
                                 class="max-w-20"></div>
                         <h4 class="font-bold mb-2">Juegazos</h4>
-                        <p class="text-sm opacity-90">Una colección curada; sin basura y potenciados.
+                        <p class="text-md opacity-90">Una colección curada; sin basura y potenciados.
                         </p>
                     </div>
                     <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
                         <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Programs.png"
                                 class="max-w-20"></div>
                         <h4 class="font-bold mb-2">Software Clave</h4>
-                        <p class="text-sm opacity-90">Preinstalado y activado. Nada de bloatware. Pura usabilidad.</p>
+                        <p class="text-md opacity-90">Preinstalado y activado. Nada de bloatware. Pura usabilidad.</p>
                     </div>
                     <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
                         <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Audio Devices.png"
                                 class="max-w-20"></div>
                         <h4 class="font-bold mb-2">Música Offline</h4>
-                        <p class="text-sm opacity-90">Con packs de hitazos de la época, sin depender de internet.</p>
+                        <p class="text-mds opacity-90">Con packs de hitazos de la época, sin depender de internet.</p>
                     </div>
                 </div>
             </div>
@@ -201,8 +339,378 @@
         <!-- END: Feature Section -->
 
         <!-- BEGIN: Empty Intercalated Sections -->
-        <section class="bg-xpDarkBlue py-32 -mt-10 slant-divider" data-purpose="empty-section-1"></section>
-        <section class="bg-xpLightBlue py-32 -mt-10 slant-divider-reverse" data-purpose="empty-section-2"></section>
+        <!-- BEGIN: Juegos Section -->
+        <section id="secJuegos" class="bg-xpDarkBlue py-32 -mt-10 slant-divider" data-purpose="section-juegos">
+            <div class="container mx-auto px-6">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 xp-title-shadow">Juegos de PC</h2>
+                    <p class="text-blue-200 text-lg md:text-2xl italic">Los clásicos que conocés, con packs HD, en
+                        español y expandidos</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                    <!-- Carousel Column -->
+                    <div class="relative">
+                        <!-- Authentic Windows XP Window using xp.css -->
+                        <div class="window w-full shadow-2xl !bg-black overflow-hidden flex flex-col">
+                            <div class="title-bar !h-12 !px-4 flex items-center shrink-0">
+                                <div class="title-bar-text !m-0">
+                                    <div class="flex items-center space-x-4">
+                                        <img src="Windows XP Icons/Game Controller.png" class="w-6 h-6" alt="icon">
+                                        <span class="font-bold text-xl leading-none">Juegazos que marcaron una
+                                            época</span>
+                                    </div>
+                                </div>
+                                <div class="title-bar-controls">
+                                    <button aria-label="Minimize"></button>
+                                    <button aria-label="Maximize"></button>
+                                    <button aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div class="window-body !m-0 !p-0 !bg-black overflow-hidden flex-grow">
+                                <!-- Image Container -->
+                                <div class="relative aspect-video group overflow-hidden">
+                                    <div id="gameCarousel" class="relative h-full cursor-pointer bg-black">
+                                        <!-- Loading Spinner (Hidden by default) -->
+                                        <div id="carouselLoader"
+                                            class="absolute inset-0 flex items-center justify-center bg-black/50 z-20 transition-opacity duration-300 opacity-0 pointer-events-none">
+                                            <div
+                                                class="w-12 h-12 border-4 border-xpBlue border-t-transparent rounded-full animate-spin">
+                                            </div>
+                                        </div>
+
+                                        <!-- Videos -->
+                                        <!-- 1 & 2 Load Immediately -->
+                                        <video id="vid-pc-0" src="videos/pc/1.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="metadata"></video>
+                                        <video id="vid-pc-1" src="videos/pc/2.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="metadata"></video>
+
+                                        <!-- 3-10 Lazy Load -->
+                                        <video id="vid-pc-2" data-src="videos/pc/3.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-pc-3" data-src="videos/pc/4.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-pc-4" data-src="videos/pc/5.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-pc-5" data-src="videos/pc/6.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-pc-6" data-src="videos/pc/7.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-pc-7" data-src="videos/pc/8.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-pc-8" data-src="videos/pc/9.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-pc-9" data-src="videos/pc/10.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                    </div>
+                                    <!-- Carousel Overlay Controls -->
+                                    <div id="carouselDots"
+                                        class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-xpBlue cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 0)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 1)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 2)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 3)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 4)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 5)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 6)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 7)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 8)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('pc', 9)"></div>
+                                    </div>
+                                </div>
+                                <!-- Game Info (Just below and outside the carousel container) -->
+                                <div id="gameInfo"
+                                    class="mt-4 px-2 text-white/90 flex items-baseline flex-wrap gap-x-3 gap-y-1 overflow-hidden">
+                                    <div class="flex items-baseline gap-2 shrink-0">
+                                        <h3 id="gameTitle"
+                                            class="text-xl font-bold text-orange-400 transition-opacity duration-300 whitespace-nowrap">
+                                            Counter-Strike 1.6</h3>
+                                        <span id="gameSubtitle"
+                                            class="text-sm italic text-orange-400 transition-opacity duration-300 whitespace-nowrap">Tactical
+                                            Shooter</span>
+                                    </div>
+                                    <p id="gameDesc"
+                                        class="text-sm md:text-base font-sans leading-tight opacity-80 transition-opacity duration-300 line-clamp-2">
+                                        El rey de los cybers. Táctica, reflejos y el clásico de_dust2.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Column -->
+                    <div class="text-white space-y-6">
+                        <p class="text-2xl md:text-4xl font-serif leading-relaxed italic">
+                            "Tu gameclub soñado, ahora en tu disco rígido. <br>
+                            <span class="text-xpOrange font-bold not-italic">+150 joyas de PC</span> instaladas y listas
+                            para darle Play."
+                        </p>
+                        <div class="h-1 w-24 bg-xpOrange"></div>
+
+                        <!-- Modern XP Button Custom (Using Reusable Control) -->
+                        <div class="pt-6">
+                            <button class="xp-button-modern">
+                                <span>Ver Todos</span>
+                                <span class="xp-icon">💾</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="secConsolas" class="bg-xpLightBlue py-32 -mt-10 slant-divider-reverse"
+            data-purpose="section-consolas">
+            <div class="container mx-auto px-6">
+                <!-- Header -->
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 xp-title-shadow">Emulación Retro</h2>
+                    <p class="text-blue-100 text-lg md:text-2xl italic">PS1, PS2, N64 y más. Tu infancia en un click.
+                    </p>
+
+                    <!-- Console Logos List -->
+                    <div
+                        class="flex flex-wrap justify-center items-center gap-6 md:gap-10 mt-10 px-4 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
+                        <img src="MXP/imgs/1.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/2.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/3.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/4.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/5.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/6.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/7.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/8.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/9.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                        <img src="MXP/imgs/10.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                    <!-- Text Column (Left on Desktop) -->
+                    <div class="text-white space-y-6 order-2 md:order-1 text-right md:pr-12">
+                        <p class="text-2xl md:text-4xl font-serif leading-relaxed italic">
+                            "Vuelven las tardes de memory card y soplido de cartuchos. <br>
+                            <span class="text-xpDarkBlue font-bold not-italic">Clásicos inmortales</span> configurados
+                            para tu pantalla actual."
+                        </p>
+                        <div class="h-1 w-24 bg-xpDarkBlue ml-auto"></div>
+                        <div class="pt-6 flex justify-end">
+                            <button class="xp-button-modern">
+                                <span>Ver Catálogo</span>
+                                <span class="xp-icon">🎮</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Column (Right on Desktop) -->
+                    <div class="relative order-1 md:order-2">
+                        <div class="window w-full shadow-2xl !bg-black overflow-hidden flex flex-col">
+                            <div class="title-bar !h-12 !px-4 flex items-center shrink-0">
+                                <div class="title-bar-text !m-0 font-bold text-xl leading-none">Console Emulator</div>
+                                <div class="title-bar-controls">
+                                    <button aria-label="Minimize"></button>
+                                    <button aria-label="Maximize"></button>
+                                    <button aria-label="Close"></button>
+                                </div>
+                            </div>
+                            <div class="window-body !m-0 !p-0 !bg-black overflow-hidden flex-grow">
+                                <div class="relative aspect-video group overflow-hidden">
+                                    <div id="consoleCarousel" class="relative h-full cursor-pointer bg-black">
+                                        <!-- Loading Spinner -->
+                                        <div id="consoleLoader"
+                                            class="absolute inset-0 flex items-center justify-center bg-black/50 z-20 transition-opacity duration-300 opacity-0 pointer-events-none">
+                                            <div
+                                                class="w-12 h-12 border-4 border-xpBlue border-t-transparent rounded-full animate-spin">
+                                            </div>
+                                        </div>
+                                        <!-- Videos -->
+                                        <video id="vid-cons-0" src="videos/consolas/1.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="metadata"></video>
+                                        <video id="vid-cons-1" src="videos/consolas/2.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="metadata"></video>
+                                        <video id="vid-cons-2" data-src="videos/consolas/3.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-cons-3" data-src="videos/consolas/4.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-cons-4" data-src="videos/consolas/5.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-cons-5" data-src="videos/consolas/6.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-cons-6" data-src="videos/consolas/7.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-cons-7" data-src="videos/consolas/8.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-cons-8" data-src="videos/consolas/9.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                        <video id="vid-cons-9" data-src="videos/consolas/10.webm"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
+                                            muted loop playsinline preload="none"></video>
+                                    </div>
+                                    <div id="consoleDots"
+                                        class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-xpBlue cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 0)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 1)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 2)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 3)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 4)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 5)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 6)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 7)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 8)"></div>
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
+                                            onclick="attemptSlide('cons', 9)"></div>
+                                    </div>
+                                </div>
+                                <div id="consoleInfo"
+                                    class="mt-4 px-2 text-white/90 flex items-baseline flex-wrap gap-x-3 gap-y-1 overflow-hidden">
+                                    <div class="flex items-baseline gap-2 shrink-0">
+                                        <h3 id="consoleTitle"
+                                            class="text-xl font-bold text-orange-400 transition-opacity duration-300 whitespace-nowrap">
+                                            Super Mario 64</h3>
+                                        <span id="consoleSubtitle"
+                                            class="text-sm italic text-orange-400 transition-opacity duration-300 whitespace-nowrap">N64</span>
+                                    </div>
+                                    <p id="consoleDesc"
+                                        class="text-sm md:text-base font-sans leading-tight opacity-80 transition-opacity duration-300 line-clamp-2">
+                                        El fontanero en 3D. Un clásico de N64.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Joysticks Sub-section -->
+                <div class="mt-24 border-t border-white/10 pt-20 pb-10 relative">
+                    <div
+                        class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+
+                        <!-- Joystick 1 (Above on mobile, Left on PC) -->
+                        <div class="order-1">
+                            <video src="MXP/imgs/control1.webm" autoplay muted loop playsinline
+                                class="w-48 h-48 md:w-64 md:h-64 object-contain float-joy-1"></video>
+                        </div>
+
+                        <!-- Sticky Note Content (Yellow Post-it style) -->
+                        <div
+                            class="relative max-w-xl bg-[#ffffe1] text-gray-800 p-8 md:p-10 rounded shadow-2xl border border-yellow-200 transform md:rotate-1 order-2 z-10 mx-4">
+                            <!-- Paper Clip / Attachment effect -->
+                            <div class="absolute -top-6 -left-6">
+                                <span
+                                    class="material-icons text-6xl text-gray-400/60 transform -rotate-12 select-none">attach_file</span>
+                            </div>
+
+                            <div class="text-center space-y-4">
+                                <h3 class="text-3xl md:text-5xl font-bold text-gray-900">¡2 Joysticks Incluidos!</h3>
+                                <p class="text-xl md:text-2xl text-gray-700 italic font-serif">La experiencia completa.
+                                    Listos para conectar y jugar de a dos.</p>
+                                <p class="text-lg text-gray-600 leading-relaxed font-sans pt-2">
+                                    Nuestras naves vienen configuradas para que puedas disfrutar del multijugador local
+                                    instantáneo.
+                                    Clásicos como Tekken, Mario Kart o Street Fighter se viven mejor con amigos.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Joystick 2 (Below on mobile, Right on PC) -->
+                        <div class="order-3">
+                            <video src="MXP/imgs/control2.webm" autoplay muted loop playsinline
+                                class="w-48 h-48 md:w-64 md:h-64 object-contain float-joy-2"></video>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BEGIN: Música Offline Section -->
+        <section id="secMusica" class="bg-xpOrange py-32 -mt-10 slant-divider-reverse relative overflow-hidden"
+            data-purpose="music-section">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
+
+                    <!-- Text Content -->
+                    <div class="flex-1 text-center md:text-left space-y-6">
+                        <h2 class="text-4xl md:text-6xl font-bold text-white xp-title-shadow">Música Offline</h2>
+                        <p class="text-blue-100 text-xl md:text-2xl italic font-serif">Pop, Rock, Nu Metal y Soundtracks
+                            Originales.</p>
+                        <p class="text-lg text-white/80 leading-relaxed font-sans max-w-2xl">
+                            No necesitás internet para musicalizar tus sesiones. Incluimos una colección curada con los
+                            hits que sonaban en la radio y los temas icónicos que acompañaron tus partidas favoritas.
+                        </p>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
+                            <span
+                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">🎸
+                                Rock 2000s</span>
+                            <span
+                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">⚡
+                                Nu Metal</span>
+                            <span
+                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">🎮
+                                OST Games</span>
+                            <span
+                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">💿
+                                Pop Hits</span>
+                        </div>
+                    </div>
+
+                    <!-- Rotating Compact Disk (Refined) -->
+                    <div class="w-64 h-64 md:w-80 md:h-80 flex-shrink-0 relative flex items-center justify-center">
+                        <!-- Oval Background (Opposite Spin & Deformation) -->
+                        <div id="cdOval"
+                            class="absolute w-[110%] h-[110%] border-4 border-white/40 bg-white/10 cd-oval cd-paused shadow-inner z-0">
+                        </div>
+
+                        <div id="compactdisk" class="w-full h-full bg-transparent relative z-10">
+                            <img alt="CD-ROM disc" id="cdImage"
+                                class="w-full h-full rounded-full shadow-2xl border-4 border-white/20 cd-spin cd-paused transition-all"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAb1J12aBEFP3GQ9M_I8VdHJl6Cn9cbSq2C1rignds38_suMyeKgB6Q2lC_QUtuVcI3iYHtYIi93fzFPLWP6zetBmOx3m96eFZsdnBWFj8fJ5wTRyWAR3QW-Kjc9MAQtha5SC63dizVKdS3p5OPttpprRhWihpXFzkWRNZAC84PGxxVAFgHZoRNNxfEYeBeqN0YKFY8A3mehgPwbjQ_4eQRzbtja8RBryGgpNv6srzIE2qeww5UtW9iOlE8oByoItrM1xHmt4zko9mB" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- END: Música Offline Section -->
+
+        <section class="bg-xpDarkBlue py-32 -mt-10 slant-divider" data-purpose="empty-section-2"></section>
         <section class="bg-xpDarkBlue py-32 -mt-10 slant-divider" data-purpose="empty-section-3"></section>
         <section class="bg-xpLightBlue py-32 -mt-10 slant-divider-reverse" data-purpose="empty-section-4"></section>
         <section class="bg-xpDarkBlue py-32 -mt-10 slant-divider" data-purpose="empty-section-5"></section>
@@ -212,7 +720,7 @@
         <section class="bg-xpBeige py-32 -mt-10" data-purpose="bottom-beige-area">
             <div class="container mx-auto px-6 text-center">
                 <div class="max-w-xl mx-auto p-8 border-4 border-double border-gray-400 bg-white shadow-inner">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Ready to go back?</h2>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 xp-title-shadow">Ready to go back?</h2>
                     <p class="text-gray-600 mb-8">Join thousands of users rediscovering the joy of a simpler operating
                         system aesthetic.</p>
                     <button
@@ -247,6 +755,247 @@
 
         setInterval(updateClock, 1000);
         updateClock();
+
+        // Game Carousel Logic
+        const carousels = {
+            pc: {
+                currentSlide: 0,
+                isTransitioning: false,
+                element: document.getElementById('gameCarousel'),
+                loader: document.getElementById('carouselLoader'),
+                autoSlideInterval: null,
+                isVisible: false,
+                prefix: 'vid-pc',
+                dotsId: 'carouselDots',
+                ui: { title: 'gameTitle', sub: 'gameSubtitle', desc: 'gameDesc' },
+                data: [
+                    { title: "Counter-Strike 1.6", sub: "Tactical Shooter", desc: "El rey de los cybers. Táctica, reflejos y el clásico de_dust2." },
+                    { title: "Age of Empires II", sub: "The Age of Kings", desc: "Wololo! Estrategia en tiempo real que definió nuestra infancia." },
+                    { title: "GTA Vice City", sub: "A Toda Máquina", desc: "Neon, sintetizadores y el imperio de Tommy Vercetti en los 80s." },
+                    { title: "NFS Underground 2", sub: "Ride with Us", desc: "Tuning al límite y la banda sonora que todavía escuchás." },
+                    { title: "Diablo II", sub: "Lord of Destruction", desc: "El Señor del Terror te espera. Un RPG de acción inigualable." },
+                    { title: "Warcraft III", sub: "The Frozen Throne", desc: "Héroes, orcos y el origen de todo un universo de fantasía." },
+                    { title: "Half-Life", sub: "Generación Black Mesa", desc: "La ciencia salió mal en Black Mesa. Una narrativa revolucionaria." },
+                    { title: "The Sims", sub: "Viviendo la Vida", desc: "Jugá a ser Dios (o a encerrar gente en piletas sin escaleras)." },
+                    { title: "Quake III Arena", sub: "Frag Time", desc: "Frag or be fragged. Velocidad pura en la arena." },
+                    { title: "StarCraft", sub: "Brood War", desc: "Zerg, Terran o Protoss. El balance perfecto de la estrategia espacial." }
+                ]
+            },
+            cons: {
+                currentSlide: 0,
+                isTransitioning: false,
+                element: document.getElementById('consoleCarousel'),
+                loader: document.getElementById('consoleLoader'),
+                autoSlideInterval: null,
+                isVisible: false,
+                prefix: 'vid-cons',
+                dotsId: 'consoleDots',
+                ui: { title: 'consoleTitle', sub: 'consoleSubtitle', desc: 'consoleDesc' },
+                data: [
+                    { title: "Super Mario 64", sub: "N64", desc: "El fontanero en 3D. Un clásico de N64." },
+                    { title: "Crash Bandicoot 3", sub: "PS1", desc: "Warped! El mejor juego de plataformas de PS1." },
+                    { title: "Zelda: Ocarina of Time", sub: "N64", desc: "Una aventura legendaria en el tiempo." },
+                    { title: "Tekken 3", sub: "PS1", desc: "El rey del puño de hierro. Peleas épicas." },
+                    { title: "Pokemon Stadium", sub: "N64", desc: "Mini-juegos and batallas en 3D." },
+                    { title: "Gran Turismo 2", sub: "PS1", desc: "Simulación de conducción definitiva." },
+                    { title: "Tony Hawk PS 2", sub: "PS1", desc: "Skate, combos and música increíble." },
+                    { title: "Resident Evil 3", sub: "PS1", desc: "Nemesis te persigue. Terror puro." },
+                    { title: "Mario Kart 64", sub: "N64", desc: "Carreras and caparazones azules." },
+                    { title: "Street Fighter II", sub: "SNES", desc: "Ariel uken! El clásico de peleas." }
+                ]
+            }
+        };
+
+        const totalSlides = 10;
+
+        function prepareVideo(type, index) {
+            return new Promise((resolve) => {
+                const vid = document.getElementById(`${carousels[type].prefix}-${index}`);
+                if (!vid) return resolve(null);
+
+                if (!vid.getAttribute('src')) {
+                    vid.setAttribute('src', vid.getAttribute('data-src'));
+                    vid.load();
+                }
+
+                if (vid.readyState >= 3) {
+                    resolve(vid);
+                } else {
+                    const onCanPlay = () => {
+                        vid.removeEventListener('canplay', onCanPlay);
+                        resolve(vid);
+                    };
+                    vid.addEventListener('canplay', onCanPlay);
+                }
+            });
+        }
+
+        function preloadNext(type, index) {
+            const nextIndex = (index + 1) % totalSlides;
+            const nextVid = document.getElementById(`${carousels[type].prefix}-${nextIndex}`);
+            if (nextVid && !nextVid.getAttribute('src')) {
+                nextVid.setAttribute('src', nextVid.getAttribute('data-src'));
+                nextVid.load();
+            }
+        }
+
+        async function attemptSlide(type, index) {
+            const c = carousels[type];
+            if (!c || c.isTransitioning) return;
+
+            c.isTransitioning = true;
+            clearInterval(c.autoSlideInterval);
+
+            const targetVid = document.getElementById(`${c.prefix}-${index}`);
+            const isReady = targetVid && (targetVid.readyState >= 3 || (targetVid.getAttribute('src') && targetVid.readyState >= 3));
+
+            if (!isReady) {
+                c.loader.classList.remove('opacity-0', 'pointer-events-none');
+            }
+
+            await prepareVideo(type, index);
+            c.loader.classList.add('opacity-0', 'pointer-events-none');
+
+            performSwitch(type, index);
+
+            c.isTransitioning = false;
+            if (c.isVisible) startAutoSlide(type);
+        }
+
+        function performSwitch(type, index) {
+            const c = carousels[type];
+            c.currentSlide = index;
+            const videos = c.element.querySelectorAll('video');
+            const dots = document.querySelectorAll(`#${c.dotsId} div`);
+            const titleEl = document.getElementById(c.ui.title);
+            const subtitleEl = document.getElementById(c.ui.sub);
+            const descEl = document.getElementById(c.ui.desc);
+
+            if (titleEl) titleEl.style.opacity = 0;
+            if (subtitleEl) subtitleEl.style.opacity = 0;
+            if (descEl) descEl.style.opacity = 0;
+
+            setTimeout(() => {
+                if (titleEl) titleEl.textContent = c.data[c.currentSlide].title;
+                if (subtitleEl) subtitleEl.textContent = c.data[c.currentSlide].sub;
+                if (descEl) descEl.textContent = c.data[c.currentSlide].desc;
+                if (titleEl) titleEl.style.opacity = 1;
+                if (subtitleEl) subtitleEl.style.opacity = 1;
+                if (descEl) descEl.style.opacity = 1;
+            }, 300);
+
+            videos.forEach((vid, i) => {
+                if (i === c.currentSlide) {
+                    vid.classList.remove('opacity-0');
+                    vid.classList.add('opacity-100');
+                    if (c.isVisible) {
+                        vid.play().catch(() => { });
+                        preloadNext(type, c.currentSlide);
+                    }
+                } else {
+                    vid.classList.remove('opacity-100');
+                    vid.classList.add('opacity-0');
+                    setTimeout(() => {
+                        if (c.currentSlide !== i) vid.pause();
+                    }, 1000);
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === c.currentSlide) {
+                    dot.classList.remove('bg-white/50');
+                    dot.classList.add('bg-xpBlue');
+                } else {
+                    dot.classList.remove('bg-xpBlue');
+                    dot.classList.add('bg-white/50');
+                }
+            });
+        }
+
+        function startAutoSlide(type) {
+            const c = carousels[type];
+            clearInterval(c.autoSlideInterval);
+            if (!c.isVisible) return;
+
+            c.autoSlideInterval = setInterval(() => {
+                const nextIndex = (c.currentSlide + 1) % totalSlides;
+                attemptSlide(type, nextIndex);
+            }, 6000);
+        }
+
+        function nextSlide(type) {
+            const nextIndex = (carousels[type].currentSlide + 1) % totalSlides;
+            attemptSlide(type, nextIndex);
+        }
+
+        function prevSlide(type) {
+            const prevIndex = (carousels[type].currentSlide - 1 + totalSlides) % totalSlides;
+            attemptSlide(type, prevIndex);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.target.id === 'secMusica') {
+                    const cd = document.getElementById('cdImage');
+                    const oval = document.getElementById('cdOval');
+                    const isVisible = entry.isIntersecting;
+                    if (cd) {
+                        if (isVisible) cd.classList.remove('cd-paused');
+                        else cd.classList.add('cd-paused');
+                    }
+                    if (oval) {
+                        if (isVisible) oval.classList.remove('cd-paused');
+                        else oval.classList.add('cd-paused');
+                    }
+                    return;
+                }
+
+                const type = entry.target.id === 'secJuegos' ? 'pc' : (entry.target.id === 'secConsolas' ? 'cons' : null);
+                if (!type) return;
+                const c = carousels[type];
+                c.isVisible = entry.isIntersecting;
+                if (c.isVisible) {
+                    attemptSlide(type, c.currentSlide);
+                } else {
+                    clearInterval(c.autoSlideInterval);
+                    c.element.querySelectorAll('video').forEach(v => v.pause());
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const secJuegosEl = document.getElementById('secJuegos');
+        const secConsolasEl = document.getElementById('secConsolas');
+        const secMusicaEl = document.getElementById('secMusica');
+        if (secJuegosEl) observer.observe(secJuegosEl);
+        if (secConsolasEl) observer.observe(secConsolasEl);
+        if (secMusicaEl) observer.observe(secMusicaEl);
+
+        // Events Helper
+        function attachEvents(type) {
+            const c = carousels[type];
+            if (!c || !c.element) return;
+
+            c.element.addEventListener('click', (e) => {
+                const rect = c.element.parentElement.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                if (clickX > rect.width / 2) nextSlide(type);
+                else prevSlide(type);
+            });
+
+            let touchStartX = 0;
+            let touchEndX = 0;
+            c.element.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+            c.element.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) nextSlide(type);
+                if (touchEndX > touchStartX + swipeThreshold) prevSlide(type);
+            }, { passive: true });
+        }
+
+        attachEvents('pc');
+        attachEvents('cons');
+
     </script>
     <!-- END: Clock Script -->
 </body>
