@@ -568,6 +568,9 @@
     <div id="category-navbar" class="category-navbar hidden sm:flex"></div>
     <div id="category-navbar-spacer" class="category-navbar-spacer hidden sm:block"></div>
 
+    <!-- Última Actualización -->
+    <div id="last-update-info" class="w-full text-center text-sm text-gray-300 mb-2"></div>
+
     <!-- Main container -->
     <div class="mx-auto bg-gray-800 p-6 md:p-8 rounded-xl shadow-lg border border-gray-700"
         style="width:95%;max-width:1800px;">
@@ -755,6 +758,21 @@
 
     <script>
         // --- Data Configuration ---
+
+        // Show last update info at top
+        function showLastUpdateInfo() {
+            fetch('products.json')
+                .then(res => res.json())
+                .then(data => {
+                    const lastUpdate = data.lastUpdate;
+                    const formatted = lastUpdate ? formatTimestamp(lastUpdate) : 'Nunca';
+                    document.getElementById('last-update-info').innerHTML = `<span class="font-semibold">Última Actualización:</span> ${formatted}`;
+                })
+                .catch(() => {
+                    document.getElementById('last-update-info').innerHTML = `<span class="font-semibold">Última Actualización:</span> Error al cargar`;
+                });
+        }
+        showLastUpdateInfo();
         const CATEGORY_NAV_LIST = [
             { key: 'bases-section-container', label: 'Bases' },
             { key: 'bundles-section-container', label: 'Bundles' },
@@ -1285,8 +1303,8 @@
                     const diffSpan = document.createElement('span');
                     diffSpan.className = 'diff-span';
                     diffSpan.style.backgroundColor = diffColor;
-                    const diffAmount = Math.round(diff / 1000);
-                    diffSpan.textContent = diffAmount > 0 ? `+${diffAmount}k` : `${diffAmount}k`;
+                    const diffAmount = formatShortNumber(diff);
+                    diffSpan.textContent = diff > 0 ? `+${diffAmount}` : `${diffAmount}`;
 
                     indicatorContainer.appendChild(oldPriceSpan);
                     indicatorContainer.appendChild(diffSpan);
@@ -2126,49 +2144,19 @@
         function generateTooltipTable(prices, currentPrice) {
             // prices: array newest-first ({value, date})
             if (!prices || prices.length === 0) {
-                // If no stored prices but we have a currentPrice, show it as Hoy
-                if (typeof currentPrice === 'number' && currentPrice > 0) {
-                    const now = new Date();
-                    const time = new Intl.DateTimeFormat('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }).format(now);
-                    return `<table class="tooltip-table"><thead><tr><th>Fecha</th><th>Precio</th></tr></thead><tbody><tr><td>Hoy ${time}</td><td>$${currentPrice.toLocaleString('es-AR')}</td></tr></tbody></table>`;
-                }
                 return '<span>Sin historial de precios.</span>';
             }
 
-            // Make a shallow copy to avoid mutating original
-            const copy = prices.slice();
-            const todayKey = new Date().toISOString().slice(0, 10);
-
-            // If the list doesn't already include an entry for today, prepend the currentPrice as 'Hoy'
-            const hasToday = copy.some(p => {
-                try {
-                    return new Date(p.date).toISOString().slice(0, 10) === todayKey;
-                } catch (e) {
-                    return false;
-                }
-            });
-
-            if (!hasToday && typeof currentPrice === 'number' && currentPrice > 0) {
-                copy.unshift({ value: currentPrice, date: new Date().toISOString() });
-            }
-
-            const recentPrices = copy.slice(0, 7);
+            // Only show actual price history entries
+            const recentPrices = prices.slice(0, 7);
             let tableHTML = '<table class="tooltip-table"><thead><tr><th>Fecha</th><th>Precio</th></tr></thead><tbody>';
             recentPrices.forEach(p => {
                 let dateLabel = '';
                 try {
-                    const d = new Date(p.date);
-                    const key = d.toISOString().slice(0, 10);
-                    if (key === todayKey) {
-                        const time = new Intl.DateTimeFormat('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
-                        dateLabel = `Hoy ${time}`;
-                    } else {
-                        dateLabel = formatTimestamp(p.date);
-                    }
+                    dateLabel = formatTimestamp(p.date);
                 } catch (e) {
                     dateLabel = formatTimestamp(p.date);
                 }
-
                 tableHTML += `<tr><td>${dateLabel}</td><td>$${p.value.toLocaleString('es-AR')}</td></tr>`;
             });
             tableHTML += '</tbody></table>';
