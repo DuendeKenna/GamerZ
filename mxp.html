@@ -233,6 +233,19 @@
         .cd-oval {
             animation: oval-spin-inverse 12s linear infinite;
         }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
     </style>
     <style data-purpose="typography">
         .hero-title {
@@ -402,12 +415,14 @@
                 <span class="xp-button-text">MXP</span>
             </button>
             <!-- Navigation -->
-            <nav class="flex space-x-3 md:space-x-6 text-white font-semibold text-[10px] md:text-sm ml-4 md:ml-8">
-                <a class="hidden md:inline-block hover:text-blue-200 transition-colors" href="#secFeaturesBase">¿Qué
-                    es?</a>
+            <nav
+                class="flex overflow-x-auto scrollbar-hide space-x-6 text-white font-semibold text-sm ml-4 md:ml-8 whitespace-nowrap">
+                <a class="hover:text-blue-200 transition-colors" href="#">Home</a>
+                <a class="hover:text-blue-200 transition-colors" href="#secFeaturesBase">¿Qué es?</a>
                 <a class="hover:text-blue-200 transition-colors" href="#secJuegos">Juegos PC</a>
-                <a class="hidden md:inline-block hover:text-blue-200 transition-colors" href="#secConsolas">Consolas</a>
-                <a class="hidden md:inline-block hover:text-blue-200 transition-colors" href="#secEstilo">Entorno</a>
+                <a class="hover:text-blue-200 transition-colors" href="#secConsolas">Consolas</a>
+                <a class="hover:text-blue-200 transition-colors" href="#secMusica">Música</a>
+                <a class="hover:text-blue-200 transition-colors" href="#secEstilo">Entorno</a>
                 <a class="hover:text-blue-200 transition-colors" href="#secPrecios">Precios</a>
             </nav>
         </div>
