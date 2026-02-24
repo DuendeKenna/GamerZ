@@ -243,6 +243,149 @@
         .xp-title-shadow {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
+
+        @keyframes luna-glow {
+            0% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4a86e8, 0 0 40px #4a86e8;
+            }
+
+            33% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #7baaf7, 0 0 40px #7baaf7;
+            }
+
+            66% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #b0c4de, 0 0 40px #b0c4de;
+            }
+
+            100% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4a86e8, 0 0 40px #4a86e8;
+            }
+        }
+
+        .animate-luna-glow {
+            animation: luna-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes cta-chaos {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+
+            5% {
+                transform: translate(-10px, 15px) rotate(-2deg) scale(1.05);
+            }
+
+            10% {
+                transform: translate(15px, -10px) rotate(3deg) scale(0.95);
+            }
+
+            15% {
+                transform: translate(-20px, -5px) rotate(-5deg) scale(1.1);
+            }
+
+            20% {
+                transform: translate(10px, 20px) rotate(2deg) scale(1.02);
+            }
+
+            25% {
+                transform: translate(-5px, -15px) rotate(-1deg) scale(0.98);
+            }
+
+            30% {
+                transform: translate(25px, 10px) rotate(4deg) scale(1.08);
+            }
+
+            35% {
+                transform: translate(-15px, 25px) rotate(-3deg) scale(0.92);
+            }
+
+            40% {
+                transform: translate(30px, -20px) rotate(6deg) scale(1.15);
+            }
+
+            45% {
+                transform: translate(-25px, -30px) rotate(-4deg) scale(1.03);
+            }
+
+            50% {
+                transform: translate(0px, 40px) rotate(0deg) scale(1.1);
+            }
+
+            55% {
+                transform: translate(20px, -25px) rotate(5deg) scale(0.95);
+            }
+
+            60% {
+                transform: translate(-30px, 15px) rotate(-6deg) scale(1.12);
+            }
+
+            65% {
+                transform: translate(15px, 35px) rotate(3deg) scale(1.01);
+            }
+
+            70% {
+                transform: translate(-40px, -10px) rotate(-8deg) scale(1.07);
+            }
+
+            75% {
+                transform: translate(35px, 20px) rotate(7deg) scale(0.96);
+            }
+
+            80% {
+                transform: translate(-10px, -35px) rotate(-2deg) scale(1.09);
+            }
+
+            85% {
+                transform: translate(45px, -5px) rotate(10deg) scale(1.18);
+            }
+
+            90% {
+                transform: translate(-20px, 30px) rotate(-4deg) scale(0.94);
+            }
+
+            95% {
+                transform: translate(10px, -15px) rotate(2deg) scale(1.03);
+            }
+        }
+
+        .animate-cta-chaos {
+            animation: cta-chaos 60s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .animate-icon-chaos {
+            animation: cta-chaos 90s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes swipe-down {
+            0% {
+                transform: translateY(-15px);
+                opacity: 0;
+            }
+
+            30% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            70% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(15px);
+                opacity: 0;
+            }
+        }
+
+        .animate-swipe-down {
+            animation: swipe-down 2.5s ease-in-out infinite;
+            display: inline-block;
+        }
     </style>
     <!-- END: Custom Styles -->
 </head>
@@ -255,14 +398,17 @@
         <div class="flex items-center h-full">
             <!-- Start Button Mockup -->
             <button
-                class="xp-start-button flex items-center px-8 h-10 rounded-tr-3xl rounded-br-3xl italic font-bold text-white text-2xl hover:brightness-110 transition-all">
+                class="xp-start-button flex items-center px-2 h-10 rounded-tr-3xl rounded-br-3xl italic font-bold text-white text-2xl hover:brightness-110 transition-all">
                 <span class="xp-button-text">MXP</span>
             </button>
             <!-- Navigation -->
-            <nav class="md:flex space-x-6 text-white font-semibold text-sm ml-8">
-                <a class="hover:text-blue-200 transition-colors" href="#">Home</a>
-                <a class="hover:text-blue-200 transition-colors" href="#">Games</a>
-                <a class="hover:text-blue-200 transition-colors" href="#">Specs</a>
+            <nav class="flex space-x-3 md:space-x-6 text-white font-semibold text-[10px] md:text-sm ml-4 md:ml-8">
+                <a class="hidden md:inline-block hover:text-blue-200 transition-colors" href="#secFeaturesBase">¿Qué
+                    es?</a>
+                <a class="hover:text-blue-200 transition-colors" href="#secJuegos">Juegos PC</a>
+                <a class="hidden md:inline-block hover:text-blue-200 transition-colors" href="#secConsolas">Consolas</a>
+                <a class="hidden md:inline-block hover:text-blue-200 transition-colors" href="#secEstilo">Entorno</a>
+                <a class="hover:text-blue-200 transition-colors" href="#secPrecios">Precios</a>
             </nav>
         </div>
         <!-- System Tray Mockup Area -->
@@ -303,41 +449,142 @@
             </div>
         </section>
         <!-- END: Branding Section -->
-        <!-- BEGIN: Feature Section (Lighter Blue) -->
-        <section class="py-32 -mt-20 slant-divider-reverse"
-            style="background: linear-gradient(to bottom, #4a86e8, #7baaf7);" data-purpose="sub-section-blue">
+        <!-- BEGIN: Feature Section (Green Redesign) -->
+        <section id="secFeaturesBase" class="py-32 -mt-20 slant-divider-reverse overflow-hidden"
+            style="background: linear-gradient(to bottom, #3e881e, #2a5d14);" data-purpose="features-redesign">
             <div class="container mx-auto px-6 text-white text-center">
-                <h3 class="text-3xl font-bold mb-8 xp-title-shadow">Un Sistema Retro~Renovado</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-                    <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-                        <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Appearance.png"
-                                class="max-w-20"></div>
-                        <h4 class="font-bold mb-2">Estilo XP</h4>
-                        <p class="text-md opacity-90">Un entorno visual que te va a hacer sentir como en los 2000.</p>
+                <h3 class="text-4xl md:text-6xl font-bold mb-20 xp-title-shadow">Un Sistema Retro~Renovado</h3>
+
+                <div
+                    class="max-w-7xl mx-auto border border-white/20 rounded-[32px] overflow-hidden shadow-2xl antialiased">
+
+                    <!-- Row 1: Estilo XP & Potencia Moderna -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-[#0053e1] to-[#002060] shadow-[inset_0_2px_15px_rgba(255,255,255,0.4)] border-b border-white/10">
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group">
+                            <div class="shrink-0">
+                                <img src="MXP/XP_Icons/Appearance.webp"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:rotate-6 transition-all"
+                                    alt="Estilo XP">
+                            </div>
+                            <div class="text-left">
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                    style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Estilo XP</h4>
+                                <p class="text-lg leading-relaxed text-white/90">
+                                    Un entorno visual <strong>perfeccionado</strong> que te transporta a los 2000 con
+                                    fluidez moderna.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group bg-black/5 lg:bg-transparent">
+                            <div class="text-right flex-1">
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                    style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Potencia Moderna</h4>
+                                <p class="text-lg leading-relaxed text-white/90">
+                                    Debajo del capó corre un motor de <strong>máximo rendimiento</strong> para crear sin
+                                    límites.
+                                </p>
+                            </div>
+                            <div class="shrink-0">
+                                <img src="MXP/XP_Icons/Performance Monitor.webp"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:-rotate-6 transition-all"
+                                    alt="Potencia Moderna">
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-                        <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Game Controller.png"
-                                class="max-w-20"></div>
-                        <h4 class="font-bold mb-2">Juegazos</h4>
-                        <p class="text-md opacity-90">Una colección curada; sin basura y potenciados.
-                        </p>
+
+                    <!-- Row 2: Juegazos & Emuladores -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-[#004dc9] to-[#001c57] shadow-[inset_0_2px_15px_rgba(255,255,255,0.3)] border-b border-white/10">
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group">
+                            <div class="shrink-0">
+                                <img src="MXP/XP_Icons/Mouse.webp"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:rotate-6 transition-all"
+                                    alt="Juegos de PC">
+                            </div>
+                            <div class="text-left">
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                    style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Juegazos de PC</h4>
+                                <p class="text-lg leading-relaxed text-white/90">
+                                    Colección <strong>curada y potenciada</strong>; clásicos sin basura, en español, con
+                                    parches HD
+                                    actuales.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group bg-black/5 lg:bg-transparent">
+                            <div class="text-right flex-1">
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                    style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Emuladores</h4>
+                                <p class="text-lg leading-relaxed text-white/90">
+                                    <strong>Sistemas preconfigurados</strong> para revivir consolas clásicas con máxima
+                                    fidelidad.
+                                </p>
+                            </div>
+                            <div class="shrink-0">
+                                <img src="MXP/XP_Icons/Game Controller.webp"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:-rotate-6 transition-all"
+                                    alt="Emuladores">
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-                        <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Programs.png"
-                                class="max-w-20"></div>
-                        <h4 class="font-bold mb-2">Software Clave</h4>
-                        <p class="text-md opacity-90">Preinstalado y activado. Nada de bloatware. Pura usabilidad.</p>
+
+                    <!-- Row 3: Software & Música -->
+                    <div
+                        class="grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-[#0048bc] to-[#00174a] shadow-[inset_0_2px_15px_rgba(255,255,255,0.2)]">
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group">
+                            <div class="shrink-0">
+                                <img src="MXP/XP_Icons/Programs.webp"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:rotate-6 transition-all"
+                                    alt="Software Clave">
+                            </div>
+                            <div class="text-left">
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                    style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Software Clave</h4>
+                                <p class="text-lg leading-relaxed text-white/90">
+                                    <strong>Activado y optimizado</strong>. Cero bloatware; pura usabilidad desde el
+                                    primer día.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group bg-black/5 lg:bg-transparent">
+                            <div class="text-right flex-1">
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                    style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Música Offline</h4>
+                                <p class="text-lg leading-relaxed text-white/90">
+                                    Tu biblioteca personal de <strong>hitazos inolvidables</strong> sin depender de
+                                    internet.
+                                </p>
+                            </div>
+                            <div class="shrink-0">
+                                <img src="MXP/XP_Icons/Audio Devices.webp"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:-rotate-6 transition-all"
+                                    alt="Música Offline">
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-6 bg-white/10 rounded-lg backdrop-blur-sm border border-white/20">
-                        <div class="text-4xl mb-4 flex justify-center"><img src="Windows XP Icons/Audio Devices.png"
-                                class="max-w-20"></div>
-                        <h4 class="font-bold mb-2">Música Offline</h4>
-                        <p class="text-mds opacity-90">Con packs de hitazos de la época, sin depender de internet.</p>
-                    </div>
+
                 </div>
+
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="mt-32 text-center pb-20">
+
+                <div class="flex flex-col items-center gap-4 mt-12 cursor-pointer group"
+                    onclick="document.getElementById('secJuegos').scrollIntoView({behavior: 'smooth'})">
+                    <img src="MXP/XP_Icons/Backups.webp"
+                        class="w-22  drop-shadow-2xl group-hover:scale-110 transition-transform animate-icon-chaos"
+                        alt="Explorar">
+                    <i class="fas fa-chevron-down text-4xl text-green-200 animate-bounce"></i>
+                </div>
+                <h4 class="text-3xl md:text-5xl font-bold mb-2 text-white animate-swipe-down animate-luna-glow">¿Listo
+                    para
+                    Viajar al Pasado?</h4>
+            </div>
             </div>
         </section>
-        <!-- END: Feature Section -->
+        <!-- END: Feature Section (Green Redesign) -->
 
         <!-- BEGIN: Empty Intercalated Sections -->
         <!-- BEGIN: Juegos Section -->
@@ -359,7 +606,7 @@
                             <div class="title-bar !h-12 !px-4 flex items-center shrink-0">
                                 <div class="title-bar-text !m-0">
                                     <div class="flex items-center space-x-4">
-                                        <img src="Windows XP Icons/Game Controller.png" class="w-6 h-6" alt="icon">
+                                        <img src="MXP/XP_Icons/Game Controller.webp" class="w-6 h-6" alt="icon">
                                         <span class="font-bold text-xl leading-none">Juegazos que marcaron una
                                             época</span>
                                     </div>
@@ -374,48 +621,27 @@
                                 <!-- Image Container -->
                                 <div class="relative aspect-video group overflow-hidden">
                                     <div id="gameCarousel" class="relative h-full cursor-pointer bg-black">
-                                        <!-- Loading Spinner (Hidden by default) -->
-                                        <div id="carouselLoader"
-                                            class="absolute inset-0 flex items-center justify-center bg-black/50 z-20 transition-opacity duration-300 opacity-0 pointer-events-none">
-                                            <div
-                                                class="w-12 h-12 border-4 border-xpBlue border-t-transparent rounded-full animate-spin">
-                                            </div>
-                                        </div>
-
-                                        <!-- Videos -->
-                                        <!-- 1 & 2 Load Immediately -->
-                                        <video id="vid-pc-0" src="videos/pc/1.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="metadata"></video>
-                                        <video id="vid-pc-1" src="videos/pc/2.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="metadata"></video>
-
-                                        <!-- 3-10 Lazy Load -->
-                                        <video id="vid-pc-2" data-src="videos/pc/3.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-pc-3" data-src="videos/pc/4.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-pc-4" data-src="videos/pc/5.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-pc-5" data-src="videos/pc/6.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-pc-6" data-src="videos/pc/7.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-pc-7" data-src="videos/pc/8.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-pc-8" data-src="videos/pc/9.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-pc-9" data-src="videos/pc/10.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
+                                        <!-- Images -->
+                                        <img id="vid-pc-0" src="MXP/Shots/pc/1.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-1" src="MXP/Shots/pc/2.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-2" data-src="MXP/Shots/pc/3.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-3" data-src="MXP/Shots/pc/4.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-4" data-src="MXP/Shots/pc/5.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-5" data-src="MXP/Shots/pc/6.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-6" data-src="MXP/Shots/pc/7.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-7" data-src="MXP/Shots/pc/8.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-8" data-src="MXP/Shots/pc/9.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-pc-9" data-src="MXP/Shots/pc/10.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
                                     </div>
                                     <!-- Carousel Overlay Controls -->
                                     <div id="carouselDots"
@@ -538,44 +764,27 @@
                             <div class="window-body !m-0 !p-0 !bg-black overflow-hidden flex-grow">
                                 <div class="relative aspect-video group overflow-hidden">
                                     <div id="consoleCarousel" class="relative h-full cursor-pointer bg-black">
-                                        <!-- Loading Spinner -->
-                                        <div id="consoleLoader"
-                                            class="absolute inset-0 flex items-center justify-center bg-black/50 z-20 transition-opacity duration-300 opacity-0 pointer-events-none">
-                                            <div
-                                                class="w-12 h-12 border-4 border-xpBlue border-t-transparent rounded-full animate-spin">
-                                            </div>
-                                        </div>
-                                        <!-- Videos -->
-                                        <video id="vid-cons-0" src="videos/consolas/1.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="metadata"></video>
-                                        <video id="vid-cons-1" src="videos/consolas/2.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="metadata"></video>
-                                        <video id="vid-cons-2" data-src="videos/consolas/3.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-cons-3" data-src="videos/consolas/4.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-cons-4" data-src="videos/consolas/5.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-cons-5" data-src="videos/consolas/6.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-cons-6" data-src="videos/consolas/7.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-cons-7" data-src="videos/consolas/8.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-cons-8" data-src="videos/consolas/9.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
-                                        <video id="vid-cons-9" data-src="videos/consolas/10.webm"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity"
-                                            muted loop playsinline preload="none"></video>
+                                        <!-- Images -->
+                                        <img id="vid-cons-0" src="MXP/Shots/consolas/1.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-1" src="MXP/Shots/consolas/2.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-2" data-src="MXP/Shots/consolas/3.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-3" data-src="MXP/Shots/consolas/4.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-4" data-src="MXP/Shots/consolas/5.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-5" data-src="MXP/Shots/consolas/6.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-6" data-src="MXP/Shots/consolas/7.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-7" data-src="MXP/Shots/consolas/8.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-8" data-src="MXP/Shots/consolas/9.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
+                                        <img id="vid-cons-9" data-src="MXP/Shots/consolas/10.webp"
+                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
                                     </div>
                                     <div id="consoleDots"
                                         class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
@@ -742,7 +951,7 @@
                             <div class="title-bar !h-12 !px-4 flex items-center shrink-0">
                                 <div class="title-bar-text !m-0">
                                     <div class="flex items-center space-x-4">
-                                        <img src="Windows XP Icons/Appearance.png" class="w-6 h-6" alt="icon">
+                                        <img src="MXP/XP_Icons/Appearance.webp" class="w-6 h-6" alt="icon">
                                         <span class="font-bold text-xl leading-none">Visualizer.exe</span>
                                     </div>
                                 </div>
@@ -755,19 +964,19 @@
                             <div
                                 class="window-body !m-0 !p-0 !bg-black overflow-hidden flex-grow relative aspect-video group">
                                 <div id="estiloCarousel" class="relative h-full cursor-pointer bg-black/20">
-                                    <img id="img-est-0" src="MXP/Shots/MXP-2.png"
+                                    <img id="img-est-0" src="MXP/Shots/MXP-2.webp"
                                         class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
-                                    <img id="img-est-1" src="MXP/Shots/MXP-4.png"
+                                    <img id="img-est-1" src="MXP/Shots/MXP-4.webp"
                                         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    <img id="img-est-2" src="MXP/Shots/montaje4.png"
+                                    <img id="img-est-2" src="MXP/Shots/montaje4.webp"
                                         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    <img id="img-est-3" src="MXP/Shots/montaje5.png"
+                                    <img id="img-est-3" src="MXP/Shots/montaje5.webp"
                                         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    <img id="img-est-4" src="MXP/Shots/drivers1.png"
+                                    <img id="img-est-4" src="MXP/Shots/drivers1.webp"
                                         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    <img id="img-est-5" src="MXP/Shots/drivers2.png"
+                                    <img id="img-est-5" src="MXP/Shots/drivers2.webp"
                                         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    <img id="img-est-6" src="MXP/Shots/montaje3.png"
+                                    <img id="img-est-6" src="MXP/Shots/montaje3.webp"
                                         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
                                 </div>
                                 <!-- Dots -->
@@ -1200,7 +1409,7 @@
                     <div class="flex gap-12 justify-center items-center">
                         <div class="flex flex-col items-center gap-2 cursor-pointer group"
                             onclick="document.getElementById('radio-desktop').click()">
-                            <img src="Windows XP Icons/Desktop.png"
+                            <img src="MXP/XP_Icons/Desktop.webp"
                                 class="w-16 h-16 group-hover:scale-110 transition-transform" alt="Desktop Icon">
                             <div class="field-row">
                                 <input id="radio-desktop" type="radio" name="device_type" value="Desktop" checked>
@@ -1209,7 +1418,7 @@
                         </div>
                         <div class="flex flex-col items-center gap-2 cursor-pointer group"
                             onclick="document.getElementById('radio-notebook').click()">
-                            <img src="Windows XP Icons/Mobile Device.png"
+                            <img src="MXP/XP_Icons/Mobile Device.webp"
                                 class="w-16 h-16 group-hover:scale-110 transition-transform" alt="Notebook Icon">
                             <div class="field-row">
                                 <input id="radio-notebook" type="radio" name="device_type" value="Notebook">
@@ -1343,39 +1552,39 @@
             return carousels[type].totalSlides || 10;
         }
 
-        function prepareVideo(type, index) {
+        function prepareMedia(type, index) {
             return new Promise((resolve) => {
-                const vid = document.getElementById(`${carousels[type].prefix}-${index}`);
-                if (!vid) return resolve(null);
+                const item = document.getElementById(`${carousels[type].prefix}-${index}`);
+                if (!item) return resolve(null);
 
-                // If it's an image, it's already "ready" once the element is found
-                if (vid.tagName === 'IMG') {
-                    return resolve(vid);
-                }
-
-                if (!vid.getAttribute('src')) {
-                    vid.setAttribute('src', vid.getAttribute('data-src'));
-                    vid.load();
-                }
-
-                if (vid.readyState >= 3) {
-                    resolve(vid);
+                if (!item.getAttribute('src')) {
+                    item.setAttribute('src', item.getAttribute('data-src'));
+                    if (item.tagName === 'IMG') {
+                        item.onload = () => resolve(item);
+                        item.onerror = () => resolve(item);
+                    } else if (item.tagName === 'VIDEO') {
+                        item.load();
+                        const onCanPlay = () => {
+                            item.removeEventListener('canplay', onCanPlay);
+                            resolve(item);
+                        };
+                        item.addEventListener('canplay', onCanPlay);
+                    }
                 } else {
-                    const onCanPlay = () => {
-                        vid.removeEventListener('canplay', onCanPlay);
-                        resolve(vid);
-                    };
-                    vid.addEventListener('canplay', onCanPlay);
+                    resolve(item);
                 }
+
+                // Timeout fallback
+                setTimeout(() => resolve(item), 2000);
             });
         }
 
         function preloadNext(type, index) {
             const nextIndex = (index + 1) % getTotalSlides(type);
-            const nextVid = document.getElementById(`${carousels[type].prefix}-${nextIndex}`);
-            if (nextVid && nextVid.tagName === 'VIDEO' && !nextVid.getAttribute('src')) {
-                nextVid.setAttribute('src', nextVid.getAttribute('data-src'));
-                nextVid.load();
+            const nextItem = document.getElementById(`${carousels[type].prefix}-${nextIndex}`);
+            if (nextItem && !nextItem.getAttribute('src')) {
+                nextItem.setAttribute('src', nextItem.getAttribute('data-src'));
+                if (nextItem.tagName === 'VIDEO') nextItem.load();
             }
         }
 
@@ -1386,16 +1595,7 @@
             c.isTransitioning = true;
             clearInterval(c.autoSlideInterval);
 
-            const targetVid = document.getElementById(`${c.prefix}-${index}`);
-            const isReady = targetVid && (targetVid.tagName === 'IMG' || targetVid.readyState >= 3 || (targetVid.getAttribute('src') && targetVid.readyState >= 3));
-
-            if (!isReady && c.loader) {
-                c.loader.classList.remove('opacity-0', 'pointer-events-none');
-            }
-
-            await prepareVideo(type, index);
-            if (c.loader) c.loader.classList.add('opacity-0', 'pointer-events-none');
-
+            await prepareMedia(type, index);
             performSwitch(type, index);
 
             c.isTransitioning = false;
@@ -1416,9 +1616,11 @@
             if (descEl) descEl.style.opacity = 0;
 
             setTimeout(() => {
-                if (titleEl) titleEl.textContent = c.data[c.currentSlide].title;
-                if (subtitleEl) subtitleEl.textContent = c.data[c.currentSlide].sub;
-                if (descEl) descEl.textContent = c.data[c.currentSlide].desc;
+                if (c.data && c.data[c.currentSlide]) {
+                    if (titleEl) titleEl.textContent = c.data[c.currentSlide].title;
+                    if (subtitleEl) subtitleEl.textContent = c.data[c.currentSlide].sub;
+                    if (descEl) descEl.textContent = c.data[c.currentSlide].desc;
+                }
                 if (titleEl) titleEl.style.opacity = 1;
                 if (subtitleEl) subtitleEl.style.opacity = 1;
                 if (descEl) descEl.style.opacity = 1;
@@ -1428,16 +1630,10 @@
                 if (i === c.currentSlide) {
                     item.classList.remove('opacity-0');
                     item.classList.add('opacity-100');
-                    if (c.isVisible && item.tagName === 'VIDEO') {
-                        item.play().catch(() => { });
-                        preloadNext(type, c.currentSlide);
-                    }
+                    preloadNext(type, c.currentSlide);
                 } else {
                     item.classList.remove('opacity-100');
                     item.classList.add('opacity-0');
-                    setTimeout(() => {
-                        if (c.currentSlide !== i && item.tagName === 'VIDEO') item.pause();
-                    }, 1000);
                 }
             });
 
@@ -1498,7 +1694,6 @@
                     attemptSlide(type, c.currentSlide);
                 } else {
                     clearInterval(c.autoSlideInterval);
-                    c.element.querySelectorAll('video').forEach(v => v.pause());
                 }
             });
         }, { threshold: 0.1 });
