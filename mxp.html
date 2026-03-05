@@ -967,27 +967,27 @@
                                     <button aria-label="Close"></button>
                                 </div>
                             </div>
-                            <div class="window-body !m-0 !p-0 !bg-black overflow-hidden flex-grow flex flex-col">
-                                <div class="relative aspect-video group overflow-hidden">
-                                    <div id="estiloCarousel" class="relative h-full cursor-pointer bg-black/20">
-                                        <img id="img-est-0" src="MXP/Shots/MXP-2.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
-                                        <img id="img-est-1" src="MXP/Shots/MXP-4.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                        <img id="img-est-2" src="MXP/Shots/montaje4.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                        <img id="img-est-3" src="MXP/Shots/montaje5.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                        <img id="img-est-4" src="MXP/Shots/drivers1.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                        <img id="img-est-5" src="MXP/Shots/drivers2.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                        <img id="img-est-6" src="MXP/Shots/montaje3.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    </div>
+                            <div
+                                class="window-body !m-0 !p-0 !bg-black overflow-hidden flex-grow relative aspect-video group">
+                                <div id="estiloCarousel" class="relative h-full cursor-pointer bg-black/20">
+                                    <img id="img-est-0" src="MXP/Shots/MXP-2.webp"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
+                                    <img id="img-est-1" src="MXP/Shots/MXP-4.webp"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+                                    <img id="img-est-2" src="MXP/Shots/montaje4.webp"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+                                    <img id="img-est-3" src="MXP/Shots/montaje5.webp"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+                                    <img id="img-est-4" src="MXP/Shots/drivers1.webp"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+                                    <img id="img-est-5" src="MXP/Shots/drivers2.webp"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+                                    <img id="img-est-6" src="MXP/Shots/montaje3.webp"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
                                 </div>
-                                <!-- Carousel Dots -->
-                                <div id="estiloDots" class="flex justify-center space-x-2 py-2">
+                                <!-- Dots -->
+                                <div id="estiloDots"
+                                    class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
                                     <div class="w-2.5 h-2.5 rounded-full bg-xpBlue cursor-pointer hover:bg-white transition-colors"
                                         onclick="attemptSlide('estilo', 0)"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
@@ -1046,29 +1046,29 @@
 
                     <!-- Carousel Component -->
                     <div class="w-full lg:w-5/12">
-                        <div class="window shadow-2xl !bg-[#ece9d8] transform md:rotate-2 p-1 relative">
-                            <div class="window-body !m-0 !p-0 !bg-black overflow-hidden flex-grow flex flex-col">
-                                <div class="relative aspect-[4/3] group overflow-hidden">
-                                    <div id="creatorCarousel" class="relative w-full h-full cursor-pointer bg-black">
-                                        <img id="img-creator-0"
-                                            src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Nostalgia"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
-                                        <img id="img-creator-1"
-                                            src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Foco"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                        <img id="img-creator-2"
-                                            src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Estabilidad"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                        <img id="img-creator-3"
-                                            src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Diversion"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                        <img id="img-creator-4"
-                                            src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Productividad"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    </div>
+                        <div class="window shadow-2xl !bg-[#ece9d8] transform md:rotate-2 p-1 relative"
+                            style="aspect-ratio: 4/3;">
+                            <div class="window-body !m-0 !p-0 !bg-black overflow-hidden relative w-full h-full group">
+                                <div id="creatorCarousel" class="relative w-full h-full cursor-pointer bg-black">
+                                    <img id="img-creator-0"
+                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Nostalgia"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
+                                    <img id="img-creator-1"
+                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Foco"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+                                    <img id="img-creator-2"
+                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Estabilidad"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+                                    <img id="img-creator-3"
+                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Diversion"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+                                    <img id="img-creator-4"
+                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Productividad"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
                                 </div>
                                 <!-- Dots -->
-                                <div id="creatorDots" class="flex justify-center space-x-2 py-2">
+                                <div id="creatorDots"
+                                    class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
                                     <div class="w-2.5 h-2.5 rounded-full bg-xpBlue cursor-pointer hover:bg-white transition-colors"
                                         onclick="attemptSlide('creator', 0)"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
