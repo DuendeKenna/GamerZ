@@ -1,0 +1,2046 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>Segmento modificado</title>
+	<link rel="manifest" href="manifest.webmanifest">
+	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+	<link rel="stylesheet" href="style.css">
+  <script>
+	function search() {
+		var input, filter, games, game, i, j, txtValue, fragment, parentElement, wrapper, quicklinks, quicklink, quicklinkid, cards, needhide, numvisible, quicklinklinks, header;
+		input = document.getElementById("search");
+		filter = input.value.toUpperCase();
+		wrapper = document.getElementById("wrapper");
+		parentElement = wrapper.parentElement;
+		fragment = document.createDocumentFragment();
+		fragment.appendChild(wrapper.cloneNode(true));
+		wrapper.remove();
+		games = fragment.childNodes[0].getElementsByClassName("tdname");
+		i = games.length - 1;
+		
+		while (i >= 0 ) {
+			game = games[i];
+			txtValue = game.childNodes[0].innerText;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				game.parentElement.style.display = "";
+			} else {
+				game.parentElement.style.display = "none";
+			}
+			i--;
+		}
+
+		quicklinks = fragment.childNodes[0].querySelectorAll("tr[id^='quicklink-']")
+		i = quicklinks.length - 1;
+		while (i >= 0) {
+			quicklink = quicklinks[i];
+			quicklinkid = quicklink.id;
+			cards = fragment.getElementById(quicklinkid.replace("quicklink-", ""));
+			needhide = true;
+			if(cards)
+			{
+				j = cards.children.length -1
+				numvisible = 0;
+				while (j >= 0)
+				{
+					if (cards.children[j].style.display == "")
+					{
+						needhide = false;
+						numvisible++;
+					}
+					j--;
+				}
+
+				quicklinklinks = fragment.childNodes[0].querySelectorAll("a[href=\"#" + quicklinkid.replace(/["\\]/g, '\\$&') + "\"]")
+				if (needhide)
+				{
+					cards.style.display = "none";
+					quicklink.style.display = "none";
+					quicklink.children[0].children[0].children[0].innerHTML = "&#x25BA;";
+					quicklink.children[0].children[0].children[0].style.color = "#790000";
+					quicklink.children[0].children[0].children[1].children[0].innerText = "( " + numvisible.toString() + " )";
+					if (quicklinklinks.length == 1)
+					{						
+						quicklinklinks[0].style.display = "none";
+					}
+				} else {
+					cards.style.display = "";
+					quicklink.style.display = "";
+					quicklink.children[0].children[0].children[0].innerHTML = "&#x25BC;";
+					quicklink.children[0].children[0].children[0].style.color = "#007962";
+					quicklink.children[0].children[0].children[1].children[0].innerText = "( " + numvisible.toString() + " )";
+					if (quicklinklinks.length == 1)
+					{						
+						quicklinklinks[0].style.display = "";
+					}
+				}
+			}
+			i--;
+		}
+
+		parentElement.appendChild(fragment.childNodes[0]);
+
+		//have to renable this
+		const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+		observer.observe();
+
+		var input = document.getElementById("search");
+
+		// Execute a function when the user releases a key on the keyboard
+		input.addEventListener("keyup", function(event) 
+		{
+			// Number 13 is the "Enter" key on the keyboard
+			if (event.keyCode === 13) 
+			{
+				// Cancel the default action, if needed
+				event.preventDefault();
+				// Trigger the button element with a click
+				document.getElementById("searchbutton").click();
+			}
+		});
+	}
+  </script>
+  </head>
+  <body>
+    <button onclick="topFunction()" id="BackTopButton" title="Go to top">Top</button>
+    <div class="wrapper" id="wrapper">
+      <h2><strong>MEN&#218; PRINCIPAL - Segmento modificado<span>(Segmento modificado ascendente / Nombre ascendente)</span></strong></h2>
+      <div class="Menu"><a Class="MenuButton" href="index.html">Nombre ▲</A><a Class="MenuButton" href="default%20list%20text_hidden_ascendente_name_ascendente.html">Fuente ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_hidden_ascendente_name_ascendente.html">Librer&#237;a ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_releaseyear_descendente_name_ascendente.html">A&#241;o de lanzamiento ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_region_ascendente_name_ascendente.html">Regi&#243;n ▲</A><a Class="MenuButton" href="default%20list%20text_completionstatus_ascendente_name_ascendente.html">Estado de finalizaci&#243;n ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_userscore_descendente_name_ascendente.html">Puntuaci&#243;n de usuario ▼</A><a Class="MenuButton" href="default%20list%20text_userscoregroup_ascendente_name_ascendente.html">Grupo de puntuaci&#243;n de usuario ▲</A><a Class="MenuButton" href="default%20list%20text_userscorerating_ascendente_name_ascendente.html">Calificaci&#243;n de la puntuaci&#243;n del usuario ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_communityscore_descendente_name_ascendente.html">Puntuaci&#243;n de la Comunidad ▼</A><a Class="MenuButton" href="default%20list%20text_communityscoregroup_ascendente_name_ascendente.html">Grupo de puntuaci&#243;n de la comunidad ▲</A><a Class="MenuButton" href="default%20list%20text_communityscorerating_ascendente_name_ascendente.html">Calificaci&#243;n de la puntuaci&#243;n de Comunidad ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_criticscore_descendente_name_ascendente.html">Puntuaci&#243;n de la Cr&#237;tica ▼</A><a Class="MenuButton" href="default%20list%20text_criticscoregroup_ascendente_name_ascendente.html">Grupo de puntuaci&#243;n la cr&#237;tica ▲</A><a Class="MenuButton" href="default%20list%20text_criticscorerating_ascendente_name_ascendente.html">Calificaci&#243;n de la puntuaci&#243;n de la cr&#237;tica ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_category_ascendente_name_ascendente.html">Categor&#237;a ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_genre_ascendente_name_ascendente.html">G&#233;nero ▲</A><a Class="MenuButton" href="default%20list%20text_addedsegment_ascendente_name_ascendente.html">Segmento a&#241;adido ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_developer_ascendente_name_ascendente.html">Desarrollador ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_feature_ascendente_name_ascendente.html">Caracter&#237;stica ▲</A><a Class="MenuButton" href="default%20list%20text_installationstatus_ascendente_name_ascendente.html">Estado de instalaci&#243;n ▲</A><a Class="MenuButton" href="default%20list%20text_iscustomgame_ascendente_name_ascendente.html">Juego Personalizado ▲</A><a Class="MenuButton" href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html">Segmento modificado ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_playcount_descendente_name_ascendente.html">Conteo de jugadas ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_publisher_ascendente_name_ascendente.html">Editor ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_serie_ascendente_name_ascendente.html">Serie ▲</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html">A&#241;adido ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_lastactivity_descendente_name_ascendente.html">&#218;ltima actividad ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_modified_descendente_name_ascendente.html">Modificado ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_releasedate_descendente_name_ascendente.html">Fecha de lanzamiento ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html">Tiempo de juego ▼</A><a Class="MenuButton" href="default%20list%20text%20combobox%20quicklinks_tag_ascendente_name_ascendente.html">Tag ▲</A></div>
+      <h2><strong>Buscar</strong></h2><input type="text" id="search" placeholder="Escribe el nombre del juego para buscar"><br/><button onclick="search()" id="searchbutton">Buscar</button>
+      <h2><strong>Enlaces r&#225;pidos</strong></h2>
+      <div class="quicklinks"><a class="quicklink" href="#quicklink-&#218;ltimo mes">&#218;ltimo mes</A><a class="quicklink" href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</A></div>
+      <h2></h2>
+      <div class="cards">
+	  <TABLE  name="gamestable" class="detailstable" id="detailstable">
+      <COLGROUP><COL WIDTH="60"><COL WIDTH="22%"><COL WIDTH="13%"><COL WIDTH="13%"><COL WIDTH="13%"><COL WIDTH="13%"><COL WIDTH="13%"><COL WIDTH="13%"></COLGROUP>
+	  <THEAD><TR><TH></TH><TH><B><a href="index.html">Nombre</a></B></TH><TH><B><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html">Segmento modificado ▲</a></B></TH><TH><B><a href="">Última actividad</a></B></TH><TH><B><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html">Añadido</a></B></TH><TH><B><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html">Tiempo de juego</a></B></TH><TH><B><a href="">Fuente</a></B></TH><TH><B><a href="">Plataforma</a></B></TH></TR></THEAD>
+	  <TBODY>
+   	  </TBODY>
+<TBODY> 
+<TR id="quicklink-&#218;ltimo mes"><TH colspan="8"><h2 id="h2jscript" onclick="ShowHide('&#218;ltimo mes')"><strong id="eye-&#218;ltimo mes" style="color: #007962;">&#x25BC;</strong><strong>&#218;ltimo mes<span>( 1 )</span></strong></h2></TH></TR>
+</TBODY>
+<TBODY id="&#218;ltimo mes">
+
+
+<TR>
+	<TD>1.</TD>
+	<TD class="tdname"><a href="fc15735d-67fa-4979-8d27-c7db73769987.html">BioShock 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-&#218;ltimo mes">&#218;ltimo mes</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 13:52:49</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 28s">1m 28s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+
+</TBODY>
+<TBODY> 
+<TR id="quicklink-El &#250;ltimo a&#241;o"><TH colspan="8"><h2 id="h2jscript" onclick="ShowHide('El &#250;ltimo a&#241;o')"><strong id="eye-El &#250;ltimo a&#241;o" style="color: #007962;">&#x25BC;</strong><strong>El &#250;ltimo a&#241;o<span>( 167 )</span></strong></h2></TH></TR>
+</TBODY>
+<TBODY id="El &#250;ltimo a&#241;o">
+
+
+<TR>
+	<TD>2.</TD>
+	<TD class="tdname"><a href="f5a78ba4-b217-4e65-9ae7-97be7b08351c.html">Age of Empires II: HD Edition</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-54m 12s">54m 12s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>3.</TD>
+	<TD class="tdname"><a href="a1858d0f-bd3a-4d1f-b380-3cee5fdcd605.html">Age of Empires III</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 16:12:04</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 16s">2m 16s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>4.</TD>
+	<TD class="tdname"><a href="38b15da3-3306-48df-89f7-130c95d22266.html">Age of Mythology</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2h 31m 21s">2h 31m 21s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>5.</TD>
+	<TD class="tdname"><a href="4d361016-812f-4302-811e-69f48265d7fb.html">Aliens vs. Predator</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 13:40:20</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-8m 42s">8m 42s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>6.</TD>
+	<TD class="tdname"><a href="13aebd51-58a1-44f0-b408-f467e3d19311.html">AngelLoader</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:18:09</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-8m 12s">8m 12s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>7.</TD>
+	<TD class="tdname"><a href="42657aa0-6777-45d7-b66a-45829eb6fed4.html">Anno 1701</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 16:44:23</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 14s">4m 14s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>8.</TD>
+	<TD class="tdname"><a href="6df5fac7-1cd9-4332-b17d-225b183cc9e1.html">AoE III: The Asian Dynasties</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 16:12:04</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 2s">2m 2s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>9.</TD>
+	<TD class="tdname"><a href="faf8d9a0-653e-4d29-92c0-0ee2fd6b7f3f.html">AoE III: The WarChiefs</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 16:12:04</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>10.</TD>
+	<TD class="tdname"><a href="c38cf1f4-07b2-41d5-a2b5-ca55388f95dc.html">Arx Fatalis</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 0:29:57</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 24s">3m 24s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>11.</TD>
+	<TD class="tdname"><a href="d04c953d-33ea-4ab1-82e8-7621974044dc.html">Assassin&#39;s Creed Brotherhood</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 19:55:27</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 12s">1m 12s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>12.</TD>
+	<TD class="tdname"><a href="452bf700-7084-428a-8595-5cccb3939ba3.html">Assassins Creed II</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 14:57:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 14s">1m 14s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>13.</TD>
+	<TD class="tdname"><a href="4c6c4563-4200-460a-9fa3-b5d8b9d1de31.html">Baldur&#39;s Gate Enhanced Edition</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 17:43:14</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-34s">34s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>14.</TD>
+	<TD class="tdname"><a href="ebb8f875-431b-4b83-889b-eb2f3b4bd821.html">Baldur&#39;s Gate II: Enhanced Edition</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 17:44:30</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-16s">16s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>15.</TD>
+	<TD class="tdname"><a href="d0ea3551-f1f9-4377-9f5e-2f78271e822a.html">Bastion</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-13/9/2025">13/9/2025</a> 21:19:31</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 48s">3m 48s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>16.</TD>
+	<TD class="tdname"><a href="1dac4fb3-ba4f-41e1-8b1c-34ca7f89ac79.html">Batman: Arkham City</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 17:51:07</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 42s">2m 42s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>17.</TD>
+	<TD class="tdname"><a href="a74193c9-15f0-452f-b2af-0e78e740d7fa.html">Beyond Good &amp; Evil</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 18s">4m 18s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>18.</TD>
+	<TD class="tdname"><a href="b39017ac-a4cf-4d10-a66d-860bb6307af7.html">Black &amp; White 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 22:50:07</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-10m 12s">10m 12s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>19.</TD>
+	<TD class="tdname"><a href="ba83e94b-01d9-443d-bb31-494f63a4ee4a.html">Black &amp; White 2: Battle of the Gods</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 22:50:07</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>20.</TD>
+	<TD class="tdname"><a href="704ad9be-62e2-49d6-8e93-9e9548f1e764.html">Black Mesa</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 17:54:45</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-35m 52s">35m 52s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>21.</TD>
+	<TD class="tdname"><a href="dbeedbb5-ee9d-4b94-898a-6bfaf988368e.html">BloodRayne</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 17:52:46</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 20s">1m 20s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>22.</TD>
+	<TD class="tdname"><a href="b5fee0f8-6958-4272-a0db-242302953337.html">BloodRayne 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 17:53:32</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-20s">20s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>23.</TD>
+	<TD class="tdname"><a href="c4345138-f2fd-490e-8943-5c9cbf50c661.html">Blur</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 0:40:57</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-5m 55s">5m 55s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>24.</TD>
+	<TD class="tdname"><a href="0aea871b-7b68-4aaa-96ea-8a5fb95fbe37.html">Borderlands</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 23:46:34</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 10s">1m 10s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>25.</TD>
+	<TD class="tdname"><a href="b44071a5-c296-4e52-9160-e8fdd4028de8.html">Broken Sword</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 17:41:38</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-38s">38s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>26.</TD>
+	<TD class="tdname"><a href="ac73c72d-6d58-4579-a1d7-fb3a863cebd2.html">Broken Sword II</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 17:49:12</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6s">6s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>27.</TD>
+	<TD class="tdname"><a href="9e818241-98be-440c-8c53-6fdc35da8c9c.html">Bully</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-La &#250;ltima semana">La &#250;ltima semana</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 0:03:03</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6m 21s">6m 21s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>28.</TD>
+	<TD class="tdname"><a href="ac1e8238-6358-47d6-beaa-bacb7011d1f0.html">Burnout Paradise</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 18:40:45</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-12m 6s">12m 6s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>29.</TD>
+	<TD class="tdname"><a href="9f0633b2-87dd-4206-bbf4-dbe0b0813527.html">Call of Duty</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 0:23:05</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 6s">4m 6s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>30.</TD>
+	<TD class="tdname"><a href="cc3490f1-7121-4a90-a5ad-9664e2c3441c.html">Call of Duty 4 Modern Warfare</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 0:42:16</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 22s">2m 22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>31.</TD>
+	<TD class="tdname"><a href="0197d593-9b01-41ec-92f9-4505d8765b94.html">Call of Duty: United Offensive</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 0:23:05</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 14s">4m 14s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>32.</TD>
+	<TD class="tdname"><a href="c48796d2-7960-48f9-a195-6cdc583c6aac.html">Command &amp; Conquer: Generals</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 0:47:41</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-11m 55s">11m 55s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>33.</TD>
+	<TD class="tdname"><a href="8fc0875d-c0ea-486e-a097-18a1ff542305.html">Counter-Strike 1.6</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 58s">1m 58s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>34.</TD>
+	<TD class="tdname"><a href="fc1a8939-4ffd-4e06-a659-86fc0870e39e.html">Counter-Strike Source</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2h 35m 15s">2h 35m 15s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>35.</TD>
+	<TD class="tdname"><a href="ce864a76-2ae9-469b-a7eb-a7805d4e7165.html">Crazy Taxi 3</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 18:31:27</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>36.</TD>
+	<TD class="tdname"><a href="a93f1ea7-67a7-47bc-853a-d287e28626b1.html">Dark Souls</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 18:29:56</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>37.</TD>
+	<TD class="tdname"><a href="b3019b0d-45d7-44cd-96a1-e14fd25f4952.html">Dead Space </a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 1:41:45</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>38.</TD>
+	<TD class="tdname"><a href="3fef8ad7-3f9c-4771-be53-20ba3d1ba02d.html">Deus Ex Revision</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/9/2025">20/9/2025</a> 21:29:25</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 56s">1m 56s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>39.</TD>
+	<TD class="tdname"><a href="0e745186-64eb-4eeb-8293-9c28206359be.html">Diablo II: Lord of Destruction</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-11/11/2025">11/11/2025</a> 13:35:25</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6s">6s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>40.</TD>
+	<TD class="tdname"><a href="2761595d-4d21-448c-bbde-1ae2b265bb88.html">Diablo II: Median XL</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-11/11/2025">11/11/2025</a> 14:35:18</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1h 23m 50s">1h 23m 50s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>41.</TD>
+	<TD class="tdname"><a href="52988725-ff72-465e-8304-ad4bc00de924.html">DiRT 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 0:43:46</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>42.</TD>
+	<TD class="tdname"><a href="46d98f34-befa-48d2-937f-6b6a58988ba0.html">Disciples II</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-20m 7s">20m 7s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>43.</TD>
+	<TD class="tdname"><a href="3cb10338-ab38-434c-bfcb-b84d52eb0491.html">Discworld</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 18:16:09</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-38s">38s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>44.</TD>
+	<TD class="tdname"><a href="4c4460c5-7cbb-4204-aaab-8eb19790b1c4.html">Discworld II</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 20:33:36</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-54s">54s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>45.</TD>
+	<TD class="tdname"><a href="ae33868e-f148-441f-a46e-43fa9bf91283.html">Dishonored</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-16/11/2025">16/11/2025</a> 13:23:49</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6h 18m 58s">6h 18m 58s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>46.</TD>
+	<TD class="tdname"><a href="c179de87-0bb3-4a72-9975-26d2726859ff.html">Disney Universe</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 20:03:33</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-10s">10s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>47.</TD>
+	<TD class="tdname"><a href="f815179c-c1eb-4b0b-bcaa-36dcf4343ae5.html">DOOM + DOOM II</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 6s">4m 6s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>48.</TD>
+	<TD class="tdname"><a href="b11688e6-50ff-4187-8dd2-58456a810837.html">DOOM 3</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 0:57:28</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-5m 42s">5m 42s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>49.</TD>
+	<TD class="tdname"><a href="f01212db-52a2-4ec8-affd-7b035257ff46.html">El Se&#241;or de los Anillos - El Retorno del Rey</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:23:36</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-28m 45s">28m 45s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>50.</TD>
+	<TD class="tdname"><a href="09c5ad0f-9f99-448c-aab2-be1e9dd51127.html">Enter The Matrix</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/9/2025">20/9/2025</a> 23:34:14</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-27m 0s">27m 0s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>51.</TD>
+	<TD class="tdname"><a href="520be87f-73d2-4e67-b53d-c3cbba69f59f.html">F.E.A.R.</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 20:35:49</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>52.</TD>
+	<TD class="tdname"><a href="bfb2da58-de56-4428-8e39-48098d8a300b.html">F.E.A.R. Extraction Point</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 20:35:49</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 29s">4m 29s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>53.</TD>
+	<TD class="tdname"><a href="a11bd5ef-f09c-481f-a199-3380188694ab.html">F.E.A.R. Perseus Mandate</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 20:35:49</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-22s">22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>54.</TD>
+	<TD class="tdname"><a href="a6a91306-b074-4b4b-8195-bd2bedc81a79.html">Fallout: New Vegas</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 11:54:21</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 2s">1m 2s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>55.</TD>
+	<TD class="tdname"><a href="cb9dfeb4-9094-401e-b7a4-1460fe5dd8fa.html">Far Cry 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:36:45</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6m 38s">6m 38s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>56.</TD>
+	<TD class="tdname"><a href="62afb18b-fe80-4abf-ae2e-1b2c5f0152c3.html">Final Fantasy VII</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:03:57</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 42s">3m 42s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>57.</TD>
+	<TD class="tdname"><a href="6c9e09c3-5816-4fd9-b03e-6e94c6a9fbd3.html">Full Throttle</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 18:54:47</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-30s">30s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>58.</TD>
+	<TD class="tdname"><a href="d4741823-a614-4449-bfda-183d81dd9219.html">Gabriel Knight</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 19:04:47</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-8m 22s">8m 22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>59.</TD>
+	<TD class="tdname"><a href="5c55bd2b-595b-432f-ad05-27a1298bf990.html">Game Of Thrones</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 0:27:32</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-13m 27s">13m 27s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>60.</TD>
+	<TD class="tdname"><a href="466ed179-71dc-4ca1-a265-241d8152f6e7.html">Grand Theft Auto San Andreas</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-6/11/2025">6/11/2025</a> 12:43:20</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 12s">2m 12s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>61.</TD>
+	<TD class="tdname"><a href="bcc3842a-4557-4480-82ec-a1f92548ec2e.html">Grand Theft Auto Vice City</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 17:56:12</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 50s">2m 50s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>62.</TD>
+	<TD class="tdname"><a href="a1ded5e0-65d8-4eac-8e0a-c635f4f8977d.html">Grim Fandango</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-9m 14s">9m 14s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>63.</TD>
+	<TD class="tdname"><a href="426ee2f6-7db4-472c-beb1-0c6ac813cfc6.html">GTA III</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 42s">2m 42s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>64.</TD>
+	<TD class="tdname"><a href="0683ef76-86a6-4554-9d54-90635e680abb.html">Half Life 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 46s">4m 46s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>65.</TD>
+	<TD class="tdname"><a href="1d3dc743-4873-4bf0-9ecb-1461a6c27e26.html">Half Life 2 - Episode 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 46s">2m 46s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>66.</TD>
+	<TD class="tdname"><a href="fd4632e9-faff-44d3-844c-e7ff8ece0ee2.html">Half-Life</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 12:01:08</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-5m 46s">5m 46s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>67.</TD>
+	<TD class="tdname"><a href="3ce0aaac-6178-4e4a-8291-f344f139cb8e.html">Half-Life 2: Episode One</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 16s">4m 16s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>68.</TD>
+	<TD class="tdname"><a href="b58fd99c-bb04-4260-b9d0-d9f5c6542580.html">Half-Life: Blue Shift</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 12:01:08</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-22s">22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>69.</TD>
+	<TD class="tdname"><a href="9cbc971c-aaf7-4384-8752-3571f43d5633.html">Half-Life: Opposing Force</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 12:01:08</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 30s">3m 30s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>70.</TD>
+	<TD class="tdname"><a href="ee68eaf7-dc98-4824-955f-733e8e7b6fe3.html">Halo 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 14:45:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-36s">36s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>71.</TD>
+	<TD class="tdname"><a href="2bc10e19-d766-41b8-8eb2-30880a12b3c2.html">Harry Potter and the Prisoner of Azkaban</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:10:30</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 2s">2m 2s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>72.</TD>
+	<TD class="tdname"><a href="0e026c50-eaa7-44ef-bc8b-5546fc83c76e.html">Heroes of Might and Magic V</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 17:56:28</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-34s">34s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>73.</TD>
+	<TD class="tdname"><a href="f6da45f0-70ec-4552-8f35-420fb25e1cbe.html">Heroes of Might and Magic V: Hammers of Fate</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 17:57:19</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-20s">20s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>74.</TD>
+	<TD class="tdname"><a href="62ed15d3-db80-4af3-b840-5659ec83e757.html">Heroes of Might and Magic V: Tribes of the East</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:00:39</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>75.</TD>
+	<TD class="tdname"><a href="ddf70dfb-69bb-4b1c-bd9d-14c95608f9bc.html">Hot Wheels: Beat That!</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 2:30:56</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-9m 30s">9m 30s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>76.</TD>
+	<TD class="tdname"><a href="ba4ea1a7-3f11-44aa-b87b-b7b1727b8c8a.html">Kingdoms Of Amalur: Reckoning</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:07:19</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-32s">32s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>77.</TD>
+	<TD class="tdname"><a href="042ecbde-dbc3-40fe-8931-f413dfe8a0c9.html">LEGO Lord of the Rings</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-9/12/2025">9/12/2025</a> 19:43:35</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2h 3m 34s">2h 3m 34s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>78.</TD>
+	<TD class="tdname"><a href="e95bbfc9-d67f-43a6-ba18-031c8d77d9c1.html">Madagascar</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:25:31</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-10m 30s">10m 30s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>79.</TD>
+	<TD class="tdname"><a href="4ced3cfe-ba02-4d3a-8076-c1321863c5ec.html">MAFIA</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 19:28:19</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 16s">3m 16s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>80.</TD>
+	<TD class="tdname"><a href="56f5fe1c-acb0-4c98-9f05-de4c8c59985b.html">Marvel: Ultimate Alliance</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-9/12/2025">9/12/2025</a> 21:08:51</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-14s">14s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>81.</TD>
+	<TD class="tdname"><a href="a3f53d29-210b-43e6-a02e-948750eb4d70.html">Mass Effect</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:08:31</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-17m 19s">17m 19s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>82.</TD>
+	<TD class="tdname"><a href="e886d8b1-5a92-453a-b955-038478c478a5.html">Max Payne</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 19:34:16</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-58s">58s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>83.</TD>
+	<TD class="tdname"><a href="4c513109-9576-41d3-b1e2-3c916caed65c.html">Max Payne 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-9m 52s">9m 52s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>84.</TD>
+	<TD class="tdname"><a href="087b2716-b0af-461c-8eb5-2d121b09067f.html">Max Payne 3</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 14:20:04</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>85.</TD>
+	<TD class="tdname"><a href="c2ff593c-b5e5-4f64-9129-16441526f153.html">Medal of Honor: Allied Assault</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 19:57:22</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-19m 51s">19m 51s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>86.</TD>
+	<TD class="tdname"><a href="cef4273d-3807-4d2e-975d-669e71213b83.html">Medal of Honor: Allied Assault - Spearhead</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 19:40:05</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>87.</TD>
+	<TD class="tdname"><a href="3ec77174-c918-4657-a483-317d1c114a30.html">Medal of Honor: Breakthrough</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 19:40:05</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>88.</TD>
+	<TD class="tdname"><a href="21527aad-87dd-4a7e-abd8-5712717796f9.html">Metro 2033</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 21:02:19</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-11m 35s">11m 35s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>89.</TD>
+	<TD class="tdname"><a href="5711c899-df88-4f6e-be3a-ebd628b02983.html">Minecraft</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-11/9/2025">11/9/2025</a> 22:07:40</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2h 20m 14s">2h 20m 14s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+</TR>
+
+<TR>
+	<TD>90.</TD>
+	<TD class="tdname"><a href="4518dc7c-57e4-4e8d-81cf-cce79694582a.html">Mirror&#39;s Edge</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 12:42:14</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-42s">42s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>91.</TD>
+	<TD class="tdname"><a href="4c610724-01b1-492a-8655-948ae805876d.html">Monkey Island 2: LeChuck&#39;s Revenge</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 20:11:33</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>92.</TD>
+	<TD class="tdname"><a href="3e789cb4-b2b9-4fb6-9874-6de9147c1d82.html">Monkey Island 3</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-30m 18s">30m 18s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>93.</TD>
+	<TD class="tdname"><a href="708777c5-8405-4bf8-8f8a-7251a2cb054c.html">Monsters, Inc.</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:39:52</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 35s">4m 35s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>94.</TD>
+	<TD class="tdname"><a href="99083b8b-91d0-4b40-8f50-fb788bbae23e.html">Mortal Kombat 4</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 23:39:42</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>95.</TD>
+	<TD class="tdname"><a href="24b2f771-933f-45a8-9290-8f116d0f42d6.html">Mortal Kombat: Arcade Kollection</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-31/5/2025">31/5/2025</a> 1:25:31</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 3s">4m 3s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>96.</TD>
+	<TD class="tdname"><a href="216a9b01-7adb-4476-94dd-c0d7a083ff65.html">MTV Celebrity Deathmatch</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 7:10:14</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>97.</TD>
+	<TD class="tdname"><a href="1f6989d5-d33c-424e-aa5c-99f567d344c7.html">MUA2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/12/2025">10/12/2025</a> 11:12:09</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>98.</TD>
+	<TD class="tdname"><a href="dab1324b-4165-4278-bb18-04f075c3512f.html">Need for Speed Most Wanted</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 13:09:41</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-7h 44m 22s">7h 44m 22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>99.</TD>
+	<TD class="tdname"><a href="902fab15-70af-46d3-ab1d-ffc90fd05784.html">Need for Speed Underground</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/4/2025">10/4/2025</a> 23:24:07</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2h 28m 49s">2h 28m 49s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>100.</TD>
+	<TD class="tdname"><a href="df5c3182-4ef7-4518-bfc9-55470eaba8a2.html">Need for Speed Underground 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-23m 5s">23m 5s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>101.</TD>
+	<TD class="tdname"><a href="83d2917e-7c31-450c-8103-a199e16d011e.html">Need for Speed: Hot Pursuit</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 18:07:26</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-22s">22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>102.</TD>
+	<TD class="tdname"><a href="12f0bc37-d6b3-48b9-8124-2953c6595759.html">Need for Speed: Most Wanted</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-9/12/2025">9/12/2025</a> 20:21:03</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-44m 52s">44m 52s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>103.</TD>
+	<TD class="tdname"><a href="ccad0c06-32c7-482e-954b-e13f0d28f9ee.html">Nox</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-20m 55s">20m 55s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>104.</TD>
+	<TD class="tdname"><a href="59a1e72a-9180-4a24-9f3f-dde5bec629a4.html">Oddworld Abe&#39;s Oddysee</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-23m 6s">23m 6s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>105.</TD>
+	<TD class="tdname"><a href="7fb007ba-38af-42a9-9313-53022d8d2e04.html">Oddworld: Abe&#39;s Exoddus</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 21:31:03</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 4s">4m 4s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>106.</TD>
+	<TD class="tdname"><a href="a84d1369-6e1d-4a4c-bdc7-42e87fa1788d.html">OutRun 2006: Coast 2 Coast</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 20:07:58</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 54s">3m 54s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>107.</TD>
+	<TD class="tdname"><a href="4091e83b-96b8-4ff7-b7e6-efbb7733d2e0.html">Overlord</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:09:53</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>108.</TD>
+	<TD class="tdname"><a href="74420b6c-35e6-4961-9d03-eae6c855e266.html">Pac-Man World 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:46:17</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-52s">52s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>109.</TD>
+	<TD class="tdname"><a href="477eedbe-6c2a-46b8-956a-fbcca60bf5ec.html">Plants vs. Zombies: Replanted</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-9/12/2025">9/12/2025</a> 19:47:33</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 47s">3m 47s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>110.</TD>
+	<TD class="tdname"><a href="7d989bb7-2e2f-4ad4-8635-1c0535b71135.html">Pool Nation</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 17:36:51</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-9m 26s">9m 26s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>111.</TD>
+	<TD class="tdname"><a href="4ee2e4ee-e321-42d2-bfb9-98b85592fd7e.html">Portal</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-28m 26s">28m 26s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>112.</TD>
+	<TD class="tdname"><a href="e196f02e-b40a-4737-a09d-67d9da26797d.html">Portal 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:06:02</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>113.</TD>
+	<TD class="tdname"><a href="04186a5c-b9a2-4d27-ba74-eaf9bbf07faf.html">Prince of Persia</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 15:47:41</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 57s">3m 57s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>114.</TD>
+	<TD class="tdname"><a href="76799860-8fad-42eb-86ca-5a0b6c8601f5.html">Prince of Persia</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:47:20</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-15m 13s">15m 13s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>115.</TD>
+	<TD class="tdname"><a href="0509ff75-b639-4014-a04c-b737c14ac68c.html">Prince of Persia : The Sands of Time</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 15:15:58</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-7m 45s">7m 45s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>116.</TD>
+	<TD class="tdname"><a href="9c8d0b52-4e09-4183-8414-fa5294fed0cb.html">Pro Evolution Soccer 2013</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-11/11/2025">11/11/2025</a> 11:01:11</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-5m 55s">5m 55s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>117.</TD>
+	<TD class="tdname"><a href="d6099ed5-5574-4bb9-8131-06704ead0f3e.html">Prototype 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 19:09:20</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>118.</TD>
+	<TD class="tdname"><a href="ffc18da9-b1f2-41b7-b44f-4d06b1e118c3.html">Psychonauts</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 15:13:47</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>119.</TD>
+	<TD class="tdname"><a href="31997015-c4e3-4229-921b-dadeeb82dcd1.html">Pump It Up</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:52:15</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 26s">3m 26s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>120.</TD>
+	<TD class="tdname"><a href="5c57fa72-3ab7-4a39-be04-18f8ab974fbe.html">Quake</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 16:07:41</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6m 52s">6m 52s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>121.</TD>
+	<TD class="tdname"><a href="e1bff483-37f8-4213-8399-b8ceab39c6d2.html">Quake II</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-13m 35s">13m 35s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>122.</TD>
+	<TD class="tdname"><a href="0617eb25-cc85-443e-b011-783d93982a82.html">Quake III Arena</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3h 53m 48s">3h 53m 48s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>123.</TD>
+	<TD class="tdname"><a href="1d83bc22-dbe4-4b11-b06a-45a29b76842a.html">Rayman Origins</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-22/9/2025">22/9/2025</a> 15:56:03</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-17m 21s">17m 21s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>124.</TD>
+	<TD class="tdname"><a href="84965b5e-9eb7-4aee-add2-53c19fec4f35.html">Red Dead Redemption</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:12:25</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 18s">1m 18s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>125.</TD>
+	<TD class="tdname"><a href="2c780bc1-45c2-44b2-8dc3-8375df74556e.html">Return to Castle Wolfenstein</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:53:58</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-15m 59s">15m 59s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>126.</TD>
+	<TD class="tdname"><a href="83402add-4df5-460a-a7f3-e0711c8650e6.html">Sam &amp; Max Hit the Road</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 18:45:52</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1h 22m 47s">1h 22m 47s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>127.</TD>
+	<TD class="tdname"><a href="17559a4d-e201-4704-a0a7-27cf57b0dea3.html">Serious Sam II</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 13:34:40</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6m 45s">6m 45s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>128.</TD>
+	<TD class="tdname"><a href="2e8cd2e9-0005-4021-8084-22de75fa14ca.html">Serious Sam: The Second Encounter</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 13:05:39</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>129.</TD>
+	<TD class="tdname"><a href="d5cdab5d-576b-4bf4-943e-bdd6c9587ecb.html">Silent Hill 2 Director&#39;s Cut</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6m 17s">6m 17s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>130.</TD>
+	<TD class="tdname"><a href="e8d8ae51-ccd3-4b3b-8da1-4dfa3b0e61ba.html">SILENT HILL 3</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 15:28:09</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>131.</TD>
+	<TD class="tdname"><a href="273b0b3b-192a-4a1e-9ed4-0007c79a4d66.html">SimCity 4</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 6:16:41</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 18s">3m 18s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>132.</TD>
+	<TD class="tdname"><a href="12a93837-947d-41ea-a345-b33cf769bac1.html">Simpsons Hit &amp; Run</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 10:41:28</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-23m 37s">23m 37s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>133.</TD>
+	<TD class="tdname"><a href="6337ba47-2dc0-47d3-bf0b-f367789c39ae.html">Singularity</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 1:02:41</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>134.</TD>
+	<TD class="tdname"><a href="3097e5f6-d847-4ce3-b570-70aa1f6d82f9.html">Splinter Cell</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 2:12:34</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 8s">1m 8s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>135.</TD>
+	<TD class="tdname"><a href="9ce256b6-9b30-4d2b-8d0b-d0e54d297dda.html">Spore</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-22/9/2025">22/9/2025</a> 11:20:13</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-15m 0s">15m 0s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>136.</TD>
+	<TD class="tdname"><a href="8c20e417-e29b-490b-8aad-b1a4f9028ed2.html">Star Wars: Knights of the Old Republic</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 13:45:04</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-5m 59s">5m 59s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>137.</TD>
+	<TD class="tdname"><a href="2491fe1b-c354-4045-beec-5221b9d61c64.html">Star Wars: Knights of the Old Republic II: The Sith Lords</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 13:45:04</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-22s">22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>138.</TD>
+	<TD class="tdname"><a href="abefe056-36cf-4a11-9608-4e300df558ce.html">StarCraft</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 18:02:32</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 0s">2m 0s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>139.</TD>
+	<TD class="tdname"><a href="54ecf296-4751-45db-89c6-9a3127cc6bfa.html">Street Fighter 30th Anniversary Collection</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 2:22:01</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 16s">3m 16s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>140.</TD>
+	<TD class="tdname"><a href="f90d2173-ccfa-4e95-8247-d738f08e26c2.html">Syberia</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 5:48:34</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-22s">22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>141.</TD>
+	<TD class="tdname"><a href="3f78b48c-ff87-4bd9-a929-22e39b8af291.html">Syberia 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 5:57:16</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-28s">28s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>142.</TD>
+	<TD class="tdname"><a href="5e9244e4-2ae6-41df-8e4e-9def00c7ad28.html">System Shock</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:14:32</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-16m 38s">16m 38s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>143.</TD>
+	<TD class="tdname"><a href="9d122e96-e97f-4b08-a145-be07f5da511b.html">System Shock 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-13/9/2025">13/9/2025</a> 20:48:42</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-26s">26s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>144.</TD>
+	<TD class="tdname"><a href="4c7c5db6-3268-48af-9b60-ba5fce24ea85.html">Teenage Mutant Ninja Turtles</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/9/2025">21/9/2025</a> 20:46:40</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-18m 37s">18m 37s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>145.</TD>
+	<TD class="tdname"><a href="eb33294b-933d-4995-aef3-d5b366106af2.html">The Chronicles of Riddick - Assault on Dark Athena</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 19:27:18</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>146.</TD>
+	<TD class="tdname"><a href="4413261b-0c6a-4dd4-bf2b-1ab7962d9445.html">The House Of The Dead 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-31/5/2025">31/5/2025</a> 1:25:31</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 28s">1m 28s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>147.</TD>
+	<TD class="tdname"><a href="dc17a4f7-a564-489e-b8c3-1364cac91dd3.html">The House of the Dead III</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-21/11/2025">21/11/2025</a> 1:26:21</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 36s">4m 36s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>148.</TD>
+	<TD class="tdname"><a href="11d4933d-e28d-414c-817d-9bde17b2703b.html">The Sims 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 8:55:36</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 25s">4m 25s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>149.</TD>
+	<TD class="tdname"><a href="8179b856-a9cf-4471-b1c0-90394dd6a882.html">The Witcher 2</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-Nunca">Nunca</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:38:05</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-No Jugado">No Jugado</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>150.</TD>
+	<TD class="tdname"><a href="6a319e46-17b9-45ea-9980-0e188a2d1a8d.html">The X-Files</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 1:01:16</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 58s">4m 58s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>151.</TD>
+	<TD class="tdname"><a href="ea6010e9-096d-4cca-a4ab-c0ec1e3559ee.html">Thief II: The Metal Age</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-51m 59s">51m 59s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>152.</TD>
+	<TD class="tdname"><a href="721fb98b-3030-415b-9bfd-c3a91c4acfa4.html">Thief: Deadly Shadows</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 17:55:06</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-10s">10s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>153.</TD>
+	<TD class="tdname"><a href="43422765-77c7-4539-aa12-692048a74ead.html">Thief: The Dark Project</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:16:46</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-30s">30s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>154.</TD>
+	<TD class="tdname"><a href="6dc30953-3613-4680-a5cc-a2fe8650c463.html">Torchlight II</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-22/9/2025">22/9/2025</a> 22:50:43</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 2s">2m 2s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>155.</TD>
+	<TD class="tdname"><a href="5ade835b-3b5c-478c-a499-e76be3c5953b.html">Trine</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/7/2025">27/7/2025</a> 2:31:12</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 22s">3m 22s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>156.</TD>
+	<TD class="tdname"><a href="9ea89cae-4d38-43f9-9383-49e005f79923.html">Ultimate Spider-Man</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-23/9/2025">23/9/2025</a> 2:40:21</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 4s">3m 4s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>157.</TD>
+	<TD class="tdname"><a href="a058348d-c767-4839-8265-519f0b09fb74.html">Unreal</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-12m 36s">12m 36s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>158.</TD>
+	<TD class="tdname"><a href="b9f2f044-380b-4249-b84e-1ef61faf149f.html">Unreal Tournament</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-27/4/2025">27/4/2025</a> 23:02:14</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-56m 45s">56m 45s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>159.</TD>
+	<TD class="tdname"><a href="0f06732a-8bb1-4ec7-9119-47bf44121301.html">Unreal Tournament 2004</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-24m 28s">24m 28s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>160.</TD>
+	<TD class="tdname"><a href="cb3b85c2-5a2b-4e3d-ae0b-5913130e9cb9.html">Vampire: The Masquerade - Bloodlines</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:45:44</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-1m 58s">1m 58s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>161.</TD>
+	<TD class="tdname"><a href="a3d634f1-a999-4662-969a-9cf1e1bdc4b4.html">Virtua Tennis 4</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-22/9/2025">22/9/2025</a> 14:16:41</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-2m 10s">2m 10s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>162.</TD>
+	<TD class="tdname"><a href="d358b0ff-0f33-4fcd-a706-0d73cc0a7dab.html">Warcraft III</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-20s">20s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>163.</TD>
+	<TD class="tdname"><a href="f91d55da-1e3e-4e09-9387-6b5148ef4fb1.html">Warcraft III: The Frozen Throne</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-24s">24s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>164.</TD>
+	<TD class="tdname"><a href="2b0f4129-9e34-40ca-8e74-b0a4c3cd4b49.html">Wolfenstein 3D</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-10/11/2025">10/11/2025</a> 18:39:31</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-3m 29s">3m 29s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>165.</TD>
+	<TD class="tdname"><a href="7700c2ab-083e-4a15-a63f-e6e4962e97d4.html">World of Goo</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 16:36:15</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-24s">24s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>166.</TD>
+	<TD class="tdname"><a href="4391248d-a5a5-47e7-ad7f-7f86779ce53b.html">Worms 2 Plus</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-17/11/2025">17/11/2025</a> 18:51:54</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-6m 10s">6m 10s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>167.</TD>
+	<TD class="tdname"><a href="d7dae61e-cca5-4d42-b5c4-5bd40086a06b.html">Worms Armageddon</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-26/4/2025">26/4/2025</a> 1:40:24</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-4m 17s">4m 17s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+<TR>
+	<TD>168.</TD>
+	<TD class="tdname"><a href="a42cbfed-def7-4694-9272-c1da18c296a2.html">Worms Revolution</a></TD>
+	<TD><a href="default%20list%20text_modifiedsegment_ascendente_name_ascendente.html#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="#quicklink-El &#250;ltimo a&#241;o">El &#250;ltimo a&#241;o</a></TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descendente_name_ascendente.html#quicklink-20/11/2025">20/11/2025</a> 19:39:42</TD>
+	<TD><a href="default%20list%20text%20combobox%20quicklinks_playtime_descendente_name_ascendente.html#quicklink-13m 6s">13m 6s</a></TD>
+	<TD><a href="#quicklink-"></a></TD>
+	<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a></TD>
+</TR>
+
+
+
+	  </TBODY>
+	  </TABLE>
+      </div>
+    </div>
+	<script>
+
+	// Get the input field
+	var input = document.getElementById("search");
+
+	// Execute a function when the user releases a key on the keyboard
+	input.addEventListener("keyup", function(event) {
+	  // Number 13 is the "Enter" key on the keyboard
+	  if (event.keyCode === 13) {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Trigger the button element with a click
+		document.getElementById("searchbutton").click();
+	  }
+	});
+
+	//Get the button:
+	mybutton = document.getElementById("BackTopButton");
+
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function() {scrollFunction()};
+
+	function scrollFunction() {
+	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		mybutton.style.display = "block";
+	  } else {
+		mybutton.style.display = "none";
+	  }
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+	  document.body.scrollTop = 0; // For Safari
+	  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+	}
+		
+	function ShowHide(body_id){
+	var elem
+
+		elem = document.getElementById(body_id);
+		elemclick = document.getElementById("eye-" + body_id);
+		
+		if(!elem) return true;
+		if(!elemclick) return true;
+
+		if (elem.style.display == "none") {
+		  elem.style.display = "";
+		  elemclick.innerHTML = "&#x25BC;";
+		  elemclick.style.color = "#007962";
+		}
+		else
+		{
+		  elem.style.display = "none";
+		  elemclick.innerHTML = "&#x25BA;";
+		  elemclick.style.color = "#790000";
+		}
+		return true;
+	}
+   </script>
+  </body>
+</html>

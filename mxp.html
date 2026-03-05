@@ -496,8 +496,8 @@
                                 <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
                                     style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Potencia Moderna</h4>
                                 <p class="text-lg leading-relaxed text-white/90">
-                                    Debajo del capó corre un motor de <strong>máximo rendimiento</strong> para crear sin
-                                    límites.
+                                    Debajo del capó corre un motor de <strong>máximo rendimiento</strong> para correr
+                                    todos los juegos y software instalados.
                                 </p>
                             </div>
                             <div class="shrink-0">
@@ -521,7 +521,7 @@
                                 <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
                                     style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Juegazos de PC</h4>
                                 <p class="text-lg leading-relaxed text-white/90">
-                                    Colección <strong>curada y potenciada</strong>; clásicos sin basura, en español, con
+                                    Colección <strong>curada y potenciada</strong>; clásicos expandidos, en español, con
                                     parches HD
                                     actuales.
                                 </p>
@@ -532,7 +532,8 @@
                                 <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
                                     style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Emuladores</h4>
                                 <p class="text-lg leading-relaxed text-white/90">
-                                    <strong>Sistemas preconfigurados</strong> para revivir consolas clásicas con máxima
+                                    <strong>Sin basura</strong>, con títulos que vale tu tiempo jugar, para revivir
+                                    consolas clásicas con máxima
                                     fidelidad.
                                 </p>
                             </div>
@@ -705,15 +706,17 @@
                     <!-- Text Column -->
                     <div class="text-white space-y-6">
                         <p class="text-2xl md:text-4xl font-serif leading-relaxed italic">
-                            "Tu gameclub soñado, ahora en tu disco rígido. <br>
-                            <span class="text-xpOrange font-bold not-italic">+150 joyas de PC</span> instaladas y listas
-                            para darle Play."
+                            Tu gameclub soñado, ahora en tu disco rígido. <br>
+                            <span class="font-bold not-italic" style="text-shadow: 3px 3px rgb(14, 0, 66);">+150
+                                joyas</span> instaladas y
+                            listas
+                            para darle Play.
                         </p>
                         <div class="h-1 w-24 bg-xpOrange"></div>
 
                         <!-- Modern XP Button Custom (Using Reusable Control) -->
                         <div class="pt-6">
-                            <button class="xp-button-modern">
+                            <button class="xp-button-modern" onclick="openPcModal()">
                                 <span>Ver Todos</span>
                                 <span class="xp-icon">💾</span>
                             </button>
@@ -1401,6 +1404,46 @@
     </main>
     <!-- END: Main Content Container -->
 
+    <!-- BEGIN: PC Games Modal -->
+    <div id="pcModal"
+        class="fixed inset-0 z-[100] flex items-center justify-center hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <!-- Modal Container (max-width 1160px, almost full height) -->
+        <div
+            class="window relative w-full max-w-[1170px] h-[90vh] mx-4 flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.8)] border-none transform scale-95 transition-all duration-300 bg-[#000821]">
+
+            <!-- Modal Header (XP Window style) -->
+            <div class="title-bar !h-auto !py-1 shrink-0">
+                <div class="title-bar-text flex items-center gap-2">
+                    <img src="MXP/XP_Icons/Game Controller.webp" class="w-5 h-5" alt="icon">
+                    <span class="font-bold">Catalogo de Juegos de PC</span>
+                </div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closePcModal()"></button>
+                </div>
+            </div>
+
+            <!-- Window Body for contents -->
+            <div
+                class="window-body !m-0 flex-grow relative overflow-hidden bg-gradient-to-b from-[#001550] to-[#000b25] flex flex-col">
+                <!-- Loading Spinner (Shown before iframe loads) -->
+                <div id="pcModalLoading"
+                    class="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                    <div class="w-12 h-12 border-4 border-xpBlue border-t-transparent rounded-full animate-spin mb-4">
+                    </div>
+                    <p class="font-segoe italic animate-pulse">Cargando catálogo...</p>
+                </div>
+
+                <!-- The Iframe (src is set dynamically by JS) -->
+                <iframe id="pcIframe"
+                    class="w-full h-full border-none z-20 opacity-0 transition-opacity duration-500 !bg-transparent"
+                    onload="this.style.opacity='1'; document.getElementById('pcModalLoading').style.display='none';"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- END: PC Games Modal -->
+
     <!-- Reciclar Modal -->
     <div id="reciclarModal"
         class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
@@ -1751,6 +1794,49 @@
         attachEvents('cons');
         attachEvents('estilo');
         attachEvents('creator');
+
+        // Modal Logic
+        const pcModal = document.getElementById('pcModal');
+        const pcModalContainer = pcModal.querySelector('div.relative');
+        const pcIframe = document.getElementById('pcIframe');
+
+        function openPcModal() {
+            // Lazy load the iframe source
+            if (!pcIframe.src || pcIframe.src === window.location.href || pcIframe.src === 'about:blank') {
+                document.getElementById('pcModalLoading').style.display = 'flex';
+                pcIframe.style.opacity = '0';
+                pcIframe.src = 'MXP/Col/pc.html';
+            }
+
+            // Show modal
+            pcModal.classList.remove('hidden');
+            // Small delay to allow display:block to apply before animating opacity/transform
+            setTimeout(() => {
+                pcModal.classList.remove('opacity-0');
+                pcModalContainer.classList.remove('scale-95');
+            }, 10);
+
+            // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePcModal() {
+            pcModal.classList.add('opacity-0');
+            pcModalContainer.classList.add('scale-95');
+
+            setTimeout(() => {
+                pcModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300); // Matches the duration-300 transition
+        }
+
+        // Close modal when clicking outside the container
+        pcModal.addEventListener('click', (e) => {
+            if (e.target === pcModal) {
+                closePcModal();
+            }
+        });
+
 
     </script>
     <!-- END: Clock Script -->
