@@ -744,165 +744,174 @@
 
                 </div>
 
-                <div id="groupConsolas" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('arcade')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/arcade.webp" alt="arcade photo"
-                                class="absolute inset-0 w-full h-full object-cover">
+                <div id="groupConsolas"
+                    class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-black/20 border-y border-white/10 py-10 overflow-x-auto scrollbar-hide select-none mt-8 mb-12 cursor-grab"
+                    style="touch-action: pan-x;">
+                    <div id="marqueeContainer" class="flex w-max">
+                        <!-- Group 1 -->
+                        <div id="marqueeGroup1" class="flex items-center justify-center shrink-0 space-x-20 px-10">
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('arcade')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/arcade.webp" alt="arcade"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('dreamcast')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/dreamcast.webp" alt="dreamcast"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('gba')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/gba.webp" alt="gba"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('gc')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/gc.webp" alt="gc"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('megadrive')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/megadrive.webp" alt="megadrive"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('n64')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/n64.webp" alt="n64"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('neogeo')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/neogeo.webp" alt="neogeo"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('nes')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/nes.webp" alt="nes"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('ps2')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/ps2.webp" alt="ps2"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('psp')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/psp.webp" alt="psp"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('psx')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/psx.webp" alt="psx"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('snes')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/snes.webp" alt="snes"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('wii')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/wii.webp" alt="wii"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
                         </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/arcade.svg" alt="arcade logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('dreamcast')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/dreamcast.webp" alt="dreamcast photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/dreamcast.svg" alt="dreamcast logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('gba')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/gba.webp" alt="gba photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/gba.svg" alt="gba logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('gc')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/gc.webp" alt="gc photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/gc.svg" alt="gc logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('megadrive')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/megadrive.webp" alt="megadrive photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/megadrive.svg" alt="megadrive logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('n64')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/n64.webp" alt="n64 photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/n64.svg" alt="n64 logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('neogeo')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/neogeo.webp" alt="neogeo photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/neogeo.svg" alt="neogeo logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('nes')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/nes.webp" alt="nes photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/nes.svg" alt="nes logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('ps2')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/ps2.webp" alt="ps2 photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/ps2.svg" alt="ps2 logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('psp')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/psp.webp" alt="psp photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/psp.svg" alt="psp logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('psx')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/psx.webp" alt="psx photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/psx.svg" alt="psx logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('snes')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/snes.webp" alt="snes photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/snes.svg" alt="snes logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
-                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-start space-y-3 cursor-pointer group"
-                        onclick="openConsolaModal('wii')">
-                        <div
-                            class="relative w-36 h-36 md:w-40 md:h-40 bg-black/40 rounded-2xl border-2 border-white/20 overflow-hidden shadow-2xl group-hover:scale-105 group-hover:border-white/60 transition-all duration-300">
-                            <img src="MXP/Shots/consolas/wii.webp" alt="wii photo"
-                                class="absolute inset-0 w-full h-full object-cover">
-                        </div>
-                        <div class="h-12 flex items-center justify-center">
-                            <img src="MXP/Shots/consolas/wii.svg" alt="wii logo"
-                                class="max-h-full max-w-[140px] drop-shadow-xl group-hover:brightness-125 transition-all">
+                        <!-- Group 2 -->
+                        <div id="marqueeGroup2" class="flex items-center justify-center shrink-0 space-x-20 px-10">
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('arcade')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/arcade.webp" alt="arcade"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('dreamcast')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/dreamcast.webp" alt="dreamcast"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('gba')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/gba.webp" alt="gba"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('gc')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/gc.webp" alt="gc"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('megadrive')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/megadrive.webp" alt="megadrive"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('n64')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/n64.webp" alt="n64"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('neogeo')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/neogeo.webp" alt="neogeo"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('nes')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/nes.webp" alt="nes"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('ps2')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/ps2.webp" alt="ps2"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('psp')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/psp.webp" alt="psp"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('psx')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/psx.webp" alt="psx"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('snes')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/snes.webp" alt="snes"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('wii')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/wii.webp" alt="wii"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Joysticks Sub-section -->
                 <div id="joysticksSection" class="mt-24 border-t border-white/10 pt-20 pb-10 relative">
                     <div
@@ -1954,6 +1963,12 @@
                 consolaModalContainer.classList.remove('scale-95');
             }, 10);
             document.body.style.overflow = 'hidden';
+
+            // Pause marquee
+            window.isConsolaModalOpen = true;
+            if (typeof isAutoScrolling !== 'undefined') {
+                isAutoScrolling = false;
+            }
         }
 
         function closeConsolaModal() {
@@ -1963,6 +1978,12 @@
             setTimeout(() => {
                 consolaModal.classList.add('hidden');
                 document.body.style.overflow = '';
+
+                // Resume marquee
+                window.isConsolaModalOpen = false;
+                if (typeof isAutoScrolling !== 'undefined') {
+                    isAutoScrolling = true;
+                }
             }, 300);
         }
 
@@ -1972,6 +1993,91 @@
             }
         });
 
+        // Consola Marquee Logic
+        const groupConsolas = document.getElementById('groupConsolas');
+        const marqueeContainer = document.getElementById('marqueeContainer');
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let isAutoScrolling = true;
+
+        function animateMarquee() {
+            if (isAutoScrolling && !isDown && !window.isConsolaModalOpen) {
+                groupConsolas.scrollLeft += 1;
+                // Seamless loop condition
+                if (groupConsolas.scrollLeft >= marqueeContainer.scrollWidth / 2) {
+                    groupConsolas.scrollLeft -= marqueeContainer.scrollWidth / 2;
+                }
+            }
+            requestAnimationFrame(animateMarquee);
+        }
+
+        // Mouse Events for PC Dragging
+        groupConsolas.addEventListener('mousedown', (e) => {
+            isDown = true;
+            isAutoScrolling = false;
+            startX = e.pageX - groupConsolas.offsetLeft;
+            scrollLeft = groupConsolas.scrollLeft;
+            groupConsolas.style.cursor = 'grabbing';
+        });
+
+        groupConsolas.addEventListener('mouseleave', () => {
+            if (isDown) {
+                isDown = false;
+                isAutoScrolling = true;
+                groupConsolas.style.cursor = 'grab';
+            } else {
+                isAutoScrolling = true;
+            }
+        });
+
+        groupConsolas.addEventListener('mouseup', () => {
+            isDown = false;
+            isAutoScrolling = true;
+            groupConsolas.style.cursor = 'grab';
+        });
+
+        groupConsolas.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - groupConsolas.offsetLeft;
+            const walk = (x - startX) * 2;
+            groupConsolas.scrollLeft = scrollLeft - walk;
+
+            // Adjust bounds dynamically while dragging
+            if (groupConsolas.scrollLeft >= marqueeContainer.scrollWidth / 2) {
+                groupConsolas.scrollLeft -= marqueeContainer.scrollWidth / 2;
+                scrollLeft -= marqueeContainer.scrollWidth / 2;
+            } else if (groupConsolas.scrollLeft <= 0) {
+                groupConsolas.scrollLeft += marqueeContainer.scrollWidth / 2;
+                scrollLeft += marqueeContainer.scrollWidth / 2;
+            }
+        });
+
+        // Touch Events for Mobile Swiping
+        groupConsolas.addEventListener('touchstart', (e) => {
+            isAutoScrolling = false;
+        }, { passive: true });
+
+        groupConsolas.addEventListener('touchend', () => {
+            isAutoScrolling = true;
+        });
+
+        // Hover pause
+        groupConsolas.addEventListener('mouseenter', () => {
+            if (!isDown) isAutoScrolling = false;
+        });
+
+        // Native scroll observer for mobile scrolling
+        groupConsolas.addEventListener('scroll', () => {
+            if (groupConsolas.scrollLeft >= marqueeContainer.scrollWidth / 2) {
+                groupConsolas.scrollLeft -= marqueeContainer.scrollWidth / 2;
+            }
+        }, { passive: true });
+
+        // Start scrolling
+        animateMarquee();
 
     </script>
     <!-- END: Clock Script -->
