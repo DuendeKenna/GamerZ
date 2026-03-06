@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 492882,
+      "total": 469601,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 690682,
+      "total": 664510,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 939282,
+      "total": 853482,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -345,6 +345,22 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 366716,
+          "date": "2026-03-06T18:14:18.508Z"
+        },
+        {
+          "value": 366716,
+          "date": "2026-03-06T18:14:16.572Z"
+        },
+        {
+          "value": 367716,
+          "date": "2026-03-05T15:02:35.168Z"
+        },
+        {
+          "value": 367716,
+          "date": "2026-03-05T15:02:33.216Z"
+        },
+        {
           "value": 368000,
           "date": "2026-03-03T14:24:54.867Z"
         },
@@ -438,6 +454,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 152999,
+          "date": "2026-03-06T18:17:39.671Z"
+        },
+        {
+          "value": 152999,
+          "date": "2026-03-06T18:17:37.721Z"
+        },
+        {
           "value": 149999,
           "date": "2026-02-28T12:03:55.271Z"
         }
@@ -451,6 +475,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 150488,
+          "date": "2026-03-05T15:08:36.069Z"
+        },
+        {
+          "value": 150488,
+          "date": "2026-03-05T15:08:34.000Z"
+        },
         {
           "value": 150791,
           "date": "2026-03-03T14:35:56.982Z"
@@ -474,6 +506,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 267840,
+          "date": "2026-03-05T15:08:47.118Z"
+        },
+        {
+          "value": 267840,
+          "date": "2026-03-05T15:08:45.127Z"
+        },
+        {
           "value": 287999,
           "date": "2026-02-26T14:11:41.116Z"
         }
@@ -487,6 +527,22 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 89787,
+          "date": "2026-03-06T18:18:08.489Z"
+        },
+        {
+          "value": 89787,
+          "date": "2026-03-06T18:18:06.572Z"
+        },
+        {
+          "value": 89769,
+          "date": "2026-03-05T15:08:59.386Z"
+        },
+        {
+          "value": 89769,
+          "date": "2026-03-05T15:08:57.375Z"
+        },
         {
           "value": 90059,
           "date": "2026-03-03T14:36:18.814Z"
@@ -511,6 +567,22 @@
       "prices": [
         {
           "value": 155142,
+          "date": "2026-03-06T18:18:20.488Z"
+        },
+        {
+          "value": 155142,
+          "date": "2026-03-06T18:18:18.540Z"
+        },
+        {
+          "value": 160000,
+          "date": "2026-03-05T15:09:11.307Z"
+        },
+        {
+          "value": 160000,
+          "date": "2026-03-05T15:09:09.292Z"
+        },
+        {
+          "value": 155142,
           "date": "2026-03-03T14:36:29.415Z"
         },
         {
@@ -532,22 +604,16 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 161889,
+          "date": "2026-03-05T15:09:24.024Z"
+        },
+        {
+          "value": 161889,
+          "date": "2026-03-05T15:09:21.967Z"
+        },
+        {
           "value": 157032,
           "date": "2026-02-28T12:04:48.568Z"
-        }
-      ]
-    },
-    {
-      "id": 86854,
-      "name": "Externo 500 HDD",
-      "link": "https://www.mercadolibre.com.ar/disco-externo-hiksemi-25--usb-31-tipo-c-500gb/up/MLAU2875081733?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 64999,
-          "date": "2026-02-18T14:39:53.837Z"
         }
       ]
     },
@@ -573,6 +639,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 105000,
+          "date": "2026-03-05T15:11:10.351Z"
+        },
+        {
+          "value": 105000,
+          "date": "2026-03-05T15:11:08.304Z"
+        },
         {
           "value": 133900,
           "date": "2026-02-26T14:12:18.935Z"
@@ -602,22 +676,16 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 24650,
+          "date": "2026-03-05T15:11:31.713Z"
+        },
+        {
+          "value": 24650,
+          "date": "2026-03-05T15:11:29.682Z"
+        },
+        {
           "value": 23200,
           "date": "2026-02-03T13:31:40.453Z"
-        }
-      ]
-    },
-    {
-      "id": 81805,
-      "name": "Carry Disk NVMe",
-      "link": "https://www.mercadolibre.com.ar/caja-externa-ssd-m2-nvme-usb-31-gen2-tipo-c-unitek-con-led/p/MLA34061429?offer_type=OFFICIAL_STORE",
-      "visible": 0,
-      "description": "Cheto",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 44500,
-          "date": "2026-02-15T11:31:38.285Z"
         }
       ]
     }
@@ -674,6 +742,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 479180,
+          "date": "2026-03-05T15:07:53.624Z"
+        },
+        {
+          "value": 479180,
+          "date": "2026-03-05T15:07:51.608Z"
+        },
+        {
           "value": 430699,
           "date": "2026-02-28T12:03:23.497Z"
         }
@@ -688,6 +764,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 745019,
+          "date": "2026-03-05T15:08:06.249Z"
+        },
+        {
+          "value": 745019,
+          "date": "2026-03-05T15:08:04.215Z"
+        },
+        {
           "value": 744999,
           "date": "2026-02-28T12:03:34.860Z"
         }
@@ -701,6 +785,14 @@
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 1086989,
+          "date": "2026-03-06T18:17:27.621Z"
+        },
+        {
+          "value": 1086989,
+          "date": "2026-03-06T18:17:25.721Z"
+        },
         {
           "value": 949999,
           "date": "2026-02-18T14:39:06.873Z"
@@ -717,6 +809,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 92999,
+          "date": "2026-03-06T18:19:14.073Z"
+        },
+        {
+          "value": 92999,
+          "date": "2026-03-06T18:19:12.173Z"
+        },
         {
           "value": 93201,
           "date": "2026-02-28T12:05:49.538Z"
@@ -747,6 +847,22 @@
       "prices": [
         {
           "value": 25790,
+          "date": "2026-03-06T18:19:34.192Z"
+        },
+        {
+          "value": 25790,
+          "date": "2026-03-06T18:19:32.292Z"
+        },
+        {
+          "value": 26880,
+          "date": "2026-03-05T15:21:52.836Z"
+        },
+        {
+          "value": 26880,
+          "date": "2026-03-05T15:21:50.788Z"
+        },
+        {
+          "value": 25790,
           "date": "2026-03-03T14:38:19.058Z"
         },
         {
@@ -770,6 +886,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 94999,
+          "date": "2026-03-05T15:03:56.057Z"
+        },
+        {
+          "value": 94999,
+          "date": "2026-03-05T15:03:54.187Z"
+        },
+        {
           "value": 90799,
           "date": "2026-02-28T12:01:37.338Z"
         }
@@ -779,7 +903,7 @@
       "id": 23506,
       "name": "Asrock A520m",
       "description": "",
-      "link": "https://www.mercadolibre.com.ar/motherboard-asrock-a520m-ryzen-ddr4-hdmi-pcreg-color-negro/p/MLA24527962?offer_type=BEST_PRICE",
+      "link": "https://www.mercadolibre.com.ar/motherboard-amd-asrock-a520m-ryzen-ddr4-hdmi-am4-micro-atx-negro/p/MLA22760120?offer_type=OFFICIAL_STORE#polycard_client=search-desktop&search_layout=grid&position=1&type=product&tracking_id=2db1a678-104d-409f-95d4-06b3d5358559&wid=MLA1378151791&sid=search",
       "visible": 1,
       "linksAlt": [],
       "prices": [
@@ -814,6 +938,22 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 309899,
+          "date": "2026-03-06T18:15:18.661Z"
+        },
+        {
+          "value": 309899,
+          "date": "2026-03-06T18:15:16.715Z"
+        },
+        {
+          "value": 325072,
+          "date": "2026-03-05T15:03:32.951Z"
+        },
+        {
+          "value": 325072,
+          "date": "2026-03-05T15:03:31.040Z"
+        },
+        {
           "value": 310299,
           "date": "2026-02-28T12:01:14.126Z"
         }
@@ -827,6 +967,22 @@
       "description": "4 nucleos 4ghz Am4",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 114990,
+          "date": "2026-03-06T18:15:31.081Z"
+        },
+        {
+          "value": 114990,
+          "date": "2026-03-06T18:15:29.132Z"
+        },
+        {
+          "value": 119999,
+          "date": "2026-03-05T15:03:44.302Z"
+        },
+        {
+          "value": 119999,
+          "date": "2026-03-05T15:03:42.404Z"
+        },
         {
           "value": 112499,
           "date": "2026-03-03T14:26:50.208Z"
@@ -852,6 +1008,22 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 130513,
+          "date": "2026-03-06T18:15:58.998Z"
+        },
+        {
+          "value": 130513,
+          "date": "2026-03-06T18:15:57.032Z"
+        },
+        {
+          "value": 126099,
+          "date": "2026-03-05T15:06:35.156Z"
+        },
+        {
+          "value": 126099,
+          "date": "2026-03-05T15:06:33.122Z"
+        },
         {
           "value": 143399,
           "date": "2026-03-03T14:27:34.339Z"
@@ -944,6 +1116,22 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 224999,
+          "date": "2026-03-06T18:16:42.765Z"
+        },
+        {
+          "value": 224999,
+          "date": "2026-03-06T18:16:40.798Z"
+        },
+        {
+          "value": 232999,
+          "date": "2026-03-05T15:07:26.737Z"
+        },
+        {
+          "value": 232999,
+          "date": "2026-03-05T15:07:24.694Z"
+        },
+        {
           "value": 267699,
           "date": "2026-03-03T14:28:42.528Z"
         },
@@ -967,6 +1155,22 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 523447,
+          "date": "2026-03-06T18:15:07.211Z"
+        },
+        {
+          "value": 523447,
+          "date": "2026-03-06T18:15:05.297Z"
+        },
+        {
+          "value": 523348,
+          "date": "2026-03-05T15:03:21.252Z"
+        },
+        {
+          "value": 523348,
+          "date": "2026-03-05T15:03:19.333Z"
+        },
         {
           "value": 529499,
           "date": "2026-02-28T11:58:38.197Z"
@@ -1006,6 +1210,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 171999,
+          "date": "2026-03-06T18:19:53.392Z"
+        },
+        {
+          "value": 171999,
+          "date": "2026-03-06T18:19:51.476Z"
+        },
+        {
           "value": 181499,
           "date": "2026-03-03T14:38:42.076Z"
         },
@@ -1028,6 +1240,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 300899,
+          "date": "2026-03-05T15:22:32.385Z"
+        },
+        {
+          "value": 300899,
+          "date": "2026-03-05T15:22:30.319Z"
+        },
+        {
           "value": 287599,
           "date": "2026-02-28T12:06:39.741Z"
         }
@@ -1043,6 +1263,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 10291,
+          "date": "2026-03-05T15:22:44.164Z"
+        },
+        {
+          "value": 10291,
+          "date": "2026-03-05T15:22:42.092Z"
+        },
         {
           "value": 9982,
           "date": "2026-02-18T14:41:08.947Z"
@@ -1069,12 +1297,20 @@
       "id": 80115,
       "name": "Xbox 360 - Cableado",
       "description": "Generico Xbox 360 Con Cable",
-      "link": "https://www.mercadolibre.com.ar/joystick-para-xbox-360-inalambrico-para-pilas-o-bateria/up/MLAU3785591925?offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-up&reco_backend=recomm_platform_base_merge_pads_rfa&wid=MLA1676266095&reco_model=search_recos_backend_merge&reco_client=pdp-pads-up&reco_item_pos=2&reco_backend_type=low_level&reco_id=19091bf5-a6e6-496e-b3ad-72251df61244&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_UP&ad_position=3&ad_click_id=YmU4NzllMWYtMzRjZC00ZGYxLWI5ZmQtYzJkMmVjMGYwZDIy",
+      "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "linksAlt": [
-        "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE"
+        "https://www.mercadolibre.com.ar/joystick-para-xbox-360-inalambrico-para-pilas-o-bateria/up/MLAU3785591925?offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-up&reco_backend=recomm_platform_base_merge_pads_rfa&wid=MLA1676266095&reco_model=search_recos_backend_merge&reco_client=pdp-pads-up&reco_item_pos=2&reco_backend_type=low_level&reco_id=19091bf5-a6e6-496e-b3ad-72251df61244&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_UP&ad_position=3&ad_click_id=YmU4NzllMWYtMzRjZC00ZGYxLWI5ZmQtYzJkMmVjMGYwZDIy"
       ],
       "prices": [
+        {
+          "value": 44960,
+          "date": "2026-03-06T18:23:49.216Z"
+        },
+        {
+          "value": 44960,
+          "date": "2026-03-06T18:23:47.287Z"
+        },
         {
           "value": 30990,
           "date": "2026-03-03T14:42:19.718Z"
@@ -1111,6 +1347,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 52999,
+          "date": "2026-03-06T18:24:08.955Z"
+        },
+        {
+          "value": 52999,
+          "date": "2026-03-06T18:24:07.054Z"
+        },
         {
           "value": 54299,
           "date": "2026-03-03T14:42:44.915Z"
@@ -1149,6 +1393,22 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 28699,
+          "date": "2026-03-06T18:24:27.839Z"
+        },
+        {
+          "value": 28699,
+          "date": "2026-03-06T18:24:25.906Z"
+        },
+        {
+          "value": 34990,
+          "date": "2026-03-05T15:23:36.578Z"
+        },
+        {
+          "value": 34990,
+          "date": "2026-03-05T15:23:34.618Z"
+        },
         {
           "value": 34186,
           "date": "2026-02-15T11:33:24.323Z"
@@ -1203,6 +1463,22 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 13598,
+          "date": "2026-03-06T18:24:53.872Z"
+        },
+        {
+          "value": 13598,
+          "date": "2026-03-06T18:24:51.941Z"
+        },
+        {
+          "value": 18289,
+          "date": "2026-03-05T15:24:26.636Z"
+        },
+        {
+          "value": 18289,
+          "date": "2026-03-05T15:24:25.326Z"
+        },
+        {
           "value": 13361,
           "date": "2026-03-03T14:44:18.435Z"
         },
@@ -1226,6 +1502,10 @@
       "prices": [
         {
           "value": 30030,
+          "date": "2026-03-05T15:24:35.247Z"
+        },
+        {
+          "value": 30030,
           "date": "2025-12-08T13:14:48.806Z"
         }
       ]
@@ -1240,6 +1520,18 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 19399,
+          "date": "2026-03-06T18:25:14.140Z"
+        },
+        {
+          "value": 19399,
+          "date": "2026-03-06T18:25:12.205Z"
+        },
+        {
+          "value": 18699,
+          "date": "2026-03-05T15:24:40.104Z"
+        },
         {
           "value": 18699,
           "date": "2026-03-03T14:44:53.738Z"
@@ -1264,6 +1556,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 24138,
+          "date": "2026-03-06T18:25:25.407Z"
+        },
+        {
+          "value": 24138,
+          "date": "2026-03-06T18:25:23.459Z"
+        },
         {
           "value": 25287,
           "date": "2026-03-03T14:45:13.538Z"
@@ -1301,6 +1601,22 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 57999,
+          "date": "2026-03-06T18:25:45.328Z"
+        },
+        {
+          "value": 57999,
+          "date": "2026-03-06T18:25:43.425Z"
+        },
+        {
+          "value": 59299,
+          "date": "2026-03-05T15:24:56.209Z"
+        },
+        {
+          "value": 59299,
+          "date": "2026-03-05T15:24:54.924Z"
+        },
+        {
           "value": 57899,
           "date": "2026-03-03T14:45:54.308Z"
         },
@@ -1322,6 +1638,14 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 65899,
+          "date": "2026-03-05T15:25:03.520Z"
+        },
+        {
+          "value": 65899,
+          "date": "2026-03-05T15:25:01.626Z"
+        },
         {
           "value": 67099,
           "date": "2026-03-03T14:46:13.809Z"
@@ -1346,6 +1670,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 45463,
+          "date": "2026-03-06T18:40:44.029Z"
+        },
+        {
+          "value": 45463,
+          "date": "2026-03-06T18:40:42.685Z"
+        },
         {
           "value": 47096,
           "date": "2026-02-03T13:35:02.651Z"
@@ -1391,20 +1723,6 @@
       ]
     },
     {
-      "id": 67930,
-      "name": "Amitosai MTS 1200mbps",
-      "link": "https://www.mercadolibre.com.ar/adaptador-receptor-placa-usb-wifi-1200mbps-antena-interna-dual-band-chipset-realtek-8812-mts-wifi1201-amitosai/p/MLA22558831?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 41800,
-          "date": "2026-02-03T13:35:29.285Z"
-        }
-      ]
-    },
-    {
       "id": 16848,
       "name": "Bluetooth TP-Link",
       "link": "https://www.mercadolibre.com.ar/tplink-receptor-usb-bluetooth-ub500-plus/p/MLA44907785?offer_type=OFFICIAL_STORE",
@@ -1412,6 +1730,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 10550,
+          "date": "2026-03-06T18:41:37.985Z"
+        },
+        {
+          "value": 10550,
+          "date": "2026-03-06T18:41:36.067Z"
+        },
         {
           "value": 10699,
           "date": "2026-02-15T11:35:22.362Z"
@@ -1428,6 +1754,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 17500,
+          "date": "2026-03-06T18:41:49.354Z"
+        },
+        {
+          "value": 17500,
+          "date": "2026-03-06T18:41:47.418Z"
+        },
         {
           "value": 12803,
           "date": "2026-03-03T14:47:27.615Z"
@@ -1454,6 +1788,22 @@
       "ssd": "512",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 489999,
+          "date": "2026-03-06T18:14:30.889Z"
+        },
+        {
+          "value": 489999,
+          "date": "2026-03-06T18:14:28.924Z"
+        },
+        {
+          "value": 426889,
+          "date": "2026-03-05T15:02:46.350Z"
+        },
+        {
+          "value": 426889,
+          "date": "2026-03-05T15:02:44.472Z"
+        },
         {
           "value": 499999,
           "date": "2026-02-26T13:59:22.167Z"
