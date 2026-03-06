@@ -1,0 +1,1566 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gameList>
+  <game id="2192">
+    <path>./Asterix 2.smc</path>
+    <name>Astérix And Obélix</name>
+    <desc>César ha erigido una nueva barricada alrededor de la aldea de los indomables galos, para mantenerlos atrapados dentro. Únete a Asterix y Obelix y viaja por el Imperio Romano. Aquí ingresará a una corrida de toros, participará en un partido de rugby e incluso participará en los Juegos Olímpicos. Traiga un recuerdo de cada país que visite, para demostrarle al César que los galos son los héroes más fuertes.</desc>
+    <image>./images/Asterix 2-image.png</image>
+    <video>./videos/Asterix 2-video.mp4</video>
+    <thumbnail>./images/Asterix 2-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19950928T000000</releasedate>
+    <developer>Infogrames</developer>
+    <publisher>Infogrames</publisher>
+    <genre>Plataformas</genre>
+    <family>Astérix</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2140">
+    <path>./Battletoads in Battlemaniacs.smc</path>
+    <name>Battletoads in Battlemaniacs</name>
+    <desc>La historia comienza cuando las Toads van a visitar la fortaleza de Gyachung en la zona norte del Tíbet, donde la Psicone Corporation está desarrollando un curioso sistema de realidad virtual. De repente, un cerdo lacayo que trabaja para Dark Queen secuestra a la hija del presidente de dicha corporación, y a Zitz. Allí es cuando Rash y Pimple deciden entrar al juego y rescatar a los secuestrados y frenar, una vez más, los planes de Dark Queen para conquistar el mundo.</desc>
+    <image>./images/Battletoads in Battlemaniacs-image.png</image>
+    <video>./videos/Battletoads in Battlemaniacs-video.mp4</video>
+    <thumbnail>./images/Battletoads in Battlemaniacs-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19930602T000000</releasedate>
+    <developer>Rareware</developer>
+    <publisher>Tradewest</publisher>
+    <genre>Beat'em Up</genre>
+    <family>Battletoads</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2449">
+    <path>./Captain Commando.smc</path>
+    <name>Captain Commando</name>
+    <desc>Debes eligir uno de estos cuatro personajes, que deben abrirse camino a través de un ejército de super-criminales de ingeniería genética, viajando a través de una serie de ubicaciones como el banco, el museo, el circo, el acuario y muchos otros, hasta llegar a un planeta llamado "Callisto", donde el mal detrás de "Scumocide" espera. Los cuatro personajes tienen sus propios ataques especiales. El Capitán Comando puede usar el poder de su traje para disparar electricidad a través de sus palmas. Baby Head se pasea en un traje mech que hace más daño. Mack puede usar cuchillos cortos. Cada ubicación termina con el personaje derrotando a un jefe antes de pasar al siguiente.</desc>
+    <image>./images/Captain Commando-image.png</image>
+    <video>./videos/Captain Commando-video.mp4</video>
+    <thumbnail>./images/Captain Commando-thumb.png</thumbnail>
+    <rating>0.65</rating>
+    <releasedate>19950801T000000</releasedate>
+    <developer>Capcom</developer>
+    <publisher>Capcom</publisher>
+    <genre>Beat'em Up</genre>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2165">
+    <path>./Dragon Ball Z - Hyper Dimension.smc</path>
+    <name>Dragon Ball Z - Hyper Dimension</name>
+    <desc>¡Superando al original!
+¡Lucha en tres dimensiones mientras la leyenda continúa con más peleas de Dragon Ball Z! ¡Por primera vez, Vegito aparece y está listo para pelear! Las peleas son más intensas que nunca, ¡y los campos de batalla suben, bajan, derecha e izquierda! Fuerza a tus enemigos a la tierra. ¡ESTO ES UNA DIMENSIÓN HIPER!</desc>
+    <image>./images/Dragon Ball Z - Hyper Dimension-image.png</image>
+    <video>./videos/Dragon Ball Z - Hyper Dimension-video.mp4</video>
+    <thumbnail>./images/Dragon Ball Z - Hyper Dimension-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19960329T000000</releasedate>
+    <developer>Bandai</developer>
+    <publisher>Bandai</publisher>
+    <genre>Lucha</genre>
+    <family>Dragon Ball</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2253">
+    <path>./E.V.O. Search for Eden.smc</path>
+    <name>E.V.O. : Search for Eden</name>
+    <desc>La historia de E.V.O .: Search for Eden sigue los mismos patrones que las teorías modernas de Evolution. Los jugadores primero controlan un organismo marino prehistórico, y lucha para ganar puntos de evolución con los que puede mejorar las partes del cuerpo de su pez y mejorar sus habilidades de ataque / defensa. La jugabilidad no es completamente lineal, lo que significa que ciertas elecciones de caminos y etapas afectarán el éxito del jugador. El juego se compone de una serie de etapas, en las que el organismo del mar evoluciona lentamente hacia un anfibio y luego una criatura terrestre. Los cambios físicos son bastante precisos científicamente, lo que le da al juego un propósito semi-educativo también.</desc>
+    <image>./images/E.V.O. Search for Eden-image.png</image>
+    <video>./videos/E.V.O. Search for Eden-video.mp4</video>
+    <thumbnail>./images/E.V.O. Search for Eden-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19930701T000000</releasedate>
+    <developer>Enix</developer>
+    <publisher>Enix</publisher>
+    <genre>Juego de Rol</genre>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2187">
+    <path>./Earthworm Jim.smc</path>
+    <name>Earthworm Jim</name>
+    <desc>Un cuervo está persiguiendo a un gusano llamado Jim mientras está en el espacio exterior. Psy-Crow persigue a un barco renegado. El capitán del barco ha robado un súper ciber-traje indestructible de ultra alta tecnología y Queen Slug-for-a-Butt ha ordenado que Psy-Crow lo consiga, ya que puede hacerla más bella que Princess. -Su nombre. Psy-Crow golpea al capitán y el traje cae al planeta Tierra.
+
+De vuelta a la Tierra, Jim se pregunta si finalmente estará a salvo cuando un ultra-high-tech-indestructible-súper-espacio-ciber-traje aterrice sobre él. Afortunadamente, Jim descansa en el anillo del cuello del traje. Luego, las partículas espaciales comienzan a interactuar con Jim, lo que provoca una evolución de la velocidad de la luz. Jim pronto se da cuenta de que tiene el control del traje.
+
+Jim escucha los planes de la Reina para el traje y decide conocer a esta princesa ...</desc>
+    <image>./images/Earthworm Jim-image.png</image>
+    <video>./videos/Earthworm Jim-video.mp4</video>
+    <thumbnail>./images/Earthworm Jim-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19941002T000000</releasedate>
+    <developer>Shiny Entertainment</developer>
+    <publisher>Virgin Interactive</publisher>
+    <genre>Plataformas / Corre y Salta</genre>
+    <family>Earthworm Jim</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2198">
+    <path>./Final Fantasy - Mystic Quest.smc</path>
+    <name>Final Fantasy : Mystic Quest</name>
+    <desc>Focus Tower es el centro del mundo y equilibra las fuerzas del mundo. Sin embargo, 4 monstruos han tomado los 4 cristales elementales (Tierra, Agua, Fuego, Viento) para su propio uso, y también han tomado las 4 llaves para las puertas dentro de la Torre de enfoque. Con el equilibrio interrumpido, los desastres caen sobre el mundo. Un niño llamado Benjamin descubre que su aldea natal fue destruida. Conociendo a un viejo misterioso mientras intenta escapar de los terremotos, pronto descubre que él es el héroe profetizado y el único que puede salvar el mundo. Benjamin debe recuperar los 4 cristales, desbloquear Focus Tower y derrotar al último monstruo antes del quinto cristal, el Cristal de la vida está dañado.</desc>
+    <image>./images/Final Fantasy - Mystic Quest-image.png</image>
+    <video>./videos/Final Fantasy - Mystic Quest-video.mp4</video>
+    <thumbnail>./images/Final Fantasy - Mystic Quest-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19921005T000000</releasedate>
+    <developer>Squaresoft</developer>
+    <publisher>Squaresoft</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Final Fantasy</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2146">
+    <path>./Final Fantasy III.smc</path>
+    <name>Final Fantasy III</name>
+    <desc>Hace mucho tiempo, los seres malvados crearon criaturas poderosas llamadas Espers y los desataron unos contra otros. Las batallas resultantes dejaron su mundo como un escombro humeante. Cuenta la leyenda, los Espers se destruyeron a sí mismos y a la mayoría de la humanidad. La magia desapareció para siempre. Han pasado siglos y ahora existe un mundo racional con los Espers viviendo solo en mitos, hasta que un sólido congelado desde las antiguas guerras es descubierto. De repente, hay informes de ataques mágicos contra civiles. Los Comandos Imperiales lanzan incursiones usando armas mágicas MagiTek. La magia obviamente está viva y el mundo está nuevamente en peligro. ¿Quién o qué está detrás del redescubrimiento y la redistribución de este poder legendario? ¿Qué planes caóticos existen que causarán estragos en este mundo ordenado?</desc>
+    <image>./images/Final Fantasy III-image.png</image>
+    <video>./videos/Final Fantasy III-video.mp4</video>
+    <thumbnail>./images/Final Fantasy III-thumb.png</thumbnail>
+    <rating>0.95</rating>
+    <releasedate>19941011T000000</releasedate>
+    <developer>Square</developer>
+    <publisher>Square</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Final Fantasy</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2168">
+    <path>./Final Fantasy V.smc</path>
+    <name>Final Fantasy 5</name>
+    <desc>Los cristales elementales ... la fuente de vida del planeta. Con ellos, soplan vientos suaves, los mares están activos, el fuego arde con fuerza y ??la tierra está llena de vida. Todo parece bien en el mundo, hasta que el viento se detiene de repente, el mar comienza a estancarse, el calor del fuego se vuelve escaso y la tierra comienza a marchitarse. El Rey Magnate, sintiendo una premonición del mal, se apresura a controlar el Cristal del Viento, solo para presenciar cómo se destruye a sí mismo.
+
+Mientras tanto, un joven viajero llamado Butz está acampando en un campo cuando un meteorito gigante golpea el planeta. Cuando se dirige a examinar el meteoro, se sorprende al encontrar a una joven llamada Lenna, que es la princesa de Tycoon, y un anciano llamado Galuf, que se encuentra en una misión crítica. Más tarde, junto con Faris, un capitán pirata, el cuarteto debe viajar por la tierra en busca del destructor de los Cristales y salvar el planeta a toda costa.</desc>
+    <image>./images/Final Fantasy V-image.png</image>
+    <video>./videos/Final Fantasy V-video.mp4</video>
+    <thumbnail>./images/Final Fantasy V-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19921206T000000</releasedate>
+    <developer>TOSE</developer>
+    <publisher>Square</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Final Fantasy</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2491">
+    <path>./Flintstones, The (USA) (En,Fr,De,Es,It).7z</path>
+    <name>The Flintstones</name>
+    <desc>En este juego tendremos que controlar al simpático Pedro Picapiedra, que debe avanzar por cada uno de los escenarios, saltando de plataforma en plataforma y enfrentándose a los diversos enemigos que nos vamos a encontrar. Para hacer frente a estos enemigos, Pedro está equipado con un garrote con el que los puede golpear, aunque también podemos lanzar objetos a los enemigos, aunque la munición es limitada. Para subir a las plataformas en la mayoría de las ocasiones hay que agarrarse a los salientes, teniendo que colocarse pegado a la misma.</desc>
+    <image>./images/Flintstones, The (USA) (En,Fr,De,Es,It)-image.png</image>
+    <video>./videos/Flintstones, The (USA) (En,Fr,De,Es,It)-video.mp4</video>
+    <thumbnail>./images/Flintstones, The (USA) (En,Fr,De,Es,It)-thumb.png</thumbnail>
+    <rating>0.55</rating>
+    <releasedate>19950201T000000</releasedate>
+    <developer>Ocean</developer>
+    <publisher>Ocean</publisher>
+    <genre>Plataformas</genre>
+    <family>The Flintstones</family>
+    <players>1-2</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>us</region>
+    </game>
+  <game id="2431">
+    <path>./Joe &amp; Mac - Caveman Ninja (Europe) (En,Fr,De,Es,It,Nl).7z</path>
+    <name>Joe &amp; Mac : Caveman Ninja</name>
+    <desc>Hace mucho tiempo vivían en una pequeña aldea dos trogloditas llamados Joe y Mac. Tanto si se trataba de demoler dinosaurios o de hacer ala delta con terodáctilos, la vida para estos chicos era bastante fácil, hasta que una tribu de neandertales, mientras ellos se encontraban fuera cazando, destruyeron su aldea y raptaron a todos los bebes y a todas las mujeres de sus cuevas.
+Estos dos trogloditas tendrán que luchar por diferentes niveles con la ayuda de bumeranes, huesos, cuchillos, etc. con el objetivo de ir rescatando a las mujeres que fueron secuestradas, al final de cada uno de los niveles tendremos que enfrentarnos a un dinosaurio y derrotarlo para poder pasar al siguiente nivel.
+El juego tiene dos modos de juego, individual o por parejas, hay que tener en cuenta que en el modo por pareja los dos trogloditas se pueden dañar mutuamente.</desc>
+    <image>./images/Joe &amp; Mac - Caveman Ninja (Europe) (En,Fr,De,Es,It,Nl)-image.png</image>
+    <video>./videos/Joe &amp; Mac - Caveman Ninja (Europe) (En,Fr,De,Es,It,Nl)-video.mp4</video>
+    <thumbnail>./images/Joe &amp; Mac - Caveman Ninja (Europe) (En,Fr,De,Es,It,Nl)-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19910101T000000</releasedate>
+    <developer>Data East</developer>
+    <publisher>Data East</publisher>
+    <genre>Plataformas</genre>
+    <family>Joe &amp; Mac</family>
+    <players>1-2</players>
+    <lang>de,en,es,fr,it,nl</lang>
+    <region>eu</region>
+    </game>
+  <game id="2235">
+    <path>./Jurassic Park Part 2 - The Chaos Continues.smc</path>
+    <name>Jurassic Park Part 2 : The Chaos Continues</name>
+    <desc>Un año ha pasado. Nadie ha puesto un pie en Jurassic Park ... hasta ahora. Como Dr. Grant, te aventurarás a regresar a la isla, donde más dinosaurios de los que puedas imaginar esperan tu regreso, incluidas nuevas especies.
+
+Es un juego totalmente diferente esta vez. Te darás cuenta una vez que los sonidos y gráficos emocionantes te atrapen. Vete solo o forma equipo para una aterradora acción de 2 jugadores. Solo tú tienes el poder de enviar a estos monstruos prehistóricos de vuelta al lugar de donde vinieron.
+Solo tú puedes cerrar las puertas en Jurassic Park ... ¡por otros 65 millones de años!</desc>
+    <image>./images/Jurassic Park Part 2 - The Chaos Continues-image.png</image>
+    <video>./videos/Jurassic Park Part 2 - The Chaos Continues-video.mp4</video>
+    <thumbnail>./images/Jurassic Park Part 2 - The Chaos Continues-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19941101T000000</releasedate>
+    <developer>Ocean</developer>
+    <publisher>Ocean</publisher>
+    <genre>Plataformas</genre>
+    <family>Jurassic Park</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2368">
+    <path>./Kirby's Avalanche.smc</path>
+    <name>Kirby's Avalanche</name>
+    <desc>El Rey Dedede ha desafiado a Kirby y otros miembros de Dream Land a una Competencia de Avalanchas en la Fuente del Sueño. Kirby, asumiendo el desafío, ha decidido abrirse camino a través del bosque hacia la Fuente de los Sueños para ganar la Copa Avalancha del Rey Dedede.</desc>
+    <image>./images/Kirby's Avalanche-image.png</image>
+    <video>./videos/Kirby's Avalanche-video.mp4</video>
+    <thumbnail>./images/Kirby's Avalanche-thumb.png</thumbnail>
+    <rating>0.7</rating>
+    <releasedate>19950201T000000</releasedate>
+    <developer>HAL Laboratory</developer>
+    <publisher>Banpresto</publisher>
+    <genre>Puzzle</genre>
+    <family>Kirby</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2138">
+    <path>./Legend of Zelda, The - A Link to the Past.smc</path>
+    <name>The Legend of Zelda : A Link to the Past</name>
+    <desc>En una noche oscura y tormentosa, el joven Link se embarca en una aventura que ninguno de los dos olvidaréis. Han raptado a la princesa Zelda y un mago malvado quiere liberar a Ganon, el rey de las tinieblas. ¡Solo Link puede salvar Hyrule!</desc>
+    <image>./images/Legend of Zelda, The - A Link to the Past-image.png</image>
+    <video>./videos/Legend of Zelda, The - A Link to the Past-video.mp4</video>
+    <thumbnail>./images/Legend of Zelda, The - A Link to the Past-thumb.png</thumbnail>
+    <rating>0.95</rating>
+    <releasedate>19920413T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de Rol</genre>
+    <family>The Legend of Zelda</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2259">
+    <path>./Lufia II - Rise of the Sinistrals.smc</path>
+    <name>Lufia II : Rise of the Sinistrals</name>
+    <desc>Esta emocionante secuela de la leyenda lufiana enfrenta al cazador de monstruos Maxim y seis compañeros de aventuras contra los siniestros siniestros. La historia se desarrolla en un complejo laberinto, desafiándote con grandes batallas, rompecabezas y muchas sorpresas. ¡Incluso puedes hacer crecer tus propios monstruos! ¡Disfrutarás de innumerables horas en un fantástico viaje en el mundo de Lufia!</desc>
+    <image>./images/Lufia II - Rise of the Sinistrals-image.png</image>
+    <video>./videos/Lufia II - Rise of the Sinistrals-video.mp4</video>
+    <thumbnail>./images/Lufia II - Rise of the Sinistrals-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19960831T000000</releasedate>
+    <developer>Neverland</developer>
+    <publisher>Taito</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Lufia</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2319">
+    <path>./Marvel Super Heroes - War of the Gems.smc</path>
+    <name>Marvel Super Heroes - War of the Gems</name>
+    <desc>¡La colección más poderosa de MARVEL SUPER HEROES ahora se une para luchar contra las traicioneras mobs de Super-Villians! Un enemigo misterioso ha lanzado su plan para gobernar el mundo mediante la recopilación de las gemas del infinito. Mientras que cada gema controla una fuerza de la naturaleza, combinadas controlan un poder ilimitado.
+El destino del mundo entero depende de tu habilidad para vencer este siniestro plan antes de que las gemas se combinen. Domina la fuerza bruta de tu héroe favorito para enfrentarte a este desafío de vida o muerte. Eliges el héroe que mejor se adapte a cada misión y controlas toda la acción, como romper barreras con el Increíble Hulk o enfrentar desafíos con las redes de Spider-Man y la habilidad de escalar.
+Es una increíble aventura de acción y aventura que requiere habilidad, astucia y reflejos para vencer una trama diabólica y la variedad más increíble de Supervillanos corruptos que se haya reunido.</desc>
+    <image>./images/Marvel Super Heroes - War of the Gems-image.png</image>
+    <video>./videos/Marvel Super Heroes - War of the Gems-video.mp4</video>
+    <thumbnail>./images/Marvel Super Heroes - War of the Gems-thumb.png</thumbnail>
+    <rating>0.6</rating>
+    <releasedate>19961001T000000</releasedate>
+    <developer>Capcom</developer>
+    <publisher>Capcom</publisher>
+    <genre>Plataformas</genre>
+    <family>Marvel</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2191">
+    <path>./Mega Man X 3.smc</path>
+    <name>Mega Man X3</name>
+    <desc>Mega Man X y su fiel compañero Zero tienen una nueva fuerza a tener en cuenta. ¿Quién o qué ha causado una revuelta de Mavericks en la utopía experimental conocida como Doppler Town?
+
+El nombre del científico reploid, Doppler Town se suponía que era un lugar donde los humanos y reploids podrían vivir en armonía. Después de descubrir un virus que estaba convirtiendo los reploids en Mavericks, el antivirus de Doppler fue un gran éxito. Pero Doppler se infectó con el virus y reunió a un equipo para eliminar las Unidades Maverick Hunter. ¡El efecto Doppler está a punto de desarrollarse, con Mega Man X y Zero como la única cura para el virus mortal!</desc>
+    <image>./images/Mega Man X 3-image.png</image>
+    <video>./videos/Mega Man X 3-video.mp4</video>
+    <thumbnail>./images/Mega Man X 3-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19960214T000000</releasedate>
+    <developer>Capcom</developer>
+    <publisher>Capcom</publisher>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <family>Mega Man</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2151">
+    <path>./Mickey Mania.smc</path>
+    <name>Mickey Mania : The Timeless Adventures of Mickey Mouse</name>
+    <desc>Mickey Mouse tiene la oportunidad de ir por el camino de la memoria y caminar a través de las aventuras intemporales que ha vivido. Mickey Mania es un juego de plataformas donde todos los niveles se basan en los dibujos animados más famosos de Mickey. El rango de niveles de alrededor de 75 años, comenzando con "Steamboat Willie" y va todo el camino a "El Príncipe y el Mendigo".
+
+La jugabilidad consiste principalmente en saltar y mármol lanzando contra enemigos, con un elemento de rompecabezas ocasional.</desc>
+    <image>./images/Mickey Mania-image.png</image>
+    <video>./videos/Mickey Mania-video.mp4</video>
+    <thumbnail>./images/Mickey Mania-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>19941001T000000</releasedate>
+    <developer>Traveller's Tales</developer>
+    <publisher>Sony Imagesoft</publisher>
+    <genre>Plataformas</genre>
+    <family>Mickey Mouse</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2158">
+    <path>./Mortal Kombat 3.smc</path>
+    <name>Mortal Kombat III</name>
+    <desc>Shao Kahn ha ganado. El reino de la Tierra no es más. Para revivir a su Reina Sindel, el emperador Shao Kahn usó el Torneo Outworld de Mortal Kombat 2 como una diversión mientras sus Sacerdotes Sombra revivían a su Reina caída en la Tierra. Una vez que se promulga, el puente dimensional entre los dos reinos se conecta, permitiendo a los escuadrones de exterminio de Kahn invadir y destruir la Tierra, y esclavizar las almas de la población. 
+
+Un pequeño equipo de "Chosen Warriors" de Raiden sobrevive al ataque: el campeón Mortal Kombat Liu Kang y su aliado Kung Lao, los agentes de las Fuerzas Especiales Sonya Blade y Jax, el chamán Nightwolf, el policía antidisturbio Stryker, el nómada Kabal y el ex guerrero Lin Kuei Sub-Zero, que se ha desviado de su clan. Frente a los guerreros están el mercenario Kano, cyber-ninjas Smoke, Sektor y Cyrax, Sheeva, una mujer Shokan, el brujo Shang Tsung y la reina Sindel misma.</desc>
+    <image>./images/Mortal Kombat 3-image.png</image>
+    <video>./videos/Mortal Kombat 3-video.mp4</video>
+    <thumbnail>./images/Mortal Kombat 3-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19951001T000000</releasedate>
+    <developer>Sculptured Software</developer>
+    <publisher>Acclaim</publisher>
+    <genre>Lucha / Versus</genre>
+    <family>Mortal Kombat</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2179">
+    <path>./Out of This World.smc</path>
+    <name>Out of This World</name>
+    <desc>Del diario de Lester Knight Chaykin: 
+
+Aprovecho este corto descanso para anotar algo de información útil, en el cuaderno que ha sobrevivido a mis últimas aventuras. Me he separado de mi compañero; sin su ayuda, aún estaría atrapado. Espero encontrarlo. Le debo mi vida. 
+Ahora me encuentro perdido en un laberinto de corredores subterráneos. Ignoro cuanto tiempo he estado vagando. Y constantemente encuentro corrientes que amenazan con inundar estos corredores en cualquier momento. 
+Afortunadamente he encontrado un arma que puede perforar un agujero en casi todo lo que encuentre. Me ha salvado la vida innumerables veces. 
+Hay muchos guardias por estos corredores. Debo moverme antes de que...</desc>
+    <image>./images/Out of This World-image.png</image>
+    <video>./videos/Out of This World-video.mp4</video>
+    <thumbnail>./images/Out of This World-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19921101T000000</releasedate>
+    <developer>Delphine Software International</developer>
+    <publisher>Interplay</publisher>
+    <genre>Aventura</genre>
+    <family>Another World</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2246">
+    <path>./Prehistorik Man (USA) (En,Fr,Es).7z</path>
+    <name>Prehistorik Man</name>
+    <desc>En Prehistorik Man, el jugador toma el control de un neanderthal que está en una aventura para viajar a través de varios niveles, la recolección de items alimenticios para surtir a su pueblo antes que llege el otoño. En el camino, el jugador se encontrará con un todo tipo  de enemigos que van desde arañas, ratas gigantes e incluso el poderoso T-Rex.rnrnHay cinco niveles en total y el jugador puede actualizar sus armas, las hachas y mazos durante todo el juego, así como adquirir un ala delta, dando al jugador la ventaja de vuelo y cubrir largas distancias. El objetivo principal del juego es vencer a los enemigos, recoger los alimentos y enfrentar a un jefe al final de cada nivel.</desc>
+    <image>./images/Prehistorik Man (USA) (En,Fr,Es)-image.png</image>
+    <video>./videos/Prehistorik Man (USA) (En,Fr,Es)-video.mp4</video>
+    <thumbnail>./images/Prehistorik Man (USA) (En,Fr,Es)-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>19960102T000000</releasedate>
+    <developer>Titus</developer>
+    <publisher>Titus</publisher>
+    <genre>Plataformas</genre>
+    <family>Prehistorik</family>
+    <players>1</players>
+    <lang>en,es,fr</lang>
+    <region>us</region>
+    </game>
+  <game id="2142">
+    <path>./Secret of Evermore (Spain) (Rev 2).7z</path>
+    <name>Secret of Evermore</name>
+    <desc>En la vieja y decadente mansión del Dr. Sidney Ruffleberg, un niño y su perro tropiezan con una misteriosa máquina. Por puro accidente son enviados a Evermore, una utopía que ahora se ha convertido en un mundo confuso y mortal. Un mundo de selvas prehistóricas, civilizaciones antiguas, reinos medievales y ciudades futuristas. Durante su odisea, el niño debe dominar una variedad de armas, aprender a aprovechar las fuerzas de la alquimia y hacer aliados poderosos para luchar contra los monstruos diabólicos de Evermore. Con la ayuda de su perro, que domina el cambio de forma y con la suficiente habilidad y coraje  pueden descubrir las misteriosas pistas, sólo pueden encontrar el camino a casa descubriendo el secreto de Evermore.</desc>
+    <image>./images/Secret of Evermore (Spain) (Rev 2)-image.png</image>
+    <video>./videos/Secret of Evermore (Spain) (Rev 2)-video.mp4</video>
+    <thumbnail>./images/Secret of Evermore (Spain) (Rev 2)-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>19960222T000000</releasedate>
+    <developer>Squaresoft</developer>
+    <publisher>Squaresoft</publisher>
+    <genre>Juego de Rol</genre>
+    <players>1</players>
+    <lang>es</lang>
+    <region>eu</region>
+    </game>
+  <game id="19193">
+    <path>./Speedy Gonzales - Los Gatos Bandidos.smc</path>
+    <name>Speedy Gonzales : Los Gatos Bandidos</name>
+    <desc>Es la hora de hacer fiesta en una pequeña villa de México. ¡Todos los felices ratoncitos lo estaban pasando genial! Hasta que... Los Gatos Bandidos llegaron, y secuestraron a todos. Tan entusiasmados como estaban, planeando pasarlo en grande con los ratoncitos, los Gatos no se dieron cuenta de que uno de ellos, Slowpoke Rodriguez, había escapado. Sólo había una cosa que él podía hacer: llamar al ratón más rápido de todo México, Speedy Gonzales! Tras ser informado de que los ratoncitos habían sido llevados a diferentes partes del país, Speedy deberá avocarse a la tarea de encontrarlos, y liberarlos a todos.</desc>
+    <image>./images/Speedy Gonzales - Los Gatos Bandidos-image.png</image>
+    <video>./videos/Speedy Gonzales - Los Gatos Bandidos-video.mp4</video>
+    <thumbnail>./images/Speedy Gonzales - Los Gatos Bandidos-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19950801T000000</releasedate>
+    <developer>Sunsoft</developer>
+    <publisher>Acclaim</publisher>
+    <genre>Plataformas</genre>
+    <family>Speedy Gonzales</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="136591">
+    <path>./Star Fox 2 V2 por Darkchaosblast y Frandyer.smc</path>
+    <name>Star Fox 2</name>
+    <desc>Después de su derrota en Star Wing/Star Fox, Andross, el antagonista del juego, regresa al sistema Lylat y lanza un nuevo ataque contra Corneria, usando su nueva flota de acorazados y misiles gigantes lanzados desde bases ocultas para destruir el planeta. De nuevo, el General Pepper pide ayuda al equipo Star Fox. Armado con nuevos Arwings personalizados, Fragatas y dos nuevos reclutas, Miyu y fay, el equipo de Star Fox se propone defender Corneria destruyendo las fuerzas de Andross antes de que puedan infligir daño crítico en el planeta. A lo largo del camino, Star Fox también debe combatir enemigos gigantes, bases en planetas a lo largo del sistema Lylat, miembros del equipo de Star Wolf y finalmente Andross.
+
+En este juego lanzado en 2017 podremos ver formas de Arwing nunca vistas como el "Walker" y disfrutar de una jugabilidad estrategica y arcade espacial.</desc>
+    <image>./images/Star Fox 2 V2 por Darkchaosblast y Frandyer-image.png</image>
+    <video>./videos/Star Fox 2 V2 por Darkchaosblast y Frandyer-video.mp4</video>
+    <thumbnail>./images/Star Fox 2 V2 por Darkchaosblast y Frandyer-thumb.png</thumbnail>
+    <rating>0.7</rating>
+    <releasedate>20170929T000000</releasedate>
+    <developer>Nintendo EAD</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Disparos / 3ª persona</genre>
+    <family>Star Fox</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2292">
+    <path>./Sunset Riders.smc</path>
+    <name>Sunset Riders</name>
+    <desc>En el viejo oeste... En una época donde la hombría se mide según la velocidad con que aprietes el gatillo, existen básicamente dos tipos de pistoleros: los movidos por la maldad pura, y los motivados por un genuino sentido de la justicia. Destacando de entre estos últimos, cuatro amigos se han hechos famosos a través de toda esta región. Pocos logran equiparar sus habilidades; los nombres de Steve, Billy, Bob y Cormano son ampliamente conocidos y respetados. Agrupados bajo el nombre de Sunset Riders, estos valientes han dedicado su vida a capturar toda clase de peligrosos bandidos y jefes criminales, siempre motivados por su gran amor... al dinero. Eventualmente, darán con la pista de Sir Richard Rose, uno de los más grandes líderes del bajo mundo. El desafío es definitivamente tentador... pero la gran recompensa ofrecida es sólo comparable a los peligros que deberán enfrentar para llegar hasta él.</desc>
+    <image>./images/Sunset Riders-image.png</image>
+    <video>./videos/Sunset Riders-video.mp4</video>
+    <thumbnail>./images/Sunset Riders-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19931001T000000</releasedate>
+    <developer>Konami</developer>
+    <publisher>Konami</publisher>
+    <genre>Disparos / Run and Gun</genre>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2336">
+    <path>./Super Adventure Island.smc</path>
+    <name>Super Adventure Island</name>
+    <desc>En su primera aventura en 16 bits, Master Higgins va tras la pista de un malvado hechicero que ha dejado a Tina, su novia, convertida en piedra. Su misión es clara: deberás iniciar un viaje por los más diversos escenarios, buscando la manera de deshacer el hechizo y recuperar a Tina.</desc>
+    <image>./images/Super Adventure Island-image.png</image>
+    <video>./videos/Super Adventure Island-video.mp4</video>
+    <thumbnail>./images/Super Adventure Island-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19920402T000000</releasedate>
+    <developer>Hudson</developer>
+    <publisher>Hudson</publisher>
+    <genre>Plataformas</genre>
+    <family>Adventure Island</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2297">
+    <path>./Super Bomberman.smc</path>
+    <name>Super Bomberman</name>
+    <desc>Muy al norte de Peace Town, el hogar de Bomberman, se encuentra Diamond City, una moderna metrópolis. Ahí, el malvado Carat Diamond y su cómplice, el Dr. Mook, organizan un Torneo de Robots, usando robots especialmente diseñados para tener habilidades ofensivas y de combate. Diamond desea poseer la avanzada capacidad de combate de Bomberman; con este fin, diseñó un falso Bomberman, enviándolo a Peace Town para secuestrar al verdadero. Pero Bomberman Negro recibió información sobre los planes de Diamond, y decidió encarar al impostor en un duelo individual. Lamentablemente, Bomberman Negro fue derrotado, y su castillo terminó destruido. De algún modo, Bomberman Negro pudo escapar; rápidamente buscó la ayuda de Bomberman Blanco, informándole de los malvados planes de Diamond. Pronto, incontables oleadas de robots enemigos comenzaron su avance hacia Peace Town; ahora nuestros héroes deberán unir fuerzas, en una desesperada lucha contra las fuerzas del mal.</desc>
+    <image>./images/Super Bomberman-image.png</image>
+    <video>./videos/Super Bomberman-video.mp4</video>
+    <thumbnail>./images/Super Bomberman-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19930901T000000</releasedate>
+    <developer>Hudson</developer>
+    <publisher>Hudson</publisher>
+    <genre>Acción / Laberinto</genre>
+    <family>Bomberman</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="2287">
+    <path>./Super Double Dragon.smc</path>
+    <name>Super Double Dragon</name>
+    <desc>Los dos grandes héroes de las artes marciales de todos los tiempos han regresado, en SUPER DOUBLE DRAGON, una aventura totalmente nueva con nuevos e impresionantes movimientos, nuevas misiones y un nuevo y peliagudo elenco de enemigos! Marian, una bella mujer policía, es una estudiante de Kung Fu e instructora auxiliar a tiempo parcial en la escuela de artes marciales dirigida por Billy y Jimmy Lee. La investigadora de narcóticos ha desaparecido mientras intentaba infiltrarse en una banda mafiosa conocida como los Guerreros de las Sombras Negras. Necesitaras toda tu habilidad y sabiduría para encontrar y rescatar a Marian. ¡Solo, o con la ayuda de tu hermano, debes hacer frente al temible ataque de los Guerreros de las Sombras con el legendario poder y la ferocidad del DOUBLE DRAGÓN!</desc>
+    <image>./images/Super Double Dragon-image.png</image>
+    <video>./videos/Super Double Dragon-video.mp4</video>
+    <thumbnail>./images/Super Double Dragon-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19921001T000000</releasedate>
+    <developer>Tecmo</developer>
+    <publisher>Tradewest</publisher>
+    <genre>Beat'em Up</genre>
+    <family>Double Dragon</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2174">
+    <path>./Super Mario All-Stars.smc</path>
+    <name>Super Mario All-Stars</name>
+    <desc>La jugabilidad de los juegos contenidos en este cartucho se mantiene con respecto a las versiones originales, pero a cambio estos mejoran en el apartado técnico, siendo quizás el que tiene menos cambios sea Super Mario Bros 3, tal vez porque la versión de NES ya tenía un apartado técnico muy bueno. El que incluye más innovaciones el Super Mario Bros 2, al que se le incluyeron introducciones coloreadas y animadas al principio de cada nivel, una máquina tragaperras mejorada y por supuesto el aspecto sonoro. El título más interesante que presenta el cartucho sin duda es el Super Mario Bros: The Lost Levels al tratarse de un juego que nunca salió de Japón y el cual es el verdadero Super Mario Bros 2, no el que finalmente nos llegó a Europa y que nada tiene que ver con el estilo de juego del resto de entregas de la trilogía.</desc>
+    <image>./images/Super Mario All-Stars-image.png</image>
+    <video>./videos/Super Mario All-Stars-video.mp4</video>
+    <thumbnail>./images/Super Mario All-Stars-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19930801T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Compilación</genre>
+    <family>Super Mario Bros</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2171">
+    <path>./Super Mario RPG - Legend of the Seven Stars.smc</path>
+    <name>Super Mario RPG : Legend of the Seven Stars</name>
+    <desc>El Reino Champiñón se enfrenta a una nueva amenaza cuando una espada gigante cae del cielo y siembra el caos en el lugar. ¡Mario debe reunir a un equipo de aliados inesperados para hacer frente a la infame Smithy Gang!
+
+Antes de Paper Mario y Mario &amp; Luigi, el primer juego de rol con Mario fue esta célebre colaboración entre Nintendo y los creadores de Final Fantasy, Squaresoft (ahora Square Enix). Muchos jugadores guardan buenos recuerdos de sus ingeniosos diálogos y de personajes tan pintorescos como Mallow y Geno.</desc>
+    <image>./images/Super Mario RPG - Legend of the Seven Stars-image.png</image>
+    <video>./videos/Super Mario RPG - Legend of the Seven Stars-video.mp4</video>
+    <thumbnail>./images/Super Mario RPG - Legend of the Seven Stars-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>19960513T000000</releasedate>
+    <developer>Square</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Super Mario Bros</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2163">
+    <path>./Super Mario World 2 - Yoshi's Island.smc</path>
+    <name>Super Mario World 2 : Yoshi's Island</name>
+    <desc>Super Mario World 2: Yoshi's Island es un juego programado y distribuido por Nintendo para Super Nintendo en 1995. La versión europea salió en octubre de ese mismo año. Como el título anterior, se trata de un excelente plataformas del mismo tiempo, pero con muchas modificaciones.
+La primera de ellas es que en este título Mario no es el protagonista, sino el dinosaurio Yoshi. Además, en realidad no estamos hablando de una secuela, sino que nos remontamos varios años en el pasado, a cuando Mario no es más que un bebé. La mecánica consiste en que Yoshi transporte a Mario bebé sobre su lomo por los diferentes escenarios e impedir que el niño acabe en las garras de los malos. Cuando recibamos un golpe, Mario saldrá despedido en una especie de burbuja y tendremos un tiempo para recogerlo. Si se nos acaba el tiempo, se lo llevan y perdemos una vida.</desc>
+    <image>./images/Super Mario World 2 - Yoshi's Island-image.png</image>
+    <video>./videos/Super Mario World 2 - Yoshi's Island-video.mp4</video>
+    <thumbnail>./images/Super Mario World 2 - Yoshi's Island-thumb.png</thumbnail>
+    <rating>0.95</rating>
+    <releasedate>19951004T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Plataformas</genre>
+    <family>Super Mario Bros</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2160">
+    <path>./Terranigma (Spain).7z</path>
+    <name>Terranigma</name>
+    <desc>Terranigma es un videojuego de rol de acción desarrollado por Quintet en 1996 para Super Nintendo. La historia de Terranigma nos invita a asumir el papel de un joven llamado Ark, que vive plácidamente en Crysta, su pueblo, y que de repente se encontrará con una heroica misión: revivir lo que para él es el mundo de la superficie, que resultará ser nada menos que el planeta Tierra, tal cual nosotros lo conocemos.</desc>
+    <image>./images/Terranigma (Spain)-image.png</image>
+    <video>./videos/Terranigma (Spain)-video.mp4</video>
+    <thumbnail>./images/Terranigma (Spain)-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>19961219T000000</releasedate>
+    <developer>Quintet</developer>
+    <publisher>Enix</publisher>
+    <genre>Juego de Rol</genre>
+    <players>1</players>
+    <lang>es</lang>
+    <region>eu</region>
+    </game>
+  <game id="2409">
+    <path>./The Death and Return of Superman.smc</path>
+    <name>The Death and Return of Superman</name>
+    <desc>Sin previo aviso, un despiadado ser llamado Doomsday ha comenzado a sembrar el caos entre la población. Su avance provoca una estela de destrucción sin precedentes, dejando a su paso millonarios destrozos y centenares de muertos y heridos. Ni siquiera todo el poder combinado de la Liga de la Justicia es suficiente para detenerle; el equipo ha sido arrasado, y Superman se levanta como el único héroe capaz de impedir el avance del monstruo hacia Metrópolis.</desc>
+    <image>./images/The Death and Return of Superman-image.png</image>
+    <video>./videos/The Death and Return of Superman-video.mp4</video>
+    <thumbnail>./images/The Death and Return of Superman-thumb.png</thumbnail>
+    <rating>0.65</rating>
+    <releasedate>19940801T000000</releasedate>
+    <developer>Sunsoft</developer>
+    <publisher>Blizzard Entertainment</publisher>
+    <genre>Beat'em Up</genre>
+    <family>Superman</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2405">
+    <path>./Tiny Toon Adventures - Wild &amp; Wacky Sports.smc</path>
+    <name>Tiny Toon Adventures : Wacky Sports Challenge</name>
+    <desc>El juego está compuesto por un gran nivel de pruebas deportivas que necesitan una gran precisión, pero ninguna de ellas se parecen a las que aparecían en el juego de Mega Drive. Las que aquí se incluyen, que son mucho más numerosas, incluyen pruebas tan dispares como tirar bolas a dianas con la cara de Montana Max, alcanzar la mayor distancia posible sin caerse por un precipicio usando un tirachinas o el levantamiento de pesas. No contamos con modos de juego, sino que se trata de una competición en la que se irán sucediendo las diferentes pruebas, pero lo que sí que se permite es que jueguen simultáneamente hasta cuatro amigos.</desc>
+    <image>./images/Tiny Toon Adventures - Wild &amp; Wacky Sports-image.png</image>
+    <video>./videos/Tiny Toon Adventures - Wild &amp; Wacky Sports-video.mp4</video>
+    <thumbnail>./images/Tiny Toon Adventures - Wild &amp; Wacky Sports-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>19940101T000000</releasedate>
+    <developer>Konami</developer>
+    <publisher>Konami</publisher>
+    <genre>Deportes / Multideporte</genre>
+    <family>Tiny Toon</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="2256">
+    <path>./U.N. Squadron.smc</path>
+    <name>U.N. Squadron</name>
+    <desc>Videojuego Shoot-em-up de desplazamiento lateral con aviones. La ONU necesita ayuda, ponte al mando de uno de los tres cazas furtivos disponibles, cada uno con diferentes habilidades en cuanto a reparación de daños, armas y habilidad para volar, y lucha contra mercenarios que tienen controlado todo el pais. Destruye las bases enemigas del "proyecto 4" y conduce un ataque aéreo para la libertad, ¡dispara a todo lo que se mueva en pantalla y lleva a las fuerzas aliadas a la victoria!</desc>
+    <image>./images/U.N. Squadron-image.png</image>
+    <video>./videos/U.N. Squadron-video.mp4</video>
+    <thumbnail>./images/U.N. Squadron-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19910901T000000</releasedate>
+    <developer>Capcom</developer>
+    <publisher>Capcom</publisher>
+    <genre>Shoot'em Up / Horizontal</genre>
+    <family>U.N. Squadron</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2216">
+    <path>./Kirby Superstar.smc</path>
+    <name>Kirby Super Star</name>
+    <desc>¡Dream Land está bajo asedio nuevamente! Nuestro héroe, Kirby, regresa para instigar un rescate. El Rey Dedede está arrebatando el suministro de alimentos de Dream Land, ¡pero no es el único! Dyna Blade, Meta Knight y un montón de otros malvados malvados andan sueltos y causan estragos en toda la tierra.
+
+Usa cualquiera de los increíbles poderes de Kirby para crear un "ayudante" para ayudarte en la batalla. O haz que un amigo se una a ti para una acción de dos jugadores tomando el control del ayudante de Kirby. Ayuda a Kirby a trabajar en OCHO desafiantes juegos llenos de acción y aventura. Entra en la refriega en Spring Breeze, entra en una carrera a pie contra el Rey Dedede en Gourmet Race y enfrenta a un guerrero alado en Dyna Blade. Mejora tus habilidades de reacción en Megaton Punch y Samurai Kirby, luego lucha en tu camino a través de Great Cave Offensive, Revenge of Meta Knight y Milky Way Wishes. ¡Cada juego es diferente Y te esperan sorpresas extra especiales!</desc>
+    <image>./images/Kirby Superstar-image.png</image>
+    <video>./videos/Kirby Superstar-video.mp4</video>
+    <thumbnail>./images/Kirby Superstar-thumb.png</thumbnail>
+    <rating>0.95</rating>
+    <releasedate>19960920T000000</releasedate>
+    <developer>HAL Laboratory</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Plataformas</genre>
+    <family>Kirby</family>
+    <players>1-2</players>
+    <crc32>89D0F7DC</crc32>
+    <lang>en</lang>
+    </game>
+  <game id="2559">
+    <path>./Tetris Attack.smc</path>
+    <name>Tetris Attack</name>
+    <desc>El juego consiste en alinear un mínimo de tres bloques del mismo tipo, tanto de forma horizontal como vertical. Para eso podemos mover dos bloques Cuando conseguimos una línea, los bloques que la forman desaparecen, permitiendo que los que están encima caigan, lo que puede ocasionar nuevas líneas. Además, al mismo tiempo más bloques irán apareciendo por la parte superior de la pantalla, haciendo que el conjunto de bloques vaya subiendo, y si llegan hasta arriba del todo perderemos la partida. También hay que indicar que según el número de líneas que hagamos a un tiempo o lo larga que sea una línea nos darán diferentes tipos de recompensas, como que no aparezcan más bloques por la parte de abajo durante un corto tiempo. A parte de todo esto hay que destacar los variados modos de juego que tenemos, entre los que están el modo de dos jugadores, el modo interminable, un modo historia y alguno más.</desc>
+    <image>./images/Tetris Attack-image.png</image>
+    <video>./videos/Tetris Attack-video.mp4</video>
+    <thumbnail>./images/Tetris Attack-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19960801T000000</releasedate>
+    <developer>Intelligent Systems</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Puzzle / Caída</genre>
+    <family>Tetris</family>
+    <players>1-2</players>
+    <crc32>43519EC9</crc32>
+    <lang>en</lang>
+    </game>
+  <game id="2285">
+    <path>./Alien 3.smc</path>
+    <name>Alien 3</name>
+    <desc>Alien³ es un videojuego basado en la secuela de la película del mismo nombre. La trama de la película comienza inmediatamente después del final de Aliens. Ellen Ripley, el personaje principal de la serie Alien, está en crio-sueño a bordo de la nave espacial Sulaco.
+
+Desafortunadamente, un extraterrestre o dos se han escondido en el Sulaco y han causado estragos dentro del barco. Por lo tanto, aterriza en el planeta de la colonia penitenciaria Fiorina 161. Ripley y los prisioneros desarmados tienen que encontrar la forma de sobrevivir al alienígena que aterroriza a la colonia hasta que llegue la ayuda.</desc>
+    <image>./images/Alien 3-image.png</image>
+    <video>./videos/Alien 3-video.mp4</video>
+    <thumbnail>./images/Alien 3-thumb.png</thumbnail>
+    <rating>0.6</rating>
+    <releasedate>19930501T000000</releasedate>
+    <developer>LJN</developer>
+    <publisher>Probe Software</publisher>
+    <genre>Plataformas</genre>
+    <family>Alien</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2194">
+    <path>./Adventures of Batman &amp; Robin.smc</path>
+    <name>The Adventures of Batman &amp; Robin</name>
+    <desc>Las aventuras de Batman y Robin es un juego de acción y plataformas donde controlas al vigilante enmascarado de Gotham en una serie de misiones en las que se encontrará con sus más grandes enemigos. Te toca deshacer sus planes luchando contra sus secuaces con tus gadgets.</desc>
+    <image>./images/Adventures of Batman &amp; Robin-image.png</image>
+    <video>./videos/Adventures of Batman &amp; Robin-video.mp4</video>
+    <thumbnail>./images/Adventures of Batman &amp; Robin-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19941201T000000</releasedate>
+    <developer>Konami</developer>
+    <publisher>Konami</publisher>
+    <genre>Plataformas</genre>
+    <family>Batman</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2603">
+    <path>./Arkanoid - doh it again.smc</path>
+    <name>Arkanoid : Doh It Again</name>
+    <desc>Al igual que el juego Breakout, el jugador controla el "Vaus", un recipiente espacial que actúa como "remo" del juego, lo que evita que una pelota caiga del campo de juego, intentando rebotar contra una cantidad de ladrillos. La bola que golpea un ladrillo hace que el ladrillo desaparezca. Cuando todos los ladrillos se han ido, el jugador pasa al siguiente nivel, donde aparece otro patrón de ladrillos. Hay una serie de variaciones (ladrillos que deben ser golpeados varias veces, naves enemigas en vuelo, etc.) y cápsulas de encendido para mejorar el Vaus (expandir el Vaus, multiplicar el número de bolas, equipar un cañón láser, romper directamente al siguiente nivel, etc.), pero la jugabilidad sigue siendo la misma.</desc>
+    <image>./images/Arkanoid - doh it again-image.png</image>
+    <video>./videos/Arkanoid - doh it again-video.mp4</video>
+    <thumbnail>./images/Arkanoid - doh it again-thumb.png</thumbnail>
+    <rating>0.65</rating>
+    <releasedate>19971101T000000</releasedate>
+    <developer>Taito</developer>
+    <publisher>Taito</publisher>
+    <genre>Acción / Romper Ladrillos</genre>
+    <family>Arkanoid</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2169">
+    <path>./Donkey Kong Country 2 - Diddy's Kong Quest.smc</path>
+    <name>Donkey Kong Country 2 : Diddy's Kong Quest</name>
+    <desc>El malvado Kapitán K. Rool ha secuestrado a Donkey Kong y, como rescate, exige su reserva de plátanos. ¡Pero los Kong no van a rendirse tan fácilmente!
+
+En esta secuela del éxito Donkey Kong Country ambientada en el mundo pirata, guía a Diddy y a Dixie Kong por ocho salvajes mundos de cómica acción en los que tendrás que combatir a los numerosos Kremlings que infestan Isla Cocodrilo.
+
+Revela secretos, aprende nuevas habilidades, conoce a los nuevos miembros de la familia Kong y toma las riendas de nuevos animales amigos como la araña Squitter y Rattly, la serpiente de cascabel.</desc>
+    <image>./images/Donkey Kong Country 2 - Diddy's Kong Quest-image.png</image>
+    <video>./videos/Donkey Kong Country 2 - Diddy's Kong Quest-video.mp4</video>
+    <thumbnail>./images/Donkey Kong Country 2 - Diddy's Kong Quest-thumb.png</thumbnail>
+    <releasedate>19951205T000000</releasedate>
+    <developer>Rareware</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Plataformas / Corre y Salta</genre>
+    <family>Donkey Kong</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2149">
+    <path>./Donkey Kong Country.smc</path>
+    <name>Donkey Kong Country</name>
+    <desc>Únete a DK y a Diddy en su afán por recuperar la provisión de plátanos que les han robado. Disfruta con más de 30 niveles que te pondrán a prueba, date una vuelta a lomos de tus amigos del reino animal y sobrevive a las vertiginosas fases de vagonetas mineras. ¡No seas el último mono y juega a Donkey Kong Country!</desc>
+    <image>./images/Donkey Kong Country-image.png</image>
+    <video>./videos/Donkey Kong Country-video.mp4</video>
+    <thumbnail>./images/Donkey Kong Country-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19941125T000000</releasedate>
+    <developer>Rareware</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Plataformas / Corre y Salta</genre>
+    <family>Donkey Kong</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="2269">
+    <path>./Earthworm Jim 2.smc</path>
+    <name>Earthworm Jim 2</name>
+    <desc>¡Dos por dos son cuatro! Demasiado para enumerar, pero sigue leyendo:
+
+Desde Evil the Cat's Circus of the Scars 'hasta el planeta de la carne, únete a Jim en una alocada persecución a través de la galaxia. Salvar vacas, frustrar a los abogados y burlar a Psy-Crow es todo un trabajo de un día para Jim. ¿Estás preparado para el desafío? ¿Puedes manejar la nueva arma increíble? ¡Excelente! Entonces deja de leer esto. Llévalo al mostrador y pruébalo en casa. Confíe en que nadie lo juegue ... ¡O COMA LA SUCIEDAD!</desc>
+    <image>./images/Earthworm Jim 2-image.png</image>
+    <video>./videos/Earthworm Jim 2-video.mp4</video>
+    <thumbnail>./images/Earthworm Jim 2-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19950101T000000</releasedate>
+    <developer>Shiny Entertainment</developer>
+    <publisher>Virgin</publisher>
+    <genre>Plataformas</genre>
+    <family>Earthworm Jim</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2212">
+    <path>./ActRaiser.sfc</path>
+    <name>ActRaiser</name>
+    <desc>¡Restaura la paz y el orden en el mundo de tu gente! Hace mucho tiempo, tú y tu gente construyeron una tierra pacífica. Desde entonces, tu mundo ha sido dominado y habitado por el malvado Tanzra y sus guardianes. Tu tierra que una vez fue tranquila se ha convertido en un caldo de cultivo para monstruos. Herido, te has retirado a tu Sky Palace y has caído en un sueño profundo.
+
+Ahora, han pasado muchos años y te has recuperado de tus heridas y tu sueño. Debes castigar a Tanzra y restaurar el mundo a tu gente o perder su fe para siempre.
+
+Modo de acciónnnInhala vida en la estatua modelada según tu semejanza para limpiar la tierra y derrotar a los monstruos conquistados.
+
+Modo de simulaciónnnAyude a su gente a desarrollar una nueva tierra a partir de lo que se ha purificado y construya ciudades con sus poderes.</desc>
+    <image>./images/ActRaiser-image.png</image>
+    <video>./videos/ActRaiser-video.mp4</video>
+    <thumbnail>./images/ActRaiser-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>19911102T000000</releasedate>
+    <developer>Quintet</developer>
+    <publisher>Enix</publisher>
+    <genre>Plataformas / Construcción y Gestión</genre>
+    <family>ActRaiser</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2222">
+    <path>./Mega Man VII.smc</path>
+    <name>Mega Man 7</name>
+    <desc>La cruzada del Dr. Wily para gobernar el mundo termina abruptamente a manos de Mega Man, entonces, ¿qué puede hacer un villano? ¡Crea una distracción y sal de la prisión! Mega Man tiene las manos ocupadas mientras 4 máquinas gigantescas salen del laboratorio del Dr. Wily para arrasar la ciudad, pero ... ¿quién está detrás de esta nueva trama cuando Wily se sienta tras las rejas?
+
+El Dr. Wily sabía que sus actos diabólicos terminarían con un fracaso algún día. Entonces, mientras los robots de su mente atacan por control remoto, el doctor siniestro sale de la prisión y sale volando en su nave espacial. ¡Titan Titan es engañado!
+
+Con la ayuda de Rush, Roll y Dr. Light, ¿puede Mega Man volver a colocar al resbaladizo Dr. Wily en la prisión a la que pertenece? El futuro del mundo depende de cada movimiento de Megaman.</desc>
+    <image>./images/Mega Man VII-image.png</image>
+    <video>./videos/Mega Man VII-video.mp4</video>
+    <thumbnail>./images/Mega Man VII-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19950902T000000</releasedate>
+    <developer>Capcom</developer>
+    <publisher>Capcom</publisher>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <family>Mega Man</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="2144">
+    <path>./Super Mario World.smc</path>
+    <name>Super Mario World</name>
+    <desc>Después de salvar el Mushroom Kingdom, los hermanos Mario y Luigi acuerdan irse de vacaciones a un lugar llamado «Dinosaur Land», donde habitan diversos tipos de dinosaurios. Mientras descansaban en la playa, sin embargo, la Princesa Toadstool desaparece. Cuando Mario y Luigi despiertan, ellos intentan encontrarla, y después de horas de búsqueda, se topan con un huevo gigante que yacía en un bosque. De repente, éste eclosiona y de él sale un joven dinosaurio llamado Yoshi, quien les dice que sus amigos dinosaurios también fueron encerrados dentro de huevos por unas «tortugas malignas». Mario y Luigi pronto se dan cuenta de que el responsable de estos actos debe ser el «Malvado Rey Koopa» Bowser, junto con sus hijos, los «Koopalings».
+Mario, Luigi y Yoshi se disponen a salvar a la Princesa Toadstool y a los amigos dinosaurios de Yoshi, explorando la «Dinosaur Land» para derrotar al Rey Koopa y a los Koopalings. Para ayudar a los protagonistas, el pequeño dinosaurio verde les regala una capa a medida que comienzan su travesía. Ambos personajes continúan siguiendo el rastro de Bowser, derrotando a los hijos del malvado rey durante el proceso, y rescatando de paso, a todos los amigos de Yoshi. Ellos finalmente llegan al castillo de Bowser, donde ellos lo confrontan en una batalla final. Consecuentemente, los hermanos derrotan al Rey Koopa y salvan a la Princesa, restaurando así de nuevo la paz en «Dinosaur Land».</desc>
+    <image>./images/Super Mario World-image.png</image>
+    <video>./videos/Super Mario World-video.mp4</video>
+    <thumbnail>./images/Super Mario World-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>19910813T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Plataformas / Corre y Salta</genre>
+    <family>Super Mario Bros</family>
+    <players>1-2</players>
+    <crc32>A31BEAD4</crc32>
+    <lang>en</lang>
+    </game>
+  <game id="2236">
+    <path>./ActRaiser 2.smc</path>
+    <name>ActRaiser 2</name>
+    <genre>Plataformas / Luchador con desplazamiento</genre>
+    <releasedate>19931101T000000</releasedate>
+    <players>1</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Enix</publisher>
+    <developer>Quintet</developer>
+    <desc>Después de escuchar su difícil situación, el Maestro desciende al mundo de abajo para luchar contra los monstruos y librar a la tierra del mal. Al igual que el original, cada área contiene dos "actos"; el primer acto de un área consiste en monstruos engendrados por un demonio menor nombrado después de una condición desfavorable, mientras que el segundo acto consiste en monstruos engendrados del mal primario, nombrado después de uno de los siete pecados capitales, con mayor desafío y peligro.</desc>
+    <family>ActRaiser</family>
+    <image>./images/ActRaiser 2-image.png</image>
+    <thumbnail>./images/ActRaiser 2-thumb.png</thumbnail>
+    <video>./videos/ActRaiser 2-video.mp4</video>
+  </game>
+  <game id="2139">
+    <path>./Battletoads &amp; Double Dragon - The Ultimate Team.smc</path>
+    <name>Battletoads &amp; Double Dragon</name>
+    <genre>Beat'em Up</genre>
+    <releasedate>19931001T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Sony Imagesoft</publisher>
+    <developer>Rareware</developer>
+    <desc>Dark Queen, enemiga principal de los Battletoads, hizo un pacto de alianza con Shadow Boss, el enemigo principal de los Double Dragon. De esta forma, pretendían conquistar juntos la tierra y posteriormente el universo.
+Para evitar esta gran amenaza, los Battletoads y los Double Dragons también hicieron una alianza, para luchar juntos contra sus enemigos.</desc>
+    <family>Double Dragon</family>
+    <image>./images/Battletoads &amp; Double Dragon - The Ultimate Team-image.png</image>
+    <thumbnail>./images/Battletoads &amp; Double Dragon - The Ultimate Team-thumb.png</thumbnail>
+    <video>./videos/Battletoads &amp; Double Dragon - The Ultimate Team-video.mp4</video>
+  </game>
+  <game id="2329">
+    <path>./Blacktorne.smc</path>
+    <name>Blackthorne</name>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <releasedate>19940923T000000</releasedate>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Interplay</publisher>
+    <developer>Blizzard Entertainment</developer>
+    <desc>Guarida de Sarlac , en lo profundo del corazón de Tuul: Una horda de demonios prepara la ofensiva final contra el rey Vlaros. Será un ataque completo, sin ninguna intención de dejar supervivientes. Su objetivo: ganar el control de la Lightstone.
+Stonefist , Al sur de la frontera: Antes del inminente ataque, el rey Vlaros confía a su hijo, Kyle Blackthorne, la misión de resguardar la Lightstone. Kyle es enviado a través de un portal mágico, en espera del día en que regresará a Tuul para cumplir su destino.
+Eso fue hace 20 años....</desc>
+    <family>Blackthorne</family>
+    <image>./images/Blacktorne-image.png</image>
+    <thumbnail>./images/Blacktorne-thumb.png</thumbnail>
+    <video>./videos/Blacktorne-video.mp4</video>
+  </game>
+  <game id="2219">
+    <path>./Demon's Crest.smc</path>
+    <name>Demon's Crest</name>
+    <genre>Plataformas</genre>
+    <releasedate>19941021T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>Un día, seis piedras mágicas cayeron desde el cielo, al reino de los demonios. Grabados en las piedras estaban los emblemas del Fuego, Tierra, Aire, Agua, Tiempo y Paraíso.Pronto, los demonios comenzaron a luchar por estas piedras mágicas, y una guerra civil estalló en el reino. Fue entonces cuando apareció el demonio Firebrand, un caído, engendro impío de las llamas del averno, y se alzó vencedor sobre sus congéneres. Pero los problemas para Firebrand solo acaban de comenzar...</desc>
+    <family>Gargoyle's Quest</family>
+    <image>./images/Demon's Crest-image.png</image>
+    <thumbnail>./images/Demon's Crest-thumb.png</thumbnail>
+    <video>./videos/Demon's Crest-video.mp4</video>
+  </game>
+  <game id="2186">
+    <path>./Dragon Ball Z - super butoden.smc</path>
+    <name>Dragon Ball Z Super Butouden</name>
+    <genre>Lucha</genre>
+    <releasedate>19931130T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.6</rating>
+    <lang>en</lang>
+    <publisher>Bandai</publisher>
+    <developer>TOSE</developer>
+    <desc>Dragon Ball Z: Super Butouden fue el primer juego de lucha basado en la franquicia Dragon Ball Z y el primero en introducir el modo de pantalla dividida en los juegos, donde la pantalla se divide en dos cada vez que uno de los dos combatientes se aleja demasiado para mantener ambos mostrados en una sola pantalla. Este título presenta las aventuras de Goku desde la batalla contra Piccolo en el torneo de artes marciales hasta la conclusión de los Juegos de Célula.</desc>
+    <family>Dragon Ball</family>
+    <image>./images/Dragon Ball Z - super butoden-image.png</image>
+    <thumbnail>./images/Dragon Ball Z - super butoden-thumb.png</thumbnail>
+    <video>./videos/Dragon Ball Z - super butoden-video.mp4</video>
+  </game>
+  <game id="2150">
+    <path>./Earthbound.smc</path>
+    <name>EarthBound</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19950601T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Ape</developer>
+    <desc>¡El terror intergaláctico ataca a la pequeña ciudad de Onett cuando un objeto extraterrestre llameante se estrella en la noche! ¡La tierra ahora se enfrenta a la destrucción inminente por la amenaza malvada universal conocida como Giygas! Armado con un bate de béisbol rajado, una galleta y una tarjeta de cajero automático, un valiente muchacho llamado Ness se compromete a salvar el planeta de una destrucción horrible. Primero debe encontrar a sus heroicos compañeros, Paula, Jeff y Poo. ¿Ness tendrá éxito en sus intentos de emboscar a innumerables monstruos atemorizantes mientras viaja? ¡La última prueba está en el inminente encuentro con el todopoderoso Giygas!</desc>
+    <family>Mother</family>
+    <image>./images/Earthbound-image.png</image>
+    <thumbnail>./images/Earthbound-thumb.png</thumbnail>
+    <video>./videos/Earthbound-video.mp4</video>
+  </game>
+  <game id="2428">
+    <path>./Fatal Fury Special.smc</path>
+    <name>Fatal Fury Special</name>
+    <genre>Lucha / Versus</genre>
+    <releasedate>19950401T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.65</rating>
+    <lang>en</lang>
+    <publisher>Takara</publisher>
+    <developer>Monolith</developer>
+    <desc>¡LA ABUELA de todas las batallas! 15 de las principales estrellas de la serie FATAL FURY se reúnen en el partido del milenio! ¡Usa a los resucitados Geese Howard y Wolfgang Krauser en una arena deslumbrante! ¡Todo lo que siempre has querido en un juego de lucha está aquí en FATAL FURY SPECIAL!</desc>
+    <family>Fatal Fury</family>
+    <image>./images/Fatal Fury Special-image.png</image>
+    <thumbnail>./images/Fatal Fury Special-thumb.png</thumbnail>
+    <video>./videos/Fatal Fury Special-video.mp4</video>
+  </game>
+  <game id="192449">
+    <path>./Final Fantasy II.smc</path>
+    <name>Final Fantasy II</name>
+    <genre>Juego de Rol / RPG por Equipos</genre>
+    <releasedate>19911102T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Square</publisher>
+    <developer>Square</developer>
+    <desc>En el reino de Barón, poderosas aeronaves dominan los cielos. A la cabeza de esta fuerza de combate de élite está Cecil, Capitán de las Alas Rojas. Cuando nuestra aventura comienza, Cecil y su escuadrón reciben la orden de robar un poderoso cristal de un reino rival. A su regreso, Cecil cuestiona las órdenes del Rey y es despojado de su mando. Para demostrar su lealtad, debe matar a un monstruo terrible y entregar un paquete misterioso a un pueblo vecino. Pero cuando el paquete explota, destruyendo a todos, Cecil y su amigo Kain juran luchar contra las fuerzas oscuras del Rey. ¿Serás capaz de salvar al mundo de su malvado plan para controlar los cristales? Prepárate para la aventura de rol más desafiante jamás vista.</desc>
+    <family>Final Fantasy</family>
+    <image>./images/Final Fantasy II-image.png</image>
+    <thumbnail>./images/Final Fantasy II-thumb.png</thumbnail>
+    <video>./videos/Final Fantasy II-video.mp4</video>
+  </game>
+  <game id="189696">
+    <path>./Final Fantasy IV.smc</path>
+    <name>Final Fantasy 4 - Easy Type</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19911029T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Square</publisher>
+    <developer>Square</developer>
+    <desc>En el reino de Barón, poderosas aeronaves dominan los cielos. A la cabeza de esta fuerza de combate de élite está Cecil, Capitán de las Alas Rojas. Cuando nuestra aventura comienza, Cecil y su escuadrón reciben la orden de robar un poderoso cristal de un reino rival. A su regreso, Cecil cuestiona las órdenes del Rey y es despojado de su mando. Para demostrar su lealtad, debe matar a un monstruo terrible y entregar un paquete misterioso a un pueblo vecino. Pero cuando el paquete explota, destruyendo a todos, Cecil y su amigo Kain juran luchar contra las fuerzas oscuras del Rey. ¿Serás capaz de salvar al mundo de su malvado plan para controlar los cristales? Prepárate para la aventura de rol más desafiante jamás vista.</desc>
+    <family>Final Fantasy</family>
+    <image>./images/Final Fantasy IV-image.png</image>
+    <thumbnail>./images/Final Fantasy IV-thumb.png</thumbnail>
+    <video>./videos/Final Fantasy IV-video.mp4</video>
+  </game>
+  <game id="2229">
+    <path>./Flashback.smc</path>
+    <name>Flashback : The Quest for Identity</name>
+    <genre>Plataformas</genre>
+    <releasedate>19940201T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>U.S. Gold</publisher>
+    <developer>Delphine Software International</developer>
+    <desc>2142. Tras escapar de la nave espacial, el joven científico Conrad B. Hart se despierta con amnesia en Titán, un satélite colonizado del planeta Saturno, con sus enemigos y secuestradores pisándole los talones. Deberá encontrar un modo de regresar a la Tierra, defenderse de los peligros que encuentre por el camino y desmantelar una gigantesca trama alienígena que amenaza el planeta...</desc>
+    <family>Flashback</family>
+    <image>./images/Flashback-image.png</image>
+    <thumbnail>./images/Flashback-thumb.png</thumbnail>
+    <video>./videos/Flashback-video.mp4</video>
+  </game>
+  <game id="2137">
+    <path>./Illusion of Time (Spain).7z</path>
+    <name>Illusion of Time</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19950427T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>es</lang>
+    <region>eu</region>
+    <publisher>Enix</publisher>
+    <developer>Quintet</developer>
+    <desc>Radiando una luz ominosa en su camino, el Cometa del Caos amenaza la existencia del planeta. Las batallas entran en erupción y una paz tentativa es devuelta a las tierras. El peligro acecha mientras las órbitas del Caos Cometa y las temibles bestias aguardan. En la Era de la Exploración nace un niño llamado Will. La tragedia golpea durante una expedición a la Torre de Babel que separa a Will de su padre. Las fuerzas telequinéticas se despiertan cuando Will vuelve a Cabo Sur. Armado con sus habilidades de transformación de dos grandes guerreros, Will debe salvar el planeta. Gaia, el espíritu guía de Will otorga poderes mágicos y consejos a lo largo de su viaje. Con la ayuda de sus amigos, Will debe luchar contra enemigos implacables y resolver los rompecabezas de las antiguas ruinas. La paciencia y el conocimiento son esenciales para reunir a este padre e hijo.</desc>
+    <image>./images/Illusion of Time (Spain)-image.png</image>
+    <thumbnail>./images/Illusion of Time (Spain)-thumb.png</thumbnail>
+    <video>./videos/Illusion of Time (Spain)-video.mp4</video>
+  </game>
+  <game id="2193">
+    <path>./Jurassic Park (Spain).7z</path>
+    <name>Jurassic Park</name>
+    <genre>Aventura</genre>
+    <releasedate>19931229T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>es</lang>
+    <region>eu</region>
+    <publisher>Ocean</publisher>
+    <developer>Ocean</developer>
+    <desc>¡CAZA Y SERÁS CAZADO!
+
+Si la película te emocionó, los gráficos REAL 3-D de Ocean te dejarán boquiabierto.
+
+Esto es en tu cara, ojo-a-globo ocular, movimiento completo en 3-D. Te acercaremos más a las principales atracciones que nunca antes. Tan cerca, que cuando te encuentras mirando a los orificios nasales de un ave rapaz hambrienta, casi puedes oler su aliento.
+
+Juega el mejor juego de todos los tiempos: Jurassic Park en 3-D.
+
+¡Disfruta tu estancia!</desc>
+    <family>Jurassic Park</family>
+    <image>./images/Jurassic Park (Spain)-image.png</image>
+    <thumbnail>./images/Jurassic Park (Spain)-thumb.png</thumbnail>
+    <video>./videos/Jurassic Park (Spain)-video.mp4</video>
+  </game>
+  <game id="2155">
+    <path>./Killer Instinct.smc</path>
+    <name>Killer Instinct</name>
+    <genre>Lucha / Versus</genre>
+    <releasedate>19950801T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Rareware</developer>
+    <desc>No esperes en interminables colas de arcade para jugar: Killer Instinct llega a Super NES con acción, gráficos y sonido que aniquila a todos los demás juegos de combate.
+Fulgore, Jago, B.Orchid, Spinal y todos tus guerreros favoritos compiten en el Torneo Ultratech KI. Cada combatiente se involucra en la Teoría Combo KI de movimientos conectados y tácticas de finalización para destruir a sus oponentes. Con increíbles exhibiciones de eyelasers, lanceros de hielo, patadas de viento y láseres láser, estos intrépidos luchadores demuestran su destreza en la batalla. Pero recuerda, si pierdes, ¡es un héroe cero!</desc>
+    <family>Killer Instinct</family>
+    <image>./images/Killer Instinct-image.png</image>
+    <thumbnail>./images/Killer Instinct-thumb.png</thumbnail>
+    <video>./videos/Killer Instinct-video.mp4</video>
+  </game>
+  <game id="2268">
+    <path>./Kirby's Dream Land 3.smc</path>
+    <name>Kirby's Dream Land 3</name>
+    <genre>Plataformas</genre>
+    <releasedate>19971127T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>HAL Laboratory</developer>
+    <desc>¡Eso significa que el viejo rey Dedede está en eso otra vez! ¡Está causando sus travesuras y Dreamland está en problemas! ¡Kirby, el héroe residente de Dreamland, se propone enseñar una lección a Dedede, esta vez con la ayuda de muchos de sus buenos amigos!
+
+¡Pero espera! ¡Algo esta mal! Dedede no parece ser él mismo ...
+
+¡Parece que Kirby tiene que detener a Dedede y descubrir qué le pasa! Casi parece que algo lo está controlando ...</desc>
+    <family>Kirby</family>
+    <image>./images/Kirby's Dream Land 3-image.png</image>
+    <thumbnail>./images/Kirby's Dream Land 3-thumb.png</thumbnail>
+    <video>./videos/Kirby's Dream Land 3-video.mp4</video>
+  </game>
+  <game id="2234">
+    <path>./Lost Vikings, The (Spain).7z</path>
+    <name>The Lost Vikings</name>
+    <genre>Plataformas</genre>
+    <releasedate>19931028T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.8</rating>
+    <lang>es</lang>
+    <region>eu</region>
+    <publisher>Interplay</publisher>
+    <developer>Silicon &amp; Synapse</developer>
+    <desc>En el juego controlamos a tres vikingos que tienen diferentes habilidades. Por una parte tenemos a Erik, que es líder del grupo y tiene las habilidades de saltar y derribar muros a cabezazos. El segundo vikingo es Olaf, que porta un escudo que le permite detener a los enemigos y sus ataques y, si pone el escudo sobre su cabeza, también puede planear durante unos segundos como una pluma y ser usado por Erik para saltar más algo. El último y no por ello menos importante es Baleog, que está armado con un arco y una espada. Ambas armas pueden ser utilizadas para acabar con los enemigos, además de que el arco también puede activar interruptores que están fuera de nuestro alcance. Utilizando con inteligencia las habilidades de los tres vikingos tenemos que abrirnos paso por escenarios variados para llegar al final de cada nivel, que viene indicado con una señal que pone Exit. El número de jugadores va de uno a tres.</desc>
+    <family>Lost Vikings</family>
+    <image>./images/Lost Vikings, The (Spain)-image.png</image>
+    <thumbnail>./images/Lost Vikings, The (Spain)-thumb.png</thumbnail>
+    <video>./videos/Lost Vikings, The (Spain)-video.mp4</video>
+  </game>
+  <game id="2237">
+    <path>./Magical Quest Starring Mickey Mouse.smc</path>
+    <name>The Magical Quest Starring Mickey Mouse</name>
+    <genre>Plataformas</genre>
+    <releasedate>19921201T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>El objetivo de cada nivel será avanzar por cada uno de los niveles mientras evitamos a los enemigos y las trampas del camino, con el único fin de llegar al final del camino, aunque como es natural antes de poder concluir el nivel tenemos que enfrentarnos a un jefe que precisa una estrategia distinta. Para esto, Mickey cuenta con unos movimientos básicos, que son saltar y coger cosas. Con los saltos podemos acabar con los enemigos, aunque la mayoría precisa más de un salto para ser abatido. Otros con el primer salto quedarán aturdidos, y podemos aprovechar esos momentos para agarrarlos. Las cosas que tenemos sujetas pueden usarse para lanzárselas a los malos, pero si es un enemigo el que tenemos cogido hay que darse prisa en hacerlo, porque tras un tiempo recobran el conocimiento y nos pueden golpear. Uno de los detalles más originales del juego son los disfraces de Mickey, que en total son tres y le confieren habilidades especiales. El disfraz de mago le permite respirar debajo del agua, controlar una alfombra voladora y disparar magia a los enemigos, aunque esto vacía la barra de poder del ratón. El disfraz de bombero le permite disparar agua, que puede servir para atacar a los enemigos, apagar fuegos y formar bloques de hielo, pero esto también vacía la barra de poder. Por último, el disfraz de montañero le deja usar un garfio para derrotar a los malos o para agarrarse a salientes.</desc>
+    <family>Mickey Mouse</family>
+    <image>./images/Magical Quest Starring Mickey Mouse-image.png</image>
+    <thumbnail>./images/Magical Quest Starring Mickey Mouse-thumb.png</thumbnail>
+    <video>./videos/Magical Quest Starring Mickey Mouse-video.mp4</video>
+  </game>
+  <game id="2209">
+    <path>./Mega Man X 2.smc</path>
+    <name>Mega Man X2</name>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <releasedate>19950303T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>Justo cuando Mega Man X pensó que había derrotado a todos los X-Hunters, varios meses después se produjo un levantamiento desde una fábrica abandonada. ¡Mientras que 8 X-Hunters completamente nuevos ocupan Mega Man X, una triple amenaza trama para resucitar un arma secreta que es muy familiar!
+
+El buen Dr. Light suministra Mega man X con increíbles habilidades nuevas escondidas en cápsulas enterradas en las profundidades de la superficie. Y con nuevos vehículos como el ciclo de ataque móvil y los poderes que obtiene de los X-Hunters, Mega Man X estará listo para enfrentar su destino como Maverick Hunter. ¡Ahora es todo o Zero para Mega Man X!</desc>
+    <family>Mega Man</family>
+    <image>./images/Mega Man X 2-image.png</image>
+    <thumbnail>./images/Mega Man X 2-thumb.png</thumbnail>
+    <video>./videos/Mega Man X 2-video.mp4</video>
+  </game>
+  <game id="2159">
+    <path>./Mega Man X.smc</path>
+    <name>Mega Man X</name>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <releasedate>19940118T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>Cerca del final de su vida, el Dr. Light logra crear la primera de una nueva serie de robots que cambiarán el mundo. Capaz de pensar y tomar decisiones, este nuevo robot presenta un gran peligro además de grandes posibilidades. Temeroso de las posibles consecuencias de desatar su creación en el mundo, el Dr. Light decide sellarlo en una cápsula y probar sus sistemas hasta que sean totalmente confiables. El futuro tendrá que decidir su destino ...
+
+Liberado de la cápsula por el Dr. Cain, "X" nace en el mundo del futuro donde las rebeliones de robots son una cosa del pasado. Pero cuando el Dr. Cain intenta implementar los diseños del Dr. Light en una nueva serie de Reploids, algo va horriblemente mal. ¡Ahora el futuro está al borde de la destrucción y un nuevo Mega Hombre debe emerger para enfrentar a Sigma y sus fuerzas antes de que la raza humana sea eliminada del planeta!</desc>
+    <family>Mega Man</family>
+    <image>./images/Mega Man X-image.png</image>
+    <thumbnail>./images/Mega Man X-thumb.png</thumbnail>
+    <video>./videos/Mega Man X-video.mp4</video>
+  </game>
+  <game id="2200">
+    <path>./Mortal Kombat 2.smc</path>
+    <name>Mortal Kombat II</name>
+    <genre>Lucha / Versus</genre>
+    <releasedate>19940909T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Acclaim</publisher>
+    <developer>Sculptured Software</developer>
+    <desc>Tras su fracaso en derrotar a Liu Kang en el primer juego Mortal Kombat, el malvado hechicero Shang Tsung le ruega a su maestro, Shao Kahn, que le perdone la vida. Él le dice a Shao Kahn que la invitación para Mortal Kombat no se puede rechazar, y si lo tienen en Outworld, los guerreros del Reino de la Tierra deben asistir. Kahn acepta este plan e incluso restaura la juventud de Tsung. Luego extiende la invitación a Raiden, quien reúne a sus guerreros y los lleva al Outworld. El nuevo torneo es mucho más peligroso, ya que Shao Kahn tiene la ventaja de local, y una victoria de Outworld le permitirá someter a Earthrealm.</desc>
+    <family>Mortal Kombat</family>
+    <image>./images/Mortal Kombat 2-image.png</image>
+    <thumbnail>./images/Mortal Kombat 2-thumb.png</thumbnail>
+    <video>./videos/Mortal Kombat 2-video.mp4</video>
+  </game>
+  <game id="2444">
+    <path>./Ninja Gaiden Trilogy.smc</path>
+    <name>Ninja Gaiden Trilogy</name>
+    <genre>Plataformas</genre>
+    <releasedate>19950810T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Tecmo</publisher>
+    <developer>Team Ninja</developer>
+    <desc>¡Aquí está! La NINJA GAIDEN TRILOGY completa que solicitaste. Disfruta de los 3 juegos clásicos de Nintendo Ninja Gaiden en un Super NES Game Pak.
+Sigue las aventuras de Ryu mientras lucha contra las antiguas fuerzas de la oscuridad con sus poderes Ninjutsu. Usa la estrategia, la astucia y el engaño para adquirir las armas especiales ninja necesarias para tener éxito en esta aventura épica.
+
+La serie Ninja Gaiden cuenta su historia a través de la animación de pantalla de cine única de Tecmo. ¡Este no se lo puede perder!</desc>
+    <family>Ninja Gaiden</family>
+    <image>./images/Ninja Gaiden Trilogy-image.png</image>
+    <thumbnail>./images/Ninja Gaiden Trilogy-thumb.png</thumbnail>
+    <video>./videos/Ninja Gaiden Trilogy-video.mp4</video>
+  </game>
+  <game id="2575">
+    <path>./Paperboy 2.smc</path>
+    <name>Paperboy 2</name>
+    <genre>Deportes / Ciclismo</genre>
+    <releasedate>19911102T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.5</rating>
+    <lang>en</lang>
+    <publisher>Mindscape</publisher>
+    <developer>Tengen</developer>
+    <desc>Paperboy 2 es un videojuego lanzado en 1991. Es la secuela del videojuego Paperboy, el cual consistía en repartir periódicos desde la bicicleta evitando los obstáculos en la carretera, como perros, coches, y básicamente todo lo que puedas imaginar. ¡Cuidado!, algunas personas te disparan bolas de cañón! ¡Y es mejor que estés seguro de que sólo arrojes papeles en las casas adecuadas!</desc>
+    <family>Paperboy</family>
+    <image>./images/Paperboy 2-image.png</image>
+    <thumbnail>./images/Paperboy 2-thumb.png</thumbnail>
+    <video>./videos/Paperboy 2-video.mp4</video>
+  </game>
+  <game id="2270">
+    <path>./Rock N' Roll Racing (USA).sfc</path>
+    <name>Rock n' Roll Racing</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>19931101T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <region>us</region>
+    <publisher>Interplay</publisher>
+    <developer>Silicon &amp; Synapse</developer>
+    <desc>Rock n' Roll Racing es un juego de carreras y combate de vehículos de Blizzard que salió tanto para Super Nintendo como para Mega Drive, siendo títulos muy semejantes pero con algunas diferencias técnicas, menos evidentes en los gráficos, pero mucho más palpables en el aspecto sonoro. Y es que la versión de Super Nintendo tenía unas melodías con una calidad de sonido mucho mejor, con una recreación de los instrumentos mucho más conseguida. Es por ello que, pese a que la versión de Mega Drive tiene un par de circuitos más y una melodía exclusiva (que además da la impresión de que es la que mejor suena de esta versión, tal vez porque fue creada para esta versión), es mejor para muchos más la versión de Super Nintendo, ya que este es un juego donde tiene un papel fundamental la música, ya que la banda sonora la forman temas clásicos de rock. Entre las que se incluyen "Born to Be Wild," "Bad to the Bone," "The Peter Gunn Theme," "Highway Star" and "Paranoid."</desc>
+    <image>./images/Rock N' Roll Racing (USA)-image.png</image>
+    <thumbnail>./images/Rock N' Roll Racing (USA)-thumb.png</thumbnail>
+    <video>./videos/Rock N' Roll Racing (USA)-video.mp4</video>
+  </game>
+  <game id="2141">
+    <path>./Secret of Mana.smc</path>
+    <name>Secret of Mana</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19931003T000000</releasedate>
+    <players>1-3</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Square</publisher>
+    <developer>Square</developer>
+    <desc>Hay una fuerza en el universo que mantiene el bien y el mal en perfecto equilibrio. Se llama el árbol del Mana. Pero una espada mágica ha engañado a un joven guerrero para alterar el equilibrio, propagando el mal en toda la tierra. Por este motivo, el guerrero debe emprender un viaje peligroso para encontrar las semillas del árbol del Mana, que han estado ocultas durante siglos, sólo entonces podrás restaurar la armonía en el universo. En esta increíble aventura, las cosas no son como parecen. El mundo está cambiando y debes ayudar al guerrero a enderezarlo. Y la única manera de tener éxito es resolver el secreto del Mana.</desc>
+    <family>Mana</family>
+    <image>./images/Secret of Mana-image.png</image>
+    <thumbnail>./images/Secret of Mana-thumb.png</thumbnail>
+    <video>./videos/Secret of Mana-video.mp4</video>
+  </game>
+  <game id="2304">
+    <path>./Spider-Man &amp; Venom - Maximum Carnage.smc</path>
+    <name>Spider-Man &amp; Venom : Maximum Carnage</name>
+    <genre>Beat'em Up</genre>
+    <releasedate>19940902T000000</releasedate>
+    <players>1</players>
+    <rating>0.65</rating>
+    <lang>en</lang>
+    <publisher>LJN</publisher>
+    <developer>Software Creations</developer>
+    <desc>Siguiendo paso a paso la historia del cómic original, guía a Spider-Man y Venom mientras intentan atrapar a Carnage, que ha escapado de prisión y reunido un gran número de peligrosos aliados, con el fin de lograr la venganza.
+Con escenas intermedias tomadas directamente de las páginas del cómic, este es un juego con gráficas bastante atractivas y personajes grandes y bien animados. Cuenta además con una amplia variedad de movimientos, y muchos héroes y villanos secundarios que complementan la historia. Muy divertido y desafiante.</desc>
+    <family>Marvel</family>
+    <image>./images/Spider-Man &amp; Venom - Maximum Carnage-image.png</image>
+    <thumbnail>./images/Spider-Man &amp; Venom - Maximum Carnage-thumb.png</thumbnail>
+    <video>./videos/Spider-Man &amp; Venom - Maximum Carnage-video.mp4</video>
+  </game>
+  <game id="19196">
+    <path>./Star Fox.smc</path>
+    <name>Star Fox</name>
+    <genre>Shoot'em Up</genre>
+    <releasedate>19930301T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>En el lejano sistema estelar Lylat, imagínate al mando de la futurista y fuertemente armada nave de guerra Arwing. Diriges el contraataque de la invasión de cientos de tanques alienígenas, naves de guerra, plataformas de disparo de rayos laser y súper acorazados. Maniobra a velocidades increíbles entre cañones envueltos en niebla, densos cinturones de asteroides y oleadas de las más sofisticadas operaciones defensivas enemigas. Tendrás que usar toda tu habilidad y astucia para lograr llevar la lucha al terreno enemigo, el planeta Venom, y destruir el Cerebro Central para obtener la victoria.</desc>
+    <image>./images/Star Fox-image.png</image>
+    <thumbnail>./images/Star Fox-thumb.png</thumbnail>
+    <video>./videos/Star Fox-video.mp4</video>
+  </game>
+  <game id="2528">
+    <path>./Super Adventure Island II.smc</path>
+    <name>Super Adventure Island II</name>
+    <genre>Plataformas</genre>
+    <releasedate>19950102T000000</releasedate>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Hudson</publisher>
+    <developer>Hudson</developer>
+    <desc>Luego de una gloriosa boda, Master Higgins y su esposa Tina iban camino a su luna de miel. Pero, surgiendo de la nada, una tormenta tropical cruzó el mar y separó a la feliz pareja. Tina sobrevivió, pero despertó con todos sus recuerdos borrados, en la isla Waku-waku. En otra isla, Master Higgins también despertaba sin memoria; pero como buen guerrero, decide que debe recuperar su pasado.
+Tina se había quedado a vivir en Waku-waku. El rey de la isla pronto se enamoró de ella, y decidieron casarse. Pero justo cuando el rey iba a poner el anillo de compromiso, una gigantesca ave bajó del cielo y secuestró a Tina. Master Higgins, que pasaba por el castillo, escuchó sus gritos de auxilio, aunque sin reconocer de quien se trataba... luego de ser reclutado por el rey, Master Higgins inicia una nueva aventura para rescatar a Tina, ¡aunque no recuerde quién es ella!</desc>
+    <family>Adventure Island</family>
+    <image>./images/Super Adventure Island II-image.png</image>
+    <thumbnail>./images/Super Adventure Island II-thumb.png</thumbnail>
+    <video>./videos/Super Adventure Island II-video.mp4</video>
+  </game>
+  <game id="2322">
+    <path>./Super Bomberman 2.smc</path>
+    <name>Super Bomberman 2</name>
+    <genre>Acción / Laberinto</genre>
+    <releasedate>19940907T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Hudson</publisher>
+    <developer>Hudson</developer>
+    <desc>¡Los alienígenas, dispuestos a dominar el mundo, han enviado a un equipo de cyborgs malvados para enfrentarse al poderoso Bomberman! Nuestro héroe lucha valientemente en vano ya que los cyborgs, conocidos como los Five Bad Bombers, logran capturarlo. Con Bomberman atrapado en una prisión subterránea, los alienígenas son libres de llevar a cabo sus malvados planes sin ninguna oposición. ¡Pero espera! Bomberman escapa y un resplandor de esperanza brilla para el universo! Bomberman debe enfrentarse a hordas de enemigos e innumerables trampas dispersas por la enorme base alienígena. ¡El futuro del mundo está en sus manos!</desc>
+    <family>Bomberman</family>
+    <image>./images/Super Bomberman 2-image.png</image>
+    <thumbnail>./images/Super Bomberman 2-thumb.png</thumbnail>
+    <video>./videos/Super Bomberman 2-video.mp4</video>
+  </game>
+  <game id="2173">
+    <path>./Super Castlevania IV.smc</path>
+    <name>Super Castlevania IV</name>
+    <genre>Plataformas</genre>
+    <releasedate>19911204T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Konami</publisher>
+    <developer>Konami</developer>
+    <desc>Cada 100 años, las fuerzas del bien se debilitan misteriosamente. Durante éste período, el poder de Drácula comienza a resurgir, haciéndose cada vez más y más fuerte. Drácula ha revivido muchas veces; sin embargo, sus siniestras acciones han sido constantemente detenidas por la familia Belmont. Han pasado 100 años desde la última confrontación, y ahora, la serenidad de Transilvania vuelve a verse amenazada por las fuerzas tenebrosas... Es el año 1691. En una oscura y tenebrosa noche, Drácula volvió a levantarse de su tumba, sumiendo las tierras de Europa en un estado de total oscuridad. Las legiones del Conde crecieron como una plaga, infestando la tierra como una enfermedad donde quiera que fuesen. Simon Belmont, bisnieto de Christopher Belmont, fue quien escuchó los lamentos del pueblo; armado con el legendario látigo Vampire Killer, iniciará un viaje hacia Castlevania, el hogar ancestral del Príncipe de la Oscuridad. Su misión es clara: enviar al Conde de regreso a su oscura tumba, para así salvar al mundo de su tormento.</desc>
+    <family>Castlevania</family>
+    <image>./images/Super Castlevania IV-image.png</image>
+    <thumbnail>./images/Super Castlevania IV-thumb.png</thumbnail>
+    <video>./videos/Super Castlevania IV-video.mp4</video>
+  </game>
+  <game id="2180">
+    <path>./Super Ghouls 'N Ghosts.smc</path>
+    <name>Super Ghouls'n Ghosts</name>
+    <genre>Plataformas / Luchador con desplazamiento</genre>
+    <releasedate>19911101T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>¡Todos aclamen al gran Arthur, el valeroso caballero!
+
+Hace años, lograste exterminar los terroríficos fantasmas del Reino de los Ghouls que habían invadido la tierra, y rescataste a la princesa Guinevere. Desde entonces, has viajado a lo largo y ancho de este mundo, buscando poderosas armas imbuidas de Magia Blanca.
+
+Pero ahora, el reino ha sido envuelto en un escalofriante hechizo. Sardius, el Emperador del Mal, ha secuestrado a la princesa Guinevere, llevándola a las mohosas criptas de la Zona Fantasma. El Reino de los Ghouls ha revivido, y Criaturas de los No-muertos asolan la tierra.
+
+Una vez más, debes sobrevivir a un peligroso viaje hacia las profundidades del Reino de los Ghouls. Batallarás con horribles ectoplasmas y espectros cuyo toque es mortal. Los vampiros se arremolinarán alrededor de tu cabeza. Serás atacado por voraces plantas, hambrientas de huesos para triturar. La tierra crujirá, los mares se agitarán, y te verás rodeado por monstruos de la oscuridad.
+
+Tu valor y habilidad te permitirán seguir avanzando a través de indescriptibles horrores. Y en el camino, un arma poderosa - la Magia - espera por ti!
+
+Desenvaina tu espada, Arthur. ¡Es hora de comenzar la misión!</desc>
+    <family>Ghosts'n Goblins</family>
+    <image>./images/Super Ghouls 'N Ghosts-image.png</image>
+    <thumbnail>./images/Super Ghouls 'N Ghosts-thumb.png</thumbnail>
+    <video>./videos/Super Ghouls 'N Ghosts-video.mp4</video>
+  </game>
+  <game id="2153">
+    <path>./Super Mario Kart.smc</path>
+    <name>Super Mario Kart</name>
+    <genre>Carreras, Conducción / Carreras 3ª persona</genre>
+    <releasedate>19920901T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>¡Arranca motores con el único e inimitable Super Mario Kart, el fantástico juego que inició la saga que sigue dando caña!
+
+Elige entre ocho personajes del Reino Champiñón, desde los habituales Mario y Bowser hasta otros que aparecen en exclusiva como Donkey Kong Jr. ¡Quema el asfalto en circuitos de siempre como el Circuito Mario, el Castillo de Bowser, Playa Koopa y la temida Senda Arco Iris!
+
+Corre solo o con un amigo, o desafíalo en el modo Batalla original, el favorito para dos jugadores.</desc>
+    <family>Mario Kart</family>
+    <image>./images/Super Mario Kart-image.png</image>
+    <thumbnail>./images/Super Mario Kart-thumb.png</thumbnail>
+    <video>./videos/Super Mario Kart-video.mp4</video>
+  </game>
+  <game id="2183">
+    <path>./Teenage Mutant Ninja Turtles IV - Turtles in Time.smc</path>
+    <name>Teenage Mutant Ninja Turtles IV : Turtles in Time</name>
+    <genre>Beat'em Up</genre>
+    <releasedate>19920101T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Konami</publisher>
+    <developer>Konami</developer>
+    <desc>Al igual que la máquina recreativa, en esta versión de "El cerebro de la bestia" podremos elegir entre las cuatro tortugas para enfentarnos a las distintas fases. De esta forma, avanzaremos con tortuga selecciona, tortugas si jugamos en el modo de dos jugadores, por los distintos escenarios mientras golpeamos a los enemigos que se nos acerquen. Como en todo beat'em up que se precie, al final de cada nivel nos tendremos que enfrentar al enemigo final de fase, todos ellos sacados directamente de la serie de dibujos animados.</desc>
+    <family>Teenage Mutant Ninja Turtles</family>
+    <image>./images/Teenage Mutant Ninja Turtles IV - Turtles in Time-image.png</image>
+    <thumbnail>./images/Teenage Mutant Ninja Turtles IV - Turtles in Time-thumb.png</thumbnail>
+    <video>./videos/Teenage Mutant Ninja Turtles IV - Turtles in Time-video.mp4</video>
+  </game>
+  <game id="2288">
+    <path>./The Addams Family.smc</path>
+    <name>The Addams Family</name>
+    <genre>Plataformas</genre>
+    <releasedate>19920301T000000</releasedate>
+    <players>1</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Ocean</publisher>
+    <developer>Ocean</developer>
+    <desc>La familia Addams es un juego de plataformas. La historia tiene lugar hacia el final de la película de La Familia Addams, cuando la familia es desalojada de su mansión por un celoso abogado. Como si eso no fuera suficiente, nos enteramos de que Morticia, Pugsley, Miércoles y los otros han desaparecido! Así que juegas como Gómez, que debe buscar a su familia y derrotar a todos sus enemigos hasta llegar al último: el abogado!</desc>
+    <family>The Addams Family</family>
+    <image>./images/The Addams Family-image.png</image>
+    <thumbnail>./images/The Addams Family-thumb.png</thumbnail>
+    <video>./videos/The Addams Family-video.mp4</video>
+  </game>
+  <game id="2189">
+    <path>./The Lion King.smc</path>
+    <name>The Lion King</name>
+    <genre>Plataformas</genre>
+    <releasedate>19941101T000000</releasedate>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Virgin</publisher>
+    <developer>Westwood</developer>
+    <desc>¿Crees que quieres ser Rey? Ser realista. Estás comenzando la vida como Simba, el cachorro. Para sobrevivir y convertirte en un poderoso león adulto, debes perfeccionar tu ataque salvaje, tu rugido temerario y tu lucha maestra con las cuatro patas. Si sobrevives al desafío, te convertirás en un león adulto fuerte y feroz.
+
+Así que prepárate para chatarra con hienas. Explosión a través de un cementerio de elefantes. Combate una estampida en tu cara de ñus que pisotean. Y será mejor que dejes de salir con holgazanes como Timon y Pumba, ¡a menos que quieras estar molestando bichos por el resto de tu vida!
+
+¿Estás seguro de que quieres ser rey? Entonces es hora de liberarse en la pelea más mortífera de la historia. Derrota a tu malvado tío Scar. Recuperar las Tierras del Orgullo. Y reclame su lugar legítimo en el Círculo de la Vida.</desc>
+    <family>The Lion King</family>
+    <image>./images/The Lion King-image.png</image>
+    <thumbnail>./images/The Lion King-thumb.png</thumbnail>
+    <video>./videos/The Lion King-video.mp4</video>
+  </game>
+  <game id="2164">
+    <path>./Trials of Mana (World) (Es) (Rev 1) (Collection of Mana).7z</path>
+    <name>Seiken Densetsu 3</name>
+    <genre>Juego de Rol / RPG de Acción</genre>
+    <releasedate>19950930T000000</releasedate>
+    <players>1-3</players>
+    <rating>0.85</rating>
+    <lang>en,es</lang>
+    <region>eu</region>
+    <publisher>Squaresoft</publisher>
+    <developer>Square</developer>
+    <desc>Seiken Densetsu 3 se establece en el mismo mundo que los dos juegos anteriores de Seiken Densetsu (el primero es Final Fantasy Adventure y el segundo es más conocido como el Secret of Mana). El misterioso poder de Mana es también el centro de todos los acontecimientos de Seiken Densetsu 3.Han pasado años y todos los poderes destructivos del Mana han sido firmemente sellados por la Espada del Mana  en ocho semillas, todas colocadas en ocho reinos diferentes. Pero algunas personas saben de esos poderes sellados, y no quieren liberarlos por el bien de la humanidad, sino por su propio beneficio, como el reino de Altena, que se está congelando lentamente y que sólo puede ser salvado por el legendario poder.</desc>
+    <family>Mana</family>
+    <image>./images/Trials of Mana (World) (Es) (Rev 1) (Collection of Mana)-image.png</image>
+    <thumbnail>./images/Trials of Mana (World) (Es) (Rev 1) (Collection of Mana)-thumb.png</thumbnail>
+    <video>./videos/Trials of Mana (World) (Es) (Rev 1) (Collection of Mana)-video.mp4</video>
+  </game>
+  <game id="2284">
+    <path>./Final Fight 3.smc</path>
+    <name>Final Fight 3</name>
+    <genre>Beat'em Up</genre>
+    <releasedate>19951221T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>Metro City está bajo ataque, y esta vez una nueva organización criminal está reclamando responsabilidad. Sacando páginas de la guía de Mad Gear Gang, el temido grupo llamado SKULL CROSS sigue los mismos trucos: incendios, terrorismo, asalto y robo a mano armada.
+
+El alcalde Mike Haggar regresa con el poderoso Guy a su lado. Y con la ayuda de Lucia, la amiga de Cody, y Dean, una máquina de combate que busca venganza, el equipo de Final Fight emboscará al enemigo en su próximo movimiento. Elige jugar a uno de los 4 personajes, cada uno con su propio estilo de lucha y técnicas de eliminación "SUPER". ¡Haga que un amigo se una para asaltar por partida doble a la escoria de la ciudad y aplastar a cualquier punk que se cruce en su camino!</desc>
+    <family>Final Fight</family>
+    <image>./images/Final Fight 3-image.png</image>
+    <thumbnail>./images/Final Fight 3-thumb.png</thumbnail>
+    <video>./videos/Final Fight 3-video.mp4</video>
+  </game>
+  <game id="2278">
+    <path>./Super Bomberman 5 - Gold Cartridge.smc</path>
+    <name>Super Bomberman 5</name>
+    <genre>Acción / Laberinto</genre>
+    <releasedate>19970228T000000</releasedate>
+    <players>1-5</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Hudson</publisher>
+    <developer>Hudson</developer>
+    <desc>El planeta Bomber era un lugar pacífico... hasta que un día, el malvado Terrorin hizo aparición. Invadiendo la carcel de Bomber, Terrorin logró liberar de prisión al grupo de villanos conocidos como los Fiendish Bombers; todos ellos acordaron ayudar a Terrorin en sus planes de conquistar el universo, a cambio de su libertad. Cuando esta noticia llegó a oídos de Bomberman, él y el Bomberman Negro, acompañados por los Rooeys, se pusieron de inmediato en camino, con el objetivo de derrotar a los Bomber criminales y detener los planes de Terrorin.</desc>
+    <family>Bomberman</family>
+    <image>./images/Super Bomberman 5 - Gold Cartridge-image.png</image>
+    <thumbnail>./images/Super Bomberman 5 - Gold Cartridge-thumb.png</thumbnail>
+    <video>./videos/Super Bomberman 5 - Gold Cartridge-video.mp4</video>
+  </game>
+  <game id="109337">
+    <path>./Super Copa (Latin America) (Es,Pt).7z</path>
+    <name>Super Copa</name>
+    <genre>Deportes / Fútbol</genre>
+    <players>1-2</players>
+    <rating>0.65</rating>
+    <lang>pt,es</lang>
+    <region>eu</region>
+    <publisher>American Softworks</publisher>
+    <developer>Sculptured Software</developer>
+    <desc>Toda la emoción de los aficionados que viven la intensidad del fútbol, en este título que utiliza las revolucionarias gráficas en Modo 7 que dan increibles efectos de rotación. Escoge de entre 35 equipos americanos y del mundo en este juego que combina la acción y el control del juego. Pasa, dribla, chuta... haz correr tu adrenalina por todo el campo. ¡Pero cuidado con los defensas! Pueden entrar duro. Centra el balón para una cabecita o un espectacular gol de chilenita... y ahora tu oponente tiene el balón: aplaca su furia, entra fuerte si es necesario pero recupera la posesión del balón. Aquí está todo: la emoción, la energía, el rugir de la multitud.</desc>
+    <image>./images/Super Copa (Latin America) (Es,Pt)-image.png</image>
+    <video>./videos/Super Copa (Latin America) (Es,Pt)-video.mp4</video>
+  </game>
+  <game id="2213">
+    <path>./Batman Returns.smc</path>
+    <name>Batman Returns</name>
+    <genre>Beat'em Up</genre>
+    <releasedate>19930402T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Konami</publisher>
+    <developer>Konami</developer>
+    <desc>El silencio de la noche en Gotham se ve interrumpido por los desgarradores llantos de un bebé recién nacido, pero lo que en un principio debería ser motivo de felicidad, se torna en pesadilla cuando los padres de la criatura descubren las terribles deformidades con las que ha nacido su hijo. En un horrible acto de crueldad y desesperación, los padres dejan al bebé en una cuna flotando por el río de Gotham, donde es arrastrada por la corriente hasta el antiguo Mundo Ártico del zoológico abandonado de la ciudad. Allí unos gigantescos pingüinos emperador se hacen cargo de la sufrida criatura como si de una más de sus crías se tratase... 33 años después, justo en la víspera de Navidad, comienzan a reportarse casos de la aparición de una extraña figura oscura con forma de pingüino por todo Gotham. Muchos creen que se trata solo de una leyenda urbana, pero tras ella se esconde en realidad un siniestro plan de venganza contra la cuidad entera...</desc>
+    <family>Batman</family>
+    <image>./images/Batman Returns-image.png</image>
+    <thumbnail>./images/Batman Returns-thumb.png</thumbnail>
+    <video>./videos/Batman Returns-video.mp4</video>
+  </game>
+  <game id="2170">
+    <path>./Aladdin (Spain).7z</path>
+    <name>Disney's Aladdin</name>
+    <genre>Plataformas</genre>
+    <releasedate>19940127T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>es</lang>
+    <region>eu</region>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>Descubre un mundo completamente nuevo de aventuras ... Durante años, Jafar, el malvado consejero del sultán ha buscado un tesoro mágico: una sola lámpara que posee la llave del poder más grande del mundo. Con este objetivo a la vista, Jafar descubre que solo una persona en el mundo puede reclamar la lámpara mágica de la temida Cueva de las Maravillas, una cuyos trapos esconden un corazón puro, ¡un diamante en bruto! Únete a Aladdin y su mono mascota, Abu, mientras corren por el mercado hacia su cita con el destino. Mira como Jafar engaña a nuestro héroe y a su amigo para que recuperen la lámpara de la peligrosa Cueva de las Maravillas. ¡Pero Aladdin y Abu burlan a Jafar, liberando el poder de un loco genio azul! Ahora Aladdin tendrá la oportunidad de echar a perder los planes tortuosos de Jafar y ganar la mano de la hermosa princesa Jasmine. Pero hará falta más que magia para hacer realidad sus deseos ...</desc>
+    <family>Aladdin</family>
+    <image>./images/Aladdin (Spain)-image.png</image>
+    <thumbnail>./images/Aladdin (Spain)-thumb.png</thumbnail>
+    <video>./videos/Aladdin (Spain)-video.mp4</video>
+  </game>
+  <game id="2195">
+    <path>./Asterix.smc</path>
+    <name>Astérix</name>
+    <genre>Plataformas</genre>
+    <releasedate>19930301T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Infogrames</publisher>
+    <developer>Infogrames</developer>
+    <desc>El año es 50 A.C. La Galia está completamente ocupada por los romanos. Bueno, casi en su totalidad ... Una pequeña aldea gaulish sigue desafiando a las fuerzas de ocupación, los aldeanos protegidos por una poción mágica que los hace invencibles. ¡Pero ahora Obelix ha desaparecido! Los romanos han confirmado su captura y lo llevaron a un destino desconocido.
+
+Astérix es un juego de plataformas basado en los comics homónimos, donde el corto y bigotudo Gaul tiene que progresar a través de niveles ubicados en toda Europa, luchando contra romanos y varios animales agresivos en el camino, para rescatar a su amigo Obelix antes de que César lo arroje a los leones ....</desc>
+    <family>Astérix</family>
+    <image>./images/Asterix-image.png</image>
+    <thumbnail>./images/Asterix-thumb.png</thumbnail>
+    <video>./videos/Asterix-video.mp4</video>
+  </game>
+  <game id="2181">
+    <path>./Donkey Kong Country 3 - Dixie Kong's Double Trouble.smc</path>
+    <name>Donkey Kong Country 3 : Dixie Kong's Double Trouble!</name>
+    <genre>Plataformas / Corre y Salta</genre>
+    <releasedate>19961122T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Rareware</developer>
+    <desc>Donkey Kong y Diddy han sido secuestrados por los Kremlings, así que Dixie Kong y su nuevo aliado, Kiddy, deben embarcarse en una misión para rescatarlos.
+
+En la última entrega de la trilogía Donkey Kong Country, podrás controlar a Dixie y a Kiddy, y tendrás que utilizar sus habilidades para atravesar terrenos peligrosos, buscar a los escurridizos pájaros plátano y derrotar a KAOS, el nuevo jefe de los Kremlings.
+
+Dixie Kong's Double Trouble te trae el doble de diversión con los animales amigos de siempre y las nuevas incorporaciones, un modo de equipo y otro de competición para dos jugadores y unos gráficos aún más impresionantes.</desc>
+    <family>Donkey Kong</family>
+    <image>./images/Donkey Kong Country 3 - Dixie Kong's Double Trouble-image.png</image>
+    <thumbnail>./images/Donkey Kong Country 3 - Dixie Kong's Double Trouble-thumb.png</thumbnail>
+    <video>./videos/Donkey Kong Country 3 - Dixie Kong's Double Trouble-video.mp4</video>
+  </game>
+  <game id="2143">
+    <path>./Chrono Trigger.smc</path>
+    <name>Chrono Trigger</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19950811T000000</releasedate>
+    <players>1</players>
+    <rating>0.95</rating>
+    <lang>en</lang>
+    <publisher>Squaresoft</publisher>
+    <developer>Squaresoft</developer>
+    <desc>El milenio. Un portal está abierto. La cadena del tiempo esta rota. Un joven es transportado al pasado, alterando el curso de la historia y el resultado del futuro. Tiene que encontrar el camino a casa, pero primero debe viajar a los bordes externos del tiempo para reparar la cronología del mundo. En el camino, se encuentra con amigos y enemigos extraños, utiliza dispositivos y vehículos increíbles, y penetra y neutraliza las fortalezas del pasado, el presente y el futuro. Una paradoja ha sido creada. Si no restaura el orden del tiempo, nada volverá a ser lo mismo. Él es quien se convertirá en un héroe. Él es Crono.</desc>
+    <family>Chrono Trigger</family>
+    <image>./images/Chrono Trigger-image.png</image>
+    <thumbnail>./images/Chrono Trigger-thumb.png</thumbnail>
+    <video>./videos/Chrono Trigger-video.mp4</video>
+  </game>
+  <game id="94366">
+    <path>./Super Descentralizado 95.smc</path>
+    <name>Captain Tsubasa 4 - Pro No Rival-tachi</name>
+    <genre>Deportes / Fútbol</genre>
+    <releasedate>19930403T000000</releasedate>
+    <players>1</players>
+    <rating>0.65</rating>
+    <lang>en</lang>
+    <publisher>Tecmo</publisher>
+    <developer>Tecmo</developer>
+    <desc>Captain Tsubasa 4: Professionals Rivals es un videojuego de fútbol perteneciente a la serie de juegos del Manga y Anime Capitán Tsubasa. Es la cuarta entrega de la serie y la continuidad de Captain Tsubasa 3: The Kaiser's Challenge. Fue lanzado el 3 de abril de 1993 por Tecmo siendo exclusivo para Super Famicom es decir solo Japón, este juego es muy superior gráficamente a sus tres predecesores ya que cuenta con varias mejoras gráficas y un sistema de historia diferente a todas las anteriores entregas, ya que cuenta con hasta 4 finales alternativos que desarrollan varias historias que nunca convergen entre si</desc>
+    <family>Captain Tsubasa</family>
+    <image>./images/Super Descentralizado 95-image.png</image>
+    <thumbnail>./images/Super Descentralizado 95-thumb.png</thumbnail>
+    <video>./videos/Super Descentralizado 95-video.mp4</video>
+  </game>
+  <game id="2259">
+    <path>./Lufia (Spain).7z</path>
+    <name>Lufia</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19960831T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>es</lang>
+    <region>eu</region>
+    <publisher>Taito</publisher>
+    <developer>Neverland</developer>
+    <desc>Esta emocionante secuela de la leyenda lufiana enfrenta al cazador de monstruos Maxim y seis compañeros de aventuras contra los siniestros siniestros. La historia se desarrolla en un complejo laberinto, desafiándote con grandes batallas, rompecabezas y muchas sorpresas. ¡Incluso puedes hacer crecer tus propios monstruos! ¡Disfrutarás de innumerables horas en un fantástico viaje en el mundo de Lufia!</desc>
+    <family>Lufia</family>
+    <image>./images/Lufia (Spain)-image.png</image>
+    <thumbnail>./images/Lufia (Spain)-thumb.png</thumbnail>
+    <video>./videos/Lufia (Spain)-video.mp4</video>
+  </game>
+  <game id="2250">
+    <path>./Tiny Toon Adventures - Buster Busts Loose! (Spain).7z</path>
+    <name>Tiny Toon Adventures : Buster Busts Loose!</name>
+    <genre>Plataformas</genre>
+    <releasedate>19930624T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>es</lang>
+    <region>eu</region>
+    <publisher>Konami</publisher>
+    <developer>Konami</developer>
+    <desc>En el juego controlaremos a Buster Bunny y podremos realizar tres habilidades básicas, que son el salto, el salto con patada y la carrera. Esta última es especialmente útil para sortear algunos obstáculos, ya que nos permitirá correr por las paredes hasta que se acabe el impulso. Al final de cada fase nos esperará una ruleta que elegirá la fase de bonus que jugaremos. Hay cinco diferentes y todas son muy divertidas, que son el Bingo, el Squash, el Maze, el Seesaw y Comathon Hampton.</desc>
+    <family>Tiny Toon</family>
+    <image>./images/Tiny Toon Adventures - Buster Busts Loose! (Spain)-image.png</image>
+    <thumbnail>./images/Tiny Toon Adventures - Buster Busts Loose! (Spain)-thumb.png</thumbnail>
+    <video>./videos/Tiny Toon Adventures - Buster Busts Loose! (Spain)-video.mp4</video>
+  </game>
+</gameList>

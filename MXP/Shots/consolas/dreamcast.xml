@@ -1,0 +1,474 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gameList>
+  <game id="13574">
+    <path>./Crazy Taxi 2 (Europe) (En,Ja,Fr,De,Es).chd</path>
+    <name>Crazy Taxi 2</name>
+    <desc>¡Súbete al taxi y que empiece la diversión! Crazy Taxi 2 llega con fantásticas novedades: En esta ocasión los chillones taxis recorren las bulliciosas calles de Nueva York con 4 nuevos personajes, muchos viajeros con los que conseguir buenas propinas y una nueva técnica llamada Crazy Jump, que te permitirá evitar los atascos saltando por encima de otros vehículos.</desc>
+    <image>./images/Crazy Taxi 2 (Europe) (En,Ja,Fr,De,Es)-image.png</image>
+    <video>./videos/Crazy Taxi 2 (Europe) (En,Ja,Fr,De,Es)-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>20010607T000000</releasedate>
+    <developer>Hitmaker</developer>
+    <publisher>SEGA</publisher>
+    <genre>Carreras, Conducción / Carreras 3ª persona</genre>
+    <family>Crazy Taxi</family>
+    <players>1</players>
+    <lang>de,en,jp,es,fr</lang>
+    <region>eu</region>
+    </game>
+  <game id="13508">
+    <path>./Dino Crisis (Spain).chd</path>
+    <name>Dino Crisis</name>
+    <desc>La jugabilidad es similar a la de Resident Evil, aunque no igual. Una de las principales diferencias es que el jugador camina por pasillos desolados, donde es frecuentemente atacado por dinosaurios. El jugador puede neutralizar a los enemigos con varias armas: una pistola, una escopeta y un lanzagranadas. Cada una tiene municiones diferentes y especiales; la escopeta puede, incluso, disparar dardos sedantes o venenosos.
+Aunque los enemigos no son muchos, el jugador se encuentra completamente solo y debe superar una gran cantidad de acertijos, conseguir municiones y claves de seguridad para poder acceder a nuevas zonas.</desc>
+    <image>./images/Dino Crisis (Spain)-image.png</image>
+    <video>./videos/Dino Crisis (Spain)-video.mp4</video>
+    <rating>0.7</rating>
+    <releasedate>20001222T000000</releasedate>
+    <developer>NexTech</developer>
+    <publisher>Capcom</publisher>
+    <genre>Aventura / Terror de Supervivencia</genre>
+    <family>Dino Crisis</family>
+    <players>1</players>
+    <lang>es</lang>
+    <region>eu</region>
+    </game>
+  <game id="13562">
+    <path>./MDK2 (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>MDK 2</name>
+    <desc>MDK 2 en Dreamcast es un juego de acción en el que lideras un equipo de 3 acólitos extravagantes. El juego es muy rico en términos de posibilidades de movimiento y acciones. Al requerir una cierta cantidad de habilidad, se sabe que la aplicación es de gran dificultad.</desc>
+    <image>./images/MDK2 (Europe) (En,Fr,De,Es,It)-image.png</image>
+    <video>./videos/MDK2 (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>20000407T000000</releasedate>
+    <developer>BioWare</developer>
+    <publisher>Interplay</publisher>
+    <genre>Aventura</genre>
+    <family>Mdk</family>
+    <players>1</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    </game>
+  <game id="13502">
+    <path>./Rayman 2 - The Great Escape (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>Rayman 2 : The Great Escape</name>
+    <desc>Una banda de piratas ha invadido el mundo de Rayman para apoderarse de sus criaturas únicas y venderlas a un circo intergaláctico. Nuestro poderoso héroe, Rayman, ha sido capturado y despojado de sus poderes. Consigue escapar del cautiverio y se embarca en una peligrosa misión para regresar a su mundo conquistado donde debe liberar a todos sus amigos encarcelados de los piratas.</desc>
+    <image>./images/Rayman 2 - The Great Escape (Europe) (En,Fr,De,Es,It)-image.png</image>
+    <video>./videos/Rayman 2 - The Great Escape (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>20000317T000000</releasedate>
+    <developer>Ubisoft</developer>
+    <publisher>Ubisoft</publisher>
+    <genre>Plataformas</genre>
+    <family>Rayman</family>
+    <players>1-4</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    </game>
+  <game id="13538">
+    <path>./Sega Rally 2 - Sega Rally Championship (USA).chd</path>
+    <name>Sega Rally 2</name>
+    <desc>Sega Rally 2 es un videojuego de carreras desarrollado por Sega AM3 para la placa de recreativas arcade Sega Model 3. Es la secuela del videojuego de 1994, Sega Rally Championship. Fue lanzado para la versión arcade en febrero de 1998, para Dreamcast fue lanzado en Japón el 28 de enero de 1999, en Europa el 14 de octubre de 1999 y en América del Norte el 27 de noviembre de 1999. Una versión para PC fue lanzada ese mismo año.
+
+Al igual que su predecesor, Sega Rally Championship, el objetivo del juego es conducir con éxito a lo largo de un circuito para llegar a los puntos de control, para que el jugador pueda ser así recompensado con más tiempo y pueda llegar a la meta. En Sega Rally 2 se añadieron nuevos vehículos, nuevas configuraciones de entorno para los circuitos (incluyendo un circuito nevado y un circuito que se encuentra en una isla). También se incluyó una versión actualizada del circuito del Sáhara que aparecía en el juego original.</desc>
+    <image>./images/Sega Rally 2 - Sega Rally Championship (USA)-image.png</image>
+    <video>./videos/Sega Rally 2 - Sega Rally Championship (USA)-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>19991124T000000</releasedate>
+    <developer>SEGA</developer>
+    <publisher>SEGA</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Sega Rally</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    <region>us</region>
+    </game>
+  <game id="13594">
+    <path>./Space Channel 5 (Europe) (En,Fr,De,Es).chd</path>
+    <name>Space Channel 5</name>
+    <desc>¡Hola, Space Cats! Algunos extraterrestres molestos llamados morolianos están tratando de apoderarse de la Tierra, ¡y están obligando a la población a bailar sin cesar! Space Channel 5, el canal de noticias del planeta, ha enviado a la reportera más genial que tienen, Ulala, a cubrir los últimos acontecimientos, ¡pero a esos pequeños morolianos también se les debe enseñar una lección! Así que ahora depende de Ulala bailar y conocer a los alienígenas para vencerlos en su propio juego y liberar a la población de la Tierra. ¡Bailad, Space Cats, porque vamos a darles a esos alienígenas un poco de su propio ritmo!</desc>
+    <image>./images/Space Channel 5 (Europe) (En,Fr,De,Es)-image.png</image>
+    <video>./videos/Space Channel 5 (Europe) (En,Fr,De,Es)-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>20001006T000000</releasedate>
+    <developer>SEGA</developer>
+    <publisher>SEGA</publisher>
+    <genre>Música y Baile</genre>
+    <players>1</players>
+    <lang>de,en,es,fr</lang>
+    <region>eu</region>
+    </game>
+  <game id="13522">
+    <path>./Tony Hawk's Pro Skater 2.cdi</path>
+    <name>Tony Hawk's Pro Skater 2</name>
+    <desc>La secuela del galardonado título PSX y N64, Tony Hawk's Pro Skater 2 agrega montones de nuevos trucos a los que contenía el juego original, y una lista completa de los mejores skaters del mundo. Vuela a través de algunos de los mejores parques de patinaje del mundo o crea el tuyo propio y compártelos con tus compañeros. También puedes crear tu propio patinador, con una selección de ropa y tablas oficiales. Los gráficos mejorados y la opción de música alternativa o hip-hop se suman a las opciones infinitas y llenas de acción.</desc>
+    <image>./images/Tony Hawk's Pro Skater 2-image.png</image>
+    <video>./videos/Tony Hawk's Pro Skater 2-video.mp4</video>
+    <rating>0.95</rating>
+    <releasedate>20001106T000000</releasedate>
+    <developer>Neversoft Entertainment</developer>
+    <publisher>Activision</publisher>
+    <genre>Deportes / Skate</genre>
+    <family>Tony Hawk</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="13557">
+    <path>./Virtua Tennis 2 - Sega Professional Tennis (Europe) (En,Fr,De,Es).chd</path>
+    <name>Virtua Tennis 2 : Sega Professional Tennis</name>
+    <desc>Virtua Tennis 2 la aclamada secuela de Virtua Tennis.
+Gráficos y controles mejorados, con un total de 16 jugadores a elegir, incluidas jugadoras femeninas.
+Tres modos de juego distintos, incluido un modo carrera en el que podrás personalizar tu propio tenista y competir con el haciendo evolucionar sus habilidades y estadísticas</desc>
+    <image>./images/Virtua Tennis 2 - Sega Professional Tennis (Europe) (En,Fr,De,Es)-image.jpg</image>
+    <video>./videos/Virtua Tennis 2 - Sega Professional Tennis (Europe) (En,Fr,De,Es)-video.mp4</video>
+    <rating>0.95</rating>
+    <releasedate>20011123T000000</releasedate>
+    <developer>Hitmaker</developer>
+    <publisher>SEGA</publisher>
+    <genre>Deportes / Tenis</genre>
+    <family>Virtua Tennis</family>
+    <players>1-4</players>
+    <lang>de,en,es,fr</lang>
+    <region>eu</region>
+    </game>
+  <game id="13497">
+    <path>./Legacy of Kain - Soul Reaver (Spain).chd</path>
+    <name>Legacy of Kain : Soul Reaver</name>
+    <desc>Nosgoth es un mundo en decadencia, condenado cuando Kain, tras asesinar a los ocho guardianes de los Pilares, se negó a sacrificarse para restaurar el equilibrio. En su lugar, resucitó a seis vampiros lugartenientes, incluyendo a Raziel, para dominar la tierra.
+
+Con el tiempo, los vampiros se convirtieron en la especie dominante, mientras los humanos eran diezmados. Sin embargo, la inmortalidad de los vampiros impide que sus almas pasen por la Rueda del Destino, un ciclo de reencarnación controlado por el misterioso Dios Mayor. Esto ha provocado la corrupción de Nosgoth, llevándolo al borde del colapso.
+
+Mil años después, Raziel regresa de la muerte con un nuevo propósito: vengarse de Kain y restaurar el equilibrio. En su viaje, descubrirá oscuros secretos sobre Nosgoth, su destino y la verdad detrás de la Rueda del Destino, enfrentándose a sus antiguos hermanos y a fuerzas más allá de su comprensión.</desc>
+    <image>./images/Legacy of Kain - Soul Reaver (Spain)-image.png</image>
+    <video>./videos/Legacy of Kain - Soul Reaver (Spain)-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>20000225T000000</releasedate>
+    <developer>Crystal Dynamics</developer>
+    <publisher>Eidos Interactive</publisher>
+    <genre>Aventura</genre>
+    <family>Legacy of Kain</family>
+    <players>1</players>
+    <lang>es</lang>
+    <region>eu</region>
+    </game>
+  <game id="13514">
+    <path>./Crazy Taxi (USA).chd</path>
+    <name>Crazy Taxi</name>
+    <desc>Como taxista temerario, su objetivo es acumular mucho dinero antes de que termine su turno. Es una carrera contra el reloj en la que debemos recoger pasajeros y asustarlos a través de las concurridas calles y callejones para que regresen a sus respectivos destinos. Para mantener el medidor de dinero bien alto, tienes que tomar la ruta más rápida posible, aunque ello signifique ir contra las leyes de tráfico - sólo un poco. Hay que tener un buen control sobre el volante, agudizar sus sentidos, y no perder la calma.</desc>
+    <image>./images/Crazy Taxi (USA)-image.png</image>
+    <video>./videos/Crazy Taxi (USA)-video.mp4</video>
+    <rating>0.95</rating>
+    <releasedate>20000201T000000</releasedate>
+    <developer>SEGA</developer>
+    <publisher>SEGA</publisher>
+    <genre>Carreras, Conducción / Carreras 3ª persona</genre>
+    <family>Crazy Taxi</family>
+    <players>1</players>
+    <lang>en</lang>
+    <region>us</region>
+    </game>
+  <game id="13546">
+    <path>./Marvel vs. Capcom 2 (USA).chd</path>
+    <name>Marvel vs. Capcom 2</name>
+    <desc>Marvel vs. Capcom 2: New Age of Heroes is a fighting game, developed and published by Capcom. It is the fourth game in the Marvel vs. Capcom series of fighting games. With the fourth installment of this series, Capcom simplified the player controls to make the gameplay more accessible to the wider audience of casual players. The button configuration was trimmed down to 4 main buttons and 2 assist buttons. The game also features a different air-combo system and 3 on 3 tag, compared to the 2 on 2 tag from previous games in the series.</desc>
+    <image>./images/Marvel vs. Capcom 2 (USA)-image.png</image>
+    <video>./videos/Marvel vs. Capcom 2 (USA)-video.mp4</video>
+    <rating>0.85</rating>
+    <releasedate>20000627T000000</releasedate>
+    <developer>Capcom</developer>
+    <publisher>Virgin</publisher>
+    <genre>Lucha</genre>
+    <family>Marvel</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    <region>us</region>
+    <scrap name="TheGamesDB" date="20260105T072541" />
+  </game>
+  <game id="13510">
+    <path>./Re-Volt (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>Re-Volt</name>
+    <desc>Re-Volt en Dreamcast es un juego de carreras de coches radiocontrol. Se encuentran disponibles muchos vehículos con características específicas. Las carreras tienen lugar en una amplia variedad de entornos, a la escala de su pequeño vehículo. Tienes muchas bonificaciones que te permiten poner algunas trampas en las ruedas de tus oponentes.</desc>
+    <video>./videos/Re-Volt (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+    <rating>0.75</rating>
+    <releasedate>19991217T000000</releasedate>
+    <developer>Acclaim Entertainment</developer>
+    <publisher>Acclaim Entertainment</publisher>
+    <genre>Carreras, Conducción</genre>
+    <players>1-4</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    </game>
+  <game id="13500">
+    <path>./Soulcalibur (Europe) (En,Fr,De,Es).chd</path>
+    <name>SoulCalibur</name>
+    <desc>res años después de la caída de Cervantes, la maldad de Soul Edge sigue extendiéndose. Siegfried Schtauffen, quien derrotó a la espada maldita, ha sido consumido por su poder, transformándose en Nightmare. Ahora, recorre Europa en una sangrienta masacre para restaurar su oscura energía.
+
+Mientras Nightmare siembra el caos, numerosos guerreros se lanzan a la búsqueda de Soul Edge. Algunos desean destruirla y liberar al mundo de su corrupción, mientras que otros ansían reclamar su poder. Entre ellos se encuentran Taki, Sophitia y otros valientes luchadores que enfrentaron la maldición en el pasado.
+
+El destino de la humanidad pende de un hilo mientras se desata una nueva batalla entre el bien y el mal. Soul Edge continúa su legado de destrucción, pero en medio del conflicto, una nueva fuerza emerge: la legendaria Soulcalibur, la única arma capaz de contrarrestar su oscuridad.</desc>
+    <image>./images/Soulcalibur (Europe) (En,Fr,De,Es)-image.png</image>
+    <video>./videos/Soulcalibur (Europe) (En,Fr,De,Es)-video.mp4</video>
+    <rating>1</rating>
+    <releasedate>19991126T000000</releasedate>
+    <developer>Namco</developer>
+    <publisher>Namco</publisher>
+    <genre>Lucha / 3D</genre>
+    <family>SoulCalibur</family>
+    <players>1-2</players>
+    <lang>de,en,es,fr</lang>
+    <region>eu</region>
+    </game>
+  <game id="13561">
+    <path>./Worms World Party (Europe) (En,Fr,De,Es,It,Nl,Sv,Da).chd</path>
+    <name>Worms World Party</name>
+    <desc>Los gusanos están de vuelta, más mortíferos que nunca.
+Aprenderás que no hay nada más peligroso que un Gusano con una bazuca o una escopeta ...
+
+A primera vista, Worms World Party puede parecer muy similar a Worms Armageddon. Sin embargo, esta vez el juego ha sido especialmente diseñado pensando en el multijugador. Hasta 6 jugadores pueden luchar al mismo tiempo en redes locales o en Internet, utilizando el propio servicio de búsqueda de parejas Team17, llamado Wormnet.
+
+Otras adiciones bienvenidas son Wormpot, que puede proporcionar 400 variaciones de juego desde "Modo Goliat" a "Gusanos sangrantes", cientos de nuevos paisajes, banderas y fanfarrias, y una carga de misiones para un solo jugador.</desc>
+    <image>./images/Worms World Party (Europe) (En,Fr,De,Es,It,Nl,Sv,Da)-image.png</image>
+    <video>./videos/Worms World Party (Europe) (En,Fr,De,Es,It,Nl,Sv,Da)-video.mp4</video>
+    <rating>0.8</rating>
+    <releasedate>20010427T000000</releasedate>
+    <developer>Team 17</developer>
+    <publisher>Titus</publisher>
+    <genre>Estrategia</genre>
+    <family>Worms</family>
+    <players>1-4</players>
+    <lang>de,en,es,fr,it,nl</lang>
+    <region>eu</region>
+    <scrap name="HfsDB" date="20260105T070306" />
+  </game>
+  <game id="13631">
+    <path>./Daytona USA 2001 (Europe) (En,Fr,De,Es).chd</path>
+    <name>Daytona USA 2001</name>
+    <desc>Calienta los motores, aquí está Daytona USA 2001 en Dreamcast. Un juego de carreras puramente arcade, donde se permiten todos los disparos. Puedes elegir entre 4 coches y una docena de circuitos.</desc>
+    <image>./images/Daytona USA 2001 (Europe) (En,Fr,De,Es)-image.png</image>
+    <video>./videos/Daytona USA 2001 (Europe) (En,Fr,De,Es)-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>20010427T000000</releasedate>
+    <developer>Amusement Vision</developer>
+    <publisher>Infogrames</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Daytona USA</family>
+    <players>1-4</players>
+    <lang>de,en,es,fr</lang>
+    <region>eu</region>
+    </game>
+  <game id="200126">
+    <path>./De La Jet Set Radio (Japan) (En,Ja,Fr,De,Es).chd</path>
+    <name>De La Jet Set Radio</name>
+    <genre>Deportes</genre>
+    <releasedate>20010101T000000</releasedate>
+    <players>1</players>
+    <rating>0.95</rating>
+    <lang>jp,de,en,es,fr</lang>
+    <region>jp</region>
+    <publisher>SEGA</publisher>
+    <developer>Smilebit</developer>
+    <desc>"De La Jet Set Radio" es una re-edición del juego "Jet Set Radio" editado en Japón, con bastantes cambios, incluida la adición de niveles extra ya presentes en las versiones del juego de EE.UU y de Europa.</desc>
+    <image>./images/De La Jet Set Radio (Japan) (En,Ja,Fr,De,Es)-image.jpg</image>
+    <video>./videos/De La Jet Set Radio (Japan) (En,Ja,Fr,De,Es)-video.mp4</video>
+  </game>
+  <game id="13555">
+    <path>./House of the Dead.cdi</path>
+    <name>The House of the Dead 2</name>
+    <genre>Disparos con periférico</genre>
+    <releasedate>19990909T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>SEGA</publisher>
+    <developer>CRI</developer>
+    <desc>The House of The Dead 2 es una conversión del popular juego de arcade de pistolas de luz de Sega. En este juego encarnas el papel de un detective para detener a un loco que ha desatado zombies y otras criaturas horribles en una ciudad italiana. Tienes que matar a los monstruos, salvar a la gente y descubrir los planes detrás de este caos. El juego utiliza una cámara de juego automática que se desplaza de forma predeterminada a medida que te aventuras por la ciudad matando a las criaturas y rescatando personas. Se incluyen modos adicionales como entrenamiento y contrarreloj que invitan a la rejugabilidad</desc>
+    <family>House of the Dead</family>
+    <image>./images/House of the Dead-image.png</image>
+    <video>./videos/House of the Dead-video.mp4</video>
+  </game>
+  <game id="13525">
+    <path>./Power Stone 2.cdi</path>
+    <name>Power Stone 2</name>
+    <genre>Lucha</genre>
+    <releasedate>20000823T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Eidos Interactive</publisher>
+    <developer>Capcom</developer>
+    <desc>¡El juego de lucha más revolucionario del mundo vuelve! Power Stone 2 te lleva a cualquier lugar del mundo, te permite agarra objetos en pleno combate e introduce nuevas innovaciones impresionantes a la clásica serie de lucha. Ahora, hasta cuatro jugadores pueden enzarzarse en batallas con etapas interactivas y de diferentes niveles. 
+
+¿Te atreves a pasar uno de los ratos mas divertidos de tu vida?</desc>
+    <family>Power Stone</family>
+    <image>./images/Power Stone 2-image.jpg</image>
+    <video>./videos/Power Stone 2-video.mp4</video>
+  </game>
+  <game id="13494">
+    <path>./Resident Evil 3 - Nemesis (Europe) (Fr,Es).chd</path>
+    <name>Resident Evil 3 : Nemesis</name>
+    <genre>Aventura / Terror de Supervivencia</genre>
+    <releasedate>20001221T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>es,fr</lang>
+    <region>eu</region>
+    <publisher>Virgin Interactive</publisher>
+    <developer>Capcom</developer>
+    <desc>El horror de supervivencia Resident Evil 3: Nemesis en Dreamcast tiene lugar durante los eventos de Resident Evil 2. Usted juega esta vez, Jill Valentine, y tiene que escapar con vida de Raccoon City, devastada por zombies. Némesis, el monstruo exterminador de los últimos supervivientes está sobre tus talones.</desc>
+    <family>Resident Evil</family>
+    <image>./images/Resident Evil 3 - Nemesis (Europe) (Fr,Es)-image.png</image>
+    <video>./videos/Resident Evil 3 - Nemesis (Europe) (Fr,Es)-video.mp4</video>
+  </game>
+  <game id="13540">
+    <path>./Street Fighter III - Third Strike.cdi</path>
+    <name>Street Fighter III : 3rd Strike</name>
+    <genre>Lucha</genre>
+    <releasedate>20001004T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Virgin Interactive</publisher>
+    <developer>Capcom</developer>
+    <desc>Tercera actualización de Street Fighter 3, el clásico juego de lucha 2D de Capcom. La nueva versión incluye nueva música e ilustraciones, más súper artes para cada personaje, un sistema de calificación, un sistema de lanzamiento manual, selección de caminos y nuevos personajes, incluido (¡SÍ!) Chun-Li. El puerto de Dreamcast también ofrece una opción de registro de entrenamiento donde puedes grabar un determinado movimiento o combo y jugar contra ti una y otra vez para ver cómo puedes detenerlo, más una opción de "dirección del sistema" que te permite modificar prácticamente todos los aspectos del juego (bloqueo de aire, límites de combo, etc.) para personalizarlo a tu gusto.</desc>
+    <family>Street Fighter</family>
+    <image>./images/Street Fighter III - Third Strike-image.jpg</image>
+    <video>./videos/Street Fighter III - Third Strike-video.mp4</video>
+  </game>
+  <game id="13530">
+    <path>./Toy Commander (Europe) (En,Fr,De,Es).chd</path>
+    <name>Toy Commander</name>
+    <genre>Acción / Aventura</genre>
+    <releasedate>19991014T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.9</rating>
+    <lang>de,en,es,fr</lang>
+    <region>eu</region>
+    <publisher>SEGA</publisher>
+    <developer>No Cliché</developer>
+    <desc>Toy Commander de Dreamcast es un juego de acción que simula una guerra de juguetes. Sube a bordo de uno de los 30 vehículos miniaturizados (tanque, avión, helicóptero, coche ...) y completa las 50 misiones propuestas para reclamar el título honorífico de "Toy Commander". El juego también da lugar a enfrentamientos multijugador (de 1 a 4 participantes en modo versus o cooperación).</desc>
+    <image>./images/Toy Commander (Europe) (En,Fr,De,Es)-image.png</image>
+    <video>./videos/Toy Commander (Europe) (En,Fr,De,Es)-video.mp4</video>
+  </game>
+  <game id="13564">
+    <path>./Zombie Revenge (Europe) (En,Ja,Fr,De,Es).chd</path>
+    <name>Zombie Revenge</name>
+    <genre>Beat'em Up</genre>
+    <releasedate>20000623T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.7</rating>
+    <lang>de,en,jp,es,fr</lang>
+    <region>eu</region>
+    <publisher>SEGA</publisher>
+    <developer>Data East</developer>
+    <desc>Un plan secreto del gobierno para usar soldados no muertos salió terriblemente mal. Vive intensamente esta pesadilla en Zombie Revenge en Dreamcast. Solo o en una red, ordene a uno de los 3 agentes especiales para elegir y limpie la ciudad de la escoria de zombies con las muchas armas dispersas en el curso.</desc>
+    <image>./images/Zombie Revenge (Europe) (En,Ja,Fr,De,Es)-image.png</image>
+    <video>./videos/Zombie Revenge (Europe) (En,Ja,Fr,De,Es)-video.mp4</video>
+  </game>
+  <game id="13642">
+    <path>./Spider-Man.cdi</path>
+    <name>Spider-Man</name>
+    <genre>Plataformas</genre>
+    <releasedate>20010419T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Activision</publisher>
+    <developer>Neversoft Entertainment</developer>
+    <desc>El gran éxito de PlayStation y Nintendo 64, "Spiderman", aterriza ahora en la consola Sega Dreamcast en una conversión que traslada a los 128 bits el universo del intrépido periodista del universo Marvel. Uno de los principales atractivos de este juego es la posibilidad de utilizar todos los poderes que han hecho tan popular al súper héroe de Marvel. Éstos son: sentido arácnido, súper fuerza, capacidad de trepar por las paredes y, cómo no, las telarañas, las cuáles podremos utilizar tanto como improvisados proyectiles o como lianas para conseguir alcanzar lugares que de otra forma permanecerían inaccesibles.</desc>
+    <family>Marvel</family>
+    <image>./images/Spider-Man-image.png</image>
+    <video>./videos/Spider-Man-video.mp4</video>
+  </game>
+  <game id="13578">
+    <path>./Virtua Striker 2.cdi</path>
+    <name>Virtua Striker 2</name>
+    <genre>Deportes / Fútbol</genre>
+    <releasedate>20000314T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.4</rating>
+    <lang>en</lang>
+    <publisher>SEGA</publisher>
+    <developer>SEGA</developer>
+    <desc>Virtua Striker 2 V2000.1 ha llegado a Dreamcast con toda la fidelidad de la versión arcade. Juega en cualquiera de los nuevos modos, incluidos 'Clasificación' y 'Ligas', o simplemente siéntate y disfruta del modo arcade original desde la comodidad de tu sillón.</desc>
+    <family>Virtua Striker</family>
+    <image>./images/Virtua Striker 2-image.png</image>
+    <video>./videos/Virtua Striker 2-video.mp4</video>
+  </game>
+  <game id="13549">
+    <path>./Wacky Races (Europe) (En,Fr,De,Es,It,Nl).chd</path>
+    <name>Wacky Races</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>20000630T000000</releasedate>
+    <players>4</players>
+    <rating>0.8</rating>
+    <lang>de,en,es,fr,it,nl</lang>
+    <region>eu</region>
+    <publisher>Infogrames</publisher>
+    <developer>Infogrames</developer>
+    <desc>The Flying Boobies en Dreamcast es un juego de carreras inspirado en la serie del mismo nombre. Encontrarás a todos los protagonistas en sus vehículos tan estrafalarios como los demás, utilizando todos los medios posibles para intentar ganar las carreras.</desc>
+    <family>Wacky Races</family>
+    <video>./videos/Wacky Races (Europe) (En,Fr,De,Es,It,Nl)-video.mp4</video>
+  </game>
+  <game id="13533">
+    <path>./MSR - Metropolis Street Racer (Europe) (En,Fr,De,Es) (Rev B).chd</path>
+    <name>Metropolis Street Racer</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>20001108T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.75</rating>
+    <lang>de,en,es,fr</lang>
+    <region>eu</region>
+    <publisher>SEGA</publisher>
+    <developer>Bizarre Creations</developer>
+    <desc>Metropolis Street Racer en Dreamcast es una simulación de carreras. El juego se basa en un sistema de "Kudos", moneda que obtienes al ganar carreras, pero también a través de tu estilo de conducción. Muchos vehículos prestigiosos son desbloqueables y el desafío está en la cita en MSR.</desc>
+    <image>./images/MSR - Metropolis Street Racer (Europe) (En,Fr,De,Es) (Rev B)-image.png</image>
+    <video>./videos/MSR - Metropolis Street Racer (Europe) (En,Fr,De,Es) (Rev B)-video.mp4</video>
+  </game>
+  <game id="13489">
+    <path>./Sonic Adventure (USA) (En,Ja,Fr,De,Es).chd</path>
+    <name>Sonic Adventure</name>
+    <genre>Plataformas</genre>
+    <releasedate>19990909T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>de,en,jp,es,fr</lang>
+    <region>us</region>
+    <publisher>SEGA</publisher>
+    <developer>Sonic Team</developer>
+    <desc>Hace siglos, los dioses le dieron al planeta Tierra (No Mobius) las 7 Chaos Emerald's. Dichas esmeraldas eran fuente de poder ilimitado. Sin embargo, el poder absoluto corrompe absolutamente, y no pasó mucho tiempo antes de que explotaran guerras por el control del poder aparentemente ilimitado de las Esmeraldas. Esto enfureció a los dioses, quienes crearon una Esmeralda Maestra, para contener poderes que podrían controlar y neutralizar a las Esmeraldas del Chaos. Y con la Esmeralda Maestra vendría un espíritu guardián. Se dice que una sola tribu de equidnas enfureció al espíritu intentando robar las Esmeraldas del Chaos y arruinando el santuario que aquél estaba protegiendo; la tribu fue destruida en una noche, y el espíritu guardián nunca más fue visto. El monstruo fue entonces llamado "Chaos", el dios de la destrucción.</desc>
+    <family>Sonic</family>
+    <image>./images/Sonic Adventure (USA) (En,Ja,Fr,De,Es)-image.png</image>
+    <video>./videos/Sonic Adventure (USA) (En,Ja,Fr,De,Es)-video.mp4</video>
+  </game>
+  <game id="13527">
+    <path>./Toy Story 2 - Buzz Lightyear to the Rescue!.cdi</path>
+    <name>Disney-Pixar Toy Story 2 : Buzz Lightyear to the Rescue!</name>
+    <genre>Plataformas</genre>
+    <releasedate>20000630T000000</releasedate>
+    <players>1</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Activision</publisher>
+    <developer>Traveller's Tales</developer>
+    <desc>Toy Story 2 en Dreamcast es un juego de plataformas en el que juegas como Buzz Lightning, un Space Ranger. Tienes trabajo que hacer porque Woody fue secuestrado por un coleccionista de juguetes sin escrúpulos. 15 niveles, salta, gira y usa los accesorios disponibles (láser, botas de chorro) en un universo directamente adaptado al largometraje Disney / Pixar.</desc>
+    <family>Toy Story</family>
+    <image>./images/Toy Story 2 - Buzz Lightyear to the Rescue!-image.png</image>
+    <video>./videos/Toy Story 2 - Buzz Lightyear to the Rescue!-video.mp4</video>
+  </game>
+  <game id="13565">
+    <path>./Capcom vs. SNK (USA).chd</path>
+    <name>Capcom vs. SNK</name>
+    <genre>Lucha</genre>
+    <releasedate>20001108T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <region>us</region>
+    <publisher>Virgin</publisher>
+    <developer>Capcom</developer>
+    <desc>Los dos desarrolladores más grandes de la lucha 2D, Capcom y SNK, enfrentan a sus personajes más emblemáticos. Escoge entre los dos estilos de lucha (el de Capcom y el de SNK) y enfrentate al mejor plantel de luchadores que se puede encontrar.</desc>
+    <family>SNK Vs. Capcom</family>
+    <image>./images/Capcom vs. SNK (USA)-image.png</image>
+    <video>./videos/Capcom vs. SNK (USA)-video.mp4</video>
+  </game>
+</gameList>

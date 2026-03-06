@@ -1,0 +1,996 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gameList>
+  <game>
+    <path>./Boktai - The Sun Is in Your Hand (ESP).zip</path>
+    <name>Boktai: The Sun Is in Your Hand</name>
+    <desc>Boktai: El sol está en tu mano es el primer juego de Game Boy Advance que usa la luz solar para influir en el juego. En el juego, seguirás las aventuras de Django, un joven cazador de vampiros en una búsqueda para librar al mundo del mal. Como Django, debes superar las trampas, derrotar a los enemigos y luchar a través de las partes más profundas de las mazmorras. Cuidado con la cantidad de luz solar: Django es más fuerte durante el día, mientras que los vampiros son más fuertes durante la noche. El juego cuenta con un sensor solar en el cartucho y un sistema de reloj en tiempo real.</desc>
+    <image>./images/Boktai - The Sun Is in Your Hand (ESP)-image.jpg</image>
+    <video>./videos/Boktai - The Sun Is in Your Hand (ESP)-video.mp4</video>
+    <thumbnail>./images/Boktai - The Sun Is in Your Hand (ESP)-thumb.jpg</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20030916T000000</releasedate>
+    <developer>Konami</developer>
+    <publisher>Konami</publisher>
+    <genre>Action, Adventure</genre>
+    <players>2</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T232903" />
+  </game>
+  <game>
+    <path>./Final Fantasy VI Advance (ESP).zip</path>
+    <name>Final Fantasy VI Advance</name>
+    <desc>Final Fantasy VI es la reedición para GBA del tercer episodio lanzado en Super Nintendo y que marca un punto de inflexión en la saga de Final Fantasy con un lado más oscuro y trágico que nunca. 1000 años después de una guerra terrible, la magia ha desaparecido casi por completo a favor de la tecnología Magitek que le da al Imperio el poder total sobre el mundo. Los Returners, un grupo de rebeldes liderados por Lock, intenta enfrentarse al poder del Imperio.</desc>
+    <image>./images/Final Fantasy VI Advance (ESP)-image.jpg</image>
+    <video>./videos/Final Fantasy VI Advance (ESP)-video.mp4</video>
+    <thumbnail>./images/Final Fantasy VI Advance (ESP)-thumb.jpg</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20070205T000000</releasedate>
+    <developer>Tose Co., Ltd.</developer>
+    <publisher>Square Enix</publisher>
+    <genre>Role-Playing</genre>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233135" />
+  </game>
+  <game>
+    <path>./Fire Emblem (ESP).zip</path>
+    <name>Fire Emblem</name>
+    <desc>¡Después de siglos de paz, las rivalidades latentes amenazan con incendiar el mundo en un estallido de batalla! Los tambores del ritmo de la guerra, las casas nobles traman la traición, los aliados se convierten en enemigos, y mientras Lycia está lista para la guerra, una figura sombría manipula imperios para sus propios fines. Ahora, Lyn, Eliwood y Héctor deben acumular un ejército lo suficientemente fuerte como para luchar contra las fuerzas que destruirían su tierra natal. Domina las tácticas de batalla para apagar las brasas antes de reducir el mundo a cenizas.</desc>
+    <image>./images/Fire Emblem (ESP)-image.jpg</image>
+    <video>./videos/Fire Emblem (ESP)-video.mp4</video>
+    <thumbnail>./images/Fire Emblem (ESP)-thumb.jpg</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>20031103T000000</releasedate>
+    <developer>Intelligent Systems Co., Ltd.</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Role-Playing, Strategy</genre>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233152" />
+  </game>
+  <game id="3776">
+    <path>./Castlevania - Aria of Sorrow (ESP).zip</path>
+    <name>Castlevania : Aria of Sorrow</name>
+    <desc>El año es 2035 y Soma Cruz está a punto de ser testigo del primer eclipse solar del siglo 21 cuando de repente se desmaya - sólo para despertar dentro de un misterioso castillo. Como Soma, debe navegar por los laberintos del castillo mientras se enfrenta a peligrosos monstruos a cada paso. Pero ten cuidado, ¡debes escapar antes de que el mal te consuma!</desc>
+    <image>./images/Castlevania - Aria of Sorrow (ESP)-image.jpg</image>
+    <video>./videos/Castlevania - Aria of Sorrow (ESP)-video.mp4</video>
+    <thumbnail>./images/Castlevania - Aria of Sorrow (ESP)-thumb.jpg</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20030506T000000</releasedate>
+    <developer>Konami</developer>
+    <publisher>Konami</publisher>
+    <genre>Acción / Aventura</genre>
+    <family>Castlevania</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T232922" />
+  </game>
+  <game id="3791">
+    <path>./Dragon Ball Z - Supersonic Warriors (ESP).zip</path>
+    <name>Dragon Ball Z : Supersonic Warriors</name>
+    <desc>¡Los super sayians chocan en Dragon Ball Z: Supersonic Warriors en GBA! Juega como uno de los trece personajes del juego para enfrentamientos terrestres y aéreos salpicados por ataques devastadores. Compite contra hasta dos amigos en torneos a través del cable de enlace de la consola.</desc>
+    <image>./images/Dragon Ball Z - Supersonic Warriors (ESP)-image.png</image>
+    <video>./videos/Dragon Ball Z - Supersonic Warriors (ESP)-video.mp4</video>
+    <thumbnail>./images/Dragon Ball Z - Supersonic Warriors (ESP)-thumb.jpg</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>20040622T000000</releasedate>
+    <developer>Cavia</developer>
+    <publisher>Bandai</publisher>
+    <genre>Lucha</genre>
+    <family>Dragon Ball</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233041" />
+  </game>
+  <game id="3753">
+    <path>./Golden Sun 1 (ESP).zip</path>
+    <name>Golden Sun</name>
+    <desc>En una época de oscuridad, una aventura épica comienza...La maldad se está apoderando lentamente del mundo. Las fuerzas de la oscuridad están tras el arte olvidado de la Alquimia y, a medida que se acercan a su terrible propósito, el futuro de la Humanidad pende de un hilo. Tus compañeros y tú sois la unica esperanza. Armados con nobles armas, poderes mágicos llamados Psinergías y una multitud de criaturas elementales, debeis encontrar la forma de detener el curso de los acontecimientos. Se acabó tu vida cotidiana.
+¡Ahora un Sol Dorado brilla sobre ti y amplía tus horizontes!</desc>
+    <image>./images/Golden Sun 1 (ESP)-image.jpg</image>
+    <video>./videos/Golden Sun 1 (ESP)-video.mp4</video>
+    <thumbnail>./images/Golden Sun 1 (ESP)-thumb.jpg</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>20011111T000000</releasedate>
+    <developer>Camelot Software</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Golden Sun</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233204" />
+  </game>
+  <game id="3837">
+    <path>./Harvest Moon - Friend of Mineral Town (ESP).zip</path>
+    <name>Harvest Moon : Friends of Mineral Town</name>
+    <desc>Cuando era niño, pasó un verano memorable en una granja en el país y experimentó un mundo completamente nuevo de emoción. ¡Han pasado años, y ahora la granja tan descuidada que guarda buenos recuerdos es tuya! Depende de usted rejuvenecer con éxito la granja y construir una vida para usted. ¡La mejor parte es que puedes hacerlo como quieras! ¡Planta y cosecha cultivos, cría animales de granja, cásate con la mujer de tus sueños y forma una familia! ¡Toma las riendas de la vida y crea tu propia aventura pastoral!</desc>
+    <image>./images/Harvest Moon - Friend of Mineral Town (ESP)-image.png</image>
+    <video>./videos/Harvest Moon - Friend of Mineral Town (ESP)-video.mp4</video>
+    <thumbnail>./images/Harvest Moon - Friend of Mineral Town (ESP)-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20031117T000000</releasedate>
+    <developer>TOSE</developer>
+    <publisher>Natsume</publisher>
+    <genre>Estrategia</genre>
+    <family>Harvest Moon</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233227" />
+  </game>
+  <game id="3860">
+    <path>./Kirby - Nightmare in Dream Land (ESP).zip</path>
+    <name>Kirby : Nightmare in Dream Land</name>
+    <desc>El Rey Dedede, el conocido enemigo de Kirby, vuelve a hacer de las suyas, robando la Star Rod que permite que los residentes de Dream Land puedan dormir a pierna suelta. Por ello, impulsado por el temor a una población de malhumorados e insomnes "no soñadores", Kirby se pone en camino para recuperar el Star Rod. Tendrá que conseguir todas y cada una de sus 24 habilidades, "absorbiéndolas" de sus enemigos. Kirby tiene un montón de recursos: puede saltar y flotar inflándose de aire, pero está prácticamente indefenso. Sin embargo, cuando absorbe un enemigo con sus poderosos pulmones, puede tragárselo entero y robarle sus habilidades.
+
+Entre el arsenal de habilidades que puede tomar prestadas encontrarás rayos láser, bumeranes, lanzallamas, clavos, paraguas... cualquier cosa que te puedas imaginar. Muchos se utilizan para poder esquivar espinosos obstáculos, por lo que tendrás que descubrir dónde tienes que usar cada uno de ellos. Y, por supuesto, algunas habilidades son en realidad más cómicas que útiles.</desc>
+    <image>./images/Kirby - Nightmare in Dream Land (ESP)-image.png</image>
+    <video>./videos/Kirby - Nightmare in Dream Land (ESP)-video.mp4</video>
+    <thumbnail>./images/Kirby - Nightmare in Dream Land (ESP)-thumb.jpg</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>20021202T000000</releasedate>
+    <developer>HAL Laboratory</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Kirby</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233241" />
+  </game>
+  <game id="4027">
+    <path>./Mario Golf - Advance Tour (ESP).zip</path>
+    <name>Mario Golf : Advance Tour</name>
+    <desc>¡Coja sus palos y emprenda el camino hacia la perfección del golf en esta aventura de juego de rol! Charle con los lugareños en las clínicas de golf, perfeccione sus habilidades en desafíos como Club Slots y Go-Go Gates, ¡y trate de convertirse en el campeón de todos los clubes de campo! Los residentes del Reino Champiñón se enfrentan solo a los mejores.</desc>
+    <image>./images/Mario Golf - Advance Tour (ESP)-image.png</image>
+    <video>./videos/Mario Golf - Advance Tour (ESP)-video.mp4</video>
+    <thumbnail>./images/Mario Golf - Advance Tour (ESP)-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>20040622T000000</releasedate>
+    <developer>Camelot Software</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Deportes / Golf</genre>
+    <family>Mario</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233307" />
+  </game>
+  <game id="3769">
+    <path>./Metroid - Zero Mission (ESP).zip</path>
+    <name>Metroid : Zero Mission</name>
+    <desc>Ella ha luchado contra los malos en casi todos los sistemas de Nintendo, y ahora, Samus Aran regresa a sus raíces. Metroid: Zero Mission revive la historia que comenzó todo, revelando por primera vez todos los detalles de su reunión con los Metroids. La trama será familiar para los fanáticos de toda la vida de la serie Metroid, pero los desafíos son nuevos, los poderes son abundantes y los gráficos y el sonido están sobrealimentados. Además, si pensabas que el Metroid original tenía un final sorpresa, espera hasta que pases el cerebro de la madre en Metroid: Zero Mission. Un nuevo giro proporciona una aventura más profunda que nunca.</desc>
+    <image>./images/Metroid - Zero Mission (ESP)-image.png</image>
+    <video>./videos/Metroid - Zero Mission (ESP)-video.mp4</video>
+    <thumbnail>./images/Metroid - Zero Mission (ESP)-thumb.jpg</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20040209T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Acción / Aventura</genre>
+    <family>Metroid</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233442" />
+  </game>
+  <game id="84411">
+    <path>./Pokemon - Rubi (ESP).zip</path>
+    <name>Pokémon Ruby Version</name>
+    <desc>La carrera para Hacerte con todos está de nuevo en Pokemon - Versión Rubí. Esta entrada en la serie de Pokemon cuenta con una nueva historia e impresionantes nuevos Pokemons. Una de las mayores adicciones a Pokemon - Versión Rubí es el sistema de batalla de dos contra dos, que te permite conectarte con tres amigos para luchar de forma competitiva o cooperativa. También puedes mostrar la frescura, belleza, inteligencia y dureza de tus Pokemon en los concursos de Pokemon. Con Pokemon 2 Vs 2 y una región totalmente nueva de Hoenn para explorar, lleva la experiencia de Pokemon al siguiente nivel.</desc>
+    <image>./images/Pokemon - Rubi (ESP)-image.png</image>
+    <video>./videos/Pokemon - Rubi (ESP)-video.mp4</video>
+    <thumbnail>./images/Pokemon - Rubi (ESP)-thumb.jpg</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>20030319T000000</releasedate>
+    <developer>Game Freak</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Pokémon</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233519" />
+  </game>
+  <game id="84394">
+    <path>./Pokemon Mundo misterioso - Equipo de rescate rojo (ESP).zip</path>
+    <name>Pokémon Mystery Dungeon : Red Rescue Team</name>
+    <desc>En este juego nos despertamos descubriendo que nos hemos convertido en un Pokémon en un mundo necesitado de nuestra ayuda. Un mundo habitado sólo por Pokémon pero que está siendo asolado por desastres naturales que han dejado a muchos Pokémon atrapados en cuevas y mazmorras.
+
+Nuestro objetivo será crear un equipo de rescate y por ello nos darán una base de rescate para descansar y poder pensar como ayudar a los otros Pokémon y luchar con un grupo de Pokémon que fingen ser un equipo de rescate con la intención de dominar el mundo. A medida que cumplamos misiones se irá revelando la historia que nos transformó en Pokémon y cómo volver a ser humano.</desc>
+    <image>./images/Pokemon Mundo misterioso - Equipo de rescate rojo (ESP)-image.png</image>
+    <video>./videos/Pokemon Mundo misterioso - Equipo de rescate rojo (ESP)-video.mp4</video>
+    <thumbnail>./images/Pokemon Mundo misterioso - Equipo de rescate rojo (ESP)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>20060918T000000</releasedate>
+    <developer>Chunsoft</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Pokémon</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233530" />
+  </game>
+  <game id="3763">
+    <path>./Final Fantasy IV (ESP).zip</path>
+    <name>Final Fantasy IV Advance</name>
+    <desc>Esta clásica aventura incluye 18 ciudades y castillos, docenas de hechizos mágicos y cientos de monstruos, armas y objetos para ayudar a los jugadores en sus misiones. El juego cuenta con la asombrosa música, desafiantes aventuras e interesante argumento que caracterizan a la franquicia Final Fantasy. También se han añadido elementos adicionales al juego para mejorar la versión para Game Boy Advance.</desc>
+    <image>./images/Final Fantasy IV (ESP)-image.png</image>
+    <video>./videos/Final Fantasy IV (ESP)-video.mp4</video>
+    <thumbnail>./images/Final Fantasy IV (ESP)-thumb.jpg</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20051212T000000</releasedate>
+    <developer>TOSE</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Final Fantasy</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233119" />
+  </game>
+  <game>
+    <path>./Fire Emblem - The Sacred Stones (ESP).zip</path>
+    <name>Fire Emblem: The Sacred Stones</name>
+    <desc>El reino de Renais está en ruinas, destrozado por una repentina invasión de un antiguo aliado. Guía a los herederos leales, Eirika y Efraín, en su búsqueda gemela para reconstruir Renais y descubrir el secreto oscuro detrás de la guerra que ha rasgado su patria.</desc>
+    <image>./images/Fire Emblem - The Sacred Stones (ESP)-image.jpg</image>
+    <video>./videos/Fire Emblem - The Sacred Stones (ESP)-video.mp4</video>
+    <thumbnail>./images/Fire Emblem - The Sacred Stones (ESP)-thumb.jpg</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20050323T000000</releasedate>
+    <developer>Intelligent Systems Co., Ltd.</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Role-Playing, Strategy</genre>
+    <players>4</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233157" />
+  </game>
+  <game>
+    <path>./Hamtaro - Ham-Ham Heartbreak (ESP).zip</path>
+    <name>Hamtaro: Ham-Ham Heartbreak</name>
+    <desc>¡Todos los hámsters están discutiendo, y no es de extrañar por qué! Spat, un alborotador entrometido, dice mentiras y causa dolor en todas partes. Depende de Hamtaro y su mejor amiga Bijou seguir a Spat, detener las disputas y hacer que todos vuelvan a hablar.</desc>
+    <image>./images/Hamtaro - Ham-Ham Heartbreak (ESP)-image.jpg</image>
+    <video>./videos/Hamtaro - Ham-Ham Heartbreak (ESP)-video.mp4</video>
+    <thumbnail>./images/Hamtaro - Ham-Ham Heartbreak (ESP)-thumb.jpg</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20030408T000000</releasedate>
+    <developer>Pax Softnica</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Action, Puzzle</genre>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251201T172925" />
+  </game>
+  <game id="4064">
+    <path>./Megaman Zero 2 (ESP).zip</path>
+    <name>Mega Man Zero 2</name>
+    <desc>Un año después de los eventos en Mega Man Zero, el héroe se encuentra en otra batalla para salvar el mundo. Atrapado entre los reploides y los humanos, el nuevo comandante de Neo Arcadia ha engañado a Zero para que la ayude, aunque sus razones son inciertas.
+
+Para solucionar el problema, Zero debe luchar nivel tras nivel, usando la nueva arma Chain Rod para agarrarse a las repisas y obtener una ventaja en la recolección de elementos fuera de su alcance o atacar a los enemigos desde arriba. Los Cyber Elfs se pueden volver a recolectar para obtener algunos potenciadores útiles.
+
+Nuevo en la serie es un modo de desafío para dos jugadores, donde gana el primero en completar el nivel.</desc>
+    <image>./images/Megaman Zero 2 (ESP)-image.png</image>
+    <video>./videos/Megaman Zero 2 (ESP)-video.mp4</video>
+    <thumbnail>./images/Megaman Zero 2 (ESP)-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>20031014T000000</releasedate>
+    <developer>Inti Creates</developer>
+    <publisher>Capcom</publisher>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <family>Mega Man</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233411" />
+  </game>
+  <game id="3886">
+    <path>./MegaMan Zero 4 (ESP).zip</path>
+    <name>Mega Man Zero 4</name>
+    <desc>Mega Man Zero 4 es un videojuego creado por Keiji Inafune, desarrollado por Inti Creates y Natsume, distribuida por la compañía Capcom para la consola Game Boy Advance en 21 de abril del año 2005 solo en Japón. Y es el cuarto y último juego de la serie, y la quinta serie de la Franquicia de Mega Man.</desc>
+    <image>./images/MegaMan Zero 4 (ESP)-image.png</image>
+    <video>./videos/MegaMan Zero 4 (ESP)-video.mp4</video>
+    <thumbnail>./images/MegaMan Zero 4 (ESP)-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>20051004T000000</releasedate>
+    <developer>Inti Creates</developer>
+    <publisher>Capcom</publisher>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <family>Mega Man</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233426" />
+  </game>
+  <game id="3774">
+    <path>./MOTHER 3 (ESP).zip</path>
+    <name>Mother 3</name>
+    <desc>La historia se remonta mucho tiempo después de los sucesos de EarthBound, los residentes de las Islas Ningunaparte son vigilados y atacados por el Ejercito Puercareto liderado por el llamad "Rey P".
+
+La historia principal comienza durante el Capítulo 1, controlando a Flint quien es el padre de Lucas y Claus, tras la desaparición de éstos él parte en busca hasta finalmente encontrarlos en la ribera de un río; tras el funeral de la esposa de Flint y madre de los niños, Hinawa, Claus sale a buscar venganza a quién mató a su madre y supuestamente muere enfrentándolo.</desc>
+    <image>./images/MOTHER 3 (ESP)-image.png</image>
+    <video>./videos/MOTHER 3 (ESP)-video.mp4</video>
+    <thumbnail>./images/MOTHER 3 (ESP)-thumb.jpg</thumbnail>
+    <rating>0.95</rating>
+    <releasedate>20060420T000000</releasedate>
+    <developer>HAL Laboratory</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de Rol / RPG Japonés</genre>
+    <family>Mother</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233453" />
+  </game>
+  <game id="84465">
+    <path>./Rayman 10th Anniversary Compilation - Rayman Advance &amp; Rayman 3 (ESP).zip</path>
+    <name>Rayman : 10th Anniversary</name>
+    <desc>Rayman: 10th Anniversary Collection brings together two challenging Rayman games for hours of fun. The set includes both Rayman Advance and Rayman 3.
+
+Rayman Advance is light-hearted action adventure. As you take Rayman through all kinds of dangerous levels, fight against the Hoodlum bosses and their bosses, with lots of new high-tech gear and powers.
+
+Rayman 3 is a universe of cartoon mayhem and mind blowing battles! When Globox accidentally swallows the Lord of the Dark Lums, a fanatic army of trigger happy Hoodlums wreaks total havoc to get their Lord back. Rayman's only hope is to scour the lands for unearthly new powers, and do battle with hordes of Hoodlum soldiers, contraptions, and maniacal bosses.</desc>
+    <image>./images/Rayman 10th Anniversary Compilation - Rayman Advance &amp; Rayman 3 (ESP)-image.png</image>
+    <video>./videos/Rayman 10th Anniversary Compilation - Rayman Advance &amp; Rayman 3 (ESP)-video.mp4</video>
+    <thumbnail>./images/Rayman 10th Anniversary Compilation - Rayman Advance &amp; Rayman 3 (ESP)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>20060906T000000</releasedate>
+    <developer>Ubisoft</developer>
+    <publisher>Ubisoft</publisher>
+    <genre>Compilación</genre>
+    <family>Rayman</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233543" />
+  </game>
+  <game id="3852">
+    <path>./Sonic Advance 2 (ESP).zip</path>
+    <name>Sonic Advance 2</name>
+    <desc>Sonic regresa para una segunda salida en la Game Boy Advance.
+
+Una vez más, Sonic es llamado a salvar al mundo del malvado Dr. Eggman. En esta ocasión, a Sonic se le unen sus amigos Tails, Knuckles and Cream y Rabbit, la última incorporación al equipo de Sonic. Cada uno de ellos viene con una serie de movimientos únicos, que te permiten alcanzar ciertas áreas a lo largo de los niveles. Sin embargo, a diferencia de Sonic Advance, deberás obligar al juego como Sonic a desbloquear a los demás personajes.
+
+Las Esmeraldas del Caos y los Anillos Especiales llenan los escenarios. Para recoger las esmeraldas (transformando a Sonic en Super Sonic para la batalla final con el Dr. Eggman), debes encontrar los anillos especiales escondidos en cada nivel para desbloquear el nivel de bonificación. Completa la etapa de bonificación y la esmeralda será tuya.</desc>
+    <image>./images/Sonic Advance 2 (ESP)-image.png</image>
+    <video>./videos/Sonic Advance 2 (ESP)-video.mp4</video>
+    <thumbnail>./images/Sonic Advance 2 (ESP)-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>20030309T000000</releasedate>
+    <developer>Dimps</developer>
+    <publisher>SEGA</publisher>
+    <genre>Plataformas</genre>
+    <family>Sonic</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233657" />
+  </game>
+  <game id="3960">
+    <path>./Spyro 2 - Season of Flame (ESP).zip</path>
+    <name>Spyro 2 : Season of Flame</name>
+    <desc>Spyro demuestra la capacidad de respirar una explosión de aire helado
+El jugador controla a Spyro el Dragón, que debe viajar a través de los Reinos del Dragón y recuperar las luciérnagas robadas. Las luciérnagas se pueden encontrar en muchos lugares, ya sea corriendo en espacios abiertos o escondidos detrás de obstáculos. Las luciérnagas a veces se pueden recibir como recompensas por realizar tareas para los ciudadanos de los Reinos dragón. Una vez encontradas, las luciérnagas pueden ser congeladas en su lugar por el aliento de hielo de Spyro, lo que permite a Spyro recogerlas. [5]
+
+En los Reinos del Dragón, Spyro puede acceder a varios otros niveles caminando a través de Portales. Entrar en un portal transportará a Spyro a un mundo donde se encontrará con criaturas que están preocupadas por los Rhynocs invasores.</desc>
+    <image>./images/Spyro 2 - Season of Flame (ESP)-image.png</image>
+    <video>./videos/Spyro 2 - Season of Flame (ESP)-video.mp4</video>
+    <thumbnail>./images/Spyro 2 - Season of Flame (ESP)-thumb.jpg</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>20020925T000000</releasedate>
+    <developer>Digital Eclipse</developer>
+    <publisher>Universal Interactive</publisher>
+    <genre>Plataformas</genre>
+    <family>Spyro</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233723" />
+  </game>
+  <game id="3873">
+    <path>./Teenage Mutant Ninja Turtles 1 (ESP).zip</path>
+    <name>Teenage Mutant Ninja Turtles</name>
+    <desc>Los héroes en medio caparazón están de vuelta en una aventura completamente nueva. Las cuatro tortugas se han dividido para combatir a los muchos malos que rodean la ciudad.
+
+Cada tortuga (Leonardo, Miguel Ángel, Rafael y Donatello) tiene su propio conjunto de niveles para completar, con sus propios movimientos distintos y opciones de combate para usar durante la batalla. Junto con un conjunto de niveles de desplazamiento lateral, completo con batallas de jefes al final del nivel, las cuatro tortugas también tendrán la oportunidad de correr por las alcantarillas en los modos de carrera únicos en tercera persona, derribando al enemigo o recogiendo artículos, mientras Donatello toma al cielo en Shell Glider y Raphael desafía a Casey Jones a una carrera ciclista uno a uno.</desc>
+    <image>./images/Teenage Mutant Ninja Turtles 1 (ESP)-image.png</image>
+    <video>./videos/Teenage Mutant Ninja Turtles 1 (ESP)-video.mp4</video>
+    <thumbnail>./images/Teenage Mutant Ninja Turtles 1 (ESP)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>20031024T000000</releasedate>
+    <developer>Konami</developer>
+    <publisher>Konami</publisher>
+    <genre>Beat'em Up</genre>
+    <family>Teenage Mutant Ninja Turtles</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233825" />
+  </game>
+  <game>
+    <path>./Castlevania - Harmony Of Dissonance (ESP).zip</path>
+    <name>Castlevania: Harmony of Dissonance</name>
+    <desc>Han pasado casi cincuenta años desde que Simon Belmont rescató la tierra de la maldición de Drácula. Ahora, la descendiente de Simon, Juste Belmont, debe adquirir las reliquias de Drácula para desentrañar la desaparición de su amiga de la infancia, Lydie. Los encantadores misterios y peligros del castillo esperan a todos los que se atrevan a entrar.</desc>
+    <image>./images/Castlevania - Harmony Of Dissonance (ESP)-image.jpg</image>
+    <video>./videos/Castlevania - Harmony Of Dissonance (ESP)-video.mp4</video>
+    <thumbnail>./images/Castlevania - Harmony Of Dissonance (ESP)-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>20020916T000000</releasedate>
+    <developer>Konami Computer Entertainment Tokyo</developer>
+    <publisher>Konami</publisher>
+    <genre>Action, Adventure, Role-Playing, Platform</genre>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T232929" />
+  </game>
+  <game>
+    <path>./Mario Tennis Power Tour (ESP).zip</path>
+    <name>Mario Tennis: Power Tour</name>
+    <desc>Los protagonistas tendrán que pasar por los retos de la Liga Alevín, la Liga Juvenil, la Liga Profesional, el Open Isla y el Torneo Peach, y durante ese reto tendrán que incrementar su nivel y se puede hacer en las canchas de entrenamiento donde maestros enseñarán formas de jugar a tenis, en el Centro de Entrenamiento donde hay minijuegos para incrementar el nivel, además, con las reglas de los power shots, los personajes tendrán que entrenarse en nuevos minijuegos para obtener los Golpes Especiales que le ayudarán en la historia, cada vez que avanza en la historia, se abrirán nuevos minijuegos para obtener nuevos Golpes Especiales.</desc>
+    <image>./images/Mario Tennis Power Tour (ESP)-image.jpg</image>
+    <video>./videos/Mario Tennis Power Tour (ESP)-video.mp4</video>
+    <thumbnail>./images/Mario Tennis Power Tour (ESP)-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20051205T000000</releasedate>
+    <developer>Camelot Software Planning</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Sports</genre>
+    <players>2</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T233318" />
+  </game>
+  <game id="4508">
+    <path>./CIMA - The Enemy (ESP).zip</path>
+    <name>CIMA : The Enemy</name>
+    <desc>Durante décadas, la raza humana y la raza CIMA han estado en constante conflicto entre sí.
+Como Ark J, tu misión es vigilar la puerta entre los dos mundos, proteger la ciudad que te han asignado y, en última instancia, encontrar la paz.
+Avanzarás a través de una historia no lineal mientras resuelves puzzles, exploras mundos y luchas contra enemigos.
+El juego incluye un sistema de combate con elementos de acción y estrategia.
+Otra característica te permite activar personajes no jugables para que te ayuden a cumplir tus objetivos.</desc>
+    <image>./images/CIMA - The Enemy (ESP)-image.png</image>
+    <video>./videos/CIMA - The Enemy (ESP)-video.mp4</video>
+    <thumbnail>./images/CIMA - The Enemy (ESP)-thumb.jpg</thumbnail>
+    <rating>0.95</rating>
+    <releasedate>20031117T000000</releasedate>
+    <developer>Neverland</developer>
+    <publisher>Natsume</publisher>
+    <genre>Puzzle</genre>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T232937" />
+  </game>
+  <game id="84714">
+    <path>./Super Mario Advance 3 - Yoshi Island (ESP).zip</path>
+    <name>Yoshi's Island: Super Mario Advance 3</name>
+    <desc>Da una vuelta por la isla de Yoshi.
+Cuidar a un recién nacido llorón es tan divertido como un resfriado en la cabeza el primer día de vacaciones de verano. Pero cuando Baby Mario cae del cielo, los Yoshis aprovechan la oportunidad para hacer mucho más que cambiar pañales.
+Yoshis, de gran corazón, promete reunir al bebé Mario con su hermano gemelo en el otro extremo de la isla. No será fácil, pero los Yoshis están decididos a enfrentarse a un Magikoopa entrometido y a todo su elenco de subordinados solapados.
+El brillante diseñador de juegos Shigeru Miyamoto ha llenado las junglas, cuevas y picos nevados de la isla con una sorprendente sorpresa tras otra. Salas ocultas, pasadizos secretos, encantadores minijuegos, jefes dementes y nuevos amigos esperan tu descubrimiento.
+Claro, Yoshi se ve lindo, pero tiene una potencia de fuego bastante sorprendente. Puede saltar, flotar, pisotear, golpear el suelo y sorber a los enemigos. Lo mejor de todo es que puede lanzar huevos. Diablos, Mario incluso llega a presto-chango en el superrápido Superstar Mario, mientras que Yoshi se transforma en un submarino de juguete que dispara pequeños torpedos.</desc>
+    <image>./images/Super Mario Advance 3 - Yoshi Island (ESP)-image.jpg</image>
+    <video>./videos/Super Mario Advance 3 - Yoshi Island (ESP)-video.mp4</video>
+    <thumbnail>./images/Super Mario Advance 3 - Yoshi Island (ESP)-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20020924T000000</releasedate>
+    <developer>Nintendo EAD</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Plataformas</genre>
+    <family>Yoshi</family>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251201T180050" />
+  </game>
+  <game id="3773">
+    <path>./Advance Wars II (ESP).zip</path>
+    <name>Advance Wars 2 : Black Hole Rising</name>
+    <desc>Todo empieza en el territorio de Macro Land, cuando el ejército de Black Hole decide invadir los países de Cosmo Land: Orange Star, Blue Moon, Green Earth y Yellow Comet. En esta entrega las cuatro naciones luchan independientemente contra un mismo invasor. El Ejército de Black Hole está regido por el general Sturm, uno de los OJ más poderosos que existen.
+
+El objetivo del juego es ir ganando batallas mediante estrategias y tácticas en los distintos países para llegar a la isla de Black Hole, donde Sturm espera para vengarse de la derrota que sufrió en Advance Wars.
+
+En Advance wars 2 los OJ tienen un poder y un super poder (a excepción de Sturm) , estos se cargan durante la partida y cuando el jugador ha cargado su barra de poder tiene la opción de usarlo o esperar a cargar su super poder para aumentar su ventaja</desc>
+    <image>./images/Advance Wars II (ESP)-image.png</image>
+    <video>./videos/Advance Wars II (ESP)-video.mp4</video>
+    <thumbnail>./images/Advance Wars II (ESP)-thumb.jpg</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20030623T000000</releasedate>
+    <developer>Intelligent Systems</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Estrategia</genre>
+    <family>Advance Wars</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251128T232828" />
+  </game>
+  <game>
+    <path>./Astroboy - Omega Factor (ESP).zip</path>
+    <name>Astro Boy: Tetsuwan Atomu</name>
+    <genre>Action, Fighting</genre>
+    <releasedate>20031218T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Sega</publisher>
+    <developer>Treasure</developer>
+    <desc>Únete a Astro, el superhéroe robótico con una mente humana, en una búsqueda para reunir a la raza robótica con los humanos. Astro usa sus siete súper habilidades para enfrentarse contra Atlas, Blue Knight y otros más de 40 personajes. El juego trae juegos clásicos en 2D al Game Boy Advance junto con una historia original de siete episodios. Jugando como Astro Boy, aprenderás sobre la justicia, la compasión, el mal, el coraje y la historia de Astro Boy, todo mientras construyes el Factor Omega de Astro y fortaleces su carácter y habilidades sobrehumanas.</desc>
+    <image>./images/Astroboy - Omega Factor (ESP)-image.jpg</image>
+    <thumbnail>./images/Astroboy - Omega Factor (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Astroboy - Omega Factor (ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./Boktai 2 - Solar Boy Django (ESP).zip</path>
+    <name>Boktai 2: Solar Boy Django</name>
+    <genre>Action, Adventure</genre>
+    <releasedate>20041019T000000</releasedate>
+    <players>4</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Konami</publisher>
+    <developer>Konami</developer>
+    <desc>Boktai 2 continúa las aventuras de Django, el niño solar, cuando se propone librar al mundo de vampiros y demonios malvados. La segunda entrega de la franquicia trae de vuelta la tecnología del sensor solar, que incorpora luz solar natural en el juego. Aproveche la luz solar natural a través del sensor solar incorporado en el cartucho de Game Boy Advance para encender y fusionar más de 60 armas y objetos. Ahora puedes ir al exterior y luchar contra enemigos con más armas, nuevos personajes y un entorno de juego más amplio.</desc>
+    <image>./images/Boktai 2 - Solar Boy Django (ESP)-image.jpg</image>
+    <thumbnail>./images/Boktai 2 - Solar Boy Django (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Boktai 2 - Solar Boy Django (ESP)-video.mp4</video>
+  </game>
+  <game id="3989">
+    <path>./DK - King of Swing (ESP).zip</path>
+    <name>DK : King of Swing</name>
+    <genre>Estrategia</genre>
+    <releasedate>20050919T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>El juego comienza durante el torneo “Jungle Jam", donde se está llevando a cabo un gran festival en la isla Donkey Kong. Durante el torneo las medallas son otorgadas como premios para diferentes concursos, como romper barriles y saltarlos, el ganador es nombrado “Héroe” de la isla. El rey K. Rool, por otra parte, intenta arruinar el torneo y roba todas las medallas antes que comience dicho torneo, proclamándose asimismo “Héroe de la jungla”. Donkey Kong manda al leader Kremling a buscar todas las medallas para restaurar la paz en la isla.</desc>
+    <family>Donkey Kong</family>
+    <image>./images/DK - King of Swing (ESP)-image.png</image>
+    <thumbnail>./images/DK - King of Swing (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/DK - King of Swing (ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./Mario &amp; Luigi Superstar Saga (ESP).zip</path>
+    <name>Mario &amp; Luigi: Superstar Saga</name>
+    <genre>Role-Playing</genre>
+    <releasedate>20031117T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>AlphaDream</developer>
+    <desc>¡Una bruja malvada ha reemplazado el discurso de la princesa Peach con explosivos! Mario y Luigi deben volver a rescatarla, pero esta vez emplean la ayuda de Bowser, su enemigo jurado. Mario y Luigi deben aprender nuevos movimientos y combinar poderes para luchar contra los enemigos y acercarse al castillo de la bruja. Guía a este grupo poco probable a través de una gran cantidad de minijuegos como Border Jump y Mystery Carts. Combina los poderes de Mario y Luigi para realizar movimientos especiales de equipo. Sumérgete en este mundo brillante, caricaturesco y humorístico, completo con música exitosa presentada en juegos anteriores de Mario.</desc>
+    <image>./images/Mario &amp; Luigi Superstar Saga (ESP)-image.jpg</image>
+    <thumbnail>./images/Mario &amp; Luigi Superstar Saga (ESP)-thumb.png</thumbnail>
+    <video>./videos/Mario &amp; Luigi Superstar Saga (ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./The Legend of Zelda - The Minish Cap (ESP).zip</path>
+    <name>The Legend of Zelda - The Minish Cap</name>
+    <genre>Adventure</genre>
+    <releasedate>20041112T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Capcom</developer>
+    <desc>Link regresa en una nueva aventura de Game Boy Advance. Cuando el hechicero Vaati convierte a la princesa Zelda en piedra, el rey de Hyrule envía a Link en una búsqueda que lo lleva a lugares completamente nuevos. Usando el poder de un sombrero místico llamado Minish Cap, Link debe viajar a través de un mundo fantástico lleno de nuevos objetos para usar, rompecabezas y jefes. Como Link, puedes encogerte para luchar contra grandes enemigos desde dentro o encontrar elementos secretos. También puedes desbloquear elementos y resolver acertijos fusionando reliquias mágicas.</desc>
+    <image>./images/The Legend of Zelda - The Minish Cap (ESP)-image.jpg</image>
+    <thumbnail>./images/The Legend of Zelda - The Minish Cap (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/The Legend of Zelda - The Minish Cap (ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./Wario-Land 4 (ESP).zip</path>
+    <name>Wario Land 4</name>
+    <genre>Platform</genre>
+    <releasedate>20011119T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Nintendo of America, Inc.</publisher>
+    <developer>Nintendo R&amp;D1</developer>
+    <desc>En este juego, Wario tiene que reunir cuatro tesoros para desbloquear una pirámide dorada y salvar a la Princesa Shokora de la enloquecida Golden Diva. Además ya no es invencible como en sus dos anteriores entregas, sino que gracias a los ataques u objetos del entorno puede cambiar entre varios estados como "quemado", "aplastado" o "zombie" que le permiten usar distintas habilidades para avanzar en cada nivel.</desc>
+    <image>./images/Wario-Land 4 (ESP)-image.jpg</image>
+    <thumbnail>./images/Wario-Land 4 (ESP)-thumb.png</thumbnail>
+    <video>./videos/Wario-Land 4 (ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./Dragon Ball - Advance adventure (ESP).zip</path>
+    <name>Dragon Ball: Advanced Adventure</name>
+    <genre>Fighting</genre>
+    <releasedate>20060606T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Atari SA</publisher>
+    <developer>Dimps Corporation</developer>
+    <desc>Únete a Goku en su primera aventura épica mientras defiende la tierra del implacable Ejército de la Cinta Roja. Comienza su camino hacia el poder y ayuda a convertir a un chico común en el campeón definitivo.</desc>
+    <image>./images/Dragon Ball - Advance adventure (ESP)-image.jpg</image>
+    <thumbnail>./images/Dragon Ball - Advance adventure (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Dragon Ball - Advance adventure (ESP)-video.mp4</video>
+  </game>
+  <game id="3787">
+    <path>./Final Fantasy I y II (ESP).zip</path>
+    <name>Final Fantasy I &amp; II : Dawn of Souls</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20041129T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>TOSE</developer>
+    <desc>Final Fantasy I: Experimenta Final Fantasy de una manera que nunca has imaginado, con gráficos mejorados y el nuevo calabozo Soul of Chaos. Asume el papel de los cuatro Guerreros de la Luz, ¡y restaura el orden en su caótico mundo!
+Final Fantasy II: Final Fantasy II le dio a los jugadores personajes más profundos y una historia más convincente. En esta edición mejorada, experimenta la adición del Alma del Renacimiento, la saga nunca antes contada de los héroes que dieron sus vidas para salvar su mundo!</desc>
+    <family>Final Fantasy</family>
+    <image>./images/Final Fantasy I y II (ESP)-image.png</image>
+    <thumbnail>./images/Final Fantasy I y II (ESP)-thumb.png</thumbnail>
+    <video>./videos/Final Fantasy I y II (ESP)-video.mp4</video>
+  </game>
+  <game id="3822">
+    <path>./Kirby - The Amazing Mirror (ESP).zip</path>
+    <name>Kirby &amp; the Amazing Mirror</name>
+    <genre>Plataformas</genre>
+    <releasedate>20041018T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Flagship</developer>
+    <desc>¡Mirror World ha sido invadido por una sombra malvada, y Kirby tiene que salvar el día! ¡Afortunadamente, no tendrá que hacerlo solo! ¡Ha sido dividido en cuatro Kirby de diferentes colores, y con su teléfono celular de confianza, puede llamar a sus clones de colores para echar una mano!</desc>
+    <family>Kirby</family>
+    <image>./images/Kirby - The Amazing Mirror (ESP)-image.png</image>
+    <thumbnail>./images/Kirby - The Amazing Mirror (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Kirby - The Amazing Mirror (ESP)-video.mp4</video>
+  </game>
+  <game id="84931">
+    <path>./WarioWare, Inc. - Minigame Mania (ESP).zip</path>
+    <name>WarioWare, Inc. : Mega Microgame$!</name>
+    <genre>Juego Casual</genre>
+    <releasedate>20030526T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>Estando un día en casa, Wario enciende el televisor para ver un reportaje especial sobre la crecida de las ventas de videojuegos debido a juegos populares como "Pyoro" (juego mostrado por el reportero). Tras ver el reportaje y pensarlo durante unos segundos, Wario se da cuenta que los videojuegos pueden ser un tema muy productivo y que puede conseguir grandes sumas de dinero con ellos, convirtiéndose en su mina de oro particular. Wario enseguida se da prisa en salir a comprar un ordenador portátil e inmediatamente comienza a trabajar. Él empieza diseñando diversos juegos pero pronto se da cuenta de que es un trabajo duro, por lo que llama a sus amigos para que vayan y hagan los juegos por él. De esta forma, WarioWare, Inc. ha sido formada, teniendo a Wario como presidente de la compañía.</desc>
+    <family>Wario</family>
+    <image>./images/WarioWare, Inc. - Minigame Mania (ESP)-image.png</image>
+    <thumbnail>./images/WarioWare, Inc. - Minigame Mania (ESP)-thumb.png</thumbnail>
+    <video>./videos/WarioWare, Inc. - Minigame Mania (ESP)-video.mp4</video>
+  </game>
+  <game id="84408">
+    <path>./Pokemon - Rojo fuego (ESP).zip</path>
+    <name>Pokémon FireRed Version</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20040909T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Game Freak</developer>
+    <desc>Pokémon Edición Rojo Fuego es una reedición de la primera entrega de la saga para Game Boy, en la que encarnaremos a un joven del Pueblo Paleta que sueña con convertirse en el mejor entrenador Pokémon de la historia, con un montón de numerosos nuevos Pokémon que capturar!</desc>
+    <family>Pokémon</family>
+    <image>./images/Pokemon - Rojo fuego (ESP)-image.png</image>
+    <thumbnail>./images/Pokemon - Rojo fuego (ESP)-thumb.png</thumbnail>
+    <video>./videos/Pokemon - Rojo fuego (ESP)-video.mp4</video>
+  </game>
+  <game id="84409">
+    <path>./Pokemon - Verde hoja (ESP).zip</path>
+    <name>Pokémon LeafGreen Version</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20040909T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Game Freak</developer>
+    <desc>Pokémon Rojo Fuego Version y Verde Hoja son remakes mejorados de los videojuegos originales Pokémon Rojo y Azul, que se lanzaron en 1996. Se lanzaron por primera vez en Japón en enero de 2004 y en Norteamérica y Europa en septiembre y octubre del mismo año respectivamente. Los dos juegos tienen la distinción de ser los primeros remakes mejorados de juegos anteriores dentro de la franquicia Pokémon.</desc>
+    <family>Pokémon</family>
+    <image>./images/Pokemon - Verde hoja (ESP)-image.jpg</image>
+    <thumbnail>./images/Pokemon - Verde hoja (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Pokemon - Verde hoja (ESP)-video.mp4</video>
+  </game>
+  <game id="3933">
+    <path>./Aladdin (ESP).zip</path>
+    <name>Aladdin</name>
+    <genre>Plataformas</genre>
+    <releasedate>20040928T000000</releasedate>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Disney Interactive</developer>
+    <desc>Disney's Aladdin es un videojuego basado en la película de 1992 del mismo nombre. A diferencia de algunos videojuegos multiplataforma de aquella época y ahora, las cinco versiones (Sega Genesis, Super NES, Sega Master System/Sega Game Gear, GameBoy y NES) son todas distintas.
+
+La historia más o menos es la misma que la película de Disney. La mayoría de los niveles y etapas del juego será fácilmente reconocido por personas que han visto la película, pero hay algunos niveles que no tienen nada que ver con la película, incluyendo una pirámide egipcia y un mundo surrealista donde el genio es el guía de Aladdin. Las características del juego interpretaciones de la banda sonora de la película de Disney, así como varios mini-juegos depende de la captura de un jugador de oro escarabajo o el cobro de todos los diamantes dentro de un escenario. Un desafío adicional consistía en encontrar 70 diamantes rojos en todo el juego. Si bien no eran necesarios para finalizar el juego, la pantalla de los créditos varía ligeramente en función de cómo muchos diamantes fueron recogidos. Esta versión vendió más de 1,75 millones de unidades en todo el mundo.</desc>
+    <family>Aladdin</family>
+    <image>./images/Aladdin (ESP)-image.png</image>
+    <thumbnail>./images/Aladdin (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Aladdin (ESP)-video.mp4</video>
+  </game>
+  <game id="4232">
+    <path>./ChuChu Rocket! (ESP).zip</path>
+    <name>ChuChu Rocket!</name>
+    <genre>Estrategia</genre>
+    <releasedate>20010610T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>SEGA</publisher>
+    <developer>Sonic Team</developer>
+    <desc>ChuChu Rocket es un rompecabezas de acción, diseñado principalmente como un juego multijugador. Tienes control indirecto sobre los ratones y debes guiarlos a la seguridad de un cohete y lejos de un gato. Para ello, coloque flechas en el suelo, que seguirán. El juego multijugador es un frenético duelo todos contra todos, en el que los ratones de cada jugador solo seguirán las instrucciones de su propio color. Puedes jugar este modo por tu cuenta contra oponentes de la CPU o enfrentarte a una serie de acertijos predefinidos</desc>
+    <family>ChuChu Rocket!</family>
+    <image>./images/ChuChu Rocket! (ESP)-image.png</image>
+    <thumbnail>./images/ChuChu Rocket! (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/ChuChu Rocket! (ESP)-video.mp4</video>
+  </game>
+  <game id="3770">
+    <path>./Dragon Ball Z - The Legacy of Goku II (ESP).zip</path>
+    <name>Dragon Ball Z : The Legacy of Goku 2</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20030617T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Infogrames</publisher>
+    <developer>Webfoot Technologies</developer>
+    <desc>Justo cuando los Z Fighters pensaban que la lucha contra el mal había terminado, se acerca un nuevo mal. En el próximo episodio de la búsqueda de Z Fighters para librar al universo del mal, asumirás el papel de Trunks, Goku, Gohan, Piccolo o Vegeta mientras viajan a través de Cell Saga y te preparas para la batalla con el poderoso Cell. él mismo. Con cinco personajes jugables, horas de juego y mapas de juego masivos para explorar, es una aventura DBZ de proporciones épicas.</desc>
+    <family>Dragon Ball</family>
+    <image>./images/Dragon Ball Z - The Legacy of Goku II (ESP)-image.png</image>
+    <thumbnail>./images/Dragon Ball Z - The Legacy of Goku II (ESP)-thumb.png</thumbnail>
+    <video>./videos/Dragon Ball Z - The Legacy of Goku II (ESP)-video.mp4</video>
+  </game>
+  <game id="3778">
+    <path>./Final Fantasy V Advance (ESP).zip</path>
+    <name>Final Fantasy V Advance</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20061106T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Square Enix</developer>
+    <desc>Los vientos fallan. Los barcos se detienen, incapaces de llenar sus velas. El mundo corre hasta el final. A menos que un puñado de héroes pueda proteger los cristales restantes, el mundo se arruinará. ¡Embárcate en una gran aventura en la mejor versión de FINAL FANTASY V jamás lanzada!</desc>
+    <family>Final Fantasy</family>
+    <image>./images/Final Fantasy V Advance (ESP)-image.png</image>
+    <thumbnail>./images/Final Fantasy V Advance (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Final Fantasy V Advance (ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./Gyakuten Saiban (ESP) (VOZ ESP).zip</path>
+    <name>Gyakuten Saiban</name>
+    <genre>Adventure, Puzzle</genre>
+    <releasedate>20011012T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>El jugador es Ryuuichi Naruhodou, asignado a su primer caso. El jugador tendrá que presionar a los testigos para obtener más información, examinar cuidadosamente las evidencias y tener el instinto de gritar '¡Objeción!' Para defender con éxito a su acusado.
+
+Hay cuatro casos en total. ¡En cada caso, Ryuuichi tiene que seguir la historia cuidadosamente, examinar cada escena cuidadosamente y encontrar todas las evidencias para ganar las batallas judiciales!</desc>
+    <image>./images/Gyakuten Saiban (ESP) (VOZ ESP)-image.jpg</image>
+    <thumbnail>./images/Gyakuten Saiban (ESP) (VOZ ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Gyakuten Saiban (ESP) (VOZ ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./Kingdom Hearts - Chain of Memories (ESP).zip</path>
+    <name>Kingdom Hearts: Chain of Memories</name>
+    <genre>Action</genre>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Square Enix</publisher>
+    <developer>Square Enix</developer>
+    <desc>Kingdom Hearts: Chain of Memories ofrece una aventura completamente nueva y prepara el escenario para Kingdom Hearts II. Sora, Donald y Goofy viajan por muchos mundos vastos y coloridos en busca de sus compañeros desaparecidos. Encuentra más de 100 de tus amigos y enemigos favoritos de Disney y Final Fantasy. Recoge cartas misteriosas que abren puertas a nuevas aventuras, desbloquea habilidades poderosas y llama a amigos y familiares a tu lado. Experimente gráficos grandes y audaces y animación de alta calidad.</desc>
+    <image>./images/Kingdom Hearts - Chain of Memories (ESP)-image.jpg</image>
+    <thumbnail>./images/Kingdom Hearts - Chain of Memories (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Kingdom Hearts - Chain of Memories (ESP)-video.mp4</video>
+  </game>
+  <game id="3856">
+    <path>./Megaman Zero 1 (ESP).zip</path>
+    <name>Mega Man Zero</name>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <releasedate>20021102T000000</releasedate>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Inti Creates</developer>
+    <desc>Los legendarios héroes de los Reploids, X y Zero, derrotaron al malvado Sigma hace mucho tiempo, y se creó un nuevo ejército para prevenir brotes del Virus Maverick. Pero a medida que pasó el tiempo, el ejército se volvió opresivo y comenzó a repartir un tipo de justicia paranoica. Se dice que su líder, una vez un gran guerrero, se ha vuelto frío y calculador, eliminando cualquier Reploid que se atreva a oponerse a él.
+
+Se necesita un héroe en estos tiempos oscuros, y eso es exactamente lo que Ciel y su grupo rebelde han encontrado en una vieja ruina ... un héroe del pasado, renacido en el futuro.
+
+Zero ha llegado a un momento que no conoce, para salvarlo de una figura del pasado ... el destino de la libertad descansa sobre sus hombros.</desc>
+    <family>Mega Man</family>
+    <image>./images/Megaman Zero 1 (ESP)-image.png</image>
+    <thumbnail>./images/Megaman Zero 1 (ESP)-thumb.png</thumbnail>
+    <video>./videos/Megaman Zero 1 (ESP)-video.mp4</video>
+  </game>
+  <game id="3987">
+    <path>./MegaMan Zero 3 (ESP).zip</path>
+    <name>Mega Man Zero 3</name>
+    <genre>Plataformas / Tirador con desplazamiento</genre>
+    <releasedate>20041005T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Inti Creates</developer>
+    <desc>En la tercera entrega de la serie Mega Man Zero de Capcom, como era de esperar, juegas como Zero. Continuando donde lo dejó Mega Man Zero 2, debes encontrar y neutralizar al "Elfo Oscuro" que escapó recientemente, antes de que pueda lavarle el cerebro a la Resistencia con el propósito de conquistar Neo Arcadia. Además del antiguo sistema Cyber Elf, este juego también contiene un nuevo sistema de "chip", donde Zero puede adquirir nuevas habilidades encontrando chips e instalando chips en sí mismo. Pero no decidieron abandonar a los Cyber Elves en este juego sin darles nada nuevo. No, para extender la vida de los Cyber Elfos, agregaron el nuevo concepto de "Cyber Space" a los niveles, donde entras por una puerta al Cyber Space y puedes usar cada Cyber Elf tanto como quieras sin que mueran. . Sin embargo, no hay demasiados "Discos secretos" (elementos que pueden contener cualquier cosa, desde perfiles de personajes hasta Cyber Elves y nuevos chips) en Cyber Space, por lo que es mejor pasar más tiempo en el nivel normal.</desc>
+    <family>Mega Man</family>
+    <image>./images/MegaMan Zero 3 (ESP)-image.png</image>
+    <thumbnail>./images/MegaMan Zero 3 (ESP)-thumb.png</thumbnail>
+    <video>./videos/MegaMan Zero 3 (ESP)-video.mp4</video>
+  </game>
+  <game id="3767">
+    <path>./Metroid - Fusion (ESP).zip</path>
+    <name>Metroid Fusion</name>
+    <genre>Plataformas</genre>
+    <releasedate>20021117T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>Metroid Fusion es el cuarto videojuego de la saga Metroid, y el primero en haber salido para Game Boy Advance. Es la secuela directa del aclamado Other M de Wii y situado el último, cronológicamente, de toda la saga.
+
+Metroid Fusion representa una nueva dirección de la serie, eliminando el desarrollo no lineal, introduciendo un ordenador como personaje no jugable, que te dice qué hacer y a dónde ir (haciendo que la técnica de saltarse escenas de un videojuego sea más difícil de realizar).</desc>
+    <family>Metroid</family>
+    <image>./images/Metroid - Fusion (ESP)-image.png</image>
+    <thumbnail>./images/Metroid - Fusion (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Metroid - Fusion (ESP)-video.mp4</video>
+  </game>
+  <game id="84413">
+    <path>./Pokemon - Zafiro (ESP).zip</path>
+    <name>Pokémon Sapphire Version</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20030319T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Game Freak</developer>
+    <desc>La carrera para atraparlos a todos llega esta vez con Pokémon Zafiro. Esta entrega en la serie Pokémon presenta una historia completamente nueva y unos nuevos Pokémon increíbles. Uno de los mayores añadidos a Pokémon Zafiro es el sistema de combate dos-a-dos, que te permite unirte a tres amigos para luchar de forma competitiva o cooperativa. También puedes mostrar la genialidad, belleza, ternura, inteligencia y resistencia de tus Pokémon en los concursos de Pokémon. Con nuevos Pokémon, combates dos-a-dos y la nueva región de Hoenn para explorar, Pokémon Zafiro lleva la experiencia de Pokémon al siguiente nivel.</desc>
+    <family>Pokémon</family>
+    <image>./images/Pokemon - Zafiro (ESP)-image.png</image>
+    <thumbnail>./images/Pokemon - Zafiro (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Pokemon - Zafiro (ESP)-video.mp4</video>
+  </game>
+  <game id="3803">
+    <path>./Shining Force - Resurrection of the Dark Dragon (ESP).zip</path>
+    <name>Shining Force : Resurrection of the Dark Dragon</name>
+    <genre>Juego de Rol / RPG Táctico</genre>
+    <releasedate>20040608T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>THQ</publisher>
+    <developer>Amusement Vision</developer>
+    <desc>Shining Force es un juego de rol táctico por turnos. Las batallas tienen lugar en cuadrículas cuadradas, y cada unidad ocupa un cuadrado. Cada unidad puede moverse hasta una cantidad fija de casillas a lo largo del campo de batalla, determinada por su estadística de Movimiento. Dependiendo de su ubicación en relación con los enemigos y los aliados, una unidad también puede realizar una acción: atacar, lanzar un hechizo, usar un objeto o buscar en el área. Algunos comandos, como equipar o soltar elementos, no cuentan como acciones. El orden de los turnos está determinado por la puntuación de agilidad de la unidad y una semilla aleatoria.</desc>
+    <family>Shining Force</family>
+    <image>./images/Shining Force - Resurrection of the Dark Dragon (ESP)-image.png</image>
+    <thumbnail>./images/Shining Force - Resurrection of the Dark Dragon (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Shining Force - Resurrection of the Dark Dragon (ESP)-video.mp4</video>
+  </game>
+  <game id="3843">
+    <path>./Sonic Advance 3 (ESP).zip</path>
+    <name>Sonic Advance 3</name>
+    <genre>Plataformas</genre>
+    <releasedate>20040607T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>THQ</publisher>
+    <developer>Sonic Team</developer>
+    <desc>Eggman ha dividido el mundo en siete partes, ahora el jugador debe encontrar las siete Esmeraldas del Caos para restaurar el mundo.
+
+Sonic Advance 3 es un juego de Sonic con un giro: el jugador puede jugar con un amigo en modo cooperativo o en uno de los muchos modos multijugador, como la carrera de anillo. El juego contiene características de Sonic Advance y Sonic Advance 2, pero con más opciones como elegir entre 2 personajes en el modo historia (un personaje principal y uno siguiente).</desc>
+    <family>Sonic</family>
+    <image>./images/Sonic Advance 3 (ESP)-image.png</image>
+    <thumbnail>./images/Sonic Advance 3 (ESP)-thumb.png</thumbnail>
+    <video>./videos/Sonic Advance 3 (ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./Spider-Man - Mysterios Menace (ESP).zip</path>
+    <name>Spider-Man: Mysterio's Menace</name>
+    <genre>Action</genre>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Activision</publisher>
+    <developer>Vicarious Visions, Inc.</developer>
+    <desc>Ambientada en Nueva York, Spider-Man: Mysterio's Menace permite a los jugadores asumir el papel de Spider-Man mientras se enfrentan al supervillano Mysterio y sus ilusorios trucos para controlar Manhattan.  Spider-Man debe luchar contra una gran cantidad de siniestros conspiradores y artilugios de Mysterio para llegar al fondo de su trama y liberar a Nueva York del control de Mysterio.</desc>
+    <image>./images/Spider-Man - Mysterios Menace (ESP)-image.jpg</image>
+    <thumbnail>./images/Spider-Man - Mysterios Menace (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Spider-Man - Mysterios Menace (ESP)-video.mp4</video>
+  </game>
+  <game id="3903">
+    <path>./Star Wars Trilogy - Apprentice of the Force (ESP).zip</path>
+    <name>Star Wars Trilogy : Apprentice of the Force</name>
+    <genre>Plataformas</genre>
+    <releasedate>20040921T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Ubisoft</publisher>
+    <developer>Ubisoft</developer>
+    <desc>Por primera vez, la legendaria trilogía de películas de Star Wars llega a Game Boy Advance. Los jugadores experimentarán las escenas más emocionantes y memorables de Star Wars: A New Hope, The Empire Strikes Back y Return of the Jedi.
+
+Controla a Luke mientras se convierte en Jedi, lucha contra Darth Vader y Boba Fett, escapa de la temible bestia del rencor y destruye la Estrella de la Muerte.</desc>
+    <family>Star Wars</family>
+    <image>./images/Star Wars Trilogy - Apprentice of the Force (ESP)-image.png</image>
+    <thumbnail>./images/Star Wars Trilogy - Apprentice of the Force (ESP)-thumb.png</thumbnail>
+    <video>./videos/Star Wars Trilogy - Apprentice of the Force (ESP)-video.mp4</video>
+  </game>
+  <game id="3776">
+    <path>./Castlevania - Circle Of The Moon (ESP).zip</path>
+    <name>Castlevania : Aria of Sorrow</name>
+    <genre>Acción / Aventura</genre>
+    <releasedate>20030506T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Konami</publisher>
+    <developer>Konami</developer>
+    <desc>Es el año 1830. En un antiguo castillo austríaco, los adoradores del Caos intentaron revivir al Señor de las Tinieblas, el Conde Drácula. El cazador de vampiros Morris Baldwin y sus aprendices, Nathan Graves y Hugh Baldwin, se enteraron de esto y se dirigieron a Castlevania para detener la resurrección y la restauración del poder del Conde Drácula. Sin embargo, llegaron unos segundos demasiado tarde y Camilla, una secuaz del Conde Drácula, inició el rito para revivir a su maestro. ¡Ahora depende de ti abrirte camino a través de varios monstruos y los secuaces de Drácula para derrotar al Señor de la Oscuridad!</desc>
+    <family>Castlevania</family>
+    <image>./images/Castlevania - Circle Of The Moon (ESP)-image.png</image>
+    <thumbnail>./images/Castlevania - Circle Of The Moon (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Castlevania - Circle Of The Moon (ESP)-video.mp4</video>
+  </game>
+  <game id="3760">
+    <path>./Final Fantasy Tactics (ESP).zip</path>
+    <name>Final Fantasy Tactics Advance</name>
+    <genre>Juego de Rol / RPG Táctico</genre>
+    <releasedate>20030908T000000</releasedate>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Square Enix</publisher>
+    <developer>Square Enix</developer>
+    <desc>Marche y algunos amigos están en una aventura habitual por su ciudad local, St. Ivalice, solo para descubrir un libro lleno de fantasía y magia. Al pensar en una tierra mágica, son transportados al mundo de Ivalice, que se basa en uno de los juegos favoritos de sus amigos, Final Fantasy.
+
+Al encontrarse solo, Marche debe unirse a un clan de guerreros y viajar a través de esta nueva tierra de misterio para encontrar a sus amigos perdidos, y regresar al mundo real, mientras aprende todo sobre este nuevo lugar y la magia que contiene.</desc>
+    <family>Final Fantasy</family>
+    <image>./images/Final Fantasy Tactics (ESP)-image.png</image>
+    <thumbnail>./images/Final Fantasy Tactics (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Final Fantasy Tactics (ESP)-video.mp4</video>
+  </game>
+  <game id="84406">
+    <path>./Pokemon - Esmeralda (ESP).zip</path>
+    <name>Pokémon Emerald Version</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20050501T000000</releasedate>
+    <players>1-5</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Game Freak</developer>
+    <desc>Pokémon edición esmeralda (Inglés Pokémon Emerald) es un juego de tercera generación, salió a la venta el primero de mayo del 2005 (en América), es la continuación de Pokémon rubí y zafiro.
+Pokémon Emerald tiene cosas de las ediciones rubí y zafiro como también de cosas propias, el campeón del alto mando cambia, en vez de ser Máximo es Plubio. Ahora puedes tanto capturar a Groudon (mascota rubí) como a Kyogre (mascota zafiro). Puedes luchar y atrapar a Rayquaza antes de llegar a la liga Pokémon (lo que puede resultar muy ventajoso para ganarles sin problemas).
+El otro cambio que es el más sobresaliente es que en Pokémon Emerald aparece la nueva Battle Fronteir (Frente de batalla), en donde tienes que derrotar a siete poderosas personas que te darán una medalla especial como premio de haber ganado. Cabe destacar que luchar ahí es verdaderamente desafiante y el nivel de dificultad no se compara a ninguna otra batalla en el juego, ni los de la liga Pokémon</desc>
+    <family>Pokémon</family>
+    <image>./images/Pokemon - Esmeralda (ESP)-image.png</image>
+    <thumbnail>./images/Pokemon - Esmeralda (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Pokemon - Esmeralda (ESP)-video.mp4</video>
+  </game>
+  <game>
+    <path>./Spyro - Season of Ice (ESP).zip</path>
+    <name>Spyro: Season of Ice</name>
+    <genre>Action</genre>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Universal Interactive</publisher>
+    <developer>Digital Eclipse</developer>
+    <desc>Spyro y Sparx están de vacaciones con Bianca y Hunter, cuando Hunter entra en pánico al confundir un globo con una oveja en un platillo volador. Spyro encuentra en el globo un mensaje de Zoe pidiendo ayuda a Grendor que está secuestrando hadas. Bianca dejó su libro de hechizos en la biblioteca mientras buscaba folletos navideños. Grendor había estado buscando en la biblioteca de Bianca y encontró el libro de hechizos de Bianca. Lo probó, con la esperanza de convertirse en un mago poderoso, sin embargo, lo leyó al revés y se convirtió en un Rhynoc de dos cabezas con 4 dolores de cabeza. Planeaba capturar a todas las hadas y usar sus alas para curar su problema. Spyro y sus amigos se dirigen para evitar que Grendor lleve a cabo sus planes.
+
+Después de que Spyro atraviesa muchos niveles (incluido un primer enfrentamiento con Grendor) y salva a todas las hadas además de la propia Zoe, se enfrenta a Grendor por segunda vez y vuelve a derrotar, rescatando a Zoe. Una vez libre, Zoe regaña ligeramente a Grendor por causar problemas, luego usa su magia para curarlo de su cabeza extra y todos sus dolores de cabeza. Grendor se disculpa por sus acciones y Spyro y sus amigos regresan a sus vacaciones.</desc>
+    <image>./images/Spyro - Season of Ice (ESP)-image.png</image>
+    <thumbnail>./images/Spyro - Season of Ice (ESP)-thumb.jpg</thumbnail>
+    <video>./videos/Spyro - Season of Ice (ESP)-video.mp4</video>
+  </game>
+  <game id="83900">
+    <path>./Iridion II (ESP).zip</path>
+    <name>Iridion II</name>
+    <genre>Disparos / Avión, 3ª persona</genre>
+    <releasedate>20030329T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Vivendi Universal Games</publisher>
+    <developer>Shin'en Multimedia</developer>
+    <desc>This sequel to Iridion 3D is different in gameplay, but twice as much action. Piloting in Kiloblaster Style mechanics from a 3D perspective, you fight through 15 
+levels of pulse-pounding action that will keep you up all night. Six different weapons with upgrade ability will give you awesome firepower to stop your foes. 
+ The storyline goes that a hundred years have passed since the Earth was attacked by the vicious IRIDION forces. Wanting revenge over their lost systems, they attack once more. Earth is too far away to send help, and you're the only one that could stop them.</desc>
+    <family>Iridion</family>
+    <image>./images/Iridion II (ESP)-image.png</image>
+    <thumbnail>./images/Iridion II (ESP)-thumb.png</thumbnail>
+    <video>./videos/Iridion II (ESP)-video.mp4</video>
+  </game>
+</gameList>

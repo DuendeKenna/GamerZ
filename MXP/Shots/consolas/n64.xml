@@ -1,0 +1,833 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gameList>
+  <game id="5409">
+    <path>./Diddy Kong Racing (USA) (En,Fr) (Rev A).zip</path>
+    <name>Diddy Kong Racing</name>
+    <desc>DIDDY KONG RACING, se puede considerar como la segunda parte de SUPER MARIO KART 64, usando como base del juego las carreras motorizadas. En este caso el kart ya no es el único vehículo disponible, ya que también hay otros 2, el OVERCRAFT y la AVIONETA (disponibles desde el principio del juego). Otro punto es los personajes que no hay ninguno de SUPER MARIO KART y adquiere el protagonismo del juego DIDDY KONG, y, toda su trepa de amigos. La Otra novedad que ofrece este juego, es el modo AVENTURA, que utiliza el mismo sistema de MARIO 64, hay varios mundos con unos niveles dentro (circuitos) y unos globos que se tendrán que coleccionar para seguir avanzando (mismo sistema que MARIO 64 (estrellas))</desc>
+    <image>./images/Diddy Kong Racing (USA) (En,Fr) (Rev A)-image.png</image>
+    <video>./videos/Diddy Kong Racing (USA) (En,Fr) (Rev A)-video.mp4</video>
+    <rating>0.75</rating>
+    <releasedate>19971124T000000</releasedate>
+    <developer>Rareware</developer>
+    <publisher>Rareware</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Donkey Kong</family>
+    <players>1-4</players>
+    <lang>en,fr</lang>
+    <region>us</region>
+    </game>
+  <game id="5429">
+    <path>./Mario Party 2 (ESP).zip</path>
+    <name>Mario Party 2</name>
+    <desc>¡Mario y la banda están de vuelta para otra ronda de acción de fiesta de Bowser! ¡Mira cómo tus personajes favoritos de Nintendo se ponen diferentes prendas para cada uno de las cinco tableros de aventuras completamente nuevos! Una gran cantidad de nuevos trucos y dispositivos traen nuevos niveles de desafío y emoción al juego de mesa. ¡Nuevos mapas de tablero, nuevos minijuegos, nuevas acciones y nuevas sorpresas significan un nuevo lote de diversión! ¡Prepárate para dar rienda suelta a tus mejores Gotas de Cadera, columpios de martillo y juncos de alto vuelo para otra ronda de frenética acción multijugador!</desc>
+    <image>./images/Mario Party 2 (ESP)-image.png</image>
+    <video>./videos/Mario Party 2 (ESP)-video.mp4</video>
+    <thumbnail>./images/Mario Party 2 (ESP)-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>20000124T000000</releasedate>
+    <developer>Hudson</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de mesa</genre>
+    <family>Mario Party</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5581">
+    <path>./NBA Live 2000 (ESP).zip</path>
+    <name>NBA Live 2000</name>
+    <desc>La serie de videojuegos de básquetbol de la NBA Live, publicada por EA Sports, es actualmente una de las principales simulaciones de la Asociación Nacional de Baloncesto en el mercado.
+
+A partir de NBA Live 2000, la serie contó con la NBA Live Legend All-Stars Teams, que incluyó algunos de los nombres más importantes de las cinco décadas (50 a 90). Estos equipos se pueden usar de forma instantánea, pero para usarlos como jugadores regulares (por ejemplo, intercambiados, jugados en equipos normales de la NBA) deben desbloquearse. A lo largo de la serie, algunas de las listas cambiaron debido a muchas razones, ya que Michael Jordan estuvo en el equipo de los 90 hasta 2004.</desc>
+    <image>./images/NBA Live 2000 (ESP)-image.png</image>
+    <video>./videos/NBA Live 2000 (ESP)-video.mp4</video>
+    <thumbnail>./images/NBA Live 2000 (ESP)-thumb.png</thumbnail>
+    <rating>0.4</rating>
+    <releasedate>19991031T000000</releasedate>
+    <developer>NuFX</developer>
+    <publisher>EA Sports</publisher>
+    <genre>Deportes / Baloncesto</genre>
+    <family>NBA Live</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5441">
+    <path>./1080 TenEighty Snowboarding.zip</path>
+    <name>1080 TenEighty Snowboarding</name>
+    <desc>Estás bajando en una tabla de snowboard Tahoe 155 por una pendiente empinada y accidentada por la noche y estás a punto de completar un Indy Nosebone con Air a 360 ° ¡y ni siquiera has salido de tu sala de estar! Estás jugando a 1080 ° (diez ochenta) snowboard, un juego tan intenso que podrás cepillar la nieve de tus gafas. Con cinco huéspedes diferentes, ocho tablas de snowboard Lamar diferentes, más de 25 trucos, un Half-Pipe y seis campos diferentes, esto es lo más cerca que puedes llegar a la realidad sin saltar en el próximo remonte.</desc>
+    <image>./images/1080 TenEighty Snowboarding-image.png</image>
+    <video>./videos/1080 TenEighty Snowboarding-video.mp4</video>
+    <rating>0.85</rating>
+    <releasedate>19980401T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Deportes / Esquí</genre>
+    <family>1080</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="5449">
+    <path>./Bomberman 64.zip</path>
+    <name>Bomberman 64</name>
+    <desc>El malvado Altair está usando el Omni Cube para drenar la energía de Planet Bomber. Con la ayuda de un misterioso ayudante, debes derrotar a Altair y restaurar la paz en Planet Bomber. En el modo Aventura, guía a Bomberman a través de 24 áreas de conflicto peligroso. Combatir a los aliados siniestros de Altair, destruir sus bases y poner fin al ataque insano. El modo de batalla multijugador ofrece horas interminables de acción explosiva. Use el personaje estándar de Bomberman o cree uno personalizado y guárdelo en un N64 Controller Pak.</desc>
+    <image>./images/Bomberman 64-image.png</image>
+    <video>./videos/Bomberman 64-video.mp4</video>
+    <rating>0.6</rating>
+    <releasedate>19971130T000000</releasedate>
+    <developer>Hudson Soft</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Acción / Aventura</genre>
+    <family>Bomberman</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5550">
+    <path>./Cruis'n World.zip</path>
+    <name>Cruis'n World</name>
+    <desc>¿Quieres ver el mundo de la manera fácil? Crucero! ¡Corre por los desiertos de Australia, recorre las calles de París o atraviesa las carreteras de China! ¡Juega en el nuevo modo Campeonato para ganar potenciadores y autos secretos! ¡Ve solo o desafía a hasta tres amigos para ver quién es el más rápido! Verifique su pasaporte en la puerta. Con Cruisin 'World, ¡tienes el poder!
+
+¡Juega en el nuevo modo Campeonato para ganar potenciadores y autos secretos!
+
+Disfruta de los paisajes de 14 cursos de todo el mundo!
+
+¡Elige entre 12 autos diferentes!
+
+¡Competición simultánea para cuatro jugadores!
+
+¡Compatible con el accesorio Rumble Pak '!</desc>
+    <image>./images/Cruis'n World-image.png</image>
+    <video>./videos/Cruis'n World-video.mp4</video>
+    <rating>0.65</rating>
+    <releasedate>19980928T000000</releasedate>
+    <developer>Eurocom</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Cruis'n</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5404">
+    <path>./Donkey Kong 64.zip</path>
+    <name>Donkey Kong 64</name>
+    <desc>¡K. Rool ha secuestrado a los Kongs! ¿Puede Donkey Kong rescatar a sus amigos, recuperar los Plátanos Dorados y salvar a su patria de una condena segura? Saque algunos Kremlings con el Lanzador de piñas de Chunky o el Trombón de Lanky. Flota en el aire con Tiny's Ponytail Twirl. ¡Incluso lanza cohetes al cielo con Diddy's Jetbarrel!</desc>
+    <image>./images/Donkey Kong 64-image.png</image>
+    <video>./videos/Donkey Kong 64-video.mp4</video>
+    <rating>0.95</rating>
+    <releasedate>19991122T000000</releasedate>
+    <developer>Rareware</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Acción / Aventura</genre>
+    <family>Donkey Kong</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5456">
+    <path>./Duke Nukem - ZER0 H0UR (U) [!].zip</path>
+    <name>Duke Nukem : Zero Hour</name>
+    <desc>El juego se presenta en una perspectiva de tercera persona, con Duke siempre visible, o semi-trasparente en el momento en el que apunta. Este juego es el segundo juego de la saga que ha salido para Nintendo 64 junto con Duke Nukem 64.</desc>
+    <image>./images/Duke Nukem - ZER0 H0UR (U) [!]-image.png</image>
+    <video>./videos/Duke Nukem - ZER0 H0UR (U) [!]-video.mp4</video>
+    <rating>0.85</rating>
+    <releasedate>19990801T000000</releasedate>
+    <developer>Eurocom</developer>
+    <publisher>GT Interactive Software</publisher>
+    <genre>Disparos / 3ª persona</genre>
+    <family>Duke Nukem</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <region>us</region>
+    </game>
+  <game id="5490">
+    <path>./International Superstar Soccer 2000 (USA) (En,Es) (Rev 1).7z</path>
+    <name>International Superstar Soccer 2000</name>
+    <desc>El indiscutible rey del fútbol regresa... Experimente el nuevo Modo de Carrera - acompañe a los jóvenes a través de las filas para crear jugadores individuales estrella. Animaciones y juego más fluido. ISS 2000 es la elección de los campeones - ningún otro se acerca tanto al juego real.</desc>
+    <image>./images/International Superstar Soccer 2000 (USA) (En,Es) (Rev 1)-image.png</image>
+    <video>./videos/International Superstar Soccer 2000 (USA) (En,Es) (Rev 1)-video.mp4</video>
+    <rating>0.85</rating>
+    <releasedate>20000803T000000</releasedate>
+    <developer>KCEO</developer>
+    <publisher>Konami</publisher>
+    <genre>Deportes / Fútbol</genre>
+    <family>International Superstar Soccer</family>
+    <players>1-4</players>
+    <lang>en,es</lang>
+    <region>us</region>
+    </game>
+  <game id="5507">
+    <path>./LEGO Racers.zip</path>
+    <name>LEGO Racers</name>
+    <desc>Construye tus coches favoritos de Lego en tu Nintendo 64 usando los mismos bloques que  en la vida real, gracias al modo detallado de creación. Después de esto, podrás correr contra otros coches construidos en 12 pistas de temáticas especiales, basadas en los kits originales de Lego (incluyendo Piratas, Egipto y mucho más). Corre contra tus amigos en el  modo de pantalla dividida, o conduce directo a la meta para ganar el trofeo de carreras Lego.</desc>
+    <image>./images/LEGO Racers-image.png</image>
+    <video>./videos/LEGO Racers-video.mp4</video>
+    <rating>0.6</rating>
+    <releasedate>19991031T000000</releasedate>
+    <developer>High Voltage</developer>
+    <publisher>Lego Media</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>LEGO</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="5469">
+    <path>./Mario Golf (U) [!].zip</path>
+    <name>Mario Golf</name>
+    <desc>Olvídate de comprar equipos de golf caros: Mario te trae el juego. Mario Golf cuenta con cuatro recorridos completos de 18 hoyos, 11 golfistas y un control preciso del juego. Crea tu propio golfista y desarrolla su experiencia y niveles de habilidad compitiendo en varios torneos y enfrentamientos cara a cara. Cuanto más juegas, más fuerte y preciso se vuelve tu golfista. Hay muchos modos de juego diferentes en Mario Golf, que incluyen una amplia variedad de minijuegos diseñados para desafiar incluso a los swingers más equilibrados.</desc>
+    <image>./images/Mario Golf (U) [!]-image.png</image>
+    <video>./videos/Mario Golf (U) [!]-video.mp4</video>
+    <rating>0.75</rating>
+    <releasedate>19990726T000000</releasedate>
+    <developer>Camelot Software</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Deportes / Golf</genre>
+    <family>Mario</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <region>us</region>
+    </game>
+  <game id="5399">
+    <path>./Mario Party (ESP).zip</path>
+    <name>Mario Party</name>
+    <desc>Mario Party es un juego de mesa con el que podrás participar con tus amigos en una multitud de mini-juegos en tu Nintendo 64. De hecho, se juega por turnos. El trepidante ritmo de sus pequeños mini juegos te hará intentar batir por todos los medios a  los demás participantes, que están a cargo de jugadores humanos o el ordenador, hasta un total de 4 jugadores simultáneos.</desc>
+    <image>./images/Mario Party (ESP)-image.png</image>
+    <video>./videos/Mario Party (ESP)-video.mp4</video>
+    <thumbnail>./images/Mario Party (ESP)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19990208T000000</releasedate>
+    <developer>Hudson Soft</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Juego de mesa</genre>
+    <family>Mario Party</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5493">
+    <path>./Micro Machines 64 Turbo (ESP).zip</path>
+    <name>Micro Machines 64 Turbo</name>
+    <desc>Con una extravagante mezcla de carreras de vehículos de juguete y un juego sofisticado, Micro Machines 64 Turbo garantiza ser una adición refrescante al catalogo de juegos de carreras estándar. La amplia variedad de vehículos destacados incluye carreras de Fórmula 1, lanchas rápidas, monsters trucks, tanques y camiones de helados. Elije entre 25 pistas, que van desde una mesa de cocina a un laboratorio de química, cada una de ellas con los accesorios adecuados para que coincida con la decoración. Tales detalles enriquecen este juego y lo hacen muy interesante, incluso para el jugador más cansado. Equipa correctamente tu vehículo, el juego requiere que planees estratégicamente si deseas salir victorioso, haciendo un buen uso de las armas a tu disposición.</desc>
+    <image>./images/Micro Machines 64 Turbo (ESP)-image.png</image>
+    <video>./videos/Micro Machines 64 Turbo (ESP)-video.mp4</video>
+    <thumbnail>./images/Micro Machines 64 Turbo (ESP)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19990324T000000</releasedate>
+    <developer>Codemasters</developer>
+    <publisher>Codemasters</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Micro Machines</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5607">
+    <path>./Space Invaders.zip</path>
+    <name>Space Invaders</name>
+    <desc>En 1978, la Tierra rechazó con éxito una invasión del espacio exterior gracias a "el tanque". El tanque fue basado en tecnología exterior encontrada donde una nave espacial se había estrellado años atrás. Ahora, más de 20 años después, se ha creado un nuevo tanque basado en la tecnología recuperada durante la invasión del 78. Y ha sido justo a tiempo, porque los invasores están de vuelta!
+Space Invaders es otro remake clásico del juego de arcade de Activision, pero esta vez, Activision licenció el juego a Taito en lugar de a Atari. El juego mantiene sus raíces,  al tiempo que añade muchos power-ups y enemigos.</desc>
+    <image>./images/Space Invaders-image.png</image>
+    <video>./videos/Space Invaders-video.mp4</video>
+    <rating>0.75</rating>
+    <releasedate>19991130T000000</releasedate>
+    <developer>Z-Axis</developer>
+    <publisher>Activision</publisher>
+    <genre>Disparos / Tipo Space Invaders</genre>
+    <family>Space Invaders</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="5398">
+    <path>./Super Smash Bros. (U) [!].zip</path>
+    <name>Super Smash Bros.</name>
+    <desc>Es un Bumpin ', Bruisin', Brawlin 'Bash! ¡Los muchos mundos de Nintendo colisionan en el último enfrentamiento de fuerza y habilidad! Hasta cuatro jugadores pueden elegir sus personajes favoritos, completos con ataques exclusivos, y participar en Batallas en equipo y Free-For-Alls. O aventurate por tu cuenta para conquistar las 14 etapas en modo para un solo jugador. De cualquier manera, Super Smash Bros. es un festival de acción sin límites que te hará volver por más.</desc>
+    <image>./images/Super Smash Bros. (U) [!]-image.png</image>
+    <video>./videos/Super Smash Bros. (U) [!]-video.mp4</video>
+    <rating>0.8</rating>
+    <releasedate>19990426T000000</releasedate>
+    <developer>HAL Laboratory</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Lucha / Versus</genre>
+    <family>Super Smash Bros</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <region>us</region>
+    </game>
+  <game id="5439">
+    <path>./Wave Race 64 (U) (V1.1) [!].zip</path>
+    <name>Wave Race 64</name>
+    <desc>Enfréntate a una de las mejores experiencias de velocidad disponibles en Nintendo 64 con 'Wave Race 64', el simulador de carreras de motos acuáticas. Aprovecha el impulso de la marea, cabalga sobre las olas y lúcete con tus mejores acrobacias y saltos en tu camino hacia la meta.
+
+Recorre los más exóticos parajes en sus tres modos de juego individual o desafía a un amigo en el completo modo multijugador competitivo. Agua, sol, música cañera de fondo... ¿Listo para pasar un emocionante día de playa?</desc>
+    <image>./images/Wave Race 64 (U) (V1.1) [!]-image.png</image>
+    <video>./videos/Wave Race 64 (U) (V1.1) [!]-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>19961101T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Deportes / Náutico</genre>
+    <family>Wave Race</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    <region>us</region>
+    </game>
+  <game id="5396">
+    <path>./Super Mario 64 [N64].z64</path>
+    <name>Super Mario 64</name>
+    <desc>¡Mario es súper de una manera completamente nueva! Combinando los mejores gráficos tridimensionales jamás desarrollados para un videojuego y una banda sonora explosiva, Super Mario 64 se convierte en un nuevo estándar para los videojuegos. Está repleto de batallas contundentes, obstáculos desalentadores y aventuras submarinas. Recupera las estrellas de poder de sus lugares ocultos y enfrenta a tu archienemigo: ¡Bowser, rey de los Koopas!</desc>
+    <image>./images/Super Mario 64 [N64]-image.png</image>
+    <video>./videos/Super Mario 64 [N64]-video.mp4</video>
+    <rating>0.95</rating>
+    <releasedate>19960926T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Acción / Aventura</genre>
+    <family>Mario</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game id="5499">
+    <path>./Donald Duck - Goin' Quackers (USA) (En,Fr,De,Es,It).z64</path>
+    <name>Donald Duck : Goin' Qu@ckers*!</name>
+    <desc>Mantener el contenido de Donald es tan fácil como arrear gatos, pero el alboroto favorito de todos realmente se sale de las profundidades cuando el mago maloliente Merlock toma siestas a Daisy. Para colmo de males, la prima de Donald, Gladstone Gander, promete rescatar a Daisy. Así comienza la gran carrera de Donald para alcanzar a Daisy primero y frustrar los nefastos planes de Merlock.</desc>
+    <video>./videos/Donald Duck - Goin' Quackers (USA) (En,Fr,De,Es,It)-video.mp4</video>
+    <rating>0.9</rating>
+    <releasedate>20001220T000000</releasedate>
+    <developer>Ubi soft Entertainment</developer>
+    <publisher>Ubi soft Entertainment</publisher>
+    <genre>Plataformas</genre>
+    <family>Donald Duck</family>
+    <players>1</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>us</region>
+    </game>
+  <game id="5438">
+    <path>./Kirby 64 - The Crystal Shards (USA).zip</path>
+    <name>Kirby 64 : The Crystal Shards</name>
+    <desc>La primera aventura 3D de Kirby te llevará más allá de Dream Land, a las estrellas, para salvar a sus amigos de un nuevo y mortífero enemigo: Materia oscura.
+Este bonito juego de plataformas está lleno de color y acción a partes iguales. Trágate a tus enemigos para copiar sus habilidades (fuego, hielo, electricidad...) y crea poderosas combinaciones. ¡Pruébalas todas! nnBusca los fragmentos de cristal por planetas de lava, agua o incluso dulces y enfréntate a enormes jefes. Kirby 64 también incluye tres minijuegos extra en los que pueden participar hasta cuatro jugadores.</desc>
+    <video>./videos/Kirby 64 - The Crystal Shards (USA)-video.mp4</video>
+    <rating>0.8</rating>
+    <releasedate>20000101T000000</releasedate>
+    <developer>HAL Laboratory</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Plataformas</genre>
+    <family>Kirby</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    <region>us</region>
+    </game>
+  <game id="9306">
+    <path>./Sin &amp; Punishment - Successor of the Earth (ESP).zip</path>
+    <name>Sin and Punishment</name>
+    <desc>Los ruffian, mutantes creados para aumentar las escasas reservas de alimentos, se han rebelado contra sus amos y amenazan la Tierra. En la piel de un joven miembro de la resistencia, tendrás que luchar contra una horda de monstruos biogenéticos y militares corruptos para salvar el planeta. Disfruta por primera vez fuera de Japón de la acción sin freno de este clásico de Nintendo 64, creado por los genios de los juegos de disparos de Treasure Co. Ltd. Lucha por tierra, mar y aire. Recoge bonificaciones de tiempo, puntuación y energía. Realiza increíbles combos para poder continuar si termina la partida y enfréntate a la furia de los enormes enemigos finales. Además podrás jugar con un amigo que controle el arma mientras tú mueves al personaje.</desc>
+    <image>./images/Sin &amp; Punishment - Successor of the Earth (ESP)-image.jpg</image>
+    <video>./videos/Sin &amp; Punishment - Successor of the Earth (ESP)-video.mp4</video>
+    <thumbnail>./images/Sin &amp; Punishment - Successor of the Earth (ESP)-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>20071001T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Shooter</genre>
+    <players>2</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20240519T021939" />
+  </game>
+  <game id="5430">
+    <path>./Duke Nukem 64.zip</path>
+    <name>Duke Nukem 64</name>
+    <desc>Los alienígenas han aterrizado en una futurística Los Ángeles y le toca a Duke mostrarles la puerta de salida. Después de las entradas iniciales de los juegos de plataformas de desplazamiento lateral, Duke Nukem 3D introduce una perspectiva en primera persona a la serie y convierte el juego en un shooter en toda regla con gráficos 2.5D</desc>
+    <image>./images/Duke Nukem 64-image.png</image>
+    <video>./videos/Duke Nukem 64-video.mp4</video>
+    <rating>0.7</rating>
+    <releasedate>19971031T000000</releasedate>
+    <developer>Eurocom</developer>
+    <publisher>GT Interactive Software</publisher>
+    <genre>Disparos / 1ª persona</genre>
+    <family>Duke Nukem</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5416">
+    <path>./Star Fox 64 (ESP).zip</path>
+    <name>Star Fox 64</name>
+    <desc>¡El sistema Lylat ha sido invadido! Únete a Fox McCloud y su equipo Star Fox mientras luchan para salvar a la galaxia de las garras del malvado Andross. Viaja a muchos mundos tridimensionales diferentes. Combate al enemigo en el aire y en el suelo y escucha mientras Fox McCloud interactúa con un elenco de personajes.
+
+¡Mira cómo se siente sentir lo que ves! El accesorio de controlador N64 Rumble Pak transmite instantáneamente todos los golpes y explosiones durante la acción. ¡Es una nueva sacudida para tu experiencia de juego!
+
+* Cuatro jugadores compiten simultáneamente en vs. ¡modo!
+* ¡La memoria de Game Pak guarda los 10 mejores puntajes!
+* ¡Las mejores escenas de cine cuentan la saga de Star Fox!</desc>
+    <image>./images/Star Fox 64 (ESP)-image.png</image>
+    <video>./videos/Star Fox 64 (ESP)-video.mp4</video>
+    <thumbnail>./images/Star Fox 64 (ESP)-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>19970630T000000</releasedate>
+    <developer>Nintendo</developer>
+    <publisher>Nintendo</publisher>
+    <genre>Disparos / Vehículo, 3ª persona</genre>
+    <family>Star Fox</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="5412">
+    <path>./Star Wars Episode I_ Racer.zip</path>
+    <name>Star Wars Episode I : Racer</name>
+    <desc>¡Únete as Jedi Anakin Skywalker en la carrera Star Wars de tu vida! Revive toda la emoción y la emoción de la secuencia de Podracer de Star Wars: Episodio I. Aguanta bien: con postcombustión activada, ¡Podracers alcanza un máximo de 600 mph simuladas! ¡Corre en furiosa competencia contra más de 21 oponentes! Toma más de 21 pistas en 8 mundos únicos. ¡Evite los peligros como los lagos de metano, las lluvias de meteoritos y los incursores Tusken! ¡Presentando entornos 3D espectaculares!</desc>
+    <image>./images/Star Wars Episode I_ Racer-image.png</image>
+    <video>./videos/Star Wars Episode I_ Racer-video.mp4</video>
+    <rating>0.85</rating>
+    <releasedate>19990519T000000</releasedate>
+    <developer>LucasArts</developer>
+    <publisher>LucasArts</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Star Wars</family>
+    <players>1-2</players>
+    <lang>en</lang>
+    </game>
+  <game id="5411">
+    <path>./Banjo-Tooie (ESP).zip</path>
+    <name>Banjo-Tooie</name>
+    <genre>Acción / Aventura</genre>
+    <releasedate>20001120T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Rareware</developer>
+    <desc>Dos años después de que Banjo y Kazooie rescataron a la hermana de Banjo, Tooty, el antagonista Gruntilda Winkybunion y sus hermanas, Mingella y Blobbelda, planean restaurar el cuerpo de Gruntilda a su forma original. Banjo y Kazooie deben detenerlos antes de que sea demasiado tarde.</desc>
+    <family>Banjo-Kazooie</family>
+    <image>./images/Banjo-Tooie (ESP)-image.png</image>
+    <thumbnail>./images/Banjo-Tooie (ESP)-thumb.png</thumbnail>
+    <video>./videos/Banjo-Tooie (ESP)-video.mp4</video>
+  </game>
+  <game id="5424">
+    <path>./Yoshi's Story (USA) (En,Ja).zip</path>
+    <name>Yoshi's Story</name>
+    <genre>Acción / Aventura</genre>
+    <releasedate>19980310T000000</releasedate>
+    <players>1</players>
+    <rating>0.65</rating>
+    <lang>en,jp</lang>
+    <region>us</region>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>Baby Bowser ha tomado el Súper árbol feliz y ha lanzado un hechizo en el mundo de Yoshi, convirtiéndolo en las páginas de un libro ilustrado. Los únicos Yoshis que no se vieron afectados por el hechizo fueron seis crías que todavía estaban protegidas por sus caparazones. Depende de ellos reclamar el Super Happy Tree y restaurar la felicidad del mundo. ¡Eso es lo único que puede romper el hechizo de Baby Bowser!</desc>
+    <family>Yoshi</family>
+    <image>./images/Yoshi's Story (USA) (En,Ja)-image.png</image>
+    <video>./videos/Yoshi's Story (USA) (En,Ja)-video.mp4</video>
+  </game>
+  <game id="5501">
+    <path>./Duck Dodgers Starring Daffy Duck (ESP).zip</path>
+    <name>Duck Dodgers Starring Daffy Duck</name>
+    <genre>Plataformas</genre>
+    <releasedate>20000916T000000</releasedate>
+    <players>1</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Infogrames</publisher>
+    <developer>Paradigm Entertainment</developer>
+    <desc>Marvin The Martian ha desarrollado un arma definitiva que le permitirá finalmente destruir la Tierra, lo que finalmente le permitirá tomar el control del universo. Tras la demostración del arma, un ligero obstáculo impide a Marvin completar su acto tortuoso. El Arma está fuera de los Átomos, que ejecuta, por lo que envía a sus súbditos (todos los cuales son personajes del universo Looney Tune) para reunir Átomos para alimentar su arma.
+
+Duck Dodgers es informado por su academia de los hechos de Marvin y se dispone a encontrar los cien átomos antes de que Marvin pueda hacerlo. Esto finalmente tiene a los Dodgers y su compañero, Cadet, haciendo trekking a cuatro planetas diferentes, incluido un gran barco pirata, para obtener la ventaja sobre Marvin.</desc>
+    <family>Daffy Duck</family>
+    <image>./images/Duck Dodgers Starring Daffy Duck (ESP)-image.png</image>
+    <thumbnail>./images/Duck Dodgers Starring Daffy Duck (ESP)-thumb.png</thumbnail>
+    <video>./videos/Duck Dodgers Starring Daffy Duck (ESP)-video.mp4</video>
+  </game>
+  <game id="5628">
+    <path>./Wetrix (ESP).zip</path>
+    <name>Wetrix</name>
+    <genre>Puzzle</genre>
+    <releasedate>19980612T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Ocean</publisher>
+    <developer>Zed Two</developer>
+    <desc>Una tormenta de lluvia tan feroz que le impedirá salir de su hogar durante los próximos seis meses. Wetrix podría ser el juego de rompecabezas más adictivo de todos los tiempos. Usando bloques 3D de forma aleatoria mientras caen del cielo, debes crear una serie de lagos y represas antes de que aparezcan las fuertes lluvias. Porque si el agua se drena, ¡pierdes! ¿Sonido simple? Bueno, mezcla algunos desastres naturales y ataques con bombas, y de repente necesitas reunir toda tu estrategia y habilidad para combatir la furia de la naturaleza.</desc>
+    <image>./images/Wetrix (ESP)-image.png</image>
+    <thumbnail>./images/Wetrix (ESP)-thumb.png</thumbnail>
+    <video>./videos/Wetrix (ESP)-video.mp4</video>
+  </game>
+  <game id="71708">
+    <path>./Forsaken 64 (ESP).zip</path>
+    <name>Forsaken 64</name>
+    <genre>Disparos / 1ª persona</genre>
+    <releasedate>19980430T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Acclaim</publisher>
+    <developer>Iguana Entertainment</developer>
+    <desc>En el futuro distante, el avance de la ciencia ha excedido la habilidad de la humanidad para controlarla. Durante un experimento subatómico, un accidente causa una reacción de fusión incontrolable, destruyendo totalmente la superficie del planeta Tierra.
+Un año más tarde, la Tierra ha sido clasificada como "condenada" por la reinante teocracia imperial, lo que significa que ahora es legal para cualquiera llevarse lo que quede en el planeta. Mercenarios de todas partes vienen a atacar el planeta muerto, forzados a luchar no solo contra ellos mismos, sino también con los centinelas robot que el gobierno ha dejado.</desc>
+    <image>./images/Forsaken 64 (ESP)-image.png</image>
+    <thumbnail>./images/Forsaken 64 (ESP)-thumb.png</thumbnail>
+    <video>./videos/Forsaken 64 (ESP)-video.mp4</video>
+  </game>
+  <game id="5423">
+    <path>./Mortal Kombat Trilogy (USA).zip</path>
+    <name>Mortal Kombat Trilogy</name>
+    <genre>Lucha / 2D</genre>
+    <releasedate>19961111T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <region>us</region>
+    <publisher>GT Interactive Software</publisher>
+    <developer>Midway</developer>
+    <desc>El último intento de Shao Kahn para controlar la Tierra está sobre nosotros ... ¡26 personajes jugables inmediatamente más 4 personajes ocultos! ¡El nuevo modo Aggressor Kombat arma rápido y sin piedad con más fuerza y potencia para infligir combinaciones pesadas y dañinas! Más de 30 movimientos y "-Alidades" nunca vistas en la sala de juegos. Nuevas brutalidades te permiten golpear a tus oponentes hasta que exploten! ¡El nuevo modo 3 en 3 Kombat ofrece una lucha de maratón hasta el final! 7 fatalidades de escenario humillantes que envían oponentes derrotados cayendo en picada fuera de la arena a una muerte grizzly!</desc>
+    <family>Mortal Kombat</family>
+    <image>./images/Mortal Kombat Trilogy (USA)-image.png</image>
+    <video>./videos/Mortal Kombat Trilogy (USA)-video.mp4</video>
+  </game>
+  <game id="5400">
+    <path>./Paper Mario (ESP).zip</path>
+    <name>Paper Mario</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20010205T000000</releasedate>
+    <players>1</players>
+    <rating>0.95</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Intelligent Systems</developer>
+    <desc>¡Juega en una nueva aventura de Mario de acción! Mario ha vuelto de su primera aventura desde Super Mario 64, y esta vez, Bowser está empeñado en evitar el final de un libro de cuentos. Cuando la princesa Peach es secuestrada, Mario trata rescatar a los siete espíritus estelares y librar a los Koopas crueles del Reino Champiñón de Koopa. Mientras viaja desde las junglas tropicales de la isla Lavalava hasta las heladas alturas de Shiver Mountain, se encontrará con siete compañeros completamente nuevos ... y necesitará la ayuda de cada uno o no habrá felices para siempre .</desc>
+    <family>Paper Mario</family>
+    <image>./images/Paper Mario (ESP)-image.png</image>
+    <thumbnail>./images/Paper Mario (ESP)-thumb.png</thumbnail>
+    <video>./videos/Paper Mario (ESP)-video.mp4</video>
+  </game>
+  <game id="5395">
+    <path>./The Legend of Zelda - Ocarina of Time (ESP).zip</path>
+    <name>The Legend of Zelda : Ocarina of Time</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19981123T000000</releasedate>
+    <players>1</players>
+    <rating>0.95</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>Ganondorf, el malvado Rey de los Ladrones, está en movimiento, amenazando la pacífica tierra de Hyrule. Está decidido a abrirse paso en el legendario Reino Sagrado con la esperanza de aprovechar el poder de la mítica Trifuerza. Como el joven héroe Link, es tu destino frustrar los esquemas malvados de Ganondorf. Navi, tu hada guardiana, te guiará mientras te aventuras por las numerosas regiones de Hyrule, desde las cuevas volcánicas de la Montaña de la Muerte hasta las traicioneras aguas del Dominio de Zora. Antes de completar esta búsqueda épica, te adentrarás en mazmorras mortales, recogerás armas de gran poder y aprenderás los hechizos que necesitas para conquistar la fuerza más irresistible de todos los tiempos.</desc>
+    <family>The Legend of Zelda</family>
+    <image>./images/The Legend of Zelda - Ocarina of Time (ESP)-image.png</image>
+    <thumbnail>./images/The Legend of Zelda - Ocarina of Time (ESP)-thumb.png</thumbnail>
+    <video>./videos/The Legend of Zelda - Ocarina of Time (ESP)-video.mp4</video>
+  </game>
+  <game id="59524">
+    <path>./40 Winks (ESP).zip</path>
+    <name>40 Winks</name>
+    <genre>Plataformas</genre>
+    <releasedate>19991114T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Piko Interactive</publisher>
+    <developer>Eurocom</developer>
+    <desc>En el juego se debe tomar el control de Ruff o Tumble, dos niños hermanos que a través de los sueños deben rescatar los "Winks". que son unas pequeñas criaturas blancas y peludas que crean los dulces sueños, y Hoodwinks, son unas criaturas verdes de similar masa pero que crean pesadillas, del malvado villano Nitekap y su secuaz Threadbear. A través del juego se consiguen monedas, el personaje pasa por mundos de sueños, casas embrujadas, barcos, planetas y países prehistóricos. El personaje se puede transformar en diferentes tipos de seres, como por ejemplo Ninjas, Cavernícolas, Superhéroe etc.</desc>
+    <image>./images/40 Winks (ESP)-image.png</image>
+    <thumbnail>./images/40 Winks (ESP)-thumb.png</thumbnail>
+    <video>./videos/40 Winks (ESP)-video.mp4</video>
+  </game>
+  <game id="5446">
+    <path>./Doom 64.zip</path>
+    <name>Doom 64</name>
+    <genre>Disparos / 1ª persona</genre>
+    <releasedate>19970331T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Midway</publisher>
+    <developer>Midway</developer>
+    <desc>Después de que el Marine sobreviviera el Asalto hacia la Tierra de parte de los demonios, decidió bombardear las lunas de donde aparecieron dejando una Radiación Letal para todo ser vivo Una criatura proveniente del infierno, capaz de ocultarse a los sensores debido a sus altos niveles de radiación, ha rejuvenecido a una gran cantidad de demonios, y el personaje principal de las anteriores entrega de Doom ha sido enviado para deshacerse de estos nuevos monstruos que andan de un lado a otro por doquier.</desc>
+    <family>Doom</family>
+    <image>./images/Doom 64-image.png</image>
+    <video>./videos/Doom 64-video.mp4</video>
+  </game>
+  <game id="5448">
+    <path>./Extreme-G.zip</path>
+    <name>Extreme-G</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>19970930T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Acclaim Entertainment</publisher>
+    <developer>Probe Entertainment</developer>
+    <desc>Extreme-G está ubicado en el futuro distante en el que la Tierra está completamente desforestada. Desde su nuevo planeta encontrado los humanos colonos ven con alegría como sus power-bikes controladas remotamente causan estragos a través de sus antiguas ciudades. Sólo hay un ganador, el primero en cruzar la línea de meta... o el último en sobrevivir.</desc>
+    <family>Extreme-G</family>
+    <image>./images/Extreme-G-image.png</image>
+    <video>./videos/Extreme-G-video.mp4</video>
+  </game>
+  <game id="5606">
+    <path>./Hot Wheels_ Turbo Racing.zip</path>
+    <name>Hot Wheels : Turbo Racing</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>19990831T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Electronic Arts</publisher>
+    <developer>Stormfront Studios</developer>
+    <desc>Hot Wheels Turbo Racing es un juego de carreras para Nintendo 64 lanzado en 1999. También presenta el stock car de NASCAR 1999 de Kyle Petty, ya que fue patrocinado por Hot Wheels. También presenta música de Primus y Mix Master Mike. El foco del juego es la carrera. Se puede acceder a las pistas secretas ganando autos nuevos al encontrar las bonificaciones de 'auto nuevo' ocultas en cada etapa.</desc>
+    <family>Hot Wheels</family>
+    <image>./images/Hot Wheels_ Turbo Racing-image.png</image>
+    <video>./videos/Hot Wheels_ Turbo Racing-video.mp4</video>
+  </game>
+  <game id="5415">
+    <path>./Killer Instinct Gold.zip</path>
+    <name>Killer Instinct Gold</name>
+    <genre>Lucha / Versus</genre>
+    <releasedate>19961125T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Rareware</developer>
+    <desc>Killer Instinct resultó ser uno de los juegos de lucha más aclamados de 16 bits y también formó parte, junto a la trilogía DKC, del tándem victorioso que Rare ofreció al mundo durante su renacer en Super Nintendo. Killer Instinct Gold supone la continuación directa de aquella primera entrega en el ámbito consolero, aunque en esta ocasión, la saga se desplaza hasta N64...</desc>
+    <family>Killer Instinct</family>
+    <image>./images/Killer Instinct Gold-image.png</image>
+    <video>./videos/Killer Instinct Gold-video.mp4</video>
+  </game>
+  <game id="5617">
+    <path>./Magical Tetris Challenge.zip</path>
+    <name>Magical Tetris Challenge</name>
+    <genre>Puzzle / Caída</genre>
+    <releasedate>19990114T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Activision</publisher>
+    <developer>Capcom</developer>
+    <desc>Únete a Disney's Mickey, Minnie, Donald y Goofy mientras se embarcan en una aventura sin parar llena de desafiante diversión y emoción en Magical Tetris Challenge. Completamente adictivo, engañosamente simple, te enloquecerás en una caleidoscópica lluvia de trozos de Tetris en esta versión mágica del videojuego más popular del mundo.</desc>
+    <family>Tetris</family>
+    <image>./images/Magical Tetris Challenge-image.png</image>
+    <video>./videos/Magical Tetris Challenge-video.mp4</video>
+  </game>
+  <game id="5401">
+    <path>./Mario Kart 64.zip</path>
+    <name>Mario Kart 64</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>19970210T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>Tres ... Dos ... Uno ... ¡VEN! La luz de señal cambia y usted suelta el pedal al metal. Enfréntate a hasta tres amigos en los juegos VS de pantalla dividida o compite solo en el GP de Mario. Dile a tus amigos que lo traigan en el modo de batalla altamente competitivo. Las características avanzadas te permiten competir con tu "Fantasma". Los datos de conducción de su mejor ejecución aparecen como un carácter transparente en la pantalla. Ya no debes competir contra el reloj, ¡puedes competir contra ti mismo!
+* ¡Guarde sus datos más recientes de Ghost en un N64 Controller Pak portátil!* ¡Recoge múltiples objetos de encendido!
+* Veinte circuitos diferentes: 4 Copas con 4 circuitos cada uno y 4 circuitos especiales del modo de Batalla.
+* Los personajes favoritos de todos están de vuelta y magníficamente prestados, incluyendo dos nuevas incorporaciones, ¡Donkey Kong y Wario!</desc>
+    <family>Mario Kart</family>
+    <image>./images/Mario Kart 64-image.png</image>
+    <video>./videos/Mario Kart 64-video.mp4</video>
+  </game>
+  <game id="5432">
+    <path>./Mario Party 3 (ESP).zip</path>
+    <name>Mario Party 3</name>
+    <genre>Juego de mesa</genre>
+    <releasedate>20010507T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Hudson Soft</developer>
+    <desc>Mario Party 3 es el tercer y último título de Mario Party para Nintendo 64. Hay un total de ocho personajes disponibles para elegir: Mario, Luigi, Princess Peach, Yoshi, Wario, Donkey Kong y los recién llegados Waluigi y Princess Daisy. Mario Party 3 presenta mapas de duelo, en los que dos jugadores intentan reducir la resistencia de cada uno a cero usando personajes no jugables como Chain Chomps.</desc>
+    <family>Mario</family>
+    <image>./images/Mario Party 3 (ESP)-image.png</image>
+    <thumbnail>./images/Mario Party 3 (ESP)-thumb.png</thumbnail>
+    <video>./videos/Mario Party 3 (ESP)-video.mp4</video>
+  </game>
+  <game id="5431">
+    <path>./Mario Tennis.zip</path>
+    <name>Mario Tennis</name>
+    <genre>Deportes / Tenis</genre>
+    <releasedate>20000828T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Camelot Software</developer>
+    <desc>Todos tus personajes favoritos llegan a la cancha en un juego de tenis multijugador salvaje y loco de los creadores de Mario Golf. Mario, Luigi, Bowser, Peach, Toad y Donkey Kong lideran la alineación de estrellas de 14 jugadores. ¡La acción de ritmo vertiginoso te permitirá lanzar descargas feroces, proyectiles salvavidas, revés balísticos y golpes electrizantes supercargados!</desc>
+    <family>Mario Tennis</family>
+    <image>./images/Mario Tennis-image.png</image>
+    <video>./videos/Mario Tennis-video.mp4</video>
+  </game>
+  <game id="5559">
+    <path>./New Tetris, The.zip</path>
+    <name>The New Tetris</name>
+    <genre>Puzzle / Caída</genre>
+    <releasedate>19990731T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>H2O Interactive</developer>
+    <desc>Hay varias diferencias clave en la jugabilidad del Tetris original. En primer lugar, además de las líneas de limpieza, también se pueden formar 4x4 cuadrados grandes de cuatro piezas para formar 'bloques'. Cuando se crea un bloque, se convierte en dorado o plateado sólido, dependiendo de la composición del bloque: un bloque construido con todo el mismo tipo de pieza se convierte en un bloque dorado o "monosquare", mientras que cualquier otra combinación se convierte en un bloque plateado o " multisquare ". Los bloques solo se pueden construir a partir de piezas enteras: si se ha eliminado alguna parte de una pieza, no se puede usar para formar un bloque. Cuando se borra una línea que tiene piezas de un bloque, gana más puntos.</desc>
+    <family>Tetris</family>
+    <image>./images/New Tetris, The-image.png</image>
+    <video>./videos/New Tetris, The-video.mp4</video>
+  </game>
+  <game id="5435">
+    <path>./Turok 2_ Seeds of Evil.zip</path>
+    <name>Turok 2 : Seeds Of Evil</name>
+    <genre>Disparos / 1ª persona</genre>
+    <releasedate>19981021T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Acclaim Entertainment</publisher>
+    <developer>Iguana Entertainment</developer>
+    <desc>Sólo un mal tan oscuro podría traerlo de vuelta. Sólo un juego tan grande puede hacerle justicia. ¡Turok 2: Semillas del Mal! ¡Elija a los enemigos distantes con armas de francotirador mortales, y disfrute de feroces combates a muerte multi-jugador!</desc>
+    <family>Turok</family>
+    <image>./images/Turok 2_ Seeds of Evil-image.png</image>
+    <video>./videos/Turok 2_ Seeds of Evil-video.mp4</video>
+  </game>
+  <game id="5459">
+    <path>./Wipeout 64.zip</path>
+    <name>WipEout 64</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>19981103T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.85</rating>
+    <lang>en</lang>
+    <publisher>Midway</publisher>
+    <developer>Psygnosis</developer>
+    <desc>WipEout 64 fue lanzado por Psygnosis como un seguimiento del juego de carreras WipEout XL, que tuvo lugar un año más tarde en 2098. Al igual que en las entregas anteriores, los jugadores controlan los aerodeslizadores de alta velocidad, recogen armas para dañar los vehículos de los oponentes y tratan de terminar la carrera en la primera posición. En muchos aspectos, la jugabilidad es bastante similar a su predecesora, como la selección de hovercrafts, visuales o el sistema de manejo. Además de las nuevas pistas de carreras, las principales diferencias incluyen un modo multijugador de pantalla dividida (hasta cuatro jugadores), desafíos de armas y súper combinados, así como varias armas especiales para cada equipo.</desc>
+    <family>Wipeout</family>
+    <image>./images/Wipeout 64-image.png</image>
+    <video>./videos/Wipeout 64-video.mp4</video>
+  </game>
+  <game id="5528">
+    <path>./WWF No Mercy (E) (V1.1) [!].zip</path>
+    <name>WWF No Mercy</name>
+    <genre>Deportes / Lucha</genre>
+    <releasedate>20001215T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <region>eu</region>
+    <publisher>THQ</publisher>
+    <developer>AKI Corporation</developer>
+    <desc>¡Salta al ring con la jambronis más grande y mala que hay y experimenta la brutal acción de WWF nunca antes vista en un juego de consola! Más de 65 superestrellas de WWF, nuevos combates de Ladder y nuevos movimientos de doble equipo, como el Dudley 3D Deathdrop. Enfrenta a toda la federación en el modo de supervivencia. ¡Elimina la acción del ring en 10 áreas diferentes del backstage!</desc>
+    <family>WWF</family>
+    <image>./images/WWF No Mercy (E) (V1.1) [!]-image.png</image>
+    <video>./videos/WWF No Mercy (E) (V1.1) [!]-video.mp4</video>
+  </game>
+  <game id="5422">
+    <path>./Worms Armageddon (USA) (En,Fr,Es).7z</path>
+    <name>Worms Armageddon</name>
+    <genre>Estrategia</genre>
+    <releasedate>20000330T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en,es,fr</lang>
+    <region>us</region>
+    <publisher>Infogrames</publisher>
+    <developer>Infogrames</developer>
+    <desc>El juego está basado en turnos, con cada equipo moviéndose en secuencia (que se determina aleatoriamente) en un terreno bidimensional. Durante un solo turno, un equipo solo puede mover uno de sus gusanos (a menos que se use el elemento Seleccionar gusano). Los gusanos pueden caminar y saltar, así como (cuando los elementos adecuados están disponibles) se balancean con una cuerda, se lanzan en paracaídas, se teletransportan y se divierten. El objetivo de un partido tradicional es derrotar a todos los equipos enemigos matando a sus gusanos, aunque en la campaña algunas misiones tienen otros objetivos (como recolectar una caja específica).</desc>
+    <family>Worms</family>
+    <image>./images/Worms Armageddon (USA) (En,Fr,Es)-image.png</image>
+    <video>./videos/Worms Armageddon (USA) (En,Fr,Es)-video.mp4</video>
+  </game>
+  <game id="5407">
+    <path>./Pokemon Stadium.zip</path>
+    <name>Pokémon Stadium</name>
+    <genre>Estrategia</genre>
+    <releasedate>20000229T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>HAL Laboratory</developer>
+    <desc>¡Por fin, todos tus Pokémon favoritos están listos para ir de cabeza a la N64®! Ya sea que estés luchando con un amigo, contra un Líder de Gimnasio o en mitad de un torneo, estás a punto de presenciar algunas de las escenas de batalla más espectaculares de la historia de Pokémon. Selecciona un equipo o usa el tuyo propio gracias al N64 Transfer Pak incluido, que te permite cargar tu propio equipo desde Pokémon Rojo, Azul o Amarillo.
+El estadio está lleno y listo para el rock&amp;roll!</desc>
+    <family>Pokémon</family>
+    <image>./images/Pokemon Stadium-image.png</image>
+    <video>./videos/Pokemon Stadium-video.mp4</video>
+  </game>
+  <game id="5402">
+    <path>./Conker's Bad Fur Day.zip</path>
+    <name>Conker's Bad Fur Day</name>
+    <genre>Acción / Aventura</genre>
+    <releasedate>20010305T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.95</rating>
+    <lang>en</lang>
+    <publisher>Rareware</publisher>
+    <developer>Rareware</developer>
+    <desc>El día después de su 21 cumpleaños, Conker tiene la peor resaca de todos los tiempos, y parece que no puede encontrar el camino a casa. Prepárese para tambalearse a través de escenarios turbios, obscenos, escandalosos llenos de malos modales, humor retorcido y funciones corporales gráficas. A menos que seas fanático de la violencia, el lenguaje grosero y las insinuaciones rabiosas, es mejor que te mantengas alejado de este.
+Aunque visualmente similar a los juegos de plataformas Nintendo 64 de Rare, Banjo-Kazooie y Donkey Kong 64, Conker's Bad Fur Day fue diseñado para el público maduro y presenta violencia gráfica, consumo de alcohol y tabaco, blasfemias, humor vulgar y referencias de cultura pop. Se desarrolló en el transcurso de cuatro años y originalmente estaba destinado a una audiencia familiar, pero finalmente se reestructuró en su forma actual porque las vistas previas fueron criticadas por ser demasiado lindas y similares a los juegos de plataforma anteriores de Rare.</desc>
+    <family>Conker</family>
+    <image>./images/Conker's Bad Fur Day-image.png</image>
+    <video>./videos/Conker's Bad Fur Day-video.mp4</video>
+  </game>
+  <game id="5472">
+    <path>./Excitebike 64.zip</path>
+    <name>Excitebike 64</name>
+    <genre>Carreras, Conducción / Motos</genre>
+    <releasedate>20000430T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Left Field Productions</developer>
+    <desc>¡Experimenta MX extremo! Te abres camino a través del giro en horquilla, una pared de barro explotando en tu estela. ¡Tu próximo salto te lanza al aire, logras una espectacular lata doble sin patas y te conviertes en una leyenda instantánea! En Excitebike 64, encontrarás toda la acción de alto vuelo, acrobacias paracortadas y choques desgarradores del deporte extremo del motocross. Pondrá al temerario dentro de ti libre. 20 pistas para estadios y increíbles campos al aire libre, ¡además de seis ciclistas diferentes con seis estilos únicos!</desc>
+    <family>Excitebike</family>
+    <image>./images/Excitebike 64-image.png</image>
+    <video>./videos/Excitebike 64-video.mp4</video>
+  </game>
+  <game id="5457">
+    <path>./Mortal Kombat 4.zip</path>
+    <name>Mortal Kombat 4</name>
+    <genre>Lucha / Versus</genre>
+    <releasedate>19980624T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.6</rating>
+    <lang>en</lang>
+    <publisher>GT Interactive Software</publisher>
+    <developer>Eurocom</developer>
+    <desc>Shao Kahn ha sido derrotado por las manos de los guerreros de la Tierra, y ahora Shinnok escapó a sus confines en el Netherealm. La guerra se reanudó una vez más. Esta vez, ¡la batalla PUEDE ser ganada por mortales!</desc>
+    <family>Mortal Kombat</family>
+    <image>./images/Mortal Kombat 4-image.png</image>
+    <video>./videos/Mortal Kombat 4-video.mp4</video>
+  </game>
+  <game id="5458">
+    <path>./South Park.zip</path>
+    <name>South Park</name>
+    <genre>Disparos / 1ª persona</genre>
+    <releasedate>19981212T000000</releasedate>
+    <players>1-4</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Acclaim Entertainment</publisher>
+    <developer>Iguana Entertainment</developer>
+    <desc>¡Un cometa gigante se dirige hacia South Park y depende de ti salvarlos! Ten cuidado con los extraterrestres ?anales?, los clones malvados, los pavos dementes y disfruta de la acción multijugador online. ¡Es el único juego lo suficientemente grande como para parar la grasa de Cartman ...!</desc>
+    <family>South Park</family>
+    <video>./videos/South Park-video.mp4</video>
+  </game>
+  <game id="5489">
+    <path>./Harvest Moon 64.zip</path>
+    <name>Harvest Moon 64</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19991222T000000</releasedate>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>en</lang>
+    <publisher>Natsume</publisher>
+    <developer>Victor Interactive Software</developer>
+    <desc>El objetivo de Harvest Moon es restaurar y mantener una granja abandonada de tu abuelo. El jugador recibe inicialmente un conjunto de herramientas para ayudar a lograr este objetivo. Junto con la restauración de la granja, hay un rol para el jugador en el campo, que incluye entrenar y montar a caballo, vender cosechas, casarse, coleccionar recetas y recolectar fotografías de diversos logros y eventos.</desc>
+    <family>Harvest Moon</family>
+    <image>./images/Harvest Moon 64-image.png</image>
+    <video>./videos/Harvest Moon 64-video.mp4</video>
+  </game>
+  <game id="5394">
+    <path>./zelda2.z64</path>
+    <name>The Legend of Zelda : Majora's Mask</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20001026T000000</releasedate>
+    <players>1</players>
+    <rating>0.95</rating>
+    <lang>en</lang>
+    <publisher>Nintendo</publisher>
+    <developer>Nintendo</developer>
+    <desc>La nueva aventura épica de Link lo lleva al mundo místico de Termina, donde los relojes siempre presentes cuentan las horas hasta que una amenazante luna cae desde el cielo. Cuando su caballo y Ocarina son robados por una extraña figura enmascarada, Link se embarca en una búsqueda urgente para resolver el misterio de la luna, salvar al mundo de la destrucción y ¡encontrar el camino de regreso a la pacífica tierra de Hyrule!</desc>
+    <family>The Legend of Zelda</family>
+    <image>./images/zelda2-image.png</image>
+    <video>./videos/zelda2-video.mp4</video>
+  </game>
+</gameList>

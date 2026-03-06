@@ -8,9 +8,8 @@
     <style>
         body {
             background-color: transparent;
-            /* Allows modal background to show through */
             color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Verdana', sans-serif;
             margin: 0;
             padding: 24px;
         }
@@ -20,6 +19,16 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+
+            position: sticky;
+            top: 0;
+            background-color: #00112e;
+            /* dark blue to match overall xp style container, or translucent depending on context */
+            z-index: 100;
+            padding: 10px 0 20px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         h2 {
@@ -32,48 +41,109 @@
             gap: 12px;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .game-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 16px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        /* Search Bar Styles from pc.html */
+        .search-area {
             display: flex;
             align-items: center;
-            gap: 12px;
         }
 
-        .game-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        input {
+            display: inline-block;
+            background: #fff;
+            padding: .6rem;
+            border-radius: 0.3rem;
+            width: 300px;
+            border: 0.1rem solid #BDBDBD;
+            outline: none;
+            height: 1.2rem;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            vertical-align: middle;
+            color: #333;
         }
 
-        .game-icon {
+        input::placeholder {
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            color: #888;
+        }
+
+        input:hover,
+        input:focus {
+            border: 0.1rem solid #0F52BA !important;
+        }
+
+        #searchbutton {
+            display: inline-block;
+            cursor: pointer;
+            vertical-align: middle;
+            margin-left: 8px;
             width: 32px;
             height: 32px;
-            object-fit: contain;
-            opacity: 0.8;
+            transition: transform 0.1s;
         }
 
-        .game-title {
-            font-weight: 600;
-            font-size: 15px;
-            line-height: 1.3;
+        #searchbutton:hover {
+            transform: scale(1.1);
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 16px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        th:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        th.sort-asc::after {
+            content: " ▲";
+            font-size: 0.8em;
+        }
+
+        th.sort-desc::after {
+            content: " ▼";
+            font-size: 0.8em;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        tr {
+            transition: background 0.1s;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* Scrollbars matching xp look */
         ::-webkit-scrollbar {
             width: 12px;
+            height: 12px;
         }
 
         ::-webkit-scrollbar-track {
@@ -101,31 +171,119 @@
             font-style: italic;
             color: #aaa;
         }
+
+        .rating-stars {
+            color: #ffd700;
+        }
+
+        .stars-outer {
+            display: inline-block;
+            position: relative;
+            color: #4a4a4a;
+            font-size: 16px;
+        }
+
+        .stars-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            color: #ffd700;
+        }
+
+        /* Mobile specific: hide everything but name on small screens */
+        @media (max-width: 600px) {
+
+            th:not(:first-child),
+            td:not(:first-child) {
+                display: none;
+            }
+
+            .header-container h2 {
+                font-size: 18px;
+            }
+
+            input {
+                width: 150px;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="header-container">
-        <h2><img id="consoleIcon" src="" style="height: 48px; display: none;" alt="Console Logo"><span
-                id="titleText">Cargando...</span></h2>
+        <h2>
+            <span id="titleText">Cargando...</span>
+            <img id="consoleIcon" src="" style="height: 48px; display: none; margin-left: 8px;" alt="Console Logo">
+        </h2>
+        <div class="search-area">
+            <input type="text" id="searchInput" placeholder="¿Cuál buscás?" onkeyup="filterGames()">
+            <img src="../XP_Icons/Search.webp" onclick="filterGames()" id="searchbutton" alt="Buscar">
+        </div>
     </div>
 
-    <div id="gameGrid" class="grid">
-        <div class="loading">Cargando juegos...</div>
+    <div class="table-container">
+        <table id="gamesTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0, 'string')">Nombre</th>
+                    <th onclick="sortTable(1, 'string')">Género</th>
+                    <th onclick="sortTable(2, 'date')">Lanzamiento</th>
+                    <th onclick="sortTable(3, 'number')">Jugadores</th>
+                    <th onclick="sortTable(4, 'number')">Clasificación</th>
+                </tr>
+            </thead>
+            <tbody id="gamesTbody">
+                <tr>
+                    <td colspan="5" class="loading">Cargando juegos...</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const rawConsoleId = params.get('c') || 'megadrive';
-        // For right now, everything loads megadrive.xml as requested by user
-        const fetchConsoleId = 'megadrive';
+        const consoleId = params.get('c') || 'megadrive'; // Fallback to megadrive
 
-        // Show the logo and nice title
-        document.getElementById('titleText').innerText = `Catálogo de ${rawConsoleId.toUpperCase()}`;
-        document.getElementById('consoleIcon').src = `../Shots/consolas/${rawConsoleId}.svg`;
+        let sortDirection = false;
+        let gameData = [];
+
+        // Show the logo and title
+        document.getElementById('titleText').innerText = '';
+        document.getElementById('consoleIcon').src = `../Shots/consolas/${consoleId}.svg`;
         document.getElementById('consoleIcon').style.display = 'block';
 
-        fetch(`../Shots/consolas/${fetchConsoleId}.xml`)
+        function formatDate(dateString) {
+            if (!dateString) return '-';
+            // EmulationStation date format: YYYYMMDDTHHMMSS
+            if (dateString.length >= 4) {
+                const year = dateString.substring(0, 4);
+                return `${year}`;
+            }
+            return dateString;
+        }
+
+        function formatRating(ratingStr) {
+            if (!ratingStr) return '-';
+            let val = parseFloat(ratingStr);
+            if (isNaN(val)) return '-';
+
+            let outOfFive = val * 5;
+            let percentage = val * 100;
+
+            return `
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="stars-outer">
+                        ★★★★★
+                        <div class="stars-inner" style="width: ${percentage}%">★★★★★</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        fetch(`../Shots/consolas/${consoleId}.xml`)
             .then(response => {
                 if (!response.ok) throw new Error("No XML found");
                 return response.text();
@@ -134,33 +292,125 @@
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xmlStr, "application/xml");
 
-                const grid = document.getElementById('gameGrid');
-                grid.innerHTML = ''; // clear loading
-
-                const games = xmlDoc.querySelectorAll('Game');
+                const games = xmlDoc.querySelectorAll('game');
+                const tbody = document.getElementById('gamesTbody');
+                tbody.innerHTML = '';
 
                 if (games.length === 0) {
-                    grid.innerHTML = '<div class="loading">No hay juegos listados para esta consola todavía.</div>';
+                    tbody.innerHTML = '<tr><td colspan="5" class="loading">No hay juegos listados para esta consola todavía.</td></tr>';
                     return;
                 }
 
                 games.forEach(game => {
-                    const name = game.textContent;
-                    if (!name || name.trim() === '') return;
+                    const nameNode = game.querySelector('name');
+                    const genreNode = game.querySelector('genre');
+                    const dateNode = game.querySelector('releasedate');
+                    const playersNode = game.querySelector('players');
+                    const ratingNode = game.querySelector('rating');
 
-                    const card = document.createElement('div');
-                    card.className = 'game-card';
-                    card.innerHTML = `
-                        <img src="../XP_Icons/Game Controller.webp" class="game-icon" alt="icon" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\'><path d=\\'M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\\' fill=\\'%23ffffff\\'/></svg>'">
-                        <div class="game-title">${name}</div>
-                    `;
-                    grid.appendChild(card);
+                    const name = nameNode ? nameNode.textContent : 'Desconocido';
+                    const genre = genreNode ? genreNode.textContent : '-';
+                    const rawDate = dateNode ? dateNode.textContent : '';
+                    const players = playersNode ? playersNode.textContent : '-';
+                    const rawRating = ratingNode ? ratingNode.textContent : '';
+
+                    gameData.push({
+                        name: name,
+                        genre: genre,
+                        date: formatDate(rawDate),
+                        rawDate: rawDate,
+                        players: players,
+                        ratingHtml: formatRating(rawRating),
+                        rawRating: rawRating
+                    });
                 });
+
+                renderTable(gameData);
             })
             .catch(error => {
-                document.getElementById('gameGrid').innerHTML = '<div class="loading">Ocurrió un error cargando el catálogo o el archivo no está disponible.</div>';
+                document.getElementById('gamesTbody').innerHTML = '<tr><td colspan="5" class="loading">Ocurrió un error o el archivo XML no existe.</td></tr>';
                 console.error("Error fetching XML:", error);
             });
+
+        function renderTable(data) {
+            const tbody = document.getElementById('gamesTbody');
+            tbody.innerHTML = '';
+
+            if (data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="loading">No se encontraron juegos.</td></tr>';
+                return;
+            }
+
+            data.forEach(game => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><strong>${game.name}</strong></td>
+                    <td>${game.genre}</td>
+                    <!-- Store raw data to data- attributes for easier sorting if needed, though we sort JS array -->
+                    <td>${game.date}</td>
+                    <td>${game.players}</td>
+                    <td>${game.ratingHtml}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterGames() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toLowerCase();
+
+            const filteredData = gameData.filter(game => {
+                return game.name.toLowerCase().includes(filter) || game.genre.toLowerCase().includes(filter);
+            });
+
+            renderTable(filteredData);
+        }
+
+        function sortTable(columnIndex, type) {
+            const keys = ['name', 'genre', 'rawDate', 'players', 'rawRating'];
+            const key = keys[columnIndex];
+
+            sortDirection = !sortDirection;
+
+            // Update headers to show sort icons
+            const ths = document.querySelectorAll('th');
+            ths.forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+            });
+            ths[columnIndex].classList.add(sortDirection ? 'sort-asc' : 'sort-desc');
+
+            // Filter to only sort currently visible (searched) data
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            let dataToSort = gameData.filter(game => {
+                return game.name.toLowerCase().includes(input) || game.genre.toLowerCase().includes(input);
+            });
+
+            dataToSort.sort((a, b) => {
+                let valA = a[key];
+                let valB = b[key];
+
+                if (type === 'number') {
+                    // Handle ranges like "1-4" for players
+                    valA = parseFloat(valA ? valA.split('-')[0] : 0) || 0;
+                    valB = parseFloat(valB ? valB.split('-')[0] : 0) || 0;
+                    return sortDirection ? valA - valB : valB - valA;
+                } else if (type === 'date') {
+                    valA = valA || "";
+                    valB = valB || "";
+                    if (valA < valB) return sortDirection ? -1 : 1;
+                    if (valA > valB) return sortDirection ? 1 : -1;
+                    return 0;
+                } else {
+                    valA = valA ? valA.toLowerCase() : "";
+                    valB = valB ? valB.toLowerCase() : "";
+                    if (valA < valB) return sortDirection ? -1 : 1;
+                    if (valA > valB) return sortDirection ? 1 : -1;
+                    return 0;
+                }
+            });
+
+            renderTable(dataToSort);
+        }
     </script>
 </body>
 

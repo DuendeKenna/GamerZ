@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gameList>
+  <game id="47072">
+    <path>./Alundra (Spain).chd</path>
+    <name>Alundra</name>
+    <desc>Alundra, el protagonista, realiza un viaje para salvar a la aldea de Inoa de las garras del malvado Melzas, que penetra en las mentes de las personas mientras éstas duermen. Combinando la aventura gráfica y el arcade, consta de mucha acción y puzzles complicados. El inicio se desarrolla en un barco, camino de Inoa, y en ella hay que hallar pistas preguntando y buscando por el mismo. Luego se van atravesando distintas aldeas o viviendas y se interactúa con varios personajes. Más adelante, se descubre que Alundra es un "viajero de sueños".</desc>
+    <image>./images/Alundra (Spain)-image.png</image>
+    <video>./videos/Alundra (Spain)-video.mp4</video>
+    <thumbnail>./images/Alundra (Spain)-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>19980605T000000</releasedate>
+    <developer>Matrix Software</developer>
+    <publisher>Psygnosis</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Alundra</family>
+    <players>1</players>
+    <lang>es</lang>
+    <region>eu</region>
+    </game>
+  <game id="19535">
+    <path>./Colin McRae Rally 2.0 (USA) (En,Fr,Es).chd</path>
+    <name>Colin McRae Rally 2.0</name>
+    <desc>Colin McRae Rally 2.0 es un videojuego de carreras desarrollado y publicado por Codemasters para PlayStation. Es el segundo juego de la serie Colin McRae Rally. Tienes la posibilidad de competir en lugares de todo el mundo, más de 60 etapas en ocho países diferentes. Batalla su camino hacia ganar el campeonato. ¡Usted puede elegir muchos modelos del coche de la vida real, y ajustarlos para mejorar sus condiciones! El juego simula de manera realista todos los tipos de caminos, las condiciones meteorológicas y la física del manejo del automóvil para crear una auténtica experiencia de rally. Las ubicaciones y los coches son todos reales!</desc>
+    <image>./images/Colin McRae Rally 2.0 (USA) (En,Fr,Es)-image.png</image>
+    <video>./videos/Colin McRae Rally 2.0 (USA) (En,Fr,Es)-video.mp4</video>
+    <thumbnail>./images/Colin McRae Rally 2.0 (USA) (En,Fr,Es)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>20001205T000000</releasedate>
+    <developer>Codemasters</developer>
+    <publisher>Codemasters</publisher>
+    <genre>Carreras, Conducción</genre>
+    <players>1-2</players>
+    <lang>en,es,fr</lang>
+    <region>us</region>
+    </game>
+  <game id="19266">
+    <path>./Crash Team Racing (ESP).chd</path>
+    <name>Crash Team Racing</name>
+    <desc>La historia del juego gira en torno a un malvado extraterrestre llamado Nitrous Oxide, el cual ha viajado por toda la galaxia pregonándose a sí mismo como el corredor más rápido. Al llegar a la Tierra exige a nuestros personajes que se enfrenten entre sí para hallar a alguien que pueda desafiarlo. Finalmente añade que si un corredor gana, se irá del planeta para siempre, pero que si el gana se apoderará de la Tierra. Así todos se incorporan a una batalla contra Oxide y los clásicos rivales del juego tradicional pueden ser seleccionados.</desc>
+    <image>./images/Crash Team Racing (ESP)-image.png</image>
+    <video>./videos/Crash Team Racing (ESP)-video.mp4</video>
+    <thumbnail>./images/Crash Team Racing (ESP)-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>19990930T000000</releasedate>
+    <developer>Naughty Dog</developer>
+    <publisher>Sony Computer Entertainment</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Crash Bandicoot</family>
+    <players>1-4</players>
+    <lang>en</lang>
+    </game>
+  <game id="19276">
+    <path>./Digimon World 2003 (ESP).chd</path>
+    <name>Digimon World 3</name>
+    <desc>Digimon World 2003 es un juego de rol lanzado en Playstation. Juega como tres niños pequeños que fueron absorbidos por el mundo virtual de Digimon mientras jugaban. Tendrás que descubrir que sucedió.</desc>
+    <image>./images/Digimon World 2003 (ESP)-image.png</image>
+    <video>./videos/Digimon World 2003 (ESP)-video.mp4</video>
+    <thumbnail>./images/Digimon World 2003 (ESP)-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>20020601T000000</releasedate>
+    <developer>Bandai</developer>
+    <publisher>Bandai</publisher>
+    <genre>Juego de Rol</genre>
+    <family>Digimon</family>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game>
+    <path>./(PS1) Final Fantasy Tactics [NTSC-U] [SCUS-94221].chd</path>
+    <name>Final Fantasy Tactics</name>
+    <desc>Final Fantasy Tactics es un juego de rol táctico desarrollado y publicado por Square (ahora Square Enix) para la consola de videojuegos PlayStation de Sony. Es el primer juego de la serie Final Fantasy Tactics y fue lanzado en Japón en junio de 1997 y en los Estados Unidos en enero de 1998. El juego combina elementos temáticos de la serie de videojuegos Final Fantasy con un sistema de motor de juego y la batalla a diferencia de los anteriormente visto en la franquicia. En contraste con otros de la era de 32 bits títulos de Final Fantasy, Final Fantasy Tactics utiliza un campo de juego en 3D isométrica, giratorio, con caracteres de mapa de bits del sprite.</desc>
+    <image>./images/(PS1) Final Fantasy Tactics [NTSC-U] [SCUS-94221]-image.png</image>
+    <video>./videos/(PS1) Final Fantasy Tactics [NTSC-U] [SCUS-94221]-video.mp4</video>
+    <releasedate>19980128T000000</releasedate>
+    <developer>Squaresoft</developer>
+    <publisher>SCEA</publisher>
+    <genre>RPG</genre>
+    <players>1</players>
+    <lang>en</lang>
+    </game>
+  <game>
+    <path>./(PS1) Mega Man X4 [NTSC-U] [SLUS-00561].chd</path>
+    <name>Mega Man X4</name>
+    <desc>X-PLOSIVE GAMEPLAY.
+X-TREME GRAPHICS.
+MEGA MAN X4!
+
+Vibrant Animation • Relentless Enemies
+Unsurpassed Graphics • Hidden Secrets
+Mega Man X4 bombards the PlayStation game console and never lets up!
+
+Battle armies of Maverick Reploid Robots while mastering all-new strategic moves like the Air Hover and Zero's Saber Tactic system. Discover a myriad of power-ups, secret rooms, extra weapons and invincible vehicles to take on 8 all new X-Hunter Bosses. And for the first time, play as Mega Man X or battle with his mighty partner Zero in 2 separate adventures. Mega Man X4 - now you can be a hero, or a Zero!
+
+* Now, play as Mega Man X or Zero!
+* New X-Hunter levels with vivid color, brilliant detail, intricate passages, secret rooms and hard-to-reach items
+* Invincible vehicles like the Land Chaser superbike and other robot ride armors</desc>
+    <image>./images/(PS1) Mega Man X4 [NTSC-U] [SLUS-00561]-image.jpg</image>
+    <releasedate>19970810T000000</releasedate>
+    <developer>Capcom</developer>
+    <publisher>Capcom</publisher>
+    <genre>Action</genre>
+    <players>1</players>
+    <lang>en</lang>
+    <scrap name="TheGamesDB" date="20251129T103826" />
+  </game>
+  <game id="19572">
+    <path>./Exhumed (Europe) (En,Fr,De,Es).chd</path>
+    <name>Exhumed</name>
+    <desc>Exhumed es un juego de disparos en primera persona lanzado para Playstation. Extraterrestres han invadido la ciudad de Karnak en Egipto. Depende de usted y de su arsenal de armas de alta tecnología vencerlos antes de que momifiquen todo el planeta.</desc>
+    <image>./images/Exhumed (Europe) (En,Fr,De,Es)-image.png</image>
+    <video>./videos/Exhumed (Europe) (En,Fr,De,Es)-video.mp4</video>
+    <thumbnail>./images/Exhumed (Europe) (En,Fr,De,Es)-thumb.png</thumbnail>
+    <rating>0.85</rating>
+    <releasedate>19970315T000000</releasedate>
+    <developer>Lobotomy Software</developer>
+    <publisher>BMG Interactive</publisher>
+    <genre>Disparos / 1ª persona</genre>
+    <players>1-2</players>
+    <lang>de,en,es,fr</lang>
+    <region>eu</region>
+    </game>
+  <game id="19305">
+    <path>./Harry Potter and the Chamber of Secrets (USA) (En,Fr,Es).chd</path>
+    <name>Harry Potter and the Chamber of Secrets</name>
+    <desc>Harry esta por comenzar su segundo año en Hogwarts cuando Dobby, un elfo domestico le advierte que si regresa a la escuela podría ocurrirle algo terrible, Harry no le da importancia por lo que se embarca hacia la escuela de magia pero pronto se da cuenta que las predicciones de Dobby eran ciertas. sus compañeros de clase son molestados refiriéndose a ellos como "Sangre sucia" y cuando Harry se comienza ver enredado en este complot, Con la ayuda de sus amigos Hermione y Ron, emprenderas una busqueda para encontrar la verdadera identidad del misterioso heredero de Slytherin, pero para esto tendrás que aprender antes algunos hechizos por lo que tu y tus compañeros tendrán que asistir a sus clases de magia para mejorar sus habilidades. descubre el misterio detrás de la cámara de los secretos con HARRY POTTER Y LA CAMARA SECRETA.</desc>
+    <image>./images/Harry Potter and the Chamber of Secrets (USA) (En,Fr,Es)-image.png</image>
+    <video>./videos/Harry Potter and the Chamber of Secrets (USA) (En,Fr,Es)-video.mp4</video>
+    <thumbnail>./images/Harry Potter and the Chamber of Secrets (USA) (En,Fr,Es)-thumb.png</thumbnail>
+    <rating>0.8</rating>
+    <releasedate>20021115T000000</releasedate>
+    <developer>Argonaut Software</developer>
+    <publisher>EA Games</publisher>
+    <genre>Aventura</genre>
+    <family>Harry Potter</family>
+    <players>1</players>
+    <lang>en,es,fr</lang>
+    <region>us</region>
+    </game>
+  <game id="19365">
+    <path>./Herc's Adventures (Spain).chd</path>
+    <name>Herc's Adventures</name>
+    <desc>Herc´s adventures es un videojuego de acción y aventura lanzado para PlayStation y Saturn por LucasArts en 1997. Hasta dos jugadores pueden elegir entre tres héroes griegos antiguos: Herc (Hércules), Atlanta (Atalanta) o Jason (Jasón) en una misión para derrotar a Hades y salvar a la diosa de la naturaleza, Perséfone.</desc>
+    <image>./images/Herc's Adventures (Spain)-image.png</image>
+    <video>./videos/Herc's Adventures (Spain)-video.mp4</video>
+    <thumbnail>./images/Herc's Adventures (Spain)-thumb.png</thumbnail>
+    <rating>0.7</rating>
+    <releasedate>19971210T000000</releasedate>
+    <developer>Virgin</developer>
+    <publisher>LucasArts</publisher>
+    <genre>Aventura</genre>
+    <players>1-2</players>
+    <lang>es</lang>
+    <region>eu</region>
+    </game>
+  <game id="19699">
+    <path>./MDK (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>MDK</name>
+    <desc>Un shot 'em up en 3D, juegas como Kurt, y su trabajo es salvar el mundo. Los extraterrestres han enviado 8 fortalezas gigantes para destruir la tierra. Corre y salta a través de 6 misiones de extraños mundos 3D y mata a los "Stream Raiders" con tu brazo-pistola. Los saltos precisos de plataformas son parte del desafío. Kurt está equipado con un traje de batalla especial con un paracaídas incluido y una interfaz de francotirador (lo que le permite apuntar estando en pie) incrustado en su casco. Otras mejoras de armamento están disponibles a medida que avanzas en el juego.</desc>
+    <image>./images/MDK (Europe) (En,Fr,De,Es,It)-image.png</image>
+    <video>./videos/MDK (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+    <thumbnail>./images/MDK (Europe) (En,Fr,De,Es,It)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19971110T000000</releasedate>
+    <developer>Neversoft Entertainment</developer>
+    <publisher>Shiny Entertainment</publisher>
+    <genre>Disparos</genre>
+    <family>Mdk</family>
+    <players>1</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    </game>
+  <game id="19314">
+    <path>./MediEvil 2 (Europe) (Es,It,Pt).chd</path>
+    <name>MediEvil 2</name>
+    <desc>En 1386 el poderoso nigromante Zarok, al que se creía muerto, invadió Gallowmere con un ejército de zombis y demonios. Entre los afectados por sus resurrecciones en masa estuvo Sir Daniel Fortesque, su antiguo enemigo, al que se le había otorgado el mérito de derrotar al hechicero un siglo antes. El caballero recorre su hechizado reino sufriendo aventuras y desventuras hasta conseguir la derrota total de Zarok. Así pudo descansar en paz medio milenio más, creyendo que la magia del hechicero estaba extinta.</desc>
+    <image>./images/MediEvil 2 (Europe) (Es,It,Pt)-image.png</image>
+    <video>./videos/MediEvil 2 (Europe) (Es,It,Pt)-video.mp4</video>
+    <thumbnail>./images/MediEvil 2 (Europe) (Es,It,Pt)-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>20000419T000000</releasedate>
+    <developer>SCE Studio Cambridge</developer>
+    <publisher>Sony Computer Entertainment</publisher>
+    <genre>Aventura</genre>
+    <family>Medievil</family>
+    <players>1</players>
+    <lang>pt,es,it</lang>
+    <region>eu</region>
+    </game>
+  <game id="19400">
+    <path>./Re-Volt (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>Re-Volt</name>
+    <desc>Re-Volt se centra en las carreras de autos de radio control. Puedes elegir entre una variedad de autos pequeños y rápidos, cada uno con sus propias características únicas. El juego tiene una gran variedad de pistas temáticas, como casas, jardines o museos y diferentes modos de juego, como el modo de carrera individual, multijugador y el modo de práctica.</desc>
+    <image>./images/Re-Volt (Europe) (En,Fr,De,Es,It)-image.png</image>
+    <video>./videos/Re-Volt (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+    <thumbnail>./images/Re-Volt (Europe) (En,Fr,De,Es,It)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>19990101T000000</releasedate>
+    <developer>Acclaim</developer>
+    <publisher>Acclaim</publisher>
+    <genre>Carreras, Conducción</genre>
+    <players>1-2</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    </game>
+  <game id="19537">
+    <path>./Ridge Racer Type 4 (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>Ridge Racer Type 4</name>
+    <desc>Disfruta todavía más de la alta velocidad y la avanzada dinámica de Ridge Racer y Rage Racer, para conseguir victorias aún más emocionantes.
+
+El juego se basa en competir en el Real Racing Roots '99 (RRR), que consta de ocho carreras entre Japón y los EE. UU. Cada vez que se obtiene una victoria en el RRR, el jugador adquiere un mejor vehículo. La competencia RRR se divide en cuatro rondas: 2 carreras en la primera y en la segunda, 3 en la final y 1 carrera en la gran final.
+
+El objetivo del juego es conseguir los 320 coches diferentes y el especial Pacman.</desc>
+    <image>./images/Ridge Racer Type 4 (Europe) (En,Fr,De,Es,It)-image.png</image>
+    <video>./videos/Ridge Racer Type 4 (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+    <thumbnail>./images/Ridge Racer Type 4 (Europe) (En,Fr,De,Es,It)-thumb.png</thumbnail>
+    <rating>0.95</rating>
+    <releasedate>19990901T000000</releasedate>
+    <developer>Namco</developer>
+    <publisher>Sony Computer Entertainment</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Ridge Racer</family>
+    <players>1-2</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    </game>
+  <game id="19302">
+    <path>./Spyro 2 - Gateway to Glimmer (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>Spyro 2 : Gateway to Glimmer</name>
+    <desc>Únete a Spyro y a su mejor amigo Sparx para ayudar a los habitantes de Avalar a poner fin al régimen tiránico de Ripto. Recoge las gemas, acumula puntos mágicos y descubre un mundo de fantasía enorme, lleno de reinos maravillosos y pintorescos personajes.</desc>
+    <image>./images/Spyro 2 - Gateway to Glimmer (Europe) (En,Fr,De,Es,It)-image.png</image>
+    <video>./videos/Spyro 2 - Gateway to Glimmer (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+    <thumbnail>./images/Spyro 2 - Gateway to Glimmer (Europe) (En,Fr,De,Es,It)-thumb.png</thumbnail>
+    <rating>0.9</rating>
+    <releasedate>19991105T000000</releasedate>
+    <developer>Insomniac Games</developer>
+    <publisher>Sony Computer Entertainment</publisher>
+    <genre>Plataformas</genre>
+    <family>Spyro</family>
+    <players>1</players>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    </game>
+  <game id="19417">
+    <path>./Star Wars - Episodio I - Jedi Power Battles (Spain).chd</path>
+    <name>Star Wars : Episode I, Jedi Power Battles</name>
+    <desc>Defiende, Derrota y Destruye.
+Asalta con tu sabe láser el Palacio Real de Theed y recupéralo. Contarás con el poder de la fuerza y tu sable láser para defenderte de legiones de droides de batalla, droides destructores, asesinos y otras criaturas de Star Wars: Episodio I. 
+Decide luchar como Obi-Wan Kenobi, Qui-Gon Jinn, o como los miembros del Consejo Jedi Mace Windu, Plo Koon o Adi Gallia para abrirte paso por cada nivel. Pero ten cuidado, nunca se sabe qué tipo de ejército droide o de bestias se esconden en la oscuridad.</desc>
+    <image>./images/Star Wars - Episodio I - Jedi Power Battles (Spain)-image.png</image>
+    <video>./videos/Star Wars - Episodio I - Jedi Power Battles (Spain)-video.mp4</video>
+    <thumbnail>./images/Star Wars - Episodio I - Jedi Power Battles (Spain)-thumb.png</thumbnail>
+    <rating>0.75</rating>
+    <releasedate>20000401T000000</releasedate>
+    <developer>LucasArts</developer>
+    <publisher>LucasArts</publisher>
+    <genre>Aventura</genre>
+    <family>Star Wars</family>
+    <players>1-2</players>
+    <lang>es</lang>
+    <region>eu</region>
+    </game>
+  <game id="19691">
+    <path>./Test Drive Le Mans (USA) (En,Fr,Es).chd</path>
+    <name>Test Drive Le Mans</name>
+    <desc>¡Enfréntate al desafío de las carreras de resistencia de LeMans! Únase a uno de los 25 equipos de fabricantes, conduzca uno de los más de 50 vehículos (diseñados con la ayuda de equipos reales) en los ocho circuitos diferentes de LeMans. Se simula el desgaste real. Desgaste de neumáticos, consumo de aceite y combustible... Conducción diurna, nocturna y vuelta al día...</desc>
+    <image>./images/Test Drive Le Mans (USA) (En,Fr,Es)-image.png</image>
+    <video>./videos/Test Drive Le Mans (USA) (En,Fr,Es)-video.mp4</video>
+    <thumbnail>./images/Test Drive Le Mans (USA) (En,Fr,Es)-thumb.png</thumbnail>
+    <rating>0.7</rating>
+    <releasedate>20000331T000000</releasedate>
+    <developer>Eutechnyx</developer>
+    <publisher>Infogrames</publisher>
+    <genre>Carreras, Conducción</genre>
+    <family>Test Drive</family>
+    <players>1-2</players>
+    <lang>en,es,fr</lang>
+    <region>us</region>
+    <scrap name="TheGamesDB" date="20251129T103855" />
+  </game>
+  <game id="19291">
+    <path>./Dino Crisis 2 (ESP).chd</path>
+    <name>Dino Crisis 2</name>
+    <genre>Aventura / Terror de Supervivencia</genre>
+    <releasedate>20001001T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Capcom</publisher>
+    <developer>Capcom</developer>
+    <desc>En el año 2010, (un año después de los acontecimientos de Dino Crisis) la investigación llamada ?Tercera Energía? continúa a manos de una agencia del gobierno. Sin embargo, ha ocurrido un accidente muy grave: Edward City, una ciudad dedicada a la investigación, ha desaparecido del presente y se encuentra en otro tiempo. Un equipo de búsqueda y rescate (T.R.A.T.) tiene la misión de viajar a través del tiempo a donde se encuentra Edward City para saber qué pasó con esta ciudad, rescatar a los supervivientes y encontrar los archivos desaparecidos de la investigación de la ?Tercera Energía?.
+
+En el equipo también se encuentran los soldados de un Escuadrón de Fuerzas Especiales: Dylan y David, y la intrépida Regina una "superagente internacional de inteligencia", debido a su experiencia en su última misión. El equipo intenta instalarse en una isla cercana a Edward City, pero el campamento es atacado sorpresivamente por una manada de Velociraptores y la mayoría del equipo es asesinado por estas criaturas prehistóricas, a excepción de Regina, Dylan y David que logran salvarse sin problema, debido a su experiencia en misiones extremas. En eso los Velociraptores huyen ante la presencia de un T-Rex, que ataca a los restantes, David logra dispararle con un Lanzacohetes en un ojo de este y, Regina y Dylan logran escapar rodando por una pendiente</desc>
+    <family>Dino Crisis</family>
+    <image>./images/Dino Crisis 2 (ESP)-image.png</image>
+    <thumbnail>./images/Dino Crisis 2 (ESP)-thumb.png</thumbnail>
+    <video>./videos/Dino Crisis 2 (ESP)-video.mp4</video>
+  </game>
+  <game id="19454">
+    <path>./Alien Trilogy (ESP).chd</path>
+    <name>Alien Trilogy</name>
+    <genre>Disparos / 1ª persona</genre>
+    <releasedate>19960201T000000</releasedate>
+    <players>1</players>
+    <rating>0.65</rating>
+    <lang>en</lang>
+    <publisher>Acclaim</publisher>
+    <developer>Probe Entertainment</developer>
+    <desc>Acosada por los recuerdos, esperas que ha algún pequeño detalle que ha pasado inadvertido... algunos problemas de comunicación de poca importancia, pero la verdad es que, en el fondo, sabes que ... ¡HAN VUELTO!... ¡Los despiadados y corruptos empleados de la Compañía, los extraterrestres que ponen huevos pegándose a la cara, los que salen de tu cuerpo reventándote el pecho, los adultos y los perros alienígenas, además de... ¡Tres Reinas extraterrestres!... ¡Más de 30 niveles cubiertos de ácido, un arsenal de armas letales y tú! Toda la escalofriante acción tridimensional de la trilogía Alien al completo, en una pesadilla sobre una plaga extraterrestre que te pondrá los pelos de punta.</desc>
+    <family>Alien</family>
+    <image>./images/Alien Trilogy (ESP)-image.png</image>
+    <thumbnail>./images/Alien Trilogy (ESP)-thumb.png</thumbnail>
+    <video>./videos/Alien Trilogy (ESP)-video.mp4</video>
+  </game>
+  <game id="19775">
+    <path>./Bomberman World (Europe, Australia) (En,Fr,De,Es,It).chd</path>
+    <name>Bomberman World</name>
+    <genre>Acción / Laberinto</genre>
+    <releasedate>19980815T000000</releasedate>
+    <players>1-5</players>
+    <rating>0.75</rating>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    <publisher>Hudson</publisher>
+    <developer>Sony Computer Entertainment</developer>
+    <desc>Esta es la primera aparición de Bomberman en la PlayStation en Norteamérica. Esta versión mantiene el estilo de juego de los juegos 2D Bomberman, pero tiene un aspecto pseudo-3D. Bomberman World presenta el modo de historia de un jugador que se encuentra en todos los juegos de Bomberman, pero lo más importante es que tiene un modo de batalla de cinco jugadores. El juego multijugador tiene doce mapas diferentes, junto con tres modos de juego diferentes.</desc>
+    <family>Bomberman</family>
+    <image>./images/Bomberman World (Europe, Australia) (En,Fr,De,Es,It)-image.png</image>
+    <thumbnail>./images/Bomberman World (Europe, Australia) (En,Fr,De,Es,It)-thumb.png</thumbnail>
+    <video>./videos/Bomberman World (Europe, Australia) (En,Fr,De,Es,It)-video.mp4</video>
+  </game>
+  <game id="19270">
+    <path>./Crash Bandicoot 2 - Cortex Strikes Back (ESP).chd</path>
+    <name>Crash Bandicoot 2 : Cortex Strikes Back</name>
+    <genre>Plataformas</genre>
+    <releasedate>19971101T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Sony Computer Entertainment</publisher>
+    <developer>Naughty Dog</developer>
+    <desc>Después de haber sido derrotado por Crash Bandicoot en el juego anterior, el Dr. Neo Cortex encuentra por accidente un extraño cristal que parece albergar un gran poder. Tras descubrir que existen otros 25 cristales en distintas partes del mundo, Neo Cortex trama un engaño para convencer a Crash y su hermana Coco de que le ayuden a buscarlos y poder construir así el arma definitiva. Usando la máquina teletransportadora de Cortex, el ingenuo de Crash se pone de nuevo en marcha.</desc>
+    <family>Crash Bandicoot</family>
+    <image>./images/Crash Bandicoot 2 - Cortex Strikes Back (ESP)-image.png</image>
+    <thumbnail>./images/Crash Bandicoot 2 - Cortex Strikes Back (ESP)-thumb.png</thumbnail>
+    <video>./videos/Crash Bandicoot 2 - Cortex Strikes Back (ESP)-video.mp4</video>
+  </game>
+  <game id="19383">
+    <path>./Digimon Rumble Arena (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>Digimon Rumble Arena</name>
+    <genre>Lucha</genre>
+    <releasedate>20020222T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.85</rating>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    <publisher>Bandai</publisher>
+    <developer>Bandai</developer>
+    <desc>El principio de Digimon Rumble Arena es simple: dos Digimon pelean en una arena. Disponible para todas las edades, debes luchar con tus Digimon favoritos en arenas infestadas de trampas. Usa las habilidades de cada uno de tus monstruos y digievoluciona para obtener la ventaja.</desc>
+    <family>Digimon</family>
+    <image>./images/Digimon Rumble Arena (Europe) (En,Fr,De,Es,It)-image.png</image>
+    <thumbnail>./images/Digimon Rumble Arena (Europe) (En,Fr,De,Es,It)-thumb.png</thumbnail>
+    <video>./videos/Digimon Rumble Arena (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+  </game>
+  <game id="19304">
+    <path>./Gran Turismo 2 [ARCADE MODE] (ESP).chd</path>
+    <name>Gran Turismo 2 (Arcade Mode)</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>19991223T000000</releasedate>
+    <players>1-2</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Sony Computer Entertainment</publisher>
+    <developer>Polyphony Digital</developer>
+    <desc>Gran Turismo 2 tiene 22 circuitos, 6 licencias, 600 coches, 6 circuitos de rendimiento y eventos de rally. GT2 viene con dos discos: el disco de modo arcade y el disco GT también conocido como Simulación, del cual la versión PAL tiene una portada de "rasca y huele" (que supone tener olor a línea de pits), que desapareció cuando el juego se unió al nivel Platino de los juegos más vendidos. La separación de los discos es consecuencia de la cantidad de mejoras al modo de simulación, se reorganizó el sistema de licencias y se introdujo el sistema de porcentaje de finalizado del jugador. En este Gran Turismo 2 la mayoría de la marcas hacen desafíos.</desc>
+    <family>Gran Turismo</family>
+    <image>./images/Gran Turismo 2 [ARCADE MODE] (ESP)-image.png</image>
+    <thumbnail>./images/Gran Turismo 2 [ARCADE MODE] (ESP)-thumb.png</thumbnail>
+    <video>./videos/Gran Turismo 2 [ARCADE MODE] (ESP)-video.mp4</video>
+  </game>
+  <game id="19273">
+    <path>./(PS1) Final Fantasy VI [PAL] [SCES-03828].chd</path>
+    <name>Final Fantasy Anthology : Final Fantasy VI</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>19991001T000000</releasedate>
+    <players>1</players>
+    <rating>0.9</rating>
+    <lang>en</lang>
+    <publisher>Squaresoft</publisher>
+    <developer>TOSE</developer>
+    <desc>Final Fantasy VI is a role-playing video game. It was released in 1994 for the Super Nintendo Entertainment System as a part of the Final Fantasy series. The game was known as Final Fantasy III when it was first released in North America, as the original Final Fantasy III had not been released outside of Japan at the time. However, later localizations used the original title.
+
+Set in a fantasy world with a technology level equivalent to that of the Second Industrial Revolution, the game's story focuses on a group of rebels as they seek to overthrow an imperial dictatorship. The game features fourteen permanent playable characters, the most of any game in the main series. Final Fantasy VI was the first game in the series to be directed by someone other than producer and series creator Hironobu Sakaguchi; the role was filled instead by Yoshinori Kitase and Hiroyuki Ito. Yoshitaka Amano, a long-time contributor to the Final Fantasy series, returned as the image and character designer, while regular composer Nobuo Uematsu wrote the game's score, which has been released on several soundtrack albums.</desc>
+    <family>Final Fantasy</family>
+    <image>./images/(PS1) Final Fantasy VI [PAL] [SCES-03828]-image.png</image>
+    <video>./videos/(PS1) Final Fantasy VI [PAL] [SCES-03828]-video.mp4</video>
+  </game>
+  <game>
+    <path>./(PS1) Rayman 2 - The Great Escape [PAL] [SLES-02906].chd</path>
+    <name>Rayman 2: The Great Escape</name>
+    <genre>Action</genre>
+    <releasedate>20000915T000000</releasedate>
+    <players>1</players>
+    <lang>en</lang>
+    <publisher>Ubisoft Entertainment</publisher>
+    <developer>Ubisoft</developer>
+    <desc>Rayman 2: The Great Escape is the sequel to Rayman, a 2D side-scrolling platform game. Unlike the previous game, Rayman 2 is entirely in free-roaming 3D environments, similar to Super Mario 64. Rayman has many unique abilities that can help him get around the world. In addition to being able to shoot his fists, he can use his hair to hover like a helicopter, and even glide on air currents in certain places. He can climb certain walls and ceilings and can even use his fists to swing from special purple Lums which are shaped like rings. Rayman also has many unique items at his disposal, such as powder kegs which can be carried or fly like jets, strange warheads with legs that he can ride and steer like bucking mules, and gigantic plums that can be thrown into the water to create new paths.</desc>
+    <image>./images/(PS1) Rayman 2 - The Great Escape [PAL] [SLES-02906]-image.jpg</image>
+    </game>
+  <game id="19333">
+    <path>./Grand Theft Auto 2 (Europe) (En,Fr,De,Es,It) (Rev 1).chd</path>
+    <name>Grand Theft Auto 2</name>
+    <genre>Carreras, Conducción</genre>
+    <releasedate>19991025T000000</releasedate>
+    <players>1</players>
+    <rating>0.75</rating>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    <publisher>Rockstar Games</publisher>
+    <developer>Rockstar North</developer>
+    <desc>Grand Theft Auto 2 es la cuarta entrega de la saga GTA y la penúltima en sandbox 2 dimensiones. Fue creado por DMA Design (Rockstar North) para todas las consolas excepto Game Boy Color, la cual fue creada por Tarantula Studios y producido por Rockstar Games. 
+
+El juego se desarrolla en Anywhere City en el año 1999. A medida que el juego avanza por sus misiones, se puede jugar en tres distritos diferentes: (Central, Residencial e Industrial). El objetivo en cada distrito es obtener suficiente dinero para acceder al siguiente distrito.</desc>
+    <family>Grand Theft Auto</family>
+    <image>./images/Grand Theft Auto 2 (Europe) (En,Fr,De,Es,It) (Rev 1)-image.png</image>
+    <thumbnail>./images/Grand Theft Auto 2 (Europe) (En,Fr,De,Es,It) (Rev 1)-thumb.png</thumbnail>
+    <video>./videos/Grand Theft Auto 2 (Europe) (En,Fr,De,Es,It) (Rev 1)-video.mp4</video>
+  </game>
+  <game id="19284">
+    <path>./Harry Potter and the Sorcerer's Stone (USA) (En,Fr,Es).chd</path>
+    <name>Harry Potter and the Sorcerer's Stone</name>
+    <genre>Aventura</genre>
+    <releasedate>20011115T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en,es,fr</lang>
+    <region>us</region>
+    <publisher>Electronic Arts</publisher>
+    <developer>Argonaut Software</developer>
+    <desc>Deja el mundo no mágico atrás y matricúlate en el Colegio Hogwarts de Magia y Hechicería en Harry Potter y la Piedra Filosofal. Como Harry Potter, perfeccionarás tus habilidades mágicas y avanzarás a través de tres períodos de estudio durante el primer año de Harry en Hogwarts. Cada periodo será un desafío para cumplir una serie de objetivos, tales como la recolección y mezcla de pociones con el profesor Snape o pilotando una escoba voladora por el bosque prohibido en busca de la Recordadora de Neville Longbottom. Con el fin de pasar el primer año de estudio, los jugadores deben completar más de 29 objetivos diferentes, evitando al mismo tiempo enemigos y obstáculos.</desc>
+    <family>Harry Potter</family>
+    <image>./images/Harry Potter and the Sorcerer's Stone (USA) (En,Fr,Es)-image.png</image>
+    <thumbnail>./images/Harry Potter and the Sorcerer's Stone (USA) (En,Fr,Es)-thumb.png</thumbnail>
+    <video>./videos/Harry Potter and the Sorcerer's Stone (USA) (En,Fr,Es)-video.mp4</video>
+  </game>
+  <game id="103513">
+    <path>./Looney Tunes - Sheep Raider (USA) (En,Fr,Es,Pt).chd</path>
+    <name>Looney Tunes : Sheep Raider</name>
+    <genre>Plataformas</genre>
+    <releasedate>20010928T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en,pt,es,fr</lang>
+    <region>us</region>
+    <publisher>Infogrames</publisher>
+    <developer>Infogrames</developer>
+    <desc>El juego está basado en la popular serie de Warner Bros. "El perro ovejero Sam" y "Ralph Wolf". Controlas a Ralph durante todo el juego, el objetivo del jugador es robar las ovejas del perro ovejero Sam a través de muchos niveles, incluyendo 2 secretos y un nivel bonus.
+
+Después de otro intento fallido de robar una oveja al perro ovéjero Sam, Ralph Wolf entra en su cabina para relejarse y ver televisión. De pronto el Pato Lucas irrumpe en su casa y le da a Ralph la noticia de que es el nuevo concursante del programa "Perro Ovejero y Lobo" conducido por él mismo (o, como le gusta llamarlo: ¿Quién quiere ser un ladrón de corderos?) Lucas lleva a Ralph en su limosina hasta Ciudad Acme, donde le "explica" las reglas del juego y lo que debe hacer. 
+Ralph será provisto de diversos objetos marca Acme, inventarios y guías de usuario para robar las ovejas de Sam. Los niveles están cerrados como escenarios en las series de Looney Tunes, desde los más clásicos hasta algúnos totalmente nuevos, como la tierra fantástica.</desc>
+    <family>Looney Tunes</family>
+    <image>./images/Looney Tunes - Sheep Raider (USA) (En,Fr,Es,Pt)-image.png</image>
+    <thumbnail>./images/Looney Tunes - Sheep Raider (USA) (En,Fr,Es,Pt)-thumb.png</thumbnail>
+    <video>./videos/Looney Tunes - Sheep Raider (USA) (En,Fr,Es,Pt)-video.mp4</video>
+  </game>
+  <game id="19281">
+    <path>./MediEvil (ESP).chd</path>
+    <name>MediEvil</name>
+    <genre>Aventura</genre>
+    <releasedate>19981021T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Sony Computer Entertainment</publisher>
+    <developer>SCE Studio Cambridge</developer>
+    <desc>En el reino de Gallowmere, año 1286, el poderoso mago Zarok, desterrado por nigromancia, reunió a un numeroso ejército de zombis, demonios y otros monstruos con la intención de conquistar el reino al que pertenecía y vengarse de la familia real. Tras una breve sucesión de escaramuzas, los mejores soldados tanto del ejército del Rey Peregrino como los del de Zarok se enfrentaron en una batalla final en la que el capitán del Rey Peregrino, Sir Daniel Fortesque, se enfrentó en duelo singular combate a Zarok, acabando con su vida antes de sucumbir ante sus propias heridas mortales. La batalla, sin la magia de Zarok para mantener a las huestes malignas, fue ganada por el ejército real.</desc>
+    <family>Medievil</family>
+    <image>./images/MediEvil (ESP)-image.png</image>
+    <thumbnail>./images/MediEvil (ESP)-thumb.png</thumbnail>
+    <video>./videos/MediEvil (ESP)-video.mp4</video>
+  </game>
+  <game id="19679">
+    <path>./Omega Boost (Europe) (En,Fr,De,Es,It).chd</path>
+    <name>Omega Boost</name>
+    <genre>Disparos</genre>
+    <releasedate>19990914T000000</releasedate>
+    <players>1</players>
+    <rating>0.85</rating>
+    <lang>de,en,es,fr,it</lang>
+    <region>eu</region>
+    <publisher>Sony Computer Entertainment</publisher>
+    <developer>Polyphony Digital</developer>
+    <desc>Tendrás que repeler ataques que te lloverán desde todos los flancos en inmensos escenarios de batalla en 3D con OMEGA BOOST, la sobrecogedora aventura del futuro que llega de la mano de los creadores de Gran Turismo.
+9 etapas con superjefes de mitad y final de nivel.
+Etapas ocultas y zonas de bonificación.
+Modo de repetición alucinante para que puedas grabar tus victorias más sonadas en una MEMORY CARD, y volverás as ver una y otra vez.</desc>
+    <image>./images/Omega Boost (Europe) (En,Fr,De,Es,It)-image.png</image>
+    <thumbnail>./images/Omega Boost (Europe) (En,Fr,De,Es,It)-thumb.png</thumbnail>
+    <video>./videos/Omega Boost (Europe) (En,Fr,De,Es,It)-video.mp4</video>
+  </game>
+  <game id="19408">
+    <path>./Resident Evil - Survivor (ESP).chd</path>
+    <name>Resident Evil : Survivor</name>
+    <genre>Disparos con periférico</genre>
+    <releasedate>20000825T000000</releasedate>
+    <players>1</players>
+    <rating>0.5</rating>
+    <lang>en</lang>
+    <publisher>Eidos Interactive</publisher>
+    <developer>TOSE</developer>
+    <desc>Incluso cuando estás muerto, no puedes descansar en paz cuando eres residente de Racoon City, la ciudad americana del medio oeste afectada por el mortífero Virus-T.
+Eres un joven piloto que logró escapar de la cabina de su helicóptero, pero perdió la memoria en el accidente. Armado sólo con un arma, tienes que luchar para atravesar el mundo de Racoon City.
+Desde el primer Resident Evil de Playstation, esta serie de juegos de aventuras y de terror clásico ha sido tan entretenida de jugar como de ver. Ahora Eidos lanza Resident Evil: Survivor, que rompe con el conocido juego en tercera persona y envuelve al jugador en una perspectiva en primera persona al estilo de Quake, una experiencia que refleja elementos de The House of The Dead 2.
+El cambio en la jugabilidad hace que sea un enfoque agradable y refrescante. Survivor, conservando la historia y el horror, plantea un nuevo desafío. Se juega con facilidad con los controles estándar, aunque también se puede jugar con la pistola de luz G-Con 45 para agregar elementos adicionales de diversión.</desc>
+    <family>Resident Evil</family>
+    <image>./images/Resident Evil - Survivor (ESP)-image.png</image>
+    <thumbnail>./images/Resident Evil - Survivor (ESP)-thumb.png</thumbnail>
+    <video>./videos/Resident Evil - Survivor (ESP)-video.mp4</video>
+  </game>
+  <game id="19265">
+    <path>./Silent Hill (ESP).chd</path>
+    <name>Silent Hill</name>
+    <genre>Aventura / Terror de Supervivencia</genre>
+    <releasedate>19990131T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>en</lang>
+    <publisher>Konami</publisher>
+    <developer>Team Silent</developer>
+    <desc>Un joven hombre busca desesperadamente a su hija debatiéndose por sobrevivir en un lugar entre la realidad y el infierno, una ciudad que esconde oscuros y sangrientos secretos. Sigue las pistas de sangre para rescatar a tu querida hija de las garras de un poder infernal. Adéntrate en una dimensión alternativa de la cual no podrás escapar ni siquiera al morir. Bienvenido al maquiavélico mundo de Silent Hill...</desc>
+    <family>Silent Hill</family>
+    <image>./images/Silent Hill (ESP)-image.png</image>
+    <thumbnail>./images/Silent Hill (ESP)-thumb.png</thumbnail>
+    <video>./videos/Silent Hill (ESP)-video.mp4</video>
+  </game>
+  <game id="19299">
+    <path>./Suikoden II (Spain).chd</path>
+    <name>Suikoden II</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20000728T000000</releasedate>
+    <players>1</players>
+    <rating>0.8</rating>
+    <lang>es</lang>
+    <region>eu</region>
+    <publisher>Konami</publisher>
+    <developer>Konami</developer>
+    <desc>Suikoden II tiene lugar años después de los sucesos del Suikoden original, y se centra en la invasión por el reino de Highland de las ciudades estado de Jowston. El jugador controla un protagonista silencioso cuyo nombre puede elegir, si bien su nombre en la novelización japonesa y la adaptación a drama CD es Riou y en la adaptación al manga es Tao. Él es el hijo adoptivo de Genkaku, un héroe que salvó la ciudad-estado de Jowston en una guerra contra Highlands años atrás. El protagonista y su mejor amigo, Jowy Atreides, obtienen sendas mitades de la Runa del comienzo, una de las 27 Runas verdaderas del universo Suikoden, y se ven atrapados en las intrigas de la invasión y el destino oscuro de aquellos que portan las mitades de esa runa.</desc>
+    <family>Suikoden</family>
+    <image>./images/Suikoden II (Spain)-image.png</image>
+    <thumbnail>./images/Suikoden II (Spain)-thumb.png</thumbnail>
+    <video>./videos/Suikoden II (Spain)-video.mp4</video>
+  </game>
+  <game id="19704">
+    <path>./Threads of Fate (ESP).chd</path>
+    <name>Threads of Fate</name>
+    <genre>Juego de Rol</genre>
+    <releasedate>20000719T000000</releasedate>
+    <players>1</players>
+    <rating>0.7</rating>
+    <lang>en</lang>
+    <publisher>Squaresoft</publisher>
+    <developer>Squaresoft</developer>
+    <desc>Threads of Fate combina la jugabilidad de una aventura en 3D en tiempo real con un sistema de personajes típico de los juegos de rol. El juego ofrece dos personajes principales diferentes y dos historias diferentes.
+
+La joven guerrera Rue se embarca en un viaje para revivir a su amada guardiana perdida, Claire. Mint, que perdió su derecho al trono del Reino de los Cielos del Este, busca la dominación mundial y la venganza contra su hermana menor. Ambos viven en el mismo mundo al mismo tiempo y ambos buscan la misma reliquia poderosa para ayudarlos a lograr sus objetivos.
+
+En su viaje, ambos personajes tienen que explorar áreas llenas de desafiantes acertijos y enemigos inusuales. Para resolver ciertos misterios o despejar ciertos obstáculos, deben hacer uso de habilidades especiales. Al usar monedas recolectadas, Rue tiene la capacidad de cambiar de forma a las formas de monstruos derrotados, mientras que Mint puede aprender y usar una variedad de poderosos hechizos mágicos.</desc>
+    <image>./images/Threads of Fate (ESP)-image.png</image>
+    <thumbnail>./images/Threads of Fate (ESP)-thumb.png</thumbnail>
+    <video>./videos/Threads of Fate (ESP)-video.mp4</video>
+  </game>
+</gameList>

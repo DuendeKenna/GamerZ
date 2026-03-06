@@ -288,6 +288,18 @@
     #searchbutton:hover {
       transform: scale(1.1);
     }
+
+    .search-header {
+      position: sticky;
+      top: 0;
+      background: #00112e;
+      /* matches body background */
+      z-index: 100;
+      padding: 10px 0 20px 0;
+      border-bottom: 2px solid #373d47;
+      display: flex;
+      align-items: center;
+    }
   </style>
   <script>
     function search() {
@@ -369,11 +381,14 @@
 
 <body>
 
-  <h2></h2><input type="text" style="font-size: large;" id="search" placeholder="&#191;Cu&#225;l busc&#225;s?"
-    onkeyup="if(event.keyCode === 13) search()">
-  <img src="../XP_Icons/Search.webp" onclick="search()" id="searchbutton" alt="Buscar">
+  <div class="search-header">
+    <h2></h2>
+    <input type="text" style="font-size: large;" id="search" placeholder="&#191;Cu&#225;l busc&#225;s?"
+      onkeyup="if(event.keyCode === 13) search()">
+    <img src="../XP_Icons/Search.webp" onclick="search()" id="searchbutton" alt="Buscar">
+  </div>
 
-  <div id="quicklink-A">
+  <div id="quicklink-A" style="margin-top: 20px;">
     <h2 id="h2jscript" onclick="ShowHide('A')"><strong id="eye-A"
         style="color: #096931;">&#x25BC;</strong><strong>A<span>( 11 )</span></strong></h2>
   </div>
