@@ -441,7 +441,27 @@
                 src="xpWall.jpg" />
             <!-- Hero Text overlay -->
             <div id="heroText">
-                <h2 class="hero-title text-xl md:text-3xl text-white font-serif">
+
+                <!-- Construction Banner -->
+                <div class="mt-8 flex justify-center">
+                    <div
+                        class="relative max-w-sm md:max-w-md bg-[#ffffe1] text-gray-800 p-6 md:p-8 rounded shadow-2xl border border-yellow-200 transform md:-rotate-1 z-20 mx-4">
+                        <div class="absolute -top-4 -left-4">
+                            <span
+                                class="material-icons text-5xl text-gray-400/60 transform -rotate-12 select-none">attach_file</span>
+                        </div>
+                        <div class="text-center space-y-2">
+                            <h3 class="text-2xl md:text-4xl font-bold text-gray-900">¡En Desarrollo!</h3>
+                            <p class="text-lg md:text-xl text-gray-700 italic font-serif">¿Buscás la <strong>demo
+                                    gratuita</strong>?
+                                <br>Andá a <a href="mxpdemo.html"
+                                    class="text-blue-600 underline font-bold hover:text-blue-800">este link</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="hero-title text-xl md:text-3xl text-white font-serif mt-8">
                     ¿Vos también extrañás <strong>esta era</strong>?<br>Tranca, <strong>resucitó</strong>...
                 </h2>
             </div>
@@ -496,8 +516,8 @@
                                 <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
                                     style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Potencia Moderna</h4>
                                 <p class="text-lg leading-relaxed text-white/90">
-                                    Debajo del capó corre un motor de <strong>máximo rendimiento</strong> para crear sin
-                                    límites.
+                                    Debajo del capó corre un motor de <strong>máximo rendimiento</strong> para correr
+                                    todos los juegos y software instalados.
                                 </p>
                             </div>
                             <div class="shrink-0">
@@ -521,7 +541,7 @@
                                 <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
                                     style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Juegazos de PC</h4>
                                 <p class="text-lg leading-relaxed text-white/90">
-                                    Colección <strong>curada y potenciada</strong>; clásicos sin basura, en español, con
+                                    Colección <strong>curada y potenciada</strong>; clásicos expandidos, en español, con
                                     parches HD
                                     actuales.
                                 </p>
@@ -532,7 +552,8 @@
                                 <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
                                     style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Emuladores</h4>
                                 <p class="text-lg leading-relaxed text-white/90">
-                                    <strong>Sistemas preconfigurados</strong> para revivir consolas clásicas con máxima
+                                    <strong>Sin basura</strong>, con títulos que vale tu tiempo jugar, para revivir
+                                    consolas clásicas con máxima
                                     fidelidad.
                                 </p>
                             </div>
@@ -636,67 +657,53 @@
                                 <!-- Image Container -->
                                 <div class="relative aspect-video group overflow-hidden">
                                     <div id="gameCarousel" class="relative h-full cursor-pointer bg-black">
-                                        <!-- Images -->
-                                        <img id="vid-pc-0" src="MXP/Shots/pc/1.webp"
+                                        <img src="MXP/Shots/pc/0.webp" data-title="Shooters Bélicos"
+                                            data-sub="y apocalípticos/futuristas/flasheros...hay de todo..."
                                             class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-1" src="MXP/Shots/pc/2.webp"
+                                        <img src="MXP/Shots/pc/1.webp" data-title="Los Counter Clásicos"
+                                            data-sub="Con docenas de mapas extras y bots."
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-2" data-src="MXP/Shots/pc/3.webp"
+                                        <img data-src="MXP/Shots/pc/2.webp" data-title="RTS Épicos"
+                                            data-sub="Para agilizar ese bocho atrofiado por la nueva era de juegos no brainer."
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-3" data-src="MXP/Shots/pc/4.webp"
+                                        <img data-src="MXP/Shots/pc/3.webp" data-title="El inicio del sandbox"
+                                            data-sub="El genero de mundo abierto que revolucionó todo."
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-4" data-src="MXP/Shots/pc/5.webp"
+                                        <img data-src="MXP/Shots/pc/4.webp" data-title="Adrenalina Pura"
+                                            data-sub="con estos NFS y otros como Blur, Burnout, Dirt..."
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-5" data-src="MXP/Shots/pc/6.webp"
+                                        <img data-src="MXP/Shots/pc/5.webp" data-title="RPG/Hack & Slash"
+                                            data-sub="El vicio de matar, lootear y subir de nivel."
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-6" data-src="MXP/Shots/pc/7.webp"
+                                        <img data-src="MXP/Shots/pc/6.webp" data-title="Point & Click"
+                                            data-sub="Un genero hermoso que ya no se ve por estos lares."
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-7" data-src="MXP/Shots/pc/8.webp"
+                                        <img data-src="MXP/Shots/pc/7.webp" data-title="Half-Life"
+                                            data-sub="Para repasar la saga antes de que salga el esperado 3..."
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-8" data-src="MXP/Shots/pc/9.webp"
+                                        <img data-src="MXP/Shots/pc/8.webp" data-title="Quake vs Unreal"
+                                            data-sub="Desde su arranque single player hasta el multijugador masivo."
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-pc-9" data-src="MXP/Shots/pc/10.webp"
+                                        <img data-src="MXP/Shots/pc/9.webp" data-title="Kids"
+                                            data-sub="Opciones para los más chiquis y el juego en familia (muchos + en emuladores👇)"
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                    </div>
-                                    <!-- Carousel Overlay Controls -->
-                                    <div id="carouselDots"
-                                        class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
-                                        <div class="w-2.5 h-2.5 rounded-full bg-xpBlue cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 0)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 1)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 2)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 3)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 4)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 5)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 6)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 7)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 8)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('pc', 9)"></div>
                                     </div>
                                 </div>
-                                <!-- Game Info (Just below and outside the carousel container) -->
+                                <!-- Carousel Dots -->
+                                <div id="carouselDots" class="flex justify-center space-x-2 py-2">
+                                    <!-- Dynamic dots go here -->
+                                </div>
+                                <!-- Game Info -->
                                 <div id="gameInfo"
-                                    class="mt-4 px-2 text-white/90 flex items-baseline flex-wrap gap-x-3 gap-y-1 overflow-hidden">
+                                    class="mt-1 px-2 text-white/90 flex items-baseline flex-wrap gap-x-3 gap-y-1 overflow-hidden pb-2">
                                     <div class="flex items-baseline gap-2 shrink-0">
                                         <h3 id="gameTitle"
                                             class="text-xl font-bold text-orange-400 transition-opacity duration-300 whitespace-nowrap">
-                                            Counter-Strike 1.6</h3>
+                                            FPS</h3>
                                         <span id="gameSubtitle"
-                                            class="text-sm italic text-orange-400 transition-opacity duration-300 whitespace-nowrap">Tactical
-                                            Shooter</span>
+                                            class="text-sm italic text-orange-400 transition-opacity duration-300 whitespace-nowrap">Shooters
+                                            que marcaron historia.</span>
                                     </div>
-                                    <p id="gameDesc"
-                                        class="text-sm md:text-base font-sans leading-tight opacity-80 transition-opacity duration-300 line-clamp-2">
-                                        El rey de los cybers. Táctica, reflejos y el clásico de_dust2.</p>
                                 </div>
                             </div>
                         </div>
@@ -705,15 +712,17 @@
                     <!-- Text Column -->
                     <div class="text-white space-y-6">
                         <p class="text-2xl md:text-4xl font-serif leading-relaxed italic">
-                            "Tu gameclub soñado, ahora en tu disco rígido. <br>
-                            <span class="text-xpOrange font-bold not-italic">+150 joyas de PC</span> instaladas y listas
-                            para darle Play."
+                            Tu gameclub soñado, ahora en tu disco rígido. <br>
+                            <span class="font-bold not-italic" style="text-shadow: 3px 3px rgb(14, 0, 66);">+150
+                                joyas</span> instaladas y
+                            listas
+                            para darle Play.
                         </p>
                         <div class="h-1 w-24 bg-xpOrange"></div>
 
                         <!-- Modern XP Button Custom (Using Reusable Control) -->
                         <div class="pt-6">
-                            <button class="xp-button-modern">
+                            <button class="xp-button-modern" onclick="openPcModal()">
                                 <span>Ver Todos</span>
                                 <span class="xp-icon">💾</span>
                             </button>
@@ -729,129 +738,189 @@
                 <!-- Header -->
                 <div class="text-center mb-16">
                     <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 xp-title-shadow">Emulación Retro</h2>
-                    <p class="text-blue-100 text-lg md:text-2xl italic">PS1, PS2, N64 y más. Tu infancia en un click.
+                    <p class="text-blue-100 text-lg md:text-2xl italic">Las consolas de tu infancia a un click...
                     </p>
 
-                    <!-- Console Logos List -->
-                    <div
-                        class="flex flex-wrap justify-center items-center gap-6 md:gap-10 mt-10 px-4 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
-                        <img src="MXP/imgs/1.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/2.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/3.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/4.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/5.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/6.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/7.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/8.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/9.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                        <img src="MXP/imgs/10.webp" class="h-8 md:h-12 object-contain" alt="Console Logo">
-                    </div>
+
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-                    <!-- Text Column (Left on Desktop) -->
-                    <div class="text-white space-y-6 order-2 md:order-1 text-right md:pr-12">
-                        <p class="text-2xl md:text-4xl font-serif leading-relaxed italic">
-                            "Vuelven las tardes de memory card y soplido de cartuchos. <br>
-                            <span class="text-xpDarkBlue font-bold not-italic">Clásicos inmortales</span> configurados
-                            para tu pantalla actual."
-                        </p>
-                        <div class="h-1 w-24 bg-xpDarkBlue ml-auto"></div>
-                        <div class="pt-6 flex justify-end">
-                            <button class="xp-button-modern">
-                                <span>Ver Catálogo</span>
-                                <span class="xp-icon">🎮</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Carousel Column (Right on Desktop) -->
-                    <div class="relative order-1 md:order-2">
-                        <div class="window w-full shadow-2xl !bg-black overflow-hidden flex flex-col">
-                            <div class="title-bar !h-12 !px-4 flex items-center shrink-0">
-                                <div class="title-bar-text !m-0 font-bold text-xl leading-none">Console Emulator</div>
-                                <div class="title-bar-controls">
-                                    <button aria-label="Minimize"></button>
-                                    <button aria-label="Maximize"></button>
-                                    <button aria-label="Close"></button>
-                                </div>
+                <div id="groupConsolas"
+                    class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-black/20 border-y border-white/10 py-10 overflow-x-auto scrollbar-hide select-none mt-8 mb-12 cursor-grab"
+                    style="touch-action: pan-x;">
+                    <div id="marqueeContainer" class="flex w-max">
+                        <!-- Group 1 -->
+                        <div id="marqueeGroup1" class="flex items-center justify-center shrink-0 space-x-20 px-10">
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('arcade')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/arcade.webp" alt="arcade"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
                             </div>
-                            <div class="window-body !m-0 !p-0 !bg-black overflow-hidden flex-grow">
-                                <div class="relative aspect-video group overflow-hidden">
-                                    <div id="consoleCarousel" class="relative h-full cursor-pointer bg-black">
-                                        <!-- Images -->
-                                        <img id="vid-cons-0" src="MXP/Shots/consolas/1.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-1" src="MXP/Shots/consolas/2.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-2" data-src="MXP/Shots/consolas/3.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-3" data-src="MXP/Shots/consolas/4.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-4" data-src="MXP/Shots/consolas/5.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-5" data-src="MXP/Shots/consolas/6.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-6" data-src="MXP/Shots/consolas/7.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-7" data-src="MXP/Shots/consolas/8.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-8" data-src="MXP/Shots/consolas/9.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                        <img id="vid-cons-9" data-src="MXP/Shots/consolas/10.webp"
-                                            class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
-                                    </div>
-                                    <div id="consoleDots"
-                                        class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
-                                        <div class="w-2.5 h-2.5 rounded-full bg-xpBlue cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 0)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 1)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 2)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 3)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 4)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 5)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 6)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 7)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 8)"></div>
-                                        <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                            onclick="attemptSlide('cons', 9)"></div>
-                                    </div>
-                                </div>
-                                <div id="consoleInfo"
-                                    class="mt-4 px-2 text-white/90 flex items-baseline flex-wrap gap-x-3 gap-y-1 overflow-hidden">
-                                    <div class="flex items-baseline gap-2 shrink-0">
-                                        <h3 id="consoleTitle"
-                                            class="text-xl font-bold text-orange-400 transition-opacity duration-300 whitespace-nowrap">
-                                            Super Mario 64</h3>
-                                        <span id="consoleSubtitle"
-                                            class="text-sm italic text-orange-400 transition-opacity duration-300 whitespace-nowrap">N64</span>
-                                    </div>
-                                    <p id="consoleDesc"
-                                        class="text-sm md:text-base font-sans leading-tight opacity-80 transition-opacity duration-300 line-clamp-2">
-                                        El fontanero en 3D. Un clásico de N64.</p>
-                                </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('dreamcast')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/dreamcast.webp" alt="dreamcast"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('gba')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/gba.webp" alt="gba"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('gc')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/gc.webp" alt="gc"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('megadrive')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/megadrive.webp" alt="megadrive"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('n64')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/n64.webp" alt="n64"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('neogeo')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/neogeo.webp" alt="neogeo"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('nes')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/nes.webp" alt="nes"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('ps2')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/ps2.webp" alt="ps2"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('psp')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/psp.webp" alt="psp"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('psx')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/psx.webp" alt="psx"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('snes')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/snes.webp" alt="snes"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('wii')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/wii.webp" alt="wii"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                        </div>
+                        <!-- Group 2 -->
+                        <div id="marqueeGroup2" class="flex items-center justify-center shrink-0 space-x-20 px-10">
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('arcade')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/arcade.webp" alt="arcade"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('dreamcast')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/dreamcast.webp" alt="dreamcast"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('gba')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/gba.webp" alt="gba"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('gc')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/gc.webp" alt="gc"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('megadrive')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/megadrive.webp" alt="megadrive"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('n64')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/n64.webp" alt="n64"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('neogeo')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/neogeo.webp" alt="neogeo"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('nes')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/nes.webp" alt="nes"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('ps2')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/ps2.webp" alt="ps2"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('psp')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/psp.webp" alt="psp"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('psx')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/psx.webp" alt="psx"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('snes')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/snes.webp" alt="snes"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
+                            </div>
+                            <div class="flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
+                                onclick="openConsolaModal('wii')" style="-webkit-user-drag: none;">
+                                <img src="MXP/Shots/consolas/wii.webp" alt="wii"
+                                    class="w-48 h-48 object-contain drop-shadow-2xl pointer-events-none"
+                                    style="-webkit-user-drag: none;">
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Joysticks Sub-section -->
-                <div class="mt-24 border-t border-white/10 pt-20 pb-10 relative">
+                <div id="joysticksSection" class="mt-24 border-t border-white/10 pt-20 pb-10 relative">
                     <div
                         class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
 
                         <!-- Joystick 1 (Above on mobile, Left on PC) -->
                         <div class="order-1">
-                            <video src="MXP/imgs/control1.webm" autoplay muted loop playsinline
-                                class="w-48 h-48 md:w-64 md:h-64 object-contain float-joy-1"></video>
+                            <img src="MXP/imgs/control1.webp"
+                                class="w-48 h-48 md:w-64 md:h-64 object-contain float-joy-1">
                         </div>
 
                         <!-- Sticky Note Content (Yellow Post-it style) -->
@@ -877,8 +946,8 @@
 
                         <!-- Joystick 2 (Below on mobile, Right on PC) -->
                         <div class="order-3">
-                            <video src="MXP/imgs/control2.webm" autoplay muted loop playsinline
-                                class="w-48 h-48 md:w-64 md:h-64 object-contain float-joy-2"></video>
+                            <img src="MXP/imgs/control2.webp"
+                                class="w-48 h-48 md:w-64 md:h-64 object-contain float-joy-2">
                         </div>
 
                     </div>
@@ -1401,6 +1470,78 @@
     </main>
     <!-- END: Main Content Container -->
 
+    <!-- BEGIN: PC Games Modal -->
+    <div id="pcModal"
+        class="fixed inset-0 z-[100] flex items-center justify-center hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <!-- Modal Container (max-width 1160px, almost full height) -->
+        <div
+            class="window relative w-full max-w-[1170px] h-[90vh] mx-4 flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.8)] border-none transform scale-95 transition-all duration-300 bg-[#000821]">
+
+            <!-- Modal Header (XP Window style) -->
+            <div class="title-bar !h-auto !py-1 shrink-0">
+                <div class="title-bar-text flex items-center gap-2">
+                    <img src="MXP/XP_Icons/Game Controller.webp" class="w-5 h-5" alt="icon">
+                    <span class="font-bold">Catalogo de Juegos de PC</span>
+                </div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closePcModal()"></button>
+                </div>
+            </div>
+
+            <!-- Window Body for contents -->
+            <div
+                class="window-body !m-0 flex-grow relative overflow-hidden bg-gradient-to-b from-[#001550] to-[#000b25] flex flex-col">
+                <!-- Loading Spinner (Shown before iframe loads) -->
+                <div id="pcModalLoading"
+                    class="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                    <div class="w-12 h-12 border-4 border-xpBlue border-t-transparent rounded-full animate-spin mb-4">
+                    </div>
+                    <p class="font-segoe italic animate-pulse">Cargando catálogo...</p>
+                </div>
+
+                <!-- The Iframe (src is set dynamically by JS) -->
+                <iframe id="pcIframe"
+                    class="w-full h-full border-none z-20 opacity-0 transition-opacity duration-500 !bg-transparent"
+                    onload="this.style.opacity='1'; document.getElementById('pcModalLoading').style.display='none';"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- END: PC Games Modal -->
+
+    <!-- BEGIN: Consola Modal -->
+    <div id="consolaModal"
+        class="fixed inset-0 z-[100] flex items-center justify-center hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <div
+            class="window relative w-full max-w-[1170px] h-[90vh] mx-4 flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.8)] border-none transform scale-95 transition-all duration-300 bg-[#000821]">
+            <div class="title-bar !h-auto !py-1 shrink-0">
+                <div class="title-bar-text flex items-center gap-2">
+                    <img src="MXP/XP_Icons/Game Controller.webp" class="w-5 h-5" alt="icon">
+                    <span class="font-bold" id="consolaModalTitle">Juegos de Consola</span>
+                </div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closeConsolaModal()"></button>
+                </div>
+            </div>
+            <div
+                class="window-body !m-0 flex-grow relative overflow-hidden bg-gradient-to-b from-[#001550] to-[#000b25] flex flex-col">
+                <div id="consolaModalLoading"
+                    class="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
+                    <div class="w-12 h-12 border-4 border-xpBlue border-t-transparent rounded-full animate-spin mb-4">
+                    </div>
+                    <p class="font-segoe italic animate-pulse">Cargando juegos...</p>
+                </div>
+                <iframe id="consolaIframe"
+                    class="w-full h-full border-none z-20 opacity-0 transition-opacity duration-500 !bg-transparent"
+                    onload="this.style.opacity='1'; document.getElementById('consolaModalLoading').style.display='none';"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- END: Consola Modal -->
+
     <!-- Reciclar Modal -->
     <div id="reciclarModal"
         class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
@@ -1491,48 +1632,26 @@
             pc: {
                 currentSlide: 0,
                 isTransitioning: false,
+                initialized: false,
                 element: document.getElementById('gameCarousel'),
                 loader: document.getElementById('carouselLoader'),
                 autoSlideInterval: null,
                 isVisible: false,
                 prefix: 'vid-pc',
                 dotsId: 'carouselDots',
-                ui: { title: 'gameTitle', sub: 'gameSubtitle', desc: 'gameDesc' },
-                data: [
-                    { title: "Counter-Strike 1.6", sub: "Tactical Shooter", desc: "El rey de los cybers. Táctica, reflejos y el clásico de_dust2." },
-                    { title: "Age of Empires II", sub: "The Age of Kings", desc: "Wololo! Estrategia en tiempo real que definió nuestra infancia." },
-                    { title: "GTA Vice City", sub: "A Toda Máquina", desc: "Neon, sintetizadores y el imperio de Tommy Vercetti en los 80s." },
-                    { title: "NFS Underground 2", sub: "Ride with Us", desc: "Tuning al límite y la banda sonora que todavía escuchás." },
-                    { title: "Diablo II", sub: "Lord of Destruction", desc: "El Señor del Terror te espera. Un RPG de acción inigualable." },
-                    { title: "Warcraft III", sub: "The Frozen Throne", desc: "Héroes, orcos y el origen de todo un universo de fantasía." },
-                    { title: "Half-Life", sub: "Generación Black Mesa", desc: "La ciencia salió mal en Black Mesa. Una narrativa revolucionaria." },
-                    { title: "The Sims", sub: "Viviendo la Vida", desc: "Jugá a ser Dios (o a encerrar gente en piletas sin escaleras)." },
-                    { title: "Quake III Arena", sub: "Frag Time", desc: "Frag or be fragged. Velocidad pura en la arena." },
-                    { title: "StarCraft", sub: "Brood War", desc: "Zerg, Terran o Protoss. El balance perfecto de la estrategia espacial." }
-                ]
+                ui: { title: 'gameTitle', sub: 'gameSubtitle' }
             },
             cons: {
                 currentSlide: 0,
                 isTransitioning: false,
+                initialized: false,
                 element: document.getElementById('consoleCarousel'),
                 loader: document.getElementById('consoleLoader'),
                 autoSlideInterval: null,
                 isVisible: false,
                 prefix: 'vid-cons',
                 dotsId: 'consoleDots',
-                ui: { title: 'consoleTitle', sub: 'consoleSubtitle', desc: 'consoleDesc' },
-                data: [
-                    { title: "Super Mario 64", sub: "N64", desc: "El fontanero en 3D. Un clásico de N64." },
-                    { title: "Crash Bandicoot 3", sub: "PS1", desc: "Warped! El mejor juego de plataformas de PS1." },
-                    { title: "Zelda: Ocarina of Time", sub: "N64", desc: "Una aventura legendaria en el tiempo." },
-                    { title: "Tekken 3", sub: "PS1", desc: "El rey del puño de hierro. Peleas épicas." },
-                    { title: "Pokemon Stadium", sub: "N64", desc: "Mini-juegos and batallas en 3D." },
-                    { title: "Gran Turismo 2", sub: "PS1", desc: "Simulación de conducción definitiva." },
-                    { title: "Tony Hawk PS 2", sub: "PS1", desc: "Skate, combos and música increíble." },
-                    { title: "Resident Evil 3", sub: "PS1", desc: "Nemesis te persigue. Terror puro." },
-                    { title: "Mario Kart 64", sub: "N64", desc: "Carreras and caparazones azules." },
-                    { title: "Street Fighter II", sub: "SNES", desc: "Ariel uken! El clásico de peleas." }
-                ]
+                ui: { title: 'consoleTitle', sub: 'consoleSubtitle' }
             },
             estilo: {
                 currentSlide: 0,
@@ -1544,8 +1663,7 @@
                 totalSlides: 7,
                 prefix: 'img-est',
                 dotsId: 'estiloDots',
-                ui: { title: null, sub: null, desc: null },
-                data: []
+                ui: { title: null, sub: null, desc: null }
             },
             creator: {
                 currentSlide: 0,
@@ -1557,19 +1675,50 @@
                 totalSlides: 5,
                 prefix: 'img-creator',
                 dotsId: 'creatorDots',
-                ui: { title: null, sub: null, desc: null },
-                data: []
+                ui: { title: null, sub: null, desc: null }
             }
         };
 
         // Helper to get total slides for a type
         function getTotalSlides(type) {
-            return carousels[type].totalSlides || 10;
+            const c = carousels[type];
+            if (c.element) {
+                return c.element.querySelectorAll('img, video').length;
+            }
+            return c.totalSlides || 0;
+        }
+
+        function renderCarouselUI(type) {
+            const c = carousels[type];
+            if (!c || !c.element) return;
+
+            // Render Dots automatically based on HTML content
+            const dotsContainer = document.getElementById(c.dotsId);
+            if (dotsContainer) {
+                const mediaItems = c.element.querySelectorAll('img, video');
+                dotsContainer.innerHTML = '';
+                mediaItems.forEach((_, i) => {
+                    const dot = document.createElement('div');
+                    dot.className = `w-2.5 h-2.5 rounded-full ${i === 0 ? 'bg-xpBlue' : 'bg-white/50'} cursor-pointer hover:bg-white transition-colors`;
+                    dot.onclick = (e) => {
+                        e.stopPropagation();
+                        attemptSlide(type, i);
+                    };
+                    dotsContainer.appendChild(dot);
+                });
+            }
+            c.initialized = true;
+        }
+
+        function initCarousel(type) {
+            renderCarouselUI(type);
         }
 
         function prepareMedia(type, index) {
             return new Promise((resolve) => {
-                const item = document.getElementById(`${carousels[type].prefix}-${index}`);
+                const c = carousels[type];
+                const items = c.element.querySelectorAll('img, video');
+                const item = items[index];
                 if (!item) return resolve(null);
 
                 if (!item.getAttribute('src')) {
@@ -1596,7 +1745,9 @@
 
         function preloadNext(type, index) {
             const nextIndex = (index + 1) % getTotalSlides(type);
-            const nextItem = document.getElementById(`${carousels[type].prefix}-${nextIndex}`);
+            const c = carousels[type];
+            const items = c.element.querySelectorAll('img, video');
+            const nextItem = items[nextIndex];
             if (nextItem && !nextItem.getAttribute('src')) {
                 nextItem.setAttribute('src', nextItem.getAttribute('data-src'));
                 if (nextItem.tagName === 'VIDEO') nextItem.load();
@@ -1624,21 +1775,18 @@
             const dots = document.querySelectorAll(`#${c.dotsId} div`);
             const titleEl = document.getElementById(c.ui.title);
             const subtitleEl = document.getElementById(c.ui.sub);
-            const descEl = document.getElementById(c.ui.desc);
 
             if (titleEl) titleEl.style.opacity = 0;
             if (subtitleEl) subtitleEl.style.opacity = 0;
-            if (descEl) descEl.style.opacity = 0;
 
             setTimeout(() => {
-                if (c.data && c.data[c.currentSlide]) {
-                    if (titleEl) titleEl.textContent = c.data[c.currentSlide].title;
-                    if (subtitleEl) subtitleEl.textContent = c.data[c.currentSlide].sub;
-                    if (descEl) descEl.textContent = c.data[c.currentSlide].desc;
+                const currentMedia = mediaItems[c.currentSlide];
+                if (currentMedia) {
+                    if (titleEl) titleEl.textContent = currentMedia.getAttribute('data-title') || '';
+                    if (subtitleEl) subtitleEl.textContent = currentMedia.getAttribute('data-sub') || '';
                 }
                 if (titleEl) titleEl.style.opacity = 1;
                 if (subtitleEl) subtitleEl.style.opacity = 1;
-                if (descEl) descEl.style.opacity = 1;
             }, 300);
 
             mediaItems.forEach((item, i) => {
@@ -1751,6 +1899,185 @@
         attachEvents('cons');
         attachEvents('estilo');
         attachEvents('creator');
+
+        // Initial setup for dynamic carousels
+        initCarousel('pc');
+        initCarousel('cons');
+
+        // Modal Logic
+        const pcModal = document.getElementById('pcModal');
+        const pcModalContainer = pcModal.querySelector('div.relative');
+        const pcIframe = document.getElementById('pcIframe');
+
+        function openPcModal() {
+            // Lazy load the iframe source
+            if (!pcIframe.src || pcIframe.src === window.location.href || pcIframe.src === 'about:blank') {
+                document.getElementById('pcModalLoading').style.display = 'flex';
+                pcIframe.style.opacity = '0';
+                pcIframe.src = 'MXP/Col/pc.html';
+            }
+
+            // Show modal
+            pcModal.classList.remove('hidden');
+            // Small delay to allow display:block to apply before animating opacity/transform
+            setTimeout(() => {
+                pcModal.classList.remove('opacity-0');
+                pcModalContainer.classList.remove('scale-95');
+            }, 10);
+
+            // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePcModal() {
+            pcModal.classList.add('opacity-0');
+            pcModalContainer.classList.add('scale-95');
+
+            setTimeout(() => {
+                pcModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300); // Matches the duration-300 transition
+        }
+
+        // Close modal when clicking outside the container
+        pcModal.addEventListener('click', (e) => {
+            if (e.target === pcModal) {
+                closePcModal();
+            }
+        });
+
+        // Consola Modal Logic
+        const consolaModal = document.getElementById('consolaModal');
+        const consolaModalContainer = consolaModal.querySelector('div.relative');
+        const consolaIframe = document.getElementById('consolaIframe');
+
+        function openConsolaModal(consoleId) {
+            document.getElementById('consolaModalTitle').textContent = `Juegos de ${consoleId.toUpperCase()}`;
+            document.getElementById('consolaModalLoading').style.display = 'flex';
+            consolaIframe.style.opacity = '0';
+            consolaIframe.src = `MXP/Col/consola.html?c=${consoleId}`;
+
+            consolaModal.classList.remove('hidden');
+            setTimeout(() => {
+                consolaModal.classList.remove('opacity-0');
+                consolaModalContainer.classList.remove('scale-95');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+
+            // Pause marquee
+            window.isConsolaModalOpen = true;
+            if (typeof isAutoScrolling !== 'undefined') {
+                isAutoScrolling = false;
+            }
+        }
+
+        function closeConsolaModal() {
+            consolaModal.classList.add('opacity-0');
+            consolaModalContainer.classList.add('scale-95');
+
+            setTimeout(() => {
+                consolaModal.classList.add('hidden');
+                document.body.style.overflow = '';
+
+                // Resume marquee
+                window.isConsolaModalOpen = false;
+                if (typeof isAutoScrolling !== 'undefined') {
+                    isAutoScrolling = true;
+                }
+            }, 300);
+        }
+
+        consolaModal.addEventListener('click', (e) => {
+            if (e.target === consolaModal) {
+                closeConsolaModal();
+            }
+        });
+
+        // Consola Marquee Logic
+        const groupConsolas = document.getElementById('groupConsolas');
+        const marqueeContainer = document.getElementById('marqueeContainer');
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let isAutoScrolling = true;
+
+        function animateMarquee() {
+            if (isAutoScrolling && !isDown && !window.isConsolaModalOpen) {
+                groupConsolas.scrollLeft += 1;
+                // Seamless loop condition
+                if (groupConsolas.scrollLeft >= marqueeContainer.scrollWidth / 2) {
+                    groupConsolas.scrollLeft -= marqueeContainer.scrollWidth / 2;
+                }
+            }
+            requestAnimationFrame(animateMarquee);
+        }
+
+        // Mouse Events for PC Dragging
+        groupConsolas.addEventListener('mousedown', (e) => {
+            isDown = true;
+            isAutoScrolling = false;
+            startX = e.pageX - groupConsolas.offsetLeft;
+            scrollLeft = groupConsolas.scrollLeft;
+            groupConsolas.style.cursor = 'grabbing';
+        });
+
+        groupConsolas.addEventListener('mouseleave', () => {
+            if (isDown) {
+                isDown = false;
+                isAutoScrolling = true;
+                groupConsolas.style.cursor = 'grab';
+            } else {
+                isAutoScrolling = true;
+            }
+        });
+
+        groupConsolas.addEventListener('mouseup', () => {
+            isDown = false;
+            isAutoScrolling = true;
+            groupConsolas.style.cursor = 'grab';
+        });
+
+        groupConsolas.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - groupConsolas.offsetLeft;
+            const walk = (x - startX) * 2;
+            groupConsolas.scrollLeft = scrollLeft - walk;
+
+            // Adjust bounds dynamically while dragging
+            if (groupConsolas.scrollLeft >= marqueeContainer.scrollWidth / 2) {
+                groupConsolas.scrollLeft -= marqueeContainer.scrollWidth / 2;
+                scrollLeft -= marqueeContainer.scrollWidth / 2;
+            } else if (groupConsolas.scrollLeft <= 0) {
+                groupConsolas.scrollLeft += marqueeContainer.scrollWidth / 2;
+                scrollLeft += marqueeContainer.scrollWidth / 2;
+            }
+        });
+
+        // Touch Events for Mobile Swiping
+        groupConsolas.addEventListener('touchstart', (e) => {
+            isAutoScrolling = false;
+        }, { passive: true });
+
+        groupConsolas.addEventListener('touchend', () => {
+            isAutoScrolling = true;
+        });
+
+        // Hover pause
+        groupConsolas.addEventListener('mouseenter', () => {
+            if (!isDown) isAutoScrolling = false;
+        });
+
+        // Native scroll observer for mobile scrolling
+        groupConsolas.addEventListener('scroll', () => {
+            if (groupConsolas.scrollLeft >= marqueeContainer.scrollWidth / 2) {
+                groupConsolas.scrollLeft -= marqueeContainer.scrollWidth / 2;
+            }
+        }, { passive: true });
+
+        // Start scrolling
+        animateMarquee();
 
     </script>
     <!-- END: Clock Script -->
