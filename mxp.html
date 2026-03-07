@@ -1357,7 +1357,7 @@
                                 </div>
                             </div>
                             <div class="window-body !m-0 !p-0 overflow-hidden relative aspect-video group"
-                                style="box-shadow: inset 1px 1px #808080, inset 2px 2px #000, inset -1px -1px #fff, inset -2px -2px #dfdfdf;">
+                                style="border: 3px solid #003399; border-top: none;">
                                 <div id="estiloCarousel"
                                     class="relative h-full cursor-pointer bg-black overflow-hidden">
                                     <img id="img-est-0" src="MXP/Shots/entorno/0.webp"
@@ -1407,19 +1407,19 @@
                     <div class="flex-1 space-y-6 text-white text-center lg:text-left">
                         <h2 class="text-4xl md:text-5xl font-bold xp-title-shadow">¿Por Qué Creé la MillennialXP?</h2>
                         <p class="text-xl md:text-2xl text-blue-100 italic font-serif leading-relaxed">
-                            "Soy un informático de alma con una pasión histórica por esta época."
+                            "Soy un informático apasionado criado en los 90s."
                         </p>
 
                         <div class="space-y-4 text-lg text-white/95 font-sans">
                             <p>
                                 Más allá de los juegos, necesitaba una computadora potente para mi <strong>obra y
-                                    servicio</strong> diario. Desde programación profunda hasta diseño y creación de
-                                contenido, requería una máquina que no me limitara.
+                                    servicio</strong> diario. Desde programación hasta diseño y creación de
+                                contenido, requería una nave que me motive e inspire.
                             </p>
                             <p>
                                 Descubrí que tener un entorno que propicia la nostalgia de mis primeros pasos en la
-                                informática, mientras mantengo toda la tecnología actual bajo el capó, genuinamente
-                                <strong>me produce más ganas de laburar</strong>.
+                                informática, genuinamente
+                                <strong>me produce más ganas de obrar</strong>.
                             </p>
                             <p>
                                 La MXP nació como un proyecto muy personal: mi <strong>estación de trabajo
@@ -1938,30 +1938,6 @@
 
         // Game Carousel Logic
         const carousels = {
-            pc: {
-                currentSlide: 0,
-                isTransitioning: false,
-                initialized: false,
-                element: document.getElementById('gameCarousel'),
-                loader: document.getElementById('carouselLoader'),
-                autoSlideInterval: null,
-                isVisible: false,
-                prefix: 'vid-pc',
-                dotsId: 'carouselDots',
-                ui: { title: 'gameTitle', sub: 'gameSubtitle' }
-            },
-            cons: {
-                currentSlide: 0,
-                isTransitioning: false,
-                initialized: false,
-                element: document.getElementById('consoleCarousel'),
-                loader: document.getElementById('consoleLoader'),
-                autoSlideInterval: null,
-                isVisible: false,
-                prefix: 'vid-cons',
-                dotsId: 'consoleDots',
-                ui: { title: 'consoleTitle', sub: 'consoleSubtitle' }
-            },
             estilo: {
                 currentSlide: 0,
                 isTransitioning: false,
@@ -2158,7 +2134,7 @@
                     return;
                 }
 
-                const type = entry.target.id === 'secJuegos' ? 'pc' : (entry.target.id === 'secConsolas' ? 'cons' : (entry.target.id === 'secEstilo' ? 'estilo' : (entry.target.id === 'secCreator' ? 'creator' : null)));
+                const type = entry.target.id === 'secEstilo' ? 'estilo' : (entry.target.id === 'secCreator' ? 'creator' : null);
                 if (!type) return;
                 const c = carousels[type];
                 c.isVisible = entry.isIntersecting;
@@ -2170,13 +2146,9 @@
             });
         }, { threshold: 0.1 });
 
-        const secJuegosEl = document.getElementById('secJuegos');
-        const secConsolasEl = document.getElementById('secConsolas');
         const secMusicaEl = document.getElementById('secMusica');
         const secEstiloEl = document.getElementById('secEstilo');
         const secCreatorEl = document.getElementById('secCreator');
-        if (secJuegosEl) observer.observe(secJuegosEl);
-        if (secConsolasEl) observer.observe(secConsolasEl);
         if (secMusicaEl) observer.observe(secMusicaEl);
         if (secEstiloEl) observer.observe(secEstiloEl);
         if (secCreatorEl) observer.observe(secCreatorEl);
@@ -2204,14 +2176,8 @@
             }, { passive: true });
         }
 
-        attachEvents('pc');
-        attachEvents('cons');
         attachEvents('estilo');
         attachEvents('creator');
-
-        // Initial setup for dynamic carousels
-        initCarousel('pc');
-        initCarousel('cons');
 
         // Modal Logic
         const pcModal = document.getElementById('pcModal');
