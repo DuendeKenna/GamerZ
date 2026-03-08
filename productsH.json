@@ -90,7 +90,7 @@
     },
     {
       "id": 62614,
-      "name": "Mini i7| Emus+PC+Joys",
+      "name": "Mini i7| Emus/PC+Joys",
       "items": [
         {
           "categoryKey": "joystickOptions",
@@ -102,7 +102,7 @@
         },
         {
           "categoryKey": "miniPcOptions",
-          "id": 64370
+          "id": 97230
         }
       ],
       "visible": 1,
@@ -119,7 +119,7 @@
     },
     {
       "id": 27800,
-      "name": "i5 4570 | Full+Joys",
+      "name": "i5 4570 Armada | Full+Joys",
       "items": [
         {
           "categoryKey": "gpuOptions",
@@ -1979,38 +1979,6 @@
   ],
   "miniPcOptions": [
     {
-      "id": 72135,
-      "name": "BMax i3 2020",
-      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b6-plus-intel-core-i3-12gb-ram-512gb-ssd-hdmi-windows-11/p/MLA29557085?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "cpu": "i3",
-      "ram": "12",
-      "ssd": "512",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 489999,
-          "date": "2026-03-06T18:14:30.889Z"
-        },
-        {
-          "value": 489999,
-          "date": "2026-03-06T18:14:28.924Z"
-        },
-        {
-          "value": 426889,
-          "date": "2026-03-05T15:02:46.350Z"
-        },
-        {
-          "value": 426889,
-          "date": "2026-03-05T15:02:44.472Z"
-        },
-        {
-          "value": 499999,
-          "date": "2026-02-26T13:59:22.167Z"
-        }
-      ]
-    },
-    {
       "id": 45286,
       "name": "BMax N150",
       "link": "https://www.mercadolibre.com.ar/mini-pc-acemagic-go-intel-n150-16gb-ram-512gb-ssd-windows-11/up/MLAU3522870095?offer_type=OFFICIAL_STORE",
@@ -2031,21 +1999,21 @@
       "linksAlt": []
     },
     {
-      "id": 64370,
-      "name": "Bmax B6 ",
-      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b6-power-intel-i7-1060ng7-16gb-1tb-ssd-hdmi-usb/p/MLA41539162?pdp_filters=item_id%3AMLA1507863365&offer_type=OFFICIAL_STORE",
+      "id": 97230,
+      "name": "BMax i5 1250P",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b9-plus-core-i5-1250p-24gb-ssd-512gb/p/MLA60401202?offer_type=OFFICIAL_STORE",
       "visible": 1,
-      "cpu": "I7 1060ng7",
-      "ram": "16",
-      "ssd": "1",
+      "cpu": "i5",
+      "ram": "24",
+      "ssd": "512",
       "prices": [
         {
-          "value": 623949,
-          "date": "2026-03-08T11:22:51.329Z"
+          "value": 683799,
+          "date": "2026-03-08T15:35:43.377Z"
         },
         {
           "value": 0,
-          "date": "2026-03-08T11:22:34.326Z"
+          "date": "2026-03-08T15:35:34.872Z"
         }
       ],
       "linksAlt": []
