@@ -89,6 +89,35 @@
       ]
     },
     {
+      "id": 62614,
+      "name": "Mini i7| Emus+PC+Joys",
+      "items": [
+        {
+          "categoryKey": "joystickOptions",
+          "id": 63642
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 7020
+        },
+        {
+          "categoryKey": "miniPcOptions",
+          "id": 64370
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "profit": 200000,
+      "order": 0.5,
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "id": 27800,
       "name": "i5 4570 | Full+Joys",
       "items": [
@@ -1997,6 +2026,26 @@
         {
           "value": 0,
           "date": "2026-03-07T23:20:10.045Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 64370,
+      "name": "Bmax B6 ",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b6-power-intel-i7-1060ng7-16gb-1tb-ssd-hdmi-usb/p/MLA41539162?pdp_filters=item_id%3AMLA1507863365&offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "I7 1060ng7",
+      "ram": "16",
+      "ssd": "1",
+      "prices": [
+        {
+          "value": 623949,
+          "date": "2026-03-08T11:22:51.329Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-03-08T11:22:34.326Z"
         }
       ],
       "linksAlt": []
