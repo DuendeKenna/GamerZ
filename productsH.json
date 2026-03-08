@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 469601,
+      "total": 461621,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 664510,
+      "total": 656530,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -89,8 +89,8 @@
       ]
     },
     {
-      "id": 16387,
-      "name": "Mini Go n150 | Emus/PC+Joys",
+      "id": 62614,
+      "name": "Mini i7| Emus/PC+Joys",
       "items": [
         {
           "categoryKey": "joystickOptions",
@@ -102,13 +102,50 @@
         },
         {
           "categoryKey": "miniPcOptions",
-          "id": 32681
+          "id": 97230
         }
       ],
       "visible": 1,
       "description": "",
-      "profit": 150000,
+      "profit": 200000,
       "order": 0.5,
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 27800,
+      "name": "i5 4570 Armada | Full+Joys",
+      "items": [
+        {
+          "categoryKey": "gpuOptions",
+          "id": 85207
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 64421
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 63642
+        },
+        {
+          "categoryKey": "armadasOptions",
+          "id": 83017
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "profit": 200000,
+      "order": 1,
       "linksAlt": [],
       "prices": [
         {
@@ -149,7 +186,7 @@
       "visible": 1,
       "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
       "profit": 200000,
-      "order": 1,
+      "order": 2,
       "linksAlt": [],
       "prices": [
         {
@@ -182,44 +219,7 @@
       "visible": 1,
       "description": "",
       "profit": 200000,
-      "order": 2,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
-      "id": 27800,
-      "name": "i5 4570 | Full+Joys",
-      "items": [
-        {
-          "categoryKey": "gpuOptions",
-          "id": 85207
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 64421
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 63642
-        },
-        {
-          "categoryKey": "armadasOptions",
-          "id": 83017
-        }
-      ],
-      "visible": 1,
-      "description": "",
-      "profit": 200000,
-      "order": 2.5,
+      "order": 3,
       "linksAlt": [],
       "prices": [
         {
@@ -252,7 +252,7 @@
       "visible": 1,
       "description": "",
       "profit": 100000,
-      "order": 3,
+      "order": 4,
       "linksAlt": [],
       "prices": [
         {
@@ -297,7 +297,7 @@
       "visible": 1,
       "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
       "profit": 150000,
-      "order": 4,
+      "order": 5,
       "linksAlt": [],
       "prices": [
         {
@@ -334,7 +334,7 @@
       "visible": 1,
       "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
       "profit": 100000,
-      "order": 5,
+      "order": 6,
       "linksAlt": [],
       "prices": [
         {
@@ -375,7 +375,7 @@
       "visible": 1,
       "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
       "profit": 100000,
-      "order": 6,
+      "order": 7,
       "linksAlt": [],
       "prices": [
         {
@@ -596,6 +596,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 91655,
+          "date": "2026-03-08T11:02:49.758Z"
+        },
+        {
+          "value": 91655,
+          "date": "2026-03-08T11:02:47.725Z"
+        },
+        {
           "value": 89787,
           "date": "2026-03-06T18:18:08.489Z"
         },
@@ -810,6 +818,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 469999,
+          "date": "2026-03-08T11:01:29.408Z"
+        },
+        {
+          "value": 469999,
+          "date": "2026-03-08T11:01:27.356Z"
+        },
+        {
           "value": 479180,
           "date": "2026-03-05T15:07:53.624Z"
         },
@@ -854,6 +870,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 912374,
+          "date": "2026-03-08T11:02:11.012Z"
+        },
+        {
+          "value": 912374,
+          "date": "2026-03-08T11:02:08.926Z"
+        },
+        {
           "value": 1086989,
           "date": "2026-03-06T18:17:27.621Z"
         },
@@ -877,6 +901,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 88590,
+          "date": "2026-03-08T11:04:00.885Z"
+        },
+        {
+          "value": 88590,
+          "date": "2026-03-08T11:03:58.826Z"
+        },
         {
           "value": 92999,
           "date": "2026-03-06T18:19:14.073Z"
@@ -913,6 +945,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 26880,
+          "date": "2026-03-08T11:04:21.109Z"
+        },
+        {
+          "value": 26880,
+          "date": "2026-03-08T11:04:19.101Z"
+        },
         {
           "value": 25790,
           "date": "2026-03-06T18:19:34.192Z"
@@ -971,6 +1011,14 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 96999,
+          "date": "2026-03-08T10:59:50.952Z"
+        },
+        {
+          "value": 96999,
+          "date": "2026-03-08T10:59:48.960Z"
+        },
         {
           "value": 94999,
           "date": "2026-03-05T15:03:56.057Z"
@@ -1095,6 +1143,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 126523,
+          "date": "2026-03-08T11:00:13.105Z"
+        },
+        {
+          "value": 126523,
+          "date": "2026-03-08T11:00:11.107Z"
+        },
+        {
           "value": 130513,
           "date": "2026-03-06T18:15:58.998Z"
         },
@@ -1133,6 +1189,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 215999,
+          "date": "2026-03-08T11:00:25.183Z"
+        },
+        {
+          "value": 215999,
+          "date": "2026-03-08T11:00:23.207Z"
+        },
         {
           "value": 213999,
           "date": "2026-02-28T12:02:09.692Z"
@@ -1242,6 +1306,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 525228,
+          "date": "2026-03-08T10:59:22.637Z"
+        },
+        {
+          "value": 525228,
+          "date": "2026-03-08T10:59:20.655Z"
+        },
+        {
           "value": 523447,
           "date": "2026-03-06T18:15:07.211Z"
         },
@@ -1262,6 +1334,24 @@
           "date": "2026-02-28T11:58:38.197Z"
         }
       ]
+    },
+    {
+      "id": 10587,
+      "name": "Intel I5 4570 + Mother H81+ 8gb ",
+      "link": "https://www.mercadolibre.com.ar/combo-actualizacion-intel-i5-4570-mother-h81-8gb-ram-ddr3-negro/p/MLA49362526?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 166470,
+          "date": "2026-03-08T11:15:18.942Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-03-08T11:14:56.225Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "monitorOptions": [
@@ -1273,6 +1363,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 177999,
+          "date": "2026-03-08T11:04:41.487Z"
+        },
+        {
+          "value": 177999,
+          "date": "2026-03-08T11:04:39.449Z"
+        },
         {
           "value": 178999,
           "date": "2026-03-03T14:38:30.370Z"
@@ -1549,6 +1647,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 13361,
+          "date": "2026-03-08T11:06:24.409Z"
+        },
+        {
+          "value": 13361,
+          "date": "2026-03-08T11:06:22.416Z"
+        },
+        {
           "value": 13598,
           "date": "2026-03-06T18:24:53.872Z"
         },
@@ -1757,6 +1863,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 47096,
+          "date": "2026-03-08T11:07:24.034Z"
+        },
+        {
+          "value": 47096,
+          "date": "2026-03-08T11:07:22.043Z"
+        },
+        {
           "value": 45463,
           "date": "2026-03-06T18:40:44.029Z"
         },
@@ -1865,38 +1979,6 @@
   ],
   "miniPcOptions": [
     {
-      "id": 72135,
-      "name": "BMax i3 2020",
-      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b6-plus-intel-core-i3-12gb-ram-512gb-ssd-hdmi-windows-11/p/MLA29557085?offer_type=OFFICIAL_STORE",
-      "visible": 1,
-      "cpu": "i3",
-      "ram": "12",
-      "ssd": "512",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 489999,
-          "date": "2026-03-06T18:14:30.889Z"
-        },
-        {
-          "value": 489999,
-          "date": "2026-03-06T18:14:28.924Z"
-        },
-        {
-          "value": 426889,
-          "date": "2026-03-05T15:02:46.350Z"
-        },
-        {
-          "value": 426889,
-          "date": "2026-03-05T15:02:44.472Z"
-        },
-        {
-          "value": 499999,
-          "date": "2026-02-26T13:59:22.167Z"
-        }
-      ]
-    },
-    {
       "id": 45286,
       "name": "BMax N150",
       "link": "https://www.mercadolibre.com.ar/mini-pc-acemagic-go-intel-n150-16gb-ram-512gb-ssd-windows-11/up/MLAU3522870095?offer_type=OFFICIAL_STORE",
@@ -1912,6 +1994,26 @@
         {
           "value": 0,
           "date": "2026-03-07T23:20:10.045Z"
+        }
+      ],
+      "linksAlt": []
+    },
+    {
+      "id": 97230,
+      "name": "BMax i5 1250P",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b9-plus-core-i5-1250p-24gb-ssd-512gb/p/MLA60401202?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "i5",
+      "ram": "24",
+      "ssd": "512",
+      "prices": [
+        {
+          "value": 683799,
+          "date": "2026-03-08T15:35:43.377Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-03-08T15:35:34.872Z"
         }
       ],
       "linksAlt": []
