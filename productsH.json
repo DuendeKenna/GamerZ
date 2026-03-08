@@ -65,21 +65,62 @@
       "items": [
         {
           "categoryKey": "joystickOptions",
-          "id": 80115
+          "id": 63642
         },
         {
           "categoryKey": "joystickOptions",
-          "id": 80115
+          "id": 7020
         },
         {
           "categoryKey": "miniPcOptions",
-          "id": 72135
+          "id": 45286
         }
       ],
       "visible": 1,
       "description": "",
       "profit": 200000,
       "order": 0,
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "id": 94643,
+      "name": "Ryzen 3 | Full+Joys",
+      "items": [
+        {
+          "categoryKey": "ssdOptions",
+          "id": 27876
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 64421
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 72811
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "baseOptions",
+          "id": 49735
+        }
+      ],
+      "visible": 1,
+      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
+      "profit": 150000,
+      "order": 1,
       "linksAlt": [],
       "prices": [
         {
@@ -107,20 +148,12 @@
         {
           "categoryKey": "joystickOptions",
           "id": 80115
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "mouseOptions",
-          "id": 19229
         }
       ],
       "visible": 1,
       "description": "",
-      "profit": 150000,
-      "order": 1,
+      "profit": 200000,
+      "order": 2,
       "linksAlt": [],
       "prices": [
         {
@@ -130,46 +163,34 @@
       ]
     },
     {
-      "id": 94643,
-      "name": "Ryzen 3 | Full+Joys",
+      "id": 27800,
+      "name": "i5 4570 | Full+Joys (copia)",
       "items": [
         {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "psuOptions",
-          "id": 45939
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 27876
-        },
-        {
-          "categoryKey": "towersOptions",
-          "id": 29026
+          "categoryKey": "gpuOptions",
+          "id": 85207
         },
         {
           "categoryKey": "ssdOptions",
           "id": 64421
         },
         {
-          "categoryKey": "comboOptions",
-          "id": 86147
+          "categoryKey": "joystickOptions",
+          "id": 80115
         },
         {
-          "categoryKey": "ramOptions",
-          "id": 77124
+          "categoryKey": "joystickOptions",
+          "id": 63642
+        },
+        {
+          "categoryKey": "armadasOptions",
+          "id": 83017
         }
       ],
       "visible": 1,
-      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
-      "profit": 150000,
-      "order": 2,
+      "description": "",
+      "profit": 200000,
+      "order": 2.5,
       "linksAlt": [],
       "prices": [
         {
@@ -284,7 +305,7 @@
       "visible": 1,
       "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
       "profit": 100000,
-      "order": 6,
+      "order": 5,
       "linksAlt": [],
       "prices": [
         {
@@ -325,7 +346,7 @@
       "visible": 1,
       "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
       "profit": 100000,
-      "order": 7,
+      "order": 6,
       "linksAlt": [],
       "prices": [
         {
@@ -373,6 +394,24 @@
           "date": "2026-02-26T13:54:27.065Z"
         }
       ]
+    },
+    {
+      "id": 83017,
+      "name": "I5 4570 16GB 480GB Sata",
+      "link": "https://www.mercadolibre.com.ar/ordenador-pc-cpu-intel-core-i5-4570-16gb-512gb-win-11-wifi-/up/MLAU3431162455?offer_type=OFFICIAL_STORE#reviews",
+      "visible": 1,
+      "description": "wifi",
+      "prices": [
+        {
+          "value": 367080,
+          "date": "2026-03-08T02:17:43.109Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-03-08T02:17:34.702Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "towersOptions": [
@@ -874,6 +913,24 @@
           "date": "2026-02-26T14:15:33.414Z"
         }
       ]
+    },
+    {
+      "id": 72811,
+      "name": "Certificada Coleer Master",
+      "link": "https://www.mercadolibre.com.ar/fuente-cooler-master-elite-nex-pn500-230v-500w/up/MLAU3127977757?offer_type=OFFICIAL_STORE#polycard_client=search-desktop&search_layout=grid&position=7&type=product&tracking_id=c1d30467-0e1e-409a-ad99-1e5d94254394&wid=MLA2056782478&sid=search",
+      "visible": 1,
+      "description": "Recomendada para cuidar nuestros componentes.",
+      "prices": [
+        {
+          "value": 83399,
+          "date": "2026-03-07T23:24:28.497Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-03-07T23:23:58.156Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "motherboardOptions": [
@@ -1780,7 +1837,7 @@
   "miniPcOptions": [
     {
       "id": 72135,
-      "name": "BMax N150",
+      "name": "BMax i3 2020",
       "link": "https://www.mercadolibre.com.ar/mini-pc-bmax-b6-plus-intel-core-i3-12gb-ram-512gb-ssd-hdmi-windows-11/p/MLA29557085?offer_type=OFFICIAL_STORE",
       "visible": 1,
       "cpu": "i3",
@@ -1809,6 +1866,26 @@
           "date": "2026-02-26T13:59:22.167Z"
         }
       ]
+    },
+    {
+      "id": 45286,
+      "name": "BMax N150",
+      "link": "https://www.mercadolibre.com.ar/mini-pc-acemagic-go-intel-n150-16gb-ram-512gb-ssd-windows-11/up/MLAU3522870095?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "cpu": "N150",
+      "ram": "16",
+      "ssd": "512",
+      "prices": [
+        {
+          "value": 499840,
+          "date": "2026-03-07T23:20:31.546Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-03-07T23:20:10.045Z"
+        }
+      ],
+      "linksAlt": []
     }
   ]
 }

@@ -727,10 +727,6 @@
                                             class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 will-change-opacity" />
                                     </div>
                                 </div>
-                                <!-- Carousel Dots -->
-                                <div id="carouselDots" class="flex justify-center space-x-2 py-2">
-                                    <!-- Dynamic dots go here -->
-                                </div>
                                 <!-- Game Info -->
                                 <div id="gameInfo"
                                     class="mt-1 px-2 text-white/90 flex items-baseline flex-wrap gap-x-3 gap-y-1 overflow-hidden pb-2">
@@ -744,6 +740,10 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <!-- Carousel Dots -->
+                        <div id="carouselDots" class="flex justify-center space-x-3 mt-8">
+                            <!-- Dynamic dots go here -->
                         </div>
                     </div>
 
@@ -1342,7 +1342,7 @@
                     <!-- Carousel Column -->
                     <div class="relative">
                         <div class="window w-full shadow-2xl overflow-hidden flex flex-col"
-                            style="background: #ece9d8;">
+                            style="background: #003399;">
                             <div class="title-bar !h-12 !px-4 flex items-center shrink-0">
                                 <div class="title-bar-text !m-0">
                                     <div class="flex items-center space-x-4">
@@ -1357,7 +1357,7 @@
                                 </div>
                             </div>
                             <div class="window-body !m-0 !p-0 overflow-hidden relative aspect-video group"
-                                style="border: 3px solid #003399; border-top: none;">
+                                style="border: solid #003399; border-width: 0 4px 1px 4px; border-radius: 0 0 4px 4px;">
                                 <div id="estiloCarousel"
                                     class="relative h-full cursor-pointer bg-black overflow-hidden">
                                     <img id="img-est-0" src="MXP/Shots/entorno/0.webp"
@@ -1961,6 +1961,18 @@
                 prefix: 'img-creator',
                 dotsId: 'creatorDots',
                 ui: { title: null, sub: null, desc: null }
+            },
+            pc: {
+                currentSlide: 0,
+                isTransitioning: false,
+                element: document.getElementById('gameCarousel'),
+                loader: null,
+                autoSlideInterval: null,
+                isVisible: false,
+                totalSlides: 10,
+                prefix: 'img-pc',
+                dotsId: 'carouselDots',
+                ui: { title: 'gameTitle', sub: 'gameSubtitle', desc: null }
             }
         };
 
@@ -1998,6 +2010,9 @@
         function initCarousel(type) {
             renderCarouselUI(type);
         }
+
+        // Initialize carousels that need dynamic dots
+        renderCarouselUI('pc');
 
         function prepareMedia(type, index) {
             return new Promise((resolve) => {
@@ -2134,7 +2149,7 @@
                     return;
                 }
 
-                const type = entry.target.id === 'secEstilo' ? 'estilo' : (entry.target.id === 'secCreator' ? 'creator' : null);
+                const type = entry.target.id === 'secJuegos' ? 'pc' : (entry.target.id === 'secEstilo' ? 'estilo' : (entry.target.id === 'secCreator' ? 'creator' : null));
                 if (!type) return;
                 const c = carousels[type];
                 c.isVisible = entry.isIntersecting;
@@ -2146,9 +2161,11 @@
             });
         }, { threshold: 0.1 });
 
+        const secJuegosEl = document.getElementById('secJuegos');
         const secMusicaEl = document.getElementById('secMusica');
         const secEstiloEl = document.getElementById('secEstilo');
         const secCreatorEl = document.getElementById('secCreator');
+        if (secJuegosEl) observer.observe(secJuegosEl);
         if (secMusicaEl) observer.observe(secMusicaEl);
         if (secEstiloEl) observer.observe(secEstiloEl);
         if (secCreatorEl) observer.observe(secCreatorEl);
@@ -2178,6 +2195,7 @@
 
         attachEvents('estilo');
         attachEvents('creator');
+        attachEvents('pc');
 
         // Modal Logic
         const pcModal = document.getElementById('pcModal');
