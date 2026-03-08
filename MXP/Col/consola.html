@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <title>Juegos Consola</title>
     <style>
         body {
@@ -18,7 +21,7 @@
             margin-bottom: 24px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 16px;
 
@@ -41,28 +44,51 @@
             gap: 12px;
         }
 
-        /* Search Bar Styles from pc.html */
-        .search-area {
-            display: flex;
+        /* Search Bar Styles */
+        .name-th-container {
+            display: inline-flex;
             align-items: center;
+            gap: 12px;
+            min-width: 120px;
+        }
+
+        .search-area-th {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #00112e;
+            align-items: center;
+            z-index: 10;
+            padding: 0 8px;
+            box-sizing: border-box;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .search-area-th.active {
+            display: flex;
         }
 
         input {
             display: inline-block;
             background: #fff;
-            padding: .6rem;
+            padding: 0.4rem 0.6rem;
             border-radius: 0.3rem;
-            width: 300px;
+            width: 100%;
             border: 0.1rem solid #BDBDBD;
             outline: none;
-            height: 1.2rem;
-            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', cursive !important;
             vertical-align: middle;
             color: #333;
+            font-size: 14px;
+            box-sizing: border-box;
+            font-weight: normal;
         }
 
         input::placeholder {
-            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+            font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', cursive !important;
             color: #888;
         }
 
@@ -75,14 +101,27 @@
             display: inline-block;
             cursor: pointer;
             vertical-align: middle;
-            margin-left: 8px;
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
             transition: transform 0.1s;
+            filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
         }
 
         #searchbutton:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
+        }
+
+        .close-search {
+            margin-left: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #fff;
+            transition: transform 0.1s;
+        }
+
+        .close-search:hover {
+            transform: scale(1.2);
+            color: #ff4d4d;
         }
 
         /* Table Styles */
@@ -194,19 +233,145 @@
         }
 
         /* Mobile specific: hide everything but name on small screens */
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
 
             th:not(:first-child),
             td:not(:first-child) {
                 display: none;
             }
+        }
 
-            .header-container h2 {
-                font-size: 18px;
+        /* Custom Select Styles */
+        .custom-select {
+            position: relative;
+            width: 260px;
+            font-family: 'Verdana', sans-serif;
+            outline: none;
+        }
+
+        .select-selected {
+            background-color: #00112e;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            padding: 8px 40px 8px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 56px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"),
+                linear-gradient(to right, rgba(255, 255, 255, 0.2) 1px, rgba(255, 255, 255, 0.05) 1px, rgba(255, 255, 255, 0.05) 100%);
+            background-repeat: no-repeat;
+            background-position: right 8px center, right top;
+            background-size: 1.25rem 1.25rem, 40px 100%;
+            transition: all 0.2s;
+        }
+
+        .select-selected:hover {
+            border-color: rgba(255, 255, 255, 0.6);
+            background-color: #001a45;
+        }
+
+        #consoleIcon {
+            max-width: 160px;
+            height: 38px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .select-items {
+            position: absolute;
+            background-color: #00112e;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-top: none;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            max-height: 60vh;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .select-hide {
+            display: none;
+        }
+
+        .select-items div {
+            padding: 10px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.2s;
+            min-height: 48px;
+        }
+
+        .select-items div:last-child {
+            border-bottom: none;
+        }
+
+        .select-items div:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .select-items div img {
+            max-width: 150px;
+            height: 32px;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        /* Custom scrollbar for dropdown */
+        .select-items::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .select-items::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        .select-items::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .select-items::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .title-area {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Responsive Improvements */
+        @media (max-width: 650px) {
+            .header-container {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 15px;
             }
 
-            input {
-                width: 150px;
+            .title-area {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .custom-select {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            #consoleIcon {
+                height: 32px;
+                max-width: 140px;
             }
         }
     </style>
@@ -214,13 +379,27 @@
 
 <body>
     <div class="header-container">
-        <h2>
-            <span id="titleText">Cargando...</span>
-            <img id="consoleIcon" src="" style="height: 48px; display: none; margin-left: 8px;" alt="Console Logo">
-        </h2>
-        <div class="search-area">
-            <input type="text" id="searchInput" placeholder="¿Cuál buscás?" onkeyup="filterGames()">
-            <img src="../XP_Icons/Search.webp" onclick="filterGames()" id="searchbutton" alt="Buscar">
+        <div class="title-area">
+            <div class="custom-select" id="customSelect">
+                <div class="select-selected" id="selectSelected" onclick="toggleSelect()">
+                    <img id="consoleIcon" src="" alt="Console Logo">
+                </div>
+                <div class="select-items select-hide" id="selectItems">
+                    <div onclick="selectOption('gba')"><img src="../Shots/consolas/gba.svg" alt="GameBoy Advance"></div>
+                    <div onclick="selectOption('gc')"><img src="../Shots/consolas/gc.svg" alt="GameCube"></div>
+                    <div onclick="selectOption('megadrive')"><img src="../Shots/consolas/megadrive.svg"
+                            alt="Mega Drive"></div>
+                    <div onclick="selectOption('n64')"><img src="../Shots/consolas/n64.svg" alt="Nintendo 64"></div>
+                    <div onclick="selectOption('neogeo')"><img src="../Shots/consolas/neogeo.svg" alt="Neo Geo"></div>
+                    <div onclick="selectOption('nes')"><img src="../Shots/consolas/nes.svg" alt="NES"></div>
+                    <div onclick="selectOption('ps2')"><img src="../Shots/consolas/ps2.svg" alt="PlayStation 2"></div>
+                    <div onclick="selectOption('psp')"><img src="../Shots/consolas/psp.svg" alt="PSP"></div>
+                    <div onclick="selectOption('psx')"><img src="../Shots/consolas/psx.svg" alt="PlayStation"></div>
+                    <div onclick="selectOption('snes')"><img src="../Shots/consolas/snes.svg" alt="Super Nintendo">
+                    </div>
+                    <div onclick="selectOption('wii')"><img src="../Shots/consolas/wii.svg" alt="Wii"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -228,7 +407,18 @@
         <table id="gamesTable">
             <thead>
                 <tr>
-                    <th onclick="sortTable(0, 'string')">Nombre</th>
+                    <th style="position: relative; padding: 0; padding-left: 16px; padding-right: 16px;"
+                        onclick="sortTable(0, 'string')">
+                        <div class="name-th-container" style="padding: 12px 0;">
+                            <span>Nombre</span>
+                            <img src="../XP_Icons/Search.webp" onclick="toggleSearchInput(event)" id="searchbutton"
+                                title="Buscar Juego" alt="Buscar">
+                        </div>
+                        <div class="search-area-th" id="search-area-th" onclick="event.stopPropagation()">
+                            <input type="text" id="searchInput" placeholder="¿Cuál buscás?" onkeyup="filterGames()">
+                            <span class="close-search" onclick="toggleSearchInput(event)">✖</span>
+                        </div>
+                    </th>
                     <th onclick="sortTable(1, 'string')">Género</th>
                     <th onclick="sortTable(2, 'date')">Lanzamiento</th>
                     <th onclick="sortTable(3, 'number')">Jugadores</th>
@@ -245,15 +435,111 @@
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const consoleId = params.get('c') || 'megadrive'; // Fallback to megadrive
+        let currentConsoleId = params.get('c') || 'megadrive'; // Fallback to megadrive
 
         let sortDirection = false;
         let gameData = [];
 
-        // Show the logo and title
-        document.getElementById('titleText').innerText = '';
-        document.getElementById('consoleIcon').src = `../Shots/consolas/${consoleId}.svg`;
-        document.getElementById('consoleIcon').style.display = 'block';
+        function toggleSelect() {
+            document.getElementById("selectItems").classList.toggle("select-hide");
+        }
+
+        function toggleSearchInput(e) {
+            if (e) e.stopPropagation();
+            const searchArea = document.getElementById('search-area-th');
+            searchArea.classList.toggle('active');
+            if (searchArea.classList.contains('active')) {
+                document.getElementById('searchInput').focus();
+            } else {
+                document.getElementById('searchInput').value = '';
+                filterGames();
+            }
+        }
+
+        function selectOption(consoleId) {
+            document.getElementById("selectItems").classList.add("select-hide");
+            loadConsole(consoleId);
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", function (e) {
+            const customSelect = document.getElementById("customSelect");
+            if (customSelect && !customSelect.contains(e.target)) {
+                document.getElementById("selectItems").classList.add("select-hide");
+            }
+        });
+
+        function loadConsole(consoleId) {
+            currentConsoleId = consoleId;
+            gameData = [];
+
+            // Reset sorting arrow visuals
+            const ths = document.querySelectorAll('th');
+            ths.forEach(th => th.classList.remove('sort-asc', 'sort-desc'));
+            sortDirection = false;
+
+            // Show the logo
+            document.getElementById('consoleIcon').src = `../Shots/consolas/${consoleId}.svg`;
+            document.getElementById('consoleIcon').style.display = 'block';
+
+            // Reset search
+            document.getElementById('searchInput').value = '';
+
+            const tbody = document.getElementById('gamesTbody');
+            tbody.innerHTML = '<tr><td colspan="5" class="loading">Cargando juegos...</td></tr>';
+
+            fetch(`../Shots/consolas/${consoleId}.xml`)
+                .then(response => {
+                    if (!response.ok) throw new Error("No XML found");
+                    return response.text();
+                })
+                .then(xmlStr => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlStr, "application/xml");
+
+                    const games = xmlDoc.querySelectorAll('game');
+                    tbody.innerHTML = '';
+
+                    if (games.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="5" class="loading">No hay juegos listados para esta consola todavía.</td></tr>';
+                        return;
+                    }
+
+                    games.forEach(game => {
+                        const nameNode = game.querySelector('name');
+                        const genreNode = game.querySelector('genre');
+                        const dateNode = game.querySelector('releasedate');
+                        const playersNode = game.querySelector('players');
+                        const ratingNode = game.querySelector('rating');
+
+                        const name = nameNode ? nameNode.textContent : 'Desconocido';
+                        const genre = genreNode ? genreNode.textContent : '-';
+                        const rawDate = dateNode ? dateNode.textContent : '';
+                        const players = playersNode ? playersNode.textContent : '-';
+                        const rawRating = ratingNode ? ratingNode.textContent : '';
+
+                        gameData.push({
+                            name: name,
+                            genre: genre,
+                            date: formatDate(rawDate),
+                            rawDate: rawDate,
+                            players: players,
+                            ratingHtml: formatRating(rawRating),
+                            rawRating: rawRating
+                        });
+                    });
+
+                    gameData.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+                    renderTable(gameData);
+                })
+                .catch(error => {
+                    tbody.innerHTML = '<tr><td colspan="5" class="loading">Ocurrió un error o el archivo XML no existe.</td></tr>';
+                    console.error("Error fetching XML:", error);
+                });
+        }
+
+        // Initial Load
+        loadConsole(currentConsoleId);
 
         function formatDate(dateString) {
             if (!dateString) return '-';
@@ -283,61 +569,12 @@
             `;
         }
 
-        fetch(`../Shots/consolas/${consoleId}.xml`)
-            .then(response => {
-                if (!response.ok) throw new Error("No XML found");
-                return response.text();
-            })
-            .then(xmlStr => {
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlStr, "application/xml");
-
-                const games = xmlDoc.querySelectorAll('game');
-                const tbody = document.getElementById('gamesTbody');
-                tbody.innerHTML = '';
-
-                if (games.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="5" class="loading">No hay juegos listados para esta consola todavía.</td></tr>';
-                    return;
-                }
-
-                games.forEach(game => {
-                    const nameNode = game.querySelector('name');
-                    const genreNode = game.querySelector('genre');
-                    const dateNode = game.querySelector('releasedate');
-                    const playersNode = game.querySelector('players');
-                    const ratingNode = game.querySelector('rating');
-
-                    const name = nameNode ? nameNode.textContent : 'Desconocido';
-                    const genre = genreNode ? genreNode.textContent : '-';
-                    const rawDate = dateNode ? dateNode.textContent : '';
-                    const players = playersNode ? playersNode.textContent : '-';
-                    const rawRating = ratingNode ? ratingNode.textContent : '';
-
-                    gameData.push({
-                        name: name,
-                        genre: genre,
-                        date: formatDate(rawDate),
-                        rawDate: rawDate,
-                        players: players,
-                        ratingHtml: formatRating(rawRating),
-                        rawRating: rawRating
-                    });
-                });
-
-                renderTable(gameData);
-            })
-            .catch(error => {
-                document.getElementById('gamesTbody').innerHTML = '<tr><td colspan="5" class="loading">Ocurrió un error o el archivo XML no existe.</td></tr>';
-                console.error("Error fetching XML:", error);
-            });
-
         function renderTable(data) {
             const tbody = document.getElementById('gamesTbody');
             tbody.innerHTML = '';
 
             if (data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="loading">No se encontraron juegos.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="5" class="loading">¿No está? ¡Pedímelo y lo consigo!</td></tr>';
                 return;
             }
 
@@ -357,10 +594,11 @@
 
         function filterGames() {
             const input = document.getElementById("searchInput");
-            const filter = input.value.toLowerCase();
+            const normalize = (str) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const filter = normalize(input.value);
 
             const filteredData = gameData.filter(game => {
-                return game.name.toLowerCase().includes(filter) || game.genre.toLowerCase().includes(filter);
+                return normalize(game.name).startsWith(filter) || normalize(game.genre).startsWith(filter);
             });
 
             renderTable(filteredData);
@@ -380,9 +618,12 @@
             ths[columnIndex].classList.add(sortDirection ? 'sort-asc' : 'sort-desc');
 
             // Filter to only sort currently visible (searched) data
-            const input = document.getElementById("searchInput").value.toLowerCase();
+            const searchVal = document.getElementById("searchInput").value;
+            const normalize = (str) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const filter = normalize(searchVal);
+
             let dataToSort = gameData.filter(game => {
-                return game.name.toLowerCase().includes(input) || game.genre.toLowerCase().includes(input);
+                return normalize(game.name).startsWith(filter) || normalize(game.genre).startsWith(filter);
             });
 
             dataToSort.sort((a, b) => {

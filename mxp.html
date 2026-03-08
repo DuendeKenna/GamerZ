@@ -138,6 +138,19 @@
             transform: scale(0.95);
         }
 
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
         .xp-button-modern .xp-icon {
             margin-left: 0.75rem;
             font-size: 1.5rem;
@@ -447,15 +460,15 @@
     <header
         class="fixed top-0 left-0 w-full z-50 xp-gradient-taskbar h-10 flex items-center justify-between border-b border-blue-800 shadow-lg"
         data-purpose="header-taskbar">
-        <div class="flex items-center h-full">
+        <div class="flex items-center h-full overflow-hidden flex-1">
             <!-- Start Button Link -->
             <a href="#"
-                class="xp-start-button flex items-center px-4 h-10 rounded-tr-3xl rounded-br-3xl italic font-bold text-white text-2xl hover:brightness-110 transition-all no-underline">
+                class="xp-start-button flex items-center px-4 h-10 rounded-tr-3xl rounded-br-3xl italic font-bold text-white text-2xl hover:brightness-110 transition-all no-underline shrink-0">
                 <span class="xp-button-text">MXP</span>
             </a>
             <!-- Navigation -->
             <nav
-                class="flex overflow-x-auto scrollbar-hide space-x-6 text-white font-semibold text-sm ml-4 md:ml-8 whitespace-nowrap">
+                class="flex overflow-x-auto scrollbar-hide space-x-6 text-white font-semibold text-sm ml-4 md:ml-8 whitespace-nowrap pr-4">
                 <a class="hover:text-blue-200 transition-colors" href="#secFeaturesBase">¿Qué es?</a>
                 <a class="hover:text-blue-200 transition-colors" href="#secJuegos">Juegos PC</a>
                 <a class="hover:text-blue-200 transition-colors" href="#secConsolas">Consolas</a>
@@ -730,12 +743,12 @@
                                 <!-- Game Info -->
                                 <div id="gameInfo"
                                     class="mt-1 px-2 text-white/90 flex items-baseline flex-wrap gap-x-3 gap-y-1 overflow-hidden pb-2">
-                                    <div class="flex items-baseline gap-2 shrink-0">
+                                    <div class="flex flex-col md:flex-row md:items-baseline md:gap-2 shrink-0">
                                         <h3 id="gameTitle"
                                             class="text-xl font-bold text-orange-400 transition-opacity duration-300 whitespace-nowrap">
                                             FPS</h3>
                                         <span id="gameSubtitle"
-                                            class="text-sm italic text-orange-400 transition-opacity duration-300 whitespace-nowrap">Shooters
+                                            class="text-sm italic text-orange-400 transition-opacity duration-300">Shooters
                                             que marcaron historia.</span>
                                     </div>
                                 </div>
@@ -1274,9 +1287,8 @@
                     <!-- Text Content -->
                     <div class="flex-1 text-center md:text-left space-y-6">
                         <h2 class="text-4xl md:text-6xl font-bold text-white xp-title-shadow">Música Offline</h2>
-                        <p class="text-orange-100 text-xl md:text-2xl italic font-serif">Pop, Rock, Nu Metal y
-                            Soundtracks
-                            Originales.</p>
+                        <p class="text-orange-100 text-xl md:text-2xl italic font-serif">Tu colección de mp3 como en los
+                            viejos tiempos.</p>
                         <p class="text-lg text-white/80 leading-relaxed font-sans max-w-2xl">
                             No necesitás internet para musicalizar tus sesiones. Incluimos una colección curada con los
                             hits que sonaban en la radio y los temas icónicos que acompañaron tus partidas favoritas.
@@ -1284,16 +1296,17 @@
                         <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
                             <span
                                 class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">🎸
-                                Rock 2000s</span>
+                                Rock</span>
+                            <span
+                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">💿
+                                Pop Hits</span>
                             <span
                                 class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">⚡
                                 Nu Metal</span>
                             <span
                                 class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">🎮
                                 OST Games</span>
-                            <span
-                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">💿
-                                Pop Hits</span>
+
                         </div>
                     </div>
 
@@ -1412,14 +1425,18 @@
 
                         <div class="space-y-4 text-lg text-white/95 font-sans">
                             <p>
-                                Más allá de los juegos, necesitaba una computadora potente para mi <strong>obra y
+                                Los juegos, la música y la computación en la era millennial fueron los nutrientes
+                                escenciales que marcaron mi personalidad y carrera.
+                            </p>
+                            <p>
+                                Hoy, más allá de los juegos, necesito una computadora potente para mi <strong>obra y
                                     servicio</strong> diario. Desde programación hasta diseño y creación de
-                                contenido, requería una nave que me motive e inspire.
+                                contenido, requiero una nave que me motive e inspire.
                             </p>
                             <p>
                                 Descubrí que tener un entorno que propicia la nostalgia de mis primeros pasos en la
                                 informática, genuinamente
-                                <strong>me produce más ganas de obrar</strong>.
+                                <strong>me produce más ganas de crear</strong>.
                             </p>
                             <p>
                                 La MXP nació como un proyecto muy personal: mi <strong>estación de trabajo
@@ -1437,35 +1454,17 @@
                             style="aspect-ratio: 4/3;">
                             <div class="window-body !m-0 !p-0 !bg-black overflow-hidden relative w-full h-full group">
                                 <div id="creatorCarousel" class="relative w-full h-full cursor-pointer bg-black">
-                                    <img id="img-creator-0"
-                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Nostalgia"
+                                    <img id="img-creator-0" src="MXP/Shots/photo2006a.jpg"
                                         class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
-                                    <img id="img-creator-1"
-                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Foco"
-                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    <img id="img-creator-2"
-                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Estabilidad"
-                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    <img id="img-creator-3"
-                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Diversion"
-                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
-                                    <img id="img-creator-4"
-                                        src="https://placehold.co/600x450/003399/FFFFFF/webp?text=Productividad"
-                                        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" />
+
                                 </div>
                                 <!-- Dots -->
-                                <div id="creatorDots"
+                                <div class="hidden" id="creatorDots"
                                     class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
                                     <div class="w-2.5 h-2.5 rounded-full bg-xpBlue cursor-pointer hover:bg-white transition-colors"
                                         onclick="attemptSlide('creator', 0)"></div>
                                     <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
                                         onclick="attemptSlide('creator', 1)"></div>
-                                    <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                        onclick="attemptSlide('creator', 2)"></div>
-                                    <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                        onclick="attemptSlide('creator', 3)"></div>
-                                    <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                        onclick="attemptSlide('creator', 4)"></div>
                                 </div>
                             </div>
                         </div>
@@ -1489,9 +1488,10 @@
                         <div
                             class="relative bg-[#00155c]/60 backdrop-blur-md border border-[#4a86e8]/40 p-6 md:p-8 pt-8 md:pt-10 rounded-2xl hover:bg-[#00155c]/80 transition-all shadow-xl group">
                             <div
-                                class="absolute -top-8 -left-6 text-7xl text-blue-200 drop-shadow-2xl z-20 group-hover:scale-110 transition-transform">
+                                class="absolute -top-8 -left-6 text-7xl text-blue-200 drop-shadow-2xl z-0 group-hover:scale-110 transition-transform">
                                 🧘</div>
-                            <h4 class="text-3xl font-bold text-white mb-6 text-center">Claridad Mental</h4>
+                            <h4 class="relative z-10 text-3xl font-bold text-white mb-6 text-center">Claridad Mental
+                            </h4>
                             <p class="text-blue-50 leading-relaxed font-sans text-base md:text-lg">
                                 Un alivio contra la sobreestimulación digital. <strong>Sin anuncios en tu menú, sin
                                     notificaciones invasivas, ni bloatware</strong> reclamando tu atención. Vos
@@ -1503,9 +1503,10 @@
                         <div
                             class="relative bg-[#00155c]/60 backdrop-blur-md border border-[#4a86e8]/40 p-6 md:p-8 pt-8 md:pt-10 rounded-2xl hover:bg-[#00155c]/80 transition-all shadow-xl group">
                             <div
-                                class="absolute -top-8 -left-6 text-7xl text-green-300 drop-shadow-2xl z-20 group-hover:scale-110 transition-transform">
+                                class="absolute -top-8 -left-6 text-7xl text-green-300 drop-shadow-2xl z-0 group-hover:scale-110 transition-transform">
                                 🌊</div>
-                            <h4 class="text-3xl font-bold text-white mb-6 text-center">Flujo Ininterrumpido</h4>
+                            <h4 class="relative z-10 text-3xl font-bold text-white mb-6 text-center">Flujo
+                                Ininterrumpido</h4>
                             <p class="text-blue-50 leading-relaxed font-sans text-base md:text-lg">
                                 <strong>Cero actualizaciones forzadas</strong> que rompan tu concentración en el peor
                                 momento posible. La máquina trabaja para vos, respetando tus tiempos y tu workflow
@@ -1517,9 +1518,10 @@
                         <div
                             class="relative bg-[#00155c]/60 backdrop-blur-md border border-[#4a86e8]/40 p-6 md:p-8 pt-8 md:pt-10 rounded-2xl hover:bg-[#00155c]/80 transition-all shadow-xl group">
                             <div
-                                class="absolute -top-8 -left-6 text-7xl text-yellow-300 drop-shadow-2xl z-20 group-hover:scale-110 transition-transform">
+                                class="absolute -top-8 -left-6 text-7xl text-yellow-300 drop-shadow-2xl z-0 group-hover:scale-110 transition-transform">
                                 ☕</div>
-                            <h4 class="text-3xl font-bold text-white mb-6 text-center">El Confort de lo Conocido</h4>
+                            <h4 class="relative z-10 text-3xl font-bold text-white mb-6 text-center">El Confort de lo
+                                Conocido</h4>
                             <p class="text-blue-50 leading-relaxed font-sans text-base md:text-lg">
                                 El entorno familiar actúa como un <strong>ancla psicológica</strong> que reduce
                                 drásticamente la fricción inicial al sentarse a trabajar. Es volver a sentirse "en
@@ -1531,9 +1533,10 @@
                         <div
                             class="relative bg-[#00155c]/60 backdrop-blur-md border border-[#4a86e8]/40 p-6 md:p-8 pt-8 md:pt-10 rounded-2xl hover:bg-[#00155c]/80 transition-all shadow-xl group">
                             <div
-                                class="absolute -top-8 -left-6 text-7xl text-red-400 drop-shadow-2xl z-20 group-hover:scale-110 transition-transform">
+                                class="absolute -top-8 -left-6 text-7xl text-red-400 drop-shadow-2xl z-0 group-hover:scale-110 transition-transform">
                                 ⚡</div>
-                            <h4 class="text-3xl font-bold text-white mb-6 text-center">Poder Invisible</h4>
+                            <h4 class="relative z-10 text-3xl font-bold text-white mb-6 text-center">Poder Invisible
+                            </h4>
                             <p class="text-blue-50 leading-relaxed font-sans text-base md:text-lg">
                                 Un sistema <strong>meticulosamente optimizado</strong>. Seleccionamos el hardware ideal
                                 y calibramos el software a medida para exprimir cada gota de rendimiento sin bloqueos ni
@@ -1545,9 +1548,10 @@
                         <div
                             class="relative bg-[#00155c]/60 backdrop-blur-md border border-[#4a86e8]/40 p-6 md:p-8 pt-8 md:pt-10 rounded-2xl hover:bg-[#00155c]/80 transition-all shadow-xl group">
                             <div
-                                class="absolute -top-8 -left-6 text-7xl text-orange-400 drop-shadow-2xl z-20 group-hover:scale-110 transition-transform">
+                                class="absolute -top-8 -left-6 text-7xl text-orange-400 drop-shadow-2xl z-0 group-hover:scale-110 transition-transform">
                                 🎮</div>
-                            <h4 class="text-3xl font-bold text-white mb-6 text-center">Diversión con Sentido</h4>
+                            <h4 class="relative z-10 text-3xl font-bold text-white mb-6 text-center">Diversión con
+                                Sentido</h4>
                             <p class="text-blue-50 leading-relaxed font-sans text-base md:text-lg">
                                 Tu zona segura de recuerdos. Lejos de interfaces ahogadas en "basura", armamos una
                                 colección inmensa y <strong>cuidadosamente curada de clásicos</strong>, revitalizada con
@@ -1559,9 +1563,10 @@
                         <div
                             class="relative bg-[#00155c]/60 backdrop-blur-md border border-[#4a86e8]/40 p-6 md:p-8 pt-8 md:pt-10 rounded-2xl hover:bg-[#00155c]/80 transition-all shadow-xl group">
                             <div
-                                class="absolute -top-8 -left-6 text-7xl text-purple-300 drop-shadow-2xl z-20 group-hover:scale-110 transition-transform">
+                                class="absolute -top-8 -left-6 text-7xl text-purple-300 drop-shadow-2xl z-0 group-hover:scale-110 transition-transform">
                                 🤝</div>
-                            <h4 class="text-3xl font-bold text-white mb-6 text-center">Servicio Personalizado</h4>
+                            <h4 class="relative z-10 text-3xl font-bold text-white mb-6 text-center">Servicio
+                                Personalizado</h4>
                             <p class="text-blue-50 leading-relaxed font-sans text-base md:text-lg">
                                 Soy un apasionado por este proyecto, profundamente comprometido con tu experiencia.
                                 Estoy <strong>absolutamente dispuesto a solucionar cualquier problema o duda</strong>
@@ -1593,7 +1598,7 @@
                         <div class="title-bar !h-10 !px-4 flex items-center shrink-0">
                             <div class="title-bar-text !m-0 font-bold text-lg">PC Desktop.exe</div>
                         </div>
-                        <div class="window-body flex-grow flex flex-col p-6 !m-0 bg-white">
+                        <div class="window-body flex-grow flex flex-col p-6 !m-0 !bg-[#fcf7e9]">
                             <h3 class="text-2xl font-bold text-center mb-4 text-[#003399]">Gabinete ATX</h3>
                             <ul class="space-y-3 font-segoe text-gray-800 flex-grow text-left">
                                 <li>✔️ <strong>Formato clásico</strong> para máxima refrigeración</li>
@@ -1618,7 +1623,7 @@
                             <div class="title-bar-text !m-0 font-bold text-lg">MiniPC.exe</div>
                             <div class="title-bar-controls"></div>
                         </div>
-                        <div class="window-body flex-grow flex flex-col p-6 !m-0 bg-white">
+                        <div class="window-body flex-grow flex flex-col p-6 !m-0 !bg-[#fcf7e9]">
                             <h3 class="text-2xl font-bold text-center mb-4 text-[#003399]">Formato USFF</h3>
                             <ul class="space-y-3 font-segoe text-gray-800 flex-grow text-left">
                                 <li>✔️ <strong>Ultra Compacta</strong>, cabe en cualquier lugar</li>
@@ -1642,7 +1647,7 @@
                         <div class="title-bar !h-10 !px-4 flex items-center shrink-0">
                             <div class="title-bar-text !m-0 font-bold text-lg text-yellow-300">Reciclar.exe</div>
                         </div>
-                        <div class="window-body flex-grow flex flex-col p-6 !m-0 bg-white">
+                        <div class="window-body flex-grow flex flex-col p-6 !m-0 !bg-[#fcf7e9]">
                             <h3 class="text-2xl font-bold text-center mb-4 text-[#003399]">Tu Equipo Actual</h3>
                             <ul class="space-y-3 font-segoe text-gray-800 flex-grow text-left">
                                 <li>✔️ Reutilizamos <strong>tu PC o Notebook vieja</strong></li>
@@ -1711,7 +1716,7 @@
                             <button aria-label="Close"></button>
                         </div>
                     </div>
-                    <div class="window-body p-8 !m-0 bg-white font-segoe">
+                    <div class="window-body p-8 !m-0 !bg-[#fcf7e9] font-segoe">
                         <h2 class="text-3xl font-bold text-center mb-8 text-[#003399]">Condiciones y Garantía</h2>
                         <ul class="space-y-5 text-gray-800 text-lg mb-8 px-4 md:px-12">
                             <li class="flex items-start gap-4">
@@ -1726,8 +1731,7 @@
                             </li>
                             <li class="flex items-start gap-4">
                                 <span class="text-2xl mt-0 text-[#e04300]">🛡</span>
-                                <span><strong>Garantía Total:</strong> 12 meses de garantía en todos los componentes
-                                    armados.</span>
+                                <span><strong>Garantía Total:</strong> 6 meses de garantía y asistencia técnica.</span>
                             </li>
                         </ul>
                         <div
