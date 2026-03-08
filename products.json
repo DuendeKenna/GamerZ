@@ -69,6 +69,30 @@
       "lastUpd": "1970-01-01T00:00:00.000Z"
     },
     {
+      "id": 16387,
+      "name": "Mini Go n150 | Emus/PC+Joys",
+      "items": [
+        {
+          "categoryKey": "joystickOptions",
+          "id": 63642
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 7020
+        },
+        {
+          "categoryKey": "miniPcOptions",
+          "id": 32681
+        }
+      ],
+      "visible": 1,
+      "description": "",
+      "profit": 150000,
+      "order": 0.5,
+      "price": 0,
+      "lastUpd": "1970-01-01T00:00:00.000Z"
+    },
+    {
       "id": 94643,
       "name": "Ryzen 3 | Full+Joys",
       "items": [
@@ -99,7 +123,7 @@
       ],
       "visible": 1,
       "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
-      "profit": 150000,
+      "profit": 200000,
       "order": 1,
       "price": 0,
       "lastUpd": "1970-01-01T00:00:00.000Z"
@@ -134,7 +158,7 @@
     },
     {
       "id": 27800,
-      "name": "i5 4570 | Full+Joys (copia)",
+      "name": "i5 4570 | Full+Joys",
       "items": [
         {
           "categoryKey": "gpuOptions",
@@ -178,11 +202,11 @@
         },
         {
           "categoryKey": "joystickOptions",
-          "id": 80115
+          "id": 63642
         },
         {
           "categoryKey": "joystickOptions",
-          "id": 80115
+          "id": 63642
         }
       ],
       "visible": 1,
