@@ -212,44 +212,45 @@
                                 class="text-blue-900 font-bold text-sm uppercase tracking-wider mb-2 border-b border-blue-300 pb-1">
                                 1. Modificar y Calcular (Opcional)</h3>
                             <p class="mb-4 text-sm text-gray-700">Seleccioná componentes en <strong>Configuración del
-                                    Bundle</strong> a su derecha y, si querés, editá la <strong>Ganancia Objetivo
+                                    Bundle</strong> a la derecha y, si querés, editá la <strong>Ganancia Objetivo
                                     Unitaria</strong> para sobreescribir los cálculos base.</p>
 
-                            <div
-                                class="bg-white p-4 mb-6 border border-gray-400 font-mono text-sm shadow-sm rounded-sm">
-                                <div class="flex justify-between mb-2 items-center">
-                                    <span class="text-gray-600 font-bold uppercase">Costo Hardware (Activo):</span>
-                                    <span class="text-red-700 font-bold text-lg" id="display-costo-suma">$0</span>
+                            <div id="preciosHard"
+                                class="bg-gray-50 p-5 mb-6 border border-gray-200 text-sm shadow-sm rounded-lg font-premium">
+                                <div class="flex justify-between mb-3 items-center">
+                                    <span class="text-black font-medium font-semibold tracking-tight">Costo
+                                        Hardware:</span>
+                                    <span class="text-black font-bold text-lg" id="display-costo-suma">$0</span>
                                 </div>
                                 <div class="flex justify-between mb-4 pb-4 border-b border-gray-300 items-center">
-                                    <span class="text-blue-800 font-bold uppercase cursor-help"
-                                        title="Sobreescribir ganancia objetivo">Ganancia Objetivo (Override):</span>
-                                    <div class="flex items-center">
-                                        <span class="text-gray-800 font-bold mr-2">$</span>
+                                    <span class="text-black font-semibold tracking-tight cursor-help"
+                                        title="Establecer ganancia base">Ganancia Objetivo:</span>
+                                    <div class="relative flex items-center">
+                                        <span class="absolute left-2.5 text-gray-500 font-bold">$</span>
                                         <input type="text" id="input-ganancia-obj"
-                                            class="bg-white border focus:border-blue-500 border-gray-400 text-black font-bold p-1.5 w-32 text-right shadow-inner outline-none transition-all"
-                                            value="0">
+                                            class="bg-white border focus:border-blue-500 border-gray-300 text-black font-bold py-1.5 pl-6 pr-2.5 w-24 text-right shadow-inner outline-none transition-all rounded-md font-premium"
+                                            value="0" maxlength="9">
                                     </div>
                                 </div>
                                 <div class="flex justify-between mb-3 items-center">
-                                    <strong class="text-lg text-black uppercase">= PRECIO DE VENTA (Sugerido):</strong>
-                                    <strong class="text-xl text-green-700 font-bold" id="display-venta">$0</strong>
+                                    <strong class="text-lg text-purple-900 font-bold tracking-tight">PRECIO DE VENTA
+                                        (Sugerido):</strong>
+                                    <strong
+                                        class="text-xl text-purple-700 font-bold bg-purple-50 px-2 py-1 rounded border border-purple-200"
+                                        id="display-venta">$0</strong>
                                 </div>
 
-                                <div class="flex justify-between mb-1 text-gray-500 text-xs">
-                                    <span>Ganancia Bruta Real:</span>
-                                    <span id="display-bruta">$0</span>
-                                </div>
 
-                                <div class="flex justify-between mb-1 text-red-500 text-xs">
+                                <div class="flex justify-between mb-1 text-orange-500 text-xs font-semibold">
                                     <span>(-) Fondo de Garantía (8%):</span>
                                     <span id="display-garantia">-$0</span>
                                 </div>
 
                                 <div
-                                    class="flex justify-between mt-3 border-t border-gray-400 pt-3 text-lg items-center mb-1">
-                                    <strong class="text-green-700 uppercase">GANANCIA NETA (A repartir):</strong>
-                                    <strong class="text-green-700 font-bold" id="display-neta">$0</strong>
+                                    class="flex justify-between mt-4 border-t border-gray-300 pt-3 text-lg items-center mb-1">
+                                    <strong class="text-green-700 font-bold tracking-tight">GANANCIA NETA (A
+                                        repartir):</strong>
+                                    <strong class="text-green-700 font-black text-xl" id="display-neta">$0</strong>
                                 </div>
                             </div>
 
@@ -279,19 +280,19 @@
                                 <div class="flex items-center space-x-3">
                                     <img src="MXP/XP_Icons/Search.webp" class="w-6 h-6" alt="icon">
                                     <span class="font-bold text-lg text-white">Proyección
-                                        Global</span>
+                                        de Ventas</span>
                                 </div>
                             </div>
                         </div>
                         <div class="window-body !m-0 p-5 bg-[#ece9d8] relative text-black"
                             style="border: solid #003399; border-width: 0 4px 4px 4px; border-radius: 0 0 4px 4px;">
 
-                            <fieldset class="border border-gray-400 p-6 rounded bg-white shadow-inner">
+                            <fieldset class="border border-gray-400 p-6 rounded bg-gray-50 shadow-inner">
                                 <legend
                                     class="text-blue-900 font-bold text-xs uppercase px-2 mb-2 tracking-wide font-premium">
                                     Simulador de Proyección Mensual</legend>
 
-                                <div class="bg-gray-50 border border-gray-200 p-5 rounded-lg mb-8 shadow-sm">
+                                <div class="bg-white border border-gray-200 p-5 rounded-lg mb-8 shadow-sm">
                                     <div class="flex justify-between items-center mb-4">
                                         <label
                                             class="text-blue-800 font-bold text-base font-premium uppercase tracking-tight">Ventas
@@ -383,11 +384,11 @@
                             </div>
                         </div>
 
-                        <div id="sidebar-totals" class="mt-4 pt-3 text-sm border-t border-gray-300 hidden text-black">
+                        <div id="sidebar-totals"
+                            class="mt-4 pt-4 text-sm border-t border-gray-300 hidden text-black font-premium">
                             <div class="flex justify-between items-center w-full px-2">
-                                <span class="font-bold text-gray-800">Suma Total:</span>
-                                <span class="font-bold text-red-600 font-mono text-base"
-                                    id="sidebar-total-hardware">$0</span>
+                                <span class="font-medium text-gray-600 tracking-tight">Costo Hardware:</span>
+                                <span class="font-bold text-red-600 text-lg" id="sidebar-total-hardware">$0</span>
                             </div>
                         </div>
                     </div>
@@ -643,8 +644,6 @@
                 }
             }
 
-            document.getElementById('est-costo').value = new Intl.NumberFormat('es-AR').format(costoHardware);
-
             const targetProfitRaw = document.getElementById('input-ganancia-obj').value;
             let targetProfit = parseFormatted(targetProfitRaw);
 
@@ -655,7 +654,6 @@
             document.getElementById('display-costo-suma').textContent = fmt(costoHardware);
             document.getElementById('sidebar-total-hardware').textContent = fmt(costoHardware);
             document.getElementById('display-venta').textContent = fmt(precioVenta);
-            document.getElementById('display-bruta').textContent = fmt(targetProfit);
             document.getElementById('display-garantia').textContent = "-" + fmt(fondoGarantia);
             document.getElementById('display-neta').textContent = fmt(gananciaNeta);
 
