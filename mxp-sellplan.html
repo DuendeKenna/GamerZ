@@ -126,9 +126,9 @@
                     <h3 class="text-3xl font-bold mb-4 text-green-200"
                         style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">La Misión:</h3>
                     <p class="mb-6 opacity-90">
-                        "Facilitar la Experiencia del Gamer Millennial a la comunidad hispanohablante, tocando la
-                        nostalgia,
-                        el arte y la creación, ofreciendo <strong>'Máquinas del Tiempo' Plug & Play</strong>."
+                        Facilitar la Experiencia del Gamer Millennial a la comunidad hispanohablante, tocando la
+                        emoción nostálgica,
+                        ofreciendo <strong>'Máquinas del Tiempo' Plug & Play</strong> multiuso.
                     </p>
                     <div class="flex gap-4">
                         <img src="MXP/Shots/MXP-2.png" alt="" class="w-1/2 rounded-xl shadow-lg brightness-90">
@@ -144,9 +144,8 @@
                         <p class="text-2xl font-bold text-orange-400 mb-3 drop-shadow-md">Diego <span
                                 class="text-lg text-white font-normal">(Creador)</span></p>
                         <ul class="list-disc list-inside space-y-2 text-white/90">
-                            <li>Dueño del <strong>Core</strong> y Packs.</li>
-                            <li>Armado de Hardware y Asistencia Técnica.</li>
                             <li>Desarrollo, Diseño e Investigación.</li>
+                            <li>Armado de Hardware y Asistencia Técnica.</li>
                             <li><strong>Ventas</strong>, Marketing y Difusión.</li>
                             <li>Voto final de producto.</li>
                         </ul>
@@ -157,7 +156,7 @@
                                 class="text-lg text-white font-normal">(Inversor)</span></p>
                         <ul class="list-disc list-inside space-y-2 text-white/90">
                             <li>Aporta el <strong>capital base</strong> para componentes.</li>
-                            <li>Voto en decisiones de inversión.</li>
+                            <li>Voto final en decisiones de inversión.</li>
                         </ul>
                     </div>
                 </div>
@@ -394,9 +393,7 @@
 
                         <!-- Selector de Bundle simplificado -->
                         <div class="mb-6">
-                            <label for="bundle-selector-sidebar"
-                                class="block text-xs font-bold text-blue-900 uppercase tracking-wider mb-2">Elegir un
-                                Pack:</label>
+
                             <select id="bundle-selector-sidebar"
                                 class="w-full h-10 px-3 select-xp font-semibold text-sm rounded shadow-sm">
                                 <option value="" class="text-black">Cargando bundles...</option>
@@ -404,9 +401,7 @@
                         </div>
 
                         <div id="bundle-items-container" class="hidden">
-                            <h4
-                                class="text-blue-900 font-bold text-[10px] uppercase tracking-widest mb-3 border-b border-blue-200 pb-1">
-                                COMPONENTES ACTIVOS:</h4>
+                            <br>
                             <div id="bundle-items-list"
                                 class="space-y-2 max-h-[50vh] overflow-y-auto pr-2 custom-scrollbar">
                                 <!-- Dynamic Items -->
@@ -535,6 +530,13 @@
 
             estMeta.addEventListener('input', calcularEstimador);
             estVentas.addEventListener('input', calcularEstimador);
+
+            // Seleccionar automáticamente el primer bundle al cargar
+            if (bundles.length > 0) {
+                selectorMobile.value = "0";
+                selectorSidebar.value = "0";
+                loadBundleData(bundles[0]);
+            }
         }
 
         function loadBundleData(bundle) {
@@ -665,13 +667,6 @@
 
             const targetProfitRaw = document.getElementById('input-ganancia-obj').value;
             let targetProfit = parseFormatted(targetProfitRaw);
-
-            if (isComponentChange) {
-                targetProfit = costoHardware * currentMargin;
-                document.getElementById('input-ganancia-obj').value = new Intl.NumberFormat('es-AR').format(targetProfit);
-            } else {
-                currentMargin = costoHardware > 0 ? (targetProfit / costoHardware) : 0;
-            }
 
             const precioVenta = costoHardware + targetProfit;
             const fondoGarantia = targetProfit * PORCENTAJE_GARANTIA;
