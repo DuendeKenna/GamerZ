@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 656530,
+      "total": 637630,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 853482,
+      "total": 834582,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -60,24 +60,40 @@
   ],
   "bundlesOptions": [
     {
-      "id": 95796,
-      "name": "Mini n150 | Emus/PC+Joys",
+      "id": 94643,
+      "name": "Ryzen 3 | Full + Joys",
       "items": [
+        {
+          "categoryKey": "ssdOptions",
+          "id": 27876
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 64421
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 72811
+        },
+        {
+          "categoryKey": "baseOptions",
+          "id": 49735
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
         {
           "categoryKey": "joystickOptions",
           "id": 63642
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 7020
-        },
-        {
-          "categoryKey": "miniPcOptions",
-          "id": 45286
         }
       ],
       "visible": 1,
-      "description": "",
+      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks",
       "profit": 200000,
       "order": 0,
       "linksAlt": [],
@@ -89,37 +105,8 @@
       ]
     },
     {
-      "id": 62614,
-      "name": "Mini i7| Emus/PC+Joys",
-      "items": [
-        {
-          "categoryKey": "joystickOptions",
-          "id": 63642
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 7020
-        },
-        {
-          "categoryKey": "miniPcOptions",
-          "id": 97230
-        }
-      ],
-      "visible": 1,
-      "description": "",
-      "profit": 200000,
-      "order": 0.5,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
       "id": 27800,
-      "name": "i5 4570 Armada | Full+Joys",
+      "name": "i5 4570 Armada | Full + Joys",
       "items": [
         {
           "categoryKey": "gpuOptions",
@@ -143,7 +130,7 @@
         }
       ],
       "visible": 1,
-      "description": "",
+      "description": "Viene la PC armada (el tema es que hay que agregarle GPU y HDD, rompiendo garantía)",
       "profit": 200000,
       "order": 1,
       "linksAlt": [],
@@ -155,36 +142,24 @@
       ]
     },
     {
-      "id": 94643,
-      "name": "Ryzen 3 | Full+Joys",
+      "id": 95796,
+      "name": "Mini n150 | Emus / PC + Joys",
       "items": [
         {
-          "categoryKey": "ssdOptions",
-          "id": 27876
-        },
-        {
-          "categoryKey": "towersOptions",
-          "id": 29026
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 64421
-        },
-        {
-          "categoryKey": "psuOptions",
-          "id": 72811
+          "categoryKey": "joystickOptions",
+          "id": 63642
         },
         {
           "categoryKey": "joystickOptions",
-          "id": 80115
+          "id": 7020
         },
         {
-          "categoryKey": "baseOptions",
-          "id": 49735
+          "categoryKey": "miniPcOptions",
+          "id": 45286
         }
       ],
       "visible": 1,
-      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
+      "description": "500 de Almacenamiento (cortina)\nEs un proce que si se le da rosca hace TT",
       "profit": 200000,
       "order": 2,
       "linksAlt": [],
@@ -196,28 +171,24 @@
       ]
     },
     {
-      "id": 82516,
-      "name": "i5 2400 | Full+Joys",
+      "id": 62614,
+      "name": "Mini i5 | Emus / PC + Joys",
       "items": [
         {
-          "categoryKey": "gpuOptions",
-          "id": 85207
-        },
-        {
-          "categoryKey": "armadasOptions",
-          "id": 76800
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 64421
+          "categoryKey": "joystickOptions",
+          "id": 63642
         },
         {
           "categoryKey": "joystickOptions",
-          "id": 80115
+          "id": 7020
+        },
+        {
+          "categoryKey": "miniPcOptions",
+          "id": 97230
         }
       ],
       "visible": 1,
-      "description": "",
+      "description": "500 de Almacenamiento (no entra todo)\nBuen CPU, banca todo",
       "profit": 200000,
       "order": 3,
       "linksAlt": [],
@@ -253,129 +224,6 @@
       "description": "",
       "profit": 100000,
       "order": 4,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
-      "id": 14283,
-      "name": "Ryzen 7 | Full+Joys",
-      "items": [
-        {
-          "categoryKey": "baseOptions",
-          "id": 30077
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "psuOptions",
-          "id": 45939
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 27876
-        },
-        {
-          "categoryKey": "towersOptions",
-          "id": 29026
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 64421
-        }
-      ],
-      "visible": 1,
-      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
-      "profit": 150000,
-      "order": 5,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
-      "id": 93189,
-      "name": "Ryzen 7 | PC+Joy",
-      "items": [
-        {
-          "categoryKey": "baseOptions",
-          "id": 30077
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "psuOptions",
-          "id": 45939
-        },
-        {
-          "categoryKey": "towersOptions",
-          "id": 29026
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 93692
-        }
-      ],
-      "visible": 1,
-      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
-      "profit": 100000,
-      "order": 6,
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 0,
-          "date": "1970-01-01T00:00:00.000Z"
-        }
-      ]
-    },
-    {
-      "id": 73676,
-      "name": "Ryzen 7 | Emus+Joys",
-      "items": [
-        {
-          "categoryKey": "baseOptions",
-          "id": 30077
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "psuOptions",
-          "id": 45939
-        },
-        {
-          "categoryKey": "towersOptions",
-          "id": 29026
-        },
-        {
-          "categoryKey": "joystickOptions",
-          "id": 80115
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 27876
-        }
-      ],
-      "visible": 1,
-      "description": "Todos los juegos de PC (170) más Emuladores (1.5 TB)\n2 Joysticks 360",
-      "profit": 100000,
-      "order": 7,
       "linksAlt": [],
       "prices": [
         {
@@ -595,6 +443,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 89900,
+          "date": "2026-03-09T14:24:53.579Z"
+        },
+        {
+          "value": 89900,
+          "date": "2026-03-09T14:24:51.646Z"
+        },
         {
           "value": 91655,
           "date": "2026-03-08T11:02:49.758Z"
@@ -818,6 +674,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 499500,
+          "date": "2026-03-09T14:24:03.378Z"
+        },
+        {
+          "value": 499500,
+          "date": "2026-03-09T14:24:01.428Z"
+        },
+        {
           "value": 469999,
           "date": "2026-03-08T11:01:29.408Z"
         },
@@ -932,6 +796,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 39499,
+          "date": "2026-03-09T14:26:01.299Z"
+        },
+        {
+          "value": 39499,
+          "date": "2026-03-09T14:25:59.365Z"
+        },
+        {
           "value": 38314,
           "date": "2026-02-28T12:06:00.565Z"
         }
@@ -945,6 +817,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 25790,
+          "date": "2026-03-09T14:26:12.433Z"
+        },
+        {
+          "value": 25790,
+          "date": "2026-03-09T14:26:10.503Z"
+        },
         {
           "value": 26880,
           "date": "2026-03-08T11:04:21.109Z"
@@ -1071,6 +951,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 290999,
+          "date": "2026-03-09T14:22:25.086Z"
+        },
+        {
+          "value": 290999,
+          "date": "2026-03-09T14:22:23.170Z"
+        },
         {
           "value": 309899,
           "date": "2026-03-06T18:15:18.661Z"
@@ -1424,6 +1312,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 297399,
+          "date": "2026-03-09T14:26:48.332Z"
+        },
+        {
+          "value": 297399,
+          "date": "2026-03-09T14:26:46.403Z"
+        },
+        {
           "value": 300899,
           "date": "2026-03-05T15:22:32.385Z"
         },
@@ -1479,14 +1375,22 @@
   "joystickOptions": [
     {
       "id": 80115,
-      "name": "Xbox 360 - Cableado",
+      "name": "Xbox 360 - Inalámbrico",
       "description": "Generico Xbox 360 Con Cable",
-      "link": "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE",
-      "visible": 1,
+      "link": "https://www.mercadolibre.com.ar/joystick-para-xbox-360-inalambrico-para-pilas-o-bateria/up/MLAU3785591925?offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-up&reco_backend=recomm_platform_base_merge_pads_rfa&wid=MLA1676266095&reco_model=search_recos_backend_merge&reco_client=pdp-pads-up&reco_item_pos=2&reco_backend_type=low_level&reco_id=19091bf5-a6e6-496e-b3ad-72251df61244&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_UP&ad_position=3&ad_click_id=YmU4NzllMWYtMzRjZC00ZGYxLWI5ZmQtYzJkMmVjMGYwZDIy",
+      "visible": 0,
       "linksAlt": [
-        "https://www.mercadolibre.com.ar/joystick-para-xbox-360-inalambrico-para-pilas-o-bateria/up/MLAU3785591925?offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-up&reco_backend=recomm_platform_base_merge_pads_rfa&wid=MLA1676266095&reco_model=search_recos_backend_merge&reco_client=pdp-pads-up&reco_item_pos=2&reco_backend_type=low_level&reco_id=19091bf5-a6e6-496e-b3ad-72251df61244&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_UP&ad_position=3&ad_click_id=YmU4NzllMWYtMzRjZC00ZGYxLWI5ZmQtYzJkMmVjMGYwZDIy"
+        "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE"
       ],
       "prices": [
+        {
+          "value": 30990,
+          "date": "2026-03-09T14:30:04.527Z"
+        },
+        {
+          "value": 30990,
+          "date": "2026-03-09T14:30:02.610Z"
+        },
         {
           "value": 44960,
           "date": "2026-03-06T18:23:49.216Z"
@@ -1532,6 +1436,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 54299,
+          "date": "2026-03-09T14:30:24.246Z"
+        },
+        {
+          "value": 54299,
+          "date": "2026-03-09T14:30:22.328Z"
+        },
+        {
           "value": 52999,
           "date": "2026-03-06T18:24:08.955Z"
         },
@@ -1557,7 +1469,7 @@
       "id": 63642,
       "name": "PS3  - Inalámbrico",
       "link": "https://www.mercadolibre.com.ar/joystick-compatible-ps3-pc-notebook----cable-usb/up/MLAU3722353075?pdp_filters=item_id%3AMLA1643481611&offer_type=OFFICIAL_STORE#is_advertising=true&searchVariation=MLAU3722353075&backend_model=search-backend&position=1&search_layout=grid&type=pad&tracking_id=3dbf1385-eb8d-4c07-a120-d39f265a76cf&ad_domain=VQCATCORE_LST&ad_position=1&ad_click_id=MjZhZDM4NzYtNDhmMC00Mjg1LTkxY2UtOTIyYzU2NTZjMTNj",
-      "visible": 0,
+      "visible": 1,
       "description": "",
       "linksAlt": [],
       "prices": [
@@ -1713,6 +1625,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 18955,
+          "date": "2026-03-09T14:31:23.332Z"
+        },
+        {
+          "value": 18955,
+          "date": "2026-03-09T14:31:21.415Z"
+        },
+        {
           "value": 19399,
           "date": "2026-03-06T18:25:14.140Z"
         },
@@ -1793,6 +1713,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 55999,
+          "date": "2026-03-09T14:31:50.880Z"
+        },
+        {
+          "value": 55999,
+          "date": "2026-03-09T14:31:48.932Z"
+        },
+        {
           "value": 57999,
           "date": "2026-03-06T18:25:45.328Z"
         },
@@ -1830,6 +1758,14 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 67099,
+          "date": "2026-03-09T14:32:02.849Z"
+        },
+        {
+          "value": 67099,
+          "date": "2026-03-09T14:32:00.951Z"
+        },
         {
           "value": 65899,
           "date": "2026-03-05T15:25:03.520Z"
@@ -1931,6 +1867,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 10699,
+          "date": "2026-03-09T14:32:39.634Z"
+        },
+        {
+          "value": 10699,
+          "date": "2026-03-09T14:32:37.717Z"
+        },
+        {
           "value": 10550,
           "date": "2026-03-06T18:41:37.985Z"
         },
@@ -2007,6 +1951,14 @@
       "ram": "24",
       "ssd": "512",
       "prices": [
+        {
+          "value": 705259,
+          "date": "2026-03-09T14:21:31.624Z"
+        },
+        {
+          "value": 705259,
+          "date": "2026-03-09T14:21:29.645Z"
+        },
         {
           "value": 683799,
           "date": "2026-03-08T15:35:43.377Z"
