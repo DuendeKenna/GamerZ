@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 461621,
+      "total": 461615,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 637630,
+      "total": 665324,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 834582,
+      "total": 862276,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -105,6 +105,55 @@
       ]
     },
     {
+      "id": 89089,
+      "name": "i5 4570 | Full + Joys",
+      "items": [
+        {
+          "categoryKey": "gpuOptions",
+          "id": 85207
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 80115
+        },
+        {
+          "categoryKey": "joystickOptions",
+          "id": 63642
+        },
+        {
+          "categoryKey": "comboOptions",
+          "id": 10587
+        },
+        {
+          "categoryKey": "ramOptions",
+          "id": 71285
+        },
+        {
+          "categoryKey": "psuOptions",
+          "id": 45939
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 78121
+        },
+        {
+          "categoryKey": "towersOptions",
+          "id": 29026
+        }
+      ],
+      "visible": 1,
+      "description": "Usando un SSD de 2TB.",
+      "profit": 200000,
+      "order": 1,
+      "linksAlt": [],
+      "prices": [
+        {
+          "value": 0,
+          "date": "1970-01-01T00:00:00.000Z"
+        }
+      ]
+    },
+    {
       "id": 27800,
       "name": "i5 4570 Armada | Full + Joys",
       "items": [
@@ -132,7 +181,7 @@
       "visible": 1,
       "description": "Viene la PC armada (el tema es que hay que agregarle GPU y HDD, rompiendo garantía)",
       "profit": 200000,
-      "order": 1,
+      "order": 2,
       "linksAlt": [],
       "prices": [
         {
@@ -161,7 +210,7 @@
       "visible": 1,
       "description": "500 de Almacenamiento (cortina)\nEs un proce que si se le da rosca hace TT",
       "profit": 200000,
-      "order": 2,
+      "order": 3,
       "linksAlt": [],
       "prices": [
         {
@@ -190,7 +239,7 @@
       "visible": 1,
       "description": "500 de Almacenamiento (no entra todo)\nBuen CPU, banca todo",
       "profit": 200000,
-      "order": 3,
+      "order": 4,
       "linksAlt": [],
       "prices": [
         {
@@ -223,7 +272,7 @@
       "visible": 1,
       "description": "",
       "profit": 100000,
-      "order": 4,
+      "order": 5,
       "linksAlt": [],
       "prices": [
         {
@@ -242,6 +291,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 368000,
+          "date": "2026-03-11T13:35:34.759Z"
+        },
+        {
+          "value": 368000,
+          "date": "2026-03-11T13:35:32.810Z"
+        },
         {
           "value": 366716,
           "date": "2026-03-06T18:14:18.508Z"
@@ -317,6 +374,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 79688,
+          "date": "2026-03-11T13:36:19.159Z"
+        },
+        {
+          "value": 79688,
+          "date": "2026-03-11T13:36:17.246Z"
+        },
+        {
           "value": 113300,
           "date": "2026-02-28T11:58:14.282Z"
         }
@@ -331,6 +396,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 79365,
+          "date": "2026-03-11T13:36:31.129Z"
+        },
+        {
+          "value": 79365,
+          "date": "2026-03-11T13:36:29.195Z"
+        },
         {
           "value": 76199,
           "date": "2026-03-03T14:26:07.640Z"
@@ -369,6 +442,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 149499,
+          "date": "2026-03-11T13:39:17.553Z"
+        },
+        {
+          "value": 149499,
+          "date": "2026-03-11T13:39:15.620Z"
+        },
         {
           "value": 152999,
           "date": "2026-03-06T18:17:39.671Z"
@@ -443,6 +524,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 91000,
+          "date": "2026-03-11T13:39:44.653Z"
+        },
+        {
+          "value": 91000,
+          "date": "2026-03-11T13:39:42.738Z"
+        },
         {
           "value": 89900,
           "date": "2026-03-09T14:24:53.579Z"
@@ -620,6 +709,24 @@
           "date": "2026-02-03T13:31:40.453Z"
         }
       ]
+    },
+    {
+      "id": 78121,
+      "name": "2 TB - SATA",
+      "link": "https://www.mercadolibre.com.ar/interno-hiksemi-wave-hs-ssd-waves-1920g-192tb-negro/p/MLA37937963?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "prices": [
+        {
+          "value": 252999,
+          "date": "2026-03-11T14:01:20.396Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-03-11T14:01:01.783Z"
+        }
+      ],
+      "linksAlt": []
     }
   ],
   "gpuOptions": [
@@ -733,6 +840,14 @@
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 1136529,
+          "date": "2026-03-11T13:39:05.653Z"
+        },
+        {
+          "value": 1136529,
+          "date": "2026-03-11T13:39:03.737Z"
+        },
         {
           "value": 912374,
           "date": "2026-03-08T11:02:11.012Z"
@@ -922,6 +1037,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 93579,
+          "date": "2026-03-11T13:37:27.184Z"
+        },
+        {
+          "value": 93579,
+          "date": "2026-03-11T13:37:25.263Z"
+        },
+        {
           "value": 93585,
           "date": "2026-02-26T14:09:35.732Z"
         }
@@ -951,6 +1074,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 318699,
+          "date": "2026-03-11T13:36:58.795Z"
+        },
+        {
+          "value": 318699,
+          "date": "2026-03-11T13:36:56.895Z"
+        },
         {
           "value": 290999,
           "date": "2026-03-09T14:22:25.086Z"
@@ -1101,6 +1232,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 69998,
+          "date": "2026-03-11T13:37:55.944Z"
+        },
+        {
+          "value": 69998,
+          "date": "2026-03-11T13:37:53.988Z"
+        },
+        {
           "value": 49998,
           "date": "2026-02-03T13:28:33.111Z"
         }
@@ -1182,6 +1321,25 @@
           "date": "2026-02-28T12:02:46.334Z"
         }
       ]
+    },
+    {
+      "id": 71285,
+      "name": "DDR3 4GB - Micron",
+      "link": "https://www.mercadolibre.com.ar/memoria-ram-ddr3-4gb-1600mhz-dimm-micron-para-pc-de-escritorio/p/MLA35503800?offer_type=OFFICIAL_STORE",
+      "visible": 1,
+      "description": "",
+      "prices": [
+        {
+          "value": 29900,
+          "date": "2026-03-11T13:55:23.550Z"
+        },
+        {
+          "value": 0,
+          "date": "2026-03-11T13:55:11.855Z"
+        }
+      ],
+      "linksAlt": [],
+      "total": 4
     }
   ],
   "comboOptions": [
@@ -1252,6 +1410,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 169099,
+          "date": "2026-03-11T13:41:17.523Z"
+        },
+        {
+          "value": 169099,
+          "date": "2026-03-11T13:41:15.576Z"
+        },
+        {
           "value": 177999,
           "date": "2026-03-08T11:04:41.487Z"
         },
@@ -1281,6 +1447,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 163399,
+          "date": "2026-03-11T13:41:30.294Z"
+        },
+        {
+          "value": 163399,
+          "date": "2026-03-11T13:41:28.375Z"
+        },
         {
           "value": 171999,
           "date": "2026-03-06T18:19:53.392Z"
@@ -1435,6 +1609,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 52949,
+          "date": "2026-03-11T13:42:20.946Z"
+        },
+        {
+          "value": 52949,
+          "date": "2026-03-11T13:42:19.045Z"
+        },
         {
           "value": 54299,
           "date": "2026-03-09T14:30:24.246Z"
@@ -1625,6 +1807,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 18782,
+          "date": "2026-03-11T13:43:21.410Z"
+        },
+        {
+          "value": 18782,
+          "date": "2026-03-11T13:43:19.465Z"
+        },
+        {
           "value": 18955,
           "date": "2026-03-09T14:31:23.332Z"
         },
@@ -1712,6 +1902,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 58299,
+          "date": "2026-03-11T13:43:50.532Z"
+        },
+        {
+          "value": 58299,
+          "date": "2026-03-11T13:43:48.582Z"
+        },
         {
           "value": 55999,
           "date": "2026-03-09T14:31:50.880Z"
