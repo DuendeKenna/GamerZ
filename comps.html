@@ -2147,18 +2147,36 @@
                 return '<span>Sin historial de precios.</span>';
             }
 
-            // Only show actual price history entries
-            const recentPrices = prices.slice(0, 7);
+            // Filtrar duplicados y mostrar solo cambios reales de precio
+            const filtered = [];
+            let lastValue = null;
+            prices.forEach(p => {
+                if (lastValue === null || p.value !== lastValue) {
+                    filtered.push(p);
+                    lastValue = p.value;
+                }
+            });
+
+            // Mostrar los últimos 7 cambios reales (más nuevos primero)
+            const recentPrices = filtered.slice(0, 7);
             let tableHTML = '<table class="tooltip-table"><thead><tr><th>Fecha</th><th>Precio</th></tr></thead><tbody>';
-            recentPrices.forEach(p => {
+            for (let i = 0; i < recentPrices.length; i++) {
+                const p = recentPrices[i];
                 let dateLabel = '';
                 try {
                     dateLabel = formatTimestamp(p.date);
                 } catch (e) {
                     dateLabel = formatTimestamp(p.date);
                 }
-                tableHTML += `<tr><td>${dateLabel}</td><td>$${p.value.toLocaleString('es-AR')}</td></tr>`;
-            });
+                // Color de fondo según cambio respecto al siguiente más viejo
+                let bg = 'rgba(2,132,199,0.3)'; // azul
+                if (i < recentPrices.length - 1) {
+                    const next = recentPrices[i + 1];
+                    if (p.value > next.value) bg = 'rgba(139,92,246,0.3)'; // subió
+                    else if (p.value < next.value) bg = 'rgba(34,197,94,0.3)'; // bajó
+                }
+                tableHTML += `<tr style="background:${bg}"><td>${dateLabel}</td><td>$${p.value.toLocaleString('es-AR')}</td></tr>`;
+            }
             tableHTML += '</tbody></table>';
             return tableHTML;
         }
@@ -2929,8 +2947,17 @@
                 const product = dataMap[categoryKey][index];
 
                 if (product && product.prices && product.prices.length > 1) {
-                    const newPrice = product.prices[0].value;
-                    const oldPrice = product.prices[1].value;
+                    const last = product.prices[0];
+                    // Buscar el anterior real (que no sea igual)
+                    let prev = null;
+                    for (let i = 1; i < product.prices.length; i++) {
+                        if (product.prices[i].value !== last.value) {
+                            prev = product.prices[i];
+                            break;
+                        }
+                    }
+                    const oldPrice = prev ? prev.value : product.prices[1].value;
+                    const newPrice = last.value;
                     applyPriceChangeVisuals(row, oldPrice, newPrice);
                 } else {
                     row.style.backgroundColor = '';
@@ -2943,7 +2970,7 @@
                 }
             });
             applyColorFilter();
-            closeFilterPopup();
+            setTimeout(closeFilterPopup, 200); // Cierra el panel tras aplicar
             showToast('Coloreado de filas aplicado.', 'success');
         }
 
