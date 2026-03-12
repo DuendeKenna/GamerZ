@@ -2147,8 +2147,18 @@
                 return '<span>Sin historial de precios.</span>';
             }
 
-            // Only show actual price history entries
-            const recentPrices = prices.slice(0, 7);
+            // Filtrar duplicados y mostrar solo cambios reales de precio
+            const filtered = [];
+            let lastValue = null;
+            prices.forEach(p => {
+                if (lastValue === null || p.value !== lastValue) {
+                    filtered.push(p);
+                    lastValue = p.value;
+                }
+            });
+
+            // Mostrar los últimos 7 cambios reales
+            const recentPrices = filtered.slice(0, 7);
             let tableHTML = '<table class="tooltip-table"><thead><tr><th>Fecha</th><th>Precio</th></tr></thead><tbody>';
             recentPrices.forEach(p => {
                 let dateLabel = '';
