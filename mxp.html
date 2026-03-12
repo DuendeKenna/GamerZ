@@ -407,6 +407,62 @@
                 min-height: 28px;
             }
         }
+
+        /* Question Marks Animation */
+        @keyframes ques-shake {
+            0% {
+                transform: scale(1) rotate(0deg);
+                color: inherit;
+            }
+
+            5% {
+                transform: scale(1.3) rotate(-8deg);
+                color: #22c55e;
+            }
+
+            10% {
+                transform: scale(1.3) rotate(8deg);
+                color: #22c55e;
+            }
+
+            15% {
+                transform: scale(1.3) rotate(-8deg);
+                color: #22c55e;
+            }
+
+            20% {
+                transform: scale(1.3) rotate(8deg);
+                color: #22c55e;
+            }
+
+            25% {
+                transform: scale(1.3) rotate(0deg);
+                color: #22c55e;
+            }
+
+            42.5% {
+                transform: scale(1.3) rotate(0deg);
+                color: #22c55e;
+            }
+
+            /* 1.7s of a 4s cycle */
+            47.5% {
+                transform: scale(1) rotate(0deg);
+                color: inherit;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                color: inherit;
+            }
+        }
+
+        .ques-ani {
+            display: inline-block;
+            animation: ques-shake 4s infinite;
+            transform-origin: center;
+            will-change: transform, color;
+        }
     </style>
     <style data-purpose="typography">
         .hero-title {
@@ -1259,7 +1315,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('arcade')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/arcade.svg" alt="arcade logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/arcade.webp" alt="arcade"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1273,7 +1329,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('dreamcast')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/dreamcast.svg" alt="dreamcast logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/dreamcast.webp" alt="dreamcast"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1287,7 +1343,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('gba')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/gba.svg" alt="gba logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/gba.webp" alt="gba"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1301,7 +1357,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('gc')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/gc.svg" alt="gc logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/gc.webp" alt="gc"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1315,7 +1371,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('megadrive')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/megadrive.svg" alt="megadrive logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/megadrive.webp" alt="megadrive"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1329,7 +1385,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('n64')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/n64.svg" alt="n64 logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/n64.webp" alt="n64"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1343,7 +1399,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('neogeo')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/neogeo.svg" alt="neogeo logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/neogeo.webp" alt="neogeo"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1357,7 +1413,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('nes')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/nes.svg" alt="nes logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/nes.webp" alt="nes"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1371,7 +1427,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('ps2')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/ps2.svg" alt="ps2 logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/ps2.webp" alt="ps2"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1385,7 +1441,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('psp')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/psp.svg" alt="psp logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/psp.webp" alt="psp"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1399,7 +1455,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('psx')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/psx.svg" alt="psx logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/psx.webp" alt="psx"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1413,7 +1469,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('snes')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/snes.svg" alt="snes logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/snes.webp" alt="snes"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1427,7 +1483,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('wii')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/wii.svg" alt="wii logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/wii.webp" alt="wii"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1444,7 +1500,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('arcade')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/arcade.svg" alt="arcade logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/arcade.webp" alt="arcade"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1458,7 +1514,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('dreamcast')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/dreamcast.svg" alt="dreamcast logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/dreamcast.webp" alt="dreamcast"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1472,7 +1528,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('gba')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/gba.svg" alt="gba logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/gba.webp" alt="gba"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1486,7 +1542,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('gc')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/gc.svg" alt="gc logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/gc.webp" alt="gc"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1500,7 +1556,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('megadrive')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/megadrive.svg" alt="megadrive logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/megadrive.webp" alt="megadrive"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1514,7 +1570,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('n64')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/n64.svg" alt="n64 logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/n64.webp" alt="n64"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1528,7 +1584,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('neogeo')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/neogeo.svg" alt="neogeo logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/neogeo.webp" alt="neogeo"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1542,7 +1598,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('nes')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/nes.svg" alt="nes logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/nes.webp" alt="nes"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1556,7 +1612,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('ps2')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/ps2.svg" alt="ps2 logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/ps2.webp" alt="ps2"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1570,7 +1626,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('psp')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/psp.svg" alt="psp logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/psp.webp" alt="psp"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1584,7 +1640,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('psx')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/psx.svg" alt="psx logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/psx.webp" alt="psx"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1598,7 +1654,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('snes')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/snes.svg" alt="snes logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/snes.webp" alt="snes"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1612,7 +1668,7 @@
                                 <div class="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300"
                                     onclick="openConsolaModal('wii')" style="-webkit-user-drag: none;">
                                     <img src="MXP/Shots/consolas/wii.svg" alt="wii logo"
-                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
+                                        class="absolute top-4 h-12 w-auto object-contain transition-all duration-300 opacity-100 scale-100 lg:opacity-0 lg:scale-50 lg:group-hover:opacity-100 lg:group-hover:scale-100 pointer-events-none drop-shadow-lg z-10">
                                     <img src="MXP/Shots/consolas/wii.webp" alt="wii"
                                         class="w-[300px] h-[300px] object-contain drop-shadow-2xl pointer-events-none"
                                         style="-webkit-user-drag: none;">
@@ -1633,9 +1689,9 @@
                             class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
 
                             <!-- Joystick 1 (Above on mobile, Left on PC) -->
-                            <div class="order-1">
+                            <div class="order-1 flex items-center justify-center">
                                 <img src="MXP/control1.webp"
-                                    class="w-48 h-48 md:w-64 md:h-64 object-contain float-joy-1">
+                                    class="w-[60vw] md:w-[480px] h-auto object-contain float-joy-1">
                             </div>
 
                             <!-- Sticky Note Content (Yellow Post-it style) -->
@@ -1664,9 +1720,10 @@
                             </div>
 
                             <!-- Joystick 2 (Below on mobile, Right on PC) -->
-                            <div class="order-3">
+                            <div class="order-3 flex items-center justify-center">
                                 <img src="MXP/control2.webp"
-                                    class="w-48 h-48 md:w-64 md:h-64 object-contain float-joy-2">
+                                    class="w-[60vw] md:w-[480px] h-auto object-contain float-joy-2">
+
                             </div>
 
                         </div>
@@ -2148,13 +2205,12 @@
                     </div>
 
                     <div class="text-center space-y-4">
-                        <h2 class="text-3xl md:text-5xl font-bold text-gray-900">¿Listo para volver?</h2>
-                        <p class="text-xl md:text-2xl text-gray-700 italic font-serif">La era dorada de la PC te está
-                            esperando.</p>
-                        <p class="text-lg text-gray-600 leading-relaxed font-sans pt-2">
-                            Mantené lo mejor de hoy con la esencia de ayer. Sin complicaciones, sin bloatware, pura
-                            nostalgia funcional.
-                        </p>
+                        <h2 class="text-3xl md:text-5xl font-bold text-gray-900">
+                            <span class="ques-ani">¿</span>Todo listo para volver<span class="ques-ani">?</span>
+                        </h2>
+                        <p class="hidden text-xl md:text-2xl text-gray-700 italic font-serif">Lo mejor del pasado con la
+                            potencia de hoy. </p>
+
                         <div class="pt-6">
                             <button class="xp-button-modern !bg-xpOrange hover:!bg-orange-700 !px-12"
                                 onclick="window.open('https://wa.me/5492252513233?text='+encodeURIComponent('¡Hola Kenna! ¡Quiero la MillennialXP!'), '_blank')">
