@@ -172,11 +172,16 @@
         }
 
         tr {
-            transition: background 0.1s;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.2s ease, font-size 0.2s ease;
+            cursor: pointer;
         }
 
         tr:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(66, 133, 244, 0.2) !important;
+            transform: scale(1.01) translateX(8px);
+            font-size: 15px;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+            z-index: 10;
         }
 
         /* Scrollbars matching xp look */
@@ -347,8 +352,42 @@
 
         .title-area {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 4px;
+        }
+
+        .game-count {
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Segoe UI', 'Tahoma', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: center;
+            margin-top: 8px;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInCount 0.5s ease-out;
+            pointer-events: none;
+            unicode-bidi: isolate;
+        }
+
+        @keyframes fadeInCount {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive Improvements */
@@ -374,10 +413,84 @@
                 max-width: 140px;
             }
         }
+
+        /* Modern Cursor Icon Logic */
+        .google-search-icon {
+            position: fixed;
+            width: 48px;
+            height: 48px;
+            pointer-events: none;
+            z-index: 20000;
+            display: none;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        .google-search-icon.active {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .google-search-icon.shrinking {
+            opacity: 0;
+            transform: scale(0);
+            transition: transform 0.15s cubic-bezier(0.6, -0.28, 0.735, 0.045), opacity 0.15s ease;
+        }
+
+        .google-search-label {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-family: 'Comic Sans MS', 'Comic Sans', 'Comic Neue', cursive;
+            font-size: 11px;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 20001;
+            display: none;
+            opacity: 0;
+            transform: scale(0) translateY(10px);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .google-search-label.active {
+            display: block;
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        tr.row-selected>td {
+            background: rgba(66, 133, 244, 0.15) !important;
+        }
     </style>
 </head>
 
 <body>
+    <!-- Retro Search Icon (follows cursor) -->
+    <img id="googleSearchIcon" class="google-search-icon" src="../XP_Icons/Connection Status.webp" alt="Buscar">
+    <span id="googleSearchLabel" class="google-search-label">googlear</span>
+
     <div class="header-container">
         <div class="title-area">
             <div class="custom-select" id="customSelect">
@@ -400,6 +513,7 @@
                     <div onclick="selectOption('wii')"><img src="../Shots/consolas/wii.svg" alt="Wii"></div>
                 </div>
             </div>
+            <div id="gameCount" class="game-count"></div>
         </div>
     </div>
 
@@ -469,6 +583,16 @@
             }
         });
 
+        function updateGameCount(visible, total) {
+            const el = document.getElementById('gameCount');
+            if (!el) return;
+            if (visible === total) {
+                el.textContent = `${total} Juegos Instalados`;
+            } else {
+                el.textContent = `${visible} de ${total} Juegos Instalados`;
+            }
+        }
+
         function loadConsole(consoleId) {
             currentConsoleId = consoleId;
             gameData = [];
@@ -487,6 +611,7 @@
 
             const tbody = document.getElementById('gamesTbody');
             tbody.innerHTML = '<tr><td colspan="5" class="loading">Cargando juegos...</td></tr>';
+            document.getElementById('gameCount').textContent = '...';
 
             fetch(`../Shots/consolas/${consoleId}.xml`)
                 .then(response => {
@@ -502,6 +627,7 @@
 
                     if (games.length === 0) {
                         tbody.innerHTML = '<tr><td colspan="5" class="loading">No hay juegos listados para esta consola todavía.</td></tr>';
+                        updateGameCount(0, 0);
                         return;
                     }
 
@@ -531,9 +657,11 @@
 
                     gameData.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
                     renderTable(gameData);
+                    updateGameCount(gameData.length, gameData.length);
                 })
                 .catch(error => {
                     tbody.innerHTML = '<tr><td colspan="5" class="loading">Ocurrió un error o el archivo XML no existe.</td></tr>';
+                    document.getElementById('gameCount').textContent = '';
                     console.error("Error fetching XML:", error);
                 });
         }
@@ -583,11 +711,34 @@
                 tr.innerHTML = `
                     <td><strong>${game.name}</strong></td>
                     <td>${game.genre}</td>
-                    <!-- Store raw data to data- attributes for easier sorting if needed, though we sort JS array -->
                     <td>${game.date}</td>
                     <td>${game.players}</td>
                     <td>${game.ratingHtml}</td>
                 `;
+
+                // Handle search logic: 1st click shows icon, 2nd click searches
+                tr.addEventListener('click', (e) => {
+                    if (activeRow === tr) {
+                        const consoleName = consoleNames[currentConsoleId] || currentConsoleId;
+                        let extra = "";
+
+                        // Check if clicked cell is "Clasificación" (index 4)
+                        const td = e.target.closest('td');
+                        if (td && td.cellIndex === 4) {
+                            extra = " analisis puntaje";
+                        }
+
+                        const query = encodeURIComponent(`${game.name} ${consoleName}${extra}`);
+                        window.open(`https://www.google.com/search?q=${query}`, '_blank');
+
+                        clearActiveRow();
+                    } else {
+                        // First click
+                        setActiveRow(tr);
+                        updateIconPos(e);
+                    }
+                });
+
                 tbody.appendChild(tr);
             });
         }
@@ -602,6 +753,7 @@
             });
 
             renderTable(filteredData);
+            updateGameCount(filteredData.length, gameData.length);
         }
 
         function sortTable(columnIndex, type) {
@@ -652,6 +804,65 @@
 
             renderTable(dataToSort);
         }
+        // --- Modern Search Icon System (PC.html Style) ---
+        const googleIcon = document.getElementById('googleSearchIcon');
+        const googleLabel = document.getElementById('googleSearchLabel');
+        let activeRow = null;
+        let mouseX = 0;
+        let mouseY = 0;
+
+        const consoleNames = {
+            gba: 'Game Boy Advance', gc: 'GameCube', megadrive: 'Mega Drive',
+            n64: 'Nintendo 64', neogeo: 'Neo Geo', nes: 'NES',
+            ps2: 'PlayStation 2', psp: 'PSP', psx: 'PlayStation',
+            snes: 'Super Nintendo', wii: 'Wii', arcade: 'Arcade',
+            dreamcast: 'Dreamcast'
+        };
+
+        const updateIconPos = (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            googleIcon.style.left = `${mouseX - 24}px`;
+            googleIcon.style.top = `${mouseY - 24}px`;
+            googleLabel.style.left = `${mouseX - (googleLabel.offsetWidth / 2)}px`;
+            googleLabel.style.top = `${mouseY + 33}px`;
+        };
+
+        function setActiveRow(tr) {
+            if (activeRow) activeRow.classList.remove('row-selected');
+            activeRow = tr;
+            activeRow.classList.add('row-selected');
+            googleIcon.classList.remove('shrinking');
+            googleIcon.classList.add('active');
+            googleLabel.classList.add('active');
+        }
+
+        function clearActiveRow() {
+            if (activeRow) activeRow.classList.remove('row-selected');
+            activeRow = null;
+            googleIcon.classList.add('shrinking');
+            googleLabel.classList.remove('active');
+            setTimeout(() => {
+                if (!activeRow) googleIcon.classList.remove('active', 'shrinking');
+            }, 150);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            if (activeRow) {
+                const trUnderMouse = e.target.closest('tr');
+                if (trUnderMouse === activeRow) {
+                    updateIconPos(e);
+                } else {
+                    clearActiveRow();
+                }
+            }
+        }, { passive: true });
+
+        document.addEventListener('mousedown', (e) => {
+            if (!e.target.closest('tr') && activeRow) {
+                clearActiveRow();
+            }
+        });
     </script>
 </body>
 
