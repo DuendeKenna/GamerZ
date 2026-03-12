@@ -375,6 +375,37 @@
             scrollbar-width: none;
             /* Firefox */
         }
+
+        /* Modal responsiveness for mobile */
+        @media (max-width: 768px) {
+            #pcModal .window,
+            #consolaModal .window {
+                height: 94vh !important;
+                max-height: 94vh !important;
+                margin: 0.5rem !important;
+                width: calc(100% - 1rem) !important;
+            }
+
+            #pcModal,
+            #consolaModal {
+                align-items: flex-start !important;
+                padding-top: 1rem !important;
+            }
+
+            /* Ensure title bar text doesn't overflow */
+            .title-bar-text {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 180px;
+            }
+
+            /* Touch-friendly close button */
+            .title-bar-controls button[aria-label="Close"] {
+                min-width: 30px;
+                min-height: 28px;
+            }
+        }
     </style>
     <style data-purpose="typography">
         .hero-title {
@@ -580,6 +611,111 @@
             transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
+        /* Vibrant Feature Base Icons & Text */
+        @keyframes vibrant-pulse {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes vibrant-text-pulse {
+            0%, 100% { transform: translateY(-2px); }
+            50% { transform: translateY(2px); }
+        }
+
+        @property --hover-glow-calc {
+            syntax: '<color>';
+            inherits: true;
+            initial-value: #4ade80;
+        }
+
+        @property --hover-shadow-calc {
+            syntax: '<color>';
+            inherits: true;
+            initial-value: rgba(74, 222, 128, 0.6);
+        }
+
+        @keyframes bg-hue-rotator {
+            0%, 100% { --hover-glow-calc: #4ade80; --hover-shadow-calc: rgba(74, 222, 128, 0.6); }
+            14.2% { --hover-glow-calc: #facc15; --hover-shadow-calc: rgba(250, 204, 21, 0.6); }
+            28.5% { --hover-glow-calc: #fb923c; --hover-shadow-calc: rgba(251, 146, 60, 0.6); }
+            42.8% { --hover-glow-calc: #ef4444; --hover-shadow-calc: rgba(239, 68, 68, 0.6); }
+            57.1% { --hover-glow-calc: #c084fc; --hover-shadow-calc: rgba(192, 132, 252, 0.6); }
+            71.4% { --hover-glow-calc: #60a5fa; --hover-shadow-calc: rgba(96, 165, 250, 0.6); }
+            85.7% { --hover-glow-calc: #ffffff; --hover-shadow-calc: rgba(255, 255, 255, 0.8); }
+        }
+
+        #secFeaturesBase .group {
+            animation: bg-hue-rotator 7s linear infinite;
+        }
+
+        /* Stagger the hidden animations so each card is at a different color in the cycle */
+        #secFeaturesBase .grid .group:nth-child(1) { animation-delay: 0s; }
+        #secFeaturesBase .grid .group:nth-child(2) { animation-delay: -1.5s; }
+        #secFeaturesBase .grid .group:nth-child(3) { animation-delay: -3.3s; }
+        #secFeaturesBase .grid .group:nth-child(4) { animation-delay: -4.8s; }
+        #secFeaturesBase .grid .group:nth-child(5) { animation-delay: -6.1s; }
+
+        .feature-base-icon {
+            transition: scale 1.5s cubic-bezier(0.22, 1, 0.36, 1), 
+                        rotate 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+                        translate 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: scale, rotate, translate;
+            scale: 1;
+            rotate: 0deg;
+            translate: 0 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .feature-base-icon-left {
+            transform-origin: right center;
+        }
+
+        .feature-base-icon-right {
+            transform-origin: left center;
+        }
+
+        .group:hover .feature-base-icon-left {
+            scale: 1.35;
+            rotate: 8deg;
+            translate: -40px 0;
+            z-index: 100;
+            animation: vibrant-pulse 3.5s ease-in-out infinite;
+        }
+
+        .group:hover .feature-base-icon-right {
+            scale: 1.35;
+            rotate: -8deg;
+            translate: 40px 0;
+            z-index: 100;
+            animation: vibrant-pulse 3.5s ease-in-out infinite;
+        }
+
+        /* Text transitions for Feature Base */
+        .feature-base-text-title {
+            transition: color 0.3s ease, text-shadow 0.3s ease, scale 1.5s cubic-bezier(0.22, 1, 0.36, 1), transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: scale, color, text-shadow, transform;
+            scale: 1;
+        }
+
+        .feature-base-text-desc {
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            will-change: color, text-shadow;
+        }
+
+        .group:hover .feature-base-text-title {
+            scale: 1.1;
+            /* Applies smoothly to whatever state the background variable cycle is at */
+            color: var(--hover-glow-calc) !important;
+            text-shadow: 0 0 15px var(--hover-shadow-calc), 0 5px 15px rgba(0,0,0,0.5) !important;
+            animation: vibrant-text-pulse 3.5s ease-in-out infinite;
+        }
+
+        .group:hover .feature-base-text-desc {
+            color: #ffffff !important;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9) !important;
+        }
+
         /* Filmographic transition for specific carousels */
         .filmographic-fade {
             transition: opacity 3s cubic-bezier(0.45, 0, 0.55, 1) !important;
@@ -678,38 +814,39 @@
                 <h3 class="text-4xl md:text-6xl font-bold mb-20 xp-title-shadow">Un Sistema Retro~Renovado</h3>
 
                 <div
-                    class="max-w-7xl mx-auto border border-white/20 rounded-[32px] overflow-hidden shadow-2xl antialiased">
+                    class="max-w-7xl mx-auto border border-white/20 rounded-[32px] shadow-2xl antialiased">
 
                     <!-- Row 1: Estilo XP & Potencia Moderna -->
                     <div
-                        class="grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-[#0053e1] to-[#002060] shadow-[inset_0_2px_15px_rgba(255,255,255,0.4)] border-b border-white/10">
-                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group">
+                        class="grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-[#0053e1] to-[#002060] shadow-[inset_0_2px_15px_rgba(255,255,255,0.4)] border-b border-white/10 rounded-t-[32px]">
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group cursor-default">
                             <div class="shrink-0">
                                 <img src="MXP/XP_Icons/Appearance.webp"
-                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:rotate-6 transition-all"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl feature-base-icon feature-base-icon-left"
                                     alt="Estilo XP">
                             </div>
                             <div class="text-left">
-                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100 feature-base-text-title"
                                     style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Estilo XP</h4>
-                                <p class="text-lg leading-relaxed text-white/90">
+                                <p class="text-lg leading-relaxed text-white/90 feature-base-text-desc">
                                     Un entorno visual <strong>perfeccionado</strong> que te transporta a los 2000 con
                                     fluidez moderna.
                                 </p>
                             </div>
                         </div>
-                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group bg-black/5 lg:bg-transparent">
+                        <div
+                            class="flex flex-row items-center gap-6 p-6 md:p-8 group cursor-default bg-black/5 lg:bg-transparent">
                             <div class="text-right flex-1">
-                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100 feature-base-text-title"
                                     style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Potencia Moderna</h4>
-                                <p class="text-lg leading-relaxed text-white/90">
+                                <p class="text-lg leading-relaxed text-white/90 feature-base-text-desc">
                                     Debajo del capó corre un motor de <strong>máximo rendimiento</strong> para correr
                                     todos los juegos y software instalados.
                                 </p>
                             </div>
                             <div class="shrink-0">
                                 <img src="MXP/XP_Icons/Performance Monitor.webp"
-                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:-rotate-6 transition-all"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl feature-base-icon feature-base-icon-right"
                                     alt="Potencia Moderna">
                             </div>
                         </div>
@@ -718,26 +855,27 @@
                     <!-- Row 2: Juegazos & Emuladores -->
                     <div
                         class="grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-[#004dc9] to-[#001c57] shadow-[inset_0_2px_15px_rgba(255,255,255,0.3)] border-b border-white/10">
-                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group">
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group cursor-default">
                             <div class="shrink-0">
                                 <img src="MXP/XP_Icons/Mouse.webp"
-                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:rotate-6 transition-all"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl feature-base-icon feature-base-icon-left"
                                     alt="Juegos de PC">
                             </div>
                             <div class="text-left">
-                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100 feature-base-text-title"
                                     style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Títulos de PC</h4>
-                                <p class="text-lg leading-relaxed text-white/90">
+                                <p class="text-lg leading-relaxed text-white/90 feature-base-text-desc">
                                     Colección <strong>curada y potenciada</strong>; clásicos expandidos, parches y
                                     addons de la comunidad, en español y con packs HD
                                 </p>
                             </div>
                         </div>
-                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group bg-black/5 lg:bg-transparent">
+                        <div
+                            class="flex flex-row items-center gap-6 p-6 md:p-8 group cursor-default bg-black/5 lg:bg-transparent">
                             <div class="text-right flex-1">
-                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100 feature-base-text-title"
                                     style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Consolas Emuladas</h4>
-                                <p class="text-lg leading-relaxed text-white/90">
+                                <p class="text-lg leading-relaxed text-white/90 feature-base-text-desc">
                                     <strong>Sin basura</strong>, con obras que vale tu tiempo jugar - <i>
                                         ¿pa qué querés
                                         15.000 juegos infumables?
@@ -746,7 +884,7 @@
                             </div>
                             <div class="shrink-0">
                                 <img src="MXP/XP_Icons/Game Controller.webp"
-                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:-rotate-6 transition-all"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl feature-base-icon feature-base-icon-right"
                                     alt="Emuladores">
                             </div>
                         </div>
@@ -754,34 +892,35 @@
 
                     <!-- Row 3: Software & Música -->
                     <div
-                        class="grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-[#0048bc] to-[#00174a] shadow-[inset_0_2px_15px_rgba(255,255,255,0.2)]">
-                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group">
+                        class="grid grid-cols-1 lg:grid-cols-2 bg-gradient-to-br from-[#0048bc] to-[#00174a] shadow-[inset_0_2px_15px_rgba(255,255,255,0.2)] rounded-b-[32px]">
+                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group cursor-default">
                             <div class="shrink-0">
                                 <img src="MXP/XP_Icons/Programs.webp"
-                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:rotate-6 transition-all"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl feature-base-icon feature-base-icon-left"
                                     alt="Software Clave">
                             </div>
                             <div class="text-left">
-                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100 feature-base-text-title"
                                     style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Software Clave</h4>
-                                <p class="text-lg leading-relaxed text-white/90">
+                                <p class="text-lg leading-relaxed text-white/90 feature-base-text-desc">
                                     <strong>Activado y optimizado</strong>. Cero bloatware; pura usabilidad desde el
                                     primer día.
                                 </p>
                             </div>
                         </div>
-                        <div class="flex flex-row items-center gap-6 p-6 md:p-8 group bg-black/5 lg:bg-transparent">
+                        <div
+                            class="flex flex-row items-center gap-6 p-6 md:p-8 group cursor-default bg-black/5 lg:bg-transparent">
                             <div class="text-right flex-1">
-                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
+                                <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100 feature-base-text-title"
                                     style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Música Offline</h4>
-                                <p class="text-lg leading-relaxed text-white/90">
+                                <p class="text-lg leading-relaxed text-white/90 feature-base-text-desc">
                                     Tu biblioteca personal de <strong>hitazos inolvidables</strong> sin depender de
                                     internet.
                                 </p>
                             </div>
                             <div class="shrink-0">
                                 <img src="MXP/XP_Icons/Audio Devices.webp"
-                                    class="max-w-20 md:max-w-28 drop-shadow-xl group-hover:-rotate-6 transition-all"
+                                    class="max-w-20 md:max-w-28 drop-shadow-xl feature-base-icon feature-base-icon-right"
                                     alt="Música Offline">
                             </div>
                         </div>
@@ -939,34 +1078,46 @@
                     <!-- Key Features Row -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mt-16 max-w-7xl mx-auto">
                         <!-- Feature 1 -->
-                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                        <div
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
                             <!-- Background Layer: Expands with gradient and glow -->
-                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
-                            
+                            <div
+                                class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
+                            </div>
+
                             <!-- Icon Container -->
                             <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
-                                <img src="MXP/XP_Icons/Favorites.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Curated">
+                                <img src="MXP/XP_Icons/Favorites.webp"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    alt="Curated">
                             </div>
-                            
+
                             <!-- Feature Content -->
                             <div class="relative z-10">
-                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Colección Curada</h4>
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Colección
+                                    Curada</h4>
                                 <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
-                                    <strong>¡Cero basura!</strong> Solo Títulos Legendarios <i class="text-xs">(alguno que otro bizarro)</i> y divertidos!
+                                    <strong>¡Cero basura!</strong> Solo Títulos Legendarios <i class="text-xs">(alguno
+                                        que otro bizarro)</i> y divertidos!
                                 </p>
                             </div>
                         </div>
 
                         <!-- Feature 2 -->
-                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
-                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
-                            
-                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
-                                <img src="MXP/XP_Icons/Change Language.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Spanish">
+                        <div
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <div
+                                class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
-                            
+
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Change Language.webp"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    alt="Spanish">
+                            </div>
+
                             <div class="relative z-10">
                                 <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">En Español</h4>
                                 <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
@@ -976,16 +1127,22 @@
                         </div>
 
                         <!-- Feature 3 -->
-                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
-                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
-                            
-                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
-                                <img src="MXP/XP_Icons/Floppy Disk.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Saves">
+                        <div
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <div
+                                class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
-                            
+
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Floppy Disk.webp"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    alt="Saves">
+                            </div>
+
                             <div class="relative z-10">
-                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Guardado Rápido</h4>
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Guardado Rápido
+                                </h4>
                                 <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
                                     Guardá y cargá partidas al instante en cualquier punto del juego.
                                 </p>
@@ -993,16 +1150,22 @@
                         </div>
 
                         <!-- Feature 4 -->
-                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
-                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
-                            
-                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
-                                <img src="MXP/XP_Icons/Forward.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Turbo">
+                        <div
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <div
+                                class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
-                            
+
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Forward.webp"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    alt="Turbo">
+                            </div>
+
                             <div class="relative z-10">
-                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Turbo Speed</h4>
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Turbo Speed
+                                </h4>
                                 <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
                                     Acelerá la ejecución para saltar cinemáticas o farmear niveles.
                                 </p>
@@ -1010,16 +1173,22 @@
                         </div>
 
                         <!-- Feature 5 -->
-                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
-                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
-                            
-                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
-                                <img src="MXP/XP_Icons/Game Controller.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Controls">
+                        <div
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <div
+                                class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
-                            
+
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Game Controller.webp"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    alt="Controls">
+                            </div>
+
                             <div class="relative z-10">
-                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Plug & Play</h4>
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Plug & Play
+                                </h4>
                                 <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
                                     Joysticks configurados. Conectá, elegí tu consola y jugá.
                                 </p>
@@ -1636,9 +1805,6 @@
                                         class="absolute inset-0 w-full h-full object-cover opacity-0 filmographic-fade" />
                                 </div>
                             </div>
-                        </div>
-                        <!-- Dots -->
-                        <div id="creatorDots" class="flex justify-center space-x-3 mt-8">
                         </div>
                     </div>
 
@@ -2398,9 +2564,12 @@
 
             // Prevent background scrolling
             document.body.style.overflow = 'hidden';
+
+            // Push state for back button handling
+            history.pushState({ modal: 'pc' }, '');
         }
 
-        function closePcModal() {
+        function closePcModal(isPopState = false) {
             pcModal.classList.add('opacity-0');
             pcModalContainer.classList.add('scale-95');
 
@@ -2408,6 +2577,11 @@
                 pcModal.classList.add('hidden');
                 document.body.style.overflow = '';
             }, 300); // Matches the duration-300 transition
+
+            // If closed via button (not back button), go back in history
+            if (!isPopState && history.state && history.state.modal === 'pc') {
+                history.back();
+            }
         }
 
         // Close modal when clicking outside the container
@@ -2440,9 +2614,12 @@
             if (typeof isAutoScrolling !== 'undefined') {
                 isAutoScrolling = false;
             }
+
+            // Push state for back button handling
+            history.pushState({ modal: 'consola' }, '');
         }
 
-        function closeConsolaModal() {
+        function closeConsolaModal(isPopState = false) {
             consolaModal.classList.add('opacity-0');
             consolaModalContainer.classList.add('scale-95');
 
@@ -2456,11 +2633,26 @@
                     isAutoScrolling = true;
                 }
             }, 300);
+
+            // If closed via button (not back button), go back in history
+            if (!isPopState && history.state && history.state.modal === 'consola') {
+                history.back();
+            }
         }
 
         consolaModal.addEventListener('click', (e) => {
             if (e.target === consolaModal) {
                 closeConsolaModal();
+            }
+        });
+
+        // Global popstate handler for back button
+        window.addEventListener('popstate', (e) => {
+            if (!pcModal.classList.contains('hidden')) {
+                closePcModal(true);
+            }
+            if (!consolaModal.classList.contains('hidden')) {
+                closeConsolaModal(true);
             }
         });
 
@@ -2638,7 +2830,6 @@
                 floatingBtn.classList.remove('floating-active');
             });
         });
-
     </script>
     <!-- END: Clock Script -->
 </body>
