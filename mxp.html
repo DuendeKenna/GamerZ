@@ -407,62 +407,6 @@
                 min-height: 28px;
             }
         }
-
-        /* Question Marks Animation */
-        @keyframes ques-shake {
-            0% {
-                transform: scale(1) rotate(0deg);
-                color: inherit;
-            }
-
-            5% {
-                transform: scale(1.3) rotate(-8deg);
-                color: #22c55e;
-            }
-
-            10% {
-                transform: scale(1.3) rotate(8deg);
-                color: #22c55e;
-            }
-
-            15% {
-                transform: scale(1.3) rotate(-8deg);
-                color: #22c55e;
-            }
-
-            20% {
-                transform: scale(1.3) rotate(8deg);
-                color: #22c55e;
-            }
-
-            25% {
-                transform: scale(1.3) rotate(0deg);
-                color: #22c55e;
-            }
-
-            42.5% {
-                transform: scale(1.3) rotate(0deg);
-                color: #22c55e;
-            }
-
-            /* 1.7s of a 4s cycle */
-            47.5% {
-                transform: scale(1) rotate(0deg);
-                color: inherit;
-            }
-
-            100% {
-                transform: scale(1) rotate(0deg);
-                color: inherit;
-            }
-        }
-
-        .ques-ani {
-            display: inline-block;
-            animation: ques-shake 4s infinite;
-            transform-origin: center;
-            will-change: transform, color;
-        }
     </style>
     <style data-purpose="typography">
         .hero-title {
@@ -2206,7 +2150,7 @@
 
                     <div class="text-center space-y-4">
                         <h2 class="text-3xl md:text-5xl font-bold text-gray-900">
-                            <span class="ques-ani">¿</span>Todo listo para volver<span class="ques-ani">?</span>
+                            ¡Nave Lista!<br> ¿Viajamos?
                         </h2>
                         <p class="hidden text-xl md:text-2xl text-gray-700 italic font-serif">Lo mejor del pasado con la
                             potencia de hoy. </p>
@@ -2216,7 +2160,7 @@
                                 onclick="window.open('https://wa.me/5492252513233?text='+encodeURIComponent('¡Hola Kenna! ¡Quiero la MillennialXP!'), '_blank')">
 
                                 <span>🌟</span>
-                                <span>¡QUIERO MI MXP!</span>
+                                <span>QUIERO MI MXP</span>
                                 <span>💾</span>
                             </button>
                         </div>
