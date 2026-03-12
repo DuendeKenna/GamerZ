@@ -378,6 +378,7 @@
 
         /* Modal responsiveness for mobile */
         @media (max-width: 768px) {
+
             #pcModal .window,
             #consolaModal .window {
                 height: 94vh !important;
@@ -613,13 +614,27 @@
 
         /* Vibrant Feature Base Icons & Text */
         @keyframes vibrant-pulse {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         @keyframes vibrant-text-pulse {
-            0%, 100% { transform: translateY(-2px); }
-            50% { transform: translateY(2px); }
+
+            0%,
+            100% {
+                transform: translateY(-2px);
+            }
+
+            50% {
+                transform: translateY(2px);
+            }
         }
 
         @property --hover-glow-calc {
@@ -635,13 +650,42 @@
         }
 
         @keyframes bg-hue-rotator {
-            0%, 100% { --hover-glow-calc: #4ade80; --hover-shadow-calc: rgba(74, 222, 128, 0.6); }
-            14.2% { --hover-glow-calc: #facc15; --hover-shadow-calc: rgba(250, 204, 21, 0.6); }
-            28.5% { --hover-glow-calc: #fb923c; --hover-shadow-calc: rgba(251, 146, 60, 0.6); }
-            42.8% { --hover-glow-calc: #ef4444; --hover-shadow-calc: rgba(239, 68, 68, 0.6); }
-            57.1% { --hover-glow-calc: #c084fc; --hover-shadow-calc: rgba(192, 132, 252, 0.6); }
-            71.4% { --hover-glow-calc: #60a5fa; --hover-shadow-calc: rgba(96, 165, 250, 0.6); }
-            85.7% { --hover-glow-calc: #ffffff; --hover-shadow-calc: rgba(255, 255, 255, 0.8); }
+
+            0%,
+            100% {
+                --hover-glow-calc: #4ade80;
+                --hover-shadow-calc: rgba(74, 222, 128, 0.6);
+            }
+
+            14.2% {
+                --hover-glow-calc: #facc15;
+                --hover-shadow-calc: rgba(250, 204, 21, 0.6);
+            }
+
+            28.5% {
+                --hover-glow-calc: #fb923c;
+                --hover-shadow-calc: rgba(251, 146, 60, 0.6);
+            }
+
+            42.8% {
+                --hover-glow-calc: #ef4444;
+                --hover-shadow-calc: rgba(239, 68, 68, 0.6);
+            }
+
+            57.1% {
+                --hover-glow-calc: #c084fc;
+                --hover-shadow-calc: rgba(192, 132, 252, 0.6);
+            }
+
+            71.4% {
+                --hover-glow-calc: #60a5fa;
+                --hover-shadow-calc: rgba(96, 165, 250, 0.6);
+            }
+
+            85.7% {
+                --hover-glow-calc: #ffffff;
+                --hover-shadow-calc: rgba(255, 255, 255, 0.8);
+            }
         }
 
         #secFeaturesBase .group {
@@ -649,16 +693,30 @@
         }
 
         /* Stagger the hidden animations so each card is at a different color in the cycle */
-        #secFeaturesBase .grid .group:nth-child(1) { animation-delay: 0s; }
-        #secFeaturesBase .grid .group:nth-child(2) { animation-delay: -1.5s; }
-        #secFeaturesBase .grid .group:nth-child(3) { animation-delay: -3.3s; }
-        #secFeaturesBase .grid .group:nth-child(4) { animation-delay: -4.8s; }
-        #secFeaturesBase .grid .group:nth-child(5) { animation-delay: -6.1s; }
+        #secFeaturesBase .grid .group:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        #secFeaturesBase .grid .group:nth-child(2) {
+            animation-delay: -1.5s;
+        }
+
+        #secFeaturesBase .grid .group:nth-child(3) {
+            animation-delay: -3.3s;
+        }
+
+        #secFeaturesBase .grid .group:nth-child(4) {
+            animation-delay: -4.8s;
+        }
+
+        #secFeaturesBase .grid .group:nth-child(5) {
+            animation-delay: -6.1s;
+        }
 
         .feature-base-icon {
-            transition: scale 1.5s cubic-bezier(0.22, 1, 0.36, 1), 
-                        rotate 1.5s cubic-bezier(0.22, 1, 0.36, 1),
-                        translate 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: scale 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+                rotate 1.5s cubic-bezier(0.22, 1, 0.36, 1),
+                translate 1.5s cubic-bezier(0.22, 1, 0.36, 1);
             will-change: scale, rotate, translate;
             scale: 1;
             rotate: 0deg;
@@ -707,7 +765,7 @@
             scale: 1.1;
             /* Applies smoothly to whatever state the background variable cycle is at */
             color: var(--hover-glow-calc) !important;
-            text-shadow: 0 0 15px var(--hover-shadow-calc), 0 5px 15px rgba(0,0,0,0.5) !important;
+            text-shadow: 0 0 15px var(--hover-shadow-calc), 0 5px 15px rgba(0, 0, 0, 0.5) !important;
             animation: vibrant-text-pulse 3.5s ease-in-out infinite;
         }
 
@@ -813,8 +871,7 @@
             <div class="container mx-auto px-6 text-white text-center">
                 <h3 class="text-4xl md:text-6xl font-bold mb-20 xp-title-shadow">Un Sistema Retro~Renovado</h3>
 
-                <div
-                    class="max-w-7xl mx-auto border border-white/20 rounded-[32px] shadow-2xl antialiased">
+                <div class="max-w-7xl mx-auto border border-white/20 rounded-[32px] shadow-2xl antialiased">
 
                     <!-- Row 1: Estilo XP & Potencia Moderna -->
                     <div
@@ -930,22 +987,16 @@
 
             </div>
 
-            <!-- Bottom CTA -->
-            <div class="hidden mt-32 text-center pb-20">
-
-                <div class="flex flex-col items-center gap-4 mt-12 cursor-pointer group"
-                    onclick="document.getElementById('secJuegos').scrollIntoView({behavior: 'smooth'})">
-                    <img src="MXP/XP_Icons/Backups.webp"
-                        class="w-22  drop-shadow-2xl group-hover:scale-110 transition-transform animate-icon-chaos"
-                        alt="Explorar">
-                    <i class="fas fa-chevron-down text-4xl text-green-200 animate-bounce"></i>
-                </div>
-                <h4 class="text-3xl md:text-5xl font-bold mb-2 text-white animate-swipe-down animate-luna-glow">¿Listo
-                    para
-                    Viajar al Pasado?</h4>
+            <!-- Parallax CTA Listo para volver -->
+            <div id="parallaxCta"
+                class="mt-20 mb-32 text-center relative z-0 flex justify-center items-start h-48 pointer-events-none">
+                <h4 id="parallaxText"
+                    class="text-4xl md:text-6xl font-bold text-white/90 italic tracking-widest drop-shadow-2xl will-change-transform"
+                    style="text-shadow: 2px 4px 10px rgba(0,0,0,0.5);">
+                    listo para volver..?
+                </h4>
             </div>
             </div>
-            <br><br><br>
         </section>
         <!-- END: Feature Section (Green Redesign) -->
 
@@ -2830,6 +2881,62 @@
                 floatingBtn.classList.remove('floating-active');
             });
         });
+
+        // Parallax "Listo para volver..?"
+        const parallaxText = document.getElementById('parallaxText');
+        const parallaxCta = document.getElementById('parallaxCta');
+        let parallaxTicking = false;
+
+        function updateParallaxText() {
+            if (!parallaxText || !parallaxCta) return;
+            const rect = parallaxCta.getBoundingClientRect();
+            // Visible si está en el viewport
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const scrolledIntoView = window.innerHeight - rect.top;
+                if (scrolledIntoView > 0) {
+                    // Umbral antes de empezar a moverse (delay inicial)
+                    // En pantallas grandes le damos más aire
+                    const movementStartThreshold = 250;
+                    let yOffset = 0;
+                    if (scrolledIntoView > movementStartThreshold) {
+                        // Suavizamos la potencia (de 1.6 a 1.45) para que no acelere tan brutal en desktop
+                        yOffset = Math.pow(scrolledIntoView - movementStartThreshold, 1.45) / 50;
+                    }
+
+                    // Fade out mucho más tarde
+                    const fadeStart = 550;
+                    let opacity = 1;
+                    if (scrolledIntoView > fadeStart) {
+                        // Fade más suave
+                        opacity = Math.max(0, 1 - ((scrolledIntoView - fadeStart) / 500));
+                    }
+                    if (opacity > 0) {
+                        parallaxText.style.visibility = 'visible';
+                        parallaxText.style.transform = `translateY(${yOffset}px)`;
+                        parallaxText.style.opacity = opacity;
+                    } else {
+                        // Invisible para no gastar render
+                        parallaxText.style.visibility = 'hidden';
+                    }
+                } else {
+                    parallaxText.style.transform = `translateY(0px)`;
+                    parallaxText.style.opacity = 1;
+                    parallaxText.style.visibility = 'visible';
+                }
+            } else {
+                parallaxText.style.visibility = 'hidden';
+            }
+            parallaxTicking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!parallaxTicking) {
+                window.requestAnimationFrame(updateParallaxText);
+                parallaxTicking = true;
+            }
+        }, { passive: true });
+
+        updateParallaxText();
     </script>
     <!-- END: Clock Script -->
 </body>
