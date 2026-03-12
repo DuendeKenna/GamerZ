@@ -245,6 +245,83 @@
             animation: floatJoystick2 13s ease-in-out infinite;
         }
 
+        /* PC Button Float Animation */
+        @keyframes floatBtn {
+
+            0%,
+            100% {
+                transform: rotate(-4deg) translate(0, 0);
+            }
+
+            30% {
+                transform: rotate(-2deg) translate(6px, -10px);
+            }
+
+            60% {
+                transform: rotate(-5deg) translate(-4px, 8px);
+            }
+
+            80% {
+                transform: rotate(-3deg) translate(5px, -5px);
+            }
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 12px 45px rgba(139, 92, 246, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .float-btn {
+            animation: floatBtn 7s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .xp-pc-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 1.1rem 2.8rem;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 55%, #3b0f8c 100%);
+            border: 2px solid rgba(255, 255, 255, 0.45);
+            border-radius: 0.9rem;
+            cursor: pointer;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            letter-spacing: 0.03em;
+            animation: pulseGlow 3s ease-in-out infinite;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s ease,
+                filter 0.3s ease;
+            will-change: transform;
+        }
+
+        .xp-pc-button:hover {
+            transform: scale(1.07) rotate(6deg) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            filter: brightness(1.15);
+            animation-play-state: paused;
+        }
+
+        .xp-pc-button:active {
+            transform: scale(0.95) rotate(15deg);
+            background: #3e881e !important;
+            color: #1a3d0d !important;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(62, 136, 30, 0.5);
+        }
+
         /* CD Spin Animation */
         @keyframes spin-constant {
             from {
@@ -426,30 +503,87 @@
         }
 
         @keyframes swipe-down {
+
+            /* Fall 1: Continuous Tumble Right */
             0% {
-                transform: translateY(-15px);
+                transform: translateY(-40px) rotate(0deg) scale(0.9);
                 opacity: 0;
             }
 
-            30% {
-                transform: translateY(0);
+            8% {
+                transform: translateY(0) rotate(0deg) scale(1);
                 opacity: 1;
             }
 
-            70% {
-                transform: translateY(0);
+            /* Starts tipping and falling, rotation begins */
+            18% {
+                transform: translateY(100px) rotate(30deg) scale(1.02);
+                opacity: 1;
+            }
+
+            /* Reaches bottom with full rotational momentum (never stops) */
+            48% {
+                transform: translateY(1300px) rotate(180deg) scale(1.1);
+                opacity: 1;
+            }
+
+            /* Stealth reset */
+            48.01% {
+                transform: translateY(-40px) rotate(0deg);
+                opacity: 0;
+            }
+
+            /* Fall 2: Continuous Tumble Left */
+            50% {
+                transform: translateY(-40px) rotate(0deg) scale(0.9);
+                opacity: 0;
+            }
+
+            58% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+
+            /* Starts tipping Left and falling, rotation begins */
+            68% {
+                transform: translateY(100px) rotate(-30deg) scale(1.02);
+                opacity: 1;
+            }
+
+            /* Reaches bottom opposite side with full tumble */
+            98% {
+                transform: translateY(1300px) rotate(-180deg) scale(1.1);
                 opacity: 1;
             }
 
             100% {
-                transform: translateY(15px);
+                transform: translateY(1300px) rotate(-180deg);
                 opacity: 0;
             }
         }
 
         .animate-swipe-down {
-            animation: swipe-down 2.5s ease-in-out infinite;
+            animation: swipe-down 6s cubic-bezier(0.65, 0, 0.85, 0.15) infinite;
             display: inline-block;
+            will-change: transform, opacity;
+            transform-origin: center center;
+        }
+
+        /* Feature cards hover effect in Emulación Retro */
+        .group:hover .xp-feature-highlight-title,
+        .group:hover .xp-feature-highlight-desc {
+            color: #ffffff !important;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+        }
+
+        .xp-feature-highlight-desc {
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        /* Filmographic transition for specific carousels */
+        .filmographic-fade {
+            transition: opacity 3s cubic-bezier(0.45, 0, 0.55, 1) !important;
+            will-change: opacity;
         }
     </style>
     <!-- END: Custom Styles -->
@@ -506,14 +640,16 @@
                             <p class="text-lg md:text-xl text-gray-700 italic font-serif">¿Buscás la <strong>demo
                                     gratuita</strong>?
                                 <br>Andá a <a href="mxpdemo.html"
-                                    class="text-blue-600 underline font-bold hover:text-blue-800">este link</a>
+                                    class="text-blue-600 underline font-bold hover:text-blue-800">este link</a> <br>
+                                <span class="text-orange-800 opacity-75">¡SOLO para entusiastas..!</span>
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <h2 class="hero-title text-xl md:text-3xl text-white font-serif mt-8">
-                    ¿Vos también extrañás <strong>esta era</strong>?<br>Tranca, <strong>resucitó</strong>...
+                <h2 class=" hero-title text-xl md:text-3xl text-white font-serif mt-8">
+                    ¿Vos también extrañás <strong>esta era</strong>?<br>Tranca,
+                    <strong>resucitó</strong>...
                 </h2>
             </div>
         </section>
@@ -590,22 +726,22 @@
                             </div>
                             <div class="text-left">
                                 <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
-                                    style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Juegazos de PC</h4>
+                                    style="text-shadow: 2px 2px 0px rgba(0,0,0,0.5);">Títulos de PC</h4>
                                 <p class="text-lg leading-relaxed text-white/90">
-                                    Colección <strong>curada y potenciada</strong>; clásicos expandidos, en español, con
-                                    parches HD
-                                    actuales.
+                                    Colección <strong>curada y potenciada</strong>; clásicos expandidos, parches y
+                                    addons de la comunidad, en español y con packs HD
                                 </p>
                             </div>
                         </div>
                         <div class="flex flex-row items-center gap-6 p-6 md:p-8 group bg-black/5 lg:bg-transparent">
                             <div class="text-right flex-1">
                                 <h4 class="text-2xl md:text-3xl font-bold mb-2 text-green-100"
-                                    style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Emuladores</h4>
+                                    style="text-shadow: -2px 2px 0px rgba(0,0,0,0.5);">Consolas Emuladas</h4>
                                 <p class="text-lg leading-relaxed text-white/90">
-                                    <strong>Sin basura</strong>, con títulos que vale tu tiempo jugar, para revivir
-                                    consolas clásicas con máxima
-                                    fidelidad.
+                                    <strong>Sin basura</strong>, con obras que vale tu tiempo jugar - <i>
+                                        ¿pa qué querés
+                                        15.000 juegos infumables?
+                                    </i> Esta colección es 1 LUJO
                                 </p>
                             </div>
                             <div class="shrink-0">
@@ -656,7 +792,7 @@
             </div>
 
             <!-- Bottom CTA -->
-            <div class="mt-32 text-center pb-20">
+            <div class="hidden mt-32 text-center pb-20">
 
                 <div class="flex flex-col items-center gap-4 mt-12 cursor-pointer group"
                     onclick="document.getElementById('secJuegos').scrollIntoView({behavior: 'smooth'})">
@@ -670,6 +806,7 @@
                     Viajar al Pasado?</h4>
             </div>
             </div>
+            <br><br><br>
         </section>
         <!-- END: Feature Section (Green Redesign) -->
 
@@ -680,9 +817,11 @@
             <div class="container mx-auto px-6">
                 <!-- Header -->
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 xp-title-shadow">Juegos de PC</h2>
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 xp-title-shadow">Juegazos de PC</h2>
                     <p class="text-blue-200 text-lg md:text-2xl italic">Los clásicos que conocés, con packs HD, en
                         español y expandidos</p>
+                    <p class="text-blue-500 text-lg md:text-xl italic">...otros que desconocés y te van a
+                        sorprender ;)</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
@@ -763,20 +902,25 @@
                     <!-- Text Column -->
                     <div class="text-white space-y-6">
                         <p class="text-2xl md:text-4xl font-serif leading-relaxed italic">
-                            Tu gameclub soñado, ahora en tu disco rígido. <br>
-                            <span class="font-bold not-italic" style="text-shadow: 3px 3px rgb(14, 0, 66);">+150
-                                joyas</span> instaladas y
+                            Tu ciber soñado - en tu disco <img src="MXP/XP_Icons/Legacy Floppy Disk.webp"
+                                class="inline-block w-10 h-10 md:w-14 md:h-14 align-middle ml-2 hover:scale-110 transition-transform duration-300 drop-shadow-xl"
+                                alt="discos"> <br>
+                            <span class="font-bold not-italic text-5xl"
+                                style="text-shadow: 3px 3px rgb(14, 0, 66);">+150
+                                joyas</span> INSTALADAS y
                             listas
                             para darle Play.
                         </p>
                         <div class="h-1 w-24 bg-xpOrange"></div>
 
                         <!-- Modern XP Button Custom (Using Reusable Control) -->
-                        <div class="pt-6">
-                            <button class="xp-button-modern" onclick="openPcModal()">
-                                <span>Ver Todos</span>
-                                <span class="xp-icon">💾</span>
-                            </button>
+                        <div class="pt-6 flex justify-center md:justify-start">
+                            <div class="float-btn w-full md:w-auto">
+                                <button onclick="openPcModal()" class="xp-pc-button">
+                                    <span>Ver Todos</span>
+                                    <span style="font-size:1.7rem;">💾</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -793,61 +937,93 @@
                     </p>
 
                     <!-- Key Features Row -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mt-16 max-w-6xl mx-auto">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mt-16 max-w-7xl mx-auto">
                         <!-- Feature 1 -->
-                        <div class="flex flex-col items-center text-center group">
-                            <div
-                                class="w-20 h-20 mb-4 flex items-center justify-center bg-white/5 rounded-2xl backdrop-blur-lg border border-white/10 shadow-2xl group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
-                                <img src="MXP/XP_Icons/Favorites.webp" class="w-12 h-12 drop-shadow-xl" alt="Curated">
+                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <!-- Background Layer: Expands with gradient and glow -->
+                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
+                            
+                            <!-- Icon Container -->
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Favorites.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Curated">
                             </div>
-                            <h4 class="text-white font-bold text-xl mb-2">Colección Curada</h4>
-                            <p class="text-blue-50/70 text-lg leading-relaxed px-4"> <strong>¡Cero
-                                    basura!</strong>
-                                Solo
-                                títulos
-                                legendarios y divertidos.</p>
+                            
+                            <!-- Feature Content -->
+                            <div class="relative z-10">
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Colección Curada</h4>
+                                <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
+                                    <strong>¡Cero basura!</strong> Solo Títulos Legendarios <i class="text-xs">(alguno que otro bizarro)</i> y divertidos!
+                                </p>
+                            </div>
                         </div>
+
                         <!-- Feature 2 -->
-                        <div class="flex flex-col items-center text-center group">
-                            <div
-                                class="w-20 h-20 mb-4 flex items-center justify-center bg-white/5 rounded-2xl backdrop-blur-lg border border-white/10 shadow-2xl group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
-                                <img src="MXP/XP_Icons/Change Language.webp" class="w-12 h-12 drop-shadow-xl"
-                                    alt="Spanish">
+                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
+                            
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Change Language.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Spanish">
                             </div>
-                            <h4 class="text-white font-bold text-xl mb-2">En Español</h4>
-                            <p class="text-blue-50/70 text-lg leading-relaxed px-4">Priorizamos versiones traducidas
-                                para revivir cada historia al 100%.</p>
+                            
+                            <div class="relative z-10">
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">En Español</h4>
+                                <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
+                                    Priorizamos versiones traducidas para revivir cada historia al 100%.
+                                </p>
+                            </div>
                         </div>
+
                         <!-- Feature 3 -->
-                        <div class="flex flex-col items-center text-center group">
-                            <div
-                                class="w-20 h-20 mb-4 flex items-center justify-center bg-white/5 rounded-2xl backdrop-blur-lg border border-white/10 shadow-2xl group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
-                                <img src="MXP/XP_Icons/Floppy Disk.webp" class="w-12 h-12 drop-shadow-xl" alt="Saves">
+                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
+                            
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Floppy Disk.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Saves">
                             </div>
-                            <h4 class="text-white font-bold text-xl mb-2">Guardado Rápido</h4>
-                            <p class="text-blue-50/70 text-lg leading-relaxed px-4">Guardá y cargá partidas al instante
-                                en cualquier punto del juego.</p>
+                            
+                            <div class="relative z-10">
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Guardado Rápido</h4>
+                                <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
+                                    Guardá y cargá partidas al instante en cualquier punto del juego.
+                                </p>
+                            </div>
                         </div>
+
                         <!-- Feature 4 -->
-                        <div class="flex flex-col items-center text-center group">
-                            <div
-                                class="w-20 h-20 mb-4 flex items-center justify-center bg-white/5 rounded-2xl backdrop-blur-lg border border-white/10 shadow-2xl group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
-                                <img src="MXP/XP_Icons/Forward.webp" class="w-12 h-12 drop-shadow-xl" alt="Turbo">
+                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
+                            
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Forward.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Turbo">
                             </div>
-                            <h4 class="text-white font-bold text-xl mb-2">Turbo Speed</h4>
-                            <p class="text-blue-50/70 text-lg leading-relaxed px-4">Acelerá la ejecución para saltar
-                                cinemáticas o farmear niveles más rápido.</p>
+                            
+                            <div class="relative z-10">
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Turbo Speed</h4>
+                                <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
+                                    Acelerá la ejecución para saltar cinemáticas o farmear niveles.
+                                </p>
+                            </div>
                         </div>
+
                         <!-- Feature 5 -->
-                        <div class="flex flex-col items-center text-center group">
-                            <div
-                                class="w-20 h-20 mb-4 flex items-center justify-center bg-white/5 rounded-2xl backdrop-blur-lg border border-white/10 shadow-2xl group-hover:scale-110 group-hover:bg-white/10 transition-all duration-500">
-                                <img src="MXP/XP_Icons/Game Controller.webp" class="w-12 h-12 drop-shadow-xl"
-                                    alt="Controls">
+                        <div class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            <div class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
+                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0"></div>
+                            
+                            <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
+                                <img src="MXP/XP_Icons/Game Controller.webp" class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125" alt="Controls">
                             </div>
-                            <h4 class="text-white font-bold text-xl mb-2">Plug & Play</h4>
-                            <p class="text-blue-50/70 text-lg leading-relaxed px-4">Joysticks configurados.
-                                Conectá, elegí tu consola y jugá.</p>
+                            
+                            <div class="relative z-10">
+                                <h4 class="text-white font-bold text-xl mb-2 xp-feature-highlight-title">Plug & Play</h4>
+                                <p class="text-blue-50/70 text-lg leading-relaxed px-4 xp-feature-highlight-desc">
+                                    Joysticks configurados. Conectá, elegí tu consola y jugá.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
@@ -1253,8 +1429,8 @@
 
                                 <div class="text-center space-y-4">
                                     <h3 class="text-3xl md:text-5xl font-bold text-gray-900">¡2 Joysticks
-                                        Incluidos!</h3>
-                                    <p class="text-xl md:text-2xl text-gray-700 italic font-serif">La
+                                        Inalámbricos!</h3>
+                                    <p class="text-xl md:text-2xl text-gray-700 italic font-serif">INCLUIDOS para
                                         experiencia completa.
                                         Listos para conectar y jugar de a dos.</p>
                                     <p class="text-lg text-gray-600 leading-relaxed font-sans pt-2">
@@ -1455,18 +1631,14 @@
                             <div class="window-body !m-0 !p-0 !bg-black overflow-hidden relative w-full h-full group">
                                 <div id="creatorCarousel" class="relative w-full h-full cursor-pointer bg-black">
                                     <img id="img-creator-0" src="MXP/Shots/photo2006a.jpg"
-                                        class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" />
-
-                                </div>
-                                <!-- Dots -->
-                                <div class="hidden" id="creatorDots"
-                                    class="absolute inset-x-0 bottom-4 flex justify-center space-x-2 z-30">
-                                    <div class="w-2.5 h-2.5 rounded-full bg-xpBlue cursor-pointer hover:bg-white transition-colors"
-                                        onclick="attemptSlide('creator', 0)"></div>
-                                    <div class="w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer hover:bg-white transition-colors"
-                                        onclick="attemptSlide('creator', 1)"></div>
+                                        class="absolute inset-0 w-full h-full object-cover opacity-100 filmographic-fade" />
+                                    <img id="img-creator-1" src="MXP/Shots/photo1992a.jpg"
+                                        class="absolute inset-0 w-full h-full object-cover opacity-0 filmographic-fade" />
                                 </div>
                             </div>
+                        </div>
+                        <!-- Dots -->
+                        <div id="creatorDots" class="flex justify-center space-x-3 mt-8">
                         </div>
                     </div>
 
@@ -1964,6 +2136,7 @@
                 totalSlides: 5,
                 prefix: 'img-creator',
                 dotsId: 'creatorDots',
+                autoSlideDuration: 10000,
                 ui: { title: null, sub: null, desc: null }
             },
             pc: {
@@ -2017,6 +2190,7 @@
 
         // Initialize carousels that need dynamic dots
         renderCarouselUI('pc');
+        renderCarouselUI('creator');
 
         function prepareMedia(type, index) {
             return new Promise((resolve) => {
@@ -2123,7 +2297,7 @@
             c.autoSlideInterval = setInterval(() => {
                 const nextIndex = (c.currentSlide + 1) % getTotalSlides(type);
                 attemptSlide(type, nextIndex);
-            }, 6000);
+            }, c.autoSlideDuration || 6000);
         }
 
         function nextSlide(type) {
@@ -2306,19 +2480,25 @@
 
         function animateMarquee() {
             if (!window.isConsolaModalOpen && !isDown) {
-                if (isHovering && !isDown) {
-                    // Proximity scrolling speed
+                if (isHovering) {
+                    // Lerp current speed towards target for smooth feel
+                    hoverSpeed += (targetSpeed - hoverSpeed) * 0.08;
                     groupConsolas.scrollLeft += hoverSpeed;
 
-                    // Update persistent direction if moving
                     if (hoverSpeed > 0.5) scrollDirection = 1;
                     else if (hoverSpeed < -0.5) scrollDirection = -1;
                 } else if (isAutoScrolling) {
-                    // Normal auto-scroll speed following last direction
-                    groupConsolas.scrollLeft += (1 * scrollDirection);
+                    // Gentle momentum decay back to auto-scroll on leave
+                    if (Math.abs(hoverSpeed) > 0.05) {
+                        hoverSpeed *= 0.88; // decelerate
+                        groupConsolas.scrollLeft += hoverSpeed;
+                    } else {
+                        hoverSpeed = 0;
+                        groupConsolas.scrollLeft += (1 * scrollDirection);
+                    }
                 }
 
-                // Seamless loop condition
+                // Seamless loop
                 if (groupConsolas.scrollLeft >= marqueeContainer.scrollWidth / 2) {
                     groupConsolas.scrollLeft -= marqueeContainer.scrollWidth / 2;
                 } else if (groupConsolas.scrollLeft <= 0) {
@@ -2328,24 +2508,26 @@
             requestAnimationFrame(animateMarquee);
         }
 
+        // targetSpeed is the desired speed; hoverSpeed lerps toward it each frame
+        let targetSpeed = 0;
+
         function calculateHoverSpeed(e) {
             const width = groupConsolas.offsetWidth;
             const relX = e.pageX - groupConsolas.offsetLeft;
             const center = width / 2;
-            const distNorm = (relX - center) / center; // -1 at left, 0 center, 1 right
+            const distNorm = (relX - center) / center; // -1 left, 0 center, +1 right
 
-            // Deadzone in the center (60% of focus)
-            const deadzone = 0.6;
-            const maxSpeed = 12;
+            // 40% deadzone: feels intentional, not accidental
+            const deadzone = 0.4;
+            // Max speed: 10px/frame — comfortable, not dizzying
+            const maxSpeed = 10;
 
             if (Math.abs(distNorm) < deadzone) {
-                hoverSpeed = 0;
+                targetSpeed = 0;
             } else {
-                // Calculate percentage of movement outside deadzone (0 to 1)
-                const moveRange = (Math.abs(distNorm) - deadzone) / (1 - deadzone);
-                // Apply a power curve for "slow at start" effect (1.5)
-                const curvedSpeed = Math.pow(moveRange, 1.5) * maxSpeed;
-                hoverSpeed = (distNorm > 0 ? 1 : -1) * curvedSpeed;
+                // Linear mapping outside deadzone — predictable, no sudden lurch
+                const range = (Math.abs(distNorm) - deadzone) / (1 - deadzone); // 0..1
+                targetSpeed = (distNorm > 0 ? 1 : -1) * range * maxSpeed;
             }
         }
 
