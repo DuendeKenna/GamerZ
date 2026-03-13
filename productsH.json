@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 461615,
+      "total": 466624,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -292,6 +292,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 399990,
+          "date": "2026-03-13T14:05:19.136Z"
+        },
+        {
+          "value": 399990,
+          "date": "2026-03-13T14:05:17.121Z"
+        },
+        {
           "value": 368000,
           "date": "2026-03-11T13:35:34.759Z"
         },
@@ -373,6 +381,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 113300,
+          "date": "2026-03-13T14:06:04.429Z"
+        },
+        {
+          "value": 113300,
+          "date": "2026-03-13T14:06:02.473Z"
+        },
         {
           "value": 79688,
           "date": "2026-03-11T13:36:19.159Z"
@@ -465,36 +481,6 @@
       ]
     },
     {
-      "id": 85054,
-      "name": "500 GB - NVMe",
-      "link": "https://www.mercadolibre.com.ar/disco-solido-ssd-480gb-crucial-e100-nvme-gen4-5000mbs/p/MLA46065423?offer_type=OFFICIAL_STORE#polycard_client=search-nordic&search_layout=grid&position=4&type=product&tracking_id=2d030a31-a133-4b1a-9df1-5f2b8d34486e&wid=MLA1482712971&sid=search",
-      "visible": 0,
-      "description": "",
-      "linksAlt": [],
-      "prices": [
-        {
-          "value": 150488,
-          "date": "2026-03-05T15:08:36.069Z"
-        },
-        {
-          "value": 150488,
-          "date": "2026-03-05T15:08:34.000Z"
-        },
-        {
-          "value": 150791,
-          "date": "2026-03-03T14:35:56.982Z"
-        },
-        {
-          "value": 150791,
-          "date": "2026-03-03T14:35:55.052Z"
-        },
-        {
-          "value": 154528,
-          "date": "2026-02-28T12:04:06.579Z"
-        }
-      ]
-    },
-    {
       "id": 93692,
       "name": "1 TB - NVMe",
       "description": "Ideal si creás contenido además de jugar, o tenés una extensa colección.",
@@ -524,6 +510,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 88299,
+          "date": "2026-03-13T15:29:56.754Z"
+        },
+        {
+          "value": 88299,
+          "date": "2026-03-13T15:29:54.761Z"
+        },
         {
           "value": 91000,
           "date": "2026-03-11T13:39:44.653Z"
@@ -586,6 +580,14 @@
       "description": "SATA es más lento que un NVMe, pero mucho más rápido que un rígido clásico.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 159839,
+          "date": "2026-03-13T15:30:08.125Z"
+        },
+        {
+          "value": 159839,
+          "date": "2026-03-13T15:30:06.127Z"
+        },
         {
           "value": 155142,
           "date": "2026-03-06T18:18:20.488Z"
@@ -660,6 +662,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 178900,
+          "date": "2026-03-13T15:30:36.180Z"
+        },
+        {
+          "value": 178900,
+          "date": "2026-03-13T15:30:34.202Z"
+        },
         {
           "value": 105000,
           "date": "2026-03-05T15:11:10.351Z"
@@ -781,6 +791,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 469999,
+          "date": "2026-03-13T14:08:33.978Z"
+        },
+        {
+          "value": 469999,
+          "date": "2026-03-13T14:08:32.011Z"
+        },
+        {
           "value": 499500,
           "date": "2026-03-09T14:24:03.378Z"
         },
@@ -819,6 +837,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 781999,
+          "date": "2026-03-13T14:08:47.063Z"
+        },
+        {
+          "value": 781999,
+          "date": "2026-03-13T14:08:45.097Z"
+        },
+        {
           "value": 745019,
           "date": "2026-03-05T15:08:06.249Z"
         },
@@ -840,6 +866,14 @@
       "description": "Con sus 16GB de VRAM GDDR6, tenés memoria de sobra para mandar las texturas en calidad Ultra hoy y en los juegos que salgan a futuro. Es la inversión inteligente para el gamer que busca potencia bruta y longevidad en su PC sin pagar sobreprecios",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 912373,
+          "date": "2026-03-13T14:08:59.357Z"
+        },
+        {
+          "value": 912373,
+          "date": "2026-03-13T14:08:57.363Z"
+        },
         {
           "value": 1136529,
           "date": "2026-03-11T13:39:05.653Z"
@@ -932,6 +966,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 26073,
+          "date": "2026-03-13T15:31:31.232Z"
+        },
+        {
+          "value": 26073,
+          "date": "2026-03-13T15:31:29.239Z"
+        },
         {
           "value": 25790,
           "date": "2026-03-09T14:26:12.433Z"
@@ -1120,6 +1162,14 @@
       "description": "4 nucleos 4ghz Am4",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 119999,
+          "date": "2026-03-13T14:06:52.105Z"
+        },
+        {
+          "value": 119999,
+          "date": "2026-03-13T14:06:50.099Z"
+        },
         {
           "value": 114990,
           "date": "2026-03-06T18:15:31.081Z"
@@ -1352,6 +1402,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 611529,
+          "date": "2026-03-13T14:06:23.700Z"
+        },
+        {
+          "value": 611529,
+          "date": "2026-03-13T14:06:21.719Z"
+        },
+        {
           "value": 525228,
           "date": "2026-03-08T10:59:22.637Z"
         },
@@ -1518,6 +1576,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 8438,
+          "date": "2026-03-13T15:32:14.796Z"
+        },
+        {
+          "value": 8438,
+          "date": "2026-03-13T15:32:12.786Z"
+        },
+        {
           "value": 10291,
           "date": "2026-03-05T15:22:44.164Z"
         },
@@ -1551,12 +1617,20 @@
       "id": 80115,
       "name": "Xbox 360 - Inalámbrico",
       "description": "Generico Xbox 360 Con Cable",
-      "link": "https://www.mercadolibre.com.ar/joystick-para-xbox-360-inalambrico-para-pilas-o-bateria/up/MLAU3785591925?offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-up&reco_backend=recomm_platform_base_merge_pads_rfa&wid=MLA1676266095&reco_model=search_recos_backend_merge&reco_client=pdp-pads-up&reco_item_pos=2&reco_backend_type=low_level&reco_id=19091bf5-a6e6-496e-b3ad-72251df61244&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_UP&ad_position=3&ad_click_id=YmU4NzllMWYtMzRjZC00ZGYxLWI5ZmQtYzJkMmVjMGYwZDIy",
+      "link": "https://www.mercadolibre.com.ar/joystick-para-pc-ps3-xbox360-android-bluetooth-receptor-usb/up/MLAU372869745?pdp_filters=item_id%3AMLA1778214852&offer_type=OFFICIAL_STORE#is_advertising=true&searchVariation=MLAU372869745&backend_model=search-backend&position=8&search_layout=grid&type=pad&tracking_id=7b27eb60-412e-42bc-9ee1-49f18ade577b&ad_domain=VQCATCORE_LST&ad_position=8&ad_click_id=NWFiNmY0NjYtNDg5Mi00MTA0LTg2YzUtMDEwMGY0NzE0YTMx",
       "visible": 0,
       "linksAlt": [
-        "https://www.mercadolibre.com.ar/joystick-mando-generico-para-xbox-360-con-cable-pc-color/p/MLA23403047?offer_type=OFFICIAL_STORE"
+        "https://www.mercadolibre.com.ar/joystick-para-xbox-360-inalambrico-para-pilas-o-bateria/up/MLAU3785591925?offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-up&reco_backend=recomm_platform_base_merge_pads_rfa&wid=MLA1676266095&reco_model=search_recos_backend_merge&reco_client=pdp-pads-up&reco_item_pos=2&reco_backend_type=low_level&reco_id=19091bf5-a6e6-496e-b3ad-72251df61244&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_UP&ad_position=3&ad_click_id=YmU4NzllMWYtMzRjZC00ZGYxLWI5ZmQtYzJkMmVjMGYwZDIy"
       ],
       "prices": [
+        {
+          "value": 47523,
+          "date": "2026-03-13T16:27:13.503Z"
+        },
+        {
+          "value": 47523,
+          "date": "2026-03-13T16:27:11.399Z"
+        },
         {
           "value": 30990,
           "date": "2026-03-09T14:30:04.527Z"
@@ -1609,6 +1683,14 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 54299,
+          "date": "2026-03-13T16:27:36.046Z"
+        },
+        {
+          "value": 54299,
+          "date": "2026-03-13T16:27:34.006Z"
+        },
         {
           "value": 52949,
           "date": "2026-03-11T13:42:20.946Z"
@@ -1672,6 +1754,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 35266,
+          "date": "2026-03-13T16:27:57.489Z"
+        },
+        {
+          "value": 35266,
+          "date": "2026-03-13T16:27:55.529Z"
+        },
+        {
           "value": 28699,
           "date": "2026-03-06T18:24:27.839Z"
         },
@@ -1701,6 +1791,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 56000,
+          "date": "2026-03-13T16:28:10.249Z"
+        },
+        {
+          "value": 56000,
+          "date": "2026-03-13T16:28:08.248Z"
+        },
         {
           "value": 54999,
           "date": "2026-03-03T14:43:31.467Z"
@@ -1787,6 +1885,14 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 30430,
+          "date": "2026-03-13T16:28:40.697Z"
+        },
+        {
+          "value": 30430,
+          "date": "2026-03-13T16:28:38.644Z"
+        },
+        {
           "value": 30030,
           "date": "2026-03-05T15:24:35.247Z"
         },
@@ -1806,6 +1912,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 12107,
+          "date": "2026-03-13T16:28:53.854Z"
+        },
+        {
+          "value": 12107,
+          "date": "2026-03-13T16:28:51.881Z"
+        },
         {
           "value": 18782,
           "date": "2026-03-11T13:43:21.410Z"
@@ -2050,6 +2164,14 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 31240,
+          "date": "2026-03-13T16:29:57.251Z"
+        },
+        {
+          "value": 31240,
+          "date": "2026-03-13T16:29:55.235Z"
+        },
         {
           "value": 30840,
           "date": "2025-12-08T13:15:44.165Z"
