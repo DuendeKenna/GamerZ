@@ -1004,6 +1004,16 @@
             }
         }
 
+        function formatShortNumber(v) {
+            const abs = Math.abs(v);
+            if (abs >= 1000000) {
+                return (v / 1000000).toFixed(1).replace('.', ',') + 'M';
+            } else if (abs >= 1000) {
+                return (v / 1000).toFixed(1).replace('.', ',') + 'k';
+            }
+            return v.toString();
+        }
+
         function getComponentName(type) {
             const keyWithoutOptions = type.replace('Options', '');
             const names = {
@@ -1257,16 +1267,7 @@
         }
 
         function applyPriceChangeVisuals(tableRow, oldPrice, newPrice) {
-            if (oldPrice === 0 && newPrice > 0) {
-                tableRow.style.backgroundColor = '';
-                tableRow.dataset.priceStatus = 'default';
-                const priceWrapper = tableRow.querySelector('.price-wrapper');
-                if (priceWrapper) {
-                    const existingIndicator = priceWrapper.querySelector('.previous-price-indicator');
-                    if (existingIndicator) existingIndicator.remove();
-                }
-                return;
-            }
+            // Removed early return for oldPrice === 0 to allow coloring new products
 
             const diff = newPrice - oldPrice;
             let highlightColor = 'rgba(2, 132, 199, 0.3)'; // Blue
@@ -1461,8 +1462,13 @@
             const preview = document.getElementById('image-preview');
             const img = preview.querySelector('img');
             if (productId) {
+                img.onerror = () => {
+                    preview.classList.add('hidden');
+                };
+                img.onload = () => {
+                    preview.classList.remove('hidden');
+                };
                 img.src = `comps/${productId}.webp`;
-                preview.classList.remove('hidden');
             }
         }
 
@@ -2631,16 +2637,6 @@
             }
 
             const historicalData = filled;
-            // Helper: compact number formatting like y-axis (e.g. 30,5k or 1,5M)
-            function formatShortNumber(v) {
-                const abs = Math.abs(v);
-                if (abs >= 1000000) {
-                    return (v / 1000000).toFixed(1).replace('.', ',') + 'M';
-                } else if (abs >= 1000) {
-                    return (v / 1000).toFixed(1).replace('.', ',') + 'k';
-                }
-                return v.toString();
-            }
 
             // x-axis labels: day, include "/month" only when the month changes (ej. "1/9")
             const labels = [];
@@ -2942,21 +2938,24 @@
 
         function colorAllRowsByPriceChange() {
             document.querySelectorAll('tr[id^="row-"]').forEach(row => {
-                const [_, categoryKey, indexStr] = row.id.split('-');
-                const index = parseInt(indexStr, 10);
+                const parts = row.id.split('-');
+                const index = parseInt(parts.pop(), 10);
+                const categoryKey = parts.slice(1).join('-');
                 const product = dataMap[categoryKey][index];
 
-                if (product && product.prices && product.prices.length > 1) {
+                if (product && product.prices && product.prices.length >= 1) {
                     const last = product.prices[0];
                     // Buscar el anterior real (que no sea igual)
                     let prev = null;
-                    for (let i = 1; i < product.prices.length; i++) {
-                        if (product.prices[i].value !== last.value) {
-                            prev = product.prices[i];
-                            break;
+                    if (product.prices.length > 1) {
+                        for (let i = 1; i < product.prices.length; i++) {
+                            if (product.prices[i].value !== last.value) {
+                                prev = product.prices[i];
+                                break;
+                            }
                         }
                     }
-                    const oldPrice = prev ? prev.value : product.prices[1].value;
+                    const oldPrice = prev ? prev.value : (product.prices[1] ? product.prices[1].value : last.value);
                     const newPrice = last.value;
                     applyPriceChangeVisuals(row, oldPrice, newPrice);
                 } else {
@@ -2970,7 +2969,7 @@
                 }
             });
             applyColorFilter();
-            setTimeout(closeFilterPopup, 200); // Cierra el panel tras aplicar
+            closeFilterPopup(); // Cierra el panel inmediatamente
             showToast('Coloreado de filas aplicado.', 'success');
         }
 
