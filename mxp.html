@@ -411,24 +411,27 @@
         /* ----- GLITCH XP (Time Travel Effect) ----- */
 
         @keyframes glitch-xp {
-
-            0%,
-            75%,
-            100% {
+            0%, 14% {
                 transform: scale(1) skew(0deg);
                 text-shadow: none;
                 opacity: 1;
             }
-
-            76% {
+            /* El glitch ocurre justo después del primer segundo */
+            15% {
                 transform: scale(1.2) skew(-15deg) translate(-4px, 2px);
                 text-shadow: 3px 0 #0053e1, -3px 0 #3e881e;
                 opacity: 0.8;
             }
-
-            77% {
+            17% {
                 transform: scale(1.4) skew(10deg) translate(4px, -2px);
                 text-shadow: -3px 0 #0053e1, 3px 0 #3e881e;
+                opacity: 0.9;
+            }
+            /* Descenso lento del 17% al 100% (casi 6 segundos de retorno) */
+            100% {
+                transform: scale(1) skew(0deg);
+                text-shadow: none;
+                opacity: 1;
             }
         }
 
@@ -443,11 +446,34 @@
                 transform: translateY(-8px) rotate(1.5deg);
             }
         }
-
         .effect-rgb {
-            animation: glitch-xp 5.5s infinite;
+            animation: glitch-xp 7s infinite linear;
             display: inline-block;
             transform-origin: center;
+        }
+
+        /* Clippy Eye Lifecycle (Synced with 7s glitch) */
+        @keyframes clippy-life {
+            0%, 14%, 86%, 100% { opacity: 0; transform: scaleY(1); }
+            15% { opacity: 1; transform: scaleY(1); }
+            /* Blink 1 - Instant */
+            25% { transform: scaleY(1); }
+            25.1%, 26.9% { transform: scaleY(0.1); }
+            27% { transform: scaleY(1); }
+            /* Blink 2 - Instant */
+            45% { transform: scaleY(1); }
+            45.1%, 46.9% { transform: scaleY(0.1); }
+            47% { transform: scaleY(1); }
+            /* Blink 3 - Instant */
+            65% { transform: scaleY(1); }
+            65.1%, 66.9% { transform: scaleY(0.1); }
+            67% { transform: scaleY(1); }
+            85% { opacity: 1; transform: scaleY(1); }
+        }
+
+        .clippy-eyes-attr {
+            animation: clippy-life 7s infinite linear;
+            transform-origin: 50% 27px;
         }
 
         .float-title {
@@ -2184,21 +2210,36 @@
         </section>
         <!-- END: Hardware y Precios Section -->
         <!-- BEGIN: Beige Section (Sticky Note Call to Action) -->
-        <section class="bg-xpBeige py-32 -mt-10" data-purpose="bottom-beige-area">
+        <section id="parallaxCta" class="bg-xpBeige py-32 -mt-10" data-purpose="bottom-beige-area">
             <div class="container mx-auto px-6 text-center flex justify-center">
                 <!-- Sticky Note Content (Yellow Post-it style) -->
                 <div
                     class="relative max-w-xl bg-[#ffffe1] text-gray-800 p-8 md:p-10 rounded shadow-2xl border border-yellow-200 transform md:-rotate-2 z-10 mx-4">
-                    <!-- Paper Clip / Attachment effect -->
-                    <div class="absolute -top-6 -right-6">
-                        <span
-                            class="material-icons text-6xl text-gray-400/60 transform rotate-12 select-none">attach_file</span>
+                    <!-- Clippy SVG effect (33% width & Instant Blink) -->
+                    <div class="absolute -top-12 -right-8 w-32 h-32 transform rotate-12 select-none pointer-events-none">
+                        <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-lg">
+                            <!-- Cuerpo del clip (33% Narrower than absolute original) -->
+                            <path d="M42 30 C42 18, 62 18, 62 30 L62 70 C62 82, 35 82, 35 70 L35 45 C35 34, 53 34, 53 45 L53 70" 
+                                  fill="none" stroke="#a0a0a0" stroke-width="3.2" stroke-linecap="round"/>
+                            
+                            <!-- Grupo de Ojos y Cejas (Animado) -->
+                            <g class="clippy-eyes-attr">
+                                <!-- Ojos Blancos -->
+                                <circle cx="45" cy="27" r="5.5" fill="white" stroke="#333" stroke-width="0.8"/>
+                                <circle cx="58" cy="27" r="5.5" fill="white" stroke="#333" stroke-width="0.8"/>
+                                <!-- Pupilas Negras -->
+                                <circle cx="45" cy="27" r="2.8" fill="#000"/>
+                                <circle cx="58" cy="27" r="2.8" fill="#000"/>
+                                <!-- Cejas -->
+                                <path d="M40 20 Q45 17 50 20" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M53 20 Q58 17 63 20" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                            </g>
+                        </svg>
                     </div>
 
                     <div class="text-center space-y-4">
-                        <h2 class="text-3xl md:text-5xl font-bold text-gray-900">
-                            <span class="">¡Nave Lista!</span><br>
-                            <span class="effect-rgb">¿Volvemos?</span>
+                        <h2 id="parallaxText" class="text-3xl md:text-5xl font-bold text-gray-900">
+                            <span class="effect-rgb">listo para volver..?</span>
                         </h2>
                         <p class="hidden text-xl md:text-2xl text-gray-700 italic font-serif">Lo mejor del pasado con la
                             potencia de hoy. </p>
@@ -2962,6 +3003,9 @@
                         parallaxText.style.visibility = 'visible';
                         parallaxText.style.transform = `translateY(${yOffset}px)`;
                         parallaxText.style.opacity = opacity;
+                        // Difuminado (blur) progresivo junto con la opacidad
+                        const blurValue = Math.max(0, (1 - opacity) * 8);
+                        parallaxText.style.filter = `blur(${blurValue}px)`;
                     } else {
                         // Invisible para no gastar render
                         parallaxText.style.visibility = 'hidden';
