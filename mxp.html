@@ -413,29 +413,34 @@
         @keyframes glitch-xp {
 
             0%,
-            90%,
+            75%,
             100% {
                 transform: scale(1) skew(0deg);
                 text-shadow: none;
                 opacity: 1;
             }
 
-            91% {
+            76% {
                 transform: scale(1.2) skew(-15deg) translate(-4px, 2px);
                 text-shadow: 3px 0 #0053e1, -3px 0 #3e881e;
                 opacity: 0.8;
             }
 
-            92% {
+            77% {
                 transform: scale(1.4) skew(10deg) translate(4px, -2px);
                 text-shadow: -3px 0 #0053e1, 3px 0 #3e881e;
             }
+        }
 
+        @keyframes floatTitle {
 
-            95% {
-                transform: scale(1) skew(0deg);
-                text-shadow: none;
-                opacity: 1;
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(1.5deg);
             }
         }
 
@@ -443,6 +448,11 @@
             animation: glitch-xp 5.5s infinite;
             display: inline-block;
             transform-origin: center;
+        }
+
+        .float-title {
+            animation: floatTitle 6s ease-in-out infinite;
+            display: inline-block;
         }
     </style>
     <style data-purpose="typography">
@@ -2187,7 +2197,8 @@
 
                     <div class="text-center space-y-4">
                         <h2 class="text-3xl md:text-5xl font-bold text-gray-900">
-                            ¡Nave Lista!<br> <span class="effect-rgb">¿Viajamos?</span>
+                            <span class="">¡Nave Lista!</span><br>
+                            <span class="effect-rgb">¿Viajamos?</span>
                         </h2>
                         <p class="hidden text-xl md:text-2xl text-gray-700 italic font-serif">Lo mejor del pasado con la
                             potencia de hoy. </p>
