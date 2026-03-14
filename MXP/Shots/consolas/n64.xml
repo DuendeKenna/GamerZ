@@ -325,8 +325,7 @@ Este bonito juego de plataformas está lleno de color y acción a partes iguales
     <genre>Shooter</genre>
     <players>2</players>
     <lang>en</lang>
-    <scrap name="TheGamesDB" date="20240519T021939" />
-  </game>
+    </game>
   <game id="5430">
     <path>./Duke Nukem 64.zip</path>
     <name>Duke Nukem 64</name>

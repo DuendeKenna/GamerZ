@@ -317,8 +317,7 @@ El "modo fácil" que estará disponible si el jugador muere durante el nivel de 
     <genre>Shoot'em Up / Horizontal</genre>
     <players>1</players>
     <lang>en</lang>
-    <scrap name="TheGamesDB" date="20240613T010021" />
-  </game>
+    </game>
   <game id="1947">
     <path>./Field Combat (ESP).nes</path>
     <name>Field Combat</name>
@@ -480,8 +479,7 @@ El jugador puede caminar a la izquierda y la derecha, saltar, y también está e
     <family>Adventure Island</family>
     <players>1</players>
     <lang>en</lang>
-    <scrap name="TheGamesDB" date="20240422T195416" />
-  </game>
+    </game>
   <game id="71427">
     <path>./Ivan 'Ironman' Stewart's Super Off Road (ESP).nes</path>
     <name>Ivan "Ironman" Stewart's Super Off Road</name>

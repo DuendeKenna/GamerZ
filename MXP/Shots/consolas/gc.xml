@@ -183,8 +183,7 @@ Los Pikmin son formas de vida similares a las plantas, de tres colores: rojo, am
     <players>1</players>
     <lang>en,es,fr</lang>
     <region>us</region>
-    <scrap name="TheGamesDB" date="20251208T220933" />
-  </game>
+    </game>
   <game id="4775">
     <path>./Senor de los Anillos, El - El Retorno del Rey (Spain).rvz</path>
     <name>The Lord of the Rings: The Return of the King</name>

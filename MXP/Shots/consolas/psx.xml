@@ -101,8 +101,7 @@ Battle armies of Maverick Reploid Robots while mastering all-new strategic moves
     <genre>Action</genre>
     <players>1</players>
     <lang>en</lang>
-    <scrap name="TheGamesDB" date="20251129T103826" />
-  </game>
+    </game>
   <game id="19572">
     <path>./Exhumed (Europe) (En,Fr,De,Es).chd</path>
     <name>Exhumed</name>
@@ -275,8 +274,7 @@ Decide luchar como Obi-Wan Kenobi, Qui-Gon Jinn, o como los miembros del Consejo
     <players>1-2</players>
     <lang>en,es,fr</lang>
     <region>us</region>
-    <scrap name="TheGamesDB" date="20251129T103855" />
-  </game>
+    </game>
   <game id="19291">
     <path>./Dino Crisis 2 (ESP).chd</path>
     <name>Dino Crisis 2</name>

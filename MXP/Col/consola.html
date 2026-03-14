@@ -9,12 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <title>Juegos Consola</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: transparent;
             color: #e0e0e0;
             font-family: 'Verdana', sans-serif;
             margin: 0;
             padding: 24px;
+            overflow-x: hidden;
         }
 
         .header-container {
@@ -126,7 +131,7 @@
 
         /* Table Styles */
         .table-container {
-            overflow-x: auto;
+            overflow-x: hidden;
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
@@ -137,6 +142,7 @@
             width: 100%;
             border-collapse: collapse;
             text-align: left;
+            table-layout: auto;
         }
 
         th {
@@ -178,12 +184,12 @@
 
         tr:hover {
             background: rgba(66, 133, 244, 0.2) !important;
-            transform: scale(1.01) translateX(8px);
+            transform: scale(1.005);
             font-size: 15px;
             box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
             z-index: 10;
         }
-
+    
         /* Scrollbars matching xp look */
         ::-webkit-scrollbar {
             width: 12px;
@@ -298,6 +304,7 @@
             border-bottom-right-radius: 4px;
             max-height: 60vh;
             overflow-y: auto;
+            overflow-x: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
@@ -562,19 +569,7 @@
                     <img id="consoleIcon" src="" alt="Console Logo">
                 </div>
                 <div class="select-items select-hide" id="selectItems">
-                    <div onclick="selectOption('gba')"><img src="../Shots/consolas/gba.svg" alt="GameBoy Advance"></div>
-                    <div onclick="selectOption('gc')"><img src="../Shots/consolas/gc.svg" alt="GameCube"></div>
-                    <div onclick="selectOption('megadrive')"><img src="../Shots/consolas/megadrive.svg"
-                            alt="Mega Drive"></div>
-                    <div onclick="selectOption('n64')"><img src="../Shots/consolas/n64.svg" alt="Nintendo 64"></div>
-                    <div onclick="selectOption('neogeo')"><img src="../Shots/consolas/neogeo.svg" alt="Neo Geo"></div>
-                    <div onclick="selectOption('nes')"><img src="../Shots/consolas/nes.svg" alt="NES"></div>
-                    <div onclick="selectOption('ps2')"><img src="../Shots/consolas/ps2.svg" alt="PlayStation 2"></div>
-                    <div onclick="selectOption('psp')"><img src="../Shots/consolas/psp.svg" alt="PSP"></div>
-                    <div onclick="selectOption('psx')"><img src="../Shots/consolas/psx.svg" alt="PlayStation"></div>
-                    <div onclick="selectOption('snes')"><img src="../Shots/consolas/snes.svg" alt="Super Nintendo">
-                    </div>
-                    <div onclick="selectOption('wii')"><img src="../Shots/consolas/wii.svg" alt="Wii"></div>
+                    <!-- Dropdown items will be populated dynamically from consoles.json -->
                 </div>
             </div>
             <div id="gameCount" class="game-count"></div>
@@ -627,6 +622,35 @@
 
         let sortDirection = false;
         let gameData = [];
+        let allConsoles = [];
+
+        async function init() {
+            try {
+                const response = await fetch('../Shots/consolas/consoles.json');
+                allConsoles = await response.json();
+                
+                const selectItems = document.getElementById('selectItems');
+                selectItems.innerHTML = '';
+                
+                allConsoles.forEach(c => {
+                    if (c.visible !== false) {
+                        const div = document.createElement('div');
+                        div.onclick = () => selectOption(c.id);
+                        // Fix path: consola.html is in MXP/Col/, so root-relative MXP/Shots/ becomes ../../MXP/Shots/
+                        const fixedLogo = c.logo.startsWith('MXP/') ? '../../' + c.logo : c.logo;
+                        div.innerHTML = `<img src="${fixedLogo}" alt="${c.name}">`;
+                        selectItems.appendChild(div);
+                    }
+                });
+
+                // Set initial console display name in case it's not the default
+                const currentConsole = allConsoles.find(c => c.id === currentConsoleId);
+                loadConsole(currentConsoleId);
+            } catch (err) {
+                console.error("Error loading consoles registry:", err);
+                loadConsole(currentConsoleId); // Try anyway
+            }
+        }
 
         function toggleSelect() {
             document.getElementById("selectItems").classList.toggle("select-hide");
@@ -682,6 +706,9 @@
             currentConsoleId = consoleId;
             gameData = [];
 
+            const consoleInfo = allConsoles.find(c => c.id === consoleId);
+            const displayName = consoleInfo ? consoleInfo.name : consoleId.toUpperCase();
+
             // Reset sorting arrow visuals
             const ths = document.querySelectorAll('th');
             ths.forEach(th => th.classList.remove('sort-asc', 'sort-desc'));
@@ -704,61 +731,47 @@
             tbody.innerHTML = '<tr><td colspan="5" class="loading">Cargando juegos...</td></tr>';
             document.getElementById('gameCount').textContent = '...';
 
-            fetch(`../Shots/consolas/${consoleId}.xml`)
+            fetch(`../Shots/consolas/${consoleId}.json`)
                 .then(response => {
-                    if (!response.ok) throw new Error("No XML found");
-                    return response.text();
+                    if (!response.ok) throw new Error("No JSON found");
+                    return response.json();
                 })
-                .then(xmlStr => {
-                    const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(xmlStr, "application/xml");
+                .then(data => {
+                    gameData = data.map(game => ({
+                        name: game.name || 'Desconocido',
+                        genre: game.genre || '-',
+                        date: formatDate(game.releasedate),
+                        rawDate: game.releasedate || '',
+                        players: game.players || '-',
+                        ratingHtml: formatRating(game.rating),
+                        rawRating: game.rating || ''
+                    }));
 
-                    const games = xmlDoc.querySelectorAll('game');
                     tbody.innerHTML = '';
-
-                    if (games.length === 0) {
+                    if (gameData.length === 0) {
                         tbody.innerHTML = '<tr><td colspan="5" class="loading">No hay juegos listados para esta consola todavía.</td></tr>';
                         updateGameCount(0, 0);
                         return;
                     }
 
-                    games.forEach(game => {
-                        const nameNode = game.querySelector('name');
-                        const genreNode = game.querySelector('genre');
-                        const dateNode = game.querySelector('releasedate');
-                        const playersNode = game.querySelector('players');
-                        const ratingNode = game.querySelector('rating');
-
-                        const name = nameNode ? nameNode.textContent : 'Desconocido';
-                        const genre = genreNode ? genreNode.textContent : '-';
-                        const rawDate = dateNode ? dateNode.textContent : '';
-                        const players = playersNode ? playersNode.textContent : '-';
-                        const rawRating = ratingNode ? ratingNode.textContent : '';
-
-                        gameData.push({
-                            name: name,
-                            genre: genre,
-                            date: formatDate(rawDate),
-                            rawDate: rawDate,
-                            players: players,
-                            ratingHtml: formatRating(rawRating),
-                            rawRating: rawRating
-                        });
-                    });
-
                     gameData.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
                     renderTable(gameData);
                     updateGameCount(gameData.length, gameData.length);
+                    
+                    // Update parent title if possible (for the modal)
+                    if (window.parent && window.parent.document.getElementById('consolaModalTitle')) {
+                        window.parent.document.getElementById('consolaModalTitle').textContent = `Juegos de ${displayName}`;
+                    }
                 })
                 .catch(error => {
-                    tbody.innerHTML = '<tr><td colspan="5" class="loading">Ocurrió un error o el archivo XML no existe.</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="5" class="loading">Ocurrió un error o el archivo base de datos no existe.</td></tr>';
                     document.getElementById('gameCount').textContent = '';
-                    console.error("Error fetching XML:", error);
+                    console.error("Error fetching console data:", error);
                 });
         }
 
         // Initial Load
-        loadConsole(currentConsoleId);
+        init();
 
         function formatDate(dateString) {
             if (!dateString) return '-';

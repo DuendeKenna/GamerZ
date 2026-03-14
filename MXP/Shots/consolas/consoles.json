@@ -1,0 +1,106 @@
+[
+  {
+    "id": "gba",
+    "name": "GameBoy Advance",
+    "logo": "MXP/Shots/consolas/gba.svg",
+    "webp": "MXP/Shots/consolas/gba.webp",
+    "visible": true,
+    "gameCount": 58
+  },
+  {
+    "id": "gc",
+    "name": "GameCube",
+    "logo": "MXP/Shots/consolas/gc.svg",
+    "webp": "MXP/Shots/consolas/gc.webp",
+    "visible": true,
+    "gameCount": 50
+  },
+  {
+    "id": "megadrive",
+    "name": "Mega Drive",
+    "logo": "MXP/Shots/consolas/megadrive.svg",
+    "webp": "MXP/Shots/consolas/megadrive.webp",
+    "visible": true,
+    "gameCount": 177
+  },
+  {
+    "id": "n64",
+    "name": "Nintendo 64",
+    "logo": "MXP/Shots/consolas/n64.svg",
+    "webp": "MXP/Shots/consolas/n64.webp",
+    "visible": true,
+    "gameCount": 52
+  },
+  {
+    "id": "neogeo",
+    "name": "Neo Geo",
+    "logo": "MXP/Shots/consolas/neogeo.svg",
+    "webp": "MXP/Shots/consolas/neogeo.webp",
+    "visible": true,
+    "gameCount": 91
+  },
+  {
+    "id": "nes",
+    "name": "NES",
+    "logo": "MXP/Shots/consolas/nes.svg",
+    "webp": "MXP/Shots/consolas/nes.webp",
+    "visible": true,
+    "gameCount": 177
+  },
+  {
+    "id": "ps2",
+    "name": "PlayStation 2",
+    "logo": "MXP/Shots/consolas/ps2.svg",
+    "webp": "MXP/Shots/consolas/ps2.webp",
+    "visible": true,
+    "gameCount": 99
+  },
+  {
+    "id": "psp",
+    "name": "PSP",
+    "logo": "MXP/Shots/consolas/psp.svg",
+    "webp": "MXP/Shots/consolas/psp.webp",
+    "visible": true,
+    "gameCount": 110
+  },
+  {
+    "id": "psx",
+    "name": "PlayStation",
+    "logo": "MXP/Shots/consolas/psx.svg",
+    "webp": "MXP/Shots/consolas/psx.webp",
+    "visible": true,
+    "gameCount": 33
+  },
+  {
+    "id": "snes",
+    "name": "Super Nintendo",
+    "logo": "MXP/Shots/consolas/snes.svg",
+    "webp": "MXP/Shots/consolas/snes.webp",
+    "visible": true,
+    "gameCount": 91
+  },
+  {
+    "id": "wii",
+    "name": "Wii",
+    "logo": "MXP/Shots/consolas/wii.svg",
+    "webp": "MXP/Shots/consolas/wii.webp",
+    "visible": false,
+    "gameCount": 30
+  },
+  {
+    "id": "arcade",
+    "name": "Arcade",
+    "logo": "MXP/Shots/consolas/arcade.svg",
+    "webp": "MXP/Shots/consolas/arcade.webp",
+    "visible": true,
+    "gameCount": 72
+  },
+  {
+    "id": "dreamcast",
+    "name": "Dreamcast",
+    "logo": "MXP/Shots/consolas/dreamcast.svg",
+    "webp": "MXP/Shots/consolas/dreamcast.webp",
+    "visible": true,
+    "gameCount": 29
+  }
+]

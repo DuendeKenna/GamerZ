@@ -182,8 +182,7 @@ Mil años después, Raziel regresa de la muerte con un nuevo propósito: vengars
     <players>1-2</players>
     <lang>en</lang>
     <region>us</region>
-    <scrap name="TheGamesDB" date="20260105T072541" />
-  </game>
+    </game>
   <game id="13510">
     <path>./Re-Volt (Europe) (En,Fr,De,Es,It).chd</path>
     <name>Re-Volt</name>
@@ -238,8 +237,7 @@ Otras adiciones bienvenidas son Wormpot, que puede proporcionar 400 variaciones 
     <players>1-4</players>
     <lang>de,en,es,fr,it,nl</lang>
     <region>eu</region>
-    <scrap name="HfsDB" date="20260105T070306" />
-  </game>
+    </game>
   <game id="13631">
     <path>./Daytona USA 2001 (Europe) (En,Fr,De,Es).chd</path>
     <name>Daytona USA 2001</name>
