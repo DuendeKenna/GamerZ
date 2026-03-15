@@ -898,7 +898,7 @@
                         class="relative max-w-sm md:max-w-md bg-[#ffffe1] text-gray-800 p-6 md:p-8 rounded shadow-2xl border border-yellow-200 transform md:-rotate-1 z-20 mx-4">
                         <div
                             class="absolute -top-8 -left-8 w-24 h-24 transform -rotate-12 select-none pointer-events-none">
-                            <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-lg opacity-40">
+                            <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-lg ">
                                 <path
                                     d="M42 30 C42 18, 62 18, 62 30 L62 70 C62 82, 35 82, 35 70 L35 45 C35 34, 53 34, 53 45 L53 70"
                                     fill="none" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round" />
@@ -1357,7 +1357,7 @@
                                 <!-- Paper Clip Effect (Synced Design) -->
                                 <div
                                     class="absolute -top-10 -left-10 w-28 h-28 transform -rotate-12 select-none pointer-events-none">
-                                    <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-xl opacity-50">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-xl ">
                                         <path
                                             d="M42 30 C42 18, 62 18, 62 30 L62 70 C62 82, 35 82, 35 70 L35 45 C35 34, 53 34, 53 45 L53 70"
                                             fill="none" stroke="#a0a0a0" stroke-width="3.2" stroke-linecap="round" />
@@ -1795,17 +1795,22 @@
                                     <img src="MXP/XP_Icons/My Computer.webp"
                                         class="w-10 h-10 group-hover:scale-110 transition-transform" alt="Desktop Icon">
                                     <div class="field-row !flex !items-center !justify-center gap-1">
-                                        <input id="card-radio-desktop" type="radio" name="card_device_type" value="PC" checked>
-                                        <label for="card-radio-desktop" class="text-base cursor-pointer !m-0 !pl-1">Desktop</label>
+                                        <input id="card-radio-desktop" type="radio" name="card_device_type" value="PC"
+                                            checked>
+                                        <label for="card-radio-desktop"
+                                            class="text-base cursor-pointer !m-0 !pl-1">Desktop</label>
                                     </div>
                                 </div>
                                 <div class="flex flex-col items-center gap-1 cursor-pointer group"
                                     onclick="document.getElementById('card-radio-notebook').click()">
                                     <img src="MXP/XP_Icons/IR File Transfer.webp"
-                                        class="w-10 h-10 group-hover:scale-110 transition-transform" alt="Notebook Icon">
+                                        class="w-10 h-10 group-hover:scale-110 transition-transform"
+                                        alt="Notebook Icon">
                                     <div class="field-row !flex !items-center !justify-center gap-1">
-                                        <input id="card-radio-notebook" type="radio" name="card_device_type" value="Notebook">
-                                        <label for="card-radio-notebook" class="text-base cursor-pointer !m-0 !pl-1">Notebook</label>
+                                        <input id="card-radio-notebook" type="radio" name="card_device_type"
+                                            value="Notebook">
+                                        <label for="card-radio-notebook"
+                                            class="text-base cursor-pointer !m-0 !pl-1">Notebook</label>
                                     </div>
                                 </div>
                             </div>
@@ -1909,7 +1914,7 @@
                     class="relative max-w-xl bg-[#ffffe1] text-gray-800 p-8 md:p-10 rounded shadow-2xl border border-yellow-200 transform md:-rotate-2 z-10 mx-4">
                     <!-- Paper Clip Effect (Synced Design) -->
                     <div
-                        class="absolute -top-12 -right-10 w-32 h-32 transform rotate-12 select-none pointer-events-none">
+                        class="absolute -top-10 -right-10 w-32 h-32 transform rotate-12 select-none pointer-events-none">
                         <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-xl opacity-60">
                             <!-- Cuerpo del clip (33% Narrower 디자인) -->
                             <path
@@ -2054,19 +2059,19 @@
                             </div>
                         </div>
                     </div>
-                    </div>
-                    <div class="field-row-stacked">
-                        <label for="device_details" class="font-bold mb-2">Detalles clave (Marca, Modelo, Procesador,
-                            RAM...):</label>
-                        <textarea id="device_details" rows="4" class="w-full font-sans p-2 border border-gray-400"
-                            placeholder="Ej: tiene 4GB de RAM y un disco de 500GB..."></textarea>
-                    </div>
                 </div>
-                <!-- Action Buttons -->
-                <div class="flex justify-end gap-3 mt-4 border-t pt-4">
-                    <button onclick="document.getElementById('reciclarModal').classList.add('hidden')"
-                        class="px-4 py-1">Cancelar</button>
-                    <button class="default font-bold px-6 py-1" onclick="
+                <div class="field-row-stacked">
+                    <label for="device_details" class="font-bold mb-2">Detalles clave (Marca, Modelo, Procesador,
+                        RAM...):</label>
+                    <textarea id="device_details" rows="4" class="w-full font-sans p-2 border border-gray-400"
+                        placeholder="Ej: tiene 4GB de RAM y un disco de 500GB..."></textarea>
+                </div>
+            </div>
+            <!-- Action Buttons -->
+            <div class="flex justify-end gap-3 mt-4 border-t pt-4">
+                <button onclick="document.getElementById('reciclarModal').classList.add('hidden')"
+                    class="px-4 py-1">Cancelar</button>
+                <button class="default font-bold px-6 py-1" onclick="
                         {
                             const pType = document.querySelector('input[name=\'device_type\']:checked').value;
                             const pDetails = document.getElementById('device_details').value.trim();
@@ -2075,9 +2080,9 @@
                             document.getElementById('reciclarModal').classList.add('hidden');
                         }
                     ">Enviar a WhatsApp</button>
-                </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- BEGIN: Footer -->
     <footer class="bg-xpBlue py-6 text-white text-center border-t-2 border-blue-400" data-purpose="page-footer">
