@@ -5,10 +5,10 @@
       "name": "Ryzen 3 3200G + 16 de RAM",
       "description": "Buen rendimiento en juegos ligeros a 1080p, multitarea básica y creación de contenido principiante. Con 4 núcleos y gráfica integrada Vega 8, es el más económico y simple, pero más que suficiente si no corrés software pesado.",
       "cpu": "24931",
-      "mother": "23506",
+      "mother": "62379",
       "ram": "93477",
       "cantRam": 2,
-      "total": 466624,
+      "total": 452045,
       "totalram": 16,
       "visible": 1,
       "price": 0,
@@ -49,16 +49,8 @@
       "name": "Ryzen 3 | Full + Joys",
       "items": [
         {
-          "categoryKey": "ssdOptions",
-          "id": 27876
-        },
-        {
           "categoryKey": "towersOptions",
           "id": 29026
-        },
-        {
-          "categoryKey": "ssdOptions",
-          "id": 64421
         },
         {
           "categoryKey": "psuOptions",
@@ -75,6 +67,10 @@
         {
           "categoryKey": "joystickOptions",
           "id": 63642
+        },
+        {
+          "categoryKey": "ssdOptions",
+          "id": 87132
         }
       ],
       "visible": 1,
@@ -109,16 +105,16 @@
           "id": 71285
         },
         {
-          "categoryKey": "psuOptions",
-          "id": 45939
+          "categoryKey": "towersOptions",
+          "id": 29026
         },
         {
           "categoryKey": "ssdOptions",
-          "id": 78121
+          "id": 87132
         },
         {
-          "categoryKey": "towersOptions",
-          "id": 29026
+          "categoryKey": "psuOptions",
+          "id": 45939
         }
       ],
       "visible": 1,
@@ -382,12 +378,21 @@
     },
     {
       "id": 78121,
-      "name": "2 TB - SATA",
+      "name": "2 TB - SATA Hiksemi",
       "link": "https://www.mercadolibre.com.ar/interno-hiksemi-wave-hs-ssd-waves-1920g-192tb-negro/p/MLA37937963?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "",
       "price": 252999,
       "lastUpd": "2026-03-11T14:01:20.396Z"
+    },
+    {
+      "id": 87132,
+      "name": "2 TB - SATA Dahua",
+      "price": 237400,
+      "link": "https://www.mercadolibre.com.ar/25-inch-sata-solid-state-drive-2tb-color-negro-dahua-ssd-c800a2tb/p/MLA27737236?offer_type=OFFICIAL_STORE",
+      "visible": 0,
+      "description": "",
+      "lastUpd": "2026-03-15T12:34:14.292Z"
     }
   ],
   "gpuOptions": [
@@ -422,7 +427,7 @@
       "id": 64601,
       "name": "RTX 3050 | 6GB",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-nvidia-msi-geforce-rtx-3050-ventus-2x-6gb-oc-gddr6/p/MLA34284188?offer_type=OFFICIAL_STORE",
-      "visible": 0,
+      "visible": 1,
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "price": 469999,
       "lastUpd": "2026-03-13T14:08:33.978Z"
@@ -431,7 +436,7 @@
       "id": 4156,
       "name": "RTX 5060 | 8GB ",
       "link": "https://www.mercadolibre.com.ar/tarjeta-de-video-msi-rtx-5060-8-gb-gddr7-128-bit-shadow-2x-oc/p/MLA51032833?offer_type=OFFICIAL_STORE",
-      "visible": 0,
+      "visible": 1,
       "description": "Potencia asegurada para dominar el 1080p y dar el salto a 1440p fluido gracias al DLSS y Ray Tracing. Sus 8GB de VRAM junto al encoder NVIDIA la hacen ideal para creadores: jugar, editar ligero y streamear en 2K con excelente calidad.",
       "price": 781999,
       "lastUpd": "2026-03-13T14:08:47.063Z"
@@ -504,13 +509,13 @@
       "lastUpd": "2026-03-11T13:37:27.184Z"
     },
     {
-      "name": "Ninguno",
-      "link": "",
-      "visible": 0,
+      "id": 62379,
+      "name": "Gigabyte A520m",
+      "price": 79000,
+      "link": "https://www.mercadolibre.com.ar/motherboard-gigabyte-amd-a520m-k-v2-ddr4-gamer-color-negro/p/MLA24456876?offer_type=OFFICIAL_STORE",
+      "visible": 1,
       "description": "",
-      "id": 9236,
-      "price": 0,
-      "lastUpd": "2025-11-17T13:27:38.232Z"
+      "lastUpd": "2026-03-15T12:37:41.684Z"
     }
   ],
   "cpuOptions": [
