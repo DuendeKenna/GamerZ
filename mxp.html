@@ -462,6 +462,22 @@
             animation: floatTitle 6s ease-in-out infinite;
             display: inline-block;
         }
+
+        /* Fix for Tailwind Forms vs XP.css radio buttons */
+        input[type="radio"] {
+            -webkit-appearance: none !important;
+            appearance: none !important;
+            background-color: #fff !important;
+            background-image: none !important;
+            border-radius: 50% !important;
+            border: 1px solid #707070 !important;
+        }
+
+        input[type="radio"]:checked {
+            background-image: radial-gradient(circle, #509e2a 40%, transparent 45%) !important;
+            border-color: #3b5998 !important;
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
     </style>
     <style data-purpose="typography">
         .hero-title {
@@ -1151,7 +1167,7 @@
                     <!-- Text Column -->
                     <div class="text-white space-y-6">
                         <p class="text-2xl md:text-4xl font-serif leading-relaxed italic">
-                            Tu ciber soñado - en tu disco <img src="MXP/XP_Icons/Legacy Floppy Disk.webp"
+                            Tu ciber soñado - en tu disco <img src="MXP/XP_Icons/Local Disk.webp"
                                 class="inline-block w-10 h-10 md:w-14 md:h-14 align-middle ml-2 hover:scale-110 transition-transform duration-300 drop-shadow-xl"
                                 alt="discos"> <br>
                             <span class="font-bold not-italic text-5xl"
@@ -1351,7 +1367,8 @@
                                 <div class="text-center space-y-4">
                                     <h3 class="text-3xl md:text-5xl font-bold text-gray-900">¡2 Joysticks
                                         Incluidos!</h3>
-                                    <p class="text-xl md:text-2xl text-gray-700 italic font-serif">Configurados para
+                                    <p class="text-xl md:text-2xl text-gray-700 italic font-serif">1 de Play - 1 de
+                                        Xbox<br> Configurados para
                                         jugar en equipo (o contra)
                                     </p>
                                     <p class="text-lg text-gray-600 leading-relaxed font-sans pt-2">
@@ -1386,9 +1403,10 @@
                         <p class="text-orange-100 text-xl md:text-2xl italic font-serif">Tu colección de mp3 como en los
                             viejos tiempos.</p>
                         <p class="text-lg text-white/80 leading-relaxed font-sans max-w-2xl">
-                            <strong>No necesitás internet</strong>s para musicalizar tus sesiones. Incluimos una
-                            colección curada con los
-                            hits que sonaban en la radio y los temas icónicos que acompañaron tus partidas favoritas.
+                            <strong>No necesitás internet</strong> para musicalizar tus sesiones. <br> Viajá en el
+                            tiempo con una
+                            colección de los
+                            <strong>hitazos</strong> que más sonaban.
                         </p>
                         <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
                             <span
@@ -1400,6 +1418,15 @@
                             <span
                                 class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">⚡
                                 Nu Metal</span>
+                            <span
+                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">🔥
+                                Grunge</span>
+                            <span
+                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">🧨
+                                Punk</span>
+                            <span
+                                class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">🥀
+                                Baladas</span>
                             <span
                                 class="hidden px-4 py-2 bg-white/10 rounded-full border border-white/20 text-white text-sm font-bold backdrop-blur-sm">🎮
                                 OST Games</span>
@@ -1517,7 +1544,7 @@
                     <div class="flex-1 space-y-6 text-white text-center lg:text-left">
                         <h2 class="text-4xl md:text-5xl font-bold xp-title-shadow">¿Por Qué Creé la MillennialXP?</h2>
                         <p class="text-xl md:text-2xl text-blue-100 italic font-serif leading-relaxed">
-                            "Soy un informático apasionado criado en los 90s."
+                            "Soy un informático apasionado criado en los 90s. Fin."
                         </p>
 
                         <div class="space-y-4 text-lg text-white/95 font-sans">
@@ -1566,7 +1593,7 @@
                 <div class="mt-24 border-t border-white/20 pt-16">
                     <div class="text-center mb-12">
                         <h3 class="text-3xl md:text-5xl font-bold text-white xp-title-shadow">¿Qué podés esperar de esta
-                            PC nostalgizada?</h3>
+                            nave del tiempo?</h3>
                         <p
                             class="text-blue-100 text-lg md:text-xl md:max-w-3xl mx-auto italic mt-4 font-serif text-center">
                             Una experiencia de usuario diseñada para aliviar las fricciones modernas.</p>
@@ -1585,7 +1612,7 @@
                             <p class="text-blue-50 leading-relaxed font-sans text-base md:text-lg">
                                 Un alivio contra la sobreestimulación digital. <strong>Sin anuncios en tu menú, sin
                                     notificaciones invasivas, ni bloatware</strong> reclamando tu atención. Vos
-                                controlás qué pasa y cuándo.
+                                controlás tu atención.
                             </p>
                         </div>
 
@@ -1682,24 +1709,31 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <!-- PC Desktop -->
                     <div class="window w-full shadow-2xl !bg-[#ece9d8] overflow-hidden flex flex-col">
                         <div class="title-bar !h-10 !px-4 flex items-center shrink-0">
-                            <div class="title-bar-text !m-0 font-bold text-lg">PC Desktop.exe</div>
+                            <div class="title-bar-text !m-0 font-bold text-lg">Moderna.exe</div>
                         </div>
-                        <div class="window-body flex-grow flex flex-col p-6 !m-0 !bg-[#fcf7e9]">
-                            <h3 class="text-2xl font-bold text-center mb-4 text-[#003399]">Gabinete ATX</h3>
-                            <ul class="space-y-3 font-segoe text-gray-800 flex-grow text-left">
-                                <li>✔️ <strong>Formato clásico</strong> para máxima refrigeración</li>
-                                <li>✔️ <strong>Ideal para upgrades</strong> futuros y espacio extra</li>
-                                <li>✔️ <strong>Componentes Estándar</strong> Full Size</li>
-                            </ul>
+                        <div class="window-body flex-grow flex flex-col px-6 py-8 !m-0 !bg-[#fcf7e9]">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-[#003399]">AMD Ryzen 3200G
+                            </h3>
+                            <div class="flex-grow flex items-center justify-center py-4 px-2">
+                                <ul
+                                    class="inline-block space-y-4 font-segoe text-gray-800 text-left text-lg sm:text-xl lg:text-[1.05rem] xl:text-[1.15rem] whitespace-nowrap">
+                                    <li>✔️ <strong>Gráfica Integrada</strong> Vega 8</li>
+                                    <li>✔️ <strong>RAM DDR4</strong> 16GB en Dual Channel</li>
+                                    <li>✔️ <strong>Almacenamiento</strong> SSD 2TB</li>
+                                    <li>✔️ <strong>Fuente</strong> 500W 80 Plus Bronze</li>
+                                    <li>✔️ <strong>Gabinete</strong> LNZ RGB</li>
+                                    <li>🎮 <strong>¡2 Joysticks Incluidos!</strong> Play + Xbox</li>
+                                </ul>
+                            </div>
                             <div class="mt-8 text-center flex flex-col h-full justify-end flex-grow">
-                                <p class="text-3xl font-bold text-gray-900 mb-4">$550.000 <span
+                                <p class="text-3xl font-bold text-gray-900 mb-4">$1.100.000 <span
                                         class="text-sm font-normal text-gray-600">ARS</span></p>
                                 <button class="xp-button-modern w-full !text-lg !py-2"
-                                    onclick="window.open('https://wa.me/5492252513233?text='+encodeURIComponent('¡Hola Kenna! Me interesa la MXP formato PC Desktop.'), '_blank')">
+                                    onclick="window.open('https://wa.me/5492252513233?text='+encodeURIComponent('¡Hola Kenna! Me interesa la MXP Moderna.'), '_blank')">
                                     <span>Comprar</span>
                                     <span class="xp-icon">🛒</span>
                                 </button>
@@ -1707,24 +1741,31 @@
                         </div>
                     </div>
 
-                    <!-- MiniPC -->
+                    <!-- i5 -->
                     <div class="window w-full shadow-2xl !bg-[#ece9d8] overflow-hidden flex flex-col">
                         <div class="title-bar !h-10 !px-4 flex items-center shrink-0">
-                            <div class="title-bar-text !m-0 font-bold text-lg">MiniPC.exe</div>
+                            <div class="title-bar-text !m-0 font-bold text-lg">Retro.exe</div>
                             <div class="title-bar-controls"></div>
                         </div>
-                        <div class="window-body flex-grow flex flex-col p-6 !m-0 !bg-[#fcf7e9]">
-                            <h3 class="text-2xl font-bold text-center mb-4 text-[#003399]">Formato USFF</h3>
-                            <ul class="space-y-3 font-segoe text-gray-800 flex-grow text-left">
-                                <li>✔️ <strong>Ultra Compacta</strong>, cabe en cualquier lugar</li>
-                                <li>✔️ <strong>Bajo consumo</strong> y muy silenciosa</li>
-                                <li>✔️ <strong>Estética Minimalista</strong> en tu setup</li>
-                            </ul>
+                        <div class="window-body flex-grow flex flex-col px-6 py-8 !m-0 !bg-[#fcf7e9]">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-[#003399]">Intel i5 4570
+                            </h3>
+                            <div class="flex-grow flex items-center justify-center py-4 px-2">
+                                <ul
+                                    class="inline-block space-y-4 font-segoe text-gray-800 text-left text-lg sm:text-xl lg:text-[1.05rem] xl:text-[1.15rem] whitespace-nowrap">
+                                    <li>✔️ <strong>Gráfica Dedicada</strong> RX 550 2GB</li>
+                                    <li>✔️ <strong>RAM DDR3</strong> 12GB en Dual Channel</li>
+                                    <li>✔️ <strong>Almacenamiento</strong> SSD 2TB</li>
+                                    <li>✔️ <strong>Fuente</strong> 500W Genérica</li>
+                                    <li>✔️ <strong>Gabinete</strong> LNZ RGB</li>
+                                    <li>🎮 <strong>¡2 Joysticks Incluidos!</strong> Play + Xbox</li>
+                                </ul>
+                            </div>
                             <div class="mt-8 text-center flex flex-col h-full justify-end flex-grow">
-                                <p class="text-3xl font-bold text-gray-900 mb-4">$590.000 <span
+                                <p class="text-3xl font-bold text-gray-900 mb-4">$930.000 <span
                                         class="text-sm font-normal text-gray-600">ARS</span></p>
                                 <button class="xp-button-modern w-full !text-lg !py-2"
-                                    onclick="window.open('https://wa.me/5492252513233?text='+encodeURIComponent('¡Hola Kenna! Me interesa la MXP formato MiniPC.'), '_blank')">
+                                    onclick="window.open('https://wa.me/5492252513233?text='+encodeURIComponent('¡Hola Kenna! Me interesa la MXP Retro.'), '_blank')">
                                     <span>Comprar</span>
                                     <span class="xp-icon">🛒</span>
                                 </button>
@@ -1737,18 +1778,42 @@
                         <div class="title-bar !h-10 !px-4 flex items-center shrink-0">
                             <div class="title-bar-text !m-0 font-bold text-lg text-yellow-300">Reciclar.exe</div>
                         </div>
-                        <div class="window-body flex-grow flex flex-col p-6 !m-0 !bg-[#fcf7e9]">
-                            <h3 class="text-2xl font-bold text-center mb-4 text-[#003399]">Tu Equipo Actual</h3>
-                            <ul class="space-y-3 font-segoe text-gray-800 flex-grow text-left">
-                                <li>✔️ Reutilizamos <strong>tu PC o Notebook vieja</strong></li>
-                                <li>✔️ <strong>Ahorro significativo</strong> de dinero</li>
-                                <li>✔️ Evalúo el hardware y te digo si sirve</li>
-                            </ul>
-                            <div class="mt-8 text-center flex flex-col h-full justify-end flex-grow">
-                                <p class="text-3xl font-bold text-gray-900 mb-4">Consultar</p>
+                        <div class="window-body flex-grow flex flex-col px-6 py-8 !m-0 !bg-[#fcf7e9]">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-center mb-6 text-[#003399]">Tu Equipo Actual
+                            </h3>
+                            <div class="flex-grow flex items-center justify-center py-4 px-2">
+                                <ul
+                                    class="inline-block space-y-4 font-segoe text-gray-800 text-left text-lg sm:text-xl lg:text-[1.05rem] xl:text-[1.15rem] whitespace-nowrap">
+                                    <li>✔️ Reutilizamos <strong>tu PC o Notebook</strong></li>
+                                    <li>✔️ <strong>Ahorro significativo</strong> de dinero</li>
+                                    <li>✔️ Evalúo si tu <strong>hardware sirve</strong></li>
+                                </ul>
+                            </div>
+                            <div class="flex gap-8 justify-center items-center my-4">
+                                <div class="flex flex-col items-center gap-1 cursor-pointer group"
+                                    onclick="document.getElementById('card-radio-desktop').click()">
+                                    <img src="MXP/XP_Icons/My Computer.webp"
+                                        class="w-10 h-10 group-hover:scale-110 transition-transform" alt="Desktop Icon">
+                                    <div class="field-row !flex !items-center !justify-center gap-1">
+                                        <input id="card-radio-desktop" type="radio" name="card_device_type" value="PC" checked>
+                                        <label for="card-radio-desktop" class="text-base cursor-pointer !m-0 !pl-1">Desktop</label>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center gap-1 cursor-pointer group"
+                                    onclick="document.getElementById('card-radio-notebook').click()">
+                                    <img src="MXP/XP_Icons/IR File Transfer.webp"
+                                        class="w-10 h-10 group-hover:scale-110 transition-transform" alt="Notebook Icon">
+                                    <div class="field-row !flex !items-center !justify-center gap-1">
+                                        <input id="card-radio-notebook" type="radio" name="card_device_type" value="Notebook">
+                                        <label for="card-radio-notebook" class="text-base cursor-pointer !m-0 !pl-1">Notebook</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center flex flex-col h-full justify-end flex-grow">
+                                <p class="text-3xl font-bold text-gray-900 mb-4">Consultame</p>
                                 <button
-                                    class="xp-button-modern w-full !text-lg !py-2 !bg-[#e04300] hover:!bg-[#cc3c00] !border-orange-300"
-                                    onclick="document.getElementById('reciclarModal').classList.remove('hidden')">
+                                    class="xp-button-modern w-full !text-lg !py-2 !bg-[#509e2a]/30 hover:!bg-[#509e2a] !border-green-400/50 hover:!border-green-400 !text-white"
+                                    onclick="{ const cType = document.querySelector('input[name=\'card_device_type\']:checked').value; const cMsg = `¡Hola Kenna! Quiero convertir mi ${cType} en una MXP`; window.open('https://wa.me/5492252513233?text='+encodeURIComponent(cMsg), '_blank'); }">
                                     <span>Cotizar</span>
                                     <span class="xp-icon">♻️</span>
                                 </button>
@@ -1972,28 +2037,29 @@
                     <div class="flex gap-12 justify-center items-center">
                         <div class="flex flex-col items-center gap-2 cursor-pointer group"
                             onclick="document.getElementById('radio-desktop').click()">
-                            <img src="MXP/XP_Icons/Desktop.webp"
+                            <img src="MXP/XP_Icons/My Computer.webp"
                                 class="w-16 h-16 group-hover:scale-110 transition-transform" alt="Desktop Icon">
-                            <div class="field-row">
+                            <div class="field-row !flex !items-center !gap-1">
                                 <input id="radio-desktop" type="radio" name="device_type" value="Desktop" checked>
-                                <label for="radio-desktop" class="text-lg cursor-pointer">Desktop</label>
+                                <label for="radio-desktop" class="text-xl cursor-pointer !m-0 !pl-1">Desktop</label>
                             </div>
                         </div>
                         <div class="flex flex-col items-center gap-2 cursor-pointer group"
                             onclick="document.getElementById('radio-notebook').click()">
-                            <img src="MXP/XP_Icons/Mobile Device.webp"
+                            <img src="MXP/XP_Icons/IR File Transfer.webp"
                                 class="w-16 h-16 group-hover:scale-110 transition-transform" alt="Notebook Icon">
-                            <div class="field-row">
+                            <div class="field-row !flex !items-center !gap-1">
                                 <input id="radio-notebook" type="radio" name="device_type" value="Notebook">
-                                <label for="radio-notebook" class="text-lg cursor-pointer">Notebook</label>
+                                <label for="radio-notebook" class="text-xl cursor-pointer !m-0 !pl-1">Notebook</label>
                             </div>
                         </div>
+                    </div>
                     </div>
                     <div class="field-row-stacked">
                         <label for="device_details" class="font-bold mb-2">Detalles clave (Marca, Modelo, Procesador,
                             RAM...):</label>
                         <textarea id="device_details" rows="4" class="w-full font-sans p-2 border border-gray-400"
-                            placeholder="Ej: Es una compu negra con un Core i3 y 8GB de RAM..."></textarea>
+                            placeholder="Ej: tiene 4GB de RAM y un disco de 500GB..."></textarea>
                     </div>
                 </div>
                 <!-- Action Buttons -->
@@ -2001,11 +2067,13 @@
                     <button onclick="document.getElementById('reciclarModal').classList.add('hidden')"
                         class="px-4 py-1">Cancelar</button>
                     <button class="default font-bold px-6 py-1" onclick="
-                        const type = document.querySelector('input[name=\'device_type\']:checked').value;
-                        const details = document.getElementById('device_details').value.trim();
-                        const msg = `¡Hola Kenna! Quiero reciclar mi ${type} para tener una MXP.\nDetalles: ${details || 'No especificado'}`;
-                        window.open('https://wa.me/5492252513233?text='+encodeURIComponent(msg), '_blank');
-                        document.getElementById('reciclarModal').classList.add('hidden');
+                        {
+                            const pType = document.querySelector('input[name=\'device_type\']:checked').value;
+                            const pDetails = document.getElementById('device_details').value.trim();
+                            const pMsg = `¡Hola Kenna! Quiero reciclar mi ${pType} para tener una MXP.\nDetalles: ${pDetails || 'No especificado'}`;
+                            window.open('https://wa.me/5492252513233?text='+encodeURIComponent(pMsg), '_blank');
+                            document.getElementById('reciclarModal').classList.add('hidden');
+                        }
                     ">Enviar a WhatsApp</button>
                 </div>
             </div>
