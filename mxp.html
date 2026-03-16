@@ -855,6 +855,87 @@
             transition: opacity 3s cubic-bezier(0.45, 0, 0.55, 1) !important;
             will-change: opacity;
         }
+
+        /* Rustic highlight effect - Celeste/Light Blue */
+        .rustic-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .rustic-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 6px;
+            background: #4a86e8;
+            opacity: 0.8;
+            z-index: -1;
+            /* Rustic torn paper / brush effect */
+            clip-path: polygon(0% 50%, 15% 10%, 30% 60%, 45% 0%, 60% 70%, 75% 10%, 90% 80%, 100% 30%,
+                    100% 70%, 85% 90%, 70% 40%, 55% 100%, 40% 30%, 25% 90%, 10% 40%, 0% 80%);
+            transform: rotate(-0.5deg);
+        }
+
+        /* High Performance FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(0, 83, 225, 0.1);
+            transition: background-color 0.2s ease;
+        }
+
+        .faq-item:hover {
+            background-color: rgba(0, 83, 225, 0.03);
+        }
+
+        .faq-question {
+            cursor: pointer;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            color: #003399;
+            user-select: none;
+        }
+
+        .faq-answer-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .faq-item.active .faq-answer-wrapper {
+            grid-template-rows: 1fr;
+        }
+
+        .faq-answer {
+            min-height: 0;
+            padding: 0 1.25rem 1.25rem 1.25rem;
+            color: #4a5568;
+            font-style: italic;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faq-answer a {
+            color: #0053e1;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .faq-answer a:hover {
+            color: #e04300;
+        }
     </style>
     <!-- END: Custom Styles -->
 </head>
@@ -1731,10 +1812,11 @@
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 xp-title-shadow">Hardware y Precios</h2>
-                    <p class="text-blue-100 text-lg md:text-2xl italic">por ahora SOLO en el Partido de La
-                        Costa
+                    <p class="text-blue-100 text-lg md:text-2xl italic">
+                        <span class="rustic-underline">por ahora SOLO en el Partido de La Costa</span>
                     </p>
-                    <p class="text-blue-300 text-lg md:text-xl italic">San Clemente a Nueva Atlantis
+                    <p class="text-blue-300 text-lg md:text-xl italic mt-2">
+                        San Clemente a Nueva Atlantis
                     </p>
                 </div>
 
@@ -1861,7 +1943,7 @@
                 <div class="max-w-4xl mx-auto feature-card relative lg:col-span-2 soporte-tecnico-card !rounded-b-none !border-b-0 shadow-2xl !bg-transparent mt-32"
                     style="padding: 1rem; min-height: 200px; z-index: 5;">
                     <img src="memde_think.webp" alt="Soporte técnico personalizado"
-                        class="absolute bottom-0 right-0 h-4/5 w-auto opacity-100 pointer-events-none z-[-1] md:h-[110%] md:-right-8 md:-bottom-4"
+                        class="absolute bottom-0 right-0 max-h-[80%] h-auto w-auto opacity-100 pointer-events-none z-[-1] md:max-h-[110%] md:-right-8 md:-bottom-4"
                         onerror="this.onerror=null;this.src='https://placehold.co/240x264/00000000/ffffff?text=Yo'">
 
                     <div class="relative z-10 w-full h-full flex flex-col justify-start items-start text-left">
@@ -1870,43 +1952,37 @@
                                 class="w-20 h-20 sm:w-16 sm:h-16 md:w-20 md:h-20 flex-shrink-0"
                                 onerror="this.onerror=null;this.src='https://placehold.co/96x96/00000000/ffffff?text=Soporte'">
                             <h4
-                                class="font-saira font-bold text-white text-2xl leading-tight whitespace-nowrap mt-1 sm:mt-0 xp-title-shadow">
+                                class="font-saira font-bold text-white text-3xl leading-tight whitespace-nowrap mt-1 sm:mt-0 xp-title-shadow">
                                 Soporte Técnico</h4>
                         </div>
                         <div id="divSoporte"
                             class="space-y-3 text-white xp-title-shadow max-w-xs pl-0 text-lg leading-snug">
-                            <p class="flex items-start">
-                                <span class="text-blue-300 select-none ml-2 mr-1">•</span>
-                                <span class="flex-1">Contacto Directo con @DuendeKenna</span>
-                            </p>
-                            <!-- Redes Sociales y WhatsApp Section Under Contact -->
-                            <div class="flex gap-4 ml-8 mt-1 mb-2">
-                                <a href="https://wa.me/5492252513233?text=¡Hola Kenna! Te contacto desde la web..."
-                                    target="_blank"
-                                    class="text-green-400 hover:text-green-300 transition-all transform hover:scale-110 text-xl"
-                                    title="WhatsApp">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                                <a href="https://www.instagram.com/millennialgamerxp" target="_blank"
-                                    class="text-pink-400 hover:text-pink-300 transition-all transform hover:scale-110 text-xl"
-                                    title="Instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="https://www.youtube.com/@millennialgamerxp" target="_blank"
-                                    class="text-red-500 hover:text-red-400 transition-all transform hover:scale-110 text-xl"
-                                    title="YouTube">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                                <a href="https://www.twitch.tv/millennialgamerxp" target="_blank"
-                                    class="text-purple-400 hover:text-purple-300 transition-all transform hover:scale-110 text-xl"
-                                    title="Twitch">
-                                    <i class="fab fa-twitch"></i>
-                                </a>
-                                <a href="https://www.facebook.com/kenna.inf" target="_blank"
-                                    class="text-blue-400 hover:text-blue-300 transition-all transform hover:scale-110 text-xl"
-                                    title="Facebook">
-                                    <i class="fab fa-facebook"></i>
-                                </a>
+                            <div class="flex flex-col md:flex-row md:items-center md:gap-4">
+                                <p class="flex items-start">
+                                    <span class="text-blue-300 select-none ml-2 mr-1">•</span>
+                                    <span class="flex-1">Contacto Directo con <a
+                                            href="https://www.instagram.com/duendekenna" target="_blank"
+                                            class="text-white hover:text-blue-100 transition-colors font-bold">@DuendeKenna</a></span>
+                                </p>
+                                <!-- Redes Sociales y WhatsApp Section Under Contact -->
+                                <div class="flex gap-4 ml-8 md:ml-0 mt-1 mb-2 md:mt-0 md:mb-0">
+                                    <a href="https://wa.me/5492252513233?text=¡Hola Kenna! Te contacto desde la web millennial..."
+                                        target="_blank"
+                                        class="text-green-400 hover:text-green-300 transition-all transform hover:scale-110 text-xl"
+                                        title="WhatsApp">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                    <a href="https://www.instagram.com/kenna.inf" target="_blank"
+                                        class="text-pink-400 hover:text-pink-300 transition-all transform hover:scale-110 text-xl"
+                                        title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/kenna.inf" target="_blank"
+                                        class="text-blue-400 hover:text-blue-300 transition-all transform hover:scale-110 text-xl"
+                                        title="Facebook">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </div>
                             </div>
                             <p class="flex items-start">
                                 <span class="text-blue-300 select-none ml-2 mr-1">•</span>
@@ -1935,7 +2011,7 @@
                     </div>
                     <div class="window-body p-8 !m-0 !bg-[#fcf7e9] font-segoe">
                         <h2 class="text-3xl font-bold text-center mb-8 text-[#003399]">Condiciones y Garantía</h2>
-                        <ul class="space-y-5 text-gray-800 text-lg mb-8 px-4 md:px-12">
+                        <ul class="space-y-5 text-gray-800 text-lg mb-12 px-4 md:px-12">
                             <li class="flex items-start gap-4">
                                 <span class="text-2xl mt-0 text-[#3e881e]">★</span>
                                 <span><strong>Componentes Nuevos:</strong> Con garantía directa de proveedores de
@@ -1951,6 +2027,164 @@
                                 <span><strong>Garantía Total:</strong> 10 meses de garantía y asistencia técnica.</span>
                             </li>
                         </ul>
+
+                        <!-- Dynamic FAQ Section -->
+                        <div class="border-t border-[#003399]/20 pt-8 mt-8">
+                            <h3 class="text-2xl font-bold text-center mb-6 text-[#003399]">Preguntas Frecuentes</h3>
+                            <div id="faqContainer"
+                                class="max-w-3xl mx-auto bg-white/40 rounded-lg shadow-inner overflow-hidden border border-[#003399]/10">
+                                <!-- FAQ item 1 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>No vivo en La Costa, ¿puedo comprar una MXP?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            De momento solo en <a
+                                                href="https://www.google.com/maps/place/Partido+de+la+Costa,+Provincia+de+Buenos+Aires"
+                                                target="_blank"
+                                                class="text-blue-600 hover:text-blue-800 underline font-semibold transition-colors">mi
+                                                zona (Partido de La Costa)</a>, proximamente enviaré el sistema en un
+                                            disco sólido de 2TB a todo el país. ¡Seguime en mis <a
+                                                href="#page-footer">redes sociales</a> para estar al tanto!
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ item 2 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>¿Puedo convertir mi computadora actual en una MXP?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            ¡Claro! Con el servicio "Reciclar.exe" evalúo tu hardware y, si es
+                                            compatible, instalo el sistema MXP para que ahorres dinero y le des nueva
+                                            vida a tu equipo.
+                                            <br><br>
+                                            Necesitás un procesador de 4 núcleos (tipo i5 de 4ta gen o Ryzen 3), 8GB de
+                                            RAM y un SSD (disco sólido, no HDD). Una GPU de 2GB es ideal para exprimir
+                                            los juegos de PC, aunque puede funcionar con gráfica integrada.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ item 4 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>¿Requiero conexión a Internet?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            En los 90s no tenías internet en tu casa, ¿o sí? ;) <br><br> No es necesario
+                                            tener
+                                            conexión a internet para usar la MXP. Está pensada para tener TODA TU
+                                            COLECCIÓN instalada y jugarla offline.s
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ item 4 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>¿Los juegos son originales?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            Claramente estamos usando versiones repacks y abandonware. Están descargados
+                                            de sitios de confianza y pasados por
+                                            <u>10 antivirus diferentes</u>, pero el uso de software no original siempre
+                                            conlleva un riesgo. En próximas versiones solo usaremos software original
+                                            (así que aprovechá ahora ;)
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ item 5 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>¿Es un sistema seguro? ¿Tiene antivirus?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            ¡Sí! Tiene el que considero el mejor antivirus gratuito del mercado: <a
+                                                href="https://www.bitdefender.com/es-es/consumer/free-antivirus"
+                                                target="_blank"
+                                                class="text-blue-600 hover:text-blue-800 underline font-semibold transition-colors">BitDefender</a>.
+                                            Además, el sistema entero está <a target="_blank" href="limpiezaso.html"
+                                                class="text-blue-600 hover:text-blue-800 underline font-semibold transition-colors">depurado
+                                                por otros 9 antivirus distintos</a>.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ item 6 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>¿Los juegos vienen instalados o hay que bajarlos?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            TODOS los juegos que viste en las secciones de PC y consolas vienen
+                                            instalados y listos para jugar, nada de andar esperando. Tu colección está
+                                            lista desde el primer segundo.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ item 7 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>¿Qué incluye el servicio de soporte técnico?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            Tenés contacto directo con el creador del sistema. Ofrezco asistencia remota
+                                            (via <a href="https://anydesk.com" target="_blank"
+                                                class="text-blue-600 hover:text-blue-800 underline font-semibold transition-colors">AnyDesk</a>)
+                                            y servicio a domicilio de San Clemente a Nueva Atlantis. <br><br> ¿No corre
+                                            un juego? ¿Se tildó? ¿No funciona el joystick? ¿Pasaron 9 meses y dejó de
+                                            arrancar? ¡Lo resuelvo!
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ item 8 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>¿El sistema se puede actualizar?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            Las actualizaciones de Windows están desactivadas por diseño para evitar que
+                                            el bloatware rompa la experiencia personalizada. <br><br>s En cuanto al
+                                            contenido
+                                            instalado, no requiere ni acepta actualizaciones, se entrega completo tal
+                                            cual es, por ÚNICA vez. Si se precisa alguna actualización o agregado, se
+                                            realiza de forma remota via <a href="https://anydesk.com" target="_blank"
+                                                class="text-blue-600 hover:text-blue-800 underline font-semibold transition-colors">AnyDesk</a>.
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- FAQ item 8 -->
+                                <div class="faq-item">
+                                    <div class="faq-question text-lg md:text-xl">
+                                        <span>¡Quiero mi MXP! Pero no llego... ¿puedo pagarla <i>en cuotas</i>?</span>
+                                        <i class="fas fa-chevron-down text-sm opacity-50 transition-transform"></i>
+                                    </div>
+                                    <div class="faq-answer-wrapper">
+                                        <div class="faq-answer text-base md:text-lg">
+                                            ¡Sí! Ofrezco planes personalizados con tarjetas de crédito para que puedas
+                                            llevarte tu
+                                            MXP sin desequilibrar tus finanzas. <br><br> Consultame por WhatsApp con el
+                                            botón de abajo y
+                                            armamos un plan a tu medida.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1966,7 +2200,7 @@
                     <div
                         class="absolute -top-10 -right-10 w-32 h-32 transform rotate-12 select-none pointer-events-none">
                         <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-xl opacity-60">
-                            <!-- Cuerpo del clip (33% Narrower 디자인) -->
+                            <!-- Cuerpo del clip -->
                             <path
                                 d="M42 30 C42 18, 62 18, 62 30 L62 70 C62 82, 35 82, 35 70 L35 45 C35 34, 53 34, 53 45 L53 70"
                                 fill="none" stroke="#a0a0a0" stroke-width="3.2" stroke-linecap="round" />
@@ -2092,7 +2326,7 @@
                 </p>
                 <div class="flex justify-center gap-8 text-3xl mb-10">
                     <a href="https://www.instagram.com/millennialgamerxp" target="_blank"
-                        class="text-white/70 hover:text-white transition-all transform hover:scale-110"><i
+                        class="text-white/70 hover:text-white transition-all transform hover:scale-110" title="GamerXP"><i
                             class="fab fa-instagram"></i></a>
                     <a href="https://www.youtube.com/@millennialgamerxp" target="_blank"
                         class="text-white/70 hover:text-white transition-all transform hover:scale-110"><i
@@ -2103,6 +2337,9 @@
                     <a href="https://www.facebook.com/kenna.inf" target="_blank"
                         class="text-white/70 hover:text-white transition-all transform hover:scale-110"><i
                             class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/kenna.inf" target="_blank"
+                        class="text-white/70 hover:text-white transition-all transform hover:scale-110" title="Personal"><i
+                            class="fab fa-instagram"></i></a>
                 </div>
 
                 <p class="text-xs opacity-50">© 2026 MillennialXP. All rights reserved. Not affiliated with any
@@ -2780,6 +3017,25 @@
                 parallaxTicking = true;
             }
         }, { passive: true });
+
+        // --- FAQ Logic (Static Version) ---
+        function initFAQ() {
+            const container = document.getElementById('faqContainer');
+            if (!container) return;
+
+            container.addEventListener('click', (e) => {
+                // Ignore clicks on links
+                if (e.target.tagName === 'A') return;
+
+                const item = e.target.closest('.faq-item');
+                if (!item) return;
+                const isActive = item.classList.contains('active');
+                container.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        }
+
+        initFAQ();
 
         // Start Initialization
         initConsolaMarquee();
