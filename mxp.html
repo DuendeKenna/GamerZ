@@ -398,14 +398,35 @@
                 padding-top: 1rem !important;
             }
 
-            /* Hide title bar text on small screens */
-            .title-bar-text {
-                display: none !important;
+            /* Keeping title bar text but smaller on small screens */
+            .title-bar-text,
+            .title-bar-text * {
+                font-size: 0.85rem !important;
+                line-height: 1.2 !important;
             }
 
-            /* Resetting title bar controls for mobile to prevent pixelation */
+            .title-bar-text {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 70%;
+            }
+
+            .title-bar-text img {
+                width: 1.25rem !important;
+                height: 1.25rem !important;
+                flex-shrink: 0 !important;
+            }
+
+            /* Resetting title bar controls for mobile and ensuring they stay right */
             .title-bar-controls {
                 padding-top: 2px;
+                margin-left: auto !important;
+                display: flex !important;
+                flex-shrink: 0 !important;
             }
 
             .title-bar-controls button {
@@ -677,11 +698,13 @@
             transform-origin: center center;
         }
 
-        /* Feature cards hover effect in Emulación Retro */
-        .group:hover .xp-feature-highlight-title,
-        .group:hover .xp-feature-highlight-desc {
-            color: #ffffff !important;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+        /* Feature cards hover effect in Emulación Retro (Desktop only) */
+        @media (min-width: 1024px) {
+            .group:hover .xp-feature-highlight-title,
+            .group:hover .xp-feature-highlight-desc {
+                color: #ffffff !important;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+            }
         }
 
         .xp-feature-highlight-desc {
@@ -809,20 +832,22 @@
             transform-origin: left center;
         }
 
-        .group:hover .feature-base-icon-left {
-            scale: 1.35;
-            rotate: 8deg;
-            translate: -40px 0;
-            z-index: 100;
-            animation: vibrant-pulse 3.5s ease-in-out infinite;
-        }
+        @media (min-width: 1024px) {
+            .group:hover .feature-base-icon-left {
+                scale: 1.35;
+                rotate: 8deg;
+                translate: -40px 0;
+                z-index: 100;
+                animation: vibrant-pulse 3.5s ease-in-out infinite;
+            }
 
-        .group:hover .feature-base-icon-right {
-            scale: 1.35;
-            rotate: -8deg;
-            translate: 40px 0;
-            z-index: 100;
-            animation: vibrant-pulse 3.5s ease-in-out infinite;
+            .group:hover .feature-base-icon-right {
+                scale: 1.35;
+                rotate: -8deg;
+                translate: 40px 0;
+                z-index: 100;
+                animation: vibrant-pulse 3.5s ease-in-out infinite;
+            }
         }
 
         /* Text transitions for Feature Base */
@@ -1310,17 +1335,17 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mt-16 max-w-7xl mx-auto">
                         <!-- Feature 1 -->
                         <div
-                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 lg:hover:scale-115 z-10 lg:hover:z-50 py-6 px-2">
                             <!-- Background Layer: Expands with gradient and glow -->
                             <div
                                 class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
+                                lg:group-hover:w-full lg:group-hover:h-full lg:group-hover:top-0 lg:group-hover:bg-gradient-to-br lg:group-hover:from-blue-600/40 lg:group-hover:to-blue-900/90 lg:group-hover:border-white/40 lg:group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
 
                             <!-- Icon Container -->
                             <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
                                 <img src="MXP/XP_Icons/Favorites.webp"
-                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 lg:group-hover:scale-125"
                                     alt="Curated">
                             </div>
 
@@ -1337,15 +1362,15 @@
 
                         <!-- Feature 2 -->
                         <div
-                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 lg:hover:scale-115 z-10 lg:hover:z-50 py-6 px-2">
                             <div
                                 class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
+                                lg:group-hover:w-full lg:group-hover:h-full lg:group-hover:top-0 lg:group-hover:bg-gradient-to-br lg:group-hover:from-blue-600/40 lg:group-hover:to-blue-900/90 lg:group-hover:border-white/40 lg:group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
 
                             <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
                                 <img src="MXP/XP_Icons/Change Language.webp"
-                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 lg:group-hover:scale-125"
                                     alt="Spanish">
                             </div>
 
@@ -1359,15 +1384,15 @@
 
                         <!-- Feature 3 -->
                         <div
-                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 lg:hover:scale-115 z-10 lg:hover:z-50 py-6 px-2">
                             <div
                                 class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
+                                lg:group-hover:w-full lg:group-hover:h-full lg:group-hover:top-0 lg:group-hover:bg-gradient-to-br lg:group-hover:from-blue-600/40 lg:group-hover:to-blue-900/90 lg:group-hover:border-white/40 lg:group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
 
                             <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
                                 <img src="MXP/XP_Icons/Floppy Disk.webp"
-                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 lg:group-hover:scale-125"
                                     alt="Saves">
                             </div>
 
@@ -1382,15 +1407,15 @@
 
                         <!-- Feature 4 -->
                         <div
-                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 lg:hover:scale-115 z-10 lg:hover:z-50 py-6 px-2">
                             <div
                                 class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
+                                lg:group-hover:w-full lg:group-hover:h-full lg:group-hover:top-0 lg:group-hover:bg-gradient-to-br lg:group-hover:from-blue-600/40 lg:group-hover:to-blue-900/90 lg:group-hover:border-white/40 lg:group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
 
                             <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
                                 <img src="MXP/XP_Icons/Forward.webp"
-                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 lg:group-hover:scale-125"
                                     alt="Turbo">
                             </div>
 
@@ -1405,15 +1430,15 @@
 
                         <!-- Feature 5 -->
                         <div
-                            class="relative flex flex-col items-center text-center group transition-all duration-500 hover:scale-115 z-10 hover:z-50 py-6 px-2">
+                            class="relative flex flex-col items-center text-center group transition-all duration-500 lg:hover:scale-115 z-10 lg:hover:z-50 py-6 px-2">
                             <div
                                 class="absolute top-6 left-1/2 -translate-x-1/2 w-28 h-28 bg-white/5 backdrop-blur-lg border border-white/10 rounded-[2rem] shadow-2xl transition-all duration-500 ease-out 
-                                group-hover:w-full group-hover:h-full group-hover:top-0 group-hover:bg-gradient-to-br group-hover:from-blue-600/40 group-hover:to-blue-900/90 group-hover:border-white/40 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
+                                lg:group-hover:w-full lg:group-hover:h-full lg:group-hover:top-0 lg:group-hover:bg-gradient-to-br lg:group-hover:from-blue-600/40 lg:group-hover:to-blue-900/90 lg:group-hover:border-white/40 lg:group-hover:shadow-[0_0_50px_rgba(59,130,246,0.5)] z-0">
                             </div>
 
                             <div class="relative z-10 w-28 h-28 mb-4 flex items-center justify-center">
                                 <img src="MXP/XP_Icons/Game Controller.webp"
-                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 group-hover:sm:scale-125"
+                                    class="w-16 h-16 drop-shadow-xl transition-all duration-500 lg:group-hover:scale-125"
                                     alt="Controls">
                             </div>
 
@@ -1510,7 +1535,7 @@
                         <p class="text-orange-100 text-xl md:text-2xl italic font-serif">Tu colección de mp3 como en los
                             viejos tiempos.</p>
                         <p class="text-lg text-white/80 leading-relaxed font-sans max-w-2xl">
-                            <strong>No necesitás internet</strong> para musicalizar tus sesiones. <br> Viajá en el
+                            ¡<strong>No necesitás internet</strong> para musicalizar! <br> Viajá en el
                             tiempo con una
                             colección de los
                             <strong>hitazos</strong> que más sonaban.
@@ -1809,6 +1834,7 @@
         <!-- BEGIN: Hardware y Precios Section -->
         <section id="secPrecios" class="py-32 -mt-10 slant-divider relative overflow-hidden"
             style="background: linear-gradient(to bottom, #0020a0, #4a86e8);" data-purpose="section-precios">
+            <br><br><br>
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 xp-title-shadow">Hardware y Precios</h2>
@@ -2191,7 +2217,7 @@
         </section>
         <!-- END: Hardware y Precios Section -->
         <!-- BEGIN: Beige Section (Sticky Note Call to Action) -->
-        <section id="parallaxCta" class="bg-xpBeige py-32 -mt-10" data-purpose="bottom-beige-area">
+        <section id="parallaxCtaBottom" class="bg-xpBeige py-32 -mt-10" data-purpose="bottom-beige-area">
             <div class="container mx-auto px-6 text-center flex justify-center">
                 <!-- Sticky Note Content (Yellow Post-it style) -->
                 <div
@@ -2208,7 +2234,7 @@
                     </div>
 
                     <div class="text-center space-y-4">
-                        <h2 id="parallaxText" class="text-3xl md:text-5xl font-bold text-gray-900">
+                        <h2 id="parallaxTextBottom" class="text-3xl md:text-5xl font-bold text-gray-900">
                             <span class="effect-rgba">¡Nave Lista! <br> ¿Volvemos?</span>
                         </h2>
                         <p class="hidden text-xl md:text-2xl text-gray-700 italic font-serif">Lo mejor del pasado con la
@@ -2326,8 +2352,8 @@
                 </p>
                 <div class="flex justify-center gap-8 text-3xl mb-10">
                     <a href="https://www.instagram.com/millennialgamerxp" target="_blank"
-                        class="text-white/70 hover:text-white transition-all transform hover:scale-110" title="GamerXP"><i
-                            class="fab fa-instagram"></i></a>
+                        class="text-white/70 hover:text-white transition-all transform hover:scale-110"
+                        title="GamerXP"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.youtube.com/@millennialgamerxp" target="_blank"
                         class="text-white/70 hover:text-white transition-all transform hover:scale-110"><i
                             class="fab fa-youtube"></i></a>
@@ -2338,8 +2364,8 @@
                         class="text-white/70 hover:text-white transition-all transform hover:scale-110"><i
                             class="fab fa-facebook"></i></a>
                     <a href="https://www.instagram.com/kenna.inf" target="_blank"
-                        class="text-white/70 hover:text-white transition-all transform hover:scale-110" title="Personal"><i
-                            class="fab fa-instagram"></i></a>
+                        class="text-white/70 hover:text-white transition-all transform hover:scale-110"
+                        title="Personal"><i class="fab fa-instagram"></i></a>
                 </div>
 
                 <p class="text-xs opacity-50">© 2026 MillennialXP. All rights reserved. Not affiliated with any
@@ -2791,7 +2817,7 @@
 
                 function createConsoleItem(c) {
                     const item = document.createElement('div');
-                    item.className = 'relative flex flex-col items-center justify-center cursor-pointer group hover:scale-110 transition-transform duration-300';
+                    item.className = 'relative flex flex-col items-center justify-center cursor-pointer group lg:hover:scale-110 transition-transform duration-300';
                     item.onclick = () => openConsolaModal(c.id);
                     item.style.webkitUserDrag = 'none';
                     item.innerHTML = `
@@ -2944,12 +2970,28 @@
 
         // Touch Events for Mobile Swiping
         groupConsolas.addEventListener('touchstart', (e) => {
+            isDown = true;
             isAutoScrolling = false;
+            startX = e.touches[0].pageX - groupConsolas.offsetLeft;
+            scrollLeft = groupConsolas.scrollLeft;
         }, { passive: true });
 
         groupConsolas.addEventListener('touchend', () => {
+            isDown = false;
             isAutoScrolling = true;
-        });
+        }, { passive: true });
+
+        groupConsolas.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - groupConsolas.offsetLeft;
+            const walk = (x - startX) * 2;
+            groupConsolas.scrollLeft = scrollLeft - walk;
+        }, { passive: true });
+
+        groupConsolas.addEventListener('touchcancel', () => {
+            isDown = false;
+            isAutoScrolling = true;
+        }, { passive: true });
 
         // Native scroll observer for mobile scrolling loops
         groupConsolas.addEventListener('scroll', () => {
@@ -2993,9 +3035,9 @@
                         parallaxText.style.visibility = 'visible';
                         parallaxText.style.transform = `translateY(${yOffset}px)`;
                         parallaxText.style.opacity = opacity;
-                        // Difuminado (blur) progresivo junto con la opacidad
-                        const blurValue = Math.max(0, (1 - opacity) * 8);
-                        parallaxText.style.filter = `blur(${blurValue}px)`;
+                        // Difuminado (blur) progresivo junto con la opacidad (solo en desktop)
+                        const blurValue = window.innerWidth < 768 ? 0 : Math.max(0, (1 - opacity) * 8);
+                        parallaxText.style.filter = blurValue > 0 ? `blur(${blurValue}px)` : 'none';
                     } else {
                         // Invisible para no gastar render
                         parallaxText.style.visibility = 'hidden';
