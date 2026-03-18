@@ -8,7 +8,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 466624,
+      "total": 476804,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -27,7 +27,7 @@
       "mother": "23506",
       "ram": "93477",
       "cantRam": 2,
-      "total": 671697,
+      "total": 680795,
       "totalram": 16,
       "visible": 1,
       "linksAlt": [],
@@ -46,7 +46,7 @@
       "mother": "23506",
       "ram": "55457",
       "cantRam": 2,
-      "total": 868649,
+      "total": 917573,
       "totalram": 32,
       "visible": 1,
       "linksAlt": [],
@@ -417,6 +417,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 75999,
+          "date": "2026-03-18T13:25:47.768Z"
+        },
+        {
           "value": 79365,
           "date": "2026-03-11T13:36:31.129Z"
         },
@@ -462,6 +466,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 149499,
+          "date": "2026-03-18T13:31:06.709Z"
+        },
         {
           "value": 149499,
           "date": "2026-03-16T11:01:53.027Z"
@@ -522,6 +530,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 88199,
+          "date": "2026-03-18T13:31:24.381Z"
+        },
         {
           "value": 88299,
           "date": "2026-03-16T11:02:04.980Z"
@@ -597,6 +609,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 164840,
+          "date": "2026-03-18T13:31:35.166Z"
+        },
+        {
           "value": 159839,
           "date": "2026-03-13T15:30:08.125Z"
         },
@@ -643,6 +659,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 165915,
+          "date": "2026-03-18T13:31:45.885Z"
+        },
+        {
           "value": 164889,
           "date": "2026-03-16T11:02:22.668Z"
         },
@@ -686,6 +706,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 108000,
+          "date": "2026-03-18T13:32:04.385Z"
+        },
         {
           "value": 129999,
           "date": "2026-03-16T11:02:35.695Z"
@@ -782,6 +806,10 @@
       "description": "",
       "prices": [
         {
+          "value": 247400,
+          "date": "2026-03-18T13:32:38.004Z"
+        },
+        {
           "value": 237400,
           "date": "2026-03-16T11:02:59.837Z"
         },
@@ -829,11 +857,17 @@
     {
       "id": 85207,
       "name": "RX 550",
-      "link": "https://www.mercadolibre.com.ar/placa-video-amd-radeon-asus-rx-550-2gb-gddr5-hdmi/p/MLA20014742?offer_type=OFFICIAL_STORE",
+      "link": "https://www.mercadolibre.com.ar/placa-de-video-amd-asrock-phantom-gaming-radeon-series-rx-550-phantom-g-r-rx550-2gb-gddr5/p/MLA15239150?offer_type=OFFICIAL_STORE",
       "visible": 0,
       "description": "2GB | GDDR5 / 64bit",
-      "linksAlt": [],
+      "linksAlt": [
+        "https://www.mercadolibre.com.ar/placa-video-amd-radeon-asus-rx-550-2gb-gddr5-hdmi/p/MLA20014742?offer_type=OFFICIAL_STORE"
+      ],
       "prices": [
+        {
+          "value": 82799,
+          "date": "2026-03-18T13:30:26.496Z"
+        },
         {
           "value": 129999,
           "date": "2026-02-03T13:29:16.434Z"
@@ -848,6 +882,10 @@
       "description": "La puerta de entrada a la tecnología moderna. Su arquitectura de última generación te da acceso a tecnologías clave como DLSS y Ray Tracing. Perfecta para jugar títulos actuales y eSports en 1080p con eficiencia.",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 463999,
+          "date": "2026-03-18T13:30:37.382Z"
+        },
         {
           "value": 464535,
           "date": "2026-03-16T11:01:38.258Z"
@@ -933,6 +971,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 929999,
+          "date": "2026-03-18T13:31:04.649Z"
+        },
+        {
           "value": 888589,
           "date": "2026-03-16T11:01:50.786Z"
         },
@@ -984,6 +1026,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 88590,
+          "date": "2026-03-18T13:32:40.093Z"
+        },
         {
           "value": 88590,
           "date": "2026-03-08T11:04:00.885Z"
@@ -1119,6 +1165,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 93930,
+          "date": "2026-03-18T13:26:28.620Z"
+        },
+        {
           "value": 96999,
           "date": "2026-03-08T10:59:50.952Z"
         },
@@ -1149,6 +1199,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 93585,
+          "date": "2026-03-18T13:26:39.353Z"
+        },
+        {
           "value": 93579,
           "date": "2026-03-11T13:37:27.184Z"
         },
@@ -1169,6 +1223,10 @@
       "visible": 1,
       "description": "",
       "prices": [
+        {
+          "value": 105170,
+          "date": "2026-03-18T13:26:50.004Z"
+        },
         {
           "value": 101370,
           "date": "2026-03-16T11:00:25.382Z"
@@ -1194,6 +1252,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 324990,
+          "date": "2026-03-18T13:26:07.267Z"
+        },
         {
           "value": 325072,
           "date": "2026-03-16T10:59:55.787Z"
@@ -1244,6 +1306,10 @@
       "description": "4 nucleos 4ghz Am4",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 120999,
+          "date": "2026-03-18T13:26:17.887Z"
+        },
         {
           "value": 119999,
           "date": "2026-03-16T10:59:57.991Z"
@@ -1297,6 +1363,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 131110,
+          "date": "2026-03-18T13:27:09.687Z"
+        },
         {
           "value": 126523,
           "date": "2026-03-16T11:00:27.556Z"
@@ -1395,6 +1465,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 136537,
+          "date": "2026-03-18T13:27:36.188Z"
+        },
+        {
           "value": 149000,
           "date": "2026-03-16T11:00:53.716Z"
         },
@@ -1440,6 +1514,10 @@
       "total": 16,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 249499,
+          "date": "2026-03-18T13:27:55.174Z"
+        },
         {
           "value": 224999,
           "date": "2026-03-06T18:16:42.765Z"
@@ -1499,6 +1577,14 @@
       "visible": 0,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 632299,
+          "date": "2026-03-18T13:29:58.625Z"
+        },
+        {
+          "value": 611529,
+          "date": "2026-03-18T13:25:49.827Z"
+        },
         {
           "value": 611529,
           "date": "2026-03-13T14:06:23.700Z"
@@ -1566,6 +1652,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 170899,
+          "date": "2026-03-18T13:33:11.120Z"
+        },
+        {
           "value": 169099,
           "date": "2026-03-11T13:41:17.523Z"
         },
@@ -1603,6 +1693,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 179499,
+          "date": "2026-03-18T13:33:21.938Z"
+        },
         {
           "value": 163399,
           "date": "2026-03-11T13:41:30.294Z"
@@ -1712,6 +1806,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 27599,
+          "date": "2026-03-18T13:33:48.105Z"
+        },
+        {
           "value": 23979,
           "date": "2026-02-28T12:07:00.568Z"
         }
@@ -1729,6 +1827,10 @@
         "https://www.mercadolibre.com.ar/joystick-para-xbox-360-inalambrico-para-pilas-o-bateria/up/MLAU3785591925?offer_type=OFFICIAL_STORE#polycard_client=recommendations_pdp-pads-up&reco_backend=recomm_platform_base_merge_pads_rfa&wid=MLA1676266095&reco_model=search_recos_backend_merge&reco_client=pdp-pads-up&reco_item_pos=2&reco_backend_type=low_level&reco_id=19091bf5-a6e6-496e-b3ad-72251df61244&sid=recos&is_advertising=true&ad_domain=PDPDESKTOP_UP&ad_position=3&ad_click_id=YmU4NzllMWYtMzRjZC00ZGYxLWI5ZmQtYzJkMmVjMGYwZDIy"
       ],
       "prices": [
+        {
+          "value": 47523,
+          "date": "2026-03-18T13:33:50.164Z"
+        },
         {
           "value": 47523,
           "date": "2026-03-13T16:27:13.503Z"
@@ -1789,6 +1891,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 54999,
+          "date": "2026-03-18T13:34:13.136Z"
+        },
         {
           "value": 54299,
           "date": "2026-03-13T16:27:36.046Z"
@@ -1897,6 +2003,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 62500,
+          "date": "2026-03-18T13:34:39.357Z"
+        },
         {
           "value": 58935,
           "date": "2026-03-16T11:04:58.764Z"
@@ -2035,6 +2145,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 18559,
+          "date": "2026-03-18T13:35:13.225Z"
+        },
+        {
           "value": 18999,
           "date": "2026-03-16T11:05:24.335Z"
         },
@@ -2098,6 +2212,10 @@
       "description": "",
       "linksAlt": [],
       "prices": [
+        {
+          "value": 24368,
+          "date": "2026-03-18T13:35:24.077Z"
+        },
         {
           "value": 24138,
           "date": "2026-03-16T11:05:26.553Z"
@@ -2249,6 +2367,10 @@
       "linksAlt": [],
       "prices": [
         {
+          "value": 48996,
+          "date": "2026-03-18T13:35:59.594Z"
+        },
+        {
           "value": 47096,
           "date": "2026-03-08T11:07:24.034Z"
         },
@@ -2356,6 +2478,10 @@
       "visible": 1,
       "linksAlt": [],
       "prices": [
+        {
+          "value": 16275,
+          "date": "2026-03-18T13:36:43.749Z"
+        },
         {
           "value": 17500,
           "date": "2026-03-06T18:41:49.354Z"
