@@ -1,0 +1,10 @@
+[
+  { "id": "winamp", "name": "Winamp", "platform": "Entorno", "year": "1997", "image": "../XP_Icons/Music.webp", "description_html": "Reproductor multimedia de culto. ¿Qué skin vas a usar hoy?" },
+  { "id": "msn", "name": "MSN Messenger", "platform": "Entorno", "year": "1999", "image": "../XP_Icons/Connection Status.webp", "description_html": "Hablar con amigos e interrumpirlos con zumbidos." },
+  { "id": "encarta", "name": "Encarta", "platform": "Entorno", "year": "1993", "image": "../XP_Icons/Search.webp", "description_html": "La enciclopedia digital antes de Wikipedia. Hora de investigar jugando a MindMaze." },
+  { "id": "buscaminas", "name": "Buscaminas", "platform": "Entorno", "year": "1990", "image": "../XP_Icons/Help.webp", "description_html": "Clásico de clásicos para perder el tiempo en la oficina de los 90s." },
+  { "id": "pinball", "name": "3D Pinball for Windows - Space Cadet", "platform": "Entorno", "year": "1995", "image": "../XP_Icons/Game.webp", "description_html": "Un vicio infinito incluido en Windows. ¿Llegarás al récord?" },
+  { "id": "paint", "name": "MS Paint", "platform": "Entorno", "year": "1985", "image": "../XP_Icons/Picture.webp", "description_html": "Creá arte digital usando sólo el tarrito de pintura y el aerosol." },
+  { "id": "solitario", "name": "Solitario", "platform": "Entorno", "year": "1990", "image": "../XP_Icons/Game.webp", "description_html": "La cascada de cartas victoria es la mejor recompensa visual." },
+  { "id": "notepad", "name": "Notepad / Bloc de Notas", "platform": "Entorno", "year": "1983", "image": "../XP_Icons/Document.webp", "description_html": "Creá un archivo HTML rudimentario o programá un bat peligroso." }
+]

@@ -1,0 +1,538 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Saira:wght@400;600&display=swap');
+
+:root {
+  --xp-blue: #003399;
+  --xp-blue-light: #2561ea;
+  --xp-bg: #ece9d8;
+  --cyber-bg: #0b0f19;
+  --cyber-border: #00ffff;
+  --cyber-glow: rgba(0, 255, 255, 0.5);
+  --neon-purple: #b026ff;
+  --neon-green: #39ff14;
+  --window-bg: #12182b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Saira', sans-serif;
+  background-color: var(--cyber-bg);
+  background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('../../Shots/bgs/cyberpunk-grid.webp'); /* Fallback if missing */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Roboto Mono', monospace;
+  text-transform: uppercase;
+}
+
+/* XP Window Style for Modals/Panels */
+.xp-window {
+  background-color: var(--window-bg);
+  border: 2px solid var(--xp-blue);
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 0 15px var(--cyber-glow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.xp-titlebar {
+  background: linear-gradient(to bottom, #0058e6 0%, #3a93ff 8%, #288eff 40%, #127dff 88%, #036bce 100%);
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #000;
+}
+
+.xp-titlebar span {
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 1px 1px 1px #000;
+  font-family: 'Trebuchet MS', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.xp-titlebar-buttons .close-btn {
+  background: linear-gradient(135deg, #e06c5b, #c53c29);
+  border: 1px solid #fff;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: inset -1px -1px 2px rgba(0,0,0,0.5);
+}
+
+.xp-content {
+  padding: 20px;
+  border-left: 2px solid var(--cyber-border);
+  border-right: 2px solid var(--cyber-border);
+  border-bottom: 2px solid var(--cyber-border);
+  border-radius: 0 0 6px 6px;
+  background: rgba(18, 24, 43, 0.9);
+}
+
+/* Cyberpunk Neon Elements */
+.neon-text {
+  color: var(--cyber-border);
+  text-shadow: 0 0 5px var(--cyber-glow), 0 0 10px var(--cyber-border);
+}
+
+.neon-btn {
+  background: transparent;
+  border: 2px solid var(--neon-purple);
+  color: var(--neon-purple);
+  padding: 10px 20px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 5px rgba(176, 38, 255, 0.4), 0 0 5px rgba(176, 38, 255, 0.4);
+}
+
+.neon-btn:hover {
+  background: var(--neon-purple);
+  color: #fff;
+  box-shadow: 0 0 15px var(--neon-purple);
+}
+
+.neon-btn.green {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  box-shadow: inset 0 0 5px rgba(57, 255, 20, 0.4), 0 0 5px rgba(57, 255, 20, 0.4);
+}
+.neon-btn.green:hover {
+  background: var(--neon-green);
+  color: #000;
+  box-shadow: 0 0 15px var(--neon-green);
+}
+
+/* Sliders XP Style */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 12px;
+  background: #2561ea;
+  border: 1px solid #fff;
+  cursor: pointer;
+  margin-top: -8px;
+  box-shadow: 1px 1px 3px #000;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #8e9bb3; /* xp groove */
+  border-radius: 3px;
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Base Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.top-bar {
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 2px solid var(--cyber-border);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar-links a {
+  color: var(--cyber-border);
+  text-decoration: none;
+  margin-left: 15px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  cursor: pointer;
+}
+.top-bar-links a:hover {
+  text-shadow: 0 0 8px var(--cyber-border);
+}
+
+.main-content {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Anchor to top */
+  padding: 20px;
+}
+
+/* Views */
+.view {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+.view.active {
+  display: flex;
+}
+
+/* GENERATOR VIEW */
+#view-generator {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.generator-panel {
+  width: 400px;
+  margin-bottom: 30px;
+}
+
+.config-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.config-row label {
+  width: 100px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.booster-pack-container {
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  width: 200px;
+  height: 300px;
+}
+
+.booster-pack {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ff0055, #6a00ff);
+  border: 3px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 0, 85, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform 0.3s;
+  transform-style: preserve-3d;
+}
+
+.booster-pack:hover {
+  transform: rotateY(15deg) rotateX(5deg) scale(1.05);
+}
+
+.booster-pack.opening {
+  animation: explode 0.8s forwards;
+}
+
+@keyframes explode {
+  0% { transform: scale(1) rotate(0); filter: brightness(1); }
+  50% { transform: scale(1.2) rotate(10deg); filter: brightness(2); }
+  100% { transform: scale(0); opacity: 0; filter: brightness(3); }
+}
+
+/* REWARD VIEW */
+#view-reward {
+  flex-direction: column;
+}
+
+.reward-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+.quest-card {
+  width: 220px;
+  height: 400px; /* Fixed height to avoid UI jumping */
+  background: #1a2238;
+  border: 2px solid #3a4a73;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.quest-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--cyber-glow);
+  border-color: var(--cyber-border);
+}
+
+.qc-img-container {
+  width: 100%;
+  height: 120px;
+  background: #000;
+  position: relative;
+}
+
+.qc-img-container img.game-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.qc-platform-icon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 50%;
+  padding: 4px;
+  border: 1px solid var(--cyber-border);
+}
+
+.qc-content {
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.qc-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+  height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.qc-year {
+  color: #8bb;
+  font-size: 13px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.qc-hook {
+  font-size: 12px;
+  color: #ccc;
+  margin-top: 5px;
+  flex-grow: 1; /* Take remaining space but respect card height */
+  overflow: hidden;
+  border-top: 1px solid #334;
+  padding-top: 5px;
+  line-height: 1.4;
+}
+
+.qc-actions {
+  display: flex;
+  border-top: 1px solid #3a4a73;
+  margin-top: auto; /* Push to bottom */
+}
+
+.qc-btn {
+  flex: 1;
+  background: transparent;
+  color: #fff;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.qc-btn:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.qc-btn.reroll {
+  border-right: 1px solid #3a4a73;
+  color: #ff9900;
+}
+.qc-btn.edit {
+  color: #00ffff;
+}
+
+/* KANBAN BOARD */
+#view-board {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  padding-top: 10px;
+  align-items: flex-start;
+}
+
+.kanban-col {
+  flex: 1;
+  background: rgba(18, 24, 43, 0.7);
+  border: 1px solid var(--cyber-border);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px);
+}
+
+.kanban-header {
+  background: rgba(0, 255, 255, 0.1);
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid var(--cyber-border);
+  font-family: 'Roboto Mono', monospace;
+  text-transform: uppercase;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-clear-btn {
+  position: absolute;
+  right: 5px;
+  background: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  border-radius: 3px;
+  padding: 0 4px;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.kanban-header:hover .col-clear-btn {
+  opacity: 1;
+}
+
+.col-clear-btn:hover {
+  background: #ff4d4d;
+  color: #fff;
+}
+
+.kanban-body {
+  flex-grow: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.minimized-card {
+  background: #1a2238;
+  border: 1px solid #3a4a73;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.minimized-card:active {
+  cursor: grabbing;
+}
+
+.minimized-card img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.kanban-body.drag-over {
+  background: rgba(0, 255, 255, 0.05);
+}
+
+/* Drag/Drop Visual styling */
+.dragging {
+  opacity: 0.5;
+}
+
+/* Modal for Editing/Loading */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal-overlay.active { display: flex; }
+
+.modal-content {
+  width: 600px;
+  max-width: 90%;
+}
+
+.settings-row {
+  margin-bottom: 10px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 8px;
+  background: #0b0f19;
+  border: 1px solid var(--cyber-border);
+  color: #fff;
+  font-family: 'Saira', sans-serif;
+  margin-bottom: 10px;
+}
+
+.search-results {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #3a4a73;
+  background: #0b0f19;
+}
+
+.search-item {
+  padding: 8px;
+  border-bottom: 1px solid #3a4a73;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.search-item:hover {
+  background: rgba(0,255,255,0.1);
+}
+.search-item img {
+  width: 30px; height: 30px; object-fit: cover;
+}
