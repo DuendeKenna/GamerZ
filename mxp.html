@@ -1019,30 +1019,6 @@
             <!-- Hero Text overlay -->
             <div id="heroText">
 
-                <!-- Construction Banner -->
-                <div class="mt-8 flex justify-center">
-                    <div
-                        class="relative max-w-sm md:max-w-md bg-[#ffffe1] text-gray-800 p-6 md:p-8 rounded shadow-2xl border border-yellow-200 transform md:-rotate-1 z-20 mx-4">
-                        <div
-                            class="absolute -top-8 -left-8 w-24 h-24 transform -rotate-12 select-none pointer-events-none">
-                            <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-lg ">
-                                <path
-                                    d="M42 30 C42 18, 62 18, 62 30 L62 70 C62 82, 35 82, 35 70 L35 45 C35 34, 53 34, 53 45 L53 70"
-                                    fill="none" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <div class="text-center space-y-2">
-                            <h3 class="text-2xl md:text-4xl font-bold text-gray-900">¡En Desarrollo!</h3>
-                            <p class="text-lg md:text-xl text-gray-700 italic font-serif">¿Buscás la <strong>demo
-                                    gratuita</strong>?
-                                <br>Andá a <a href="mxpdemo.html"
-                                    class="text-blue-600 underline font-bold hover:text-blue-800">este link</a> <br>
-                                <span class="text-orange-800 opacity-75">¡SOLO para entusiastas..!</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
                 <h2 class=" hero-title text-xl md:text-3xl text-white font-serif mt-8">
                     ¿Vos también extrañás <strong>esta era</strong>?<br>Tranca,
                     <strong>resucitó</strong>...
@@ -1856,6 +1832,30 @@
         <!-- BEGIN: Hardware y Precios Section -->
         <section id="secPrecios" class="py-32 -mt-10 slant-divider relative overflow-hidden"
             style="background: linear-gradient(to bottom, #0020a0, #4a86e8);" data-purpose="section-precios">
+            
+            <!-- Construction Banner (Nostalgia Note) aligned right side of screen -->
+            <div class="hidden xl:block absolute right-4 lg:right-12 top-[14rem] z-50 origin-top-right rotate-[8deg]">
+                <div
+                    class="relative max-w-md bg-[#ffffe1] text-gray-800 p-8 rounded shadow-2xl border border-yellow-200 z-20 mx-4">
+                    <div
+                        class="absolute -top-10 -left-10 w-28 h-28 transform -rotate-12 select-none pointer-events-none">
+                        <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-lg ">
+                            <path
+                                d="M42 30 C42 18, 62 18, 62 30 L62 70 C62 82, 35 82, 35 70 L35 45 C35 34, 53 34, 53 45 L53 70"
+                                fill="none" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="text-center space-y-4">
+                        <p class="text-xl text-gray-700 italic font-serif">¿Buscás la <strong>demo
+                                gratuita</strong>?
+                            <br>Andá a <a href="mxpdemo.html"
+                                class="text-blue-600 underline font-bold hover:text-blue-800">este link</a> <br>
+                            <span class="text-orange-900 opacity-75">¡SOLO para entusiastas..!</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             <br><br><br>
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-16">
@@ -1974,7 +1974,8 @@
                                 </div>
                             </div>
                             <div class="mt-4 text-center flex flex-col h-full justify-end flex-grow">
-                                <p class="text-3xl font-bold text-gray-900 mb-4">Consultame</p>
+                                <p class="text-3xl font-bold text-gray-900 mb-4">$150.000 <span
+                                        class="text-sm font-normal text-gray-600">ARS</span></p>
                                 <button
                                     class="xp-button-modern w-full !text-lg !py-2 !bg-[#509e2a]/30 hover:!bg-[#509e2a] !border-green-400/50 hover:!border-green-400 !text-[#168f25] hover:!text-white"
                                     onclick="{ const cType = document.querySelector('input[name=\'card_device_type\']:checked').value; const cMsg = `¡Hola Kenna! Quiero convertir mi ${cType} en una MXP`; window.open('https://wa.me/5492252513233?text='+encodeURIComponent(cMsg), '_blank'); }">
@@ -1986,7 +1987,6 @@
                     </div>
                 </div>
 
-                <!-- Garantía y Servicio -->
                 <!-- Soporte Técnico Card -->
                 <div class="max-w-4xl mx-auto feature-card relative lg:col-span-2 soporte-tecnico-card !rounded-b-none !border-b-0 shadow-2xl !bg-transparent mt-32"
                     style="padding: 1rem; min-height: 200px; z-index: 5;">
@@ -2094,8 +2094,22 @@
                                                 target="_blank"
                                                 class="text-blue-600 hover:text-blue-800 underline font-semibold transition-colors">mi
                                                 zona (Partido de La Costa)</a>, proximamente enviaré el sistema en un
-                                            disco sólido de 2TB a todo el país. ¡Seguime en mis <a
-                                                href="#page-footer">redes sociales</a> para estar al tanto!
+                                            disco sólido de 2TB a todo el país. ¡Seguime en mis redes sociales para
+                                            estar al tanto!
+                                            <div class="flex gap-4 mt-3">
+                                                <a href="https://www.instagram.com/millennialgamerxp" target="_blank"
+                                                    class="text-pink-600 hover:text-pink-700 transition-all transform hover:scale-110 text-2xl"
+                                                    title="Instagram GamerXP"><i class="fab fa-instagram"></i></a>
+                                                <a href="https://www.youtube.com/@millennialgamerxp" target="_blank"
+                                                    class="text-red-600 hover:text-red-700 transition-all transform hover:scale-110 text-2xl"
+                                                    title="YouTube"><i class="fab fa-youtube"></i></a>
+                                                <a href="https://www.twitch.tv/millennialgamerxp" target="_blank"
+                                                    class="text-purple-600 hover:text-purple-700 transition-all transform hover:scale-110 text-2xl"
+                                                    title="Twitch"><i class="fab fa-twitch"></i></a>
+                                                <a href="https://www.facebook.com/kenna.inf" target="_blank"
+                                                    class="text-blue-700 hover:text-blue-800 transition-all transform hover:scale-110 text-2xl"
+                                                    title="Facebook"><i class="fab fa-facebook"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

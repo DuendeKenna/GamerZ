@@ -516,6 +516,9 @@ function setupDragAndDrop() {
       const state = JSON.parse(localStorage.getItem(STATE_KEY));
       const item = state[sourceColId][index];
       
+      // Asegurar que conservamos los hooks al mover
+      if (!item.hooks) item.hooks = [];
+      
       state[sourceColId].splice(index, 1);
       state[targetColId].unshift(item); // Add to top
       
@@ -969,8 +972,9 @@ window.addCardHook = function(colId, index, text) {
   text = text.trim();
   if(!text) return;
   const state = JSON.parse(localStorage.getItem(STATE_KEY));
-  if(!state[colId][index].hooks) state[colId][index].hooks = [];
-  state[colId][index].hooks.push(text);
+  const item = state[colId][index];
+  if(!item.hooks) item.hooks = [];
+  item.hooks.push(text);
   saveBoardState(state);
   renderBoard();
 };
