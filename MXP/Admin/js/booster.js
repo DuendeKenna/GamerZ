@@ -32,20 +32,28 @@ async function init() {
   loadBoardState();
   setupDragAndDrop();
   setupSliders();
+  
+  // Mostrar tablero por defecto al cargar
+  viewGenerator.classList.remove('active');
+  viewReward.classList.remove('active');
+  viewBoard.classList.add('active');
 }
 
 async function autoLoadHistory() {
+  // Si ya hay estado local, no lo pisamos con el history.json del servidor
+  if(localStorage.getItem(STATE_KEY)) return;
+
   try {
     const res = await fetch('history.json');
     if (res.ok) {
-      const data = await res.ok ? await res.json() : null;
+      const data = await res.json();
       if (data && data.todo && data.inprogress && data.published) {
         localStorage.setItem(STATE_KEY, JSON.stringify(data));
         console.log("Historial auto-cargado desde history.json");
       }
     }
   } catch (e) {
-    console.log("No se encontró history.json o no se pudo cargar automáticamente.");
+    console.log("No se encontró history.json o no se pudo cargar.");
   }
 }
 
@@ -56,8 +64,14 @@ async function loadDatabases() {
     const pcData = await pcRes.json();
     
     // 2. Entorno
-    const envRes = await fetch('data/entorno.json');
-    const envData = await envRes.json();
+    let envData = [];
+    const localEnvStr = localStorage.getItem('mxp_entorno_db');
+    if (localEnvStr) {
+      envData = JSON.parse(localEnvStr);
+    } else {
+      const envRes = await fetch('data/entorno.json');
+      envData = await envRes.json();
+    }
     
     // 3. Consolas
     // Primero leemos consoles.json para saber qué consolas hay
@@ -124,6 +138,17 @@ function updateDistrib() {
 
 function setupSliders() {
   updateDistrib();
+  const sliders = ['slider-pc', 'slider-consola', 'slider-entorno'];
+  sliders.forEach(id => {
+    const s = document.getElementById(id);
+    if(s) {
+      s.addEventListener('input', () => {
+        updateDistrib();
+        const state = JSON.parse(localStorage.getItem(STATE_KEY)) || {todo:[], inprogress:[], published:[]};
+        saveBoardState(state);
+      });
+    }
+  });
 }
 
 // GENERATOR LOGIC
@@ -164,8 +189,8 @@ function getRandomItems(category, count, specificPlatform = null) {
 }
 
 function getBoardItemsIds() {
-  const state = JSON.parse(localStorage.getItem(STATE_KEY) || '{"todo":[], "inprogress":[], "published":[]}');
-  return [...state.todo, ...state.inprogress, ...state.published].map(t => t.id);
+  const state = JSON.parse(localStorage.getItem(STATE_KEY) || '{"todo":[], "toedit":[], "inprogress":[], "published":[]}');
+  return [...state.todo, ...state.toedit, ...state.inprogress, ...state.published].map(t => t.id);
 }
 
 function generateCards() {
@@ -205,8 +230,8 @@ function renderCards() {
           <div class="qc-hook">${item.description_html ? item.description_html.substring(0, 100) + '...' : ''}</div>
         </div>
         <div class="qc-actions">
-          <button class="qc-btn reroll" onclick="rerollCard(${index})">⟳ RE-ROLL</button>
-          <button class="qc-btn edit" onclick="openEditModal(${index})">✎ BUSCAR</button>
+          <button class="qc-btn reroll" onclick="event.stopPropagation(); rerollCard(${index})">⟳ RE-ROLL</button>
+          <button class="qc-btn edit" onclick="event.stopPropagation(); openEditModal(${index})">✎ BUSCAR</button>
         </div>
       </div>
     `;
@@ -227,7 +252,7 @@ window.rerollCard = function(index) {
 document.getElementById('btn-accept-quests').addEventListener('click', () => {
   if(currentCards.length === 0) return;
   
-  const state = JSON.parse(localStorage.getItem(STATE_KEY) || '{"todo":[], "inprogress":[], "published":[]}');
+  const state = JSON.parse(localStorage.getItem(STATE_KEY) || '{"todo":[], "toedit":[], "inprogress":[], "published":[]}');
   
   // Agregar al top de Todo
   state.todo = [...currentCards, ...state.todo];
@@ -241,24 +266,28 @@ document.getElementById('btn-accept-quests').addEventListener('click', () => {
 });
 
 // BOARD / KANBAN LOGIC
-
-function saveBoardState(state) {
-  localStorage.setItem(STATE_KEY, JSON.stringify(state));
-}
-
 function loadBoardState() {
   renderBoard();
 }
 
 function renderBoard() {
-  const state = JSON.parse(localStorage.getItem(STATE_KEY) || '{"todo":[], "inprogress":[], "published":[]}');
+  const state = JSON.parse(localStorage.getItem(STATE_KEY) || '{"todo":[], "toedit":[], "inprogress":[], "published":[]}');
   
   const renderCol = (colId, items) => {
     const colEl = document.getElementById(`col-${colId}`);
     colEl.innerHTML = '';
     items.forEach((item, index) => {
+      // Sync form dbMaster para que refleje cambios de Entorno/PC
+      const dbItem = dbMaster.find(i => i.id === item.id);
+      if(dbItem) {
+        item.name = dbItem.name;
+        item.image = dbItem.image;
+        if(dbItem.icon) item.icon = dbItem.icon;
+      }
+      
       const el = document.createElement('div');
       el.className = 'minimized-card';
+      el.style.position = 'relative'; // Para que la cruz sea absoluta
       el.draggable = true;
       el.innerHTML = `
         <div style="display:flex; align-items:center; gap:10px; flex-grow:1;" onclick="openDetailsModal('${colId}', ${index})">
@@ -266,24 +295,163 @@ function renderBoard() {
           <div style="flex-grow:1; overflow:hidden;">
             <div style="font-size:12px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><b>${item.name}</b></div>
             <div style="font-size:10px; color:#aaa;">${item.platform} ${item.developer ? `- ${item.developer}` : ''}</div>
+            <div class="card-hooks" style="margin-top:5px; border-top:1px solid #3a4a73; padding-top:5px;">
+              <!-- Render existing card hooks -->
+              ${(item.hooks || []).map((g, gIdx) => `
+                <div style="font-size:11px; display:flex; justify-content:space-between; margin-bottom:2px; background:rgba(0,0,0,0.5); padding:2px 4px; border-radius:3px;">
+                  <span style="color:#ffcc00;">- ${g}</span>
+                  <span style="color:#ff4d4d; cursor:pointer;" onclick="deleteCardHook('${colId}', ${index}, ${gIdx}); event.stopPropagation();">x</span>
+                </div>
+              `).join('')}
+              <input type="text" placeholder="+ Gancho..." style="width:100%; padding:3px; background:#000; color:#fff; border:1px solid #3a4a73; font-size:10px; margin-top:3px; outline:none;" 
+                     onclick="event.stopPropagation();" 
+                     onkeydown="if(event.key==='Enter'){ addCardHook('${colId}', ${index}, this.value); this.value=''; event.stopPropagation(); }">
+            </div>
           </div>
         </div>
-        <div style="cursor:pointer; color:#ff4d4d; font-weight:bold; padding:0 5px;" onclick="deleteBoardItem('${colId}', ${index})">x</div>
+        <div class="card-delete-btn" style="cursor:pointer; font-size:14px; position:absolute; top:8px; right:8px; display:none; filter: drop-shadow(0 0 5px red);" onclick="deleteBoardItem('${colId}', ${index})" title="Eliminar quest">❌</div>
       `;
-      // Drag events
+      
+      // Mostrar botón de borrar al pasar el mouse
+      el.onmouseenter = () => el.querySelector('.card-delete-btn').style.display = 'block';
+      el.onmouseleave = () => el.querySelector('.card-delete-btn').style.display = 'none';
+
+      // Drag events con física de vaivén opaca
       el.addEventListener('dragstart', (e) => {
         e.dataTransfer.setData('text/plain', JSON.stringify({ colId, index }));
-        el.classList.add('dragging');
+        setTimeout(() => el.style.opacity = '0.3', 0); // Ocultar casi por completo el original, pero mantener su espacio en el DOM
+        
+        // Esconder la imagen fantasma por defecto
+        const blank = new Image();
+        blank.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+        if(e.dataTransfer.setDragImage) e.dataTransfer.setDragImage(blank, 0, 0);
+        
+        // Crear un clon físico 100% opaco
+        window._dragClone = el.cloneNode(true);
+        window._dragClone.style.opacity = '1';
+        window._dragClone.style.position = 'fixed';
+        window._dragClone.style.pointerEvents = 'none';
+        window._dragClone.style.zIndex = '999999';
+        window._dragClone.style.width = el.getBoundingClientRect().width + 'px';
+        window._dragClone.style.transformOrigin = 'top center';
+        window._dragClone.style.transition = 'transform 0.1s ease-out';
+        
+        document.body.appendChild(window._dragClone);
+        
+        const rect = el.getBoundingClientRect();
+        window._dragOffsetX = e.clientX - rect.left;
+        window._dragOffsetY = e.clientY - rect.top;
+        window._lastDragX = e.clientX;
       });
-      el.addEventListener('dragend', () => el.classList.remove('dragging'));
+      
+      el.addEventListener('drag', (e) => {
+        if (!window._dragClone || (e.clientX === 0 && e.clientY === 0)) return;
+        
+        const deltaX = e.clientX - window._lastDragX;
+        window._lastDragX = e.clientX;
+        
+        let rot = deltaX * 1.2; 
+        if(rot > 15) rot = 15;
+        if(rot < -15) rot = -15;
+        
+        window._dragClone.style.left = (e.clientX - window._dragOffsetX) + 'px';
+        window._dragClone.style.top = (e.clientY - window._dragOffsetY) + 'px';
+        window._dragClone.style.transform = `rotate(${rot}deg)`;
+      });
+      
+      el.addEventListener('dragend', () => {
+        el.style.opacity = '1';
+        if (window._dragClone) {
+          window._dragClone.remove();
+          window._dragClone = null;
+        }
+      });
+      
       colEl.appendChild(el);
     });
   };
 
   renderCol('todo', state.todo);
+  renderCol('toedit', state.toedit || []);
   renderCol('inprogress', state.inprogress);
   renderCol('published', state.published);
+  
+  // Render Production Panels
+  document.getElementById('global-notes').value = state.globalNotes || '';
+  renderSteps(state.steps || []);
 }
+
+window.renderSteps = function(steps) {
+  const list = document.getElementById('list-steps');
+  list.innerHTML = '';
+  steps.forEach((text, index) => {
+    const el = document.createElement('div');
+    el.className = 'panel-item';
+    el.draggable = true;
+    el.id = `step-item-${index}`;
+    el.innerHTML = `
+      <b>${index + 1}.</b>
+      <span class="step-text" ondblclick="editStepInline(${index})">${text}</span>
+      <div class="delete-btn" onclick="deleteStep(${index})">x</div>
+    `;
+    
+    // Drag and Drop for Steps
+    el.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', index);
+      el.classList.add('dragging');
+    });
+    el.addEventListener('dragend', () => el.classList.remove('dragging'));
+    el.addEventListener('dragover', (e) => e.preventDefault());
+    el.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const fromIndex = parseInt(e.dataTransfer.getData('text/plain'));
+      const toIndex = index;
+      if(fromIndex === toIndex) return;
+      
+      const state = JSON.parse(localStorage.getItem(STATE_KEY));
+      const movedItem = state.steps.splice(fromIndex, 1)[0];
+      state.steps.splice(toIndex, 0, movedItem);
+      saveBoardState(state);
+      renderSteps(state.steps);
+    });
+
+    list.appendChild(el);
+  });
+};
+
+window.editStepInline = function(index) {
+  const itemEl = document.getElementById(`step-item-${index}`);
+  const textSpan = itemEl.querySelector('.step-text');
+  const currentText = textSpan.innerText;
+  
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = currentText;
+  input.className = 'inline-edit-input';
+  input.style.width = '100%';
+  input.style.background = '#000';
+  input.style.color = '#fff';
+  input.style.border = '1px solid var(--cyber-blue)';
+  
+  input.onkeydown = (e) => {
+    if(e.key === 'Enter') saveInlineStep(index, input.value);
+    if(e.key === 'Escape') renderBoard(); // Re-render to cancel
+  };
+  
+  input.onblur = () => saveInlineStep(index, input.value);
+  
+  textSpan.innerHTML = '';
+  textSpan.appendChild(input);
+  input.focus();
+};
+
+window.saveInlineStep = function(index, newText) {
+  if(!newText.trim()) return renderBoard();
+  const state = JSON.parse(localStorage.getItem(STATE_KEY));
+  state.steps[index] = newText.trim();
+  saveBoardState(state);
+  renderSteps(state.steps);
+};
 
 function saveBoardState(state) {
   // Guardar también la configuración de los sliders
@@ -292,6 +460,11 @@ function saveBoardState(state) {
     consola: document.getElementById('slider-consola').value,
     entorno: document.getElementById('slider-entorno').value
   };
+  // Asegurar que notes y steps existan
+  if (!state.globalNotes) state.globalNotes = '';
+  if (!state.steps) state.steps = [];
+  if (!state.toedit) state.toedit = [];
+  
   localStorage.setItem(STATE_KEY, JSON.stringify(state));
 }
 
@@ -303,15 +476,9 @@ function restoreSliderState() {
       document.getElementById('slider-pc').value = state.config.pc;
       document.getElementById('slider-consola').value = state.config.consola;
       document.getElementById('slider-entorno').value = state.config.entorno;
-      updateSliderVisuals();
+      updateDistrib();
     }
   }
-}
-
-function updateSliderVisuals() {
-  document.getElementById('val-pc').innerText = document.getElementById('slider-pc').value;
-  document.getElementById('val-consola').innerText = document.getElementById('slider-consola').value;
-  document.getElementById('val-entorno').innerText = document.getElementById('slider-entorno').value;
 }
 
 window.deleteBoardItem = function(colId, index) {
@@ -348,6 +515,9 @@ function setupDragAndDrop() {
       
       const state = JSON.parse(localStorage.getItem(STATE_KEY));
       const item = state[sourceColId][index];
+      
+      // Asegurar que conservamos los hooks al mover
+      if (!item.hooks) item.hooks = [];
       
       state[sourceColId].splice(index, 1);
       state[targetColId].unshift(item); // Add to top
@@ -483,22 +653,57 @@ window.closeDetailsModal = function() {
   detailsModal.classList.remove('active');
 };
 
-// ICON LIST FOR ENTORNO ABM
+// ICON LIST FOR ENTORNO ABM (GRID MODAL)
 async function loadIconList() {
-    const iconSelect = document.getElementById('entorno-icon-select');
-    // Como no podemos listar archivos directamente desde JS en el cliente, 
-    // usaremos una lista pre-generada o la extraeremos de lo que ya tenemos.
-    // Pero como yo tengo acceso al sistema, la voy a dejar "hardcodeada" dinámicamente según lo que vi en el sistema.
-    const icons = ["Accessibility Wizard.webp", "Accessibility.webp", "Activation.webp", "Add Network Place.webp", "Add New Hardware.webp", "Add New Programs.webp", "Add or Remove Windows Components.webp", "Add.webp", "Address Book.webp", "Administrative Tools.webp", "Appearance Settings.webp", "Application.webp", "Archive.webp", "Audio CD.webp", "Audio.webp", "Backup.webp", "Briefcase.webp", "Calculator.webp", "Calendar.webp", "Camera.webp", "Certificate.webp", "Characters.webp", "Clipboard.webp", "Clock.webp", "Command Prompt.webp", "Computer.webp", "Control Panel.webp", "Deletion.webp", "Desktop.webp", "Devices.webp", "DirectX.webp", "Explorer.webp", "Favorites.webp", "Fax.webp", "Folder.webp", "Font.webp", "Game.webp", "Help and Support.webp", "History.webp", "Hyper Terminal.webp", "Internet Explorer.webp", "Messenger.webp", "Move to.webp", "Movie.webp", "Music.webp", "My Documents.webp", "Network.webp", "Notepad.webp", "Outlook Express.webp", "Paint.webp", "Printer.webp", "Recycle Bin.webp", "Run.webp", "Search.webp", "Security.webp", "Settings.webp", "Sound.webp", "System Information.webp", "Users.webp", "Video.webp", "Winamp.webp", "Windows Media Player.webp", "Wordpad.webp"];
+    const grid = document.getElementById('entorno-icons-grid');
+    grid.innerHTML = '<div style="color:#666; padding:10px; font-size:10px;">Cargando...</div>';
     
-    iconSelect.innerHTML = '<option value="">-- Seleccionar Icono --</option>';
-    icons.forEach(icon => {
-        const opt = document.createElement('option');
-        opt.value = `../XP_Icons/${icon}`;
-        opt.innerText = icon.replace('.webp', '');
-        iconSelect.appendChild(opt);
-    });
+    try {
+        const response = await fetch('data/icons_list.json');
+        const icons = await response.json();
+        
+        grid.innerHTML = '';
+        icons.forEach(iconName => {
+            const iconPath = `../XP_Icons/${iconName}`;
+            const img = document.createElement('img');
+            img.src = iconPath;
+            img.title = iconName.replace('.webp', '');
+            img.style.width = '100%';
+            img.style.aspectRatio = '1/1';
+            img.style.objectFit = 'contain';
+            img.style.cursor = 'pointer';
+            img.style.padding = '4px';
+            img.style.border = '1px solid transparent';
+            
+            img.onclick = () => {
+                // Desmarcar anteriores
+                grid.querySelectorAll('img').forEach(i => i.style.borderColor = 'transparent');
+                // Marcar actual
+                img.style.borderColor = 'var(--cyber-blue)';
+                img.style.background = 'rgba(0, 163, 255, 0.2)';
+                
+                document.getElementById('entorno-icon-path').value = iconPath;
+                updateIconPreview();
+                // Auto-cerrar grilla al elegir
+                toggleIconGrid(false);
+            };
+            
+            grid.appendChild(img);
+        });
+    } catch(e) {
+        console.error("Error loading icons_list.json:", e);
+        grid.innerHTML = '<div style="color:red; padding:10px; font-size:10px;">Error cargando data/icons_list.json</div>';
+    }
 }
+
+window.toggleIconGrid = function(forceState) {
+    const container = document.getElementById('icon-grid-container');
+    if (typeof forceState === 'boolean') {
+        container.style.display = forceState ? 'block' : 'none';
+    } else {
+        container.style.display = container.style.display === 'none' ? 'block' : 'none';
+    }
+};
 
 // GLOBAL KEYBOARD & CLICK LISTENERS
 document.addEventListener('keydown', (e) => {
@@ -544,7 +749,7 @@ document.getElementById('btn-clear-booster').addEventListener('click', () => {
 
 // CLEAR BOARD (COLUMN)
 window.clearColumn = function(colId) {
-  const colName = colId === 'todo' ? 'To Do' : (colId === 'inprogress' ? 'In Progress' : 'Published');
+  const colName = colId === 'todo' ? 'To Do' : (colId === 'toedit' ? 'To Edit' : (colId === 'inprogress' ? 'In Progress' : 'Published'));
   if(confirm(`¿Estás seguro de que deseas limpiar la columna '${colName}'?`)) {
     const state = JSON.parse(localStorage.getItem(STATE_KEY));
     state[colId] = [];
@@ -553,44 +758,7 @@ window.clearColumn = function(colId) {
   }
 };
 
-// HISTORIAL SAVE
-document.getElementById('btn-save-fixed-history').addEventListener('click', () => {
-  const stateStr = localStorage.getItem(STATE_KEY) || '{"todo":[], "inprogress":[], "published":[]}';
-  const blob = new Blob([stateStr], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `history.json`;
-  a.click();
-  URL.revokeObjectURL(url);
-  alert("Se ha generado 'history.json'. Sobrescribe el archivo en MXP/Admin para persistir los cambios.");
-});
 
-document.getElementById('load-history-file').addEventListener('change', (e) => {
-  const file = e.target.files[0];
-  if(!file) return;
-  
-  const reader = new FileReader();
-  reader.onload = (evt) => {
-    try {
-      const data = JSON.parse(evt.target.result);
-      if(data.todo && data.inprogress && data.published) {
-        localStorage.setItem(STATE_KEY, JSON.stringify(data));
-        alert("¡Historial cargado con éxito!");
-        loadBoardState();
-        document.getElementById('btn-nav-board').click();
-      } else {
-        alert("El archivo no tiene el formato correcto.");
-      }
-    } catch(err) {
-      alert("Error leyendo el JSON.");
-    }
-  };
-  reader.readAsText(file);
-  // Reset input
-  e.target.value = '';
-});
 
 // ADMIN DB / ENTORNO ABM LOGIC
 const adminModal = document.getElementById('admin-db-modal');
@@ -608,30 +776,40 @@ window.renderEntornoAdminList = function() {
   listEl.innerHTML = '';
   tempEntornoList.forEach((item, index) => {
     const el = document.createElement('div');
-    el.className = 'search-item'; // Reutilizamos estilo
-    el.style.marginBottom = '5px';
+    el.className = 'admin-list-item'; // Clase nueva para CSS
+    el.style.display = 'flex';
+    el.style.alignItems = 'center';
+    el.style.justifyContent = 'space-between';
+    el.style.padding = '5px 10px';
+    el.style.marginBottom = '3px';
     el.style.cursor = 'pointer';
+    el.style.background = 'rgba(255,255,255,0.03)';
+    el.style.borderRadius = '3px';
     el.innerHTML = `
-      <div style="display:flex; align-items:center; gap:10px; flex-grow:1;" onclick="editEntornoItem(${index})">
-        <img src="${item.image}" onerror="this.src='${ERROR_ICON}'">
+      <div style="display:flex; align-items:center; gap:8px; flex-grow:1;" onclick="editEntornoItem(${index})">
+        <img src="${item.image}" style="width:24px; height:24px;" onerror="this.src='${ERROR_ICON}'">
         <div style="flex-grow:1;">
-          <div style="font-weight:bold; font-size:13px;">${item.name}</div>
-          <div style="font-size:10px; color:#666; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width: 350px;">${item.image}</div>
+          <div style="font-weight:bold; font-size:12px; color:#fff;">${item.name}</div>
         </div>
       </div>
-      <button class="col-clear-btn" style="opacity:1; position:relative; right:0;" onclick="deleteEntornoAdmin(${index}); event.stopPropagation();">🗑</button>
+      <button class="col-clear-btn delete-icon" style="opacity:0; width:20px; height:20px; font-size:12px; position:relative; right:0; transition: opacity 0.2s;" onclick="deleteEntornoAdmin(${index}); event.stopPropagation();">×</button>
     `;
+    
+    // Hover logic via JS inline for simplicity without breaking CSS file
+    el.onmouseenter = () => el.querySelector('.delete-icon').style.opacity = '1';
+    el.onmouseleave = () => el.querySelector('.delete-icon').style.opacity = '0';
+    
     listEl.appendChild(el);
   });
 };
 
 window.updateIconPreview = function() {
-  const select = document.getElementById('entorno-icon-select');
+  const path = document.getElementById('entorno-icon-path').value;
   const img = document.getElementById('entorno-preview-img');
   const span = document.getElementById('preview-placeholder');
   
-  if(select.value) {
-    img.src = select.value;
+  if(path) {
+    img.src = path;
     img.style.display = 'block';
     span.style.display = 'none';
   } else {
@@ -645,9 +823,22 @@ window.editEntornoItem = function(index) {
   
   document.getElementById('entorno-id').value = item.id;
   document.getElementById('entorno-name').value = item.name;
-  document.getElementById('entorno-icon-select').value = item.image;
+  document.getElementById('entorno-icon-path').value = item.image;
   document.getElementById('entorno-desc').value = item.description_html || '';
   
+  // Marcar en la grilla
+  const grid = document.getElementById('entorno-icons-grid');
+  grid.querySelectorAll('img').forEach(img => {
+      if(img.getAttribute('src') === item.image) {
+          img.style.borderColor = 'var(--cyber-blue)';
+          img.style.background = 'rgba(0, 163, 255, 0.2)';
+          img.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+          img.style.borderColor = 'transparent';
+          img.style.background = 'transparent';
+      }
+  });
+
   updateIconPreview();
   
   // Alternar botones
@@ -659,8 +850,15 @@ window.editEntornoItem = function(index) {
 window.cancelEntornoEdit = function() {
   document.getElementById('entorno-id').value = '';
   document.getElementById('entorno-name').value = '';
-  document.getElementById('entorno-icon-select').value = '';
+  document.getElementById('entorno-icon-path').value = '';
   document.getElementById('entorno-desc').value = '';
+  
+  const grid = document.getElementById('entorno-icons-grid');
+  grid.querySelectorAll('img').forEach(i => {
+      i.style.borderColor = 'transparent';
+      i.style.background = 'transparent';
+  });
+
   updateIconPreview();
   
   document.getElementById('btn-entorno-create').style.display = 'block';
@@ -671,7 +869,7 @@ window.cancelEntornoEdit = function() {
 window.updateEntornoItem = function() {
   const id = document.getElementById('entorno-id').value;
   const name = document.getElementById('entorno-name').value.trim();
-  const image = document.getElementById('entorno-icon-select').value;
+  const image = document.getElementById('entorno-icon-path').value;
   const desc = document.getElementById('entorno-desc').value.trim();
   
   if(!name || !image) return alert("Nombre e Icono son obligatorios.");
@@ -688,6 +886,27 @@ window.updateEntornoItem = function() {
     if(dbIndex !== -1) {
        dbMaster[dbIndex] = {...tempEntornoList[index]};
     }
+    
+    // Actualizar también en el historial (Board State) para que el cambio de icono se refleje
+    const stateStr = localStorage.getItem(STATE_KEY);
+    if(stateStr) {
+      const state = JSON.parse(stateStr);
+      ['todo', 'inprogress', 'published'].forEach(col => {
+        if(state[col]) {
+          state[col].forEach(card => {
+            if(card.id === id) {
+              card.name = name;
+              card.image = image;
+              card.description_html = desc;
+            }
+          });
+        }
+      });
+      saveBoardState(state);
+      renderBoard();
+    }
+    
+    saveEntornoDb(); // Guardar en historial maestro
   }
   
   cancelEntornoEdit();
@@ -696,7 +915,7 @@ window.updateEntornoItem = function() {
 
 window.addEntornoItem = function() {
   const name = document.getElementById('entorno-name').value.trim();
-  const image = document.getElementById('entorno-icon-select').value;
+  const image = document.getElementById('entorno-icon-path').value;
   const desc = document.getElementById('entorno-desc').value.trim();
   
   if(!name || !image) return alert("Nombre e Icono son obligatorios.");
@@ -714,11 +933,8 @@ window.addEntornoItem = function() {
   // Actualizar dbMaster para que el generador lo vea
   dbMaster.push(newItem);
   
-  // Limpiar form
-  document.getElementById('entorno-name').value = '';
-  document.getElementById('entorno-icon-select').value = '';
-  document.getElementById('entorno-desc').value = '';
-  
+  saveEntornoDb(); // Guardar en historial maestro
+  cancelEntornoEdit(); // Limpia y resetea visual
   renderEntornoAdminList();
 };
 
@@ -727,8 +943,14 @@ window.deleteEntornoAdmin = function(index) {
   tempEntornoList.splice(index, 1);
   // Quitar también de dbMaster
   dbMaster = dbMaster.filter(i => i.id !== item.id);
+  
+  saveEntornoDb(); // Guardar en historial maestro
   renderEntornoAdminList();
 };
+
+function saveEntornoDb() {
+  localStorage.setItem('mxp_entorno_db', JSON.stringify(tempEntornoList));
+}
 
 window.saveEntornoFile = function() {
   const blob = new Blob([JSON.stringify(tempEntornoList, null, 2)], { type: 'application/json' });
@@ -744,18 +966,52 @@ window.closeAdminModal = function() {
   adminModal.classList.remove('active');
 }
 
-function setupSliders() {
-  const sliders = ['slider-pc', 'slider-consola', 'slider-entorno'];
-  sliders.forEach(id => {
-    const s = document.getElementById(id);
-    s.addEventListener('input', () => {
-      updateSliderVisuals();
-      // Guardar el estado cada vez que se mueve un slider
-      const state = JSON.parse(localStorage.getItem(STATE_KEY)) || {todo:[], inprogress:[], published:[]};
-      saveBoardState(state);
-    });
-  });
-}
+
+
+window.addCardHook = function(colId, index, text) {
+  text = text.trim();
+  if(!text) return;
+  const state = JSON.parse(localStorage.getItem(STATE_KEY));
+  const item = state[colId][index];
+  if(!item.hooks) item.hooks = [];
+  item.hooks.push(text);
+  saveBoardState(state);
+  renderBoard();
+};
+
+window.deleteCardHook = function(colId, index, hookIndex) {
+  const state = JSON.parse(localStorage.getItem(STATE_KEY));
+  state[colId][index].hooks.splice(hookIndex, 1);
+  saveBoardState(state);
+  renderBoard();
+};
+
+window.saveGlobalNotes = function() {
+  const text = document.getElementById('global-notes').value;
+  const state = JSON.parse(localStorage.getItem(STATE_KEY) || '{"todo":[], "toedit":[], "inprogress":[], "published":[]}');
+  state.globalNotes = text;
+  saveBoardState(state);
+};
+
+window.addStep = function() {
+  const input = document.getElementById('input-new-step');
+  const text = input.value.trim();
+  if(!text) return;
+  
+  const state = JSON.parse(localStorage.getItem(STATE_KEY));
+  if(!state.steps) state.steps = [];
+  state.steps.push(text);
+  saveBoardState(state);
+  renderSteps(state.steps);
+  input.value = '';
+};
+
+window.deleteStep = function(index) {
+  const state = JSON.parse(localStorage.getItem(STATE_KEY));
+  state.steps.splice(index, 1);
+  saveBoardState(state);
+  renderSteps(state.steps);
+};
 
 // BOOT
 init();

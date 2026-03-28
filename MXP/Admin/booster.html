@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>MXP Booster Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="css/booster.css">
 </head>
 <body>
@@ -17,9 +18,6 @@
       <a href="#" id="btn-admin-db" style="color: #ffaa00;">Admin DB</a>
       <a href="#" id="id-nav-generator">Generador</a>
       <a href="#" id="btn-nav-board">Tablero</a>
-      <a href="#" id="btn-save-fixed-history" style="color: var(--neon-green);">Guardar en Historial.json</a>
-      <label for="load-history-file" style="cursor: pointer; margin-left: 15px; color: var(--cyber-border); font-family: 'Roboto Mono', monospace; font-size: 14px; display:none;" class="neon-text">Cargar Historial</label>
-      <input type="file" id="load-history-file" accept=".json" style="display: none;">
     </div>
   </div>
 
@@ -78,29 +76,69 @@
 
     <!-- VIEW: KANBAN BOARD -->
     <div id="view-board" class="view">
-      <!-- TO DO -->
-      <div class="kanban-col">
-        <div class="kanban-header">
-          To Do
-          <button class="col-clear-btn" onclick="clearColumn('todo')" title="Limpiar esta lista">🗑</button>
+      <div class="board-container">
+        
+        <!-- TOP SECTION: KANBAN -->
+        <div class="board-top">
+          <!-- TO DO -->
+          <div class="kanban-col">
+            <div class="kanban-header">
+              To Do
+              <button class="col-clear-btn" onclick="clearColumn('todo')" title="Limpiar esta lista">🗑</button>
+            </div>
+            <div class="kanban-body dropzone" id="col-todo" data-col="todo"></div>
+          </div>
+          <!-- IN PROGRESS -->
+          <div class="kanban-col">
+            <div class="kanban-header">
+              In Progress
+              <button class="col-clear-btn" onclick="clearColumn('inprogress')" title="Limpiar esta lista">🗑</button>
+            </div>
+            <div class="kanban-body dropzone" id="col-inprogress" data-col="inprogress"></div>
+          </div>
+          <!-- TO EDIT -->
+          <div class="kanban-col">
+            <div class="kanban-header">
+              To Edit
+              <button class="col-clear-btn" onclick="clearColumn('toedit')" title="Limpiar esta lista">🗑</button>
+            </div>
+            <div class="kanban-body dropzone" id="col-toedit" data-col="toedit"></div>
+          </div>
+          <!-- PUBLISHED -->
+          <div class="kanban-col">
+            <div class="kanban-header">
+              Published
+              <button class="col-clear-btn" onclick="clearColumn('published')" title="Limpiar esta lista">🗑</button>
+            </div>
+            <div class="kanban-body dropzone" id="col-published" data-col="published"></div>
+          </div>
         </div>
-        <div class="kanban-body dropzone" id="col-todo" data-col="todo"></div>
-      </div>
-      <!-- IN PROGRESS -->
-      <div class="kanban-col">
-        <div class="kanban-header">
-          In Progress
-          <button class="col-clear-btn" onclick="clearColumn('inprogress')" title="Limpiar esta lista">🗑</button>
+
+        <!-- BOTTOM SECTION: HOOKS & STEPS -->
+        <div class="board-bottom">
+          <!-- NOTAS -->
+          <div class="production-panel" id="panel-notes">
+            <div class="panel-header">
+               <span>📝 NOTAS GLOBALES</span>
+            </div>
+            <textarea id="global-notes" placeholder="Escribir notas de producción aquí..." oninput="saveGlobalNotes()" style="flex-grow:1; background:#000; color:#fff; border:none; padding:10px; font-family:'Saira', sans-serif; resize:none; font-size:13px; outline:none;"></textarea>
+          </div>
+
+          <!-- STEPS -->
+          <div class="production-panel" id="panel-steps">
+            <div class="panel-header">
+               <span>🎬 PASOS A SEGUIR</span>
+            </div>
+            <div class="panel-input-row">
+              <input type="text" id="input-new-step" placeholder="Agregar paso..." onkeydown="if(event.key==='Enter') addStep()">
+              <button class="neon-btn mini" onclick="addStep()">+</button>
+            </div>
+            <div class="panel-list" id="list-steps">
+              <!-- steps here -->
+            </div>
+          </div>
         </div>
-        <div class="kanban-body dropzone" id="col-inprogress" data-col="inprogress"></div>
-      </div>
-      <!-- PUBLISHED -->
-      <div class="kanban-col">
-        <div class="kanban-header">
-          Published
-          <button class="col-clear-btn" onclick="clearColumn('published')" title="Limpiar esta lista">🗑</button>
-        </div>
-        <div class="kanban-body dropzone" id="col-published" data-col="published"></div>
+
       </div>
     </div>
 
@@ -183,10 +221,21 @@
                 <span id="preview-placeholder" style="font-size: 10px; color: #666; text-align: center;">Sin Icono</span>
               </div>
               <input type="hidden" id="entorno-id">
+              <input type="hidden" id="entorno-icon-path">
               <input type="text" id="entorno-name" placeholder="Nombre (ej: Winamp)" style="padding:5px; grid-column: span 2;">
-              <select id="entorno-icon-select" style="padding:5px; background:#0b0f19; color:#fff; border:1px solid var(--cyber-border); grid-column: span 2;" onchange="updateIconPreview()">
-                <option value="">Cargando iconos...</option>
-              </select>
+              
+              <div style="grid-column: span 3;">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                  <label style="font-size:12px; color:var(--cyber-border);">Icono Seleccionado:</label>
+                  <button class="neon-btn mini" type="button" onclick="toggleIconGrid()">Elegir Icono de Galería</button>
+                </div>
+                <div id="icon-grid-container" style="display: none; margin-bottom: 10px;">
+                  <div id="entorno-icons-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)); gap: 5px; max-height: 180px; overflow-y: auto; background: #000; border: 1px solid #334; padding: 5px; border-radius: 4px;">
+                     <!-- Grid of icons injected by JS -->
+                  </div>
+                </div>
+              </div>
+
               <textarea id="entorno-desc" placeholder="Descripción breve..." style="grid-column: span 3; padding:5px; height: 50px; background:#0b0f19; border:1px solid var(--cyber-border); color:#fff;"></textarea>
             </div>
             <div style="display: flex; gap: 10px;">
